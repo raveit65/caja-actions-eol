@@ -1,0 +1,1171 @@
+# translation of ru.po to Russian
+# This file is distributed under the same license as the caja-actions package.
+#
+# Alexandre Prokoudine <alexandre.prokoudine@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: ru\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-16 17:18+0200\n"
+"PO-Revision-Date: 2006-07-05 22:03+0400\n"
+"Last-Translator: Leonid Kanter\n"
+"Language-Team: Russian <mate-cyr@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.1\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../nact/nact.desktop.in.h:1
+msgid "Add items to the Caja popup menu"
+msgstr "Добавьте новые действия во всплывающее меню Caja"
+
+#: ../nact/nact.desktop.in.h:2
+msgid "Caja Actions Configuration"
+msgstr "Настройка действий в Caja"
+
+#: ../nact/caja-actions-config.glade.h:1
+#, fuzzy
+msgid "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>"
+msgstr "(C) 2005 Frederic Ruaudel <grumz@grumz.net>"
+
+#: ../nact/caja-actions-config.glade.h:3
+#, no-c-format
+msgid "<b>%%</b>: a percent sign"
+msgstr "<b>%%</b>: знак процента"
+
+#: ../nact/caja-actions-config.glade.h:5
+#, no-c-format
+msgid ""
+"<b>%M</b>: space-separated list of the selected file(s)/folder(s) with their "
+"full paths"
+msgstr ""
+"<b>%M</b>: разделённый пробелами список выбранных файлов/каталогов с полными "
+"путями к ним"
+
+#: ../nact/caja-actions-config.glade.h:7
+#, fuzzy, no-c-format
+msgid "<b>%U</b>: username of the MateVFS URI"
+msgstr "<b>%U</b>: имя пользователя URI mate-vfs"
+
+#: ../nact/caja-actions-config.glade.h:9
+#, no-c-format
+msgid "<b>%d</b>: base folder of the selected file(s)"
+msgstr "<b>%d</b>: основная папка выбранных файлов"
+
+#: ../nact/caja-actions-config.glade.h:11
+#, no-c-format
+msgid ""
+"<b>%f</b>: the name of the selected file or the 1st one if many are selected"
+msgstr "<b>%f</b>: имя выбранного файла или первого из нескольких"
+
+#: ../nact/caja-actions-config.glade.h:13
+#, fuzzy, no-c-format
+msgid "<b>%h</b>: hostname of the MateVFS URI"
+msgstr "<b>%h</b>: имя узла URI mate-vfs"
+
+#: ../nact/caja-actions-config.glade.h:15
+#, no-c-format
+msgid ""
+"<b>%m</b>: space-separated list of the basenames of the selected\n"
+"file(s)/folder(s)"
+msgstr ""
+"<b>%m</b>: разделённый пробелами список выбранных основных\n"
+"имён выбранных файлов/каталогов"
+
+#: ../nact/caja-actions-config.glade.h:18
+#, fuzzy, no-c-format
+msgid "<b>%s</b>: scheme of the MateVFS URI"
+msgstr "<b>%s</b>: схема URI mate-vfs"
+
+#: ../nact/caja-actions-config.glade.h:20
+#, fuzzy, no-c-format
+msgid "<b>%u</b>: MateVFS URI"
+msgstr "<b>%u</b>: URI mate-vfs"
+
+#: ../nact/caja-actions-config.glade.h:21
+msgid "<b>Action</b>"
+msgstr "<b>Действие</b>"
+
+#: ../nact/caja-actions-config.glade.h:22
+msgid "<b>Appears if file matches</b>"
+msgstr "<b>Появляется, если файлы совпадают</b>"
+
+#: ../nact/caja-actions-config.glade.h:23
+msgid "<b>Appears if scheme is in this list</b>"
+msgstr "<b>Появляется, если схема есть в этом списке</b>"
+
+#: ../nact/caja-actions-config.glade.h:24
+msgid "<b>Appears if selection contains</b>"
+msgstr "<b>Появляется, если выделенное содержит</b>"
+
+#: ../nact/caja-actions-config.glade.h:25
+msgid "<b>Caja Menu Item</b>"
+msgstr "<b>Пункт меню Caja</b>"
+
+#: ../nact/caja-actions-config.glade.h:26
+msgid "<b>Profiles</b>"
+msgstr ""
+
+#: ../nact/caja-actions-config.glade.h:28
+#, no-c-format
+msgid "<i><b><span size=\"small\">e.g., %s</span></b></i>"
+msgstr "<i><b><span size=\"small\">Пример: %s</span></b></i>"
+
+#: ../nact/caja-actions-config.glade.h:29
+msgid "<span size=\"larger\"><b>Parameter Legend</b></span>"
+msgstr "<span size=\"larger\"><b>Возможные аргументы</b></span>"
+
+#: ../nact/caja-actions-config.glade.h:30
+msgid ""
+"<span weight=\"bold\" size=\"larger\">place primary text here</span>\n"
+"\n"
+"place secondary text here"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">поместите главный текст сюда</span>\n"
+"\n"
+"поместите вторичный текст сюда"
+
+#: ../nact/caja-actions-config.glade.h:33
+msgid ""
+"A string with wildcards (? or *) that will be used to match the filenames. "
+"You can set several filename patterns by separating them with a semi-colon "
+"(;)."
+msgstr ""
+"Строка со знаками подстановки (? или *), используемыми для нахождения "
+"подходящих файлов по названиям. Можно задать в одной строке несколько "
+"шаблонов названий файлов, разделив их точкой с запятой (;)."
+
+#: ../nact/caja-actions-config.glade.h:34
+msgid ""
+"A string with wildcards (? or *) that will be used to match the mimetypes of "
+"files. You can set several mimetype patterns by separating them with a semi-"
+"colon (;)."
+msgstr ""
+"Строка со знаками подстановки (? или *), используемыми для нахождения "
+"подходящих файлов по типам MIME. Можно задать в одной строке несколько "
+"шаблонов типов MIME, разделив их точкой с запятой (;)."
+
+#: ../nact/caja-actions-config.glade.h:35
+#, fuzzy
+msgid "Action"
+msgstr "<b>Действие</b>"
+
+#: ../nact/caja-actions-config.glade.h:36
+msgid "Advanced Conditions"
+msgstr "Дополнительные условия"
+
+#: ../nact/caja-actions-config.glade.h:37
+msgid "Appears if selection has multiple files or folders"
+msgstr "Появляется, если выбрано несколько файлов или папок"
+
+#: ../nact/caja-actions-config.glade.h:38
+msgid "Both"
+msgstr "И то, и другое"
+
+#: ../nact/caja-actions-config.glade.h:39
+msgid "Click to add a new scheme."
+msgstr "Нажмите для создания новой схемы."
+
+#: ../nact/caja-actions-config.glade.h:40
+msgid "Click to choose a command from the file chooser dialog."
+msgstr "Нажмите для выбора исполняемого файла программы."
+
+#: ../nact/caja-actions-config.glade.h:41
+msgid ""
+"Click to choose a custom icon from a file instead of a predefined icon from "
+"the drop-down list."
+msgstr ""
+"Нажмите для выбора нужной вам пиктограммы вместо предлагаемых в ниспадающем "
+"списке слева."
+
+#: ../nact/caja-actions-config.glade.h:42
+msgid "Click to remove the selected scheme."
+msgstr "Нажмите для удаления выбранной схемы."
+
+#: ../nact/caja-actions-config.glade.h:43
+#, fuzzy
+msgid ""
+"Click to toggle the display of the list of special tokens you can use in the "
+"parameter field."
+msgstr ""
+"Нажмите для просмотра списка специальных маркеров, которые можно "
+"использовать в поле аргументов."
+
+#: ../nact/caja-actions-config.glade.h:44
+msgid "Conditions"
+msgstr "Условия"
+
+#: ../nact/caja-actions-config.glade.h:45
+msgid "Create a copy of the selected action."
+msgstr "Создать копию выбранного действия."
+
+#: ../nact/caja-actions-config.glade.h:46
+msgid ""
+"Delete the action without any confirmation nor the possibility to restore it."
+msgstr "Удалить это действие без подтверждений о согласии, раз и навсегда."
+
+#: ../nact/caja-actions-config.glade.h:47
+msgid "Duplicate"
+msgstr ""
+
+#: ../nact/caja-actions-config.glade.h:48
+msgid "Export existing configs"
+msgstr "Экспортировать существующие настройки"
+
+#: ../nact/caja-actions-config.glade.h:49
+msgid "File to Import:"
+msgstr "Импортируемый файл:"
+
+#: ../nact/caja-actions-config.glade.h:50
+msgid "Filenames:"
+msgstr "Названия файлов:"
+
+#: ../nact/caja-actions-config.glade.h:51
+msgid "Icon:"
+msgstr "Значок:"
+
+#: ../nact/caja-actions-config.glade.h:52
+msgid ""
+"If selected, the filename patterns will be matched case sensitive (eg, *.jpg "
+"will not match photo.JPG)"
+msgstr ""
+"Если отмечено, шаблоны названий файлов будут использоваться с учётом "
+"регистра (например, \"*.jpg\" не будет выбирать \"photo.JPG\")"
+
+#: ../nact/caja-actions-config.glade.h:53
+msgid "Import new configurations"
+msgstr "Импортировать новые настройки"
+
+#: ../nact/caja-actions-config.glade.h:54
+msgid "Import/Export"
+msgstr "Импорт/Экспорт"
+
+#: ../nact/caja-actions-config.glade.h:55
+msgid "Import/Export Settings"
+msgstr "Настройки импорта/экспорта"
+
+#: ../nact/caja-actions-config.glade.h:56
+msgid "Label of the menu item in the Caja popup menu."
+msgstr "Текст пункта всплывающего меню Caja."
+
+#: ../nact/caja-actions-config.glade.h:57
+msgid "Label:"
+msgstr "Текст пункта меню:"
+
+#: ../nact/caja-actions-config.glade.h:58
+msgid ""
+"Manage importation of external action configurations and exportation of "
+"existing actions."
+msgstr "Импортировать старые настройки действий или экспортировать нынешние"
+
+#: ../nact/caja-actions-config.glade.h:59
+msgid "Match case"
+msgstr "С учётом регистра"
+
+#: ../nact/caja-actions-config.glade.h:60
+msgid "Mimetypes:"
+msgstr "Типы MIME:"
+
+#: ../nact/caja-actions-config.glade.h:61
+msgid "Caja Action Editor"
+msgstr "Редактор Caja Action"
+
+#: ../nact/caja-actions-config.glade.h:62
+#, fuzzy
+msgid "Caja Action Profile Editor"
+msgstr "Редактор Caja Action"
+
+#: ../nact/caja-actions-config.glade.h:63
+msgid "Caja Actions"
+msgstr "Действия Caja"
+
+#: ../nact/caja-actions-config.glade.h:64
+#, fuzzy
+msgid ""
+"Caja Actions Configuration Tool\n"
+"Application to configure Caja Action extension"
+msgstr ""
+"Caja Action Configuration Tool\n"
+"Программа для настройки расширения Caja Action"
+
+#: ../nact/caja-actions-config.glade.h:66
+msgid "Only files"
+msgstr "Только файлы"
+
+#: ../nact/caja-actions-config.glade.h:67
+msgid "Only folders"
+msgstr "Только папки"
+
+#: ../nact/caja-actions-config.glade.h:68
+msgid ""
+"Parameters that will be sent to the program. Click on the 'Legend' button to "
+"see the different replacement tokens."
+msgstr ""
+"Аргументы, которые будут переданы программе. Нажмите на кнопку «Легенда», "
+"чтобы просмотреть возможные аргументы."
+
+#: ../nact/caja-actions-config.glade.h:69
+msgid "Parameters:"
+msgstr "Аргументы:"
+
+#: ../nact/caja-actions-config.glade.h:70
+msgid "Path:"
+msgstr "Путь:"
+
+#: ../nact/caja-actions-config.glade.h:71
+msgid "Project Website"
+msgstr "Сайт проекта"
+
+#: ../nact/caja-actions-config.glade.h:72
+msgid "Save in Folder:"
+msgstr "Сохранить в папке:"
+
+#: ../nact/caja-actions-config.glade.h:73
+msgid ""
+"Select the configurations you want to export. Use Shift or Ctrl key to "
+"select more than one."
+msgstr ""
+"Выберите экспортируемые настройки. Используйте клавиши Shift или Ctrl для "
+"выбора нескольких сразу."
+
+#: ../nact/caja-actions-config.glade.h:74
+msgid "Select the configurations you want to export:"
+msgstr "Выберите экспортируемые настройки:"
+
+#: ../nact/caja-actions-config.glade.h:75
+msgid "Select the file you want to import."
+msgstr "Выберите импортируемый файл настроек"
+
+#: ../nact/caja-actions-config.glade.h:76
+msgid ""
+"Select the folder you want your config to be saved in. This folder must "
+"exist."
+msgstr "Выберите папку, в которую собираетесь экспортировать настройки."
+
+#: ../nact/caja-actions-config.glade.h:77
+msgid ""
+"Select the kind of files where you want your action to appear. If you don't "
+"know what to choose, try selecting just 'file' which is the most common "
+"choice. You can add a new scheme by clicking on the '+' button."
+msgstr ""
+"Выберите тип файлов. к которым хотите применить действие. Если вы не знаете, "
+"что выбирать, попробуйте выбрать просто 'file', т.е. наиболее "
+"распространённый вариант. Новую схему можно добавить нажатием кнопки с "
+"символом '+'."
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../nact/caja-actions-config.glade.h:79
+msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgstr ""
+
+#: ../nact/caja-actions-config.glade.h:80
+msgid ""
+"The command that will be launched by selecting the action in Caja popup "
+"menu."
+msgstr ""
+"Команда, которая будет запущена при выборе этого пункта всплывающего меню "
+"Caja."
+
+#: ../nact/caja-actions-config.glade.h:81
+msgid "This software is licensed under the GNU Genaral Public License (GPL)"
+msgstr ""
+"Это приложение распространяется на условиях GNU Genaral Public License (GPL)"
+
+#: ../nact/caja-actions-config.glade.h:82
+msgid "Tooltip of the menu item that will appear in the Caja statusbar."
+msgstr "Подсказка к пункту меню, которая появится в строке состояния Caja"
+
+#: ../nact/caja-actions-config.glade.h:83
+msgid "Tooltip:"
+msgstr "Подсказка:"
+
+#: ../nact/caja-actions-config.glade.h:84
+msgid "_Browse"
+msgstr "_Выбрать"
+
+#: ../nact/caja-actions-config.glade.h:85
+msgid "_Legend"
+msgstr ""
+
+#. i18n notes: will be displayed in a dialog
+#: ../nact/nact.c:163
+#, fuzzy, c-format
+msgid "Can't duplicate action '%s'!"
+msgstr "Не удалось создать копию действия \"%s\"!"
+
+#. create columns on the tree view
+#: ../nact/nact.c:277 ../nact/nact-import-export.c:162
+msgid "Icon"
+msgstr "Значок"
+
+#: ../nact/nact.c:282 ../nact/nact-import-export.c:167
+msgid "Label"
+msgstr "Пункт меню"
+
+#: ../nact/nact.c:303 ../nact/nact-editor.c:628
+#: ../nact/nact-import-export.c:312 ../nact/nact-profile-editor.c:495
+msgid "Could not load interface for Caja Actions Config Tool"
+msgstr "Не удалось загрузить интерфейс программы настройки действий в Caja"
+
+#. i18n notes: example strings for the command preview
+#: ../nact/nact-utils.c:185
+msgid "/path/to"
+msgstr "/путь/к"
+
+#: ../nact/nact-utils.c:186 ../nact/nact-utils.c:188
+msgid "file1.txt"
+msgstr "файл1.txt"
+
+#: ../nact/nact-utils.c:186
+msgid "file2.txt"
+msgstr "файл2.txt"
+
+#: ../nact/nact-utils.c:187 ../nact/nact-utils.c:188
+msgid "folder1"
+msgstr "папка1"
+
+#: ../nact/nact-utils.c:187
+msgid "folder2"
+msgstr "папка2"
+
+#: ../nact/nact-utils.c:190
+msgid "test.example.net"
+msgstr "test.example.net"
+
+#: ../nact/nact-utils.c:191
+msgid "file.txt"
+msgstr "файл.txt"
+
+#: ../nact/nact-utils.c:192
+msgid "folder"
+msgstr "папка"
+
+#. i18n notes: when no icon is selected in the drop-down list
+#: ../nact/nact-editor.c:168
+msgid "None"
+msgstr "Ничего"
+
+#. i18n notes: will be displayed in a dialog
+#: ../nact/nact-editor.c:449
+#, fuzzy, c-format
+msgid "Can't copy action's profile '%s'!"
+msgstr "Невозможно разобрать файл \"%s\"!"
+
+#. i18n notes: will be displayed in a dialog
+#: ../nact/nact-editor.c:474
+#, fuzzy, c-format
+msgid "Can't paste action's profile '%s'!"
+msgstr "Невозможно разобрать файл \"%s\"!"
+
+#. i18n notes: this is the default name of a copied profile
+#: ../nact/nact-editor.c:479
+#, c-format
+msgid "%s Copy"
+msgstr ""
+
+#. i18n notes: will be displayed in a dialog
+#: ../nact/nact-editor.c:539
+#, fuzzy, c-format
+msgid "Can't delete action's profile '%s'!"
+msgstr "Не удалось создать копию действия \"%s\"!"
+
+#: ../nact/nact-editor.c:591
+msgid "Profile Name"
+msgstr ""
+
+#: ../nact/nact-editor.c:644
+msgid "Icon of the menu item in the Caja popup menu"
+msgstr "Значок для пункта меню Caja"
+
+#: ../nact/nact-editor.c:666
+msgid "Add a New Action"
+msgstr "Добавление нового действия"
+
+#: ../nact/nact-editor.c:670
+#, c-format
+msgid "Edit Action \"%s\""
+msgstr "Правка действия \"%s\""
+
+#: ../nact/nact-import-export.c:205
+#, fuzzy, c-format
+msgid "Can't parse file '%s' as MateConf schema description file!"
+msgstr "Не удалось провести анализ файла \"%s\" как файла описания схемы MateConf"
+
+#. i18n notes: %s is the label of the action (eg, 'Mount ISO')
+#: ../nact/nact-import-export.c:226
+#, fuzzy, c-format
+msgid "Action '%s' importation failed!"
+msgstr "Импорт действия '%s' закончился неудачей !"
+
+#. initialize the default schemes
+#. i18n notes : description of 'file' scheme
+#: ../nact/nact-prefs.c:164
+#, c-format
+msgid "%sLocal Files"
+msgstr "%sЛокальные файлы"
+
+#. i18n notes : description of 'sftp' scheme
+#: ../nact/nact-prefs.c:166
+#, c-format
+msgid "%sSSH Files"
+msgstr "%sФайлы, доступные по SSH"
+
+#. i18n notes : description of 'smb' scheme
+#: ../nact/nact-prefs.c:168
+#, c-format
+msgid "%sWindows Files"
+msgstr "%sФайлы из сети Windows"
+
+#. i18n notes : description of 'ftp' scheme
+#: ../nact/nact-prefs.c:170
+#, c-format
+msgid "%sFTP Files"
+msgstr "%sФайлы из FTP-каталога"
+
+#. i18n notes : description of 'dav' scheme
+#: ../nact/nact-prefs.c:172
+#, c-format
+msgid "%sWebdav Files"
+msgstr "%sФайлы из Webdav"
+
+#. i18n notes : scheme name set for a new entry in the scheme list
+#: ../nact/nact-profile-editor.c:243
+msgid "new-scheme"
+msgstr "новая-схема"
+
+#: ../nact/nact-profile-editor.c:244
+msgid "New Scheme Description"
+msgstr "Описание новой схемы"
+
+#: ../nact/nact-profile-editor.c:329
+msgid "Scheme"
+msgstr "Схема"
+
+#: ../nact/nact-profile-editor.c:341
+msgid "Description"
+msgstr "Описание"
+
+#: ../nact/nact-profile-editor.c:532
+#, fuzzy
+msgid "Add a New Profile"
+msgstr "Добавление нового действия"
+
+#: ../nact/nact-profile-editor.c:536
+#, fuzzy, c-format
+msgid "Edit Profile \"%s\""
+msgstr "Правка действия \"%s\""
+
+#. MateConf description strings :
+#: ../utils/caja-actions-new-config.c:49
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+msgid "The label of the menu item"
+msgstr "Текст пункта меню"
+
+#: ../utils/caja-actions-new-config.c:49
+msgid "LABEL"
+msgstr "ПУНКТМЕНЮ"
+
+#: ../utils/caja-actions-new-config.c:50
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+msgid "The tooltip of the menu item"
+msgstr "Подсказка для пункта меню"
+
+#: ../utils/caja-actions-new-config.c:50
+msgid "TOOLTIP"
+msgstr "ПОДСКАЗКА"
+
+#: ../utils/caja-actions-new-config.c:51
+msgid "The icon of the menu item (filename or GTK stock ID)"
+msgstr "Иконка для пункта меню (имя файла или GTK stock ID)"
+
+#: ../utils/caja-actions-new-config.c:51
+msgid "ICON"
+msgstr "ЗНАЧОК"
+
+#: ../utils/caja-actions-new-config.c:52
+#: ../utils/caja-actions-new-config.c:55
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+msgid "The path of the command"
+msgstr "Путь к команде"
+
+#: ../utils/caja-actions-new-config.c:52
+#: ../utils/caja-actions-new-config.c:55
+#: ../utils/caja-actions-new-config.c:61
+msgid "PATH"
+msgstr "ПУТЬ"
+
+#: ../utils/caja-actions-new-config.c:53
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+msgid "The parameters of the command"
+msgstr "Аргументы выполнения команды"
+
+#: ../utils/caja-actions-new-config.c:53
+msgid "PARAMS"
+msgstr "АРГУМЕНТЫ"
+
+#: ../utils/caja-actions-new-config.c:54
+msgid ""
+"A pattern to match selected files against. May include wildcards (* or ?) "
+"(you must set one option for each pattern you need)"
+msgstr ""
+"Шаблон для выбора файлов. Может включать подстановочные знаки (* или ?) "
+"(укажите один вариант для одного шаблона)"
+
+#: ../utils/caja-actions-new-config.c:54
+#: ../utils/caja-actions-new-config.c:56
+msgid "EXPR"
+msgstr "ВЫРАЖЕНИЕ"
+
+#: ../utils/caja-actions-new-config.c:56
+msgid ""
+"A pattern to match selected files' mimetype against. May include wildcards "
+"(* or ?) (you must set one option for each pattern you need)"
+msgstr ""
+"Шаблон для выбора файлов по типу MIME. Может включать подстановочные знаки "
+"(* или ?) (укажите один вариант для одного шаблона)"
+
+#: ../utils/caja-actions-new-config.c:57
+msgid "Set it if the selection can contain files"
+msgstr "Установите это, если выделение может содержать файлы"
+
+#: ../utils/caja-actions-new-config.c:58
+msgid "Set it if the selection can contain folders"
+msgstr "Установите это, если выделение может содержать папки"
+
+#: ../utils/caja-actions-new-config.c:59
+msgid "Set it if the selection can have several items"
+msgstr "Установите это, если выделение может несколько объектов"
+
+#: ../utils/caja-actions-new-config.c:60
+msgid ""
+"A MateVFS scheme where the selected files should be located (you must set "
+"it for each scheme you need)"
+msgstr ""
+"Схема MateVFS, в которой должны находиться выбранные файлы (необходимо "
+"указать для каждой нужной схемы)"
+
+#: ../utils/caja-actions-new-config.c:60
+msgid "SCHEME"
+msgstr "СХЕМА"
+
+#: ../utils/caja-actions-new-config.c:61
+msgid ""
+"The path of the file where to save the new MateConf schema definition file "
+"[default: /tmp/config_UUID.schemas]"
+msgstr ""
+"Путь, по которому записать новый файл определения схемы MateConf [по "
+"умолчанию: /tmp/config_UUID.schemas]"
+
+#: ../utils/caja-actions-new-config.c:100
+#, c-format
+msgid ""
+"Syntax error:\n"
+"\t- %s\n"
+"Try %s --help\n"
+msgstr ""
+"Синтаксическая ошибка:\n"
+"\t- %s\n"
+"Просмотрите вывод %s --help\n"
+
+#: ../utils/caja-actions-new-config.c:152
+#, c-format
+msgid "Creating %s..."
+msgstr "Создаётся %s..."
+
+#: ../utils/caja-actions-new-config.c:171
+#, c-format
+msgid " Failed: Can't create %s: %s\n"
+msgstr " Сбой: не удаётся создать %s: %s\n"
+
+#: ../utils/caja-actions-new-config.c:180
+#, c-format
+msgid "  OK, saved in %s\n"
+msgstr "  OK, сохранено в %s\n"
+
+#: ../utils/caja-actions-new-config.c:185
+#, c-format
+msgid " Failed: %s\n"
+msgstr " Не удалось: %s\n"
+
+#: ../utils/caja-actions-tools-utils.c:48
+#, c-format
+msgid "Can't write data in file %s\n"
+msgstr "Невозможно записать данные в файл %s\n"
+
+#: ../utils/caja-actions-tools-utils.c:54
+#, c-format
+msgid "Can't open file %s for writing\n"
+msgstr "Невозможно открыть файл %s для записи\n"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+msgid ""
+"The label of the menu item that will appear in the Caja popup menu when "
+"the selection matches the appearance condition settings"
+msgstr ""
+"Текст пункта меню в Caja, появляющийся в случае соответствия выделенного "
+"заданным критериями"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+msgid ""
+"The tooltip of the menu item that will appear in the Caja statusbar when "
+"the user points to the Caja popup menu item with his/her mouse"
+msgstr ""
+"Подсказка для текста пункта меню в Caja, появляющаяся в статусной "
+"строке, когда курсор находится в этом пункте меню"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+msgid "The icon of the menu item"
+msgstr "Значок пункта меню"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+msgid ""
+"The icon of the menu item that will appear next to the label in the Caja "
+"popup menu when the selection matches the appearance conditions settings"
+msgstr ""
+"Значок в пункте меню Caja, которая появится слева от его текста в случае "
+"соответствия выделенного заданным критериями"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+msgid "A description name of the profile"
+msgstr ""
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+msgid ""
+"The field is here to give the user a human readable name for a profile in "
+"the Nact interface. If not set there will be a default auto generated string "
+"set by default"
+msgstr ""
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+msgid ""
+"The path of the command to start when the user select the menu item in the "
+"Caja popup menu"
+msgstr ""
+"Путь к программе, которая должна быть выполнена, когда юзер выбирает этот "
+"пункт в меню Caja"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#, fuzzy
+msgid ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu.\n"
+"\n"
+"The parameters can contain some special tokens which are replaced by "
+"Caja information before starting the command:\n"
+"\n"
+"%d: base folder of the selected file(s)\n"
+"%f: the name of the selected file or the first one if many are selected\n"
+"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
+"%M: space-separated list of the selected file(s)/folder(s), with their full "
+"paths\n"
+"%u: MateVFS URI\n"
+"%s: scheme of the MateVFS URI\n"
+"%h: hostname of the MateVFS URI\n"
+"%U: username of the MateVFS URI\n"
+"%%: a percent sign"
+msgstr ""
+"Ниже приведены аргументы для запускаемой программы.\n"
+"\n"
+"Аргументы могут содержать tokens, заменяемые информацией от Caja перед "
+"запуском команды:\n"
+"\n"
+"%d:основная папка выбранных файлов\n"
+"%f: the name of the selected file or the first one if many are selected\n"
+"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
+"%M: space-separated list of the selected file(s)/folder(s), with their full "
+"paths\n"
+"%u: MateVFS URI\n"
+"%s: scheme of the MateVFS URI\n"
+"%h: hostname of the MateVFS URI\n"
+"%U: username of the :%s/MateVFS URI\n"
+"%%: a percent sign"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+msgid "The list of pattern to match the selected file(s)/folder(s)"
+msgstr "Список шаблонов для выбора файлов/каталогов"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+msgid ""
+"A list of strings with joker '*' or '?' to match the name of the selected "
+"file(s)/folder(s). Each selected items must match at least one of the "
+"filename patterns for the action to appear"
+msgstr ""
+"Список строк с шаблоном '*' или '?' для выбора файлов/каталогов по "
+"названиям. Каждый выбранный объект должен попадать хотя бы в один из "
+"шаблонов, чтобы действие появилось в меню."
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+msgid ""
+"'true' if the filename patterns have to be case sensitive, 'false' otherwise"
+msgstr ""
+"'true', если шаблоны названий чувствительны к регистру и 'false', если нет"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+msgid ""
+"If you need to match a filename in a case-sensitive manner, set this key to "
+"'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
+"'false'"
+msgstr ""
+"Если необходимо, чтобы выбор файлов или каталогов по названиям производился "
+"с учётом регистра, укажите значением аргумента 'true'. В противном случае "
+"используйте 'false'"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+msgid "The list of patterns to match the mimetypes of the selected file(s)"
+msgstr "Список шаблонов для выбора файлов/каталогов по типам MIME"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+msgid ""
+"A list of strings with joker '*' or '?' to match the mimetypes of the "
+"selected file(s). Each selected items must match at least one of the "
+"mimetype patterns for the action to appear"
+msgstr ""
+"Список строк с шаблоном '*' или '?' для выбора файлов/каталогов по типам "
+"MIME. Каждый выбранный объект должен попадать хотя бы в один из шаблонов, "
+"чтобы действие появилось в меню."
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#, fuzzy
+msgid ""
+"The valid combinations are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear)"
+msgstr ""
+"Корректными комбинацими являются:\n"
+"isfile=TRUE и isdir=FALSE: в выделении могут находиться только файлы\n"
+"isfile=FALSE и isdir=TRUE: в выделении могут находиться только папки\n"
+"isfile=TRUE и isdir=TRUE': в выделении могут находиться и файлы, и папки\n"
+"isfile=FALSE и isdir=FALSE: это некорректная комбинация (настроенная схема "
+"никогда не появится)"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+msgid "'true' if the selection can have files, 'false' otherwise"
+msgstr "'true', если в выделении могут быть файлы и 'false', если нет"
+
+#. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+msgid "This setting is tied in with the 'isdir' setting. "
+msgstr "Этот аргумент связан с параметром 'isdir'."
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+msgid "'true' if the selection can have folders, 'false' otherwise"
+msgstr "'true', если в выделении могут быть папки и 'false', если нет"
+
+#. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+msgid "This setting is tied in with the 'isfile' setting. "
+msgstr "Эта настройка привязана к настройке 'isfile'."
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+msgid "'true' if the selection can have several items, 'false' otherwise"
+msgstr ""
+"'true', если в выделении могут быть несколько объектов и 'false', если нет"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+msgid ""
+"If you need one or more files or folders to be selected, set this key to "
+"'true'. If you want just one file or folder, set 'false'"
+msgstr ""
+"Если необходимо, чтобы было выбрано несколько файлов или каталогов, укажите "
+"значением аргумента 'true'. В противном случае используйте 'false'"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+msgid "The list of MateVFS schemes where the selected files should be located"
+msgstr "Список схем MateVFS, в которых должны находиться выбранные файлы"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+msgid ""
+"Defines the list of valid MateVFS schemes to be matched against the "
+"selected items. The MateVFS scheme is the protocol used to access the "
+"files. The keyword to use is the one used in the MateVFS URI.\n"
+"\n"
+"Examples of MateVFS URI include: \n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"The most common schemes are:\n"
+"\n"
+"'file': local files\n"
+"'sftp': files accessed via SSH\n"
+"'ftp': files accessed via FTP\n"
+"'smb': files accessed via Samba (Windows share)\n"
+"'dav': files accessed via WebDav\n"
+"\n"
+"All MateVFS schemes used by Caja can be used here."
+msgstr ""
+"Определяет список действительных схем MateVFS для сравнения с выбранными "
+"объектами. Схема MateVFS является протоколом для получения доступа к "
+"файлам. Используется то же ключевое слово, что и в URI MateVFS.\n"
+"\n"
+"Вот примеры URI MateVFS: \n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"Наиболее распространёнными схемами являются:\n"
+"\n"
+"'file': локальные файлы\n"
+"'sftp': файлы, доступные через SSH-соединение\n"
+"'ftp': файлы в FTP-каталоге\n"
+"'smb': файлы Windows-сети (Samba)\n"
+"'dav': файлы, доступные через WebDav\n"
+"\n"
+"Здесь могут быть применены все используемые Caja схемы MateVFS."
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+msgid "The version of the configuration format"
+msgstr "Версия формата настроек"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+msgid ""
+"The version of the configuration format that will be used to manage backward "
+"compatibility"
+msgstr ""
+"Эта версия формата настроек будет использована для обеспечения обратной "
+"совместимости"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:205
+#, c-format
+msgid ""
+"The action '%s' already exists with the name '%s', please first remove the "
+"existing one before trying to add this one"
+msgstr ""
+"Действие \"%s\" уже существует под названием \"%s\", сначала удалите "
+"существующее, а затем добавляйте это"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:222
+#, c-format
+msgid "Can't save action '%s'"
+msgstr "Невозможно сохранить действие \"%s\""
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:470
+#, fuzzy, c-format
+msgid ""
+"A profile already exists with the name '%s', please first remove or rename "
+"the existing one before trying to add this one"
+msgstr ""
+"Действие \"%s\" уже существует под названием \"%s\", сначала удалите "
+"существующее, а затем добавляйте это"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:524
+#, fuzzy, c-format
+msgid "Can't remove the old profile '%s'"
+msgstr "Невозможно разобрать файл \"%s\"!"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:531
+#, fuzzy, c-format
+msgid "Can't find profile named '%s'"
+msgstr "Невозможно разобрать файл \"%s\"!"
+
+#. i18n notes: will be displayed in an error dialog concatenated to another error message
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:184
+msgid " and some profiles are incomplete: "
+msgstr ""
+
+#. i18n notes: this is a list separator, it can have more than one character (ie, in French it will be ", ")
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:204
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:717
+msgid ","
+msgstr ", "
+
+#. i18n notes: will be displayed in an error dialog concatenated to another error message
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:303
+#, c-format
+msgid "%s (one missing key: %s)%s"
+msgid_plural "%s (missing keys: %s)%s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:682
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:817
+#, c-format
+msgid ""
+"This XML file is not a valid Caja-actions config file (found <%s> "
+"element instead of <%s>)"
+msgstr ""
+"Этот XML файл не является подходящим файлом конфигурации для Caja-"
+"actions (обнаружен элемент <%s> вместо <%s>)"
+
+#. if the version of the file is greater than the current one, we reject the file
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:696
+#, c-format
+msgid ""
+"This config file is more recent than this version of Caja-actions can "
+"support. Please upgrade Caja-actions to the latest version if you want "
+"to be able to import it (File version: %s (max supported version : %s))"
+msgstr ""
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:744
+#, fuzzy, c-format
+msgid ""
+"This XML file is not a valid Caja-actions config file (missing key: %s)%s"
+msgid_plural ""
+"This XML file is not a valid Caja-actions config file (missing keys: %s)%"
+"s"
+msgstr[0] ""
+"Этот XML файл не является подходящим файлом конфигурации для Caja-"
+"actions (отсутствует ключ: %s)"
+msgstr[1] ""
+"Этот XML файл не является подходящим файлом конфигурации для Caja-"
+"actions (отсутствует ключ: %s)"
+msgstr[2] ""
+"Этот XML файл не является подходящим файлом конфигурации для Caja-"
+"actions (отсутствует ключ: %s)"
+
+#. No error occured but we have not found the "version" mateconf key
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:753
+#, fuzzy, c-format
+msgid ""
+"This XML file is not a valid Caja-actions config file (missing key: %s)"
+msgstr ""
+"Этот XML файл не является подходящим файлом конфигурации для Caja-"
+"actions (отсутствует ключ: %s)"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:827
+#, c-format
+msgid ""
+"This XML file is not a valid Caja-actions config file (root node is <%s> "
+"instead of <%s>)"
+msgstr ""
+"Этот XML файл не является подходящим файлом конфигурации для Caja-"
+"actions (корневой узел <%s> вместо <%s>)"
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "  "
+#~ msgstr "  "
+
+#~ msgid "    "
+#~ msgstr "    "
+
+#~ msgid "Automatic"
+#~ msgstr "Определить автоматически"
+
+#~ msgid ""
+#~ "Check this box if you want to get back all your configurations from the "
+#~ "version of Caja-actions 0.7.1 or lesser."
+#~ msgstr ""
+#~ "Включите этот параметр, если хотите использовать настройки, "
+#~ "унаследованные от Caja-actions версии 0.7.1 и ранее."
+
+#~ msgid "MateConf schema description file (Caja-actions v1.x and later)"
+#~ msgstr "Файл описания схемы MateConf (Caja-actions v1.x и новее)"
+
+#~ msgid "Import all my old configs"
+#~ msgstr "Импортировать мои прежние настройки"
+
+#~ msgid "Menu Item & Action"
+#~ msgstr "Пункт меню и действие"
+
+#~ msgid "Old XML config file (Caja-actions v0.x)"
+#~ msgstr "Старый конфигурационный файл XML (Caja-actions v0.x)"
+
+#~ msgid "Type of configuration:"
+#~ msgstr "Тип настроек:"
+
+#~ msgid "translator-credits"
+#~ msgstr "Александр Прокудин <alexandre.prokoudine@gmail.com>"
+
+#~ msgid "Can't parse file '%s' as old XML config file !"
+#~ msgstr ""
+#~ "Не удалось провести анализ файла \"%s\" как файла конфигурации в старом "
+#~ "XML формате!"
+
+#~ msgid "The old XML config file to convert"
+#~ msgstr "Старый XML-файл настроек для преобразования"
+
+#~ msgid "FILE"
+#~ msgstr "ФАЙЛ"
+
+#~ msgid "The name of the newly-converted MateConf schema file"
+#~ msgstr "Имя только что полученного после преобразования файла схемы MateConf"
+
+#~ msgid ""
+#~ "Convert all old XML config files from previous installations [default]"
+#~ msgstr ""
+#~ "Преобразовать все старые XML-файлы настроек из предыдущих установок [по "
+#~ "умолчанию]"
+
+#~ msgid ""
+#~ "The folder where the new MateConf schema files will be saved if option -a is "
+#~ "set [default=/tmp]"
+#~ msgstr ""
+#~ "Папка, в которую сохраняются новые файлы схем MateConf, если передан "
+#~ "аргумент -a [по умолчанию=/tmp]"
+
+#~ msgid "DIR"
+#~ msgstr "КАТ"
+
+#~ msgid ""
+#~ "Syntax error:\n"
+#~ "\tOptions -i and -o are mutually exclusive with option -a\n"
+#~ "Try %s --help\n"
+#~ msgstr ""
+#~ "Синтаксическая ошибка:\n"
+#~ "\tАргументы -i и -o взаимно исключаемы аргументом -a\n"
+#~ "Просмотрите вывод %s --help\n"
+
+#~ msgid ""
+#~ "Syntax error:\n"
+#~ "\tOption -i is mandatory when using option -o\n"
+#~ "Try %s --help\n"
+#~ msgstr ""
+#~ "Синтаксическая ошибка:\n"
+#~ "\tАргумент -i обязателен при использовании аргумента -o\n"
+#~ "Просмотрите вывод %s --help\n"
+
+#~ msgid ""
+#~ "Error:\n"
+#~ "\t- Can't parse %s\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Ошибка:\n"
+#~ "\t- Не удаётся провести синтаксический разбор %s\n"
+#~ "%s\n"
+
+#~ msgid "Converting %s..."
+#~ msgstr "Преобразовывается %s..."
+
+#~ msgid ""
+#~ "This XML file is not a valid Caja-actions config file (Bad test "
+#~ "section)"
+#~ msgstr ""
+#~ "Этот XML файл не является подходящим файлом конфигурации для Caja-"
+#~ "actions (неправильный раздел \"test\")"
+
+#~ msgid ""
+#~ "This XML file is not a valid Caja-actions config file (Bad command "
+#~ "section)"
+#~ msgstr ""
+#~ "Этот XML файл не является подходящим файлом конфигурации для Caja-"
+#~ "actions (неправильный раздел \"command\")"
+
+#~ msgid ""
+#~ "This XML file is not a valid Caja-actions config file (Bad menu item "
+#~ "section)"
+#~ msgstr ""
+#~ "Этот XML файл не является подходящим файлом конфигурации для Caja-"
+#~ "actions (неправильный раздел \"menu item\")"
+
+#~ msgid ""
+#~ "This XML file is not a valid Caja-actions config file (missing key"
+#~ "(s) : %s)"
+#~ msgstr ""
+#~ "Этот XML файл не является подходящим файлом конфигурации для Caja-"
+#~ "actions (отсутствуют ключи: %s)"

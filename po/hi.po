@@ -1,0 +1,1101 @@
+# translation of caja-actions.po.master.po to Hindi
+# Hindi translation for caja-actions.
+# Copyright (C) 2009 caja-actions's COPYRIGHT HOLDER
+# This file is distributed under the same license as the caja-actions package.
+#
+# Rajesh Ranjan <rajesh672@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: caja-actions.po.master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions&component=general\n"
+"POT-Creation-Date: 2009-08-19 19:43+0000\n"
+"PO-Revision-Date: 2009-08-24 12:05+0530\n"
+"Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
+"Language-Team: Hindi <hindi.sf.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
+"\n"
+
+#: ../data/caja-actions.schemas.in.h:1 ../src/common/na-xml-names.h:117
+msgid "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
+msgstr "'सही' यदि फ़ाइलनाम प्रारूप को अक्षर संवेदनशील होना चाहिए, अन्यथा 'गलत'"
+
+#: ../data/caja-actions.schemas.in.h:2 ../src/common/na-xml-names.h:121
+msgid "'true' if the selection can have files, 'false' otherwise"
+msgstr "'सही' यदि चयन के पास फ़ाइल है, अन्यथा 'गलत'"
+
+#: ../data/caja-actions.schemas.in.h:3 ../src/common/na-xml-names.h:123
+msgid "'true' if the selection can have folders, 'false' otherwise"
+msgstr "'सही' यदि चयन के पास फ़ोल्डर है, अन्यथा 'गलत'"
+
+#: ../data/caja-actions.schemas.in.h:4 ../src/common/na-xml-names.h:125
+msgid "'true' if the selection can have several items, 'false' otherwise"
+msgstr "'सही' यदि चयन के पास कई मद है, अन्यथा 'गलत'"
+
+#: ../data/caja-actions.schemas.in.h:5 ../src/common/na-xml-names.h:109
+msgid "A description name of the profile"
+msgstr "प्रोफ़ाइल का विवरण नाम"
+
+#: ../data/caja-actions.schemas.in.h:6 ../src/common/na-xml-names.h:120
+msgid ""
+"A list of strings with joker '*' or '?' to match the mimetypes of the "
+"selected file(s). Each selected items must match at least one of the "
+"mimetype patterns for the action to appear"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:7 ../src/common/na-xml-names.h:116
+msgid ""
+"A list of strings with joker '*' or '?' to match the name of the selected "
+"file(s)/folder(s). Each selected items must match at least one of the "
+"filename patterns for the action to appear"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:8 ../src/common/na-action.h:52
+msgid "Default profile"
+msgstr "तयशुदा प्रोफ़ाइल"
+
+#: ../data/caja-actions.schemas.in.h:9
+msgid ""
+"Defines the list of valid schemes to be matched against the selected items. "
+"The scheme is the protocol used to access the files. The keyword to use is "
+"the one used in the URI. Examples of valid URI include: file:///tmp/foo.txt "
+"sftp:///root@test.example.net/tmp/foo.txt The most common schemes are: "
+"'file': local files 'sftp': files accessed via SSH 'ftp': files accessed via "
+"FTP 'smb': files accessed via Samba (Windows share) 'dav': files accessed "
+"via WebDAV All schemes used by Caja can be used here."
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:10 ../src/common/na-xml-names.h:108
+msgid "If the action is disabled, it will never appear in the Caja context menu"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:11 ../src/common/na-xml-names.h:126
+msgid ""
+"If you need one or more files or folders to be selected, set this key to "
+"'true'. If you want just one file or folder, set 'false'"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:12 ../src/common/na-xml-names.h:118
+msgid ""
+"If you need to match a filename in a case-sensitive manner, set this key to "
+"'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
+"'false'"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:13
+msgid "Last folder selected when browsing for a command in the Conditions tab"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:14
+msgid "Last folder selected when choosing a folder from where import new actions"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:15
+msgid "Last folder selected when choosing a folder where to export the actions"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:16
+msgid "Last selected folder"
+msgstr "अंतिम चयनित फ़ोल्डर"
+
+#: ../data/caja-actions.schemas.in.h:17
+msgid "Main pane position"
+msgstr "मुख्य पटल स्थिति"
+
+#: ../data/caja-actions.schemas.in.h:18
+msgid "Position and size of the Legend dialog"
+msgstr "लेजेंड संवाद का स्थिति और आकार"
+
+#: ../data/caja-actions.schemas.in.h:19
+msgid "Position and size of the Legend dialog ; default is set by the UI manager"
+msgstr "लेजेंड संवाद का स्थिति और आकार; तयशुदा को यूआई प्रबंधक के द्वारा सेट किया जाता है"
+
+#: ../data/caja-actions.schemas.in.h:20
+msgid "Position and size of the command chooser window"
+msgstr "कमांड चयनक विंडो की स्थिति और आकार"
+
+#: ../data/caja-actions.schemas.in.h:21
+msgid ""
+"Position and size of the command chooser window in the Conditions tab ; "
+"default is set by the window manager"
+msgstr ""
+"स्थिति टैब में कमांड चयनक विंडो की स्थिति और आकार ; "
+"तयशुदा को विंडो प्रबंधक के द्वारा सेट किया जाता है"
+
+#: ../data/caja-actions.schemas.in.h:22
+msgid "Position and size of the export assistant window"
+msgstr "निर्यात सहायक विंडो की स्थिति और आकार "
+
+#: ../data/caja-actions.schemas.in.h:23
+msgid ""
+"Position and size of the export assistant window ; default is set by the "
+"window manager"
+msgstr "निर्यात सहायक विंडो की स्थिति और आकार ; तयशुदा को विंडो प्रबंधक के द्वारा सेट किया जाता है"
+
+#: ../data/caja-actions.schemas.in.h:24
+msgid "Position and size of the import assistant window"
+msgstr "आयात सहायक विंडो की स्थिति और आकार"
+
+#: ../data/caja-actions.schemas.in.h:25
+msgid ""
+"Position and size of the import assistant window ; default is set by the "
+"window manager"
+msgstr "आयात सहायक विंडो की स्थिति और आकार ; तयशुदा को विंडो प्रबंधक के द्वारा सेट किया जाता है"
+
+#: ../data/caja-actions.schemas.in.h:26
+msgid "Position and size of the main window"
+msgstr "मुख्य विंडो की स्थिति और आकार"
+
+#: ../data/caja-actions.schemas.in.h:27
+msgid "Position and size of the main window ; default is set by the window manager"
+msgstr "मुख्य विंडो की स्थिति और आकार ; तयशुदा को विंडो प्रबंधक के द्वारा सेट किया जाता है"
+
+#: ../data/caja-actions.schemas.in.h:28 ../src/common/na-xml-names.h:110
+msgid ""
+"The field is here to give the user a human readable name for a profile in "
+"the Nact interface. If not set there will be a default auto generated string "
+"set by default"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:29 ../src/common/na-xml-names.h:105
+msgid "The icon of the menu item"
+msgstr "मेन्यू मद का प्रतीक"
+
+#: ../data/caja-actions.schemas.in.h:30 ../src/common/na-xml-names.h:106
+msgid ""
+"The icon of the menu item that will appear next to the label in the Caja "
+"popup menu when the selection matches the appearance conditions settings"
+msgstr ""
+
+#. MateConf schema descriptions
+#.
+#: ../data/caja-actions.schemas.in.h:31 ../src/common/na-xml-names.h:101
+msgid "The label of the menu item"
+msgstr "मेन्यू मद का लेबल"
+
+#: ../data/caja-actions.schemas.in.h:32 ../src/common/na-xml-names.h:102
+msgid ""
+"The label of the menu item that will appear in the Caja popup menu when "
+"the selection matches the appearance condition settings"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:33 ../src/common/na-xml-names.h:115
+msgid "The list of pattern to match the selected file(s)/folder(s)"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:34 ../src/common/na-xml-names.h:119
+msgid "The list of patterns to match the mimetypes of the selected file(s)"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:35 ../src/common/na-xml-names.h:127
+msgid "The list of schemes where the selected files should be located"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:36 ../src/common/na-xml-names.h:113
+#: ../src/utils/caja-actions-new.c:69
+msgid "The parameters of the command"
+msgstr "कमांड का पैरामीटर"
+
+#: ../data/caja-actions.schemas.in.h:38
+#, no-c-format
+msgid ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu. The parameters can contain some special tokens "
+"which are replaced by Caja information before starting the command: %d: "
+"base folder of the selected file(s) %f: the name of the selected file or the "
+"first one if many are selected %h: hostname of the URI %m: space-separated "
+"list of the basenames of the selected file(s)/folder(s) %M: space-separated "
+"list of the selected file(s)/folder(s), with their full paths %p: port "
+"number of the first URI %R: space-separated list of selected URIs %s: scheme "
+"of the URI %u: URI %U: username of the URI %%: a percent sign"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:39 ../src/common/na-xml-names.h:111
+#: ../src/utils/caja-actions-new.c:68
+#: ../src/utils/caja-actions-new.c:71
+msgid "The path of the command"
+msgstr "कमांड का पथ"
+
+#: ../data/caja-actions.schemas.in.h:40 ../src/common/na-xml-names.h:112
+msgid ""
+"The path of the command to start when the user select the menu item in the "
+"Caja popup menu"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:41 ../src/common/na-xml-names.h:103
+#: ../src/utils/caja-actions-new.c:65
+msgid "The tooltip of the menu item"
+msgstr "मेन्यू मद का टूलटिप"
+
+#: ../data/caja-actions.schemas.in.h:42 ../src/common/na-xml-names.h:104
+msgid ""
+"The tooltip of the menu item that will appear in the Caja statusbar when "
+"the user points to the Caja popup menu item with his/her mouse"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:43 ../src/common/na-xml-names.h:129
+msgid "The version of the configuration format"
+msgstr "विन्यास प्रारूप का संस्करण"
+
+#: ../data/caja-actions.schemas.in.h:44 ../src/common/na-xml-names.h:130
+msgid ""
+"The version of the configuration format that will be used to manage backward "
+"compatibility"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:45
+msgid ""
+"This setting is tied in with the 'isdir' setting. The valid combinations "
+"are: isfile=TRUE and isdir=FALSE: the selection may hold only files "
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders isfile=TRUE "
+"and isdir=TRUE: the selection may hold both files and folders isfile=FALSE "
+"and isdir=FALSE: this is an invalid combination (your configuration will "
+"never appear)"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:46
+msgid ""
+"This setting is tied in with the 'isfile' setting. The valid combinations "
+"are: isfile=TRUE and isdir=FALSE: the selection may hold only files "
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders isfile=TRUE "
+"and isdir=TRUE: the selection may hold both files and folders isfile=FALSE "
+"and isdir=FALSE: this is an invalid combination (your configuration will "
+"never appear)"
+msgstr ""
+
+#: ../data/caja-actions.schemas.in.h:47 ../src/common/na-xml-names.h:107
+#: ../src/utils/caja-actions-new.c:67
+msgid "Whether the action is enabled"
+msgstr "क्या क्रिया सक्रिय किया जाना है"
+
+#: ../data/caja-actions.schemas.in.h:48
+msgid "Width of the main window pane ; default is set by the UI manager"
+msgstr ""
+
+#: ../src/common/na-action.h:51
+msgid "New Caja action"
+msgstr "नया नॉटिलस क्रिया"
+
+#: ../src/common/na-xml-names.h:114
+msgid ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu.\n"
+"\n"
+"The parameters can contain some special tokens which are replaced by "
+"Caja information before starting the command:\n"
+"\n"
+"%d: base folder of the selected file(s)\n"
+"%f: the name of the selected file or the first one if many are selected\n"
+"%h: hostname of the URI\n"
+"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
+"%M: space-separated list of the selected file(s)/folder(s), with their full "
+"paths\n"
+"%p: port number of the first URI\n"
+"%R: space-separated list of selected URIs\n"
+"%s: scheme of the URI\n"
+"%u: URI\n"
+"%U: username of the URI\n"
+"%%: a percent sign"
+msgstr ""
+
+#: ../src/common/na-xml-names.h:122
+msgid ""
+"This setting is tied in with the 'isdir' setting. The valid combinations "
+"are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear)"
+msgstr ""
+
+#: ../src/common/na-xml-names.h:124
+msgid ""
+"This setting is tied in with the 'isfile' setting. The valid combinations "
+"are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear)"
+msgstr ""
+
+#: ../src/common/na-xml-names.h:128
+msgid ""
+"Defines the list of valid schemes to be matched against the selected items. "
+"The scheme is the protocol used to access the files. The keyword to use is "
+"the one used in the URI.\n"
+"\n"
+"Examples of valid URI include:\n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"The most common schemes are:\n"
+"\n"
+"'file': local files\n"
+"'sftp': files accessed via SSH\n"
+"'ftp': files accessed via FTP\n"
+"'smb': files accessed via Samba (Windows share)\n"
+"'dav': files accessed via WebDAV\n"
+"\n"
+"All schemes used by Caja can be used here."
+msgstr ""
+
+#. i18n: unable to load <dialog_name> dialog from XML definition in <filename>
+#: ../src/nact/base-application.c:1091
+#, c-format
+msgid "Unable to load %s dialog from XML definition in %s."
+msgstr ""
+
+#: ../src/nact/base-application.c:1105
+msgid "Unable to initialize the internationalization environment."
+msgstr ""
+
+#: ../src/nact/base-application.c:1114
+msgid "Unable to initialize the Gtk+ user interface."
+msgstr ""
+
+#: ../src/nact/base-application.c:1123
+msgid "Another instance of the application is already running."
+msgstr ""
+
+#: ../src/nact/base-application.c:1132
+msgid "No filename provided for the UI XML definition."
+msgstr ""
+
+#. i18n: Unable to load the XML definition from <filename>
+#: ../src/nact/base-application.c:1142
+#, c-format
+msgid "Unable to load the XML definition from %s."
+msgstr ""
+
+#: ../src/nact/base-application.c:1155
+msgid "Unable to set the default icon for the application."
+msgstr ""
+
+#: ../src/nact/base-application.c:1164
+msgid "Unable to get the main window of the application."
+msgstr ""
+
+#: ../src/nact/nact-application.c:280
+msgid "Another instance of Caja Actions Configuration Tool is already running."
+msgstr ""
+
+#. i18n: another instance is already running: second line of error message
+#: ../src/nact/nact-application.c:282
+msgid "Please switch back to it."
+msgstr ""
+
+#. i18n: this is the application name, used in window title
+#: ../src/nact/nact-application.c:318
+msgid "Caja Actions Configuration Tool"
+msgstr ""
+
+#: ../src/nact/nact-assistant.c:399
+msgid "Are you sure you want to quit this assistant ?"
+msgstr ""
+
+#. i18n: this is the title of the confirm page of the export assistant
+#: ../src/nact/nact-assistant-export.c:651
+msgid "About to export selected actions:"
+msgstr ""
+
+#. i18n: all exported actions go to one destination folder
+#: ../src/nact/nact-assistant-export.c:668
+msgid "Into the destination folder:"
+msgstr ""
+
+#. i18n: error message displayed in the result page of the export assistant
+#: ../src/nact/nact-assistant-export.c:734
+msgid "One or more errors have been detected when exporting actions."
+msgstr ""
+
+#: ../src/nact/nact-assistant-export.c:735
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"\n"
+"%s"
+msgstr ""
+"<b>%s</b>\n"
+"\n"
+"%s"
+
+#. i18n: result of the export assistant
+#: ../src/nact/nact-assistant-export.c:741
+msgid "Selected actions have been successfully exported..."
+msgstr ""
+
+#. i18n: the target folder is displayed in its own line
+#: ../src/nact/nact-assistant-export.c:747
+msgid "... in folder:"
+msgstr "... in folder:"
+
+#: ../src/nact/nact-assistant-export.c:748
+#, c-format
+msgid ""
+"%s<b>%s</b>\n"
+"\n"
+"\t%s/\n"
+"\n"
+msgstr ""
+"%s<b>%s</b>\n"
+"\n"
+"\t%s/\n"
+"\n"
+
+#. i18n: the export file for each actions is displayed in its own line
+#: ../src/nact/nact-assistant-export.c:754
+msgid "... as files:"
+msgstr ""
+
+#: ../src/nact/nact-assistant-export.c:755
+#, c-format
+msgid ""
+"%s<b>%s</b>\n"
+"\n"
+msgstr ""
+"%s<b>%s</b>\n"
+"\n"
+
+#: ../src/nact/nact-assistant-export.c:819
+msgid "You may not have writing permissions on selected folder."
+msgstr ""
+
+#. i18n: the title of the confirm page of the import assistant
+#: ../src/nact/nact-assistant-import.c:414
+msgid "About to import selected files:"
+msgstr ""
+
+#. i18n: result of the import assistant
+#: ../src/nact/nact-assistant-import.c:447
+msgid "Selected files have been imported:"
+msgstr ""
+
+#. i18n: this is the globally unique identifier and the label of the newly imported action
+#: ../src/nact/nact-assistant-import.c:469
+#, c-format
+msgid "UUID: %s\t%s"
+msgstr "UUID: %s\t%s"
+
+#. i18n: just indicate that the import of this file was unsuccessfull
+#: ../src/nact/nact-assistant-import.c:478
+msgid "NOT OK"
+msgstr ""
+
+#: ../src/nact/nact.desktop.in.h:1
+msgid "Add items to the Caja popup menu"
+msgstr ""
+
+#: ../src/nact/nact.desktop.in.h:2
+msgid "Caja Actions Configuration"
+msgstr ""
+
+#. i18n: status bar message when the action label is empty
+#: ../src/nact/nact-iaction-tab.c:332
+msgid "Caution: a label is mandatory for the action."
+msgstr ""
+
+#. i18n: label in front of the GtkEntry where user enters the action label
+#. i18n: label in front of the GtkEntry where user enters the profile label
+#: ../src/nact/nact-iaction-tab.c:342 ../src/nact/nact-icommand-tab.c:347
+msgid "_Label :"
+msgstr ""
+
+#: ../src/nact/nact-iaction-tab.c:420
+msgid "Choosing an icon"
+msgstr ""
+
+#. i18n notes: when no icon is selected in the drop-down list
+#: ../src/nact/nact-iaction-tab.c:472
+msgid "None"
+msgstr "कुछ नहीं"
+
+#. i18n notes : scheme name set for a new entry in the scheme list
+#: ../src/nact/nact-iadvanced-tab.c:367
+msgid "new-scheme"
+msgstr ""
+
+#: ../src/nact/nact-iadvanced-tab.c:368
+msgid "New scheme description"
+msgstr ""
+
+#. i18n notes : description of 'file' scheme
+#: ../src/nact/nact-iadvanced-tab.c:531
+msgid "Local files"
+msgstr "स्थानीय फ़ाइलें"
+
+#. i18n notes : description of 'sftp' scheme
+#: ../src/nact/nact-iadvanced-tab.c:533
+msgid "SSH files"
+msgstr "SSH फ़ाइल"
+
+#. i18n notes : description of 'smb' scheme
+#: ../src/nact/nact-iadvanced-tab.c:535
+msgid "Windows files"
+msgstr "विंडो फ़ाइल"
+
+#. i18n notes : description of 'ftp' scheme
+#: ../src/nact/nact-iadvanced-tab.c:537
+msgid "FTP files"
+msgstr "FTP फ़ाइल"
+
+#. i18n notes : description of 'dav' scheme
+#: ../src/nact/nact-iadvanced-tab.c:539
+msgid "WebDAV files"
+msgstr "WebDAV फ़ाइल"
+
+#. i18n: status bar message when the profile label is empty
+#: ../src/nact/nact-icommand-tab.c:337
+msgid "Caution: a label is mandatory for the profile."
+msgstr ""
+
+#: ../src/nact/nact-icommand-tab.c:380
+msgid "Choosing a command"
+msgstr ""
+
+#. static const char *thisfn = "nact_iconditions_update_example_label";
+#: ../src/nact/nact-icommand-tab.c:455
+#, c-format
+msgid "<i><b><span size=\"small\">e.g., %s</span></b></i>"
+msgstr "<i><b><span size=\"small\">e.g., %s</span></b></i>"
+
+#. i18n notes: example strings for the command preview
+#: ../src/nact/nact-icommand-tab.c:501
+msgid "/path/to"
+msgstr "/path/to"
+
+#: ../src/nact/nact-icommand-tab.c:502
+msgid "file1.txt"
+msgstr "file1.txt"
+
+#: ../src/nact/nact-icommand-tab.c:502
+msgid "file2.txt"
+msgstr "file2.txt"
+
+#: ../src/nact/nact-icommand-tab.c:503
+msgid " folder1"
+msgstr " folder1"
+
+#: ../src/nact/nact-icommand-tab.c:503
+msgid "folder2"
+msgstr "folder2"
+
+#: ../src/nact/nact-icommand-tab.c:504
+msgid " file1.txt"
+msgstr " file1.txt"
+
+#: ../src/nact/nact-icommand-tab.c:504
+msgid "folder1"
+msgstr "folder1"
+
+#: ../src/nact/nact-icommand-tab.c:506
+msgid "test.example.net"
+msgstr "test.example.net"
+
+#: ../src/nact/nact-icommand-tab.c:507
+msgid "file.txt"
+msgstr "file.txt"
+
+#: ../src/nact/nact-icommand-tab.c:508
+msgid "folder"
+msgstr "folder"
+
+#: ../src/nact/nact-icommand-tab.c:509
+msgid "8080"
+msgstr "8080"
+
+#: ../src/nact/nact-icommand-tab.c:513
+msgid "file:///path/to/file1.text"
+msgstr "file:///path/to/file1.text"
+
+#: ../src/nact/nact-icommand-tab.c:514
+msgid "file:///path/to/file2.text"
+msgstr "file:///path/to/file2.text"
+
+#: ../src/nact/nact-icommand-tab.c:515
+msgid "file:///path/to/a/dir"
+msgstr "file:///path/to/a/dir"
+
+#: ../src/nact/nact-icommand-tab.c:516
+msgid "file:///path/to/another/dir"
+msgstr "file:///path/to/another/dir"
+
+#. i18n: File menu
+#: ../src/nact/nact-imenubar.c:285
+msgid "_File"
+msgstr "फ़ाइल (_F)"
+
+#. i18n: 'New action' item in 'File' menu
+#: ../src/nact/nact-imenubar.c:292
+msgid "_New action"
+msgstr ""
+
+#. i18n: 'New profile' item in 'File' menu
+#: ../src/nact/nact-imenubar.c:298
+msgid "New _profile"
+msgstr ""
+
+#. i18n: Edit menu
+#: ../src/nact/nact-imenubar.c:320
+msgid "_Edit"
+msgstr "संपादन (_E)"
+
+#. i18n: Duplicate item in Edit menu
+#: ../src/nact/nact-imenubar.c:327
+msgid "D_uplicate"
+msgstr "अनुकृति (_u)"
+
+#: ../src/nact/nact-imenubar.c:342
+msgid "_Reload the list of actions"
+msgstr ""
+
+#. i18n: Tools menu
+#: ../src/nact/nact-imenubar.c:351
+msgid "_Tools"
+msgstr "औजार (_T)"
+
+#. i18n: Import item in Tools menu
+#: ../src/nact/nact-imenubar.c:358
+msgid "_Import assistant..."
+msgstr ""
+
+#. i18n: Export item in Tools menu
+#: ../src/nact/nact-imenubar.c:364
+msgid "E_xport assistant..."
+msgstr ""
+
+#. i18n: Help menu
+#: ../src/nact/nact-imenubar.c:374
+msgid "_Help"
+msgstr "मदद (_H)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'New action' item
+#: ../src/nact/nact-imenubar.c:430
+msgid "Define a new action."
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting the 'New profile' item
+#: ../src/nact/nact-imenubar.c:456
+msgid "Define a new profile attached to the current action."
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting 'Save' item
+#: ../src/nact/nact-imenubar.c:552
+msgid "Record all the modified actions. Invalid actions will be silently ignored."
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting 'Quit' item
+#: ../src/nact/nact-imenubar.c:571
+msgid "Quit the application."
+msgstr ""
+
+#. i18n: label of a duplicated action
+#. i18n: label of a duplicated profile
+#: ../src/nact/nact-imenubar.c:648 ../src/nact/nact-imenubar.c:662
+#, c-format
+msgid "Copy of %s"
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting the Duplicate item
+#: ../src/nact/nact-imenubar.c:675
+msgid "Create a copy of the selected action or profile."
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting the Delete item
+#: ../src/nact/nact-imenubar.c:719
+msgid "Remove the selected action or profile from your configuration."
+msgstr ""
+
+#. i18n: message before reloading the list of actions
+#: ../src/nact/nact-imenubar.c:733
+msgid "This will cancel your current modifications."
+msgstr ""
+
+#: ../src/nact/nact-imenubar.c:734
+msgid "Are you sure this is what you want ?"
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting the 'Reload' item
+#: ../src/nact/nact-imenubar.c:751
+msgid " Cancel your current modifications and reload the list of actions."
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting the Import item
+#: ../src/nact/nact-imenubar.c:776
+msgid "Import one or more actions from external (XML) files into your configuration."
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting the Export item
+#: ../src/nact/nact-imenubar.c:796
+msgid "Export one or more actions from your configuration to external XML files."
+msgstr ""
+
+#. i18n: tooltip displayed in the status bar when selecting the Help item
+#: ../src/nact/nact-imenubar.c:808
+msgid "Display help about this program."
+msgstr ""
+
+#: ../src/nact/nact-imenubar.c:824
+msgid "Ulisse Perusin <uli.peru@gmail.com>"
+msgstr "Ulisse Perusin <uli.peru@gmail.com>"
+
+#: ../src/nact/nact-imenubar.c:829
+msgid "Frederic Ruaudel <grumz@grumz.net>"
+msgstr "Frederic Ruaudel <grumz@grumz.net>"
+
+#: ../src/nact/nact-imenubar.c:830
+msgid "Rodrigo Moya <rodrigo@mate-db.org>"
+msgstr "Rodrigo Moya <rodrigo@mate-db.org>"
+
+#: ../src/nact/nact-imenubar.c:831
+msgid "Pierre Wieser <pwieser@trychlos.org>"
+msgstr "Pierre Wieser <pwieser@trychlos.org>"
+
+#: ../src/nact/nact-imenubar.c:840
+msgid ""
+"Caja Actions Configuration Tool is free software; you can redistribute "
+"it and/or modify it under the terms of the GNU General Public License as "
+"published by the Free Software Foundation; either version 2 of the License, "
+"or (at your option) any later version."
+msgstr ""
+"Caja Actions Configuration Tool is free software; you can redistribute "
+"it and/or modify it under the terms of the GNU General Public License as "
+"published by the Free Software Foundation; either version 2 of the License, "
+"or (at your option) any later version."
+
+#: ../src/nact/nact-imenubar.c:844
+msgid ""
+"Caja Actions Configuration Tool is distributed in the hope that it will "
+"be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General "
+"Public License for more details."
+msgstr ""
+"Caja Actions Configuration Tool is distributed in the hope that it will "
+"be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General "
+"Public License for more details."
+
+#: ../src/nact/nact-imenubar.c:848
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"Caja Actions Configuration Tool ; if not, write to the Free Software "
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
+"USA."
+msgstr ""
+"You should have received a copy of the GNU General Public License along with "
+"Caja Actions Configuration Tool ; if not, write to the Free Software "
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
+"USA."
+
+#: ../src/nact/nact-imenubar.c:861
+msgid "A graphical interface to create and edit your Caja actions."
+msgstr ""
+
+#: ../src/nact/nact-imenubar.c:862
+msgid ""
+"Copyright © 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright © 2009 Pierre Wieser <pwieser@trychlos.org>"
+msgstr ""
+"Copyright © 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright © 2009 Pierre Wieser <pwieser@trychlos.org>"
+
+#: ../src/nact/nact-imenubar.c:864
+msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgstr "MATE अनुवाद प्रोजेक्ट <mate-i18n@gnome.org>"
+
+#. i18n: tooltip displayed in the status bar when selecting the About item
+#: ../src/nact/nact-imenubar.c:882
+msgid "Display informations about this program."
+msgstr ""
+
+#: ../src/nact/nact-main-window.c:1130
+msgid ""
+"One or more actions have been modified in the filesystem.\n"
+"You could keep to work with your current list of actions, or you may want to "
+"reload a fresh one."
+msgstr ""
+
+#: ../src/nact/nact-main-window.c:1136
+msgid ""
+"Note that reloading a fresh list of actions requires that you give up with "
+"your current modifications."
+msgstr ""
+
+#: ../src/nact/nact-main-window.c:1142
+msgid "Do you want to reload a fresh list of actions ?"
+msgstr ""
+
+#: ../src/nact/nact-window.c:272
+msgid "An error has occured when trying to save the action"
+msgstr ""
+
+#: ../src/nact/nact-window.c:302
+msgid "An error has occured when trying to delete the action"
+msgstr ""
+
+#: ../src/nact/nact-window.c:327
+#, c-format
+msgid "One action has been modified."
+msgstr "एक क्रिया बदली गई."
+
+#: ../src/nact/nact-window.c:328
+msgid "Are you sure you want to quit without saving it ?"
+msgstr "क्या आप इसे वाकई बिना सहेजे छोड़ना चाहते हैं?"
+
+#. first = g_strdup_printf( _( "%d actions have been modified." ), count );
+#: ../src/nact/nact-window.c:331
+#, c-format
+msgid "Actions have been modified."
+msgstr "क्रिया बदली गई है."
+
+#: ../src/nact/nact-window.c:332
+msgid "Are you sure you want to quit without saving them ?"
+msgstr "क्या आप उसे वाकई छोड़ना चाहते हैं?"
+
+#: ../src/nact/nact-xml-reader.c:106
+#, c-format
+msgid "Unable to parse XML file: %s."
+msgstr "XML फाइल विश्लेषित करने में विफल: %s."
+
+#: ../src/nact/nact-xml-reader.c:107
+#, c-format
+msgid "Invalid XML root element: waited for '%s' or '%s', found '%s' at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:108
+#, c-format
+msgid "Waited for '%s' node, found (ignored) '%s' at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:109
+#, c-format
+msgid "Unexpected (ignored) '%s' node found at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:110
+#, c-format
+msgid "Schema is ignored at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:111
+#, c-format
+msgid "Unexpected '%s' node found at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:112
+#, c-format
+msgid "Unexpected '%s' entry found at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:113
+#, c-format
+msgid "Mandatory node '%s' not found."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:114
+msgid "No value found."
+msgstr "कोई मान नहीं मिला."
+
+#: ../src/nact/nact-xml-reader.c:115
+#, c-format
+msgid "Invalid UUID: waited for %s, found %s at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:116
+#, c-format
+msgid "Invalid content: waited for %s prefix, found %s at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:117
+#, c-format
+msgid "Invalid UUID %s found at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:118
+#, c-format
+msgid "Already existing action (UUID: %s) at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:119
+#, c-format
+msgid "Value '%s' already set: new value ignored at line %d."
+msgstr ""
+
+#: ../src/nact/nact-xml-reader.c:120
+msgid "UUID not found."
+msgstr "UUID नहीं मिला."
+
+#: ../src/nact/nact-xml-reader.c:121
+msgid "Action label not found."
+msgstr "क्रिया लेबल नहीं मिला."
+
+#: ../src/test/test-parse-uris.c:54
+#, c-format
+msgid ""
+"URIs parsing test.\n"
+"\n"
+msgstr ""
+"URI विश्लेषण जाँच.\n"
+"\n"
+
+#: ../src/utils/caja-actions-new.c:64
+msgid "The label of the menu item (mandatory)"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:64
+msgid "LABEL"
+msgstr "लेबल"
+
+#: ../src/utils/caja-actions-new.c:65
+msgid "TOOLTIP"
+msgstr "TOOLTIP"
+
+#: ../src/utils/caja-actions-new.c:66
+msgid "The icon of the menu item (filename or GTK stock ID)"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:66
+msgid "ICON"
+msgstr "चिह्न"
+
+#: ../src/utils/caja-actions-new.c:68
+#: ../src/utils/caja-actions-new.c:71
+msgid "PATH"
+msgstr "PATH"
+
+#: ../src/utils/caja-actions-new.c:69
+msgid "PARAMS"
+msgstr "PARAMS"
+
+#: ../src/utils/caja-actions-new.c:70
+msgid ""
+"A pattern to match selected files against. May include wildcards (* or ?) "
+"(you must set one option for each pattern you need)"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:70
+#: ../src/utils/caja-actions-new.c:72
+msgid "EXPR"
+msgstr "EXPR"
+
+#: ../src/utils/caja-actions-new.c:72
+msgid ""
+"A pattern to match selected files' mimetype against. May include wildcards "
+"(* or ?) (you must set one option for each pattern you need)"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:73
+msgid "Set it if the selection must only contain files"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:74
+msgid ""
+"Set it if the selection must only contain folders. Specify both '--isfile' "
+"and '--isdir' options is selection can contain both types of items"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:75
+msgid "Set it if the selection can have several items"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:76
+msgid ""
+"A valid GVFS scheme where the selected files should be located (you must set "
+"one option for each scheme you need)"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:76
+msgid "SCHEME"
+msgstr "योजना"
+
+#: ../src/utils/caja-actions-new.c:82
+msgid "Directly import the newly created action in MateConf configuration"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:83
+msgid ""
+"The folder where to write the new action as a MateConf dump output [default: "
+"stdout]"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:83
+msgid "DIR"
+msgstr "DIR"
+
+#: ../src/utils/caja-actions-new.c:111
+#: ../src/utils/caja-actions-schemas.c:81
+#, c-format
+msgid "Syntax error: %s\n"
+msgstr "वाक्य रचना त्रुटि: %s\n"
+
+#: ../src/utils/caja-actions-new.c:117
+#, c-format
+msgid "Error: an action label is mandatory."
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:122
+#, c-format
+msgid "Error: only one output option may be specified."
+msgstr ""
+
+#. i18n: Action <action_label> written to...
+#: ../src/utils/caja-actions-new.c:132
+#, c-format
+msgid "Action '%s' succesfully written to MateConf configuration.\n"
+msgstr ""
+
+#. i18n: Action <action_label> written to <output_filename>...
+#: ../src/utils/caja-actions-new.c:139
+#, c-format
+msgid "Action '%s' succesfully written to %s, and ready to be imported in NACT.\n"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:162
+msgid ""
+"Define a new action.\n"
+"\n"
+"  The created action defaults to be written to stdout.\n"
+"  It can also be written to an output folder, in a file later suitable for "
+"an import in NACT.\n"
+"  Or you may choose to directly write the action into your MateConf "
+"configuration."
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:179
+#: ../src/utils/caja-actions-schemas.c:140
+msgid ""
+"Bug reports are welcomed at http://bugzilla.gnome.org, or you may prefer to "
+"mail to <maintainer@caja-actions.org>.\n"
+msgstr ""
+
+#: ../src/utils/caja-actions-new.c:187
+msgid "Output of the program"
+msgstr "प्रोग्राम की आउटपुट"
+
+#: ../src/utils/caja-actions-new.c:187
+msgid "Choose where the program creates the action"
+msgstr "चुनें कि कहाँ प्रोग्राम क्रिया बनाता है"
+
+#: ../src/utils/caja-actions-new.c:277
+#: ../src/utils/caja-actions-schemas.c:250
+#, c-format
+msgid "Try %s --help for usage.\n"
+msgstr "%s आजमाएँ --प्रयोग के लिए मदद.\n"
+
+#. { "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_mateconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
+#. { "output-filename"      , 'o', 0, G_OPTION_ARG_FILENAME, &output_fname   , N_("The file where to write the MateConf schema ('-' for stdout)"), N_("FILENAME") },
+#: ../src/utils/caja-actions-schemas.c:53
+msgid "Output the schema on stdout"
+msgstr "stdout पर योजना का आउटपुट दें"
+
+#: ../src/utils/caja-actions-schemas.c:123
+msgid "Output the Caja Actions MateConf schema on stdout."
+msgstr "stdout पर नॉटिलस क्रिया MateConf योजना का आउटपुट दें"
+

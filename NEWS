@@ -1,0 +1,627 @@
+Version 2.30.3
+==============
+
+	Release date 2010-06-10
+
+	Bug fixes:
+
+		- Fix #617058 reported by brunogirin@gmail.com
+		  (Do not add extraneous blanks when parsing parameters)
+		- Fix #618110 reported by Claude Paroz
+		  ( Factorize strings for translators)
+		- Fix bug reported by Dr Amr Osman
+		  (Do not add extraneous blanks when parsing parameters)
+
+	Other modifications:
+
+		- Do not reload already loaded profiles.
+		- Reset action to last version number after conversion from pre-v2.
+
+	New and updated translations:
+
+		cs (Petr Kovar)
+		de (Mario Blättermann)
+		es (Jorge González)
+		fr (Claude Paroz)
+		gl (Fran Diéguez)
+		pt_BR (Daniel S. Koda, Rodrigo Flores)
+		sl (Andrej Žnidaršič, Matej Urbančič)
+
+Version 2.30.2
+==============
+
+	Release date 2010-04-14
+
+	Bug fixes:
+
+		- Fix #615646 reported by Deji Akingunola
+		  (Nautilus crashes when trash icon is right-clicked)
+		- Fix GLib assertions when parsing parameters, using null values
+		- Duplicate the profile attached to the Nautilus menu item, rather than
+		  adding a new reference; then do not try to unref its parent
+		- Increment the reference count of the returned GFile location, so that
+		  it may be safely unreffed when parsing profile parameters
+		- Fix incorrect plugins log domains
+
+	Other modifications:
+
+		- Implement more of the future .desktop files.
+		- Refactor NAIContextual class as NAIContext.
+		- DBus interface na_tracker_dbus_get_selected_paths() now brings up
+		  both the URI and the Nautilus mimetype of selected items to the caller.
+
+	New and updated translations:
+
+		es (Jorge González)
+		lt (Gintautas Miliauskas)
+
+Version 2.30.1
+==============
+
+	Release date 2010-04-09
+
+	Enhancements:
+
+		- Slightly relax the validity rules of a profile, so that already
+		  existing actions may be still considered as valid, even when 
+		  commands do not use an absolute path.
+
+		- Current position and folder of icons chooser dialog are now saved.
+
+	Bug fixes:
+
+		- Fix #614595 reported by Sense Hofstede
+		  (Not all icons displayed in the nautilus-actions-config-tool)
+		- Fix #614596 reported by Sense Hofstede
+		  (Nautilus Actions' actions don't show up in context menus)
+		- Do not prevent the export assistant to actually export items
+		- Do not let a user untoggle a sort button
+		- Do not mark the main window modified when first loading an empty set
+		- Folders are definitively a list of paths
+		- Also load items which are only described via their schemas
+		- Only set defaults on non yet allocated data
+		- Parent is not always an action, may be a menu
+		- Also delete embedded schema names from GConf entries
+		- Monitors GConf schemas
+
+	Code enhancement:
+
+		- No more use GTK_WIDGET_IS_SENSITIVE macro after Gtk 2.20
+
+	Other modifications:
+
+		- Menu plugin is renamed as libnautilus-actions-menu.so
+
+	New and updated translations:
+
+		cs (Marek Černocký, Andre Klapper)
+		es (Jorge González)
+		sl (Andrej Žnidaršič, Matej Urbančič)
+
+Version 2.30.0
+==============
+
+	Release date 2010-03-26
+
+	Enhancements:
+
+		- Immplement full NautilusMenuProvider interface.
+		- Allow the user to define a full hierarchy of menus and actions.
+		- Implement full drag and drop.
+		- Implement full cut/copy/paste clipboard support.
+		- Allow an administrator to lock all the configuration.
+		- Fully manage readonly items.
+
+	New and updated translations:
+
+		cs (Marek Černocký, Petr Kovar, Andre Klapper)
+		de (Mario Blättermann, Christian Kirbach)
+		es (Jorge González, Ricardo Varas)
+		eu (Inaki Larranaga Murgoitio)
+		fr (Claude Paroz)
+		nb (Kjartan Maraas)
+		sl (Andrej Žnidaršič, Matej Urbančič)
+
+Version 2.29.4
+==============
+
+	Release date 2010-01-23
+
+	Enhancements:
+
+		- Allow default schemes to be parameterized in the NACT user
+		  interface.
+
+	Bug fixes:
+
+		- Fix #607218 reported by Pierre Wieser
+		  (default vbox orientation in glade XML definition files).
+		- Fix #607704 reported by Sense Hofstede
+		  (use GtkBuildable interface instead of 'name' field).
+		- Fix toolbars relative position.
+
+	New dependancies:
+
+		dbus-glib-1 (required by tracker Nautilus plugin).
+
+	New and updated translations:
+
+		cs (Marek Černocký, Petr Kovar, Andre Klapper)
+		de (Mario Blättermann)
+
+	Please note, that for now, the new Desktop I/O provider is only
+	available in maintainer mode, as it is far to be ready for a
+	production use.
+
+Version 2.29.3
+==============
+
+	Release date 2010-01-05
+
+	Enhancements:
+
+		- Display the writability status in the status bar; the image
+		  itself comes with a dynamic tooltip which describes the origin
+		  of the status.
+		- Homogeneize syslog initialization messages.
+		- Let the I/O provider set specific data into NAObjectItem.
+		- Make the toolbars detacheable.
+
+	Bug fixes:
+
+		- Fix write/delete operations in NAIIODesktopProvider.
+		- No more display the Export icon in the toolbar (no icon).
+		- Use correct printf format; use -Wformat=2 gcc option to prevent
+		  future bugs (reported by "Miler" <acidrums4@gmail.com>).
+		- Substitute gtk_cell_layout_get_cells to obsoleted
+		  gtk_tree_view_column_get_cell_renderers.
+
+	New and updated translations:
+
+		es (Jorge González)
+		fr (Bruno Brouard, Claude Paroz)
+		sl (Andrej Žnidaršič, Matej Urbančič)
+
+	Please note, that for now, the new Desktop I/O provider is only available
+	in maintainer mode, as it is far to being ready for a production use.
+
+Version 2.29.2
+==============
+
+	Release date 2009-12-16
+
+	This version brings up several major enhancements:
+
+		- An API is defined, which let us have more than one I/O provider;
+		  this prepare in particular the arrival of a desktop I/O provider.
+
+		- GConf I/O provider is now a dynamically loaded plugin.
+
+		- Gracefully manage the read-only items, whether the action has
+		  been made mandatory by a sysadmin, or the I/O provider
+		  being itself not writable at all.
+
+		- Ability to assign a keyboard accelerator to a predefined action
+		  via the nautilus-actions-run new program.
+		  nautilus-actions-run will automagically take into account the
+		  current Nautilus selection and apply it to your action (#435820
+		  reported by Frederic Ruaudel).
+
+		- Let actions be defined to appear in Nautilus toolbar (#110288
+		  reported by danny_milo@yahoo.com).
+
+		- Let a sysadmin lock down its configuration by setting a mandatory
+		  GConf key "/apps/nautilus-actions/mandatory/na-gconf/locked" to
+		  true (#325520 reported by Frederic Ruaudel).
+
+	Other enhancements:
+
+		- Ask the user for a confirmation on session ending when there
+		  is not yet saved modifications.
+		- nautilus-actions-config-tool (NACT) is no more tied to a
+		  single instance: '--non-unique' argument let the user
+		  run several instance.
+		- When exporting, export the current content of Actions list.
+		- Define two new user preferences for assistants management.
+		- Update nautilus-actions-new to be able to define actions which
+		  target toolbar and folder menus.
+		- Add '--version' command-line argument to all programs:
+			. nautilus-actions-config-tool
+			. nautilus-actions-new
+			. nautilus-actions-schemas.
+		- Add mnemonics to target radio button labels in Action tab.
+		- Only set foreground color for normal state.
+		- Implement keyboard accelerators in Folders listview.
+		- Implement keyboard accelerators in Advanced conditions tab.
+		- As an help to bug reporter, displays GLib and Gtk+ current
+		  versions on '--version' argument.
+
+	Bugfixes:
+
+		- Propagate default values to imported actions.
+		- Fix dialog title not reset after save.
+		- Fix the item counters when importing.
+		- Fix a typo in Import tab of Preferences dialog.
+		- Add plural mark in the Preferences dialog.
+		- Fix memory leaks in Action tab.
+		- Fix memory leaks in Advanced conditions tab.
+		- Only tries to setup folders when there is a current profile.
+		- Only setup toolbar label when current item is an action.
+		- Safely handle signal deconnexions.
+		- na_xml_writer_output_xml() now returns error messages.
+		- Fix #599913 reported by Vincent (unable to create an action).
+		- Fix #600712 reported by Deji Akingunola
+		  (crash in nautilus-actions-config-tool).
+
+	Architecture modifications:
+
+		- Private and runtime libraries are now dynamic libraries.
+		- A Nautilus-Actions development environment might be set for
+		  developing new plugins.
+		- Nautilus-Actions plugins are installed in PKGLIBDIR (for now,
+		  libna-io-provider-desktop.so and libna-io-provider-gconf.so).
+		- New nautilus-actions-run command-line program.
+		- New libnautilus-actions-tracker Nautilus extension.
+		- Removed useless gthread dependancy.
+
+		Please note, that for now, the new Desktop I/O provider is
+		only available in maintainer mode, as it is far to being
+		ready for a production use.
+
+	New and updated translations:
+
+		de (Mario Blättermann, Christian Kirbach)
+		es (Jorge González)
+		pt (António Lima)
+		sl (Andrej Žnidaršič)
+		sv (Daniel Nylander)
+		ta (ifeli)
+		te (krishnababu k)
+
+Version 1.12.3
+==============
+
+	Release date 2009-11-07
+
+	This is the third bugfix release of the 1.12 serie.
+
+	Bugfixes
+
+		#599520 reported by Antonio Lima (do not mark author names for
+		translating)
+		#600712 reported by Deji Akingunola (NACT crashes on export)
+		#599913 reported by Vincent (menubar is not visible)
+
+	Other Code enhancements
+
+		Remove terminating dot from radio button labels.
+
+		Make the assistants transient relatively to the main window.
+
+		Initialize console utils log handlers.
+
+		Use XML markup to print messages embedding XML tags.
+
+		Fix copy of profiles of an action by reinitializing the target
+		list of profiles before duplicating the source one.
+
+	New and updated translations
+
+		None at this time.
+
+Version 2.29.1
+==============
+
+	Release date 2009-10-25
+
+	This version brings up several major enhancements :
+	- implements full API as defined for use by Nautilus menu extensions :
+	  this let the user define items which will be available when there is
+	  no selection, and will apply to current folder, either as a 'folder'
+	  menu or in the toolbar ;
+	- the ability for the user to define a full hierarchy of actions
+	  with menus, submenus, and so on ;
+	- drag and drop ;
+	- full cut/copy/paste clipboard support.
+
+	Other enhancements :
+	- items are freely reorderable ;
+	- an 'About Nautilus Actions' item can be added to Nautilus menus ;
+    - preferences can be edited through the NACT user interface ;
+	- actions can be imported and exported by drag and drop ;
+	- one toolbar is defined for each menu, and can be displayed in NACT ;
+	- let the user quit the assistants with Cancel without emitting a
+	  warning ;
+	- remove terminating dot from radio button labels ;
+	- when importing, let the user be asked for its preferred import mode ;
+	- when exporting, let the user be asked for its preferred export format ;
+	- summary pages in import and export assistants have been enhanced ;
+	- checks the unicity of an imported action against those just imported
+	  in the same session ;
+	- let the labels be edited in place in Actions list ;
+	- define F2 as a keyboard accelerator for in-place edition ;
+	- save even non-valid items
+	- requires rather a command that a label for a profile to be valid.
+
+	Bugfixes
+
+		#325528 reported by Frederic Ruaudel (bloated  contextual menu)
+		#325587 reported by Frederic Ruaudel (drag & drop support)
+		#326699 reported by Frederic Ruaudel (action items do not remain
+				in user defined order)
+		#353353 reported by Frederic Ruaudel (check if command exist
+				and if not warn user)
+		#588482 reported by Sean (ordering in actions list)
+		#590400 reported by Pierre Wieser (have some sort of warnings in
+				the ui)
+		#599520 reported by António Lima (do not mark authors names and
+				emails for translating)
+
+	Various code enhancements
+
+		- code has been reachitectured to better distinguish between
+		  code required by plugin from those only required by NACT,
+		  thus creating two 'runtime' and 'common' convenience libraries
+		- validity and modification status checking has been optimized
+		- all dialogs are now transient relatively to the main window
+		- a window may have its own XML UI definition file while sharing
+		  the common GtkBuilder object
+		- fix reference count in tree stores
+		- no more consider NAUTILUS_ACTIONS_CONFIG_VERSION as a
+		  configure.ac variable
+		- all subitem lists are moved from GSList to GList (more
+		  efficient, easyer to type)
+		- doesn't update selection while adding or removing items to or
+		  from the Actions list
+
+	New and updated translations
+
+		de (Mario Blättermann, Christian Kirbach)
+		es (Jorge Gonzalez)
+
+Version 1.12.2
+==============
+
+	Release date 2009-10-20
+
+	Fix browsing for a file icon.
+
+Version 1.12.1
+==============
+
+	Release date 2009-10-19
+
+	Menubar items have now keyboard accelerators.
+
+	Keep the actions in Nautilus context menu in the same (alphabetical)
+	order that in NACT.
+
+	Actions can now be directly dropped into Nautilus views without
+	having to run through the Export assistant.
+
+	Make (some) ids unique in Glade-generated UI XML definition file.
+	Please note that this is required to prevent 'duplicate id' bug
+	in distros which use recent versions of GtkBuilder.
+
+	Bugfixes
+
+		#592781 reported by Jerome Krausz (use explicit format string)
+
+	Various code enhancements
+
+		Use Gtk+ UI Manager.
+
+		BaseApplication base class has been rewritten to get a cleaner api.
+
+		Whole program is now compiled with '-pedantic' option.
+
+		Defines a permanent work-around against #589745 (GtkAssistant)
+		so that we can safely proceed with our job in on_assistant_apply()
+		without requiring latest Gtk+ version.
+
+	Various documentation enhancements
+
+		Object hierarchy is updated.
+
+	New and updated translations
+
+		de (Mario Blättermann)
+		es (Jorge Gonzalez)
+		eu (Inaki Larranaga Murgoitio)
+		hi (Rajesh Ranjan)
+		or (Manoj Kumar Giri)
+		pa (A S Alam)
+		sl (Andrej Žnidaršič)
+		sv (Daniel Nylander)
+		te (krishnababu k)
+
+Version 1.12.0
+==============
+
+	Release date 2009-08-12
+
+	User is now able to freely enable/disable an action. A disabled action
+	never appear in the Nautilus context menu.
+
+	Bugfixes
+
+		#325519 asked by Frederic Ruaudel (enabled property)
+		#590398 reported by Pierre Wieser (install doc)
+		#590399 reported by Pierre Wieser (gtk_image_menu_item_set_image)
+		#590709 reported by Claude Paroz (markup in translatable strings)
+		#590711 reported by Claude Paroz (pipe char is ambiguous to translate)
+
+	Various code enhancements
+
+		Do not install GConf schemas if --disable-schemas-install option
+		has been specified.
+
+		Remove nautilus-actions subdirectories at uninstall time.
+
+	New and updated translations
+
+		es (Jorge González)
+		fr (Laurent Coudeur, Claude Paroz)
+
+Version 1.11.2
+==============
+ 
+    Release date 2009-07-30
+
+    Two new parameters are introduced :
+    
+        %p: expands to the port number from an URI
+        %R: expands to a space-separated list of selected URIs
+ 
+    Bugfixes
+ 
+        #325582 reported by Frederic Ruaudel (use GConf)
+        #325585 reported by Frederic Ruaudel (delete actions created via gconftool-2)
+        #353198 reported by Frederic Ruaudel (single window mode)
+        #531301 asked by IceWil (list of selected URIs)
+        #576186 asked by gnutered (port of the URI)
+        #580378 reported by James Campos (context menu doesn't update)
+        #585652 reported by Claude Paroz (user interface)
+        #589698 reported by Andre Klapper (use GtkBuilder)
+
+    New and updated translations
+
+        bn_IN (Runa Bhattacharjee)
+        da (Mads Lundby)
+        de (Mario Blättermann)
+        es (Jorge Gonzalez)
+        fr (Claude Paroz)
+        gu (Sweta Kothari)
+        kn (Shankar Prasad)
+        mr (Sandeep Shedmake)
+        or (Manoj Kumar Giri)
+        pa (A S Alam)
+        sv (Daniel Nylander)
+        ta (ifelix)
+        te (Krishnababu K.)
+
+    Various code enhancements
+
+        Gnome 3.0 requirements are met :
+        - migrated from libglade to GtkBuilder
+        - migrated from GnomeVFS to GVFS
+        - gets ride of old dependancies
+
+        - adds a dependancy on libunique 1.0
+        - requires now Gtk+ 2.12, Glib 2.16
+
+        Command-line utilities are now always built (no more a configure option).
+
+    nautilus-actions-config-tool
+
+         The configuration UI has been renamed from nautilus-actions-config.
+
+         It provides more visual feedback : which actions have been modified, which
+         are saveable or not, depending on their validity status. Automatically
+         reloads the list of actions if it has been externally modified, depending
+         on the modification status of the currently edited actions.
+
+         Import and Export actions are now assistant-driven.
+         Actions can be exported as a GConf dump entry (new format).
+
+    nautilus-actions-new
+
+         This utility has been renamed from nautilus-actions-new-config.
+
+         It can be used to create an action, and has been updated to generate
+         actions with the new export format, or to directly write the action into
+         the GConf repository.
+
+    nautilus-actions-schema
+
+         This new command-line utility writes a GConf schema on stdout.
+         Packagers may use it to install a schema.
+
+Version 1.11.0 [unstable]
+
+	Release date 2009-06-09
+
+	This is the first intermediate release in the 1.11 serie.
+
+	It includes a full rewriting of the action/profile object
+	hierarchy, along with the system of change notification. It also
+	introduces the new NactIIOProvider interface.
+
+	The Nautilus plugin module, which actually takes care of selecting
+	actions which will be displayed by Nautilus in item context menu,
+	makes a full use of this new object hierarchy.
+
+	The nautilus-actions-config UI always uses the old one.
+
+	Bugfixes
+
+		#580378 reported by James Campos (context menu doesn't update)
+
+	New and updated translations
+
+		de (Mario Blättermann)
+		mr (Sandeep Shedmake)
+		or (Manoj Kumar Giri)
+
+Version 1.10.1
+==============
+
+	Release date 2009-05-29
+
+	Nota:
+		Last official release was 1.4.1 (05/2007) and is always available
+		at http://www.grumz.net/?q=taxonomy/term/6/9 
+
+		In the meantime (10/2008), some distributions have packaged and
+		released the current state of the svn trunk (rev.510) ; they have
+		generally called it 1.9 (sometimes 1.9b) ; this was _not_ an
+		official release (though we can think it has been correctly
+		tested ;-)) 
+
+	Profiles
+	
+		The "profile" feature has been developed by Frederic Ruaudel
+		(previous maintainer and original author of Nautilus-actions).
+		It has been included in the intermediate version 1.9x without
+		having thoroughly tested ; I have choosen to left it in this
+		version to not create backward compatibility problems for the
+		users of these distributions, but be warned : use with caution.
+
+	Bugfixes
+
+		Fixes #522605 reported by Andre Klapper (i18n)
+		Fixes #573365 reported by Sergej (i18n)
+		Fixes #574919 by Bruce van der Kooij (gnome_vfs_init)
+		Fixes #568366 by Stéphane Raimbault (i18n)
+
+	Translations
+
+		ar (Djihed Afifi)
+		ca (Sílvia Miranda)
+		de (Mario Blättermann, Andre Klapper)
+		dz (Pema Geyleg)
+		el (Kostas Papadimas)
+		en (David Lodge, Adam Weinberger, Philip Withnall)
+		es (Jorge Gonzalez)
+		eu (Inaki Larranaga Murgoitio)
+		fi (Ilkka Tuohela)
+		fr (Claude Paroz, Stéphane Raimbault)
+		it (Milo Casagrande)
+		ko (Changwoo Ryu)
+		mr (Milo Casagrande)
+		nb (Kjartan Maraas)
+		oc (Yannig Marchegay)
+		pa (Amanpreet Singh Alam)
+		pl (Wadim Dziedzic)
+		pt (Duarte Loreto, Og Maciel, Jonh Wendell)
+		sv (Daniel Nylander)
+
+	Various code enhancements
+	
+		All compilations warnings have been fixed, all code is now
+		fully ansi-compliant, though not (yet ?) pedantic (Pierre Wieser)
+
+		Introduce new intltool (Christian Persch)
+
+		Double-clicking on an action now directly opens the editor
+	

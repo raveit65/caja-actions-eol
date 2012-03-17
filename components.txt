@@ -1,0 +1,64 @@
+ mate-name		 correlates to upstream version
+
+caja-share				0.7.3+ (git, 2011-12-04)
+libcaja-extension			?
+libmate					2.32.1 (git)
+libmatecanvas				2.30.3 (git)
+libmatecomponent			?
+libmatecomponentui			?
+libmatekbd				?
+libmatekeyring				?
+libmatenotify				?
+libmateui				?
+libmateweather				?
+mate-applets				?
+mate-backgrounds			?
+mate-bluetooth				?
+mate-calc				?
+mate-common				?
+mate-conf				?
+mate-conf-editor			?
+mate-control-center			?
+mate-corba				?
+mate-desktop				?
+mate-dialogs				?
+mate-display-manager			?
+mate-document-viewer			?
+mate-doc-utils				?
+mate-file-archiver			?
+mate-file-manager			2.32.2.1+ (git, 2011-03-21 + patches)
+mate-file-manager-gksu			?
+mate-file-manager-image-converter	?
+mate-file-manager-open-terminal		?
+mate-file-manager-sendto		?
+mate-icon-theme				?
+mate-image-viewer			?
+mate-indicator-applet			?
+mate-keyring				?
+mate-media				?
+mate-menu-editor			?
+mate-menus				?
+mate-mime-data				?
+mate-netspeed				?
+mate-notification-daemon		?
+mate-panel				2.32.2 (git 2011-12-18 + ubuntu patches)
+mate-polkit				?
+mate-power-manager			?
+mate-screensaver			?
+mate-sensors-applet			?
+mate-session-manager			?
+mate-settings-daemon			?
+mate-system-monitor			?
+mate-system-tools			?
+mate-terminal				?
+mate-text-editor			?
+mate-themes				?
+mate-utils				?
+mate-vfs				?
+mate-window-manager			3.0 (git 2012-01-16 + patches)
+mpegthumbnailer-caja			?
+python-caja				?
+python-corba				?
+python-mate				?
+python-mate-desktop			?
+

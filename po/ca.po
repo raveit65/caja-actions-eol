@@ -1,0 +1,1076 @@
+# Catalan translations for caja-actions package
+# Traduccions al català del paquet «caja-actions».
+# Copyright (C) 2006 The Free Software Foundation, Inc.
+# This file is distributed under the same license as the
+#   caja-actions package.
+#
+# Josep Puigdemont i Casamajó <josep.puigdemont@gmail.com>, 2006.
+# Francesc Vilches Batet <francesc.vilches@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: caja-actions\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-16 17:18+0200\n"
+"PO-Revision-Date: 2007-09-04 19:00+0200\n"
+"Last-Translator: Francesc Vilches <francesc.vilches@gmail.com>\n"
+"Language-Team: Catalan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n!=1;\n"
+
+#: ../nact/nact.desktop.in.h:1
+msgid "Add items to the Caja popup menu"
+msgstr "Afegeix elements al menú emergent del Caja"
+
+#: ../nact/nact.desktop.in.h:2
+msgid "Caja Actions Configuration"
+msgstr "Configuració de les accions del Caja"
+
+#: ../nact/caja-actions-config.glade.h:1
+msgid "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>"
+msgstr "© 2005-2007 Frederic Ruaudel <grumz@grumz.net>"
+
+#: ../nact/caja-actions-config.glade.h:3
+#, no-c-format
+msgid "<b>%%</b>: a percent sign"
+msgstr "<b>%%</b> : un símbol de tant per cent"
+
+#: ../nact/caja-actions-config.glade.h:5
+#, no-c-format
+msgid ""
+"<b>%M</b>: space-separated list of the selected file(s)/folder(s) with their "
+"full paths"
+msgstr ""
+"<b>%M</b>: llista separada per espais dels fitxers/carpetes seleccionades "
+"amb el seu camí complet"
+
+#: ../nact/caja-actions-config.glade.h:7
+#, no-c-format
+msgid "<b>%U</b>: username of the MateVFS URI"
+msgstr "<b>%U</b>: nom d'usuari de l'URI del MateVFS"
+
+#: ../nact/caja-actions-config.glade.h:9
+#, no-c-format
+msgid "<b>%d</b>: base folder of the selected file(s)"
+msgstr "<b>%d</b>: carpeta base dels fitxers seleccionats"
+
+#: ../nact/caja-actions-config.glade.h:11
+#, no-c-format
+msgid ""
+"<b>%f</b>: the name of the selected file or the 1st one if many are selected"
+msgstr ""
+"<b>%f</b>: el nom del fitxer seleccionat, o el primer si n'hi ha més d'un"
+
+#: ../nact/caja-actions-config.glade.h:13
+#, no-c-format
+msgid "<b>%h</b>: hostname of the MateVFS URI"
+msgstr "<b>%h</b>: nom de l'ordinador de l'URI del MateVFS"
+
+#: ../nact/caja-actions-config.glade.h:15
+#, no-c-format
+msgid ""
+"<b>%m</b>: space-separated list of the basenames of the selected\n"
+"file(s)/folder(s)"
+msgstr ""
+"<b>%m</b>: llista separada per espais dels noms base dels fitxers\n"
+"o carpetes seleccionades"
+
+#: ../nact/caja-actions-config.glade.h:18
+#, no-c-format
+msgid "<b>%s</b>: scheme of the MateVFS URI"
+msgstr "<b>%s</b>: l'esquema de l'URI del MateVFS"
+
+#: ../nact/caja-actions-config.glade.h:20
+#, no-c-format
+msgid "<b>%u</b>: MateVFS URI"
+msgstr "<b>%u</b>: URI del MateVFS"
+
+#: ../nact/caja-actions-config.glade.h:21
+msgid "<b>Action</b>"
+msgstr "<b>Acció</b>"
+
+#: ../nact/caja-actions-config.glade.h:22
+msgid "<b>Appears if file matches</b>"
+msgstr "<b>Apareix si el fitxer hi coincideix</b>"
+
+#: ../nact/caja-actions-config.glade.h:23
+msgid "<b>Appears if scheme is in this list</b>"
+msgstr "<b>Apareix si l'esquema és a la llista</b>"
+
+#: ../nact/caja-actions-config.glade.h:24
+msgid "<b>Appears if selection contains</b>"
+msgstr "<b>Apareix si la selecció conté</b>"
+
+#: ../nact/caja-actions-config.glade.h:25
+msgid "<b>Caja Menu Item</b>"
+msgstr "<b>Element del menú del Caja</b>"
+
+#: ../nact/caja-actions-config.glade.h:26
+msgid "<b>Profiles</b>"
+msgstr "<b>Perfils</b>"
+
+#: ../nact/caja-actions-config.glade.h:28
+#, no-c-format
+msgid "<i><b><span size=\"small\">e.g., %s</span></b></i>"
+msgstr "<i><b><span size=\"small\">p.e.: %s</span></b></i>"
+
+#: ../nact/caja-actions-config.glade.h:29
+msgid "<span size=\"larger\"><b>Parameter Legend</b></span>"
+msgstr "<span size=\"larger\"><b>Llegenda del paràmetre</b></span>"
+
+#: ../nact/caja-actions-config.glade.h:30
+msgid ""
+"<span weight=\"bold\" size=\"larger\">place primary text here</span>\n"
+"\n"
+"place secondary text here"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">poseu el text principal aquí</span>\n"
+"\n"
+"poseu el text secundari aquí"
+
+#: ../nact/caja-actions-config.glade.h:33
+msgid ""
+"A string with wildcards (? or *) that will be used to match the filenames. "
+"You can set several filename patterns by separating them with a semi-colon "
+"(;)."
+msgstr ""
+"Una cadena amb comodins (? o *) que s'utilitzarà per a fer coincidir amb els "
+"noms de fitxer. Podeu establir diferents patrons separant-los per punt i "
+"coma (;)."
+
+#: ../nact/caja-actions-config.glade.h:34
+msgid ""
+"A string with wildcards (? or *) that will be used to match the mimetypes of "
+"files. You can set several mimetype patterns by separating them with a semi-"
+"colon (;)."
+msgstr ""
+"Una cadena amb comodins (? o *) que s'utilitzarà per a fer coincidir tipus "
+"mime dels fitxers. Podeu establir diferents patrons separant-los per punt i "
+"coma (;)."
+
+#: ../nact/caja-actions-config.glade.h:35
+msgid "Action"
+msgstr "Acció"
+
+#: ../nact/caja-actions-config.glade.h:36
+msgid "Advanced Conditions"
+msgstr "Condicions avançades"
+
+#: ../nact/caja-actions-config.glade.h:37
+msgid "Appears if selection has multiple files or folders"
+msgstr "Apareix si la selecció té diversos fitxers o carpetes"
+
+#: ../nact/caja-actions-config.glade.h:38
+msgid "Both"
+msgstr "Ambdós"
+
+#: ../nact/caja-actions-config.glade.h:39
+msgid "Click to add a new scheme."
+msgstr "Feu clic per a afegir un esquema nou."
+
+#: ../nact/caja-actions-config.glade.h:40
+msgid "Click to choose a command from the file chooser dialog."
+msgstr "Feu clic per a escollir una ordre del diàleg de selecció de fitxers."
+
+#: ../nact/caja-actions-config.glade.h:41
+msgid ""
+"Click to choose a custom icon from a file instead of a predefined icon from "
+"the drop-down list."
+msgstr ""
+"Feu clic per a escollir una icona personalitzada des d'un fitxer, en comptes "
+"de les icones preestablertes de la llista desplegable."
+
+#: ../nact/caja-actions-config.glade.h:42
+msgid "Click to remove the selected scheme."
+msgstr "Feu clic per a suprimir l'esquema seleccionat."
+
+#: ../nact/caja-actions-config.glade.h:43
+msgid ""
+"Click to toggle the display of the list of special tokens you can use in the "
+"parameter field."
+msgstr ""
+"Feu clic per a commutar la visualització de la llista dels elements que "
+"podeu utilitzar en el camp de paràmetres."
+
+#: ../nact/caja-actions-config.glade.h:44
+msgid "Conditions"
+msgstr "Condicions"
+
+#: ../nact/caja-actions-config.glade.h:45
+msgid "Create a copy of the selected action."
+msgstr "Crea una còpia de l'acció seleccionada."
+
+#: ../nact/caja-actions-config.glade.h:46
+msgid ""
+"Delete the action without any confirmation nor the possibility to restore it."
+msgstr ""
+"Suprimeix l'acció sense demanar confirmació ni oferir la possibilitat de "
+"recuperar-la."
+
+#: ../nact/caja-actions-config.glade.h:47
+msgid "Duplicate"
+msgstr ""
+
+#: ../nact/caja-actions-config.glade.h:48
+msgid "Export existing configs"
+msgstr "Exporta les configuracions existents"
+
+#: ../nact/caja-actions-config.glade.h:49
+msgid "File to Import:"
+msgstr "Fitxer a importar:"
+
+#: ../nact/caja-actions-config.glade.h:50
+msgid "Filenames:"
+msgstr "Noms de fitxer:"
+
+#: ../nact/caja-actions-config.glade.h:51
+msgid "Icon:"
+msgstr "Icona:"
+
+#: ../nact/caja-actions-config.glade.h:52
+msgid ""
+"If selected, the filename patterns will be matched case sensitive (eg, *.jpg "
+"will not match photo.JPG)"
+msgstr ""
+"Si se selecciona, els patrons dels noms de fitxer distingiran entre "
+"majúscules i minúscules (p.ex., *.jpg no coincidirà amb foto.JPG)"
+
+#: ../nact/caja-actions-config.glade.h:53
+msgid "Import new configurations"
+msgstr "Importa configuracions noves"
+
+#: ../nact/caja-actions-config.glade.h:54
+msgid "Import/Export"
+msgstr "Importa/Exporta"
+
+#: ../nact/caja-actions-config.glade.h:55
+msgid "Import/Export Settings"
+msgstr "Importa/exporta paràmetres"
+
+#: ../nact/caja-actions-config.glade.h:56
+msgid "Label of the menu item in the Caja popup menu."
+msgstr "Etiqueta de l'element del menú emergent del Caja."
+
+#: ../nact/caja-actions-config.glade.h:57
+msgid "Label:"
+msgstr "Etiqueta:"
+
+#: ../nact/caja-actions-config.glade.h:58
+msgid ""
+"Manage importation of external action configurations and exportation of "
+"existing actions."
+msgstr ""
+"Gestiona la importació de configuracions d'accions externes, i l'exportació "
+"d'accions existents."
+
+#: ../nact/caja-actions-config.glade.h:59
+msgid "Match case"
+msgstr "Distingeix entre majúscules i minúscules"
+
+#: ../nact/caja-actions-config.glade.h:60
+msgid "Mimetypes:"
+msgstr "Tipus mime:"
+
+#: ../nact/caja-actions-config.glade.h:61
+msgid "Caja Action Editor"
+msgstr "Editor d'accions del Caja"
+
+#: ../nact/caja-actions-config.glade.h:62
+msgid "Caja Action Profile Editor"
+msgstr "Editor de perfils de les accions del Caja"
+
+#: ../nact/caja-actions-config.glade.h:63
+msgid "Caja Actions"
+msgstr "Accions del Caja"
+
+#: ../nact/caja-actions-config.glade.h:64
+msgid ""
+"Caja Actions Configuration Tool\n"
+"Application to configure Caja Action extension"
+msgstr ""
+"Eina de configuració de les accions del Caja\n"
+"Una aplicació per a configurar l'extensió d'accions del Caja"
+
+#: ../nact/caja-actions-config.glade.h:66
+msgid "Only files"
+msgstr "Només fitxers"
+
+#: ../nact/caja-actions-config.glade.h:67
+msgid "Only folders"
+msgstr "Només carpetes"
+
+#: ../nact/caja-actions-config.glade.h:68
+msgid ""
+"Parameters that will be sent to the program. Click on the 'Legend' button to "
+"see the different replacement tokens."
+msgstr ""
+"Paràmetres que es passaran al programa. Feu clic al botó «Llegenda» per a "
+"veure els diferents elements de substitució."
+
+#: ../nact/caja-actions-config.glade.h:69
+msgid "Parameters:"
+msgstr "Paràmetres:"
+
+#: ../nact/caja-actions-config.glade.h:70
+msgid "Path:"
+msgstr "Camí:"
+
+#: ../nact/caja-actions-config.glade.h:71
+msgid "Project Website"
+msgstr "Pàgina web del projecte"
+
+#: ../nact/caja-actions-config.glade.h:72
+msgid "Save in Folder:"
+msgstr "Desa a la carpeta:"
+
+#: ../nact/caja-actions-config.glade.h:73
+msgid ""
+"Select the configurations you want to export. Use Shift or Ctrl key to "
+"select more than one."
+msgstr ""
+"Seleccioneu les configuracions que voleu exportar. Utilitzeu la tecla de "
+"majúscules o de control per a fer seleccions múltiples."
+
+#: ../nact/caja-actions-config.glade.h:74
+msgid "Select the configurations you want to export:"
+msgstr "Seleccioneu les configuracions que voleu exportar:"
+
+#: ../nact/caja-actions-config.glade.h:75
+msgid "Select the file you want to import."
+msgstr "Seleccioneu el fitxer que voleu importar."
+
+#: ../nact/caja-actions-config.glade.h:76
+msgid ""
+"Select the folder you want your config to be saved in. This folder must "
+"exist."
+msgstr ""
+"Seleccioneu la carpeta on voleu desar la configuració. La carpeta ha "
+"d'existir."
+
+#: ../nact/caja-actions-config.glade.h:77
+msgid ""
+"Select the kind of files where you want your action to appear. If you don't "
+"know what to choose, try selecting just 'file' which is the most common "
+"choice. You can add a new scheme by clicking on the '+' button."
+msgstr ""
+"Seleccioneu el tipus de fitxer on voleu que aparegui l'acció. Si no sabeu "
+"què escollir, intenteu seleccionar només «fitxer», que és l'opció més comuna. "
+"Podeu afegir un esquema nou fent clic al botó «+»."
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../nact/caja-actions-config.glade.h:79
+msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgstr ""
+"Josep Puigdemont i Casamajó <josep.puigdemont@gmail.com>Francesc Vilches "
+"Batet <francesc.vilches@gmail.com>"
+
+#: ../nact/caja-actions-config.glade.h:80
+msgid ""
+"The command that will be launched by selecting the action in Caja popup "
+"menu."
+msgstr ""
+"L'ordre que s'executarà en seleccionar l'acció del menú emergent del "
+"Caja."
+
+#: ../nact/caja-actions-config.glade.h:81
+msgid "This software is licensed under the GNU Genaral Public License (GPL)"
+msgstr "Aquest programa està sota la Llicència Pública General GNU (GPL)"
+
+#: ../nact/caja-actions-config.glade.h:82
+msgid "Tooltip of the menu item that will appear in the Caja statusbar."
+msgstr ""
+"Consell flotant de l'element del menú que apareixerà a la barra d'estat del "
+"Caja."
+
+#: ../nact/caja-actions-config.glade.h:83
+msgid "Tooltip:"
+msgstr "Consell flotant:"
+
+#: ../nact/caja-actions-config.glade.h:84
+msgid "_Browse"
+msgstr "_Navega"
+
+#: ../nact/caja-actions-config.glade.h:85
+msgid "_Legend"
+msgstr "_Llegenda"
+
+#. i18n notes: will be displayed in a dialog
+#: ../nact/nact.c:163
+#, c-format
+msgid "Can't duplicate action '%s'!"
+msgstr "No es pot duplicar l'acció «%s»."
+
+#. create columns on the tree view
+#: ../nact/nact.c:277 ../nact/nact-import-export.c:162
+msgid "Icon"
+msgstr "Icona"
+
+#: ../nact/nact.c:282 ../nact/nact-import-export.c:167
+msgid "Label"
+msgstr "Etiqueta"
+
+#: ../nact/nact.c:303 ../nact/nact-editor.c:628
+#: ../nact/nact-import-export.c:312 ../nact/nact-profile-editor.c:495
+msgid "Could not load interface for Caja Actions Config Tool"
+msgstr ""
+"No s'ha pogut carregar la interfície per a l'eina de configuració de les "
+"accions del Caja"
+
+#. i18n notes: example strings for the command preview
+#: ../nact/nact-utils.c:185
+msgid "/path/to"
+msgstr "/camí/a"
+
+#: ../nact/nact-utils.c:186 ../nact/nact-utils.c:188
+msgid "file1.txt"
+msgstr "fitxer1.txt"
+
+#: ../nact/nact-utils.c:186
+msgid "file2.txt"
+msgstr "fitxer2.txt"
+
+#: ../nact/nact-utils.c:187 ../nact/nact-utils.c:188
+msgid "folder1"
+msgstr "carpeta1"
+
+#: ../nact/nact-utils.c:187
+msgid "folder2"
+msgstr "carpeta2"
+
+#: ../nact/nact-utils.c:190
+msgid "test.example.net"
+msgstr "exemple"
+
+#: ../nact/nact-utils.c:191
+msgid "file.txt"
+msgstr "fitxer.txt"
+
+#: ../nact/nact-utils.c:192
+msgid "folder"
+msgstr "carpeta"
+
+#. i18n notes: when no icon is selected in the drop-down list
+#: ../nact/nact-editor.c:168
+msgid "None"
+msgstr "Cap"
+
+#. i18n notes: will be displayed in a dialog
+#: ../nact/nact-editor.c:449
+#, c-format
+msgid "Can't copy action's profile '%s'!"
+msgstr "El perfil «%s» de l'acció no es pot copiar."
+
+#. i18n notes: will be displayed in a dialog
+#: ../nact/nact-editor.c:474
+#, c-format
+msgid "Can't paste action's profile '%s'!"
+msgstr "El perfil «%s» de l'acció no es pot enganxar."
+
+#. i18n notes: this is the default name of a copied profile
+#: ../nact/nact-editor.c:479
+#, c-format
+msgid "%s Copy"
+msgstr "Copia de «%s»"
+
+#. i18n notes: will be displayed in a dialog
+#: ../nact/nact-editor.c:539
+#, c-format
+msgid "Can't delete action's profile '%s'!"
+msgstr "El perfil «%s» de l'acció no es pot suprimir."
+
+#: ../nact/nact-editor.c:591
+msgid "Profile Name"
+msgstr "Nom del perfil"
+
+#: ../nact/nact-editor.c:644
+msgid "Icon of the menu item in the Caja popup menu"
+msgstr "Icona de l'element del menú en el menú emergent del Caja"
+
+#: ../nact/nact-editor.c:666
+msgid "Add a New Action"
+msgstr "Afegeix una acció nova"
+
+#: ../nact/nact-editor.c:670
+#, c-format
+msgid "Edit Action \"%s\""
+msgstr "Edita l'acció «%s»"
+
+#: ../nact/nact-import-export.c:205
+#, c-format
+msgid "Can't parse file '%s' as MateConf schema description file!"
+msgstr ""
+"No s'ha pogut analitzar el fitxer «%s» com a fitxer de descripció d'esquema "
+"MateConf."
+
+#. i18n notes: %s is the label of the action (eg, 'Mount ISO')
+#: ../nact/nact-import-export.c:226
+#, c-format
+msgid "Action '%s' importation failed!"
+msgstr "Ha fallat la importació de l'acció «%s»."
+
+#. initialize the default schemes
+#. i18n notes : description of 'file' scheme
+#: ../nact/nact-prefs.c:164
+#, c-format
+msgid "%sLocal Files"
+msgstr "%sFitxers locals"
+
+#. i18n notes : description of 'sftp' scheme
+#: ../nact/nact-prefs.c:166
+#, c-format
+msgid "%sSSH Files"
+msgstr "%sFitxers SSH"
+
+#. i18n notes : description of 'smb' scheme
+#: ../nact/nact-prefs.c:168
+#, c-format
+msgid "%sWindows Files"
+msgstr "%sFitxers Windows"
+
+#. i18n notes : description of 'ftp' scheme
+#: ../nact/nact-prefs.c:170
+#, c-format
+msgid "%sFTP Files"
+msgstr "%sFitxers FTP"
+
+#. i18n notes : description of 'dav' scheme
+#: ../nact/nact-prefs.c:172
+#, c-format
+msgid "%sWebdav Files"
+msgstr "%sFitxers WebDAV"
+
+#. i18n notes : scheme name set for a new entry in the scheme list
+#: ../nact/nact-profile-editor.c:243
+msgid "new-scheme"
+msgstr "esquema-nou"
+
+#: ../nact/nact-profile-editor.c:244
+msgid "New Scheme Description"
+msgstr "Descripció de l'esquema nou"
+
+#: ../nact/nact-profile-editor.c:329
+msgid "Scheme"
+msgstr "Esquema"
+
+#: ../nact/nact-profile-editor.c:341
+msgid "Description"
+msgstr "Descripció"
+
+#: ../nact/nact-profile-editor.c:532
+msgid "Add a New Profile"
+msgstr "Afegeix un perfil nou"
+
+#: ../nact/nact-profile-editor.c:536
+#, c-format
+msgid "Edit Profile \"%s\""
+msgstr "Edita el perfil «%s»"
+
+#. MateConf description strings :
+#: ../utils/caja-actions-new-config.c:49
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+msgid "The label of the menu item"
+msgstr "L'etiqueta de l'element del menú"
+
+#: ../utils/caja-actions-new-config.c:49
+msgid "LABEL"
+msgstr "ETIQUETA"
+
+#: ../utils/caja-actions-new-config.c:50
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+msgid "The tooltip of the menu item"
+msgstr "El consell flotant de l'element del menú"
+
+# rètol indicador de funció (josep)
+#: ../utils/caja-actions-new-config.c:50
+msgid "TOOLTIP"
+msgstr "CONSELL"
+
+#: ../utils/caja-actions-new-config.c:51
+msgid "The icon of the menu item (filename or GTK stock ID)"
+msgstr "La icona de l'element del menú (nom de fitxer o ID del GTK)"
+
+#: ../utils/caja-actions-new-config.c:51
+msgid "ICON"
+msgstr "ICONA"
+
+#: ../utils/caja-actions-new-config.c:52
+#: ../utils/caja-actions-new-config.c:55
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+msgid "The path of the command"
+msgstr "El camí de l'ordre"
+
+#: ../utils/caja-actions-new-config.c:52
+#: ../utils/caja-actions-new-config.c:55
+#: ../utils/caja-actions-new-config.c:61
+msgid "PATH"
+msgstr "CAMÍ"
+
+#: ../utils/caja-actions-new-config.c:53
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+msgid "The parameters of the command"
+msgstr "Els paràmetres de l'ordre"
+
+#: ../utils/caja-actions-new-config.c:53
+msgid "PARAMS"
+msgstr "PARÀMETRES"
+
+#: ../utils/caja-actions-new-config.c:54
+msgid ""
+"A pattern to match selected files against. May include wildcards (* or ?) "
+"(you must set one option for each pattern you need)"
+msgstr ""
+"Un patró per fer coincidir fitxers seleccionats, pot contenir comodins ? o * "
+"(ho heu d'especificar per a cada patró que necessiteu)"
+
+#: ../utils/caja-actions-new-config.c:54
+#: ../utils/caja-actions-new-config.c:56
+msgid "EXPR"
+msgstr "EXPRESSIÓ"
+
+#: ../utils/caja-actions-new-config.c:56
+msgid ""
+"A pattern to match selected files' mimetype against. May include wildcards "
+"(* or ?) (you must set one option for each pattern you need)"
+msgstr ""
+"Un patró per fer coincidir tipus mime de fitxers. Pot contenir comodins (? o "
+"*) (ho heu d'especificar per a cada patró que necessiteu)"
+
+#: ../utils/caja-actions-new-config.c:57
+msgid "Set it if the selection can contain files"
+msgstr "Estableix-lo si la selecció pot contenir fitxers"
+
+#: ../utils/caja-actions-new-config.c:58
+msgid "Set it if the selection can contain folders"
+msgstr "Estableix-lo si la selecció pot contenir diversos elements"
+
+#: ../utils/caja-actions-new-config.c:59
+msgid "Set it if the selection can have several items"
+msgstr "Estableix-lo si la selecció pot tenir diversos elements"
+
+#: ../utils/caja-actions-new-config.c:60
+msgid ""
+"A MateVFS scheme where the selected files should be located (you must set "
+"it for each scheme you need)"
+msgstr ""
+"Un esquema del MateVFS on s'haurien de localitzar els fitxers seleccionats "
+"(n'heu d'establir un per cada esquema que necessiteu)"
+
+#: ../utils/caja-actions-new-config.c:60
+msgid "SCHEME"
+msgstr "ESQUEMA"
+
+#: ../utils/caja-actions-new-config.c:61
+msgid ""
+"The path of the file where to save the new MateConf schema definition file "
+"[default: /tmp/config_UUID.schemas]"
+msgstr ""
+"El camí del fitxer on desar el fitxer de definicions de l'esquema del MateConf "
+"nou [predeterminat: /tmp/config_UUID.schemas]"
+
+#: ../utils/caja-actions-new-config.c:100
+#, c-format
+msgid ""
+"Syntax error:\n"
+"\t- %s\n"
+"Try %s --help\n"
+msgstr ""
+"Error de sintaxi:\n"
+"\t- %s\n"
+"Proveu %s --help\n"
+
+#: ../utils/caja-actions-new-config.c:152
+#, c-format
+msgid "Creating %s..."
+msgstr "S'està creant %s..."
+
+#: ../utils/caja-actions-new-config.c:171
+#, c-format
+msgid " Failed: Can't create %s: %s\n"
+msgstr " Ha fallat: No es pot crear %s: %s\n"
+
+#: ../utils/caja-actions-new-config.c:180
+#, c-format
+msgid "  OK, saved in %s\n"
+msgstr "  S'ha desat a %s\n"
+
+#: ../utils/caja-actions-new-config.c:185
+#, c-format
+msgid " Failed: %s\n"
+msgstr " Ha fallat: %s\n"
+
+#: ../utils/caja-actions-tools-utils.c:48
+#, c-format
+msgid "Can't write data in file %s\n"
+msgstr "No es pot escriure dades en el fitxer %s\n"
+
+#: ../utils/caja-actions-tools-utils.c:54
+#, c-format
+msgid "Can't open file %s for writing\n"
+msgstr "No es pot obrir el fitxer %s per a escriure-hi\n"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+msgid ""
+"The label of the menu item that will appear in the Caja popup menu when "
+"the selection matches the appearance condition settings"
+msgstr ""
+"L'etiqueta de l'element del menú que apareixerà en el menú emergent del "
+"Caja quan la selecció coincideixi amb les condicions dels paràmetres "
+"d'aparença"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+msgid ""
+"The tooltip of the menu item that will appear in the Caja statusbar when "
+"the user points to the Caja popup menu item with his/her mouse"
+msgstr ""
+"El consell flotant de l'element del menú que apareixerà a la barra d'estat "
+"del Caja quan el ratolí apunti a l'element del menú emergent"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+msgid "The icon of the menu item"
+msgstr "La icona de l'element del menú"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+msgid ""
+"The icon of the menu item that will appear next to the label in the Caja "
+"popup menu when the selection matches the appearance conditions settings"
+msgstr ""
+"La icona de l'element del menú que apareixerà al costat de l'etiqueta en el "
+"menú emergent del Caja quan la selecció coincideixi amb les condicions "
+"dels paràmetres d'aparença"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+msgid "A description name of the profile"
+msgstr "Una descripció del perfil"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+msgid ""
+"The field is here to give the user a human readable name for a profile in "
+"the Nact interface. If not set there will be a default auto generated string "
+"set by default"
+msgstr ""
+"Aquest camp és aquí per donar a l'usuari un nom entenedor per al perfil dins "
+"l'interfície d'accions de Caja. Si no s'indica aquí, es generarà "
+"automàticament una cadena predeterminada"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+msgid ""
+"The path of the command to start when the user select the menu item in the "
+"Caja popup menu"
+msgstr ""
+"El camí de l'ordre a executar quan l'usuari seleccioni l'element del menú "
+"emergent del Caja"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+msgid ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu.\n"
+"\n"
+"The parameters can contain some special tokens which are replaced by "
+"Caja information before starting the command:\n"
+"\n"
+"%d: base folder of the selected file(s)\n"
+"%f: the name of the selected file or the first one if many are selected\n"
+"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
+"%M: space-separated list of the selected file(s)/folder(s), with their full "
+"paths\n"
+"%u: MateVFS URI\n"
+"%s: scheme of the MateVFS URI\n"
+"%h: hostname of the MateVFS URI\n"
+"%U: username of the MateVFS URI\n"
+"%%: a percent sign"
+msgstr ""
+"Els paràmetres de l'ordre en iniciar, quan l'usuari seleccioni l'element del "
+"menú emergent del Caja.\n"
+"\n"
+"Els paràmetres poden contenir alguns elements especials que el Caja "
+"substituirà abans d'executar l'ordre:\n"
+"\n"
+"%d : carpeta base dels fitxers seleccionats\n"
+"%f : el nom del fitxer seleccionat, o el primer si n'hi ha més d'un\n"
+"%m : llista separada per espais de les bases dels noms de fitxer/carpetes "
+"seleccionades(s)\n"
+"%M : llista separada per espais dels fitxers/carpetes seleccionades amb el "
+"seu camí complet\n"
+"%u : URI del mate-vfs\n"
+"%s : esquema de l'URI del MateVFS\n"
+"%h : nom de l'ordinador de l'URI del MateVFS\n"
+"%U : nom d'usuari de l'URI de MateVFS/%s\n"
+"%% : un símbol de tant per cent"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+msgid "The list of pattern to match the selected file(s)/folder(s)"
+msgstr ""
+"La llista de patrons per a fer coincidir els fitxers o carpetes seleccionades"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+msgid ""
+"A list of strings with joker '*' or '?' to match the name of the selected "
+"file(s)/folder(s). Each selected items must match at least one of the "
+"filename patterns for the action to appear"
+msgstr ""
+"Una llista de cadenes amb comodins '*' o '?' per a fer coincidir els noms "
+"dels fitxers o carpetes seleccionades. Cada un dels elements seleccionats ha "
+"de coincidir amb almenys un dels patrons, per tal que l'acció aparegui"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+msgid ""
+"'true' if the filename patterns have to be case sensitive, 'false' otherwise"
+msgstr ""
+"«cert» si els patrons de noms de fitxer han de distingir entre majúscules i "
+"minúscules, «fals» en cas contrari"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+msgid ""
+"If you need to match a filename in a case-sensitive manner, set this key to "
+"'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
+"'false'"
+msgstr ""
+"Si necessiteu fer coincidir un nom de fitxer de manera que les majúscules i "
+"minúscules es distingeixin, establiu aquesta clau a «cert». Si per exemple "
+"voleu que «*.jpg» coincideixi amb «foto.JPG», aleshores establiu-la a «fals»."
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+msgid "The list of patterns to match the mimetypes of the selected file(s)"
+msgstr ""
+"La llista de patrons per fer coincidir amb els tipus mime dels fitxers "
+"seleccionats"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+msgid ""
+"A list of strings with joker '*' or '?' to match the mimetypes of the "
+"selected file(s). Each selected items must match at least one of the "
+"mimetype patterns for the action to appear"
+msgstr ""
+"Una llista de cadenes amb comodins '*' o '?' per fer coincidir els tipus "
+"mime dels fitxers seleccionats. Cada un dels elements seleccionats ha de "
+"coincidir amb almenys un dels patrons del tipus mime, per tal que l'acció "
+"aparegui"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#, fuzzy
+msgid ""
+"The valid combinations are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear)"
+msgstr ""
+"Les combinacions vàlides són:\n"
+"\n"
+"«isfile» és cert i «isdir» és fals: la selecció només pot contenir fitxers\n"
+"«isfile» és fals i «isdir» és cert: la selecció només pot contenir carpetes\n"
+"«isfile» és cert i «isdir» és cert: la selecció pot contenir fitxers i "
+"carpetes\n"
+"«isfile» és fals i «isdir» és fals: la combinació no és vàlida (la vostra "
+"configuració no apareixerà mai)"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+msgid "'true' if the selection can have files, 'false' otherwise"
+msgstr "«cert» si la selecció pot tenir fitxers, «fals» en cas contrari"
+
+#. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+msgid "This setting is tied in with the 'isdir' setting. "
+msgstr "Aquest paràmetre va lligat amb el paràmetre «isdir». "
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+msgid "'true' if the selection can have folders, 'false' otherwise"
+msgstr "«cert» si la selecció pot tenir carpetes, «fals» en cas contrari"
+
+#. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+msgid "This setting is tied in with the 'isfile' setting. "
+msgstr "Aquest paràmetre va lligat amb el paràmetre «isfile». "
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+msgid "'true' if the selection can have several items, 'false' otherwise"
+msgstr ""
+"«cert» si la selecció pot contenir diversos elements, «fals» en cas contrari"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+msgid ""
+"If you need one or more files or folders to be selected, set this key to "
+"'true'. If you want just one file or folder, set 'false'"
+msgstr ""
+"Si necessiteu que se seleccionin un o més fitxers o carpetes, habiliteu "
+"aquesta clau a «cert». Si només voleu que se seleccioni un fitxer o carpeta, "
+"establiu-la a «fals»"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+msgid "The list of MateVFS schemes where the selected files should be located"
+msgstr ""
+"La llista d'esquemes MateVFS on s'haurien de localitzar els fitxers "
+"seleccionats"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+msgid ""
+"Defines the list of valid MateVFS schemes to be matched against the "
+"selected items. The MateVFS scheme is the protocol used to access the "
+"files. The keyword to use is the one used in the MateVFS URI.\n"
+"\n"
+"Examples of MateVFS URI include: \n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"The most common schemes are:\n"
+"\n"
+"'file': local files\n"
+"'sftp': files accessed via SSH\n"
+"'ftp': files accessed via FTP\n"
+"'smb': files accessed via Samba (Windows share)\n"
+"'dav': files accessed via WebDav\n"
+"\n"
+"All MateVFS schemes used by Caja can be used here."
+msgstr ""
+"Defineix la llista d'esquemes MateVFS vàlids per a fer coincidir amb els "
+"elements seleccionats. L'esquema del MateVFS és el protocol utilitzat per a "
+"accedir als fitxers. La paraula clau a utilitzar és la mateixa que en les "
+"URI del MateVFS.\n"
+"\n"
+"Alguns exemples de l'URI del MateVFS:\n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"Els esquemes més comuns són:\n"
+"\n"
+"'file' : fitxers locals\n"
+"'sftp' : fitxers accedits via SSH\n"
+"'ftp' : fitxers accedits via FTP\n"
+"'smb' : fitxers accedits via Samba (recursos compartits del Windows)\n"
+"'dav' : fitxers accedits via WebDAV\n"
+"\n"
+"Es poden utilitzar tots els esquemes MateVFS que utilitzi el Caja."
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+msgid "The version of the configuration format"
+msgstr "La versió del format de configuració"
+
+#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+msgid ""
+"The version of the configuration format that will be used to manage backward "
+"compatibility"
+msgstr ""
+"La versió del format de configuració que es farà servir per a gestionar la "
+"compatibilitat amb versions anteriors"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:205
+#, c-format
+msgid ""
+"The action '%s' already exists with the name '%s', please first remove the "
+"existing one before trying to add this one"
+msgstr ""
+"Ja existeix l'acció «%s» amb el nom «%s», suprimiu primer la que existeix, i "
+"torneu a intentar afegir aquesta"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:222
+#, c-format
+msgid "Can't save action '%s'"
+msgstr "No s'ha pogut desar l'acció «%s»"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:470
+#, c-format
+msgid ""
+"A profile already exists with the name '%s', please first remove or rename "
+"the existing one before trying to add this one"
+msgstr ""
+"Ja existeix el perfil amb el nom «%s», suprimiu-lo o reanomeneu-lo abans "
+"d'afegir el nou"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:524
+#, fuzzy, c-format
+msgid "Can't remove the old profile '%s'"
+msgstr "No es pot suprimir l'antic perfil «%s»."
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config.c:531
+#, c-format
+msgid "Can't find profile named '%s'"
+msgstr "No es pot trobar el perfil «%s»"
+
+#. i18n notes: will be displayed in an error dialog concatenated to another error message
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:184
+msgid " and some profiles are incomplete: "
+msgstr " i alguns perfils són incomplets: "
+
+#. i18n notes: this is a list separator, it can have more than one character (ie, in French it will be ", ")
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:204
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:717
+msgid ","
+msgstr ", "
+
+#. i18n notes: will be displayed in an error dialog concatenated to another error message
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:303
+#, c-format
+msgid "%s (one missing key: %s)%s"
+msgid_plural "%s (missing keys: %s)%s"
+msgstr[0] "%s (manca la clau: %s)%s"
+msgstr[1] "%s (manquen les claus: %s)%s"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:682
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:817
+#, c-format
+msgid ""
+"This XML file is not a valid Caja-actions config file (found <%s> "
+"element instead of <%s>)"
+msgstr ""
+"Aquest fitxer XML no és un fitxer de configuració Caja-actions vàlid "
+"(s'ha trobat l'element <%s> en comptes de <%s>)"
+
+#. if the version of the file is greater than the current one, we reject the file
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:696
+#, fuzzy, c-format
+msgid ""
+"This config file is more recent than this version of Caja-actions can "
+"support. Please upgrade Caja-actions to the latest version if you want "
+"to be able to import it (File version: %s (max supported version : %s))"
+msgstr ""
+"Aquest fitxer de configuració és més nou del que aquesta versió del Caja-"
+"actions permet. Actualitzeu el Caja-actions a l'última versió si voleu "
+"poder importar-lo (versió del fitxer: %s (versió màxima permesa: %s))"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:744
+#, c-format
+msgid ""
+"This XML file is not a valid Caja-actions config file (missing key: %s)%s"
+msgid_plural ""
+"This XML file is not a valid Caja-actions config file (missing keys: %s)%"
+"s"
+msgstr[0] ""
+"Aquest fitxer XML no és un fitxer de configuració Caja-actions vàlid "
+"(manca la clau: %s)%s"
+msgstr[1] ""
+"Aquest fitxer XML no és un fitxer de configuració Caja-actions vàlid "
+"(manquen les clau: %s)%s"
+
+#. No error occured but we have not found the "version" mateconf key
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:753
+#, c-format
+msgid ""
+"This XML file is not a valid Caja-actions config file (missing key: %s)"
+msgstr ""
+"Aquest fitxer XML no és un fitxer de configuració Caja-actions vàlid "
+"(manca la clau: %s)"
+
+#. i18n notes: will be displayed in an error dialog
+#: ../libcaja-actions/caja-actions-config-schema-reader.c:827
+#, c-format
+msgid ""
+"This XML file is not a valid Caja-actions config file (root node is <%s> "
+"instead of <%s>)"
+msgstr ""
+"Aquest fitxer XML no és un fitxer de configuració Caja-actions vàlid (el "
+"node arrel és <%s> en comptes de <%s>)"
+
+#~ msgid "Can't paste action's profile '%s' !"
+#~ msgstr "El perfil «%s» de l'acció no es pot enganxar."

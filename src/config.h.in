@@ -1,0 +1,118 @@
+/* src/config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* always defined to indicate that i18n is enabled */
+#undef ENABLE_NLS
+
+/* gettext package */
+#undef GETTEXT_PACKAGE
+
+/* Define to 1 if you have the `bind_textdomain_codeset' function. */
+#undef HAVE_BIND_TEXTDOMAIN_CODESET
+
+/* Define to 1 if you have the `dcgettext' function. */
+#undef HAVE_DCGETTEXT
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define if the GNU gettext() function is already present or preinstalled. */
+#undef HAVE_GETTEXT
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define if your <locale.h> file defines LC_MESSAGES. */
+#undef HAVE_LC_MESSAGES
+
+/* Define to 1 if you have the `caja-extension' library
+   (-lcaja-extension). */
+#undef HAVE_LIBCAJA_EXTENSION
+
+/* Define to 1 if you have the <locale.h> header file. */
+#undef HAVE_LOCALE_H
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the
+   `caja_menu_provider_emit_items_updated_signal' function. */
+#undef HAVE_CAJA_MENU_PROVIDER_EMIT_ITEMS_UPDATED_SIGNAL
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to the sub-directory in which libtool stores uninstalled libraries.
+   */
+#undef LT_OBJDIR
+
+/* Log domain of core library */
+#undef NA_LOGDOMAIN_CORE
+
+/* Log domain of desktop I/O Provider */
+#undef NA_LOGDOMAIN_IO_DESKTOP
+
+/* Log domain of MateConf I/O Provider */
+#undef NA_LOGDOMAIN_IO_MATECONF
+
+/* Log domain of XML I/O */
+#undef NA_LOGDOMAIN_IO_XML
+
+/* Log domain of NACT user interface */
+#undef NA_LOGDOMAIN_NACT
+
+/* Log domain of Caja Menu plugin */
+#undef NA_LOGDOMAIN_PLUGIN_MENU
+
+/* Log domain of Caja Tracker plugin */
+#undef NA_LOGDOMAIN_PLUGIN_TRACKER
+
+/* Log domain of test programs */
+#undef NA_LOGDOMAIN_TEST
+
+/* Log domain of utilities */
+#undef NA_LOGDOMAIN_UTILS
+
+/* Define to 1 if we are in maintainer mode */
+#undef NA_MAINTAINER_MODE
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Version number of package */
+#undef VERSION

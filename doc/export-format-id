@@ -1,0 +1,15 @@
+Ids of export formats.
+======================
+
+These ids are allocated by the Caja-Actions maintainer team.
+If you wish develop a new export format, and so need a unique id,
+please contact the maintainers (see caja-actions.doap).
+
+format id      module              holder            allocated
+-------------  ------------------  ----------------  ----------
+Ask            reserved id         Caja-Actions  2010-02-15
+MateConfSchemaV1  NA XML module       Caja-Actions  2010-02-15
+MateConfSchemaV1  NA XML module       Caja-Actions  2010-02-15
+MateConfEntry     NA XML module       Caja-Actions  2010-02-15
+
+Last updated: 2010, Feb. 15th

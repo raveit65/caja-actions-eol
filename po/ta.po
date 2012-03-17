@@ -1,0 +1,1826 @@
+# translation of caja-actions.master.ta.po to Tamil
+# Tamil translation of caja-actions.
+# Copyright (C) 2009 caja-actions's COPYRIGHT HOLDER
+# This file is distributed under the same license as the caja-actions package.
+#
+# ifelix <ifelix25@gmail.com>, 2009.
+# I. Felix <ifelix@redhat.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: caja-actions.master.ta\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions&component=general\n"
+"POT-Creation-Date: 2009-10-31 03:29+0000\n"
+"PO-Revision-Date: 2009-10-31 17:52+0530\n"
+"Last-Translator: I. Felix <ifelix@redhat.com>\n"
+"Language-Team: Tamil <fedora-trans-ta@redhat.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\\n\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../data/caja-actions.schemas.in.h:1 ../src/common/na-xml-names.h:144
+msgid "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
+msgstr "'உண்மை' எனில் தோரணிகள் எழுத்து நிலையை உணர வேண்டும், 'இல்லை'  எனில் தேவையில்லை"
+
+#: ../data/caja-actions.schemas.in.h:2 ../src/common/na-xml-names.h:153
+msgid "'true' if the selection can have files, 'false' otherwise"
+msgstr "'உண்மை' எனில் தேர்வில் கோப்புகள் இருக்கலாம். 'தவறு' எனில் மற்றது."
+
+#: ../data/caja-actions.schemas.in.h:3 ../src/common/na-xml-names.h:160
+msgid "'true' if the selection can have folders, 'false' otherwise"
+msgstr "'உண்மை' எனில் தேர்வில் அடைவுகள் இருக்கலாம். 'தவறு' எனில் மற்றது."
+
+#: ../data/caja-actions.schemas.in.h:4 ../src/common/na-xml-names.h:167
+msgid "'true' if the selection can have several items, 'false' otherwise"
+msgstr "'உண்மை' எனில் தேர்வில் பல உருப்படிகள் இருக்கலாம். 'தவறு' எனில் மற்றது."
+
+#: ../data/caja-actions.schemas.in.h:5 ../src/common/na-xml-names.h:120
+msgid "A description name of the profile"
+msgstr "உருவரை பெயரின் விவரம்"
+
+#: ../data/caja-actions.schemas.in.h:6 ../src/common/na-xml-names.h:149
+msgid ""
+"A list of strings with joker '*' or '?' to match the mimetypes of the "
+"selected file(s). Each selected items must match at least one of the "
+"mimetype patterns for the action to appear. This only applies when targeting "
+"selection."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட கோப்பு(கள்)/ அடைவுகளின் மைம் வகைக்கு பொருத்தமான '*' அல்லது '?' போன்ற "
+"ஜோக்கருடன் கூடிய சரங்களின் பட்டியல். செயல் தெரிய இதில் தேர்ந்தெடுக்கப்பட்ட உருப்படிகள் ஒரு "
+"மைம் வகையையாவது பொருந்த வேண்டும்."
+
+#: ../data/caja-actions.schemas.in.h:7 ../src/common/na-xml-names.h:140
+msgid ""
+"A list of strings with joker '*' or '?' to match the name of the selected "
+"file(s)/folder(s). Each selected items must match at least one of the "
+"filename patterns for the action to appear. This only applies when targeting "
+"selection."
+msgstr ""
+"joker '*' அல்லது '?' ஐ தேர்ந்தெடுக்கப்பட்ட கோப்பு(கள்)/கோப்புறை(கள்) பொருந்துவதற்கான "
+"பட்டியல் சரமாகும். ஒவ்வொரு தேர்ந்தெடுக்கப்பட்ட உருப்படிகளும் ஒரு கோப்புபெயருடன் பொருந்த "
+"வேண்டும்"
+
+#: ../data/caja-actions.schemas.in.h:8
+msgid "Add an 'About' item in the Caja context menu"
+msgstr "நாடுலஸ் துள்ளு  பட்டியலுக்கு உருப்படிகளை சேர்"
+
+#: ../data/caja-actions.schemas.in.h:9
+msgid "Ask for a confirmation when quitting by Esc"
+msgstr "Escஆல் மூடும் போது உறுதிப்படுத்தைலைக் கேட்டகவும்"
+
+#. i18n: name of the default profile when creating an action
+#: ../data/caja-actions.schemas.in.h:10
+#: ../src/common/na-object-action.c:60
+msgid "Default profile"
+msgstr "முன்னிருப்பு விவரக்குறிப்பு"
+
+#: ../data/caja-actions.schemas.in.h:11
+#| msgid "Define a 'Caja Actions' root menu."
+msgid "Define a 'Caja Actions' root menu"
+msgstr "ஒரு 'Caja Actions' ரூட் மெனுவை வரையறு"
+
+#: ../data/caja-actions.schemas.in.h:12
+msgid ""
+"Defines if the item is an action or a menu. Possible values are : - \"Action"
+"\", - \"Menu\". The value is case sensitive and must not be localized."
+msgstr ""
+"Defines if the item is an action or a menu. Possible values are : - \"Action"
+"\", - \"Menu\". The value is case sensitive and must not be localized."
+
+#: ../data/caja-actions.schemas.in.h:13
+msgid ""
+"Defines the list of valid URIs to be matched against the current folder. "
+"This is only used when targeting background or toolbar. All folders 'under' "
+"the specified URI are considered valid."
+msgstr ""
+"Defines the list of valid URIs to be matched against the current folder. "
+"This is only used when targeting background or toolbar. All folders 'under' "
+"the specified URI are considered valid."
+
+#: ../data/caja-actions.schemas.in.h:14
+msgid ""
+"Defines the list of valid schemes to be matched against the selected items. "
+"The scheme is the protocol used to access the files. The keyword to use is "
+"the one used in the URI. Examples of valid URI include : - file:///tmp/foo."
+"txt - sftp:///root@test.example.net/tmp/foo.txt The most common schemes "
+"are : - 'file': local files - 'sftp': files accessed via SSH - 'ftp' : files "
+"accessed via FTP - 'smb' : files accessed via Samba (Windows share) - "
+"'dav' : files accessed via WebDAV All schemes used by Caja can be used "
+"here. This only applies when targeting selection."
+msgstr ""
+"Defines the list of valid schemes to be matched against the selected items. "
+"The scheme is the protocol used to access the files. The keyword to use is "
+"the one used in the URI. Examples of valid URI include : - file:///tmp/foo."
+"txt - sftp:///root@test.example.net/tmp/foo.txt The most common schemes "
+"are : - 'file': local files - 'sftp': files accessed via SSH - 'ftp' : files "
+"accessed via FTP - 'smb' : files accessed via Samba (Windows share) - "
+"'dav' : files accessed via WebDAV All schemes used by Caja can be used "
+"here. This only applies when targeting selection."
+
+#: ../data/caja-actions.schemas.in.h:15
+msgid "Display Edit toolbar"
+msgstr "கருவிப்பட்டி திருத்திக் காட்டு"
+
+#: ../data/caja-actions.schemas.in.h:16
+msgid "Display File toolbar"
+msgstr "கோப்பு கருவிப்பட்டியைக் காட்டு"
+
+#: ../data/caja-actions.schemas.in.h:17
+msgid "Display Help toolbar"
+msgstr "உதவி கருவிப்பட்டியைக் காட்டு"
+
+#: ../data/caja-actions.schemas.in.h:18
+msgid "Display Tools toolbar"
+msgstr "கருவிகள் கருவிப்பட்டியைக் காட்டு"
+
+#: ../data/caja-actions.schemas.in.h:19
+msgid ""
+"If TRUE, a confirmation will be requested when quitting an assistant by "
+"hitting the Esc key."
+msgstr "உண்மையெனில், ஒரு துணையின் படி Esc விசையை இடிக்கும் போது ஒரு உறுதிப்படுத்தல் தேவைப்படுகிறது."
+
+#: ../data/caja-actions.schemas.in.h:20
+msgid ""
+"If TRUE, and if the user has defined a single root menu for its actions, "
+"then an 'About Caja Actions' will be displayed at end of the first "
+"submenu."
+msgstr ""
+"If TRUE, and if the user has defined a single root menu for its actions, "
+"then an 'About Caja Actions' will be displayed at end of the first "
+"submenu."
+
+#: ../data/caja-actions.schemas.in.h:21
+msgid "If TRUE, assistant may be closed by hitting the Esc key."
+msgstr "உண்மையெனில், Esc விசையை இடிப்பதன் மூலம் துணை மூடப்படும்."
+
+#: ../data/caja-actions.schemas.in.h:22
+msgid ""
+"If TRUE, then a 'Caja Actions' item will be defined in the Caja "
+"context menu, and will a root menu of all available actions."
+msgstr ""
+"If TRUE, then a 'Caja Actions' item will be defined in the Caja "
+"context menu, and will a root menu of all available actions."
+
+#: ../data/caja-actions.schemas.in.h:23 ../src/common/na-xml-names.h:93
+msgid "If the action is disabled, it will never appear in the Caja context menu."
+msgstr "      மெனு உருப்படியின் உதவிக்கருவி Caja நிலைப்பட்டையில் இருக்கும்."
+
+#: ../data/caja-actions.schemas.in.h:24 ../src/common/na-xml-names.h:168
+msgid ""
+"If you need one or more files or folders to be selected, set this key to "
+"'true'. If you want just one file or folder, set 'false'. This only applies "
+"when targeting selection."
+msgstr ""
+"ஒன்றுக்கு மேற்பட்ட கோப்புகள் அடைவுகள்  தேர்ந்தெடுக்கப்பட வேண்டுமானால் இந்த விசையை 'உண்மை' "
+"என அமை ஒரே ஒரு கோப்பு அல்லது அடைவு எனில் 'தவறு' என அமை  அமை "
+
+#: ../data/caja-actions.schemas.in.h:25 ../src/common/na-xml-names.h:145
+msgid ""
+"If you need to match a filename in a case-sensitive manner, set this key to "
+"'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
+"'false'. This only applies when targeting selection."
+msgstr ""
+"கோப்புப் பெயர் எழுத்து நிலையை உணர்ந்த வகையில் பொருத்த வேண்டும் எனில் இதை 'true' என அமை. "
+"ஆனால் உதாரணமாக '*.jpg' 'photo.JPG',  எனவும் பொருந்த வேண்டுமானால் 'false' என அமை."
+
+#: ../data/caja-actions.schemas.in.h:26
+msgid "Import mode"
+msgstr "இறக்குமதி முறைமை"
+
+#: ../data/caja-actions.schemas.in.h:27 ../src/common/na-xml-names.h:116
+msgid "Label of the item in the toolbar"
+msgstr "கருவிப்பட்டியிலுள்ள உருப்படியின் லேபில்"
+
+#: ../data/caja-actions.schemas.in.h:28
+msgid "Last folder selected when browsing for a command in the Command tab."
+msgstr "கட்டளை தத்தலில் ஒரு கட்டளைக்காக உலாவும் போது கடைசி கோப்புறையை தேர்ந்தெடுக்கிறது."
+
+#: ../data/caja-actions.schemas.in.h:29
+msgid "Last folder selected when browsing for an URI in the Background tab."
+msgstr "ஒரு URI பின்னணி தத்தலில் உலாவும் போது கடைசி கோப்புறை தேர்ந்தெடுக்கப்படுகிறது."
+
+#: ../data/caja-actions.schemas.in.h:30
+msgid "Last folder selected when choosing a folder from where import new actions."
+msgstr ""
+"ஒரு கோப்புறையின் செயல்களை எங்கே இறக்குமதி செய்ய தேர்ந்தெடுக்கப்படுகிறதோ அங்கே கடைசி "
+"கோப்புறை தேர்ந்தெடுக்கப்படும்."
+
+#: ../data/caja-actions.schemas.in.h:31
+msgid "Last folder selected when choosing a folder where to export the actions."
+msgstr ""
+"ஒரு கோப்புறையின் செயல்களை எங்கே ஏற்றுமதி செய்ய தேர்ந்தெடுக்கப்படுகிறதோ அங்கே கடைசி "
+"கோப்புறை தேர்ந்தெடுக்கப்படும்."
+
+#: ../data/caja-actions.schemas.in.h:32
+msgid "Last import mode choosen by the user"
+msgstr "கடைசி இறக்குமதி முறைமை பயனரால் தேர்ந்தெடுக்கப்படுகிறது"
+
+#: ../data/caja-actions.schemas.in.h:33
+msgid ""
+"Last import mode choosen by the user when he is asked for in import mode. "
+"Possible values are : - \"NoImport\": do not import an action whose UUID "
+"already exists, - \"Renumber\": allocate a new UUID if the imported UUID "
+"already exists, - \"Override\": override the existing action with the "
+"imported one."
+msgstr ""
+"ஒரு இறக்குமதி முறைமையை கேட்ட போது கடைசி இறக்குமதி முறைமை பயனரால் "
+"தேர்ந்தெடுக்கப்பட்டது. கிடைக்கக்கூடிய மதிப்புகளாவ : - \"NoImport\": ஏற்கனவே இருக்கிற "
+"ஒரு UUID செயலை இறக்குமதிசெய்ய கூடாது, - \"Renumber\": ஒரு புதிய UUID ஒதுக்கி "
+"UUID ஏற்கனவே இறக்குமதி செய்யப்பட்டிருந்தால், - \"Override\": இருக்கிற செயலுடன் "
+"இறக்குமதி செய்த ஒன்றை மேலேற்றவும்."
+
+#: ../data/caja-actions.schemas.in.h:34
+msgid ""
+"Last import mode choosen in the Import assistant. Possible values are : - "
+"\"NoImport\": do not import an action whose UUID already exists, - \"Renumber"
+"\": allocate a new UUID if the imported UUID already exists, - \"Override\": "
+"override the existing action with the imported one, - \"Ask\": ask the user "
+"each time."
+msgstr ""
+"கடைசி இறக்குமதி முறைமை துணை இறக்குமதியில் தேர்ந்தெடுக்கப்பட்டது. கிடைக்கக்கூடிய "
+"மதிப்புகளாவ : - \"NoImport\": ஏற்கனவே இருக்கிற ஒரு UUID செயலை இறக்குமதிசெய்ய "
+"கூடாது, - \"Renumber\": ஒரு புதிய UUID ஒதுக்கி UUID ஏற்கனவே இறக்குமதி "
+"செய்யப்பட்டிருந்தால், - \"Override\": இருக்கிற செயலுடன் இறக்குமதி செய்த ஒன்றை "
+"மேலேற்றவும், - \"Ask\": பயனரை ஒவ்வொரு முறையும் கேட்டகவும்"
+
+#: ../data/caja-actions.schemas.in.h:35
+msgid "Last selected folder"
+msgstr "கடைசியில் தேர்ந்தெடுக்கப்பட்ட கோப்புறை"
+
+#: ../data/caja-actions.schemas.in.h:36
+msgid "List of items at first level of the hierarchy"
+msgstr "hierarchyன் முதல் நிலையில் உருப்படிகளின் பட்டியல்"
+
+#: ../data/caja-actions.schemas.in.h:37 ../src/common/na-xml-names.h:95
+msgid "List of subitem ids"
+msgstr "துணைஉருப்படி idsன் பட்டியல்"
+
+#: ../data/caja-actions.schemas.in.h:38
+msgid "Main pane position"
+msgstr "முக்கிய பேன் இடம்"
+
+#: ../data/caja-actions.schemas.in.h:39
+msgid ""
+"Ordered list of the IDs of the subitems. This may be actions or menus if the "
+"item is a menu, or profiles if the item is an action. If this list doesn't "
+"exist or is empty for an action, we load the found profiles in the order of "
+"the read operations."
+msgstr ""
+"Ordered list of the IDs of the subitems. This may be actions or menus if the "
+"item is a menu, or profiles if the item is an action. If this list doesn't "
+"exist or is empty for an action, we load the found profiles in the order of "
+"the read operations."
+
+#: ../data/caja-actions.schemas.in.h:40
+msgid "Position and size of the Legend dialog"
+msgstr "இடம் மற்றும் புராண உரையாடலின் அளவு"
+
+#: ../data/caja-actions.schemas.in.h:41
+msgid "Position and size of the Legend dialog ; default is set by the UI manager."
+msgstr "இடம் மற்றும் புராண உரையாடலின் அளவு ; UI மேலாளரின் படி அமைக்கப்பட்ட முன்னிருப்பு."
+
+#: ../data/caja-actions.schemas.in.h:42
+msgid "Position and size of the URI chooser window"
+msgstr "URI தேர்ந்தெடுப்பவர் விண்டோவின் இடம் மற்றும் அளவு"
+
+#: ../data/caja-actions.schemas.in.h:43
+msgid ""
+"Position and size of the URI chooser window in the Background tab ; default "
+"is set by the window manager."
+msgstr ""
+"பின்னணி தத்தலில் URI தேர்ந்தெடுப்பவர் விண்டோவின் இடம் மற்றும் அளவு ; விண்டோ மேலாளரின் படி "
+"அமைக்கப்பட்ட முன்னிருப்பு."
+
+#: ../data/caja-actions.schemas.in.h:44
+msgid "Position and size of the command chooser window"
+msgstr "கட்டளை தேர்ந்தெடுப்பவர் விணைடோவின் இடம் மற்றும் அளவு"
+
+#: ../data/caja-actions.schemas.in.h:45
+msgid ""
+"Position and size of the command chooser window in the Command tab ; default "
+"is set by the window manager."
+msgstr ""
+"கட்டளை தத்தலில் கட்டளை தேர்ந்தெடுப்பவரின் இடம் மற்றும் அளவு; முன்னிருப்பு விண்டோ மேலாளரால் "
+"அமைக்கப்படுகிறது."
+
+#: ../data/caja-actions.schemas.in.h:46
+msgid "Position and size of the export assistant window"
+msgstr "    "
+
+#: ../data/caja-actions.schemas.in.h:47
+msgid ""
+"Position and size of the export assistant window ; default is set by the "
+"window manager."
+msgstr ""
+"ஏற்றுமதி செய்யப்பட்ட துணை விண்டோவின் இடம் மற்றும் அளவு; முன்னிருப்பு விண்டோ "
+"மேலாளரால்அமைக்கப்படுகிறது."
+
+#: ../data/caja-actions.schemas.in.h:48
+msgid "Position and size of the import assistant window"
+msgstr "இறக்குமதி செய்யப்பட்ட துணை விண்டோவின் இடம் மற்றும் அளவு"
+
+#: ../data/caja-actions.schemas.in.h:49
+msgid ""
+"Position and size of the import assistant window ; default is set by the "
+"window manager."
+msgstr ""
+"இறக்குமதி செய்யப்பட்ட துணை விண்டோவின் இடம் மற்றும் அளவு; முன்னிருப்பு விண்டோ "
+"மேலாளரால்அமைக்கப்படுகிறது."
+
+#: ../data/caja-actions.schemas.in.h:50
+msgid "Position and size of the interaction dialog at import time"
+msgstr "Position and size of the interaction dialog at import time"
+
+#: ../data/caja-actions.schemas.in.h:51
+msgid ""
+"Position and size of the interaction dialog at import time ; default is set "
+"by the window manager."
+msgstr ""
+"Position and size of the interaction dialog at import time ; default is set "
+"by the window manager."
+
+#: ../data/caja-actions.schemas.in.h:52
+msgid "Position and size of the main window"
+msgstr "முக்கிய விண்டோவின் இடம் மற்றும் அளவு"
+
+#: ../data/caja-actions.schemas.in.h:53
+msgid "Position and size of the main window ; default is set by the window manager."
+msgstr "முக்கிய விண்டோவின் இடம் மற்றும் அளவு ; விண்டோ மேலாளரின் படி முன்னிருப்பை அமை."
+
+#: ../data/caja-actions.schemas.in.h:54
+msgid "Position and size of the preferences dialog"
+msgstr "முன்னுரிமை உரையாடலின் இடம் மற்றும் அளவு"
+
+#: ../data/caja-actions.schemas.in.h:55
+msgid ""
+"Position and size of the preferences dialog ; default is set by the window "
+"manager."
+msgstr "முன்னுரிமை உரையாடலின் இடம் மற்றும் அளவு ; விண்டோ மேலாளரின் படி முன்னிருப்பை அமை."
+
+#: ../data/caja-actions.schemas.in.h:56
+msgid "Sort mode"
+msgstr "வரிசைப்படுத்தப்பட்ட முறைமை"
+
+#: ../data/caja-actions.schemas.in.h:57 ../src/common/na-xml-names.h:107
+msgid "Targets background"
+msgstr "இலக்குகளின் பின்னணி"
+
+#: ../data/caja-actions.schemas.in.h:58 ../src/common/na-xml-names.h:104
+msgid "Targets selection"
+msgstr "இலக்குகளின் தேர்ந்தெடுப்பு"
+
+#: ../data/caja-actions.schemas.in.h:59 ../src/common/na-xml-names.h:109
+msgid "Targets toolbar"
+msgstr "இலக்குகளின் கருவிப்பட்டி"
+
+#: ../data/caja-actions.schemas.in.h:60 ../src/common/na-xml-names.h:121
+msgid ""
+"The field is here to give the user a human readable name for a profile in "
+"the NACT interface. If not set there will be a default auto generated string "
+"set."
+msgstr ""
+"நாக்ட் இடைமுகத்தில் உருவரைக்கு ஒரு பெயர் கொடுக்க இந்த புலம் இருக்கிறது. "
+"அமைக்கவில்லையானால் அது தானியங்கியாக ஒரு முன்னிருப்பு சரத்தை உருவாக்கும்."
+
+#: ../data/caja-actions.schemas.in.h:61 ../src/common/na-xml-names.h:88
+msgid "The icon of the menu item"
+msgstr "பட்டியல் உருப்படியின் சின்னம்"
+
+#: ../data/caja-actions.schemas.in.h:62 ../src/common/na-xml-names.h:89
+msgid ""
+"The icon of the menu item that will appear next to the label in the Caja "
+"popup menu when the selection matches the appearance conditions settings."
+msgstr ""
+"தேர்வு தோற்ற நிபந்தனை அமைப்புடன் பொருந்தினால் நாடுலஸ் துள்ளு பட்டியில் அடையாளத்துக்கு "
+"பக்கதில் தோன்ற வேண்டிய மெனு உருப்படியின் சின்னம் "
+
+#: ../data/caja-actions.schemas.in.h:63
+msgid ""
+"The label displayed besides of the icon in the Caja toolbar. Note that "
+"actual display may depend of your own Mate preferences."
+msgstr ""
+"The label displayed besides of the icon in the Caja toolbar. Note that "
+"actual display may depend of your own Mate preferences."
+
+#. MateConf schema descriptions
+#.
+#: ../data/caja-actions.schemas.in.h:64 ../src/common/na-xml-names.h:81
+msgid "The label of the menu item"
+msgstr " பட்டியல் உருப்படியின் அடையாளம் "
+
+#: ../data/caja-actions.schemas.in.h:65 ../src/common/na-xml-names.h:82
+msgid ""
+"The label of the menu item that will appear in the Caja popup menu when "
+"the selection matches the appearance condition settings."
+msgstr ""
+"தேர்வு தோற்ற நிபந்தனை அமைப்புடன் பொருந்தினால் நாடுலஸ் துள்ளு பட்டியில் தோன்ற வேண்டிய மெனு "
+"உருப்படியின் அடையாளம் "
+
+#: ../data/caja-actions.schemas.in.h:66 ../src/common/na-xml-names.h:181
+msgid "The list of URIs on which the Background item applies"
+msgstr "The list of URIs on which the Background item applies"
+
+#: ../data/caja-actions.schemas.in.h:67 ../src/common/na-xml-names.h:139
+msgid "The list of pattern to match the selected file(s)/folder(s)"
+msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு(கள்)/ அடைவுகளுக்கு பொருத்தமான தோரணிகளின் பட்டியல் "
+
+#: ../data/caja-actions.schemas.in.h:68 ../src/common/na-xml-names.h:148
+msgid "The list of patterns to match the mimetypes of the selected file(s)"
+msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு(கள்)/ அடைவுகளின் மைம் வகைக்கு பொருத்தமான தோரணிகளின் பட்டியல் "
+
+#: ../data/caja-actions.schemas.in.h:69 ../src/common/na-xml-names.h:171
+msgid "The list of schemes where the selected files should be located"
+msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்புகள் இருக்க வேண்டிய க்னோம் விஎஃபெஸ் கருத்துகளின் பட்டியல்"
+
+#: ../data/caja-actions.schemas.in.h:70 ../src/common/na-xml-names.h:127
+#: ../src/utils/caja-actions-new.c:96
+msgid "The parameters of the command"
+msgstr "கட்டளையின் அளபுருக்கள்."
+
+#: ../data/caja-actions.schemas.in.h:72
+#, no-c-format
+msgid ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu. The parameters can contain some special tokens "
+"which are replaced by Caja information before starting the command: %d: "
+"base folder of the selected file(s) %f: the name of the selected file or the "
+"first one if many are selected %h: hostname of the URI %m: space-separated "
+"list of the basenames of the selected file(s)/folder(s) %M: space-separated "
+"list of the selected file(s)/folder(s), with their full paths %p: port "
+"number of the first URI %R: space-separated list of selected URIs %s: scheme "
+"of the URI %u: URI %U: username of the URI %%: a percent sign."
+msgstr ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu. The parameters can contain some special tokens "
+"which are replaced by Caja information before starting the command: %d: "
+"base folder of the selected file(s) %f: the name of the selected file or the "
+"first one if many are selected %h: hostname of the URI %m: space-separated "
+"list of the basenames of the selected file(s)/folder(s) %M: space-separated "
+"list of the selected file(s)/folder(s), with their full paths %p: port "
+"number of the first URI %R: space-separated list of selected URIs %s: scheme "
+"of the URI %u: URI %U: username of the URI %%: a percent sign."
+
+#: ../data/caja-actions.schemas.in.h:73 ../src/common/na-xml-names.h:124
+#: ../src/utils/caja-actions-new.c:94
+msgid "The path of the command"
+msgstr "கட்டளையின் பாதை"
+
+#: ../data/caja-actions.schemas.in.h:74 ../src/common/na-xml-names.h:125
+msgid ""
+"The path of the command to start when the user select the menu item in the "
+"Caja popup menu."
+msgstr "பயனர் நாடுலஸ் துள்ளு மெனுவில் அவரது சொடுக்கியால் சுட்டும் போது துவங்க  வேண்டிய கட்டளை "
+
+#: ../data/caja-actions.schemas.in.h:75 ../src/common/na-xml-names.h:84
+#: ../src/utils/caja-actions-new.c:78
+msgid "The tooltip of the menu item"
+msgstr "பட்டியல் உருப்படியின் கருவிக்குறிப்பு"
+
+#: ../data/caja-actions.schemas.in.h:76 ../src/common/na-xml-names.h:85
+msgid ""
+"The tooltip of the menu item that will appear in the Caja statusbar when "
+"the user points to the Caja popup menu item with his/her mouse."
+msgstr ""
+"பயனர் நாடுலஸ் துள்ளு மெனுவில் அவரது சொடுக்கியால் சுட்டும் போது நாடுலஸ் நிலைப்படியில் "
+"தோன்ற வேண்டிய கருவிக்குறிப்பு"
+
+#: ../data/caja-actions.schemas.in.h:77 ../src/common/na-xml-names.h:185
+msgid "The version of the configuration format"
+msgstr "கட்டமைக்கப்பட்ட வடிவத்தின் பதிப்பு"
+
+#: ../data/caja-actions.schemas.in.h:78 ../src/common/na-xml-names.h:186
+msgid ""
+"The version of the configuration format that will be used to manage backward "
+"compatibility."
+msgstr "பின் நோக்கு இசைவுக்கு பயன்படுத்த அமைப்பு ஒழுங்கின் பதிப்பு"
+
+#: ../data/caja-actions.schemas.in.h:79
+msgid ""
+"This preference indicates the preferred sort mode. Possible values are : - "
+"\"AscendingOrder\": the actions are maintained in ascending alphabetical "
+"order (historical behavior). - \"DescendingOrder\": the actions are "
+"maintained in descending alphabetical order. - \"ManualOrder\": user is free "
+"to reorder them via Caja-Actions configuration tool."
+msgstr ""
+"This preference indicates the preferred sort mode. Possible values are : - "
+"\"AscendingOrder\": the actions are maintained in ascending alphabetical "
+"order (historical behavior). - \"DescendingOrder\": the actions are "
+"maintained in descending alphabetical order. - \"ManualOrder\": user is free "
+"to reorder them via Caja-Actions configuration tool."
+
+#: ../data/caja-actions.schemas.in.h:80
+msgid ""
+"This setting is tied in with the 'isdir' setting. The valid combinations "
+"are : - isfile=TRUE and isdir=FALSE: the selection may hold only files - "
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders - "
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders - "
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+msgstr ""
+"This setting is tied in with the 'isdir' setting. The valid combinations "
+"are : - isfile=TRUE and isdir=FALSE: the selection may hold only files - "
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders - "
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders - "
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+
+#: ../data/caja-actions.schemas.in.h:81
+msgid ""
+"This setting is tied in with the 'isfile' setting. The valid combinations "
+"are : - isfile=TRUE and isdir=FALSE: the selection may hold only files - "
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders - "
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders - "
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+msgstr ""
+"This setting is tied in with the 'isfile' setting. The valid combinations "
+"are : - isfile=TRUE and isdir=FALSE: the selection may hold only files - "
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders - "
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders - "
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+
+#: ../data/caja-actions.schemas.in.h:82 ../src/common/na-xml-names.h:100
+msgid "Type of the item"
+msgstr "உருப்படியின் வகை"
+
+#: ../data/caja-actions.schemas.in.h:83
+msgid ""
+"UUID of the items at the first level of the hierarchy. If this key is not "
+"found or empty, then all found items are considered as a flat list."
+msgstr ""
+"UUID of the items at the first level of the hierarchy. If this key is not "
+"found or empty, then all found items are considered as a flat list."
+
+#: ../data/caja-actions.schemas.in.h:84
+msgid "Whether actions should be relabeled when pasted or duplicated"
+msgstr "Whether actions should be relabeled when pasted or duplicated"
+
+#: ../data/caja-actions.schemas.in.h:85
+msgid "Whether actions should be relabeled when pasted or duplicated."
+msgstr "Whether actions should be relabeled when pasted or duplicated."
+
+#: ../data/caja-actions.schemas.in.h:86
+msgid "Whether menus should be relabeled when pasted or duplicated"
+msgstr "Whether menus should be relabeled when pasted or duplicated"
+
+#: ../data/caja-actions.schemas.in.h:87
+msgid "Whether menus should be relabeled when pasted or duplicated."
+msgstr "Whether menus should be relabeled when pasted or duplicated."
+
+#: ../data/caja-actions.schemas.in.h:88
+msgid "Whether profiles should be relabeled when pasted or duplicated"
+msgstr "Whether profiles should be relabeled when pasted or duplicated"
+
+#: ../data/caja-actions.schemas.in.h:89
+msgid "Whether profiles should be relabeled when pasted or duplicated."
+msgstr "Whether profiles should be relabeled when pasted or duplicated."
+
+#: ../data/caja-actions.schemas.in.h:90
+#| msgid "Whether the labels are the sames"
+msgid "Whether the Esc key should close the assistants"
+msgstr "Esc விசை துணைகளை மூடினால்"
+
+#: ../data/caja-actions.schemas.in.h:91
+msgid ""
+"Whether the action is candidate to be displayed in Caja toolbar. Note, "
+"that as of Caja -2.26, menus can not be candidate to toolbar display."
+msgstr ""
+"Whether the action is candidate to be displayed in Caja toolbar. Note, "
+"that as of Caja -2.26, menus can not be candidate to toolbar display."
+
+#: ../data/caja-actions.schemas.in.h:92 ../src/common/na-xml-names.h:92
+msgid "Whether the action is enabled"
+msgstr "Whether the action is enabled"
+
+#: ../data/caja-actions.schemas.in.h:93 ../src/common/na-xml-names.h:108
+msgid "Whether the action of menu targets the background Caja menus."
+msgstr "Whether the action of menu targets the background Caja menus."
+
+#: ../data/caja-actions.schemas.in.h:94 ../src/common/na-xml-names.h:105
+msgid ""
+"Whether the action of menu targets the selection Caja menus. This is the "
+"historical behavior."
+msgstr ""
+"Whether the action of menu targets the selection Caja menus. This is the "
+"historical behavior."
+
+#: ../data/caja-actions.schemas.in.h:95 ../src/common/na-xml-names.h:114
+msgid ""
+"Whether the label displayed in the Caja toolbar besides of the icon is "
+"the same that the main item label."
+msgstr ""
+"Whether the label displayed in the Caja toolbar besides of the icon is "
+"the same that the main item label."
+
+#: ../data/caja-actions.schemas.in.h:96 ../src/common/na-xml-names.h:113
+msgid "Whether the labels are the sames"
+msgstr "லேபில்கள் ஒரே மாதிரியாக இருக்கிறதா"
+
+#: ../data/caja-actions.schemas.in.h:97
+msgid "Whether to display or not the Edit toolbar in the main window."
+msgstr "Whether to display or not the Edit toolbar in the main window."
+
+#: ../data/caja-actions.schemas.in.h:98
+msgid "Whether to display or not the File toolbar in the main window."
+msgstr "Whether to display or not the File toolbar in the main window."
+
+#: ../data/caja-actions.schemas.in.h:99
+msgid "Whether to display or not the Help toolbar in the main window."
+msgstr "Whether to display or not the Help toolbar in the main window."
+
+#: ../data/caja-actions.schemas.in.h:100
+msgid "Whether to display or not the Tools toolbar in the main window."
+msgstr "Whether to display or not the Tools toolbar in the main window."
+
+#: ../data/caja-actions.schemas.in.h:101
+msgid "Width of the main window pane ; default is set by the UI manager."
+msgstr "Width of the main window pane ; default is set by the UI manager."
+
+#. i18n: copied items have a label as 'Copy of original label'
+#: ../src/common/na-object-id.c:201
+#, c-format
+msgid "Copy of %s"
+msgstr "%sஇன் நகல்"
+
+#: ../src/common/na-xml-names.h:96
+msgid ""
+"Ordered list of the IDs of the subitems. This may be actions or menus if the "
+"item is a menu, or profiles if the item is an action.\n"
+"If this list doesn't exist or is empty for an action, we load the found "
+"profiles in the order of the read operations."
+msgstr ""
+"Ordered list of the IDs of the subitems. This may be actions or menus if the "
+"item is a menu, or profiles if the item is an action.\n"
+"If this list doesn't exist or is empty for an action, we load the found "
+"profiles in the order of the read operations."
+
+#: ../src/common/na-xml-names.h:101
+msgid ""
+"Defines if the item is an action or a menu. Possible values are :\n"
+"- \"Action\",\n"
+"- \"Menu\".\n"
+"The value is case sensitive and must not be localized."
+msgstr ""
+"உருப்படியானது ஒரு செயலாகப அல்லது ஒரு மெனுவாக இருந்தால் வரையறு. Pகிடைக்கக்கூடிய "
+"மதிப்புகளாவன :\n"
+"- \"Action\",\n"
+"- \"Menu\".\n"
+"மதிப்பானது மிக நுணுக்கமான மற்றும் உள்ளமைக்கப்படாதது."
+
+#: ../src/common/na-xml-names.h:110
+msgid ""
+"Whether the action is candidate to be displayed in Caja toolbar.\n"
+"Note, that as of Caja -2.26, menus can not be candidate to toolbar "
+"display."
+msgstr ""
+"Whether the action is candidate to be displayed in Caja toolbar.\n"
+"Note, that as of Caja -2.26, menus can not be candidate to toolbar "
+"display."
+
+#: ../src/common/na-xml-names.h:117
+msgid ""
+"The label displayed besides of the icon in the Caja toolbar.\n"
+"Note that actual display may depend of your own Mate preferences."
+msgstr ""
+"The label displayed besides of the icon in the Caja toolbar.\n"
+"Note that actual display may depend of your own Mate preferences."
+
+#. too long string for iso c: 665 (max=509)
+#: ../src/common/na-xml-names.h:129
+msgid ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu.\n"
+"\n"
+"The parameters can contain some special tokens which are replaced by "
+"Caja information before starting the command:\n"
+"\n"
+"%d: base folder of the selected file(s)\n"
+"%f: the name of the selected file or the first one if many are selected\n"
+"%h: hostname of the URI\n"
+"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
+"%M: space-separated list of the selected file(s)/folder(s), with their full "
+"paths\n"
+"%p: port number of the first URI\n"
+"%R: space-separated list of selected URIs\n"
+"%s: scheme of the URI\n"
+"%u: URI\n"
+"%U: username of the URI\n"
+"%%: a percent sign."
+msgstr ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu.\n"
+"\n"
+"The parameters can contain some special tokens which are replaced by "
+"Caja information before starting the command:\n"
+"\n"
+"%d: base folder of the selected file(s)\n"
+"%f: the name of the selected file or the first one if many are selected\n"
+"%h: hostname of the URI\n"
+"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
+"%M: space-separated list of the selected file(s)/folder(s), with their full "
+"paths\n"
+"%p: port number of the first URI\n"
+"%R: space-separated list of selected URIs\n"
+"%s: scheme of the URI\n"
+"%u: URI\n"
+"%U: username of the URI\n"
+"%%: a percent sign."
+
+#: ../src/common/na-xml-names.h:154
+msgid ""
+"This setting is tied in with the 'isdir' setting. The valid combinations "
+"are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+msgstr ""
+"This setting is tied in with the 'isdir' setting. The valid combinations "
+"are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+
+#: ../src/common/na-xml-names.h:161
+msgid ""
+"This setting is tied in with the 'isfile' setting. The valid combinations "
+"are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+msgstr ""
+"This setting is tied in with the 'isfile' setting. The valid combinations "
+"are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+
+#. too long string for iso c: 510 (max=509)
+#: ../src/common/na-xml-names.h:173
+msgid ""
+"Defines the list of valid schemes to be matched against the selected items. "
+"The scheme is the protocol used to access the files. The keyword to use is "
+"the one used in the URI.\n"
+"\n"
+"Examples of valid URI include:\n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"The most common schemes are:\n"
+"\n"
+"'file': local files\n"
+"'sftp': files accessed via SSH\n"
+"'ftp': files accessed via FTP\n"
+"'smb': files accessed via Samba (Windows share)\n"
+"'dav': files accessed via WebDAV\n"
+"\n"
+"All schemes used by Caja can be used here.\n"
+"This only applies when targeting selection."
+msgstr ""
+"Defines the list of valid schemes to be matched against the selected items. "
+"The scheme is the protocol used to access the files. The keyword to use is "
+"the one used in the URI.\n"
+"\n"
+"Examples of valid URI include:\n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"The most common schemes are:\n"
+"\n"
+"'file': local files\n"
+"'sftp': files accessed via SSH\n"
+"'ftp': files accessed via FTP\n"
+"'smb': files accessed via Samba (Windows share)\n"
+"'dav': files accessed via WebDAV\n"
+"\n"
+"All schemes used by Caja can be used here.\n"
+"This only applies when targeting selection."
+
+#: ../src/common/na-xml-names.h:182
+msgid ""
+"Defines the list of valid URIs to be matched against the current folder.\n"
+" This is only used when targeting background or toolbar. All folders 'under' "
+"the specified URI are considered valid."
+msgstr ""
+"Defines the list of valid URIs to be matched against the current folder.\n"
+" This is only used when targeting background or toolbar. All folders 'under' "
+"the specified URI are considered valid."
+
+#: ../src/nact/base-application.c:1132
+msgid "Unable to initialize the internationalization environment."
+msgstr "Unable to initialize the internationalization environment."
+
+#: ../src/nact/base-application.c:1141
+msgid "Unable to initialize the Gtk+ user interface."
+msgstr "Gtk+ பயனர் இடைமுகத்தை துவக்க முடியவில்லை."
+
+#: ../src/nact/base-application.c:1150
+msgid "Another instance of the application is already running."
+msgstr "நாடுலஸ் செயல்கள் அமைப்பு கருவி ஒன்றூ ஏற்கெனெவே இயங்குகிறது."
+
+#: ../src/nact/base-application.c:1159
+msgid "No filename provided for the UI XML definition."
+msgstr "UI XML வரையறைக்கு கோப்பு பெயர் தரப்படவில்லை."
+
+#. i18n: Unable to load the XML definition from <filename>
+#: ../src/nact/base-application.c:1169
+#, c-format
+msgid "Unable to load the XML definition from %s."
+msgstr "XML வரையறையை %sலிருந்து ஏற்ற முடியவில்லை."
+
+#: ../src/nact/base-application.c:1182
+msgid "Unable to set the default icon for the application."
+msgstr "பயன்பாட்டிற்கான முன்னிருப்பு சின்னத்தை அமைக்க முடியவில்லை."
+
+#: ../src/nact/base-application.c:1191
+msgid "Unable to get the main window of the application."
+msgstr "பயன்பாட்டிற்கான முக்கிய விண்டோவைப் பெற முடியவில்லை."
+
+#: ../src/nact/base-assistant.c:576
+msgid "Are you sure you want to quit this assistant ?"
+msgstr "Are you sure you want to quit this assistant ?"
+
+#: ../src/nact/base-window.c:1137
+#, c-format
+msgid "Unable to load %s XML definition."
+msgstr "%s XML வரையறையை ஏற்ற முடியவில்லை."
+
+#: ../src/nact/nact-application.c:314
+msgid "Another instance of Caja Actions Configuration Tool is already running."
+msgstr "நாடுலஸ் செயல்கள் அமைப்பு கருவி ஒன்றூ ஏற்கெனெவே இயங்குகிறது."
+
+#. i18n: another instance is already running: second line of error message
+#: ../src/nact/nact-application.c:316
+msgid "Please switch back to it."
+msgstr "தயவு செய்து அதற்கே மாறுங்கள் "
+
+#. static const gchar *thisfn = "nact_application_appli_get_application_name";
+#. g_debug( "%s: application=%p", thisfn, ( void * ) application );
+#. i18n: this is the application name, used in window title
+#: ../src/nact/nact-application.c:376
+msgid "Caja Actions Configuration Tool"
+msgstr "நாடுலஸ் செயல்கள் அமைப்பு கருவி"
+
+#. i18n: this is the title of the confirm page of the export assistant
+#: ../src/nact/nact-assistant-export.c:717
+msgid "About to export selected actions:"
+msgstr "தேர்ந்தெடுக்கப்பட்ட செயலின் ஒரு நகலை உருவாக்கு"
+
+#. i18n: all exported actions go to one destination folder
+#: ../src/nact/nact-assistant-export.c:735
+msgid "Into the destination folder:"
+msgstr "இலக்கு கோப்புறையில்:"
+
+#: ../src/nact/nact-assistant-export.c:821
+msgid "Export canceled due to user action."
+msgstr "Export canceled due to user action."
+
+#. i18n: result of the export assistant
+#: ../src/nact/nact-assistant-export.c:848
+msgid "Selected actions have been proceeded :"
+msgstr "Selected actions have been proceeded :"
+
+#. i18n: action as been successfully exported to <filename>
+#: ../src/nact/nact-assistant-export.c:866
+msgid "Successfully exported as"
+msgstr "Successfully exported as"
+
+#: ../src/nact/nact-assistant-export.c:889
+msgid "You may not have write permissions on selected folder."
+msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்புறையில் நீங்கள் அனுமதியை எழுத முடியாது."
+
+#. i18n: The action <action_label> is about to be exported
+#: ../src/nact/nact-assistant-export-ask.c:312
+#, c-format
+msgid "The action \"%s\" is about to be exported."
+msgstr "இந்த செயலானது \"%s\" ஏற்றுமதி செய்யப்படலாம்."
+
+#. i18n: the title of the confirm page of the import assistant
+#: ../src/nact/nact-assistant-import.c:558
+msgid "About to import selected files:"
+msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்புகளை இறக்குமதி செய்யலாம்:"
+
+#. i18n: result of the import assistant
+#: ../src/nact/nact-assistant-import.c:737
+msgid "Selected files have been proceeded :"
+msgstr "Selected files have been proceeded :"
+
+#. i18n: indicate that the file has been successfully imported
+#: ../src/nact/nact-assistant-import.c:755
+msgid "Import OK"
+msgstr "OKவை இறக்குமதி செய்யவும்"
+
+#. i18n: this is the globally unique identifier and the label of the newly imported action
+#: ../src/nact/nact-assistant-import.c:761
+#, c-format
+msgid "UUID: %s\t%s"
+msgstr "UUID: %s\t%s"
+
+#. i18n: indicate that the file was not iported
+#: ../src/nact/nact-assistant-import.c:772
+msgid "Not imported"
+msgstr "இறக்குமதி செய்யப்படவில்லை"
+
+#: ../src/nact/nact-assistant-import-ask.c:306
+#, c-format
+msgid ""
+"The action \"%s\" imported from \"%s\" has the same identifiant than the "
+"already existing \"%s\"."
+msgstr ""
+"The action \"%s\" imported from \"%s\" has the same identifiant than the "
+"already existing \"%s\"."
+
+#: ../src/nact/nact.desktop.in.h:1
+msgid "Add items to the Caja popup menu"
+msgstr "நாடுலஸ் துள்ளு  பட்டியலுக்கு உருப்படிகளை சேர்"
+
+#: ../src/nact/nact.desktop.in.h:2
+msgid "Caja Actions Configuration"
+msgstr "நாடுலஸ் செயல்கள் வடிவமைப்பு"
+
+#. i18n: header of the 'label' column in the treeview
+#: ../src/nact/nact-iactions-list.c:463
+msgid "Label"
+msgstr "விளக்கச்சீட்டு"
+
+#: ../src/nact/nact-iaction-tab.c:444
+msgid "<b>Menu properties</b>"
+msgstr "<b>மெனு தன்மைகள்</b>"
+
+#: ../src/nact/nact-iaction-tab.c:446
+msgid "<b>Action properties</b>"
+msgstr "<b>செயல்பாட்டு தன்மைகள்</b>"
+
+#: ../src/nact/nact-iaction-tab.c:537
+msgid "Caution: a label is mandatory for the action or the menu."
+msgstr "Caution: a label is mandatory for the action or the menu."
+
+#. i18n notes: when no icon is selected in the drop-down list
+#: ../src/nact/nact-iaction-tab.c:713
+msgid "None"
+msgstr "ஒன்றுமில்லை"
+
+#: ../src/nact/nact-iaction-tab.c:786
+msgid "Choosing an icon"
+msgstr "ஒரு சின்னத்தை தேர்ந்தெடுக்கிறது"
+
+#. i18n notes : scheme name set for a new entry in the scheme list
+#: ../src/nact/nact-iadvanced-tab.c:568
+msgid "new-scheme"
+msgstr "புதிய-திட்டம் "
+
+#: ../src/nact/nact-iadvanced-tab.c:569
+msgid "New scheme description"
+msgstr "புதிய திட்ட விளக்கம்"
+
+#. i18n notes : description of 'file' scheme
+#: ../src/nact/nact-iadvanced-tab.c:685
+msgid "Local files"
+msgstr "உள்ளமை கோப்புகள்"
+
+#. i18n notes : description of 'sftp' scheme
+#: ../src/nact/nact-iadvanced-tab.c:687
+msgid "SSH files"
+msgstr "SSH கோப்புகள்"
+
+#. i18n notes : description of 'smb' scheme
+#: ../src/nact/nact-iadvanced-tab.c:689
+msgid "Windows files"
+msgstr "Windows கோப்புகள்"
+
+#. i18n notes : description of 'ftp' scheme
+#: ../src/nact/nact-iadvanced-tab.c:691
+msgid "FTP files"
+msgstr "FTP கோப்புகள்"
+
+#. i18n notes : description of 'dav' scheme
+#: ../src/nact/nact-iadvanced-tab.c:693
+msgid "WebDAV files"
+msgstr "Webdav கோப்புகள்"
+
+#. i18n: title of the FileChoose dialog when selecting an URI which
+#. * will be comparent to Caja 'current_folder'
+#.
+#: ../src/nact/nact-ibackground-tab.c:529
+msgid "Select a folder"
+msgstr "ஒரு கோப்புறையைத் தேர்ந்தெடு"
+
+#: ../src/nact/nact-icommand-tab.c:391
+msgid "Caution: a label is mandatory for the profile."
+msgstr "Caution: a label is mandatory for the profile."
+
+#: ../src/nact/nact-icommand-tab.c:543
+msgid "Choosing a command"
+msgstr "ஒரு கட்டளையை தேர்ந்தெடுக்கின்றது"
+
+#. i18n notes: example strings for the command preview
+#: ../src/nact/nact-icommand-tab.c:619
+msgid "/path/to"
+msgstr "/path/to"
+
+#: ../src/nact/nact-icommand-tab.c:620
+msgid "file1.txt"
+msgstr "file1.txt"
+
+#: ../src/nact/nact-icommand-tab.c:620
+msgid "file2.txt"
+msgstr "file2.txt"
+
+#: ../src/nact/nact-icommand-tab.c:621
+msgid " folder1"
+msgstr "கோப்புறை1"
+
+#: ../src/nact/nact-icommand-tab.c:621
+msgid "folder2"
+msgstr "கோப்புறை2"
+
+#: ../src/nact/nact-icommand-tab.c:622
+msgid " file1.txt"
+msgstr "கோப்பு1.txt"
+
+#: ../src/nact/nact-icommand-tab.c:622
+msgid "folder1"
+msgstr "folder1"
+
+#: ../src/nact/nact-icommand-tab.c:624
+msgid "test.example.net"
+msgstr "test.example.net"
+
+#: ../src/nact/nact-icommand-tab.c:625
+msgid "file.txt"
+msgstr "கோப்பு.txt"
+
+#: ../src/nact/nact-icommand-tab.c:626
+msgid "folder"
+msgstr "கோப்புறை"
+
+#: ../src/nact/nact-icommand-tab.c:627
+msgid "8080"
+msgstr "8080"
+
+#: ../src/nact/nact-icommand-tab.c:631
+msgid "file:///path/to/file1.text"
+msgstr "file:///path/to/file1.text"
+
+#: ../src/nact/nact-icommand-tab.c:632
+msgid "file:///path/to/file2.text"
+msgstr "file:///path/to/file2.text"
+
+#: ../src/nact/nact-icommand-tab.c:633
+msgid "file:///path/to/a/dir"
+msgstr "file:///path/to/a/dir"
+
+#: ../src/nact/nact-icommand-tab.c:634
+msgid "file:///path/to/another/dir"
+msgstr "file:///path/to/another/dir"
+
+#: ../src/nact/nact-icommand-tab.c:806
+msgid "e.g.,"
+msgstr "e.g.,"
+
+#: ../src/nact/nact-main-menubar.c:154 ../src/nact/nact-main-menubar.c:250
+msgid "_File"
+msgstr "கோப்பு (_F)"
+
+#: ../src/nact/nact-main-menubar.c:155 ../src/nact/nact-main-menubar.c:254
+msgid "_Edit"
+msgstr "திருத்து (_E)"
+
+#: ../src/nact/nact-main-menubar.c:156
+msgid "_View"
+msgstr "பார்வை (_V)"
+
+#: ../src/nact/nact-main-menubar.c:157
+msgid "_Toolbars"
+msgstr "கருவிப்பட்டிகள் (_T)"
+
+#: ../src/nact/nact-main-menubar.c:158 ../src/nact/nact-main-menubar.c:258
+msgid "_Tools"
+msgstr "கருவிகள் (_T)"
+
+#: ../src/nact/nact-main-menubar.c:159
+msgid "_Maintainer"
+msgstr "நிர்வகிப்பவர் (_M)"
+
+#: ../src/nact/nact-main-menubar.c:160 ../src/nact/nact-main-menubar.c:262
+msgid "_Help"
+msgstr "உதவி (_H)"
+
+#: ../src/nact/nact-main-menubar.c:162
+msgid "New _menu"
+msgstr "புதிய மெனு (_m)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'New menu' item
+#: ../src/nact/nact-main-menubar.c:164
+msgid "Insert a new menu at the current position"
+msgstr "நடப்பு இடத்திற்கு ஒரு புதிய மெனுவை உள்ளிடவும்"
+
+#: ../src/nact/nact-main-menubar.c:166
+msgid "_New action"
+msgstr "புதிய செயல் (_N)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'New action' item
+#: ../src/nact/nact-main-menubar.c:168
+msgid "Define a new action"
+msgstr "ஒரு புதிய செயலை வரையறு"
+
+#: ../src/nact/nact-main-menubar.c:170
+msgid "New _profile"
+msgstr "புதிய விவரக்குற்றிபு (_p)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'New profile' item
+#: ../src/nact/nact-main-menubar.c:172
+msgid "Define a new profile attached to the current action"
+msgstr "நடப்பு செயலுடன் ஒரு புதிய விவரக்குறிப்பை சேர்ப்பதை வரையறைக்கவும்"
+
+#. i18n: tooltip displayed in the status bar when selecting 'Save' item
+#: ../src/nact/nact-main-menubar.c:176
+msgid "Record all the modified actions. Invalid actions will be silently ignored"
+msgstr ""
+"மாற்றியமைக்கப்பட்ட செயல்கள் அனைத்தையும் பதிவுசெய்யவும். தவறான செயல்கள் அமைதியாக "
+"புறக்கணிக்கப்படும்"
+
+#. i18n: tooltip displayed in the status bar when selecting 'Quit' item
+#: ../src/nact/nact-main-menubar.c:180
+msgid "Quit the application"
+msgstr "பயன்பாட்டை நிறுத்து"
+
+#. i18n: tooltip displayed in the status bar when selecting the Cut item
+#: ../src/nact/nact-main-menubar.c:184
+msgid "Cut the selected item(s) to the clipboard"
+msgstr "Cut the selected item(s) to the clipboard"
+
+#. i18n: tooltip displayed in the status bar when selecting the Copy item
+#: ../src/nact/nact-main-menubar.c:188
+msgid "Copy the selected item(s) to the clipboard"
+msgstr "Copy the selected item(s) to the clipboard"
+
+#. i18n: tooltip displayed in the status bar when selecting the Paste item
+#: ../src/nact/nact-main-menubar.c:192
+msgid "Insert the content of the clipboard just before the current position"
+msgstr "Insert the content of the clipboard just before the current position"
+
+#: ../src/nact/nact-main-menubar.c:194
+msgid "Paste _into"
+msgstr "இதனுள் ஒட்டு (_i)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Paste Into item
+#: ../src/nact/nact-main-menubar.c:196
+msgid "Insert the content of the clipboard as first child of the current item"
+msgstr "Insert the content of the clipboard as first child of the current item"
+
+#: ../src/nact/nact-main-menubar.c:198
+msgid "D_uplicate"
+msgstr "போலியான (_u)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Duplicate item
+#: ../src/nact/nact-main-menubar.c:200
+msgid "Duplicate the selected item(s)"
+msgstr "தேர்ந்தெடுக்கப்பட்ட திட்டத்தை நீக்க சொடுக்கு"
+
+#. i18n: tooltip displayed in the status bar when selecting the Delete item
+#: ../src/nact/nact-main-menubar.c:204
+msgid "Delete the selected item(s)"
+msgstr "தேர்ந்தெடுக்கப்பட்ட உருப்படிக(ளை) அழ்ழிக்கவும்"
+
+#: ../src/nact/nact-main-menubar.c:206
+msgid "_Reload the list of actions"
+msgstr "செயல்களின் பட்டியலை மீளேற்றவும் (_R)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'Reload' item
+#: ../src/nact/nact-main-menubar.c:208
+msgid "Cancel your current modifications and reload the list of actions"
+msgstr "நடப்பு மாற்றங்களை ரத்துசெய்யவும் மற்றும் செயல்களின் பட்டியலை மீளேற்றவும்"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'Preferences' item
+#: ../src/nact/nact-main-menubar.c:212
+msgid "Edit your preferences"
+msgstr "உங்களது முன்னுரிமைகளை திருத்தவும்"
+
+#: ../src/nact/nact-main-menubar.c:214
+msgid "_Expand all"
+msgstr "அனைத்தையும் விரிக்கவும் (_E)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Expand all item
+#: ../src/nact/nact-main-menubar.c:216
+msgid "Entirely expand the items hierarchy"
+msgstr "hierarchy உருப்படிகள் முழுவதையும் விரிக்கவும்"
+
+#: ../src/nact/nact-main-menubar.c:218
+msgid "_Collapse all"
+msgstr "அனைத்தையும் பாழாக்கவும் (_C)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Collapse all item
+#: ../src/nact/nact-main-menubar.c:220
+msgid "Entirely collapse the items hierarchy"
+msgstr "Entirely collapse the items hierarchy"
+
+#: ../src/nact/nact-main-menubar.c:222
+msgid "_Import assistant..."
+msgstr "உதவியாளரை இறக்கு (_I)..."
+
+#. i18n: tooltip displayed in the status bar when selecting the Import item
+#: ../src/nact/nact-main-menubar.c:224
+msgid "Import one or more actions from external (XML) files into your configuration"
+msgstr "Import one or more actions from external (XML) files into your configuration"
+
+#: ../src/nact/nact-main-menubar.c:226
+msgid "E_xport assistant..."
+msgstr "உதவியாளரை ஏற்று (_x)..."
+
+#. i18n: tooltip displayed in the status bar when selecting the Export item
+#: ../src/nact/nact-main-menubar.c:228
+msgid "Export one or more actions from your configuration to external XML files"
+msgstr "Export one or more actions from your configuration to external XML files"
+
+#: ../src/nact/nact-main-menubar.c:230
+msgid "_Dump the selection"
+msgstr "_Dump the selection"
+
+#. i18n: tooltip displayed in the status bar when selecting the Dump selection item
+#: ../src/nact/nact-main-menubar.c:232
+msgid "Recursively dump selected items"
+msgstr "Recursively dump selected items"
+
+#: ../src/nact/nact-main-menubar.c:234
+msgid "_Brief tree store dump"
+msgstr "_Brief tree store dump"
+
+#. i18n: tooltip displayed in the status bar when selecting the BriefTreeStoreDump item
+#: ../src/nact/nact-main-menubar.c:236
+msgid "Briefly dump the tree store"
+msgstr "Briefly dump the tree store"
+
+#. i18n: tooltip displayed in the status bar when selecting the Help item
+#: ../src/nact/nact-main-menubar.c:240
+msgid "Display help about this program"
+msgstr "இந்த நிரலைப் பற்றிய உதவியைக் காட்டு"
+
+#. i18n: tooltip displayed in the status bar when selecting the About item
+#: ../src/nact/nact-main-menubar.c:244
+msgid "Display informations about this program"
+msgstr "இந்த நிரலைப் பற்றிய தகவலைக் காட்டு"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
+#: ../src/nact/nact-main-menubar.c:252
+msgid "Display the File toolbar"
+msgstr "கோப்பு கருவிப்பட்டியைக் காட்டு"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'View Edit toolbar' item
+#: ../src/nact/nact-main-menubar.c:256
+msgid "Display the Edit toolbar"
+msgstr "கருவிப்பட்டியைத் திருத்திக் காட்டு"
+
+#. i18n: tooltip displayed in the status bar when selecting 'View Tools toolbar' item
+#: ../src/nact/nact-main-menubar.c:260
+msgid "Display the Tools toolbar"
+msgstr "கருவிகளின் கருவிப்பட்டியைக் காட்டு"
+
+#. i18n: tooltip displayed in the status bar when selecting 'View Help toolbar' item
+#: ../src/nact/nact-main-menubar.c:264
+msgid "Display the Help toolbar"
+msgstr "உதவி கருவிப்பட்டியைக் காட்டு"
+
+#. i18n: note the space at the beginning of the sentence
+#: ../src/nact/nact-main-menubar.c:475
+#, c-format
+msgid " %d menus, %d actions, %d profiles are currently displayed"
+msgstr " %d மெனுக்கள், %d செயல்கள், %d விவரக்குறிப்புகள் நடப்பில் காட்டப்படும்"
+
+#: ../src/nact/nact-main-window.c:1212
+msgid ""
+"Reloading a fresh list of actions requires that you give up with your "
+"current modifications."
+msgstr ""
+"Reloading a fresh list of actions requires that you give up with your "
+"current modifications."
+
+#: ../src/nact/nact-main-window.c:1215
+msgid "Do you really want to do this ?"
+msgstr "நீங்கள் இதை செய்ய விரும்புகிறீர்களா ?"
+
+#: ../src/nact/nact-main-window.c:1238
+msgid ""
+"One or more actions have been modified in the filesystem.\n"
+"You could keep to work with your current list of actions, or you may want to "
+"reload a fresh one."
+msgstr ""
+"One or more actions have been modified in the filesystem.\n"
+"You could keep to work with your current list of actions, or you may want to "
+"reload a fresh one."
+
+#: ../src/nact/nact-main-window.c:1245
+msgid ""
+"Note that reloading a fresh list of actions requires that you give up with "
+"your current modifications."
+msgstr ""
+"Note that reloading a fresh list of actions requires that you give up with "
+"your current modifications."
+
+#: ../src/nact/nact-main-window.c:1251
+msgid "Do you want to reload a fresh list of actions ?"
+msgstr "ஒரு புதிய செயல்களின் பட்டியலை மீளேற்ற நீங்கள் விரும்புகிறீர்களா ?"
+
+#: ../src/nact/nact-tree-model.c:1530
+msgid "Unable to drop a profile here"
+msgstr "இங்கே ஒரு விவரக்குறிப்பை இட முடியவில்லை"
+
+#: ../src/nact/nact-tree-model.c:1531
+msgid "Unable to drop an action or a menu here"
+msgstr "ஓரு செயலை அல்லது ஒரு மெனுவை இட முடியவில்லை"
+
+#: ../src/nact/nact-window.c:237
+msgid "An error has occured when trying to save the item"
+msgstr "உருப்படியை சேமிக்க முயற்சிக்கும் போது ஒரு பிழை ஏற்பட்டது"
+
+#: ../src/nact/nact-window.c:280
+msgid "An error has occured when trying to delete the item"
+msgstr "உருப்படியை அழிக்க முயற்சிக்கும் போது ஒரு பிழை ஏற்பட்டது"
+
+#: ../src/nact/nact-window.c:336
+#, c-format
+msgid "Some items have been modified."
+msgstr "சில உருப்படிகள் மாற்றியமைக்கப்படுள்ளன."
+
+#: ../src/nact/nact-window.c:337
+msgid "Are you sure you want to quit without saving them ?"
+msgstr "அவற்றை சேமிக்காமலே நீங்கள் நிறுத்த விரும்புகிறீர்களா ?"
+
+#: ../src/nact/nact-xml-reader.c:122
+#, c-format
+msgid "Unable to parse XML file: %s."
+msgstr "XML கோட்டை இடைநிறுத்த முடியவில்லை: %s."
+
+#: ../src/nact/nact-xml-reader.c:123
+#, c-format
+msgid "Invalid XML root element: waited for '%s' or '%s', found '%s' at line %d."
+msgstr ""
+"தவறான XML ரூட் எழுத்துரு: '%s' அல்லது '%s'காக காத்திருக்கிறது, '%s'ஆனது %d கோட்டில் "
+"காணப்படும்."
+
+#: ../src/nact/nact-xml-reader.c:124
+#, c-format
+msgid "Waited for '%s' node, found (ignored) '%s' at line %d."
+msgstr ""
+"'%s' குறிப்பிற்காக காத்திருக்கிறது,(புறக்கணிக்கப்பட்ட) '%s' ஆனது %dகோட்டில் "
+"காணப்படுகிறது."
+
+#: ../src/nact/nact-xml-reader.c:125
+#, c-format
+msgid "Unexpected (ignored) '%s' node found at line %d."
+msgstr "எதிர்பாராத (புறக்கணிக்கப்பட்ட) '%s' குறிப்பு %d கோட்டில் காணப்படும்."
+
+#: ../src/nact/nact-xml-reader.c:126
+#, c-format
+msgid "Schema is ignored at line %d."
+msgstr "திட்டம் %d கோட்டில் புறக்கணிக்கப்பட்டது."
+
+#: ../src/nact/nact-xml-reader.c:127
+#, c-format
+msgid "Unexpected '%s' node found at line %d."
+msgstr "எதிர்பாராத '%s' குறிப்பு %d கோட்டில் காணப்பட்டது."
+
+#: ../src/nact/nact-xml-reader.c:128
+#, c-format
+msgid "Unexpected '%s' entry found at line %d."
+msgstr "எதிர்பாராத '%s' உள்ளீடு %d கோட்டில் காணப்பட்டது."
+
+#: ../src/nact/nact-xml-reader.c:129
+#, c-format
+msgid "Mandatory node '%s' not found."
+msgstr "அவசியமான குறிப்பு '%s' காணக்கடவில்லை."
+
+#: ../src/nact/nact-xml-reader.c:130
+msgid "No value found."
+msgstr "மதிப்பு காணப்படவில்லை."
+
+#: ../src/nact/nact-xml-reader.c:131
+#, c-format
+msgid "Invalid UUID: waited for %s, found %s at line %d."
+msgstr "தவறான UUID: %sகாக காத்திருக்கிறது, %sஆனது %d கோட்டில் காணப்படும்."
+
+#: ../src/nact/nact-xml-reader.c:132
+#, c-format
+msgid "Invalid content: waited for %s prefix, found %s at line %d."
+msgstr "தவறான உள்ளடக்கம்: %s ப்ரீபிக்ஸ்ஸிக்காக காத்திருக்கிறது, %sஆனது %dகோட்டில் காணப்படும்."
+
+#: ../src/nact/nact-xml-reader.c:133
+#, c-format
+msgid "Invalid UUID %s found at line %d."
+msgstr "தவறான UUID %s ஆனது %dகோட்டில் காணப்படும்."
+
+#: ../src/nact/nact-xml-reader.c:134
+#, c-format
+msgid "Already existing action (UUID: %s)."
+msgstr "ஏற்கனவே உள்ளிருக்கும் செயல்பாடு (UUID: %s)."
+
+#: ../src/nact/nact-xml-reader.c:135
+#, c-format
+msgid "Value '%s' already set: new value ignored at line %d."
+msgstr "மதிப்பு '%s' ஏற்கனவே அமைக்கப்பட்டுள்ளது: புதிய மதிப்பு %dகோட்டில் புறக்கணிக்கப்படும்."
+
+#: ../src/nact/nact-xml-reader.c:136
+msgid "UUID not found."
+msgstr "UUID காணப்படவில்லை."
+
+#: ../src/nact/nact-xml-reader.c:137
+msgid "Action label not found."
+msgstr "செயல்பாட்டு லேபில் காணப்படவில்லை."
+
+#: ../src/nact/nact-xml-reader.c:1342
+msgid "Action was renumbered due to user request."
+msgstr "Action was renumbered due to user request."
+
+#: ../src/nact/nact-xml-reader.c:1349
+msgid "Existing action was overriden due to user request."
+msgstr "Existing action was overriden due to user request."
+
+#: ../src/nact/nact-xml-reader.c:1358
+msgid "Import was canceled due to user request."
+msgstr "இறக்குமதி பயனரின் கோரிக்கையால் ரத்து செய்யப்பட்டது."
+
+#. i18n: the action has been renumbered during import operation
+#: ../src/nact/nact-xml-reader.c:1396
+msgid "(renumbered)"
+msgstr "(மீண்டும் எண்ணப்பட்ட)"
+
+#. i18n: label of an automagic root submenu
+#. i18n: title of the About dialog box, when seen from Caja file manager
+#: ../src/plugin/caja-actions.c:629 ../src/plugin/caja-actions.c:701
+msgid "Caja Actions"
+msgstr "நாடுலஸ் செயல்கள்"
+
+#. i18n: tooltip of an automagic root submenu
+#: ../src/plugin/caja-actions.c:631
+msgid "A submenu which embeds the currently available Caja Actions extensions"
+msgstr "A submenu which embeds the currently available Caja Actions extensions"
+
+#: ../src/plugin/caja-actions.c:678
+msgid "About Caja Actions"
+msgstr "நாடுலஸ் செயலைப் பற்றி"
+
+#: ../src/plugin/caja-actions.c:679
+msgid "Display information about Caja Actions"
+msgstr "நாடுலஸ் செயல்களைப் பற்றிய தகவலைக் காட்டு"
+
+#: ../src/runtime/na-iabout.c:177
+msgid ""
+"Caja Actions Configuration Tool is free software; you can redistribute "
+"it and/or modify it under the terms of the GNU General Public License as "
+"published by the Free Software Foundation; either version 2 of the License, "
+"or (at your option) any later version."
+msgstr ""
+"Caja Actions Configuration Tool is free software; you can redistribute "
+"it and/or modify it under the terms of the GNU General Public License as "
+"published by the Free Software Foundation; either version 2 of the License, "
+"or (at your option) any later version."
+
+#: ../src/runtime/na-iabout.c:181
+msgid ""
+"Caja Actions Configuration Tool is distributed in the hope that it will "
+"be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General "
+"Public License for more details."
+msgstr ""
+"Caja Actions Configuration Tool is distributed in the hope that it will "
+"be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General "
+"Public License for more details."
+
+#: ../src/runtime/na-iabout.c:185
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"Caja Actions Configuration Tool ; if not, write to the Free Software "
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
+"USA."
+msgstr ""
+"You should have received a copy of the GNU General Public License along with "
+"Caja Actions Configuration Tool ; if not, write to the Free Software "
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
+"USA."
+
+#: ../src/runtime/na-iabout.c:207
+msgid "A graphical interface to create and edit your Caja actions."
+msgstr "A graphical interface to create and edit your Caja actions."
+
+#: ../src/runtime/na-iabout.c:213
+msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgstr "MATE மொழிபெயர்ப்பு<mate-i18n@gnome.org>"
+
+#: ../src/runtime/na-iabout.c:254
+#, c-format
+#| msgid ""
+#| "Copyright © 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
+#| "Copyright © 2009 Pierre Wieser <pwieser@trychlos.org>"
+msgid ""
+"Copyright %s 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright %s 2009 Pierre Wieser <pwieser@trychlos.org>"
+msgstr ""
+"Copyright %s 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright %s 2009 Pierre Wieser <pwieser@trychlos.org>"
+
+#. i18n: default label for a newly created action
+#: ../src/runtime/na-object-action-fn.h:59
+msgid "New Caja action"
+msgstr "புதிய நாடுலஸ் செயல்"
+
+#. i18n: default label for a newly created menu
+#: ../src/runtime/na-object-menu-fn.h:47
+msgid "New Caja menu"
+msgstr "புதிய நாடுலஸ் மெனு"
+
+#. i18n: default label for a newly created profile
+#: ../src/runtime/na-object-profile-fn.h:54
+msgid "New profile"
+msgstr "புதிய விவரக்குறிப்பு"
+
+#: ../src/test/test-parse-uris.c:56
+#, c-format
+msgid ""
+"URIs parsing test.\n"
+"\n"
+msgstr ""
+"URIs இணைநிறுத்த சோதனை.\n"
+"\n"
+
+#: ../src/utils/caja-actions-new.c:76
+msgid "The label of the menu item (mandatory)"
+msgstr "பட்டியல் உருப்படியின் (அவசியமானது) அடையாளம் "
+
+#: ../src/utils/caja-actions-new.c:76
+#: ../src/utils/caja-actions-new.c:78
+#: ../src/utils/caja-actions-new.c:92
+msgid "<STRING>"
+msgstr "<STRING>"
+
+#: ../src/utils/caja-actions-new.c:80
+#| msgid "The icon of the menu item (filename or GTK stock ID)"
+msgid "The icon of the menu item (filename or themed icon)"
+msgstr "மெனு உருப்படியின் சின்னம் (கோப்பு பெயர் அல்லது தீம் சின்னம்)"
+
+#: ../src/utils/caja-actions-new.c:80
+msgid "<PATH|NAME>"
+msgstr "<PATH|NAME>"
+
+#: ../src/utils/caja-actions-new.c:82
+#| msgid "Whether actions should be relabeled when pasted or duplicated"
+msgid "Set it if the action should be enabled [default]"
+msgstr "செயலானது செயல்படுத்த முடியுமெனில் அதை அமைக்கவும் [default]"
+
+#: ../src/utils/caja-actions-new.c:84
+#| msgid "Whether actions should be relabeled when pasted or duplicated"
+msgid "Set it if the action should be disabled at creation"
+msgstr "உருவாக்கத்தின் போது செயல் செயல்படுத்தப்படவில்லை எனில் அதை அமைக்கவும்"
+
+#: ../src/utils/caja-actions-new.c:86
+#| msgid "Set it if the selection must only contain files"
+msgid "Set it if the action should be displayed in selection menus"
+msgstr "தேர்ந்தெடுத்தல் மெனுக்களில் செயலானது காட்டப்பட்டால் அதை அமைக்கவும்"
+
+#: ../src/utils/caja-actions-new.c:88
+#| msgid "Set it if the selection must only contain files"
+msgid "Set it if the action should be displayed in folders menus"
+msgstr "கோப்புறைகளின் மெனுக்களில் செயலானது காட்டப்பட்டால் அதை அமைக்கவும்"
+
+#: ../src/utils/caja-actions-new.c:90
+msgid "Set it if the action should be displayed in toolbar"
+msgstr "கருவிப்பட்டியில் தெரிந்தால் செயலை அமைக்கவும்"
+
+#: ../src/utils/caja-actions-new.c:92
+#| msgid "Label of the item in the toolbar"
+msgid "The label of the action item in the toolbar"
+msgstr "கருவிப்பட்டியிலுள்ள உருப்படியில் செயல்படும் லேபில்"
+
+#: ../src/utils/caja-actions-new.c:94
+#| msgid "PATH"
+msgid "<PATH>"
+msgstr "<PATH>"
+
+#: ../src/utils/caja-actions-new.c:96
+#| msgid "PARAMS"
+msgid "<PARAMETERS>"
+msgstr "<PARAMETERS>"
+
+#: ../src/utils/caja-actions-new.c:98
+#| msgid ""
+#| "A pattern to match selected files against. May include wildcards (* or ?) "
+#| "(you must set one option for each pattern you need)"
+msgid ""
+"A pattern to match selected items against. May include wildcards (* or ?). "
+"You must set one option for each pattern you need"
+msgstr ""
+"ஒரு தோற்றம் தேர்ந்தெடுக்கப்பட்ட கோப்புகளுக்கு எதிராக பொருந்த வேண்டும். ஒயில்ட் கார்ட்களை "
+"சேர்க்க வேண்டும் (* அல்லது ?) (உங்களுக்கு வேண்டிய ஒவ்வொரு தோற்றத்தில் ஒரு விருப்பத்தை "
+"அமைக்க வேண்டும்)"
+
+#: ../src/utils/caja-actions-new.c:98
+#: ../src/utils/caja-actions-new.c:102
+#| msgid "EXPR"
+msgid "<EXPR>"
+msgstr "<EXPR>"
+
+#: ../src/utils/caja-actions-new.c:100
+#| msgid "Set it if the selection can have several items"
+msgid "Set it if the previous patterns are case sensitive"
+msgstr "முந்தைய பாணிகளின் வகை நுணுக்கமாக இருந்தால் அதை அமைக்கவும்"
+
+#: ../src/utils/caja-actions-new.c:102
+#| msgid ""
+#| "A pattern to match selected files' mimetype against. May include "
+#| "wildcards (* or ?) (you must set one option for each pattern you need)"
+msgid ""
+"A pattern to match selected items mimetype against. May include wildcards (* "
+"or ?). You must set one option for each pattern you need"
+msgstr ""
+"ஒரு தோற்றம் தேர்ந்தெடுக்கப்பட்ட கோப்புகளின் mimetypeக்கு எதிராக பொருந்த வேண்டும். ஒயில்ட் "
+"கார்ட்களை சேர்க்க வேண்டும் (* அல்லது ?) (உங்களுக்கு வேண்டிய ஒவ்வொரு தோற்றத்தில் ஒரு "
+"விருப்பத்தை அமைக்க வேண்டும்)"
+
+#: ../src/utils/caja-actions-new.c:104
+msgid "Set it if the selection must only contain files"
+msgstr "தேர்ந்தெடுத்தல் கோப்புகளை கொண்டிருந்தால் அமை"
+
+#: ../src/utils/caja-actions-new.c:106
+#| msgid ""
+#| "Set it if the selection must only contain folders. Specify both '--"
+#| "isfile' and '--isdir' options is selection can contain both types of items"
+msgid ""
+"Set it if the selection must only contain folders. Specify both '--accept-"
+"files' and '--accept-dirs' options if selection can contain both types of "
+"items"
+msgstr ""
+"தேர்ந்தெடுப்பு கோப்புறைகளை மட்டும் பெற்றிருந்தால் இதை அமைக்கவும்.விருப்பங்கள் குறிப்பிட்ட "
+"இரண்டு '--accept-files' மற்றும் '--accept-dirs' உருப்படிகளின் இரண்டு வகைகளையும் பெற்றிருக்கலாம்"
+
+#: ../src/utils/caja-actions-new.c:108
+msgid "Set it if the selection can have several items"
+msgstr "பல்வேறு உருப்படிகளை தேர்ந்தெடுத்தல் கொண்டிருத்தால் அமை"
+
+#: ../src/utils/caja-actions-new.c:110
+#| msgid ""
+#| "A valid GVFS scheme where the selected files should be located (you must "
+#| "set one option for each scheme you need)"
+msgid ""
+"A valid GIO scheme where the selected files should be located. You must set "
+"one option for each scheme you need"
+msgstr ""
+"ஒரு GIO திட்டத்தில் தேர்ந்தெடுக்கப்பட்ட கோப்புகளை வைக்க வேண்டும் (இதனை நீங்கள் ஒவ்வொரு "
+"திட்டத்திற்கு வேண்டிய மட்டும் அமைக்க வேண்டும்)"
+
+#: ../src/utils/caja-actions-new.c:110
+#| msgid "SCHEME"
+msgid "<SCHEME>"
+msgstr "<SCHEME>"
+
+#: ../src/utils/caja-actions-new.c:112
+msgid ""
+"The URI of a directory for which folders or toolbar action will be "
+"displayed. You must set one option for each folder you need"
+msgstr ""
+"எந்த கோப்புறைகள் அல்லது கருவிப்பட்டி செயல் காட்டப்படுகிறதோ அதற்கான ஒரு URI அடைவு "
+". உங்களுக்கு தேவைப்படும் ஒவ்வொரு கோப்புறைக்கும் நீங்கள் ஒரு விருப்பத்ததை அமைக்கவும்"
+
+#: ../src/utils/caja-actions-new.c:112
+#: ../src/utils/caja-actions-new.c:121
+msgid "<URI>"
+msgstr "<URI>"
+
+#: ../src/utils/caja-actions-new.c:119
+#| msgid "Directly import the newly created action in MateConf configuration"
+msgid "Store the newly created action as a MateConf configuration"
+msgstr "MateConf கட்டமைப்பிற்கு புதிதாக உருவாக்கப்பட்ட செயலை சேகரிக்கவும்"
+
+#: ../src/utils/caja-actions-new.c:121
+#| msgid ""
+#| "The folder where to write the new action as a MateConf dump output [default: "
+#| "stdout]"
+msgid ""
+"The URI of the folder where to write the new action as a MateConf dump output "
+"[default: stdout]"
+msgstr ""
+"இந்த URI கோப்புறையை ஒரு புதிய MateConf அமுத்தும் வெளிப்பாடாக எங்கே எழுத வேண்டும் "
+"[default: stdout]"
+
+#: ../src/utils/caja-actions-new.c:128
+#: ../src/utils/caja-actions-schemas.c:64
+#| msgid "Output the schema on stdout"
+msgid "Output the version number"
+msgstr "வெளிப்பாடு பதிப்பு எண்"
+
+#: ../src/utils/caja-actions-new.c:163
+#: ../src/utils/caja-actions-schemas.c:97
+#, c-format
+msgid "Syntax error: %s\n"
+msgstr "Syntax பிழை: %s\n"
+
+#: ../src/utils/caja-actions-new.c:176
+#, c-format
+msgid "Error: an action label is mandatory.\n"
+msgstr "Error: an action label is mandatory.\n"
+
+#: ../src/utils/caja-actions-new.c:181
+#, c-format
+#| msgid "Error: only one output option may be specified.\n"
+msgid "Error: '--enabled' and '--disabled' options cannot both be specified.\n"
+msgstr "பிழை: ஒரே ஒரு வெளிப்பாடு மட்டும் குறிப்பிடப்படலாம்.\n"
+
+#: ../src/utils/caja-actions-new.c:188
+#, c-format
+msgid "Error: only one output option may be specified.\n"
+msgstr "பிழை: ஒரே ஒரு வெளிப்பாடு மட்டும் குறிப்பிடப்படலாம்.\n"
+
+#. i18n: Action <action_label> written to...
+#: ../src/utils/caja-actions-new.c:201
+#, c-format
+msgid "Action '%s' succesfully written to MateConf configuration.\n"
+msgstr "செயல் '%s' தானாகவே MateConf கட்டமைப்புக்கு எழுதுகிறது.\n"
+
+#. i18n: Action <action_label> written to <output_filename>...
+#: ../src/utils/caja-actions-new.c:208
+#, c-format
+msgid "Action '%s' succesfully written to %s, and ready to be imported in NACT.\n"
+msgstr "செயல் '%s' தானாகவே %sக்கு எழுதுகிறது, NACTல் இறக்குமதியில் செய்ய தயாராகுகிறது.\n"
+
+#: ../src/utils/caja-actions-new.c:238
+msgid ""
+"Define a new action.\n"
+"\n"
+"  The created action defaults to be written to stdout.\n"
+"  It can also be written to an output folder, in a file later suitable for "
+"an import in NACT.\n"
+"  Or you may choose to directly write the action into your MateConf "
+"configuration."
+msgstr ""
+"Define a new action.\n"
+"\n"
+"  The created action defaults to be written to stdout.\n"
+"  It can also be written to an output folder, in a file later suitable for "
+"an import in NACT.\n"
+"  Or you may choose to directly write the action into your MateConf "
+"configuration."
+
+#: ../src/utils/caja-actions-new.c:255
+#: ../src/utils/caja-actions-schemas.c:165
+msgid ""
+"Bug reports are welcomed at http://bugzilla.gnome.org, or you may prefer to "
+"mail to <maintainer@caja-actions.org>.\n"
+msgstr ""
+"Bug reports are welcomed at http://bugzilla.gnome.org, or you may prefer to "
+"mail to <maintainer@caja-actions.org>.\n"
+
+#: ../src/utils/caja-actions-new.c:263
+msgid "Output of the program"
+msgstr "நிரலின் வெளிப்பாடு"
+
+#: ../src/utils/caja-actions-new.c:263
+msgid "Choose where the program creates the action"
+msgstr "எங்கே நிரல் செயலை உருவாக்குகிறதோ அங்கே தேர்ந்தெடுக்கவும்"
+
+#: ../src/utils/caja-actions-new.c:268
+#: ../src/utils/caja-actions-schemas.c:173
+msgid "Miscellaneous options"
+msgstr "மற்ற விருப்பங்கள்"
+
+#: ../src/utils/caja-actions-new.c:394
+#: ../src/utils/caja-actions-schemas.c:280
+#, c-format
+msgid "Try %s --help for usage.\n"
+msgstr "%sஐ --பயன்படுத்துவதற்கு உதவ முயற்சிக்கவும்.\n"
+
+#. { "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_mateconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
+#. { "output-filename"      , 'o', 0, G_OPTION_ARG_FILENAME, &output_fname   , N_("The file where to write the MateConf schema ('-' for stdout)"), N_("FILENAME") },
+#: ../src/utils/caja-actions-schemas.c:57
+msgid "Output the schema on stdout"
+msgstr "Output the schema on stdout"
+
+#: ../src/utils/caja-actions-schemas.c:148
+msgid "Output the Caja Actions MateConf schema on stdout."
+msgstr "Caja Actions MateConf திட்டத்தின் வெளிப்பாட்டின் stdout."
+
