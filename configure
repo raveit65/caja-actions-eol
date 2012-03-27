@@ -14230,6 +14230,7 @@ if test -n "$CAJA_ACTIONS_CFLAGS"; then
 	libxml-2.0				>= \${LIBXML_REQUIRED}		\\
 	libcaja-extension	>= \${CAJA_EXTENSION}	\\
 	sm						>= 1.0.0					\\
+	ice													\\
 	uuid												\\
 	unique-1.0											\\
 	dbus-glib-1
@@ -14242,6 +14243,7 @@ if test -n "$CAJA_ACTIONS_CFLAGS"; then
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -14257,6 +14259,7 @@ if test -n "$CAJA_ACTIONS_CFLAGS"; then
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -14279,6 +14282,7 @@ if test -n "$CAJA_ACTIONS_LIBS"; then
 	libxml-2.0				>= \${LIBXML_REQUIRED}		\\
 	libcaja-extension	>= \${CAJA_EXTENSION}	\\
 	sm						>= 1.0.0					\\
+	ice													\\
 	uuid												\\
 	unique-1.0											\\
 	dbus-glib-1
@@ -14291,6 +14295,7 @@ if test -n "$CAJA_ACTIONS_LIBS"; then
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -14306,6 +14311,7 @@ if test -n "$CAJA_ACTIONS_LIBS"; then
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -14335,6 +14341,7 @@ fi
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -14348,6 +14355,7 @@ fi
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -14364,6 +14372,7 @@ fi
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -14386,6 +14395,7 @@ $as_echo "$as_me: error: Package requirements (\
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -17150,4 +17160,3 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { $as_echo "$as_me:$LINENO: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
-
