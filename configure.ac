@@ -144,6 +144,7 @@ PKG_CHECK_MODULES([CAJA_ACTIONS], \
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
+	ice												\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
