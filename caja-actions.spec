@@ -57,7 +57,6 @@ desktop-file-install --delete-original			\
 	--remove-category FileManager			\
 	--add-category X-MATE				\
 	--add-category Settings				\
-	--add-only-show-in X-MATE			\
 	%{buildroot}%{_datadir}/applications/cact.desktop
 
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
