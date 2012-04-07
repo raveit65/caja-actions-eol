@@ -28,7 +28,7 @@
 
 AC_PREREQ([2.53])
 
-AC_INIT([Caja-Actions],[1.1.0],[maintainer@caja-actions.org])
+AC_INIT([Caja-Actions],[1.2.0],[maintainer@caja-actions.org])
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE
 

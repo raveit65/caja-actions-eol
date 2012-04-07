@@ -1,7 +1,7 @@
 Summary:	Caja extension for customizing the context menu
 Name:		caja-actions
-Version:	1.1.0
-Release:	3%{?dist}
+Version:	1.2.0
+Release:	1%{?dist}
 Group:		User Interface/Desktops
 License:	GPLv2+
 URL:		http://www.grumz.net/node/8
@@ -100,8 +100,8 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_includedir}/%{name}/
 
 %changelog
-* Sat Apr 07 2012 Wolfgang Ulbrich <info@raveit.de> - 1.1.0-3
-- test build
+* Sat Apr 07 2012 Wolfgang Ulbrich <info@raveit.de> - 1.2.0-1
+- rename nact to cact
 
 * Tue Mar 27 2012 Wolfgang Ulbrich <info@raveit.de> - 1.1.0-2
 - fix dso linking ICE error for fc17
