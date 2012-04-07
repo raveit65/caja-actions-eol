@@ -1,11 +1,12 @@
 Summary:	Caja extension for customizing the context menu
 Name:		caja-actions
 Version:	1.1.0
-Release:	1%{?dist}
+Release:	3%{?dist}
 Group:		User Interface/Desktops
 License:	GPLv2+
 URL:		http://www.grumz.net/node/8
 Source0:	%{name}-%{version}.tar.gz
+
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	caja-devel dbus-glib-devel libxml2-devel mate-conf-devel
 BuildRequires:	libuuid-devel, unique-devel, libSM-devel
@@ -36,24 +37,28 @@ with caja-actions.
 %setup -q
 
 %build
-%configure --disable-schemas-install --enable-compile-warnings=minimum
+%configure --disable-schemas-install \
+	--enable-compile-warnings=minimum
+
 make %{?_smp_mflags} 
 
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
-#rm -rf %{buildroot}%{_datadir}/applications/fedora-nact.desktop
+#rm -rf %{buildroot}%{_datadir}/applications/nact.desktop
 
-#desktop-file-install --delete-original			\
-#	--vendor fedora					\
-#	--dir %{buildroot}%{_datadir}/applications	\
-#	--mode 0644					\
-#	--remove-category Application			\
-#	--remove-category AdvancedSettings		\
-#	--add-category MATE				\
-#	--add-category Settings				\
-#	%{buildroot}%{_datadir}/applications/nact.desktop
+desktop-file-install --delete-original			\
+	--vendor mate					\
+	--dir %{buildroot}%{_datadir}/applications	\
+	--mode 0644					\
+	--remove-category Application			\
+	--remove-category AdvancedSettings		\
+	--remove-category FileManager			\
+	--add-category X-MATE				\
+	--add-category Settings				\
+	--add-only-show-in X-MATE			\
+	%{buildroot}%{_datadir}/applications/cact.desktop
 
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
@@ -88,13 +93,19 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_libdir}/caja/extensions-2.0/libcaja-actions-tracker.so
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/caja-actions.*
-%{_datadir}/applications/nact.desktop
+%{_datadir}/applications/mate-cact.desktop
 
 %files devel
 %defattr(-,root,root,-)
 %{_includedir}/%{name}/
 
 %changelog
+* Sat Apr 07 2012 Wolfgang Ulbrich <info@raveit.de> - 1.1.0-3
+- test build
+
+* Tue Mar 27 2012 Wolfgang Ulbrich <info@raveit.de> - 1.1.0-2
+- fix dso linking ICE error for fc17
+
 * Sun Feb 12 2012 Wolfgang Ulbrich <info@raveit.de> - 1.1.0-1
 - change version to mate release version
 

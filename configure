@@ -795,7 +795,7 @@ NA_LOGDOMAIN_UTILS
 NA_LOGDOMAIN_TEST
 NA_LOGDOMAIN_PLUGIN_TRACKER
 NA_LOGDOMAIN_PLUGIN_MENU
-NA_LOGDOMAIN_NACT
+NA_LOGDOMAIN_CACT
 NA_LOGDOMAIN_CORE
 NA_LOGDOMAIN_IO_XML
 NA_LOGDOMAIN_IO_MATECONF
@@ -2775,7 +2775,7 @@ am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'
 ac_config_headers="$ac_config_headers src/config.h"
 
 
-ac_config_files="$ac_config_files Makefile data/Makefile doc/Makefile m4/Makefile icons/Makefile icons/16x16/Makefile icons/22x22/Makefile icons/32x32/Makefile icons/48x48/Makefile icons/scalable/Makefile src/Makefile src/api/Makefile src/core/Makefile src/io-desktop/Makefile src/io-mateconf/Makefile src/io-xml/Makefile src/plugin-menu/Makefile src/plugin-tracker/Makefile src/nact/Makefile src/test/Makefile src/utils/Makefile po/Makefile.in"
+ac_config_files="$ac_config_files Makefile data/Makefile doc/Makefile m4/Makefile icons/Makefile icons/16x16/Makefile icons/22x22/Makefile icons/32x32/Makefile icons/48x48/Makefile icons/scalable/Makefile src/Makefile src/api/Makefile src/core/Makefile src/io-desktop/Makefile src/io-mateconf/Makefile src/io-xml/Makefile src/plugin-menu/Makefile src/plugin-tracker/Makefile src/cact/Makefile src/test/Makefile src/utils/Makefile po/Makefile.in"
 
 
 
@@ -14037,9 +14037,9 @@ fi
 # GLib >= 2.16: GVFS/GIO
 # Gtk  >= 2.12: GtkBuilder
 #
-# [nact-assistant] remove work-around for #589745 when Gtk+ >= 2.18
-# [nact-main-tab.c] remove test on gtk_version when Gtk >= 2.18
-# [nact-main-menubar] GtkActivatable only available starting with Gtk+ 2.16
+# [cact-assistant] remove work-around for #589745 when Gtk+ >= 2.18
+# [cact-main-tab.c] remove test on gtk_version when Gtk >= 2.18
+# [cact-main-menubar] GtkActivatable only available starting with Gtk+ 2.16
 # [configure.ac, caja-actions.c] remove test for
 # caja_menu_provider_emit_items_updated_signal() when Mate >= 2.16
 #
@@ -14479,11 +14479,11 @@ cat >>confdefs.h <<_ACEOF
 _ACEOF
 
 
-	NA_LOGDOMAIN_NACT=NA-nact
+	NA_LOGDOMAIN_CACT=NA-cact
 
 
 cat >>confdefs.h <<_ACEOF
-#define NA_LOGDOMAIN_NACT "NA-nact"
+#define NA_LOGDOMAIN_CACT "NA-cact"
 _ACEOF
 
 
@@ -14526,34 +14526,34 @@ _ACEOF
 
 # Check whether --with-caja-extdir was given.
 if test "${with_caja_extdir+set}" = set; then
-  withval=$with_caja_extdir; ac_with_nact_caja_extdir=$withval
+  withval=$with_caja_extdir; ac_with_cact_caja_extdir=$withval
 else
-  ac_with_nact_caja_extdir=""
+  ac_with_cact_caja_extdir=""
 
 fi
 
 
 
-	if test "${ac_with_nact_caja_extdir}" = ""; then
+	if test "${ac_with_cact_caja_extdir}" = ""; then
 		if test "{PKG_CONFIG}" != ""; then
-			ac_with_nact_caja_extdir=`${PKG_CONFIG} --variable=extensiondir libcaja-extension`
+			ac_with_cact_caja_extdir=`${PKG_CONFIG} --variable=extensiondir libcaja-extension`
 		fi
 	fi
 
 
-			if test "${ac_with_nact_caja_extdir}" = ""; then
+			if test "${ac_with_cact_caja_extdir}" = ""; then
 		{ { $as_echo "$as_me:$LINENO: error: Unable to determine caja extension folder, please use --with-caja-extdir option" >&5
 $as_echo "$as_me: error: Unable to determine caja extension folder, please use --with-caja-extdir option" >&2;}
    { (exit 1); exit 1; }; }
 	else
-		{ $as_echo "$as_me:$LINENO: installing plugin in ${ac_with_nact_caja_extdir}" >&5
-$as_echo "$as_me: installing plugin in ${ac_with_nact_caja_extdir}" >&6;}
-		CAJA_EXTENSIONS_DIR=${ac_with_nact_caja_extdir}
+		{ $as_echo "$as_me:$LINENO: installing plugin in ${ac_with_cact_caja_extdir}" >&5
+$as_echo "$as_me: installing plugin in ${ac_with_cact_caja_extdir}" >&6;}
+		CAJA_EXTENSIONS_DIR=${ac_with_cact_caja_extdir}
 
 	fi
 
 
-# define NACT_MAINTAINER_MODE variable
+# define CACT_MAINTAINER_MODE variable
 
 	if test "${USE_MAINTAINER_MODE}" = "yes"; then
 
@@ -15662,7 +15662,7 @@ do
     "src/io-xml/Makefile") CONFIG_FILES="$CONFIG_FILES src/io-xml/Makefile" ;;
     "src/plugin-menu/Makefile") CONFIG_FILES="$CONFIG_FILES src/plugin-menu/Makefile" ;;
     "src/plugin-tracker/Makefile") CONFIG_FILES="$CONFIG_FILES src/plugin-tracker/Makefile" ;;
-    "src/nact/Makefile") CONFIG_FILES="$CONFIG_FILES src/nact/Makefile" ;;
+    "src/cact/Makefile") CONFIG_FILES="$CONFIG_FILES src/cact/Makefile" ;;
     "src/test/Makefile") CONFIG_FILES="$CONFIG_FILES src/test/Makefile" ;;
     "src/utils/Makefile") CONFIG_FILES="$CONFIG_FILES src/utils/Makefile" ;;
     "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
@@ -17160,3 +17160,4 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { $as_echo "$as_me:$LINENO: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
+

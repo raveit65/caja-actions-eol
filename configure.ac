@@ -55,7 +55,7 @@ AC_CONFIG_FILES([
 	src/io-xml/Makefile
 	src/plugin-menu/Makefile
 	src/plugin-tracker/Makefile
-	src/nact/Makefile
+	src/cact/Makefile
 	src/test/Makefile
 	src/utils/Makefile
 	po/Makefile.in
@@ -118,9 +118,9 @@ AM_MATECONF_SOURCE_2
 # GLib >= 2.16: GVFS/GIO
 # Gtk  >= 2.12: GtkBuilder
 #
-# [nact-assistant] remove work-around for #589745 when Gtk+ >= 2.18
-# [nact-main-tab.c] remove test on gtk_version when Gtk >= 2.18
-# [nact-main-menubar] GtkActivatable only available starting with Gtk+ 2.16
+# [cact-assistant] remove work-around for #589745 when Gtk+ >= 2.18
+# [cact-main-tab.c] remove test on gtk_version when Gtk >= 2.18
+# [cact-main-menubar] GtkActivatable only available starting with Gtk+ 2.16
 # [configure.ac, caja-actions.c] remove test for
 # caja_menu_provider_emit_items_updated_signal() when Mate >= 2.16
 #
@@ -144,7 +144,7 @@ PKG_CHECK_MODULES([CAJA_ACTIONS], \
 	libxml-2.0				>= ${LIBXML_REQUIRED}		\
 	libcaja-extension	>= ${CAJA_EXTENSION}	\
 	sm						>= 1.0.0					\
-	ice												\
+	ice													\
 	uuid												\
 	unique-1.0											\
 	dbus-glib-1
@@ -159,7 +159,7 @@ NA_LOG_DOMAINS
 # a non-standard location ; lets specify this here
 NA_CAJA_EXTDIR
 
-# define NACT_MAINTAINER_MODE variable
+# define CACT_MAINTAINER_MODE variable
 NA_IS_MAINTAINER_MODE
 
 # Check for menu update function

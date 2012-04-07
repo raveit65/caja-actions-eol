@@ -32,7 +32,7 @@ SUBDIRS = \
 	io-desktop							\
 	io-mateconf							\
 	io-xml								\
-	nact								\
+	cact								\
 	plugin-menu							\
 	plugin-tracker						\
 	test								\

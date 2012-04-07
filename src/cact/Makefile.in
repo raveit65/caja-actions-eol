@@ -43,6 +43,7 @@
 #   Pierre Wieser <pwieser@trychlos.org>
 #   ... and many others (see AUTHORS)
 
+
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
@@ -63,8 +64,9 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-subdir = src/plugin-menu
-DIST_COMMON = README $(srcdir)/Makefile.am $(srcdir)/Makefile.in
+bin_PROGRAMS = caja-actions-config-tool$(EXEEXT)
+subdir = src/cact
+DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/intltool.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
@@ -81,6 +83,57 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(applicationsdir)" \
+	"$(DESTDIR)$(pkgdatadir)"
+PROGRAMS = $(bin_PROGRAMS)
+am__objects_1 = cact-marshal.$(OBJEXT)
+am_caja_actions_config_tool_OBJECTS = base-application.$(OBJEXT) \
+	base-assistant.$(OBJEXT) base-builder.$(OBJEXT) \
+	base-dialog.$(OBJEXT) base-iprefs.$(OBJEXT) \
+	base-window.$(OBJEXT) egg-desktop-file.$(OBJEXT) \
+	egg-sm-client.$(OBJEXT) egg-sm-client-xsmp.$(OBJEXT) \
+	egg-tree-multi-dnd.$(OBJEXT) cact-application.$(OBJEXT) \
+	cact-assistant-export.$(OBJEXT) \
+	cact-assistant-import.$(OBJEXT) cact-clipboard.$(OBJEXT) \
+	cact-confirm-logout.$(OBJEXT) cact-export-ask.$(OBJEXT) \
+	cact-export-format.$(OBJEXT) cact-gtk-utils.$(OBJEXT) \
+	cact-iactions-list.$(OBJEXT) cact-iactions-list-bis.$(OBJEXT) \
+	cact-iactions-list-priv.$(OBJEXT) cact-iaction-tab.$(OBJEXT) \
+	cact-iadvanced-tab.$(OBJEXT) cact-ifolders-tab.$(OBJEXT) \
+	cact-icommand-tab.$(OBJEXT) cact-iconditions-tab.$(OBJEXT) \
+	cact-iprefs.$(OBJEXT) cact-main.$(OBJEXT) \
+	cact-main-menubar.$(OBJEXT) cact-main-menubar-edit.$(OBJEXT) \
+	cact-main-menubar-file.$(OBJEXT) \
+	cact-main-menubar-help.$(OBJEXT) \
+	cact-main-menubar-maintainer.$(OBJEXT) \
+	cact-main-menubar-tools.$(OBJEXT) \
+	cact-main-menubar-view.$(OBJEXT) cact-main-statusbar.$(OBJEXT) \
+	cact-main-tab.$(OBJEXT) cact-main-toolbar.$(OBJEXT) \
+	cact-main-window.$(OBJEXT) cact-preferences-editor.$(OBJEXT) \
+	cact-providers-list.$(OBJEXT) cact-schemes-list.$(OBJEXT) \
+	cact-sort-buttons.$(OBJEXT) cact-tree-model.$(OBJEXT) \
+	cact-tree-model-dnd.$(OBJEXT) cact-window.$(OBJEXT) \
+	$(am__objects_1)
+caja_actions_config_tool_OBJECTS =  \
+	$(am_caja_actions_config_tool_OBJECTS)
+am__DEPENDENCIES_1 =
+caja_actions_config_tool_DEPENDENCIES =  \
+	$(top_builddir)/src/core/libna-core.la $(am__DEPENDENCIES_1)
+DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/src
+depcomp = $(SHELL) $(top_srcdir)/depcomp
+am__depfiles_maybe = depfiles
+am__mv = mv -f
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
+SOURCES = $(caja_actions_config_tool_SOURCES)
+DIST_SOURCES = $(caja_actions_config_tool_SOURCES)
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -102,34 +155,7 @@ am__nobase_list = $(am__nobase_strip_setup); \
 am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__installdirs = "$(DESTDIR)$(caja_extensiondir)"
-LTLIBRARIES = $(caja_extension_LTLIBRARIES)
-am__DEPENDENCIES_1 =
-libcaja_actions_menu_la_DEPENDENCIES =  \
-	$(top_builddir)/src/core/libna-core.la $(am__DEPENDENCIES_1)
-am_libcaja_actions_menu_la_OBJECTS = caja-module.lo \
-	caja-actions.lo
-libcaja_actions_menu_la_OBJECTS =  \
-	$(am_libcaja_actions_menu_la_OBJECTS)
-libcaja_actions_menu_la_LINK = $(LIBTOOL) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(AM_CFLAGS) $(CFLAGS) $(libcaja_actions_menu_la_LDFLAGS) \
-	$(LDFLAGS) -o $@
-DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/src
-depcomp = $(SHELL) $(top_srcdir)/depcomp
-am__depfiles_maybe = depfiles
-am__mv = mv -f
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-CCLD = $(CC)
-LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
-	$(LDFLAGS) -o $@
-SOURCES = $(libcaja_actions_menu_la_SOURCES)
-DIST_SOURCES = $(libcaja_actions_menu_la_SOURCES)
+DATA = $(applications_DATA) $(pkgdata_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -139,8 +165,10 @@ ALL_LINGUAS = @ALL_LINGUAS@
 AMTAR = @AMTAR@
 AM_CFLAGS = @AM_CFLAGS@
 AM_CPPFLAGS = @AM_CPPFLAGS@ -I $(top_srcdir) -I $(top_srcdir)/src \
-	-DG_LOG_DOMAIN=\"${NA_LOGDOMAIN_PLUGIN_MENU}\" \
-	$(CAJA_ACTIONS_CFLAGS) $(NULL)
+	-DMATELOCALEDIR=\""$(datadir)/locale"\" \
+	-DPKGDATADIR=\"$(pkgdatadir)\" \
+	-DG_LOG_DOMAIN=\"${NA_LOGDOMAIN_CACT}\" \
+	$(egg_platform_defines) $(CAJA_ACTIONS_CFLAGS) $(NULL)
 AR = @AR@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
@@ -295,26 +323,141 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-caja_extensiondir = $(CAJA_EXTENSIONS_DIR)
-caja_extension_LTLIBRARIES = libcaja-actions-menu.la
-libcaja_actions_menu_la_SOURCES = \
-	caja-module.c											\
-	caja-actions.c											\
-	caja-actions.h											\
+egg_platform_defines = -DEGG_SM_CLIENT_BACKEND_XSMP
+BUILT_SOURCES = \
+	cact-marshal.c										\
+	cact-marshal.h										\
 	$(NULL)
 
-libcaja_actions_menu_la_LIBADD = \
-	$(top_builddir)/src/core/libna-core.la						\
-	$(CAJA_ACTIONS_LIBS)									\
+caja_actions_config_tool_SOURCES = \
+	base-application.c									\
+	base-application.h									\
+	base-application-class.h							\
+	base-assistant.c									\
+	base-assistant.h									\
+	base-builder.c										\
+	base-builder.h										\
+	base-dialog.c										\
+	base-dialog.h										\
+	base-iprefs.c										\
+	base-iprefs.h										\
+	base-window.c										\
+	base-window.h										\
+	base-window-class.h									\
+	egg-desktop-file.c									\
+	egg-desktop-file.h									\
+	egg-sm-client.c										\
+	egg-sm-client.h										\
+	egg-sm-client-private.h								\
+	egg-sm-client-xsmp.c								\
+	egg-tree-multi-dnd.c								\
+	egg-tree-multi-dnd.h								\
+	cact-application.c									\
+	cact-application.h									\
+	cact-assistant-export.c								\
+	cact-assistant-export.h								\
+	cact-assistant-import.c								\
+	cact-assistant-import.h								\
+	cact-clipboard.c									\
+	cact-clipboard.h									\
+	cact-confirm-logout.c								\
+	cact-confirm-logout.h								\
+	cact-export-ask.c									\
+	cact-export-ask.h									\
+	cact-export-format.c								\
+	cact-export-format.h								\
+	cact-gtk-utils.c									\
+	cact-gtk-utils.h									\
+	cact-iactions-list.c								\
+	cact-iactions-list.h								\
+	cact-iactions-list-bis.c							\
+	cact-iactions-list-priv.c							\
+	cact-iactions-list-priv.h							\
+	cact-iaction-tab.c									\
+	cact-iaction-tab.h									\
+	cact-iadvanced-tab.c								\
+	cact-iadvanced-tab.h								\
+	cact-ifolders-tab.c									\
+	cact-ifolders-tab.h									\
+	cact-icommand-tab.c									\
+	cact-icommand-tab.h									\
+	cact-iconditions-tab.c								\
+	cact-iconditions-tab.h								\
+	cact-iprefs.c										\
+	cact-iprefs.h										\
+	cact-main.c											\
+	cact-main-menubar.c									\
+	cact-main-menubar.h									\
+	cact-main-menubar-edit.c							\
+	cact-main-menubar-edit.h							\
+	cact-main-menubar-file.c							\
+	cact-main-menubar-file.h							\
+	cact-main-menubar-help.c							\
+	cact-main-menubar-help.h							\
+	cact-main-menubar-maintainer.c						\
+	cact-main-menubar-maintainer.h						\
+	cact-main-menubar-tools.c							\
+	cact-main-menubar-tools.h							\
+	cact-main-menubar-view.c							\
+	cact-main-menubar-view.h							\
+	cact-main-statusbar.c								\
+	cact-main-statusbar.h								\
+	cact-main-tab.c										\
+	cact-main-tab.h										\
+	cact-main-toolbar.c									\
+	cact-main-toolbar.h									\
+	cact-main-window.c									\
+	cact-main-window.h									\
+	cact-preferences-editor.c							\
+	cact-preferences-editor.h							\
+	cact-providers-list.c								\
+	cact-providers-list.h								\
+	cact-schemes-list.c									\
+	cact-schemes-list.h									\
+	cact-sort-buttons.c									\
+	cact-sort-buttons.h									\
+	cact-tree-model.c									\
+	cact-tree-model.h									\
+	cact-tree-model-dnd.c								\
+	cact-tree-model-dnd.h								\
+	cact-tree-model-priv.h								\
+	cact-window.c										\
+	cact-window.h										\
+	$(BUILT_SOURCES)									\
 	$(NULL)
 
-libcaja_actions_menu_la_LDFLAGS = \
-	-module 													\
-	-no-undefined												\
-	-avoid-version												\
+caja_actions_config_tool_LDADD = \
+	$(top_builddir)/src/core/libna-core.la				\
+	$(CAJA_ACTIONS_LIBS)							\
 	$(NULL)
 
-all: all-am
+pkgdata_DATA = \
+	caja-actions-config-tool.actions				\
+	caja-actions-maintainer.actions					\
+	cact-assistant-export.ui							\
+	cact-preferences.ui									\
+	caja-actions-config-tool.ui						\
+	locked.png											\
+	transparent.png										\
+	$(NULL)
+
+applications_in_files = cact.desktop.in
+applications_files = $(applications_in_files:.desktop.in=.desktop)
+applicationsdir = $(datadir)/applications
+applications_DATA = $(applications_files)
+CLEANFILES = \
+	$(applications_files)								\
+	$(BUILT_SOURCES)									\
+	$(NULL)
+
+EXTRA_DIST = \
+	$(applications_in_files)							\
+	$(pkgdata_DATA)										\
+	cact-marshal.list									\
+	$(NULL)
+
+all: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) all-am
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o .obj
@@ -327,9 +470,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/plugin-menu/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/cact/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/plugin-menu/Makefile
+	  $(AUTOMAKE) --gnu src/cact/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -348,39 +491,52 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
-install-caja_extensionLTLIBRARIES: $(caja_extension_LTLIBRARIES)
+install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
-	test -z "$(caja_extensiondir)" || $(MKDIR_P) "$(DESTDIR)$(caja_extensiondir)"
-	@list='$(caja_extension_LTLIBRARIES)'; test -n "$(caja_extensiondir)" || list=; \
-	list2=; for p in $$list; do \
-	  if test -f $$p; then \
-	    list2="$$list2 $$p"; \
-	  else :; fi; \
-	done; \
-	test -z "$$list2" || { \
-	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 '$(DESTDIR)$(caja_extensiondir)'"; \
-	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 "$(DESTDIR)$(caja_extensiondir)"; \
-	}
+	test -z "$(bindir)" || $(MKDIR_P) "$(DESTDIR)$(bindir)"
+	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+	for p in $$list; do echo "$$p $$p"; done | \
+	sed 's/$(EXEEXT)$$//' | \
+	while read p p1; do if test -f $$p || test -f $$p1; \
+	  then echo "$$p"; echo "$$p"; else :; fi; \
+	done | \
+	sed -e 'p;s,.*/,,;n;h' -e 's|.*|.|' \
+	    -e 'p;x;s,.*/,,;s/$(EXEEXT)$$//;$(transform);s/$$/$(EXEEXT)/' | \
+	sed 'N;N;N;s,\n, ,g' | \
+	$(AWK) 'BEGIN { files["."] = ""; dirs["."] = 1 } \
+	  { d=$$3; if (dirs[d] != 1) { print "d", d; dirs[d] = 1 } \
+	    if ($$2 == $$4) files[d] = files[d] " " $$1; \
+	    else { print "f", $$3 "/" $$4, $$1; } } \
+	  END { for (d in files) print "f", d, files[d] }' | \
+	while read type dir files; do \
+	    if test "$$dir" = .; then dir=; else dir=/$$dir; fi; \
+	    test -z "$$files" || { \
+	    echo " $(INSTALL_PROGRAM_ENV) $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL_PROGRAM) $$files '$(DESTDIR)$(bindir)$$dir'"; \
+	    $(INSTALL_PROGRAM_ENV) $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL_PROGRAM) $$files "$(DESTDIR)$(bindir)$$dir" || exit $$?; \
+	    } \
+	; done
 
-uninstall-caja_extensionLTLIBRARIES:
+uninstall-binPROGRAMS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(caja_extension_LTLIBRARIES)'; test -n "$(caja_extensiondir)" || list=; \
-	for p in $$list; do \
-	  $(am__strip_dir) \
-	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f '$(DESTDIR)$(caja_extensiondir)/$$f'"; \
-	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f "$(DESTDIR)$(caja_extensiondir)/$$f"; \
-	done
+	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+	files=`for p in $$list; do echo "$$p"; done | \
+	  sed -e 'h;s,^.*/,,;s/$(EXEEXT)$$//;$(transform)' \
+	      -e 's/$$/$(EXEEXT)/' `; \
+	test -n "$$list" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(bindir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(bindir)" && rm -f $$files
 
-clean-caja_extensionLTLIBRARIES:
-	-test -z "$(caja_extension_LTLIBRARIES)" || rm -f $(caja_extension_LTLIBRARIES)
-	@list='$(caja_extension_LTLIBRARIES)'; for p in $$list; do \
-	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
-	  test "$$dir" != "$$p" || dir=.; \
-	  echo "rm -f \"$${dir}/so_locations\""; \
-	  rm -f "$${dir}/so_locations"; \
-	done
-libcaja-actions-menu.la: $(libcaja_actions_menu_la_OBJECTS) $(libcaja_actions_menu_la_DEPENDENCIES) 
-	$(libcaja_actions_menu_la_LINK) -rpath $(caja_extensiondir) $(libcaja_actions_menu_la_OBJECTS) $(libcaja_actions_menu_la_LIBADD) $(LIBS)
+clean-binPROGRAMS:
+	@list='$(bin_PROGRAMS)'; test -n "$$list" || exit 0; \
+	echo " rm -f" $$list; \
+	rm -f $$list || exit $$?; \
+	test -n "$(EXEEXT)" || exit 0; \
+	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
+	echo " rm -f" $$list; \
+	rm -f $$list
+caja-actions-config-tool$(EXEEXT): $(caja_actions_config_tool_OBJECTS) $(caja_actions_config_tool_DEPENDENCIES) 
+	@rm -f caja-actions-config-tool$(EXEEXT)
+	$(LINK) $(caja_actions_config_tool_OBJECTS) $(caja_actions_config_tool_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -388,8 +544,53 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/caja-actions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/caja-module.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/base-application.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/base-assistant.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/base-builder.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/base-dialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/base-iprefs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/base-window.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/egg-desktop-file.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/egg-sm-client-xsmp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/egg-sm-client.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/egg-tree-multi-dnd.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-application.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-assistant-export.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-assistant-import.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-clipboard.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-confirm-logout.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-export-ask.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-export-format.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-gtk-utils.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-iaction-tab.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-iactions-list-bis.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-iactions-list-priv.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-iactions-list.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-iadvanced-tab.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-icommand-tab.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-iconditions-tab.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-ifolders-tab.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-iprefs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-menubar-edit.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-menubar-file.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-menubar-help.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-menubar-maintainer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-menubar-tools.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-menubar-view.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-menubar.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-statusbar.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-tab.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-toolbar.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main-window.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-marshal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-preferences-editor.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-providers-list.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-schemes-list.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-sort-buttons.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-tree-model-dnd.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-tree-model.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cact-window.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -417,6 +618,46 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
+install-applicationsDATA: $(applications_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(applicationsdir)" || $(MKDIR_P) "$(DESTDIR)$(applicationsdir)"
+	@list='$(applications_DATA)'; test -n "$(applicationsdir)" || list=; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(applicationsdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(applicationsdir)" || exit $$?; \
+	done
+
+uninstall-applicationsDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(applications_DATA)'; test -n "$(applicationsdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	test -n "$$files" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(applicationsdir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(applicationsdir)" && rm -f $$files
+install-pkgdataDATA: $(pkgdata_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(pkgdatadir)" || $(MKDIR_P) "$(DESTDIR)$(pkgdatadir)"
+	@list='$(pkgdata_DATA)'; test -n "$(pkgdatadir)" || list=; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(pkgdatadir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(pkgdatadir)" || exit $$?; \
+	done
+
+uninstall-pkgdataDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(pkgdata_DATA)'; test -n "$(pkgdatadir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	test -n "$$files" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(pkgdatadir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(pkgdatadir)" && rm -f $$files
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -501,13 +742,15 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-check: check-am
-all-am: Makefile $(LTLIBRARIES)
+check: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) check-am
+all-am: Makefile $(PROGRAMS) $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(caja_extensiondir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(applicationsdir)" "$(DESTDIR)$(pkgdatadir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
-install: install-am
+install: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) install-am
 install-exec: install-exec-am
 install-data: install-data-am
 uninstall: uninstall-am
@@ -524,6 +767,7 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -532,10 +776,10 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 clean: clean-am
 
-clean-am: clean-generic clean-libtool \
-	clean-caja_extensionLTLIBRARIES mostlyclean-am
+clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
 	-rm -rf ./$(DEPDIR)
@@ -555,13 +799,13 @@ info: info-am
 
 info-am:
 
-install-data-am: install-caja_extensionLTLIBRARIES
+install-data-am: install-applicationsDATA install-pkgdataDATA
 
 install-dvi: install-dvi-am
 
 install-dvi-am:
 
-install-exec-am:
+install-exec-am: install-binPROGRAMS
 
 install-html: install-html-am
 
@@ -601,26 +845,35 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-caja_extensionLTLIBRARIES
+uninstall-am: uninstall-applicationsDATA uninstall-binPROGRAMS \
+	uninstall-pkgdataDATA
 
-.MAKE: install-am install-strip
+.MAKE: all check install install-am install-strip
 
-.PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libtool clean-caja_extensionLTLIBRARIES ctags \
-	distclean distclean-compile distclean-generic \
-	distclean-libtool distclean-tags distdir dvi dvi-am html \
-	html-am info info-am install install-am install-data \
+.PHONY: CTAGS GTAGS all all-am check check-am clean clean-binPROGRAMS \
+	clean-generic clean-libtool ctags distclean distclean-compile \
+	distclean-generic distclean-libtool distclean-tags distdir dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-applicationsDATA install-binPROGRAMS install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
 	install-exec-am install-html install-html-am install-info \
-	install-info-am install-man \
-	install-caja_extensionLTLIBRARIES install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
+	install-info-am install-man install-pdf install-pdf-am \
+	install-pkgdataDATA install-ps install-ps-am install-strip \
 	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags uninstall uninstall-am \
-	uninstall-caja_extensionLTLIBRARIES
+	tags uninstall uninstall-am uninstall-applicationsDATA \
+	uninstall-binPROGRAMS uninstall-pkgdataDATA
 
+
+cact-marshal.h: cact-marshal.list $(GLIB_GENMARSHAL)
+	$(GLIB_GENMARSHAL) $< --header --prefix=cact_marshal > $@
+
+cact-marshal.c: cact-marshal.list $(GLIB_GENMARSHAL)
+	echo "#include \"cact-marshal.h\"" > $@ && \
+	$(GLIB_GENMARSHAL) $< --body --prefix=cact_marshal >> $@
+
+@INTLTOOL_DESKTOP_RULE@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
