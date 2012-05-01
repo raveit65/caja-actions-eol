@@ -39,7 +39,7 @@ Caja-Actions plugins.
 
 Mate Installation
 ==================
-./autogen.sh
+NOCONFIGURE=1 ./autogen.sh
 ./configure --enable-compile-warnings=minimum
 if make fails on debian based distros use
 ./configure --enable-compile-warnings=minimum LDFLAGS="-luuid"
