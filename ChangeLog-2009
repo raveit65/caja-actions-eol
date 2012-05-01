@@ -1,0 +1,4926 @@
+2009-12-22 Pierre Wieser <pwieser@trychlos.org>
+
+	Make the toolbars detacheable.
+
+	* nautilus-actions/nact/nact-main-menubar.c
+	(GtkActionEntry): Modify menu item and tooltip labels.
+	(toolbar_init): Create GtkHandleBox to host toolbars.
+
+	* nautilus-actions/nact/nautilus-actions-config-tool.actions:
+	Do not let Export assistant go to the toolbar (no icon).
+
+	Fix write/delete operations in NAIIODesktopProvider.
+
+	* nautilus-actions/io-provider-desktop/nadp-read.c
+	(action_from_desktop_path): Set provider data.
+
+	* nautilus-actions/io-provider-desktop/nadp-write.c
+	(nadp_iio_provider_is_writable, nadp_iio_provider_write_item,
+	nadp_iio_provider_delete_item): Get provider data.
+
+	Let the I/O provider set specific data into NAObjectItem.
+
+	* nautilus-actions/api/na-object-api.h
+	(na_object_get_provider_data, na_object_set_provider_data):
+	New aliases.
+
+	* nautilus-actions/private/na-object-item-fn.h:
+	* nautilus-actions/private/na-object-item-priv.h:
+	* nautilus-actions/private/na-object-item.c
+	(na_object_item_get_provider_data, na_object_item_set_provider_data):
+	New functions.
+
+2009-12-21 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/io-provider-desktop/nadp-xdg-data-dirs.c
+	(nadp_xdg_data_dirs_get_dirs): Remove debug messages.
+
+	Fix placement of writability icon.
+
+	* nautilus-actions/runtime/na-utils.c:
+	* nautilus-actions/runtime/na-utils.h (na_utils_get_pixbuf):
+	New function.
+
+	* nautilus-actions/runtime/Makefile.am: Add PKDGATADIR.
+
+	* nautilus-actions/nact/nact-iaction-tab.c:
+	Updated accordingly.
+
+	* nautilus-actions/nact/nact-main-statusbar.c:
+	* nautilus-actions/nact/nact-main-statusbar.h
+	(nact_main_statusbar_initial_load_toplevel): New function.
+
+	* nautilus-actions/nact/nact-main-window.c
+	(on_base_initial_load_toplevel): Initial statusbar size.
+
+	* nautilus-actions/private/na-object-item-fn.h:
+	* nautilus-actions/private/na-object-item.c
+	(na_object_item_get_pixbuf): Update prototype, removing GtkWidget.
+
+	* nautilus-actions/nact/nact-tree-model.c: Updated accordingly.
+
+	Fix reload of items.
+
+	* nautilus-actions/nact/nact-main-window.c (reload):
+	Reinitialize the properties for current selection.
+
+	Fix the display of item's icon.
+
+	* nautilus-actions/nact/transparent.png: New file.
+
+	* nautilus-actions/nact/Makefile.am: Updated accordingly.
+
+	* nautilus-actions/nact/nact-iaction-tab.c
+	(display_icon): Removed function.
+	(nact_iaction_tab_initial_load_toplevel):
+	Set the frame the same height that the row.
+	(on_icon_changed):
+	Displays a transparent image instead of hiding the widget.
+
+	* nautilus-actions/nact/nact-iactions-list.c
+	(nact_iactions_list_all_widgets_showed):
+	Only select the first item when all widgets have been showed.
+
+	* nautilus-actions/nact/nact-main-window.c
+	(on_base_all_widgets_showed): Initialize the tree after the tabs.
+
+	* nautilus-actions/private/na-object-item.c
+	(na_object_item_get_pixbuf): Use GThemedIcon.
+
+	* nautilus-actions/nact/nact-main-window.c
+	(on_iactions_list_selection_changed): Remove useless properties setup.
+	Provider writability status is also displayed for profiles.
+
+	* nautilus-actions/nact/nact-iaction-tab.c
+	(on_tab_updatable_provider_changed, display_provider_name):
+	New functions.
+
+	* nautilus-actions/nact/nact-main-menubar.c (save_item):
+	Notice provider change at save time.
+
+	* nautilus-actions/nact/nact-main-tab.h:
+	* nautilus-actions/nact/nact-main-window.c:
+	Define new TAB_UPDATABLE_SIGNAL_PROVIDER_CHANGED signal.
+
+	* nautilus-actions/nact/nact-main-menubar.c (on_update_sensitivities):
+	Add - commented for now - debug message.
+
+	* nautilus-actions/nact/nact-window.c
+	(nact_window_has_writable_providers): Only unref the object if not null.
+
+	* nautilus-actions/runtime/na-io-provider.c
+	(na_io_provider_get_writable_provider): Fix writability check.
+
+2009-12-20 Pierre Wieser <pwieser@trychlos.org>
+
+	Some cosmetic changes.
+
+	* nautilus-actions/nact/nact-iactions-list.c (nact_iactions_list_fill):
+	Report selection of first row at the very end of the function.
+
+	* nautilus-actions/nact/nact-main-menubar.c
+	(on_iactions_list_selection_changed): Improve debug messages.
+
+	* nautilus-actions/nact/nautilus-actions-config-tool.ui:
+	Remove size request for ActionLockedFrame.
+
+	Add a tooltip to the writability status image.
+
+	* nautilus-actions/nact/nact-main-statusbar.c:
+	* nautilus-actions/nact/nact-main-statusbar.h
+	(nact_main_statusbar_set_locked):
+	Displays a tooltip whether the provider or the item is read-only.
+
+	* nautilus-actions/nact/nact-main-window.c:	Updated accordingly.
+
+	* po/POTFILES.in: Add nautilus-actions/nact/nact-main-statusbar.c.
+
+2009-12-19 Pierre Wieser <pwieser@trychlos.org>
+
+	Display the writability status in the status bar.
+
+	* nautilus-actions/nact/locked.png: New file.
+
+	* nautilus-actions/nact/Makefile.am: Updated accordingly.
+
+	* nautilus-actions/nact/base-window.c (base_window_get_widget):
+	Add a warning when widget is not found.
+
+	* nautilus-actions/nact/nact-main-statusbar.c:
+	* nautilus-actions/nact/nact-main-statusbar.h
+	(nact_main_statusbar_set_locked): New function.
+
+	* nautilus-actions/runtime/na-iabout.c (na_iabout_display):
+	Credit the author of the locked image.
+
+	* nautilus-actions/nact/nautilus-actions-config-tool.ui:
+	Add an image in the status bar.
+
+	* nautilus-actions/nact/nact-main-window.c (set_current_object_item):
+	Update the locked image depending of the writability status of the
+	current item.
+
+	* nautilus-actions/nact/nact-window.c
+	(nact_window_is_writable_provider): Return default writability status
+	when the (new) item doesn't have yet a provider.
+
+	* nautilus-actions/plugin/nautilus-module.c
+	(nautilus_module_initialize):
+	* nautilus-actions/tracker/na-tracker-plugin.c
+	(nautilus_module_initialize):
+	Homogeneize syslog initialization messages.
+
+2009-12-17 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/test/dbus-introspect.sh: New file.
+
+2009-12-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Bump version number.
+
+	* data/nautilus-actions.schemas.in:
+	Add locked key.
+
+	* NEWS:
+	* README: Updated files.
+
+	* nautilus-actions/io-provider-desktop/nadp-module.c:
+	Make the desktop I/O provider only loadable in maintainer mode.
+
+	* po/POTFILES.in: Fix typo.
+
+	* nautilus-actions/api/na-api.h (na_api_module_get_name):
+	* nautilus-actions/api/na-iio-provider.h (get_name):
+	The na_api_module_get_name() function is moved to NAIIOProvider
+	interface as get_name().
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.c
+	* nautilus-actions/io-provider-gconf/nagp-gconf-provider.c
+	(get_name): New function.
+
+	* nautilus-actions/io-provider-desktop/nadp-module.c
+	* nautilus-actions/io-provider-gconf/nagp-module.c
+	(na_api_module_get_name): Removed function.
+
+	* nautilus-actions/nact/nact-tree-model-dnd.c
+	(is_parent_accept_new_childs): New function.
+	Prevent drop inside of a read-only parent.
+
+	* nautilus-actions/nact/nact-window.c
+	(nact_window_has_writable_providers):
+	Updated to no more use na_pivot_has_writable_providers().
+
+	* nautilus-actions/runtime/na-io-provider.c
+	* nautilus-actions/runtime/na-io-provider.h
+	(na_io_provider_get_provider, na_io_provider_get_writable_provider):
+	New functions.
+
+	* nautilus-actions/runtime/na-module.c
+	* nautilus-actions/runtime/na-module.h
+	(na_module_dump): New function.
+	(na_module_get_name): Removed function.
+
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h
+	(na_pivot_get_module_name, na_pivot_get_provider,
+	na_pivot_release_provider, na_pivot_has_writable_providers):
+	Removed functions.
+	(na_pivot_is_level_zero_writable): New function.
+
+	* nautilus-actions/runtime/na-utils.c:
+	* nautilus-actions/runtime/na-utils.h
+	(na_utils_remove_suffix): New function.
+
+	* nautilus-actions/utils/nautilus-actions-new.c (write_to_gconf):
+	Updated to find a writable provider.
+
+2009-12-15 Pierre Wieser <pwieser@trychlos.org>
+
+	Split too big file nact-tree-model.c.
+
+	* nautilus-actions/nact/nact-tree-model-dnd.c:
+	* nautilus-actions/nact/nact-tree-model-dnd.h:
+	* nautilus-actions/nact/nact-tree-model-priv.h: New files.
+
+	* nautilus-actions/nact/Makefile.am:
+	* nautilus-actions/nact/nact-tree-model.c: Updated accordingly.
+
+	Split too big file nact-iactions-list.c.
+
+	* nautilus-actions/nact/nact-iactions-list-bis.c:
+	* nautilus-actions/nact/nact-iactions-list-priv.c:
+	* nautilus-actions/nact/nact-iactions-list-priv.h: New files.
+
+	* nautilus-actions/nact/Makefile.am:
+	* nautilus-actions/nact/nact-assistant-export.c:
+	* nautilus-actions/nact/nact-assistant-import.c:
+	* nautilus-actions/nact/nact-iactions-list.c:
+	* nautilus-actions/nact/nact-iactions-list.h:
+	* nautilus-actions/nact/nact-main-menubar.c:
+	* nautilus-actions/nact/nact-main-window.c:
+	* nautilus-actions/nact/nact-tree-model.c: Updated accordingly.
+
+	* nautilus-actions/nact/nact-iactions-list.c:
+	* nautilus-actions/nact/nact-iactions-list.h
+	(nact_iactions_list_has_focus): Removed unused function.
+
+	* nautilus-actions/nact/nact-gtk-utils.c:
+	* nautilus-actions/nact/nact-gtk-utils.h: New files.
+
+	* nautilus-actions/nact/Makefile.am: Updated accordingly.
+
+	* nautilus-actions/nact/nact-main-tab.h:
+	* nautilus-actions/nact/nact-main-window.c:
+	Define TAB_UPDATABLE_PROP_READONLY_ITEM and
+	TAB_UPDATABLE_PROP_WRITABLE_PROVIDER new properties.
+
+	* nautilus-actions/nact/nact-iaction-tab.c:
+	* nautilus-actions/nact/nact-iadvanced-tab.c:
+	* nautilus-actions/nact/nact-ibackground-tab.c:
+	* nautilus-actions/nact/nact-icommand-tab.c:
+	* nautilus-actions/nact/nact-iconditions-tab.c:
+	Manage read-only items.
+
+2009-12-13 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/api/na-api.h (na_api_module_get_version):
+	* nautilus-actions/io-provider-desktop/nadp-module.c
+	(na_api_module_get_version):
+	* nautilus-actions/io-provider-gconf/nagp-module.c
+	(na_api_module_get_version):
+	New function.
+	
+	* nautilus-actions/io-provider-desktop/nadp-write.c
+	(nadp_iio_provider_is_willing_to_write):
+	* nautilus-actions/io-provider-gconf/nagp-write.c
+	(nagp_iio_provider_is_willing_to_write):
+	* nautilus-actions/runtime/na-io-provider.c
+	(na_io_provider_is_willing_to_write):
+	Remove too verbose debug traces.
+
+	* nautilus-actions/runtime/na-pivot.c
+	(na_pivot_has_writable_providers): Add a debug trace.
+
+	* nautilus-actions/nact/nact-iactions-list.c (display_label):
+	Profile label is editable only if parent action is writable.
+
+	* nautilus-actions/nact/nact-main-menubar.c (on_update_sensitivities):
+	Enable item insertion only if parent is writable.
+
+2009-12-12 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/nact/nact-window.c:
+	* nautilus-actions/nact/nact-window.h
+	(nact_window_is_lockdown): Removed function.
+	(nact_window_is_writable_provider, nact_window_has_writable_providers):
+	New functions.
+
+	* nautilus-actions/runtime/na-io-provider.c:
+	* nautilus-actions/runtime/na-io-provider.h
+	(na_io_provider_is_willing_to_write): New function.
+
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h (na_pivot_has_writable_providers):
+	New function.
+
+	* nautilus-actions/nact/nact-window.c:
+	* nautilus-actions/nact/nact-window.h (nact_window_is_lockdown):
+	Check if the provider of the current item is locked down.
+
+	* nautilus-actions/nact/nact-main-menubar.c (on_update_sensitivities):
+	* nautilus-actions/nact/nact-iactions-list.c (display_label):
+	Updated accordingly.
+
+	* nautilus-actions/io-provider-gconf/nagp-gconf-provider.c:
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.c
+	(get_id, get_version): New functions.
+
+	* doc/io-provider-id: New file to handle allocated providers ids.
+
+	* nautilus-actions/api/na-iio-provider.c:
+	* nautilus-actions/api/na-iio-provider.h (get_id, get_version):
+	New API functions.
+
+	* nautilus-actions/runtime/na-io-provider.c:
+	* nautilus-actions/runtime/na-io-provider.h
+	(na_io_provider_get_id,	na_io_provider_get_version): New functions.
+
+	* nautilus-actions/nact/nact-iactions-list.c
+	(nact_iactions_list_initial_load_toplevel, display_label):
+	Label column is not editable when read-only or locked down.
+
+	* nautilus-actions/nact/nact-main-menubar.c (on_update_sensitivities):
+	Do not enable 'cut' if locked down.
+
+	* nautilus-actions/private/na-object-profile.c
+	(object_are_equal, object_is_valid): Now marked as static.
+
+	* nautilus-actions/private/na-object-profile.c
+	(na_object_profile_is_candidate,
+	na_object_profile_is_candidate_for_tracked):
+	Profile must be valid in order to be candidate.
+
+	* nautilus-actions/api/na-dbus.h: New file.
+
+	* nautilus-actions/api/Makefile.am: Updated accordingly.
+
+	* nautilus-actions/nact/nact-clipboard.c (nact_clipboard_dump):
+	Fix debug parameters to have pointer of correct size.
+
+	* nautilus-actions/private/na-gnome-vfs-uri.c:
+	* nautilus-actions/private/na-gnome-vfs-uri.h:
+	Rename uri field to path.
+
+	* nautilus-actions/private/na-object-profile-class.h:
+	Define NATrackedItem structure.
+
+	* nautilus-actions/private/na-object-profile-fn.h:
+	* nautilus-actions/private/na-object-profile.c
+	(na_object_profile_is_candidate_for_tracked,
+	na_object_profile_parse_parameters_for_tracked): New functions.
+
+	* nautilus-actions/test/test-parse-uris.c:
+	Add a new test case.
+
+	* nautilus-actions/tracker/Makefile.am:
+	* nautilus-actions/utils/Makefile.am:
+	Fix make distcheck.
+	Install XML service definition and cleanup built files.
+
+	* nautilus-actions/tracker/na-tracker-dbus.c:
+	Take a reference on NautilusFileInfo provided list.
+
+	* nautilus-actions/tracker/na-tracker.c:
+	* nautilus-actions/tracker/na-tracker.h:
+	Move DBus service name to api/na-dbus.h header.
+
+	* nautilus-actions/utils/nautilus-actions-run.c:
+	Remove '--parameters' and '--current' useless options.
+	Execute action on candidate profile.
+
+2009-12-10 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h (get_item_from_tree):
+	No more require an UUID.
+
+	Be able to get the current Nautilus selection into an external
+	program via a DBus interface in the new Tracker plugin.
+
+	* configure.ac:
+	* nautilus-actions/Makefile.am:
+	Define new tracker subdirectory.
+
+	* m4/na-log-domains.m4:
+	Define new NA-tracker log domain.
+
+	* nautilus-actions/tracker/Makefile.am:
+	* nautilus-actions/tracker/na-tracker-dbus.c:
+	* nautilus-actions/tracker/na-tracker-dbus.h:
+	* nautilus-actions/tracker/na-tracker-dbus.xml:
+	* nautilus-actions/tracker/na-tracker-plugin.c:
+	* nautilus-actions/tracker/na-tracker.c:
+	* nautilus-actions/tracker/na-tracker.h: New files.
+
+	* nautilus-actions/utils/nautilus-actions-run.c: New file.
+
+	* nautilus-actions/utils/Makefile.am: Updated accordingly.
+
+2009-12-08 Pierre Wieser <pwieser@trychlos.org>
+
+	A try to implement a lockdown key in GConf mandatory settings.
+
+	* nautilus-actions/nact/nact-main-menubar.c (on_update_sensitivities):
+	Disable most of File and Edit menu items if lockdown key is set.
+
+	* nautilus-actions/nact/nact-window.c:
+	* nautilus-actions/nact/nact-window.h (nact_window_is_lockdown):
+	New function.
+
+2009-12-07 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Bump version number.
+
+	* nautilus-actions/private/na-object-id.c
+	(na_object_id_prepare_for_paste):
+	Reset provider and read-only flag when pasting a new object.
+
+	* nautilus-actions/nact/nact-main-menubar.c (prepare_for_paste):
+	Recheck status of pasted items.
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-file.c
+	(nadp_desktop_file_get_label, nadp_desktop_file_get_tooltip,
+	nadp_desktop_file_get_icon): Return an empty string rather than NULL.
+
+	* nautilus-actions/nact/nact-main-menubar.c (on_update_sensitivities):
+	Do not paste into a read-only action.
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-file.c:
+	* nautilus-actions/io-provider-desktop/nadp-desktop-file.h
+	(nadp_desktop_file_get_icon, nadp_desktop_file_get_enabled,
+	nadp_desktop_file_set_icon, nadp_desktop_file_set_enabled):
+	New functions.
+
+	* nautilus-actions/io-provider-desktop/nadp-read.c
+	(read_item_properties): Read icon and enabled status.
+
+	* nautilus-actions/io-provider-desktop/nadp-write.c (write_item):
+	Write icon name or path and enabled status.
+
+	* nautilus-actions/plugin/nautilus-actions.c (build_nautilus_menus):
+	Emits a warning when finding a disabled or invalid item.
+
+	* nautilus-actions/nact/nact-clipboard.c (nact_clipboard_dump):
+	Allow dump when clipboard has not been yet used.
+
+	* nautilus-actions/api/na-object-api.h:
+	All arguments have parenthesis around them.
+
+	Only load in the Nautilus plugin valid and enabled candidate items.
+
+	* nautilus-actions/nact/nact-application.c
+	(appli_initialize_application): Explicitely load items.
+
+	* nautilus-actions/nact/nact-main-window.c (reload):
+	Call na_pivot_load_items() function.
+
+	* nautilus-actions/plugin/nautilus-actions.c (instance_init):
+	Explicitely load items after having set filtering criteria.
+
+	* nautilus-actions/private/na-object-item.c
+	(na_object_item_set_items_list): Free previous GList structure.
+
+	* nautilus-actions/runtime/na-io-provider.c
+	(na_io_provider_read_items): Filter the returned hierarchy.
+
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h
+	(na_pivot_check_status): Removed function.
+	(na_pivot_reload_items): Renamed as na_pivot_load_items().
+	(na_pivot_set_population, na_pivot_is_disable_loadable,
+	na_pivot_is_invalid_loadable): New functions.
+
+2009-12-03 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/private/na-object-profile.c (object_is_valid):
+	Fix validity check of the profile.
+
+	Add a maintainer menu option to dump the clipboard.
+
+	* nautilus-actions/nact/nact-clipboard.c:
+	* nautilus-actions/nact/nact-clipboard.h (nact_clipboard_dump):
+	New function.
+
+	* nautilus-actions/nact/nact-main-menubar.c:
+	* nautilus-actions/nact/nautilus-actions-maintainer.actions:
+	Define the a new 'Dump the clipboard' option.
+
+2009-12-02 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/nact/nact-iaction-tab.c
+	(on_tab_updatable_selection_changed):
+	* nautilus-actions/nact/nact-iadvanced-tab.c
+	(on_tab_updatable_selection_changed):
+	* nautilus-actions/nact/nact-ibackground-tab.c
+	(on_tab_updatable_selection_changed):
+	* nautilus-actions/nact/nact-icommand-tab.c
+	(on_tab_updatable_selection_changed):
+	* nautilus-actions/nact/nact-iconditions-tab.c
+	(on_tab_updatable_selection_changed):
+	* nautilus-actions/nact/nact-main-menubar.c (on_update_sensitivities):
+	Do not allow edition if item is read-only.
+
+2009-12-01 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/nact/nact-iaction-tab.c
+	(on_tab_updatable_selection_changed): Display I/O provider name.
+
+	* nautilus-actions/nact/nautilus-actions-config-tool.ui:
+	Display I/O provider name.
+
+	* nautilus-actions/runtime/na-io-provider.c:
+	* nautilus-actions/runtime/na-io-provider.h
+	(na_io_provider_get_name): New function.
+
+	* nautilus-actions/runtime/na-module.c:
+	* nautilus-actions/runtime/na-module.h
+	(na_module_get_name_for_object): New function.
+
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h
+	(na_pivot_get_module_name): New function.
+
+	* nautilus-actions/io-provider-desktop/nadp-write.c
+	(nadp_iio_provider_is_writable): Do not handle menus yet.
+
+	* nautilus-actions/io-provider-desktop/nadp-read.c
+	(action_from_desktop_path): Have at least one profile for the action.
+	(read_item_properties): Set object id.
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-file.c
+	(check_key_file): Fix check of required keys.
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-file.c
+	(nadp_desktop_file_set_label, nadp_desktop_file_set_tooltip):
+	Fix locale.
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.c:
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.h:
+	Fix NadpDesktopProviderPrivate typedef definition.
+
+	* nautilus-actions/io-provider-desktop/nadp-utils.h:
+	Remove egg-desktop-file.h include.
+
+	* nautilus-actions/io-provider-desktop/nadp-write.c
+	(nadp_iio_provider_is_willing_to_write): Fix permissions.
+	(nadp_iio_provider_write_item): Create directory if it doesn't exist.
+
+	* nautilus-actions/private/na-object-item-priv.h: Fix typo.
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.h:
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.c:
+	Move NadpDesktopProviderPrivate to C source.
+
+	* nautilus-actions/io-provider-desktop/nadp-write.c:
+	Remove EggDesktopFile class.
+	(nadp_iio_provider_write_item, nadp_iio_provider_delete_item):
+	Check that item is not read-only before trying to write or delete.
+
+	* nautilus-actions/io-provider-desktop/Makefile.am:
+	Remove EggDesktopFile files.
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-file.c:
+	* nautilus-actions/io-provider-desktop/nadp-desktop-file.h:
+	Handle key files.
+
+	* nautilus-actions/io-provider-desktop/nadp-read.c:
+	Test for writability status of the readen item.
+
+2009-11-30 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-file.c:
+	* utilus-actions/io-provider-desktop/nadp-desktop-file.h:
+	* nautilus-actions/io-provider-desktop/nadp-read.c:
+	* nautilus-actions/io-provider-desktop/nadp-read.h:
+	* nautilus-actions/io-provider-desktop/nadp-utils.c:
+	* nautilus-actions/io-provider-desktop/nadp-utils.h:
+	* nautilus-actions/io-provider-desktop/nadp-write.c:
+	* nautilus-actions/io-provider-desktop/nadp-write.h:
+	* nautilus-actions/io-provider-desktop/nadp-xdg-data-dirs.c:
+	* nautilus-actions/io-provider-desktop/nadp-xdg-data-dirs.h:
+	New files.
+
+	* nautilus-actions/io-provider-desktop/Makefile.am:
+	Updated accordingly.
+
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.h:
+	Define NADP_DESKTOP_PROVIDER_SUBDIRS.
+
+2009-11-25 Pierre Wieser <pwieser@trychlos.org>
+
+	Read-only flag is moved to NAObjectItem: action and menu may be
+	read-only.
+
+	* nautilus-actions/api/na-object-api.h
+	(na_object_is_readonly, na_object_set_readonly): New functions.
+
+	* nautilus-actions/private/na-object-action-fn.h:
+	* nautilus-actions/private/na-object-action-priv.h:
+	* nautilus-actions/private/na-object-action.c:
+	* nautilus-actions/private/na-object-item-fn.h:
+	* nautilus-actions/private/na-object-item-priv.h:
+	* nautilus-actions/private/na-object-item.c:
+	"read-only" property is moved from NAObjectAction to NAObjectItem.
+	(na_object_action_is_readonly): Renamed to na_object_item_is_readonly.
+	(na_object_action_set_readonly): Renamed to na_object_item_set_readonly.
+
+	* nautilus-actions/io-provider-gconf/nagp-read.c
+	(read_object_item_properties): Set the 'read-only' flag for the object.
+
+	* nautilus-actions/io-provider-gconf/nagp-write.c
+	(nagp_iio_provider_is_writable): Set the writability status of the
+	object.
+	(nagp_iio_provider_is_willing_to_write): Set the writability status of
+	the provider.
+
+	* nautilus-actions/io-provider-desktop/egg-desktop-file.c:
+	* nautilus-actions/io-provider-desktop/egg-desktop-file.h:
+	New files.
+
+	* nautilus-actions/io-provider-desktop/Makefile.am:
+	Updated accordingly.
+
+2009-11-24 Pierre Wieser <pwieser@trychlos.org>
+
+	Create NadpDesktopProvider module.
+
+	* nautilus-actions/io-provider-desktop/Makefile.am:
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.c:
+	* nautilus-actions/io-provider-desktop/nadp-desktop-provider.h:
+	* nautilus-actions/io-provider-desktop/nadp-module.c: New files.
+
+	* configure.ac:
+	* nautilus-actions/Makefile.am: Updated accordingly.
+
+	* m4/na-log-domains.m4:
+	Define new NA_LOGDOMAIN_DESKTOP_PROVIDER log domain.
+
+	Have smaller sources in NagpGConfProvider.
+	Remove na-utils dependancy.
+
+	* nautilus-actions/io-provider-gconf/nagp-read.c:
+	* nautilus-actions/io-provider-gconf/nagp-read.h:
+	* nautilus-actions/io-provider-gconf/nagp-write.c:
+	* nautilus-actions/io-provider-gconf/nagp-write.h: New files.
+
+	* nautilus-actions/io-provider-gconf/Makefile.am: Updated accordingly.
+
+	* configure.ac: Remove useless gthread dependancy.
+
+	* nautilus-actions/io-provider-gconf/Makefile.am:
+	Add nautilus-actions/ to include path (fix make distcheck).
+
+	* po/POTFILES.in: Add two new files (fix make distcheck).
+
+	na_pivot_new no more takes an argument.
+
+	* nautilus-actions/nact/nact-application.c
+	(appli_initialize_application):
+	* nautilus-actions/plugin/nautilus-actions.c (instance_init):
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h (na_pivot_new):
+	* nautilus-actions/utils/nautilus-actions-new.c (write_to_gconf):
+	Updated accordingly.
+
+	* nautilus-actions/runtime/na-utils.c (na_utils_print_version):
+	Displays current GLib and Gtk+ runtime library versions.
+
+	* nautilus-actions/nact/base-application.c:
+	Gracefully terminates the application on SMClient quit signal.
+
+2009-11-23 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/nact/nautilus-actions-config-tool.ui:
+	Modify labels to make them clearer.
+
+	Ask the user to confirm on logout.
+
+	* nautilus-actions/nact/base-application-class.h:
+	* nautilus-actions/nact/base-application.c
+	(initialize_session_manager): New class function.
+	Instantiate and initialize an EggSMClient-derived object.
+
+	* nautilus-actions/nact/base-window-class.h:
+	* nautilus-actions/nact/base-window.c
+	(is_willing_to_quit): New class function.
+
+	* nautilus-actions/nact/base-window.h (base_window_is_willing_to_quit):
+	Returns TRUE if application is willing to quit on logout.
+
+	* nautilus-actions/nact/nact-main-window.c:
+	Ask the user for a confirmation when sessions ends while modifications
+	are pending.
+
+	* nautilus-actions/nact/nact-main-menubar.c:
+	* nautilus-actions/nact/nact-main-menubar.h
+	(nact_main_menubar_save_items): New public function.
+
+	* nautilus-actions/nact/egg-desktop-file.c:
+	* nautilus-actions/nact/egg-desktop-file.h:
+	* nautilus-actions/nact/egg-sm-client-private.h:
+	* nautilus-actions/nact/egg-sm-client-xsmp.c:
+	* nautilus-actions/nact/egg-sm-client.c:
+	* nautilus-actions/nact/egg-sm-client.h:
+	* nautilus-actions/nact/nact-confirm-logout.c:
+	* nautilus-actions/nact/nact-confirm-logout.h: New files.
+
+	* nautilus-actions/nact/Makefile.am: Updated accordingly.
+
+	* nautilus-actions/nact/nautilus-actions-config-tool.ui
+	(ConfirmLogoutDialog): New dialog.
+
+2009-11-21 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions/nact/nact-iaction-tab.c
+	(on_tab_updatable_selection_changed):
+	Display empty label when item not set.
+
+	* nautilus-actions/nact/nact-xml-reader.c (propagate_default_values):
+	Propagate default values to the newly imported action.
+
+	Fix list of modified items in NACT.
+
+	* nautilus-actions/nact/nact-iactions-list.c:
+	* nautilus-actions/nact/nact-iactions-list.h
+	(nact_iactions_list_list_modified_items): New maintainer function.
+
+	* nautilus-actions/nact/nact-iactions-list.c (remove_rec):
+	Recursively remove no-more modified sub-objects.
+
+	* nautilus-actions/nact/nact-main-menubar.c:
+	* nautilus-actions/nact/nautilus-actions-maintainer.actions:
+	New maintainer function.
+
+	* nautilus-actions/private/Makefile.am:
+	Remove useless -DPKGLIBDIR.
+
+	Allow the user to run multiple instances of NACT.
+
+	* nautilus-actions/nact/base-application-class.h (manage_options):
+	New virtual function.
+
+	* nautilus-actions/nact/base-application.c:
+	* nautilus-actions/nact/base-application.h: New entries property.
+
+	* nautilus-actions/nact/base-application.c:
+	argc and argv are now 'contruct only' properties.
+	Accept now an GOptionEntry list as a 'contruct only property'.
+	Check args if GOptionEntry list is not null.
+
+	* nautilus-actions/nact/nact-application.c:
+	Define --version option.
+	Define --non-unique command-line option.
+
+	* nautilus-actions/runtime/na-utils.c:
+	* nautilus-actions/runtime/na-utils.h:
+	* nautilus-actions/utils/console-utils.c:
+	* nautilus-actions/utils/console-utils.h:
+	Move console_print_version() function to na_utils_print_version().
+
+	* nautilus-actions/utils/nautilus-actions-new.c:
+	* nautilus-actions/utils/nautilus-actions-schemas.c:
+	Updated accordingly.
+
+2009-11-20 Pierre Wieser <pwieser@trychlos.org>
+
+	Define functions with actual type for arguments.
+
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h
+	(na_pivot_add_item,	na_pivot_get_item):	Take/return a NAObjectItem.
+
+	* nautilus-actions/nact/nact-main-menubar.c (save_item):
+	* nautilus-actions/nact/nact-main-window.c (nact_main_window_get_item):
+	Updated accordingly.
+
+	Get ride of "unsolicitated invocation of g_object_dispose() on
+	GTypeModule" error message.
+
+	* nautilus-actions/runtime/na-module.c (na_module_release_modules):
+	No more unref the module.
+
+	Review log handlers.
+
+	* nautilus-actions/io-provider-gconf/nagp-module.c
+	(na_api_module_init): standardize debug message.
+
+	* nautilus-actions/nact/nact-main.c:
+	Better name the static variable which holds the default handler.
+
+	* nautilus-actions/plugin/nautilus-module.c:
+	* nautilus-actions/utils/console-utils.c:
+	Simplify log handler management on NACT model.
+
+	* src/Makefile.am:
+	Update compilation order as io-provider-gconf plugin depends on
+	runtime.
+
+	* nautilus-actions/api/na-iio-provider.c:
+	* nautilus-actions/api/na-iio-provider.h (na_iio_provider_config_changed):
+	Advertise interface with id of modified item.
+
+	* nautilus-actions/io-provider-gconf/nagp-gconf-provider.c:
+	Add a timeout to only trigger NAIIOProvider when all modifications
+	on an item have been made.
+
+	* nautilus-actions/io-provider-gconf/nagp-module.c (na_api_module_init):
+	Remove log handler management, no more syslog at initialization.
+
+	* nautilus-actions/nact/nact-main.c:
+	Simplify log management.
+
+	* nautilus-actions/runtime/na-io-provider.c:
+	* nautilus-actions/runtime/na-io-provider.h
+	(na_io_provider_register_callbacks): New function.
+
+	* nautilus-actions/runtime/na-module.c (plugin_check):
+	Fix error message.
+
+	* nautilus-actions/runtime/na-pivot.c:
+	Move static variables to the instance.
+
+	* nautilus-actions/nact/nact-iaction-tab.c
+	(on_tab_updatable_selection_changed):
+	Fix label display when the widget is disabled.
+
+	* nautilus-actions/nact/nact-iactions-list.c
+	(on_treeview_selection_changed): Fix typo.
+
+	* nautilus-actions/nact/nact-main-menubar.c (on_save_activated):
+	Complete comment about status check.
+
+	* nautilus-actions/nact/nact-main-window.c
+	(nact_main_window_remove_deleted): Setup dialog title is required
+	here when this is the only modification to be saved.
+
+2009-11-19 Pierre Wieser <pwieser@trychlos.org>
+
+	Create GConf IO Provider as a plugin.
+
+	* nautilus-actions/runtime/na-gconf-provider-keys.h:
+	* nautilus-actions/runtime/na-gconf-provider.c:
+	* nautilus-actions/runtime/na-gconf-provider.h:
+	Moved to io-provider-gconf/, and thus removed from runtime/.
+
+	* configure.ac:
+	* nautilus-actions/Makefile.am:
+	Maage io-provider-gconf/ new directory.
+
+	* m4/na-log-domains.m4:
+	Define new NA_LOGDOMAIN_IO_PROVIDER_GCONF log domain.
+
+	* nautilus-actions/api/na-api.c:
+	* nautilus-actions/api/na-api.h (na_api_module_init):
+	Now returns a boolean.
+
+	* nautilus-actions/plugin/nautilus-module.c:
+	Set module name.
+
+	* nautilus-actions/runtime/na-gconf-utils.c:
+	* nautilus-actions/runtime/na-gconf-utils.h
+	(na_gconf_utils_get_subdirs, na_gconf_utils_free_subdirs,
+	na_gconf_utils_have_entry:): Move functions to NagpIOProvider class.
+
+	* nautilus-actions/runtime/na-gconf-utils.c:
+	* nautilus-actions/runtime/na-gconf-utils.h
+	(na_gconf_utils_have_subdir): Removed function.
+
+	* nautilus-actions/runtime/na-module.c:
+	Fix dynamic loading of the modules.
+
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h
+	(na_pivot_get_provider, na_pivot_release_provider):
+	New functions.
+
+	* nautilus-actions/nact/nact-xml-reader.c:
+	* nautilus-actions/runtime/Makefile.am:
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-xml-writer.c:
+	Updated accordingly.
+
+	* nautilus-actions/utils/nautilus-actions-new.c:
+	Use NAPivot to find an adequate provider instead of directly
+	instantiating a NAGConfProvider object.
+
+2009-11-18 Pierre Wieser <pwieser@trychlos.org>
+
+	Move runtime/na-gconf-monitor.{c,h} to api/.
+
+	* nautilus-actions/runtime/na-gconf-monitor.c:
+	* nautilus-actions/runtime/na-gconf-monitor.h:
+	Moved to api/, thus removed from runtime/.
+
+	* nautilus-actions/api/Makefile.am:
+	* nautilus-actions/runtime/Makefile.am:
+	* nautilus-actions/runtime/na-gconf-provider.c:
+	* nautilus-actions/runtime/na-pivot.c:
+	Upated accordingly.
+
+	Move private/na-object-api.h to private/.
+
+	* nautilus-actions/private/na-object-api.h:
+	Moved to private/.
+
+	* nautilus-actions/api/Makefile.am:
+	* nautilus-actions/nact/nact-assistant-export-ask.c:
+	* nautilus-actions/nact/nact-assistant-export.c:
+	* nautilus-actions/nact/nact-assistant-import-ask.c:
+	* nautilus-actions/nact/nact-assistant-import.c:
+	* nautilus-actions/nact/nact-clipboard.c:
+	* nautilus-actions/nact/nact-iaction-tab.c:
+	* nautilus-actions/nact/nact-iactions-list.c:
+	* nautilus-actions/nact/nact-iadvanced-tab.c:
+	* nautilus-actions/nact/nact-ibackground-tab.c:
+	* nautilus-actions/nact/nact-icommand-tab.c:
+	* nautilus-actions/nact/nact-iconditions-tab.c:
+	* nautilus-actions/nact/nact-main-menubar.c:
+	* nautilus-actions/nact/nact-main-window.c:
+	* nautilus-actions/nact/nact-tree-model.c:
+	* nautilus-actions/nact/nact-window.c:
+	* nautilus-actions/nact/nact-xml-reader.c:
+	* nautilus-actions/plugin/nautilus-actions.c:
+	* nautilus-actions/private/Makefile.am:
+	* nautilus-actions/private/na-object-action.c:
+	* nautilus-actions/private/na-object-id.c:
+	* nautilus-actions/private/na-object-item.c:
+	* nautilus-actions/private/na-object-menu.c:
+	* nautilus-actions/private/na-object-profile.c:
+	* nautilus-actions/private/na-object.c:
+	* nautilus-actions/runtime/na-gconf-provider.c:
+	* nautilus-actions/runtime/na-io-provider.c:
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-xml-writer.c:
+	* nautilus-actions/utils/nautilus-actions-new.c:
+	Updated accordingly.
+
+	Move na-xml-* to runtime library, thus removing common/.
+
+	* nautilus-actions/common/na-xml-names.h:
+	* nautilus-actions/common/na-xml-writer.c:
+	* nautilus-actions/common/na-xml-writer.h:
+	Moved to runtime/ directory, thus removed from common.
+
+	* configure.ac:
+	* m4/na-log-domains.m4:
+	* nautilus-actions/Makefile.am:
+	* nautilus-actions/nact/Makefile.am:
+	* nautilus-actions/nact/nact-assistant-export.c:
+	* nautilus-actions/nact/nact-clipboard.c:
+	* nautilus-actions/nact/nact-main.c:
+	* nautilus-actions/nact/nact-tree-model.c:
+	* nautilus-actions/nact/nact-xml-reader.c:
+	* nautilus-actions/runtime/Makefile.am:
+	* nautilus-actions/runtime/README:
+	* nautilus-actions/utils/Makefile.am:
+	* nautilus-actions/utils/console-utils.c:
+	* nautilus-actions/utils/nautilus-actions-new.c:
+	* nautilus-actions/utils/nautilus-actions-schemas.c:
+	* po/POTFILES.in: Updated accordingly.
+
+	Merge common/na-utils.{c,h} into runtime/na-utils.{c,h}.
+
+	* nautilus-actions/common/na-utils.c:
+	* nautilus-actions/common/na-utils.h:
+	Merged into runtime/na-utils.{c,h}, thus deleted from common/.
+
+	* nautilus-actions/common/Makefile.am:
+	* nautilus-actions/common/na-xml-writer.c:
+	* nautilus-actions/nact/base-builder.c:
+	* nautilus-actions/nact/nact-assistant-export.c:
+	* nautilus-actions/nact/nact-assistant-import.c:
+	* nautilus-actions/nact/nact-clipboard.c:
+	* nautilus-actions/nact/nact-iadvanced-tab.c:
+	* nautilus-actions/nact/nact-ibackground-tab.c:
+	* nautilus-actions/nact/nact-icommand-tab.c:
+	* nautilus-actions/nact/nact-iconditions-tab.c:
+	* nautilus-actions/nact/nact-tree-model.c:
+	* nautilus-actions/nact/nact-window.c:
+	* nautilus-actions/nact/nact-xml-reader.c:
+	* nautilus-actions/private/Makefile.am:
+	* nautilus-actions/private/na-object-profile.c:
+	* nautilus-actions/runtime/na-utils.c:
+	* nautilus-actions/runtime/na-utils.h:
+	* nautilus-actions/utils/nautilus-actions-new.c:
+	* nautilus-actions/utils/nautilus-actions-schemas.c:
+	Updated accordingly.
+
+	Merge common/na-iprefs.{c,h} into runtime/na-iprefs.{c,h}.
+
+	* nautilus-actions/common/na-iprefs.c:
+	* nautilus-actions/common/na-iprefs.h:
+	Merged into runtime/na-iprefs.{c,h}, thus deleted from common/.
+
+	* nautilus-actions/runtime/na-gconf-keys.h: Removed file
+	as duplicate from api/.
+
+	* nautilus-actions/common/Makefile.am:
+	* nautilus-actions/common/na-xml-writer.c:
+	* nautilus-actions/nact/base-iprefs.c:
+	* nautilus-actions/nact/nact-assistant-export-ask.c:
+	* nautilus-actions/nact/nact-assistant-export.c:
+	* nautilus-actions/nact/nact-assistant-import-ask.c:
+	* nautilus-actions/nact/nact-assistant-import.c:
+	* nautilus-actions/nact/nact-clipboard.c:
+	* nautilus-actions/nact/nact-iactions-list.c:
+	* nautilus-actions/nact/nact-ibackground-tab.c:
+	* nautilus-actions/nact/nact-icommand-tab.c:
+	* nautilus-actions/nact/nact-main-menubar.c:
+	* nautilus-actions/nact/nact-main-window.c:
+	* nautilus-actions/nact/nact-preferences-editor.c:
+	* nautilus-actions/nact/nact-tree-model.c:
+	* nautilus-actions/nact/nact-window.c:
+	* nautilus-actions/nact/nact-xml-reader.c:
+	* nautilus-actions/runtime/Makefile.am:
+	* nautilus-actions/runtime/na-gconf-provider-keys.h:
+	* nautilus-actions/runtime/na-iprefs.c:
+	* nautilus-actions/runtime/na-iprefs.h:
+	* nautilus-actions/utils/nautilus-actions-new.c:
+	* nautilus-actions/utils/nautilus-actions-schemas.c:
+	Updated	accordingly.
+
+	Merge common/na-object-* stuff into private/ subdirectory.
+
+	* nautilus-actions/common/na-object-action-fn.h:
+	* nautilus-actions/common/na-object-action.c:
+	* nautilus-actions/common/na-object-api.h:
+	* nautilus-actions/common/na-object-fn.h:
+	* nautilus-actions/common/na-object-id-fn.h:
+	* nautilus-actions/common/na-object-id.c:
+	* nautilus-actions/common/na-object-item-fn.h:
+	* nautilus-actions/common/na-object-item.c:
+	* nautilus-actions/common/na-object-menu-fn.h:
+	* nautilus-actions/common/na-object-menu.c:
+	* nautilus-actions/common/na-object-profile-fn.h:
+	* nautilus-actions/common/na-object-profile.c:
+	* nautilus-actions/common/na-object.c:
+	Merged into private/ directory, thus deleted from common/ one.
+
+	* nautilus-actions/Makefile.am:
+	* nautilus-actions/common/Makefile.am:
+	* nautilus-actions/common/na-xml-writer.c:
+	* nautilus-actions/nact/nact-assistant-export-ask.c:
+	* nautilus-actions/nact/nact-assistant-export.c:
+	* nautilus-actions/nact/nact-assistant-import-ask.c:
+	* nautilus-actions/nact/nact-assistant-import.c:
+	* nautilus-actions/nact/nact-clipboard.c:
+	* nautilus-actions/nact/nact-iaction-tab.c:
+	* nautilus-actions/nact/nact-iactions-list.c:
+	* nautilus-actions/nact/nact-iadvanced-tab.c:
+	* nautilus-actions/nact/nact-ibackground-tab.c:
+	* nautilus-actions/nact/nact-icommand-tab.c:
+	* nautilus-actions/nact/nact-iconditions-tab.c:
+	* nautilus-actions/nact/nact-main-menubar.c:
+	* nautilus-actions/nact/nact-main-menubar.h:
+	* nautilus-actions/nact/nact-main-window.c:
+	* nautilus-actions/nact/nact-tree-model.c:
+	* nautilus-actions/nact/nact-window.c:
+	* nautilus-actions/nact/nact-xml-reader.c:
+	* nautilus-actions/private/Makefile.am:
+	* nautilus-actions/private/na-object-action-fn.h:
+	* nautilus-actions/private/na-object-action.c:
+	* nautilus-actions/private/na-object-api.h:
+	* nautilus-actions/private/na-object-fn.h:
+	* nautilus-actions/private/na-object-id-fn.h:
+	* nautilus-actions/private/na-object-id.c:
+	* nautilus-actions/private/na-object-item-fn.h:
+	* nautilus-actions/private/na-object-item.c:
+	* nautilus-actions/private/na-object-profile-fn.h:
+	* nautilus-actions/private/na-object-profile.c:
+	* nautilus-actions/private/na-object.c:
+	* nautilus-actions/utils/nautilus-actions-new.c:
+	* po/POTFILES.in: Updated accordingly.
+
+	* nautilus-actions/nact/nact-main-menubar.c:
+	* nautilus-actions/nact/nact-main-menubar.h
+	(nact_main_menubar_is_pasted_object_relabeled): New function
+	to avoid moving also NAPivot class to private directory.
+
+	Move runtime/na-object-* stuff to private/ subdirectory.
+
+	* nautilus-actions/runtime/na-gnome-vfs-uri.c:
+	* nautilus-actions/runtime/na-gnome-vfs-uri.h:
+	* nautilus-actions/runtime/na-iduplicable.c:
+	* nautilus-actions/runtime/na-iduplicable.h:
+	* nautilus-actions/runtime/na-object-action-class.h:
+	* nautilus-actions/runtime/na-object-action-fn.h:
+	* nautilus-actions/runtime/na-object-action-priv.h:
+	* nautilus-actions/runtime/na-object-action.c:
+	* nautilus-actions/runtime/na-object-api.h:
+	* nautilus-actions/runtime/na-object-class.h:
+	* nautilus-actions/runtime/na-object-fn.h:
+	* nautilus-actions/runtime/na-object-id-class.h:
+	* nautilus-actions/runtime/na-object-id-fn.h:
+	* nautilus-actions/runtime/na-object-id-priv.h:
+	* nautilus-actions/runtime/na-object-id.c:
+	* nautilus-actions/runtime/na-object-item-class.h:
+	* nautilus-actions/runtime/na-object-item-fn.h:
+	* nautilus-actions/runtime/na-object-item-priv.h:
+	* nautilus-actions/runtime/na-object-item.c:
+	* nautilus-actions/runtime/na-object-menu-class.h:
+	* nautilus-actions/runtime/na-object-menu-fn.h:
+	* nautilus-actions/runtime/na-object-menu-priv.h:
+	* nautilus-actions/runtime/na-object-menu.c:
+	* nautilus-actions/runtime/na-object-priv.h:
+	* nautilus-actions/runtime/na-object-profile-class.h:
+	* nautilus-actions/runtime/na-object-profile-fn.h:
+	* nautilus-actions/runtime/na-object-profile-priv.h:
+	* nautilus-actions/runtime/na-object-profile.c:
+	* nautilus-actions/runtime/na-object.c: Moved to private/
+
+	* nautilus-actions/api/na-iio-provider.h:
+	* nautilus-actions/common/na-object-action-fn.h:
+	* nautilus-actions/common/na-object-action.c:
+	* nautilus-actions/common/na-object-api.h:
+	* nautilus-actions/common/na-object-fn.h:
+	* nautilus-actions/common/na-object-id-fn.h:
+	* nautilus-actions/common/na-object-id.c:
+	* nautilus-actions/common/na-object-item-fn.h:
+	* nautilus-actions/common/na-object-item.c:
+	* nautilus-actions/common/na-object-menu-fn.h:
+	* nautilus-actions/common/na-object-menu.c:
+	* nautilus-actions/common/na-object-profile-fn.h:
+	* nautilus-actions/common/na-object-profile.c:
+	* nautilus-actions/common/na-object.c:
+	* nautilus-actions/common/na-xml-writer.h:
+	* nautilus-actions/nact/Makefile.am:
+	* nautilus-actions/nact/nact-application.c:
+	* nautilus-actions/nact/nact-assistant-export-ask.h:
+	* nautilus-actions/nact/nact-assistant-export.c:
+	* nautilus-actions/nact/nact-assistant-import-ask.h:
+	* nautilus-actions/nact/nact-iactions-list.c:
+	* nautilus-actions/nact/nact-iactions-list.h:
+	* nautilus-actions/nact/nact-main-window.h:
+	* nautilus-actions/nact/nact-window.h:
+	* nautilus-actions/nact/nact-xml-reader.h:
+	* nautilus-actions/plugin/Makefile.am:
+	* nautilus-actions/plugin/nautilus-actions.c:
+	* nautilus-actions/private/Makefile.am:
+	* nautilus-actions/runtime/Makefile.am:
+	* nautilus-actions/runtime/na-gconf-provider.c:
+	* nautilus-actions/runtime/na-io-provider.c:
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h:
+	* nautilus-actions/test/Makefile.am:
+	* nautilus-actions/test/test-parse-uris.c:
+	* nautilus-actions/utils/Makefile.am:
+	* po/POTFILES.in: Updated accordingly.
+
+	Create private/ directory to host installed though private headers.
+
+	* configure.ac:
+	* nautilus-actions/Makefile.am: Updated accordingly.
+
+	* m4/na-log-domains.m4:
+	Define new log domains for API and private libraries.
+
+	* nautilus-actions/private/Makefile.am:
+	* nautilus-actions/private/README: New files.
+
+2009-11-17 Pierre Wieser <pwieser@trychlos.org>
+
+	Move NAIIOProvider interface to api/.
+
+	* nautilus-actions/api/na-api.h:
+	* nautilus-actions/api/na-gconf-keys.h: Fix doc typo.
+
+	* nautilus-actions/nact/nact-assistant-import.c:
+	* nautilus-actions/nact/nact-main-window.c:
+	* nautilus-actions/nact/nact-window.c:
+	* nautilus-actions/nact/nact-window.h:
+	* nautilus-actions/runtime/na-gconf-provider.c:
+	* nautilus-actions/runtime/na-object-item-fn.h:
+	* nautilus-actions/runtime/na-pivot.c:
+	* nautilus-actions/runtime/na-pivot.h:
+	* nautilus-actions/utils/nautilus-actions-new.c: Updated accordingly,
+	modifying path to headers,
+	fixing calls to NAIIOProvider interface.
+
+	* nautilus-actions/runtime/na-module.c:
+	* nautilus-actions/runtime/na-module.h: Fix typo.
+
+	* nautilus-actions/api/Makefile.am:
+	* nautilus-actions/common/Makefile.am:
+	* nautilus-actions/nact/Makefile.am:
+	* nautilus-actions/plugin/Makefile.am:
+	* nautilus-actions/runtime/Makefile.am:
+	* nautilus-actions/test/Makefile.am:
+	* nautilus-actions/utils/Makefile.am: Updated accordingly,
+	adding -I $(top_srcdir),
+	adding -L$(top_builddir)/nautilus-actions/api -lna-api.
+
+	Dynamically loads Nautilus-Actions extensions.
+
+	* nautilus-actions/runtime/na-module.c:
+	* nautilus-actions/runtime/na-module.h: New files.
+
+	* nautilus-actions/runtime/na-pivot.c: Load modules.
+
+	* nautilus-actions/runtime/Makefile.am: Updated accordingly.
+
+	Make libna-runtime a dynamically loaded library.
+	Initialize the API directory.
+
+	* nautilus-actions/api: New directory.
+
+	* nautilus-actions/common/Makefile.am:
+	* nautilus-actions/nact/Makefile.am:
+	* nautilus-actions/plugin/Makefile.am:
+	* nautilus-actions/runtime/Makefile.am:
+	* nautilus-actions/test/Makefile.am:
+	* nautilus-actions/utils/Makefile.am: Updated accordingly.
+
+	* po/POTFILES.in: Updated to reflect src/ directory renaming.
+
+2009-11-17 Pierre Wieser <pwieser@trychlos.org>
+
+	Rename all src/ tree to nautilus-actions/.
+
+	This will make easier to have an API installed on a host system,
+	all headers being included with #include <nautilus-actions/header.h>.
+
+2009-10-28 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-object-api.h (na_object_reset_status):
+	New function.
+
+	* src/common/na-object-fn.h:
+	* src/common/na-object.c (na_object_object_reset_status):
+	New function.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_get_parent): New function.
+
+	* src/nact/nact-assistant-export.c
+	(instance_dispose): Clear the tree model.
+	(assist_initial_load_actions_list): Export current actions list.
+
+	* src/nact/nact-iactions-list.c (display_label):
+	Only display status in edition mode.
+
+	* src/nact/nact-tree-model.c (fill_tree_store):
+	Clean up the code to avoid memory leaks.
+
+	* src/runtime/na-iduplicable.c:
+	* src/runtime/na-iduplicable.h (na_iduplicable_reset_status):
+	New function.
+
+	* src/common/na-object-api.h
+	(na_object_get_position, na_object_insert_at): New functions.
+
+	* src/common/na-object-item-fn.h:
+	* src/common/na-object-item.c
+	(na_object_item_get_position, na_object_item_insert_at):
+	New functions.
+
+	* src/nact/nact-main-menubar.c (save_item):
+	Insert the new origin at the same position that the previous one.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Add a label in front of the internal item id.
+
+	* src/runtime/na-iduplicable.c (na_iduplicable_duplicate):
+	Duplicated object inherits same attributes that the original.
+
+	* src/nact/nact-iactions-list.c (do_insert_items):
+	Take a copy before reverting the list, and free the copy at end.
+
+	* src/common/na-object-item.c (na_object_item_count_items):
+	Recurse into subitems before counting the current level.
+
+	* src/common/na-xml-writer.c:
+	* src/common/na-xml-writer.h:
+	(na_xml_writer_export): Returns a NULL filename if errors.
+	(na_xml_writer_output_xml): Returns error messages.
+
+	* src/nact/nact-clipboard.c
+	(export_row_object): Updated accordingly.
+
+	* src/utils/nautilus-actions-new.c:
+	Specify that the output directory must be specified as an URI.
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h:
+	* src/utils/console-utils.c:
+	* src/utils/console-utils.h:
+	Move na_utils_print_version() to console_print_version().
+
+	* src/utils/nautilus-actions-new.c:
+	* src/utils/nautilus-actions-schemas.c: Updated accordingly.
+
+	* src/utils/console-utils.c:
+	* src/utils/console-utils.h: New files.
+
+	* src/utils/Makefile.am: Updated accordingly.
+
+	* src/utils/nautilus-actions-new.c:
+	* src/utils/nautilus-actions-schemas.c: Initialize log handler
+	to not emit debug messages when not in maintainer mode.
+
+2009-10-27 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-main-window.c (class_init):
+	Make use of actual marshaller with two arguments.
+
+	* src/nact/nact-iaction-tab.c
+	(nact_iaction_tab_runtime_init_toplevel):
+	* src/nact/nact-icommand-tab.c
+	(nact_icommand_tab_runtime_init_toplevel):
+	* src/nact/nact-iconditions-tab.c
+	(nact_iconditions_tab_runtime_init_toplevel):
+	Replace g_signal_connect with base_window_signal_connect.
+
+	* data/nautilus-actions.schemas.in:
+	* src/common/na-iprefs.h:
+	Define two new preferences: quit_on_esc, confirm_when_quit_on_esc.
+
+	* src/nact/nact-assistant-export.c (on_initial_load_dialog):
+	* src/nact/nact-assistant-import.c (on_initial_load_dialog):
+	Read the user preferences from GConf.
+
+	* src/nact/nact-preferences-editor.c:
+	Edit the two new user preferences.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Add a frame to edit the two new user preferences.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Remove separator from Preferences dialog.
+	Add plural mark to a label in Runtime tab.
+	Fix a typo in Import tab.
+
+	* src/utils/nautilus-actions-new.c:
+	Add new action data as arguments (target-selection, target-folders,
+	target-toolbar, toolbar-label, folders).
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.c (na_utils_print_version):
+	New function.
+
+	* src/utils/nautilus-actions-new.c:
+	* src/utils/nautilus-actions-schemas.c:
+	Make use of na_utils_print_version() new function.
+
+	* src/runtime/na-iabout.c:
+	* src/runtime/na-iabout.h (na_iabout_get_copyright):
+	New function.
+
+	* src/utils/nautilus-actions-new.c:
+	Add --version command-line argument.
+
+	* src/nact/nact-ibackground-tab.c (insert_new_row):
+	Optimizes because the list is sorted on uris.
+
+	* src/nact/nact-iadvanced-tab.c:
+	Implements F2, Insert and Del keyboard accelerators.
+
+2009-10-26 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-object-profile-fn.h:
+	* src/common/na-object-profile.c:
+	* src/runtime/na-object-profile-fn.h:
+	* src/runtime/na-object-profile.c:
+	na_object_profile_replace_folder_uri moved from runtime to common
+	library.
+
+	* src/nact/nact-ibackground-tab.c:
+	Implements F2, Insert and Del keyboard accelerators.
+
+	* src/nact/nact-iadvanced-tab.c (runtime_init_connect_signals):
+	* src/nact/nact-ibackground-tab.c
+	(nact_ibackground_tab_runtime_init_toplevel):
+	Replace g_signal_connect with base_window_signal_connect to
+	better handle signal deconnections.
+
+	* src/nact/nact-ibackground-tab.c (treeview_cell_edited):
+	Only setup previous text if a non null pointer is provided.
+
+	* src/nact/nact-iaction-tab.c (set_label_label):
+	* src/nact/nact-icommand-tab.c (set_label_label):
+	Only set color foreground for the normal state.
+
+	* src/nact/nact-main-tab.c:
+	* src/nact/nact-main-tab.h (nact_main_tab_is_page_enabled):
+	New function.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Add mnemonics to target radio button labels.
+
+	* src/nact/nact-clipboard.c (get_from_primary_clipboard_callback):
+	Provides text content.
+
+	* src/nact/nact-main-menubar.c
+	(on_paste_activated, on_paste_into_activated):
+	Only inserts if items provided by clipboard are not null.
+
+	* src/nact/nact-iaction-tab.c (on_toolbar_label_changed):
+	Only setup the label when current item is an action.
+
+	* src/nact/nact-ibackground-tab.c (setup_folders):
+	Only tries to setup folders when there is a current profile.
+
+	* src/nact/nact-iadvanced-tab.c (release_schemes_list):
+	Clear the list store on dialog dispose.
+
+	* src/nact/nact-iaction-tab.c
+	(nact_iaction_tab_initial_load_toplevel):
+	Unref model after having initialized the combobox listview.
+	(release_icon_combobox): Clear the list store in dialog dispose.
+
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icommand-tab.h (nact_icommand_tab_has_label):
+	Remove unused function.
+
+	* configure.ac: Bump version number to 2.29.2.
+
+2009-10-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* NEWS: Updated.
+
+	* po/POTFILES.in: Update list of translatable files.
+
+	* src/runtime/na-iabout.c (na_iabout_display):
+	Do not mark authors names and emails for translating (#599520).
+
+	* src/runtime/na-object-profile.c (is_current_folder_inside):
+	Actually checks if current folder is inside one of specified folders.
+
+	* src/nact/nact-iactions-list.c
+	(nact_iactions_list_dispose): free list of modified items.
+	(nact_iactions_list_fill): reset level_zero_order_changed flag.
+
+	* src/nact/nact-main-menubar.c (on_level_zero_order_changed):
+	The message now brings up the flag to be set.
+
+	* src/nact/nact-tree-model.c (drop_inside):
+	Set the level_zero_order_changed flag to TRUE.
+
+	* src/nact/nact-preferences-editor.c
+	(on_base_runtime_init_dialog, save_preferences):
+	Let the user edit its preferred export format.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Add Export tab to Preferences dialog.
+
+2009-10-23 Pierre Wieser <pwieser@trychlos.org>
+
+	Populates Nautilus background menus and Nautilus toolbar.
+	Defines required new properties:
+	- target_selection: whether the action is candidate to selection menus
+	- target_background: whether the action is candidate to background menus
+	- target_toolbar: whether the action is candidate to toolbar display
+	- short_label: the toolbar label
+	- use_same_label: whether the toolbar label is the same that those of the
+	action.
+
+	* data/nautilus-actions.schemas.in:
+	* src/common/na-xml-names.h:
+	Define the new keys.
+	Make sure key descriptions are equal to those in nact-xml-names.h.
+
+	* src/common/na-xml-writer.c
+	(create_xml_schema, create_xml_dump): Export the new keys.
+	(create_gconf_schema): Export the new schemas.
+
+	* src/nact/nact-ibackground-tab.c:
+	* src/nact/nact-ibackground-tab.h:
+	* src/nact/nact-main-tab.c: New files
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/nact-assistant-export.c
+	(assistant_apply): Exported action is actually the original one,
+	not those displayed in assistant because it has no profiles.
+
+	* src/nact/nact-iaction-tab.c:
+	Define three new toggle buttons for the three target properties.
+
+	* src/nact/nact-iadvanced-tab.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-iconditions-tab.c:
+	Set sensitivity depending on current selection.
+
+	* src/nact/nact-main-window.c:
+	Define new "enable-tab" signal.
+	Implements new NactIBackgroundTab interface.
+
+	* src/nact/nact-xml-reader.c
+	(apply_values): Import the new keys.
+	No more assert on not processed entry.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Define three new toggle buttons to select the available targets.
+	Define new Background notebook tab.
+	Define Toolbar frame.
+
+	* src/plugin/nautilus-actions.c:
+	Implements the two other nautilus API get_background_items and
+	get_toolbar_items, both on current_folder.
+
+	* src/runtime/na-gconf-provider-keys.h:
+	* src/runtime/na-gconf-provider.c:
+	Read/write the new keys from/to IO Provider.
+
+	* src/runtime/na-object-api.h:
+	* src/runtime/na-object-item-priv.h:
+	* src/runtime/na-object-item.c:
+	* src/runtime/na-object-item-fn.h:
+	* src/runtime/na-object-action-priv.h:
+	* src/runtime/na-object-action.c:
+	* src/runtime/na-object-action-fn.h:
+	Implements the new properties.
+
+2009-10-20 Pierre Wieser <pwieser@trychlos.org>
+
+	Enable edition actions when the popup menu is open.
+	Do not apply edition actions on ActionsList when the focus is
+	in a tab.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h (nact_iactions_list_has_focus):
+	New function.
+
+	* src/nact/nact-main-menubar.c
+	(on_cut_activated, on_copy_activated, on_paste_activated,
+	on_delete_activated): Track the presence of a popup menu.
+
+	Enhance validity conditions of a profile.
+
+	* src/common/na-utils.c
+	(na_utils_string_list_to_text): default value is NULL.
+
+	* src/runtime/na-gconf-provider.c (read_item_action_profile_properties):
+	No more check just path and parameters.
+
+	* src/runtime/na-object-profile.c (object_is_valid):
+	Check for command, basenames, mimetypes and schemes.
+
+	* src/runtime/na-utils.c:
+	* src/runtime/na-utils.h (na_utils_get_first_word): New function.
+
+	* src/common/na-object-item.c (na_object_item_get_pixbuf):
+	Update comment.
+
+	* src/nact/nact-iaction-tab.c (on_icon_browse):
+	Fix widget name.
+
+2009-10-19 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nautilus-actions-config-tool.actions:
+	* src/nact/nautilus-actions-maintainer.actions:
+	Add toolbar items in View menu.
+
+	* src/nact/nact-assistant-import.c
+	(assistant_apply): Also checks the existancy against already imported.
+	(prepare_importdone): Actually states that the import was successfull.
+
+	* src/nact/nact-tree-model.c
+	(drop_uri_list): Also checks the existancy against already imported.
+
+	* src/nact/nact-xml-reader.c:
+	* src/nact/nact-xml-reader.h (nact_xml_reader_import):
+	Also checks the existancy against already imported.
+
+	* src/common/na-utils.c (na_utils_prefix_strings):
+	Fix concatenation of prefixed strings.
+
+	* src/nact/base-iprefs.c (base_iprefs_position_named_window):
+	Do not resize the window with unset default width and height.
+
+	* src/nact/nact-xml-reader.c (add_message):
+	Consider messages embedding XML markup.
+
+	* src/common/na-object-id.c (na_object_id_prepare_for_paste):
+	Recursively manage menu subitems.
+
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nautilus-actions-maintainer.actions:
+	Add a 'Dump selection' item in maintainer menu.
+
+	* src/nact/nact-main-menubar.c (on_duplicate_activated):
+	Check duplicate status after having reinitialized the origin object.
+
+2009-10-18 Pierre Wieser <pwieser@trychlos.org>
+
+	Open a popup on right click on the treeview.
+
+	* src/nact/nact-iactions-list.c
+	(on_button_press_event): Manage right mouse click.
+	(open_popup): New function.
+	(on_key_pressed_event): Only manage acclerators when treeview has the
+	focus.
+
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-menubar.h (nact_main_menubar_open_popup):
+	New function.
+
+	* src/nact/nautilus-actions-config-tool.actions:
+	Define the contextual popup menu.
+
+2009-10-17 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-main-menubar.c (on_iactions_list_count_updated):
+	Display the count of items in the statusbar.
+
+	* src/nact/nact-iactions-list.c
+	(collapse_to_parent, expand_to_first_child):
+	Make left and right arrows accelerators to collapse/expand trees.
+
+	* src/nact/nact-iactions-list.c (inline_edition):
+	Make F2 an accelerator to inline edit the label.
+
+	Creation of a root menu in the Nautilus context menu is now a
+	user preference.
+
+	* data/nautilus-actions.schemas.in: Define a schema for the preference.
+
+	* src/nact/nact-preferences-editor.c: Edit the preference.
+
+	* src/nact/nautilus-actions-config-tool.ui: Define a new checkbox.
+
+	* src/plugin/nautilus-actions.c:
+	Create a root menu only if users has asked for.
+
+	* src/runtime/na-ipivot-consumer.c:
+	* src/runtime/na-ipivot-consumer.h:
+	Define new virtual which handle the monitoring of the preference.
+
+	* src/runtime/na-iprefs.c:
+	* src/runtime/na-iprefs.h:
+	Read/write the preference in GConf.
+
+	* src/nact/nact-main-window.c (setup_dialog_title):
+	Restore function which had disappeared since v 1.12.
+
+	* src/nact/nact-iactions-list.c
+	(nact_iactions_list_initial_load_toplevel):
+	Cells are only editable in edition mode.
+
+	* src/common/na-xml-writer.c:
+	* src/common/na-xml-writer.h (na_xml_writer_export):
+	Now returns messages as a GSList.
+
+	* src/nact/nact-assistant-export.c (assist_prepare_exportdone):
+	Enhance sumary page.
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h (na_utils_prefix_strings): New function.
+
+	* src/nact/nact-assistant-import.c (prepare_importdone):
+	Enhance the summary page.
+
+	* src/nact/nact-xml-reader.c:
+	Actually relabel action if required.
+	Return all messages.
+
+	* src/nact/nact-assistant-export.c (assist_prepare_exportdone):
+	* src/nact/nact-assistant-import.c (prepare_importdone):
+	At end, quit the assistant on Cancel without warning.
+
+	* src/nact/base-window.c (setup_builder):
+	A window may have its own builder, or its own UI XML definition file,
+	or both.
+
+	* src/nact/nact-assistant-export-ask.c
+	(nact_assistant_export_ask_user): The dialog uses the common builder.
+
+	Make clipboard have an access to preferences.
+	Let the user be asked for the export format in drag and drop operations.
+
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-clipboard.h (nact_clipboard_new):
+	Now pass the BaseWindow as an argument.
+
+	* src/nact/nact-clipboard.c
+	(nact_clipboard_dnd_get_text, nact_clipboard_dnd_drag_end):
+	Ask the user if needed.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-tree-model.c: Updated accordingly.
+
+2009-10-16 Pierre Wieser <pwieser@trychlos.org>
+
+	Let the user be asked when exporting actions.
+
+	* src/nact/base-window.c (instance_dispose):
+	Fix hiding widgets when toplevel has not been initialized.
+	(base_window_run): Now returns a boolean.
+
+	* src/nact/nact-assistant-export-ask.c:
+	* src/nact/nact-assistant-export-ask.h: New files.
+
+	* src/nact/Makefile.am:
+	* src/nact/nact-assistant-export.ui: Updated accordingly.
+
+	* src/nact/nact-assistant-export.c:
+	Ask the user if needed.
+	Reread the current export format for each action.
+
+	Record last export format as a preference.
+
+	* src/common/na-iprefs.c:
+	* src/common/na-iprefs.h
+	(na_iprefs_get_export_format, na_iprefs_set_export_format):
+	New functions.
+
+	* src/common/na-xml-names.h:
+	Move export format constantes to src/common/na-iprefs.h.
+
+	* src/common/na-xml-writer.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-export.ui:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-clipboard.c:
+	* src/utils/nautilus-actions-new.c:
+	* src/utils/nautilus-actions-schemas.c:
+	Updated accordingly.
+
+	* src/nact/nact-iactions-list.c (nact_iactions_list_fill):
+	Only count items in edition mode.
+
+	* src/nact/nact-tree-model.c
+	(nact_tree_model_fill): Only check status in edition mode.
+	(fill_tree_store): Add a ref when the action is embedded in a menu.
+
+	* src/runtime/na-object-item.c (object_ref): Fix comment.
+
+2009-10-15 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/runtime/na-object-item.c (object_are_equal):
+	Remove debug trace.
+
+	* configure.ac:
+	* src/runtime/na-object-action-fn.h:
+	NAUTILUS_ACTIONS_CONFIG_VERSION from configure.ac to
+	na-object-action-fn.h as this is not a configuration information.
+
+	New 'Ask user' import mode.
+
+	* data/nautilus-actions.schemas.in:
+	Define new 'import-ask-user' preference schema.
+	Define new 'import-ask-user-last-mode' preference schema.
+	Add 'Ask user' new value for 'import-mode' preference.
+	Fix type and default value of 'import-mode'.
+
+	* po/POTFILES.in:
+	* src/nact/Makefile.am:
+	Add 'src/nact/nact-assistant-import-ask.c' new file.
+
+	* src/common/na-iprefs.c:
+	* src/common/na-iprefs.h:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-preferences-editor.c:
+	Define IPREFS_IMPORT_ASK new import mode.
+	na_iprefs_get_import_mode, na_iprefs_set_import_mode now take
+	the preference name as an argument.
+	Define IPREFS_IMPORT_ASK_LAST_MODE new preference.
+	Check status of imported actions.
+
+	* src/nact/nact-main-window.c
+	(nact_main_window_action_exists): Renamed as
+	nact_main_window_get_item.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	* src/nact/nact-assistant-import-ask.c:
+	* src/nact/nact-assistant-import-ask.h:
+	New AssistantImportAsk dialog box.
+	Keep the last users's choice to prevent ask too many times.
+
+	* src/nact/nact-xml-reader.c (manager_import_mode):
+	Now may ask the user to know what to do.
+
+	* src/nact/nact-xml-reader.h:
+	No more redefine import modes here !
+
+2009-10-14 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac:
+	Bump version number to 2.29.1 due to branch for 2.28.
+
+	* src/nact/nact-iactions-list.c:
+	Maintains a list of modified items, cleared when saving.
+	Define a new "status-changed" signal.
+
+	* src/nact/nact-main-menubar.c:
+	Update action sensitivities when a status is changed.
+
+	* src/nact/nact-tree-model.c (drop_inside_adjust_dest):
+	Also used to validate when dropping an uri.
+	(drop_uri_list): Check status of imported actions.
+	(drop_inside_move_dest): Fix when moving a subitem down.
+	(drop_inside): Delete the moved item before preparing to paste.
+
+	* src/plugin/nautilus-actions.c (instance_init):
+	Check status of loaded items.
+
+	* src/runtime/na-gconf-provider.c:
+	Manage unknown types.
+
+	* src/runtime/na-iio-provider.c (na_iio_provider_get_items_tree):
+	No more check here status of loaded items.
+
+	* src/runtime/na-pivot.c:
+	* src/runtime/na-pivot.h (na_pivot_check_status): New function.
+
+2009-10-13 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/runtime/na-iduplicable.c:
+	* src/runtime/na-iduplicable.h: Only define one signal which is
+	sent when one of the status has changed.
+
+	* src/common/na-object-api.h (na_object_get_topmost_parent):
+	Removed alias.
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-iadvanced-tab.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-iconditions-tab.c:
+	Force re-display of the item if modified column is displayed in
+	the treeview.
+
+	* src/nact/nact-iactions-list.c (on_tab_updatable_item_updated):
+	Force re-display of the item if asked for and status not modified.
+
+	* src/common/na-object-api.h:
+	* src/common/na-object-id-fn.h:
+	* src/common/na-object-id.c (na_object_check_status_up):
+	New function.
+
+	* src/nact/nact-tree-model.c (nact_tree_model_remove):
+	Simplifies the code by only checking the status of the parent.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-tree-model.c:
+	* src/runtime/na-iduplicable.c:
+	* src/runtime/na-iduplicable.h:
+	* src/runtime/na-iio-provider.c:
+	* src/runtime/na-object-api.h:
+	* src/runtime/na-object-fn.h:
+	* src/runtime/na-object-item.c:
+	* src/runtime/na-object.c:
+	Renamed na_object_check_edition_status() to na_object_check_status().
+
+	* src/common/na-object-api.h (na_object_get_topmost_parent):
+	New function.
+
+	* src/common/na-object-id-fn.h:
+	* src/common/na-object-id.c (na_object_id_get_topmost_parent):
+	New function.
+
+	* src/nact/nact-iactions-list.c (on_tab_updatable_item_updated):
+	Recursively update the display of parents of the updated item.
+	(do_insert_items): Insert childs into the actual insertion path.
+
+	* src/nact/nact-main-menubar.c (on_update_sensitivities):
+	Only enable new menu and new action when on an action or a menu.
+	Reorganize code.
+	(on_save_activated): only check status of toplevel items.
+
+	* src/nact/nact-main-tab.h:
+	* src/nact/nact-main-window.c: New SELECTED_ROW property.
+	(on_base_runtime_init_toplevel): Setup the order mode at init time.
+
+	* src/nact/nact-tree-model.c (sort_actions_list):
+	Do not sort profiles.
+	(nact_tree_model_insert): Returns the actual insertion path.
+
+	* src/runtime/na-gconf-provider-keys.h:
+	OBJECT_ITEM_TYPE_ENTRY: new key which defines the type of the entry.
+	MENU_ITEMS_ENTRY: renamed to OBJECT_ITEM_LIST_ENTRY.
+
+	* src/runtime/na-gconf-provider.c (read_item):
+	Only use the item's type to distinguish between	action and menu.
+	(read_object_item_properties, write_object_item): actions and
+	menus may have ordered subitems
+	(write_item_action, write_item_menu): Write the item's type.
+	(read_item_action): Keep the order of profiles.
+
+	* src/runtime/na-iio-provider.c (build_hierarchy):
+	Use na_object_item_get_items_string_list.
+	(sort_tree): Do not sort profiles.
+
+	* src/runtime/na-object-item-fn.h:
+	* src/runtime/na-object-item-priv.h:
+	* src/runtime/na-object-item.c:
+	List of string id of subitems is moved from NAObjectMenu.
+
+	* src/runtime/na-object-menu-fn.h:
+	* src/runtime/na-object-menu-priv.h:
+	* src/runtime/na-object-menu.c:
+	List of string id of subitems is moved to NAObjectItem.
+
+	* src/runtime/na-utils.c:
+	* src/runtime/na-utils.h (na_utils_remove_from_string_list):
+	New function.
+
+2009-10-12 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-object-api.h
+	(na_object_check_edition_status, na_object_is_valid):
+	Moved to src/runtime/na-object-api.h.
+
+	* src/common/na-object-fn.h:
+	* src/common/na-object.c
+	(na_object_iduplicable_check_edition_status,
+	na_object_iduplicable_is_valid): 
+	Moved to src/runtime/na-object-fn.h, src/runtime/na-object.c.
+
+	* src/nact/nact-tree-model.c (drop_inside):
+	Adjust the dest when moving items down.
+
+	* src/plugin/nautilus-actions.c (build_nautilus_menus):
+	Only display valid items.
+
+	* src/runtime/na-iio-provider.c (na_iio_provider_get_items_tree):
+	Check validity status at load time.
+
+	* src/runtime/na-object-api.h
+	(na_object_check_edition_status, na_object_is_valid):
+	Moved from src/common/na-object-api.h.
+
+	* src/runtime/na-object-fn.h:
+	* src/runtime/na-object.c
+	(na_object_iduplicable_check_edition_status,
+        na_object_iduplicable_is_valid):
+	Moved from  src/common/na-object-fn.h, src/common/na-object.c.
+
+	* src/runtime/na-object-menu.c (object_is_valid):
+	A valid menu has at least one valid subitem.
+
+2009-10-11 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-iactions-list.c (do_insert_into_first):
+	Recursively insert subitems.
+
+	* src/nact/nact-main-menubar.c (on_level_zero_order_changed):
+	Connect to new signal to enable save action.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h:
+	Define new signal "main-window-level-zero-order-changed".
+
+	* src/nact/nact-tree-model.c (idrag_dest_drag_data_received):
+	Fix drag and drop when reordering items.
+
+2009-10-09 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-iactions-list.c (do_insert_into_first):
+	Fix multi-childs insertion.
+	Remove useless do_insert_into_second() function.
+
+	* src/nact-main.c (main):
+	Only display traces from runtime library when in maintainer mode.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h (nact_iactions_list_brief_tree_dump):
+	Briefly dump the tree store content.
+	(nact_iactions_list_runtime_init_toplevel): Grab the focus at start.
+	(on_focus_in, on_focus_out): Track the focus in the treeview.
+	Let the label be edited in place.
+
+	* src/nact/nact-iaction-tab.c (on_iactions_list_column_edited):
+	* src/nact/nact-icommand-tab.c (on_iactions_list_column_edited):
+	New functions.
+
+	* src/nact/nact-main-menubar.c (nact_main_menubar_runtime_init):
+	Display a Maintainer menu when in maintainer mode.
+	Add BriefTreeStoreDumpItem new item.
+	Display a first toolbar.
+	(on_save_activated): Also save non-valid items.
+	(on_update_sensitivities): Disable edit actions when the focus is
+	not in the treeview.
+
+	* src/nact/nact-main-statusbar.c
+	(nact_main_statusbar_display_with_timeout):
+	Actually put a timeout to pop the status message.
+
+	* src/nact/nact-tree-model.c (nact_tree_model_insert):
+	Add debug traces.
+	(nact_tree_model_fill): Check validity status at load time.
+
+	* src/nact/nact-window.c (nact_window_save_item):
+	Full dump of the saved item.
+
+	* src/nact/nautilus-actions-config-tool.actions:
+	Define a placeholder for the Maintainer menu.
+	Define a first toolbar.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Replace the GtkToolbar with a VBox placeholder.
+
+	* src/nact/nautilus-actions-maintainer.actions: New file.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/runtime/na-gconf-provider.c (read_item_action_profile_properties):
+	Load all found items, emitting a warning when non valid.
+
+	* src/runtime/na-object-action.c (object_is_valid):
+	An action is valid if it has at least one valid profile.
+
+	* src/runtime/na-object-profile.c (object_is_valid):
+	A profile requires rather a command to be valid that a label.
+
+2009-10-08 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-object-api.h (na_object_remove_item):
+	Moved to runtime library.
+
+	* src/common/na-object-item-fn.h:
+	* src/common/na-object-item.c (na_object_item_remove_item):
+	Moved to runtime library.
+
+	* src/nact/nact-iactions-list.c (do_insert_items):
+	Marks the item itself as modified if it has no parent.
+
+	* src/nact/nact-main-menubar.c (on_update_sensitivities):
+	Enable Paste a profile if an action is selected.
+	Always disable Paste into a profile.
+
+	* src/nact/nact-main-window.c (actually_delete_item):
+	Delete childs before removing from pivot.
+	(nact_tree_model_insert, nact_tree_model_insert_into):
+	Set parent on newly inserted child.
+
+	* src/nact/nact-tree-model.c (fill_tree_store):
+	Rewrite duplication code to get reference counts equal to 1 in the store.
+	Install parent pointer in childs.
+
+	* src/runtime/na-object-api.h (na_object_remove_item):
+	Moved from common library.
+
+	* src/runtime/na-object-id.c (instance_dispose):
+	Remove itself from parent if any.
+
+	* src/runtime/na-object-item-fn.h:
+	* src/runtime/na-object-item.c (na_object_item_remove_item):
+	Moved from common library.
+
+	* src/runtime/na-object.c:
+	Remove useless debug traces.
+
+	Items loaded from an IO provider but not recorded in the hierarchical
+	tree are yet displayed, at the end of the tree.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h:
+	* src/runtime/na-pivot.c:
+	* src/runtime/na-pivot.h:
+	* src/nact/nact-main-menubar.c:
+	nact_window_write_level_zero renamed as na_pivot_write_level_zero.
+
+	* src/runtime/na-iio-provider.c (na_iio_provider_get_items_tree):
+	Merge left items in the hierarchy, and update the level-zero list.
+
+	* src/runtime/na-gconf-provider.c:
+	* src/runtime/na-object-menu-fn.h:
+	* src/runtime/na-object-menu.c:
+	na_object_menu_set_items_list renamed as
+	na_object_menu_set_items_string_list.
+
+	na_object_free_items: Renamed to na_object_free_items_list.
+
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-window.c:
+	* src/runtime/na-iio-provider.c:
+	* src/runtime/na-object-api.h:
+	* src/runtime/na-object-class.h:
+	* src/runtime/na-object-fn.h:
+	* src/runtime/na-object-item-fn.h:
+	* src/runtime/na-object-item.c:
+	* src/runtime/na-object.c:
+	* src/runtime/na-pivot.c: Updated accordingly.
+
+	na_object_get_items: Renamed to na_object_get_items_list,
+	Now returns the list itself instead of a refed new list.
+
+	na_object_set_items: Renamed to na_object_set_items_list.
+	Now install the provided GList pointer instead of copying the list.
+
+	* src/common/na-object-api.h:
+	* src/common/na-object.c:
+	* src/common/na-xml-writer.c:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-tree-model.c:
+	* src/plugin/nautilus-actions.c:
+	* src/runtime/na-gconf-provider.c:
+	* src/runtime/na-iio-provider.c:
+	* src/runtime/na-object-action.c:
+	* src/runtime/na-object-api.h:
+	* src/runtime/na-object-class.h:
+	* src/runtime/na-object-fn.h:
+	* src/runtime/na-object-item-fn.h:
+	* src/runtime/na-object-item.c:
+	* src/runtime/na-object-menu.c:
+	* src/runtime/na-object.c:
+	* src/runtime/na-pivot.c:
+	* src/utils/nautilus-actions-new.c: Updated accordingly.
+
+	Move parent pointer from NAObjectProfile to NAObjectId class.
+
+	* src/common/na-object-action-fn.h:
+	* src/common/na-object-action.c:
+	* src/common/na-object-id-fn.h:
+	* src/common/na-object-id.c:
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-tree-model.c:
+	* src/plugin/nautilus-actions.c:
+	* src/runtime/na-object-action-fn.h:
+	* src/runtime/na-object-action-priv.h:
+	* src/runtime/na-object-action.c:
+	* src/runtime/na-object-api.h:
+	* src/runtime/na-object-id-class.h:
+	* src/runtime/na-object-id-fn.h:
+	* src/runtime/na-object-id-priv.h:
+	* src/runtime/na-object-id.c:
+	* src/runtime/na-object-item.c:
+	* src/runtime/na-object-profile-fn.h:
+	* src/runtime/na-object-profile-priv.h:
+	* src/runtime/na-object-profile.c:
+	* src/runtime/na-object.c:
+	* src/runtime/na-pivot.c: Updated accordingly.
+
+2009-10-05 Pierre Wieser <pwieser@trychlos.org>
+
+	Restaure and fix 'Copy of' relabeling of pasted items.
+
+	* src/common/na-object-api.h:
+	* src/common/na-object-id-fn.h:
+	* src/common/na-object-id.c
+	(na_object_set_for_copy, na_object_id_set_for_copy):
+	Removed functions.
+	(na_object_prepare_for_paste, na_object_id_prepare_for_paste,
+	na_object_id_set_copy_of_label):
+	New functions.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h:
+	Signal connection functions now return the handler_id.
+
+	* src/nact/nact-clipboard.c:
+	* /src/nact/nact-clipboard.h:
+	Keep the initial copy mode in the clipboard.
+	Remove the relabeling operations from the clipboard.
+
+	* src/nact/nact-iactions-list.c:
+	Prepare pasted items here when we know the exact target.
+	Replace all data set against GObject instance with a single structure.
+	Block tab-updated signal handler while changing a selection.
+
+	* src/nact/nact-tree-model.c:
+	Use new na_object_prepare_for_paste() function in drag and drop.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h
+	(nact_main_window_prepare_object_for_copy): Removed function.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Remove not backward compatible 'orientation' properties.
+
+2009-10-04 Pierre Wieser <pwieser@trychlos.org>
+
+	Use some stored indicators to compute the action sensitivities
+	rather that all recomputing each time.
+	Rewrite insertion code in the treeview.
+
+	* Makefile.am:
+	* configure.ac: No more compile with --enable-iso-c not -pedantic
+	options as GLib-generated marshaling code is not compliant.
+
+	* po/POTFILES.in: Fix typo in a filename.
+
+	* src/common/na-object-api.h:
+	* src/common/na-object-item-fn.h:
+	* src/common/na-object-item.c (na_object_insert_item):
+	Now accepts a null object as sibling position.
+	(na_object_item_count_items): New function.
+
+	* src/nact/nact-marshal.c:
+	* src/nact/nact-marshal.h: New files.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/nact-iactions-list.c:
+	Now maintains a count of menus, actions and profiles items.
+	Send a signal when the count is changed.
+	Rewrite insertion in the treeview.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h
+	(nact_iactions_list_has_exportable): Removed function.
+	(nact_iactions_list_insert_into): New function.
+
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-menubar.h:
+	Maintains its own counters to compute the actions sensitivities.
+	Define new menu item 'Paste into'.
+	nact_main_menubar_refresh_actions_sensitivity: Removed function.
+	nact_main_menubar_dispose: New function.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h:
+	Connect to the iactions-list-selection-changed signal rather than
+	implement the corresponding virtual function.
+	Define new 'main-window-update-sensitivities' signal.
+
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-tree-model.h:
+	Rewrite insertion code in the tree store.
+	nact_tree_model_insert_into, nact_tree_model_object_at_path: New
+	functions.
+
+	* src/nact/nautilus-actions-config-tool.actions: new 'Paste into' item.
+
+2009-10-02 Pierre Wieser <pwieser@trychlos.org>
+
+	Centralize plugin routines in a dedicated libna-runtime library.
+
+	* configure.ac: Add src/runtime/Makefile generation.
+
+	* m4/na-log-domains.m4: Define NA-runtime log domain.
+
+	* src/Makefile.am: Recurse into runtime subdirectory.
+
+	* src/common/na-gconf-keys-base.h:
+	* src/common/na-gconf-keys-schemas.h:
+	* src/common/na-gconf-monitor.c:
+	* src/common/na-gconf-monitor.h:
+	* src/common/na-gconf-provider-keys.h:
+	* src/common/na-gconf-provider.c:
+	* src/common/na-gconf-provider.h:
+	* src/common/na-gconf-utils.c:
+	* src/common/na-gconf-utils.h:
+	* src/common/na-gnome-vfs-uri.c:
+	* src/common/na-gnome-vfs-uri.h:
+	* src/common/na-iabout.c:
+	* src/common/na-iabout.h:
+	* src/common/na-iduplicable.c:
+	* src/common/na-iduplicable.h:
+	* src/common/na-iio-provider.c:
+	* src/common/na-iio-provider.h:
+	* src/common/na-ipivot-consumer.c:
+	* src/common/na-ipivot-consumer.h:
+	* src/common/na-object-action-class.h:
+	* src/common/na-object-class.h:
+	* src/common/na-object-id-class.h:
+	* src/common/na-object-item-class.h:
+	* src/common/na-object-profile-class.h:
+	* src/common/na-pivot.c:
+	* src/common/na-pivot.h: Moved to libna-runtime library.
+
+	* src/common/na-object-action.c:
+	* src/common/na-object-action.h:
+	* src/common/na-object-menu.c:
+	* src/common/na-object-menu.h:
+	* src/common/na-object-profile.c:
+	* src/common/na-object-profile.h: Remove runtime functions.
+
+	* src/common/Makefile.am: Updated accordingly.
+
+	* src/runtime/Makefile.am: New file.
+
+2009-10-02 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h (base_application_message_dlg):
+	New function.
+
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-clipboard.h (nact_clipboard_dnd_set,
+	nact_clipboard_dnd_get_data, nact_clipboard_dnd_get_text,
+	nact_clipboard_dnd_drag_end, nact_clipboard_dnd_clear): New functions.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h (nact_iactions_list_insert_at_path):
+	New function.
+
+	* src/nact/nact-main-statusbar.c:
+	* src/nact/nact-main-statusbar.h
+	(nact_main_statusbar_display_with_timeout): New function.
+
+	* nact/nact-main-window.c:
+	* nact/nact-main-window.h (nact_main_window_prepare_object_for_copy):
+	New function. This is a temporary place, waiting for (another)
+	reorganization of the code.
+
+2009-10-01 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h (na_utils_lines_to_string_list):
+	New function to handle uri lists.
+
+	* src/common/na-iio-provider.c:
+	* src/common/na-pivot.c:
+	* src/common/na-iprefs.c:
+	* src/common/na-iprefs.h:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-preferences-editor.c:
+	All preferences managed here are renamed as IPREFS_xxx.
+
+	* src/common/na-iprefs.c:
+	* src/common/na-iprefs.h (na_iprefs_get_import_mode,
+	na_iprefs_set_import_mode): New functions.
+
+	* src/common/na-xml-writer.c:
+	Replace g_assert() with g_return_if_fail().
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_signal_connect_after):
+	New function.
+
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Display in Preferences editor import mode preferences.
+
+2009-09-30 Pierre Wieser <pwieser@trychlos.org>
+
+	* data/nautilus-actions.schemas.in:
+	Order mode preference is now a string to let the GConf edition
+	be more user friendly.
+	Import mode: idem.
+
+	* src/common/na-gconf-utils.c:
+	* src/common/na-gconf-utils.h (na_gconf_utils_read_string):
+	New function.
+
+	* src/common/na-iprefs.c:
+	Define order_mode_table to convert internal mode to GConf string.
+
+	* src/common/na-iprefs.c:
+	* src/common/na-iprefs.c
+	(na_iprefs_read_string, na_iprefs_write_string): New functions.
+
+	* src/common/na-about.c: Renamed as na-iabout.c.
+	* src/common/na-about.h: Renamed as na-iabout.h.
+	Defines the NAIAbout interface to let the implementor provides
+	the actual application name.
+
+	* src/common/Makefile.am:
+	* src/nact/nact-application.c:
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-window.c: Updated accordingly.
+
+	* src/nact/base-iprefs.c:
+	* src/nact/base-iprefs.h
+	(base_iprefs_get_string, base_iprefs_set_string): Removed functions.
+
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-icommand-tab.c:
+	Move base_iprefs_xxx_string() to na_iprefs_xxx equivalents.
+
+	* src/nact/nact-assistant-import.c:
+	Import mode preference is now stored as a string.
+
+	* src/plugin/nautilus-actions.c:
+	Builds a hierachical menu for Nautilus context menu.
+
+2009-09-28 Pierre Wieser <pwieser@trychlos.org>
+
+	* data/nautilus-actions.schemas.in:
+	Define a schema for the three new preferences.
+	Update the schema with the new semantic of actions sorting.
+
+	* src/common/na-gconf-utils.c:
+	* src/common/na-gconf-utils.h
+	(na_gconf_utils_read_int, na_gconf_utils_write_int): New functions.
+
+	* src/common/na-object-api.h:
+	* src/common/na-object-id-fn.h:
+	* src/common/na-object-id.c (na_object_id_set_for_copy):
+	Add a relabel argument.
+	Remove useless debug trace.
+
+	* src/common/na-iio-provider.c (na_iio_provider_get_items_tree):
+	Dump the hierarchy tree before the alphabetical sort.
+	Implement the new actions sorting semantic when loading the tree.
+	Move the sorting functions to NAPivot class.
+
+	* src/common/na-ipivot-consumer.c:
+	* src/common/na-ipivot-consumer.h:
+	Add new value to virtual functions arguments lists.
+
+	* src/common/na-iprefs.c:
+	* src/common/na-iprefs.h (na_iprefs_is_alphabetical_order):
+	Renamed as na_iprefs_get_order_mode().
+	Move NAIPrefs data to instance object.
+
+	* src/common/na-pivot.c:
+	* src/common/na-pivot.h
+	(na_pivot_sort_alpha_asc, na_pivot_sort_alpha_desc): New functions.
+
+	* src/nact/base-iprefs.c:
+	* src/nact/base-iprefs.c (base_iprefs_get_bool,
+	base_iprefs_set_bool):
+	Replace the BaseWindow argument by a BaseIPrefs	one.
+	Define three new UI preferences.
+
+	* src/nact/nact-assistant-export.c:
+	Implements IActionsList::get_treeview_name virtual function.
+	Remove useless NAIPrefs implementation.
+
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-main-window.c:
+	Now implements the BaseIPrefs interface.
+
+	* src/nact/nact-main-window.c (nact_main_window_action_exists):
+	No more check for action existancy in NAPivot.
+	No more forward nact-tab-updatable-item-updated signal.
+	Implements IActionsList::get_treeview_name virtual function.
+	Remove useless NAIPrefs implementation.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h
+	(nact_iactions_list_collapse_all, nact_iactions_list_expand_all,
+	nact_iactions_list_display_order_change):
+	New functions.
+	Remove useless nact-iactions-list-item-updated signal.
+	Connect instead to nact-tab-updatable-item-updated signal.
+	(get_treeview_name): New pure virtual function.
+
+	* src/nact/nact-main-menubar.c (on_duplicate_activated):
+	Takes advantage of new UI preferences.
+	Define new Expand all/Collapse all menu items.
+
+	* src/nact/nact-preferences-editor.c:
+	Edit the new UI preferences.
+	Do not implement BaseIPrefs nor NAIPrefs interfaces.
+	Implement new order mode semantic.
+	Make sure to show the page zero when opening the editor.
+
+	* src/nact/nact-tree-model.c (sort_actions_list):
+	Implement new order mode semantic.
+	Use new NAPivot sort functions.
+
+	* src/nact/nautilus-actions-config-tool.actions:
+	Define new View menu.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Edit the user preferences in a notebook.
+	Remove "orientation=vertical" vbox properties.
+
+	* src/plugin/nautilus-actions.c:
+	Trigger items-updated signal to Nautilus on runtime preferences
+	changes.
+
+2009-09-27 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-object-api.h (na_object_set_for_copy): New function.
+
+	* src/common/na-object-id-fn.h:
+	* src/common/na-object-id.c (na_object_id_set_for_copy): New function.
+	(most_derived_new_id): Do not search in NAObjectClass.
+
+	* src/common/na-object-item.c (na_object_item_remove_item):
+	Release the reference on the removed item.
+	Only release the reference when action or menu, not profile.
+
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-clipboard.h (nact_clipboard_primary_set,
+	nact_clipboard_primary_get, nact_clipboard_primary_counts):
+	Now use the NactClipboard convenience object.
+	Uses na_object_id_set_for_copy().
+
+	* src/nact/nact-iactions-list.c (on_treeview_selection_changed):
+	Only get selected items when about to send the message.
+	Do not try to select a null path.
+
+	* src/nact/nact-main-menubar.c:
+	Now use the NactClipboard convenience object.
+	Uses na_object_id_set_for_copy().
+	(on_paste_activated): Setup the new action when pasting a profile.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h (nact_main_window_get_clipboard):
+	New function.
+
+2009-09-26 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-iduplicable.c:
+	* src/common/na-iduplicable.c (na_iduplicable_dispose): New function.
+	Rewrite signal logic to avoid having to override class handler.
+
+	* src/common/na-gconf-monitor.c:
+	* src/common/na-gconf-monitor.h:
+	Embeds its own GConfClient.
+
+	* src/common/na-gconf-provider.c:
+	No more provide GConfClient from GConf provider.
+
+	* src/common/na-iio-provider.c:
+	* src/common/na-iio-provider.h:
+	No more define signals for preferences management.
+	Move providers from GSList to GList.
+
+	* src/common/na-ipivot-consumer.c:
+	* src/common/na-ipivot-consumer.h:
+	Rename IPivotConsumer notification functions.
+
+	* src/common/na-object.c: Call na_iduplicable_dispose().
+
+	* src/common/na-pivot.c:
+	No more define signals for preferences management.
+	Move monitors from GSList to GList.
+	Move providers from GSList to GList.
+
+	* src/nact/base-builder.c:
+	* src/nact/base-builder.h: New files.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h:
+	Embeds a NactBuilder object.
+	base_application_get_toplevel(), base_application_get_widget(),
+	base_application_search_for_widget(): Removed functions.
+
+	* src/nact/base-assistant.c:
+	Remove embedded GtkBuilder object.
+
+	* src/nact/base-window-class.h (get_ui_filename):
+	New virtual function.
+	base_window_get_toplevel_window(): Renamed to
+	base_window_get_toplevel().
+
+	* src/nact/base-iprefs.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences-editor.c: Use base_window_get_toplevel().
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h: Two new properties
+	HAS_OWN_BUILDER and XML_UI_FILENAME.
+
+	* nact/nact-assistant-export.c:
+	* nact/nact-assistant-import.c: Use new properties.
+
+	* src/nact/nact-iactions-list.c: Define management mode.
+	No longer override NAIDuplicable signal class handlers.
+
+2009-09-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* data/nautilus-actions.schemas.in:
+	Defines a new key for the "import-mode" preference.
+
+	* src/nact/base-iprefs.c:
+	Reset default size of the window if recorded size and position
+	exceed current screen size.
+
+	* src/nact/nact-assistant-export.ui:
+	All titles are verbs.
+
+	* src/nact/nact-assistant-import.c:
+	Let the user define an import mode if the UUID already exists.
+
+	* src/nact/nact-tree-model.c:
+	Override the object when inserting an already existing UUID.
+
+	* src/nact/nact-xml-reader.c:
+	* src/nact/nact-xml-reader.h:
+	Manage the import mode, renumbering the imported action if needed.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Add a page to the Import assistant to manage the import mode.
+
+2009-09-24 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h (nact_main_window_reload):
+	New function.
+
+	* data/nautilus-actions.schemas.in: Rename preferences keys.
+	Add iprefs-level-zero key.
+
+	* src/nact/base-application-class.h:
+	* src/nact/base-application.c:
+	* src/nact/base-application.h:
+	* src/nact/base-assistant.c:
+	* src/nact/base-dialog.c:
+	* src/nact/base-iprefs.c:
+	* src/nact/base-window-class.h:
+	* src/nact/base-window.c:
+	* src/nact/base-window.h:
+	* src/nact/nact-application.c:
+	* src/nact/nact-application.h:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-export.h:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-assistant-import.h:
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	* src/nact/nact-iadvanced-tab.c:
+	* src/nact/nact-iadvanced-tab.h:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icommand-tab.h:
+	* src/nact/nact-iconditions-tab.c:
+	* src/nact/nact-iconditions-tab.h:
+	* src/nact/nact-main-menubar.h:
+	* src/nact/nact-main-statusbar.c:
+	* src/nact/nact-main-statusbar.h:
+	* src/nact/nact-main-tab.h:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h:
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-preferences-editor.h:
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-tree-model.h:
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h:
+	* src/nact/nact-xml-reader.h:
+	* src/plugin/nautilus-actions.c:
+	* src/plugin/nautilus-actions.h:
+	Review code, usage of g_assert, test dispose_has_run.
+
+2009-09-23 Pierre Wieser <pwieser@trychlos.org>
+
+	* data/nautilus-actions.schemas.in: Migrate misnamed keys.
+
+	* src/common/na-gconf-monitor.c:
+	* src/common/na-gconf-monitor.h:
+	* src/common/na-gconf-provider.c:
+	* src/common/na-gconf-utils.c:
+	* src/common/na-iio-provider.c:
+	* src/common/na-ipivot-consumer.c:
+	* src/common/na-iprefs.c:
+	* src/common/na-object-action-class.h:
+	* src/common/na-object-action.c:
+	* src/common/na-object-action.h:
+	* src/common/na-object-class.h:
+	* src/common/na-object-fn.h:
+	* src/common/na-object-id-class.h:
+	* src/common/na-object-id-fn.h:
+	* src/common/na-object-id.c:
+	* src/common/na-object-item-class.h:
+	* src/common/na-object-item-fn.h:
+	* src/common/na-object-item.c:
+	* src/common/na-object-menu.c:
+	* src/common/na-object-menu.h:
+	* src/common/na-object-profile-class.h:
+	* src/common/na-object-profile.c:
+	* src/common/na-object-profile.h:
+	* src/common/na-object.c:
+	* src/common/na-pivot.c:
+	* src/common/na-utils.c:
+	* src/common/na-xml-writer.c:
+	* src/common/na-xml-writer.h:
+	Review code, usage of g_assert, test dispose_has_run.
+
+	* src/nact/base-iprefs.c:
+	* src/nact/base-iprefs.h (base_iprefs_migrate_key): New function.
+
+	* src/nact/nact-icommand-tab.c
+	(nact_icommand_tab_initial_load_toplevel): Migrate misnamed keys.
+
+2009-09-22 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Add a comment about GtkActivatable.
+
+	* src/common/na-iduplicable.c:
+	* src/common/na-iduplicable.h:
+	Reorganize the code and add comments about recursivity inside.
+
+	* src/common/na-iio-provider.c:
+	Replace local dump_hierarchy() with call to na_object_dump_tree().
+	na_iio_provider_write_item(): Make debug trace more verbose.
+
+	* src/common/na-object-action.c:
+	* src/common/na-object-action.h:
+	Output debug traces depending on NAIDuplicable flag.
+	Fix equality check if a profile is modified.
+
+	* src/common/na-object-api.h (na_object_dump_norec,
+	na_object_dump_tree, na_object_reset_origin): New functions.
+	na_object_insert_item(): Add a sibling pointer.
+
+	* src/common/na-object.c:
+	* src/common/na-object-fn.h:
+	Reorganize the code and add comments about recursivity inside.
+
+	* src/common/na-object-id.c:
+	* src/common/na-object-menu.c:
+	* src/common/na-object-profile.c: Make debug trace more verbose.
+
+	* src/common/na-object-item.c:
+	* src/common/na-object-item-fn.h (na_object_item_insert_item):
+	Add a sibling pointer.
+	na_object_item_free_items(): Only unref if object is always valid.
+	object_are_equal(): Position is a factor of equality.
+	Remove g_object_ref() from na_object_item_insert_item() and
+	na_object_item_append_item().
+	Remove g_object_unref() from na_object_item_remove_item().
+
+	* src/common/na-pivot.c:
+	* src/common/na-pivot.h (na_pivot_get_item): New function.
+	na_pivot_remove_item(): The removed object may have been already
+	deleted.
+
+	* src/nact/nact-application.c (appli_initialize_application):
+	Allocate a fake NAObjectAction to initialize NAIDuplicable
+	interface.
+
+	* src/nact/nact-assistant-import.c:
+	Actually imports the actions into the tree store before
+	confirming the operation was done.
+
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-clipboard.h: Make it a convenience class.
+
+	* nact/nact-iactions-list.c:
+	* nact/nact-iactions-list.h (nact_iactions_list_get_item):
+	New function.
+
+	* src/nact/nact-main-menubar.c:
+	Do not use GtkActivatable if version <= 2.16.
+	Rewrite save items process.
+
+	* src/nact/nact-main-window.c (nact_main_window_action_exists):
+	Restore the function, searching in NAPivot and in tree store.
+	instance_dispose(): Clear the clipboard.
+
+	* src/nact/nact-tree-model.c:
+	Now inserts the new row before a given sibling object.
+
+2009-09-21 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-gconf-provider.c (write_item_menu):
+	Fix memory leak.
+
+	* src/common/na-iduplicable.c:
+	* src/common/na-iduplicable.h:
+	Emits a signal for each modification of one of the status.
+	Do not use NA_xx macros when returning a pointer that may be NULL.
+	Propagate the modification signal to registered consumers.
+
+	* src/common/na-iio-provider.c (build_hierarchy):
+	Defaults to keep the whole list when there is no level-zero pref.
+
+	* src/common/na-obj-action.c:
+	Version number is not localized, so compare should be ascii.
+	Action inherits from edition status of its profiles.
+
+	* src/common/na-object-item.c:
+	Optimizes check of edition status of subitems.
+
+	* src/common/na-object.c:
+	No more over-checks edition status of item's childs.
+
+	* src/common/na-obj-action-class.h: Renamed to na-object-action-class.h.
+	* src/common/na-obj-action.c: Renamed to na-object-action.c.
+	* src/common/na-obj-action.h: Renamed to na-object-action.h.
+
+	* src/common/na-obj-profile-class.h: Renamed to na-object-profile-class.h.
+	* src/common/na-obj-profile.c: Renamed to na-object-profile.c.
+	* src/common/na-obj-profile.h: Renamed to na-object-profile.h.
+
+	* src/common/na-obj-menu.c: Renamed to na-object-menu.c.
+	* src/common/na-obj-menu.h: Renamed to na-object-menu.h.
+
+	* src/nact/nact-iactions-list.c:
+	When duplicating an object, try to insert the new one besides
+	the original one.
+	Replace calls to gtk_tree_model_refilter() by
+	nact_tree_model_display().
+
+	* src/nact/nact-main-menubar.c (on_new_profile_activated):
+	Setup edition status of new profile.
+
+	* src/nact/nact-main-menubar.c (save_object_item):
+	Cleanup the code.
+
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-tree-model.h (nact_tree_model_insert):
+	Returns the path string of the newly inserted row, as it appears
+	more liable that an iter after child model conversion.
+	nact_tree_model_display(): send signal "row-changed".
+
+2009-09-20 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-object-item.c (object_id_new_id):
+	Function becomes recursive.
+
+	src/common/na-object-item.c
+	(na_object_item_append_item, na_object_item_insert_item):
+	Only append/insert child item if not already recorded.
+
+	* src/nact/nact-clipboard.c (renumber_items):
+	Removes recursivity as it is provided by the class.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h (nact_iactions_list_delete_selection):
+	No more returns the path to be selected as this can be directly taken
+	into account by the function itself.
+	Check depth of path before trying gtk_tree_path_up.
+	nact_iactions_list_select_row(): no more a public function.
+	Fix row selection code.
+
+	* src/nact/nact-iactions-list.c (select_row_at_path):
+	Simulate a "selection-changed" signal emission with an empty selection
+	in nothing can be selected.
+
+	* src/nact/nact-iactions-list.c (do_insert_items):
+	Do not rely on iter after a store_to_filter_model conversion.
+
+	* src/nact/nact-main-menubar.c:
+	Reorganize code to avoid the need of delete_selection returning
+	a path to be selected.
+
+	* src/nact/nact-tree-model.c (nact_tree_model_insert):
+	Rewrite the code to make the computing process clearer.
+
+2009-09-19 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-gconf-provider.c:
+	Use na_object_menu_rebuild_items_list() and fix memory leak.
+
+	* src/common/na-iio-provider.c:
+	Build the object hierarchy, eventually alphabetically sorted.
+
+	* src/common/na-object.c b:
+	Add class name in instance_dipose() trace.
+
+	* src/common/na-obj-action.c (are_equal): Remove trace.
+
+	* src/common/na-obj-menu.c:
+	* src/common/na-obj-menu.h:
+	Remove traces at instance_dispose() and instance_finalize().
+	na_object_menu_rebuild_items_list(): New function.
+
+	* src/common/na-obj-action.c:
+	* src/common/na-obj-menu.c:
+	* src/common/na-object-item-fn.h:
+	* src/common/na-object-item.c:
+	na_object_item_set_new_uuid(): Replace function by na_object_set_new_id().
+
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-clipboard.h:
+	All functions in use for cut/copy/paste functions are renamed as
+	primary_xxx.
+	nact_clipboard_primary_counts() replaces nact_clipboard_is_empty().
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	nact_iactions_list_get_modified_items(): Replaced by
+	nact_iactions_list_has_modified_items().
+	nact_iactions_list_has_exportable(): New function.
+	nact_iactions_list_is_filling_list(): Removed function.
+	toggle_collapse(): Activate shortcuts on menus.
+	nact_iactions_list_select_row(): Fix keyboard focus on new items.
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-iconditions-tab.c:
+	* src/nact/nact-iadvanced-tab.c:
+	Emit "item-updated" signal in response to an update in tabs.
+	All selection_updated() functions renamed to selecion_changed() to
+	keep consistency() with IActionsList message.
+
+	* src/nact/nact-main-menubar.c:
+	Update conditions of sensitivity of menu items.
+	Use nact_window_save_item() new function name.
+
+	* src/nact/nact-main-window.c:
+	Emits "item-updated" to IActionsList in response to "item-updated"
+	from notebook's tabs.
+	nact_main_window_get_modified_items_count(): Replaced with
+	nact_main_window_has_modified_items().
+	Use nact_window_delete_item() new function name.
+
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-tree-model.h (nact_tree_model_display): New function.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h (nact_window_warn_count_modified):
+	Renamed as nact_window_warn_modified() with string change.
+	nact_window_save_object_item() renamed ad nact_window_save_item().
+	nact_window_delete_object_item() renamed ad nact_window_delete_item().
+
+	* po/POTFILES.in: Update list of files.
+
+2009-09-18 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-gconf-utils.c:
+	Add validity checks on public functions.
+	sync_gconf: New function.
+
+	* src/common/na-iduplicable.c:
+	* src/common/na-iduplicable.h:
+	Create new interface API get_childs() to let implementors recurse
+	into childs if any.
+
+	* src/common/na-object.c:
+	* src/common/na-object-class.h(get_childs): New virtual function.
+	Converts the interface API into a class virtual function.
+
+	* src/common/na-obj-action.c:
+	* src/common/na-obj-menu.c:
+	* src/common/na-obj-profile.c:
+	* src/common/na-object-id.c:
+	Do not implement get_childs() NAObject virtual function.
+
+	* src/common/na-object-item.c:
+	Implements get_childs() virtual function.
+	Use na_object_iduplicable_are_equal() instead of obsoleted public
+	na_object_are_equal() API.
+
+	* src/common/na-obj-action.c (is_valid):
+	Adds a check on profile existance.
+
+	* src/common/na-object.c:
+	* src/common/na-object-api.h (na_object_set_origin_rec):
+	* src/common/na-object-fn.h (na_object_iduplicable_set_origin_recurse):
+	New API. Let caller recursively set an origin on objects.
+
+	* src/nact/base-assistant.c:
+	Move GtkBuilder to private data structure to be able to unref it.
+
+	* src/nact/nact-clipboard.c:
+	Recursively renumber NAObjectItem when needed.
+
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-tree-model.c: Fix cut/copy/paste functions.
+	nact_tree_model_update_parent(): removed function.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	Set selection on last level 1 inserted row.
+	nact_iactions_list_get_items_count: Removed function.
+
+	* src/nact/nact-main-menubar.c (on_new_profile_activated): Fixed.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h (nact_main_window_get_all_items_count):
+	Removed function.
+
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-tree-model.h (nact_tree_model_get_items_count):
+	Removed function.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h (nact_window_count_level_zero_items):
+	New	function.
+
+	* src/nact/nact-assistant-export.ui: New file (see #579345).
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Renumber items (see #579345).
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+2009-09-17 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-iio-provider.c
+	(get_merged_items_list,	sort_tree):
+	* src/common/na-iio-provider.h
+	(read_items_list, na_iio_provider_get_items_tree):
+	* src/common/na-gconf-provider.c (iio_provider_read_items_list):
+	Now use a GList instead of a GSList (shorter, more powerful).
+
+	* src/common/na-object-api.h (na_object_set_new_id):
+	Fix declaration.
+
+	* src/common/na-object-id.c (new_id): New virtual function.
+	(na_object_id_set_new_id): new corresponding API.
+	Implements a 'most-derived' model.
+
+	* src/common/na-object-item.c:
+	Subitems are now managed in a GList instead of a GSList.
+
+	* src/common/na-obj-action.c:
+	* src/common/na-obj-menu.c:
+	* src/common/na-pivot.c:
+	* src/common/na-pivot.h:
+	* src/common/na-xml-writer.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-clipboard.h:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	* src/nact/nact-main-menubar.c
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-tree-model.c:
+	* src/plugin/nautilus-actions.c:
+	* src/utils/nautilus-actions-new.c: Updated accordingly.
+
+	* src/nact/nact-iactions-list.c (filter_selection,
+	filter_selection_iter):	Controls the allowed selection so that
+	we are only able to select profiles, or actions/menus.
+	Define new nact_iactions_list_set_filter_selection_mode() api.
+
+	* src/nact/nact-iactions-list.c	(is_removing, set_remove_operation):
+	Doesn't update the selection while removing items.
+
+	* src/common/na-object.c:
+	* src/common/na-object-fn.h
+	(na_object_get_hierarchy, na_object_free_hierarchy): New functions.
+
+	* src/nact/nact-main-window.c (nact_main_window_delete_selection):
+	Renamed to nact_main_window_move_to_deleted().
+
+	* src/nact/nact-main-tab.c: Removed (unused) file.
+
+	* src/nact/nact-main-menubar.c: Remove <Ctrl+M> accelerator to let
+	actions be the main selectable items.
+
+2009-09-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac:
+	Remove NAUTILUS_ACTIONS_CONFIG_GCONF_BASEDIR (not a configuration
+	variable).
+
+	* src/common/na-action.c: Renamed as na-obj-action.c.
+	* src/common/na-action.h: Renamed as na-obj-action.h.
+	* src/common/na-action-class.h:	Renamed as na-obj-action-class.h.
+	Takes part of renaming NAAction class to NAObjectAction.
+
+	* src/common/na-action-profile.c: Renamed as na-obj-profile.c.
+	* src/common/na-action-profile.h: Renamed as na-obj-profile.h.
+	* src/common/na-action-profile-class.h:
+	Renamed as na-obj-profile-class.h.
+	Takes part of renaming NAActionProfile class to NAObjectProfile.
+
+	* src/common/na-action-menu.c: Renamed as na-obj-menu.c.
+	* src/common/na-action-menu.h: Renamed as na-obj-menu.h.
+	Takes part of renaming NAActionMenu class to NAObjectMenu.
+
+	* src/common/na-gconf.c: Renamed as na-gconf-provider.c.
+	* src/common/na-gconf.h: Renamed as na-gconf-provider.h.
+	Takes part of NAGConf class to NAGConfProvider.
+	This let us clearly identify the rule of the class, distinguishing
+	it from GConf as a preferences repository.
+
+	* src/common/na-gconf-key.h: Splitted in na-gconf-keys-base.h,
+	na-gconf-keys-schemas.h and na-gconf-provider-keys.h files.
+
+	* src/common/na-gconf-monitor.c: New file.
+	* src/common/na-gconf-monitor.h: New file.
+	New class NAGConfMonitor.
+
+	* src/common/na-gconf-utils.c: New file.
+	* src/common/na-gconf-utils.h: New file.
+	Handle some GConf general utilities.
+
+	* src/common/na-iio-provider.c: Sort each level of the tree if
+	alphabetical order display has been requested.
+
+	* src/common/na-object.h: Splitted in na-object-fn.h,
+	na-object-class.h and na-object-api.h.
+	All NAObject-derived public functions are now declared in
+	na-object-api.h.
+
+	* src/common/na-object-id.h: Splitted in na-object-id-fn.h and
+	na-object-id-class.h.
+
+	* src/common/na-object-item.h: Splitted in na-object-item-fn.h
+	and na-object-item-class.h.
+
+	* src/common/na-pivot.c:
+	* src/common/na-pivot.h:
+	Remove na_pivot_free_items_tree(), replacing it with
+	na_object_free_items().
+
+	* src/nact/base-application-class.c:
+	* src/nact/base-application-class.h:
+	Virtual function are no more prefixed by a class prefix, but local
+	implementations or these virtuals are.
+	Properties are renamed as BASE_APPLICATION_PROP_xxxx.
+
+	* src/nact/base-window-class.c:
+	* src/nact/base-window-class.h:
+	Remove not used init() and run() virtual functions.
+	Properties are renamed as BASE_WINDOW_PROP_xxxx.
+
+	* src/nact/egg-tree-multi-dnd.c: Cleanup the code.
+
+	* src/nact/nact-application.c:
+	Properties are renamed as NACT_APPLICATION_PROP_xxxx.
+
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-export.h:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-assistant-import.h:
+	Now derived from BaseAssistant class.
+
+	* src/nact/base-dialog.c: New file.
+	* src/nact/base-dialog.h: New file.
+	Define the BaseDialog class.
+
+	* src/nact/nact-assistant.c: Renamed as base-assistant.c.
+	* src/nact/nact-assistant.h: Renamed as base-assistant.h.
+	Define the BaseAssistant class.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	Replace nact_iactions_list_free_items_list() with
+	na_object_free_items().
+
+	* src/nact/nact-imenubar.c: Renamed as nact-main-menubar.c.
+	* src/nact/nact-imenubar.h: Renamed as nact-main-menubar.h.
+	Remove the NactIMenubar interface.
+
+	* src/nact/nact-iprefs.c: Renamed as base-iprefs.c.
+	* src/nact/nact-iprefs.h: Renamed as base-iprefs.h.
+	Define the BaseIPrefs interface which handles all NACT preferences.
+
+	* src/nact/nact-main-tab.h: New file.
+	Handles update of the tabs of the notebook.
+
+	* src/nact/selection.c: Renamed as nact-clipboard.c.
+	* src/nact/selection.h: Renamed as nact-clipboard.h.
+
+	* src/nact/nact-statusbar.c: Renamed as nact-main-statusbar.c.
+	* src/nact/nact-statusbar.h: Renamed as nact-main-statusbar.h.
+
+	* src/common/Makefile.am:
+	* src/nact/Makefile.am:
+	* src/test/Makefile.am: Updated accordingly.
+
+2009-08-30 Pierre Wieser <pwieser@trychlos.org>
+
+	* data/nautilus-actions.schemas.in:
+	Remove schema for 'Use submenu' preference.
+	Add schemas for 'Add About' and 'Alphabetical order' preferences.
+
+	* doc/objects-hierarchy.odg:
+	Update doc to show new NAObjectItem and NAActionMenu classes.
+
+	* src/common/na-action-class.h:
+	NAAction is now derived from NAObjectItem.
+
+	* src/common/na-action-profile.c:
+	Remove PROP_NAPROFILE_NAME and PROP_NAPROFILE_LABEL properties.
+	Remove duplicate() virtual function.
+	Add new() and get_clipboard_id() virtual functions.
+
+	* src/common/na-action.c:
+	Remove PROP_NAACTION_UUID, PROP_NAACTION_LABEL,
+	PROP_NAACTION_TOOLTIP and PROP_NAACTION_ICON properties.
+	Remove duplicate() and check_edited_status() virtual functions.
+	Add new() and get_clipboard_id() virtual functions.
+
+	* src/common/na-action-menu.c:
+	* src/common/na-action-menu.h: New files.
+
+	* src/common/na-gconf.c:
+	Now watches for preferences directory to manage display mode in
+	Nautilus.
+
+	* src/common/na-iduplicable.c:
+	* src/common/na-iduplicable.h:
+	Replace duplicate() virtual function with copy() and new().
+	All interface is now declared with NAIDuplicable instead of NAObject.
+
+	* src/common/na-iio-provider.c:
+	* src/common/na-iio-provider.h:
+	Temporarily sort read actions.
+	Define NA_IIO_PROVIDER_SIGNAL_DISPLAY_ORDER_CHANGED and
+	NA_IIO_PROVIDER_SIGNAL_DISPLAY_ABOUT_CHANGED new signals.
+
+	* src/common/na-ipivot-consumer.c:
+	Take advantage of new signals defined in na-iio-provider.h.
+	Define on_display_about_changed() and on_display_order_changed()
+	new virtual functions.
+
+	* src/common/na-iprefs.c:
+	* src/common/na-iprefs.h (na_iprefs_get_alphabetical_order,
+	na_iprefs_get_add_about_item): New functions.
+
+	* src/common/na-object.c:
+	* src/common/na-object.h (new, copy, get_clipboard_id):
+	New virtual functions.
+
+	* src/common/na-object-item.c:
+	* src/common/na-object-item.h: New files.
+
+	* src/common/na-pivot.c:
+	Take advantage of new signals defined in na-iio-provider.h.
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h (na_utils_remove_last_level_from_path,
+	na_utils_is_writable_dir, na_utils_exist_file): New functions.
+
+	* src/common/na-xml-writer.c:
+	* src/common/na-xml-writer.h (na_xml_writer_get_output_fname,
+	na_xml_writer_get_xml_buffer, na_xml_writer_output_xml):
+	New functions.
+
+	* src/nact/egg-tree-multi-dnd.c:
+	* src/nact/egg-tree-multi-dnd.h: New files.
+
+	* src/nact/nact-application.c:
+	No more display debug message in appli_get_application_name().
+
+	* src/nact/nact-assistant-export.c
+	(on_actions_list_selection_changed): Use actual parameters types.
+	(is_writable_dir): Removed function.
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-iaction-tab.h
+	(get_selected): Removed virtual function.
+	(nact_iaction_tab_set_action): Add selected items parameter.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	Implements drag from the tree view based on a dedicated
+	NactTreeModel.
+	Remove virtual function on_selection_changed().
+	nact_iactions_list_get_selected_items(),
+	nact_iactions_list_set_dnd_mode(): New functions.
+
+	* nact/nact-imenubar.c:
+	* nact/nact-imenubar.h:
+	Add 'New menu' item in the menubar.
+	Define new insert_item() virtual function.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h:
+	Implements NaIPrefs interface.
+	Be kept informed of preferences modifications.
+
+	* src/nact/nact-preferences-editor.c:
+	Replace 'Display as submenu' by 'Add About' and 'Display in
+	alphabetical order' preferences.
+
+	* src/nact/nact-selection.c:
+	* src/nact/nact-selection.h: New files.
+
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-tree-model.h: New files.
+
+	* src/plugin/nautilus-actions.c:
+	Creates submenus if asked for.
+	Adds 'About Nautilus Actions' item is asked for.
+
+2009-08-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Add a comment about bug #589745.
+	Add a comment about
+	nautilus_menu_provider_emit_items_updated_signal().
+
+	* src/common/na-object.h: Fix typo.
+
+	* src/common/na-iio-provider.c:
+	Sort the actions in the same order as they are displayed.
+
+	* src/nact/nact-assistant.c:
+	* src/nact/nact-assistant.h:
+	Implement a work-around for bug #589745 (apply message).
+	Remove on_escape_key_pressed() virtual function.
+
+	* nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	Can now do the operations in the on_assistant_apply() functions.
+
+	* src/nact/nact-iactions-list.c:
+	Returns selected actions in the same order as they are displayed.
+
+2009-08-24 Pierre Wieser <pwieser@trychlos.org>
+
+	* Makefile.am:
+	make distcheck uses now '--enable-iso-c' option.
+
+	* configure.ac:
+	Add '-pedantic' as '--enable-iso-c' default option.
+	Add also '-Wno-overlength-strings' to handle long strings in
+	src/common/xml-names.h.
+
+	* m4/na-compiler-flags.m4:
+	Fix '--enable-iso-c' macro to correctly handle provided values.
+
+	* src/common/na-about.c:
+	* src/common/na-action-profile.c:
+	* src/common/na-action.c:
+	* src/common/na-gconf.c:
+	* src/common/na-iduplicable.c:
+	* src/common/na-iio-provider.c:
+	* src/common/na-iio-provider.h:
+	* src/common/na-ipivot-consumer.c:
+	* src/common/na-iprefs.c:
+	* src/common/na-object.c:
+	* src/common/na-pivot.c:
+	* src/common/na-utils.c:
+	* src/common/na-xml-writer.c:
+	* src/nact/base-application.c:
+	* src/nact/base-window.c:
+	* src/nact/nact-application.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-assistant.c:
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iadvanced-tab.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-iconditions-tab.c:
+	* src/nact/nact-imenubar.c:
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-window.c:
+	* src/nact/nact-xml-reader.c:
+	* src/plugin/nautilus-actions.c:
+	* src/plugin/nautilus-module.c:
+	* src/test/test-parse-uris.c:
+	* src/utils/nautilus-actions-new.c:
+	* src/utils/nautilus-actions-schemas.c:
+	Compile with -pedantic gcc option.
+
+	* src/common/na-xml-names.h:
+	Long names are rewritten on several lines for more readability.
+
+	* src/nact/nact-assistant.c:
+	* src/nact/nact-window.c:
+	Remove superfluous calls to g_type_init().
+
+	* src/nact/nact-imenubar.c:
+	Do not try to delete an object when the list is empty (as Delete
+	accelerator is always active, even if the Delete menu item is not).
+
+2009-08-23 Pierre Wieser <pwieser@trychlos.org>
+
+	Get rid of unwanted notifications.
+	Use UI Manager.
+
+	* src/common/na-ipivot-consumer.c:
+	* src/common/na-ipivot-consumer.h (na_ipivot_consumer_delay_notify):
+	New function.
+
+	* src/common/na-object.c: Accept NULL origin.
+
+	* src/nact/base-application.c:
+	Fix #592781: use explicit format strings.
+	Fix test of virtual functions which caused double calls.
+
+	* src/nact/nact-application.c:
+	Remove the UI_XML_FILENAME variable.
+
+	* src/nact/nact-imenubar.c:
+	Rewrite save function to allow saving all modified actions in one pass.
+	Take advantage of na_ipivot_consumer_delay_notify().
+	Use UI Manager, thus removing all helper functions.
+	Remove nact_imenubar_on_delete_key_pressed() function.
+
+	* src/nact/nact-main-window.c:
+	No more call nact_imenubar_on_delete_key_pressed() function.
+
+	* src/nact/nautilus-actions-config-tool.actions:
+	Add Preferences item in the Edit menu.
+
+2009-08-21 Pierre Wieser <pwieser@trychlos.org>
+
+	Add About Nautilus Actions item in Nautilus context menu.
+
+	* src/common/na-about.c:
+	* src/common/na-about.h: New files.
+
+	* po/POTFILES.in:
+	* src/common/Makefile.am: Updated accordingly.
+
+	* src/nact/nact-application.c:
+	Call na_about_get_icon_name() to get application default icon.
+
+	* src/nact/nact-imenubar.c:
+	Call na_about_display() to display About dialog box.
+
+	* src/plugin/nautilus-actions.c:
+	Add About Nautilus Actions item in Nautilus context menu.
+
+2009-08-20 Pierre Wieser <pwieser@trychlos.org>
+
+	Display actions as a submenu.
+
+	* data/nautilus-actions.schemas.in:
+	Add schemas for Preferences dialog and AsSubmenu option.
+
+	* src/common/na-iprefs.c:
+	* src/common/na-iprefs.h: New files.
+	Manage preferences which are used by Nautilus-Actions plugin.
+
+	* src/common/na-gconf.c: Fix typo.
+
+	* src/common/Makefile.am: Updated accordingly.
+
+	* src/nact/nact-application.c:
+	Rename GLADEDIR to PKGDATADIR.
+	Rename GLADE_FILENAME to UI_XML_FILENAME.
+
+	* src/nact/nact-imenubar.c:
+	Add an item in the menubar to run the Preferences dialog.
+	Rename MenuBarVBox to MenubarVBox to be consistent with Statusbar.
+
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-iprefs.h: Fix typos.
+
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-preferences-editor.h: New files.
+	Let the user edit its preferences.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Creates the PreferencesDialog dialog.
+	Enabled and ReadOnly checkboxes no longer expand to all dialog
+	width to minimize focus errors.
+	Rename MenuBarVBox to MenubarVBox to be consistent with Statusbar.
+
+	* src/nact/Makefile.am: Updated accordingly.
+	Rename GLADEDIR to PKGDATADIR.
+
+	* src/plugin/nautilus-actions.c:
+	Take into account the DisplayAsSubmenu preference.
+
+2009-08-19 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-statusbar.c:
+	* src/nact/nact-statusbar.h: New files.
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-iaction-tab.h:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icommand-tab.h:
+	* src/nact/nact-imenubar.c:
+	* src/nact/nact-imenubar.h:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h:
+	Updated to take advantage of new nact_statusbar_display_status()
+	and nact_statusbar_hide_status() functions.
+	Removed get_status_bar() virtual functions from the interfaces.
+
+2009-08-18 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-application-class.h:
+	* src/nact/base-application.c:
+	* src/nact/base-application.h:
+	Rewrite BaseApplication base class, and document all public
+	and virtual functions.
+	Define exit codes when an error occurs.
+	Define some standard error messages.
+
+	* src/nact/nact-application.c:
+	* src/nact/nact-application.h
+	(appli_initialize_unique_app): Customize error message.
+	(appli_initialize_application): Complete application initialization.
+
+	* src/nact/nact-xml-reader.c: Add nact-main-window.h header.
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-iaction-tab.h:
+	* src/nact/nact-iadvanced-tab.c:
+	* src/nact/nact-iadvanced-tab.h:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icommand-tab.h:
+	* src/nact/nact-iconditions-tab.c:
+	* src/nact/nact-iconditions-tab.h:
+	Remove nact_ixxxx_tab_reset_last_focus function.
+	Remove focus-in-event and switch-page signal connections.
+
+	* src/nact/nact-main-window.c:
+	No more call nact_ixxxx_tab_reset_last_focus functions.
+
+2009-08-11 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Cleanup code.
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Set a mnemonic for all entry fields.
+
+2009-08-10 Pierre Wieser <pwieser@trychlos.org>
+
+	* data/nautilus-actions.schemas.in:
+	Add schema description for 'enabled' action property.
+
+	* src/common/na-action.c:
+	* src/common/na-action.h:
+	Define 'enabled' new action property.
+
+	* src/common/na-gconf-keys.h:
+	* src/common/na-xml-names.h:
+	Define GConf entry and schema description for 'enabled' property.
+
+	* src/common/na-gconf.c:
+	Read 'enabled' property from GConf.
+
+	* src/common/na-xml-writer.c:
+	* src/nact/nact-xml-reader.c:
+	Import and export 'enabled' action property.
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Display and update 'enabled' action property.
+
+	* src/plugin/nautilus-actions.c:
+	Do not display item if action is disabled.
+
+	* src/utils/nautilus-actions-new.c:
+	Add '--enabled' command-line option.
+
+2009-08-09 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	Fix #590709: Too much markup in translatable strings (reported
+	by Claude Paroz).
+
+	* src/nact/nact-iadvanced-tab.c:
+	Fix #590711: String containing pipe char is ambiguous to
+	translate (reported by Claude Paroz).
+
+2009-08-03 Pierre Wieser <pwieser@trychlos.org>
+
+	* data/nautilus-actions.schemas.in:
+	* data/Makefile.am: New files.
+
+	* configure.ac:
+	* Makefile.am: Updated accordingly.
+
+	* Makefile.am:
+	* src/nact/Makefile.am:
+	Remove nautilus-actions subdirectories at uninstall time.
+
+	* src/common/na-xml-writer.c:
+	Fix schemas generation (long description tag).
+
+2009-08-01 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac:
+	Update version number to 1.11.3.
+
+	* configure.ac:
+	* Makefile.am:
+	* doc/Makefile.am:
+	* doc/objects-hierarchy.odg:
+	Distribute a description of objects hierarchy.
+	Fix #590398 (install doc)
+
+2009-07-30 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-action-profile.c:
+	* src/common/na-xml-names.h:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Add %p (port number) and %R (list of URIs) parameters.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Define mnemonic for the actions list.
+	Report the same feature on export assistant.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Define mnemonic and tooltip for each tab of the notebook.
+
+2009-07-29 Pierre Wieser <pwieser@trychlos.org>
+
+	* exports/nautilus-actions.schema.in:
+	Remove files as it is rebuildable via nautilus-actions-schemas.
+
+	* m4/na-cmdline-tools.m4: Deleted file.
+
+	* m4/na-log-domains.m4:
+	Define a new log domain for test programs.
+
+	* src/common/na-gnome-vfs-uri.c:
+	* src/common/na-gnome-vfs-uri.h: New files.
+
+	* src/common/na-action-profile.c:
+	Take advantage of new na_gnome_vfs_uri_parse() function.
+
+	* src/test/test-parse-uris.c:
+	* src/test/test-parse-uris.h: New files.
+
+	* src/common/na-xml-names.h:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Remove all mentions of GnomeVFS or GVfs.
+
+	* src/common/na-action-profile.c:
+	* src/common/na-action.c:
+	* src/common/na-action.h:
+	* src/common/na-gconf.c:
+	* src/common/na-iio-provider.c:
+	* src/common/na-xml-writer.c:
+	* src/utils/nautilus-actions-schema.c:
+	Factorize the definition of default labels.
+
+	* po/POTFILES.in: Update the list of translatable files.
+
+2009-07-28 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-iio-provider.c:
+	Write action now accepts a NULL NAPivot to deal with command-line
+	utility.
+
+	* src/common/na-xml-names.h:
+	Define new FORMAT_GCONFSCHEMA format to create a schema.
+
+	* src/nact/nact-assist-export.{c,h}:
+	Renamed as src/nact/nact-assistant-export.{c,h}.
+
+	* src/nact/nact-assist-import.{c,h}:
+	Renamed as src/nact/nact-assistant-import.{c,h}.
+
+	* src/nact/nact-gconf-keys.h:
+	Renamed as src/common/na-xml-names.h.
+
+	* src/nact/nact-gconf-writer.{c,h}:
+	Renamed as src/common/na-xml-writer.{c,h}.
+	Create a schema on FORMAT_GCONFSCHEMA format.
+
+	* src/nact/nact-gconf-reader.{c,h}:
+	Renamed as src/nact/nact-xml-reader.{c,h}.
+
+	* src/nact/nact-import-export-format.h:
+	* src/nact/nact-iprofiles-list.{c,h}: Removed files.
+
+	* src/nact/nautilus-actions-config.ui:
+	Renamed as src/nact/nautilus-actions-config-tool.ui.
+
+	* src/utils/nautilus-actions-new-config.c:
+	Renamed as src/utils/nautilus-actions-new.c.
+
+	* src/utils/nautilus-actions-tools-utils.c:
+	* src/utils/nautilus-actions-tools-utils.h: Removed files.
+
+	* src/utils/nautilus-actions-schema.c: New file.
+
+	* configure.ac:
+	* src/common/Makefile.am:
+	* src/nact/Makefile.am:
+	* src/nact/nact-application.c:
+	* src/nact/nact-assist-export.c:
+	* src/nact/nact.desktop.in
+	* src/utils/Makefile.am: Updated accordingly.
+
+	* m4/na-log-domains.m4:
+	Define a new log domain for utilities.
+
+2009-07-27 Pierre Wieser <pwieser@trychlos.org>
+
+	* m4/na-log-domains.m4: New file.
+
+	* m4/nact-cmdline-tools.m4: Renamed to m4/na-cmdline-tools.m4.
+	* m4/nact-compiler-flags.m4: Renamed to m4/na-compiler-flags.m4.
+	* m4/nact-maintainer-mode.m4: Renamed to m4/na-maintainer-mode.m4.
+	* m4/nact-nautilus-extdir.m4: Renamed to m4/na-nautilus-extdir.m4.
+
+	* configure.ac: Updated accordingly.
+
+	* src/common/na-object.c:
+	* src/common/na-object.h (na_object_check_edited_status):
+	New derivable function.
+
+	* src/common/na-action.c:
+	Implements check_edited_status for profiles.
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h (na_utils_path_to_key):
+	New function moved from na-gconf.c.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h
+	(nact_window_set_current_action, nact_window_warn_action_modified,
+	nact_window_warn_profile_modified): Removed functions.
+
+	* src/nact/nact-gconf-reader.c:
+	Import the two new export formats.
+	Fix check of imported actions.
+
+	* src/nact/nact-main.c:
+	* src/plugin/nautilus-module.c:
+	Disable output of g_debug messages when not in maintainer mode.
+
+	* src/nact/nact-main-window.c:
+	Update count_modified_actions.
+
+2009-07-26 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-action.h:
+	Move export format enumeration to src/nact/nact-assist-export.c.
+
+	* src/common/na-gconf.c:
+	Fix #325585 by deleting a schema which may be directly attached
+	to the action.
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iadvanced-tab.c:
+	* src/nact/nact-iconditions-tab.c:
+	* src/nact/nact-imenubar.c:
+	* src/nact/nact-main-window.c:
+	Fix selection when removing last action, or entering with
+	no action at all.
+	Sets the modification indicator to be application-wide.
+
+	* src/nact/base-application-class.h:
+	* src/nact/base-window-class.h: New files.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h
+	(base_application_get_ui_filename): New function.
+
+	* src/nact/nact-assistant.c:
+	Reload the GtkBuilder XML file each time we run the assistant
+	(see http://bugzilla.gnome.org/show_bug.cgi?id=589746).
+
+	* src/nact/nact-import-export-format.h: New file.
+
+	* src/nact/nact-assist-export.c:
+	* src/nact/nact-gconf-writer.c:
+	Introduce two new export formats.
+
+2009-07-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-action-class.h:
+	* src/common/na-action-profile-class.h:
+	New files to properly handle forward declarations.
+
+	* src/common/na-ipivot-container.c:
+	* src/common/na-ipivot-container.h:
+	Renamed as na-ipivot-consumer.{c,h}.
+
+	* src/common/na-iduplicable.c:
+	* src/common/na-iduplicable.h:
+	New NAIDuplicable interface implemented by NAObject class.
+
+	* src/nact/nact-imenubar.c:
+	* src/nact/nact-imenubar.h:
+	New NactIMenubar interface implemented by NactMainWindow class.
+
+2009-07-19 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-action-conditions-editor.c:
+	* src/nact/nact-action-conditions-editor.h:
+	* src/nact/nact-action-profiles-editor.c:
+	* src/nact/nact-action-profiles-editor.h:
+	* src/nact/nact-profile-conditions-editor.c:
+	* src/nact/nact-profile-conditions-editor.h: Removed files.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h
+	(nact_iactions_list_toggle_collapse,
+	nact_iactions_list_update_selected): New functions.
+	Uses GtkSortable interface.
+	Remove set_sorted_actions API.
+
+	* src/nact/nact-icommand-tab.c:
+	Disable the example label when there is no current profile.
+
+	* src/nact/nact-iconditions-tab.c:
+	* src/nact/nact-iconditions-tab.h
+	(nact_iconditions_tab_get_isfiledir,
+	nact_iconditions_tab_get_multiple): New functions.
+
+	* src/nact/nact-iadvanced-tab.c:
+	* src/nact/nact-iadvanced-tab.h (nact_iadvanced_tab_get_schemes):
+	New function.
+
+	* src/nact/nact-main-window.c:
+	Update menu tooltips to be dot-terminated.
+	New action is taken from GTK_STOCK_NEW.
+
+	* src/nact/nautilus-actions-config.ui:
+	Example label now wraps on more than two lines.
+	Scheme lists now is more than four rows.
+	All fields have tooltip.
+
+2009-07-18 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-action.c:
+	* src/common/na-action.c (na_action_are_equal):
+	Function takes const arguments.
+
+	* src/nact/base-application.c:
+	* src/nact/nact-iaction-tab.c:
+	Disable debug message.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h (set_sorted_actions):
+	New virtual function: advertise the implementer of the interface
+	of the new address of the sorted list.
+	Use GtkTreeModelFilter to display actions and profiles.
+	Enable connecting lines in tree view.
+
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icommand-tab.h:
+	New files which define NactICommandTab interface.
+
+	* src/nact/nact-iconditions-tab.c:
+	* src/nact/nact-iconditions-tab.h:
+	New files which define NactIConditionsTab interface.
+
+	* src/nact/nact-iadvanced-tab.c:
+	* src/nact/nact-iadvanced-tab.h:
+	New files which define NactIAdvancedTab interface.
+
+	* src/nact/nact-iprofile-item.c:
+	* src/nact/nact-iprofile-item.h:
+	* src/nact/nact-iprofiles-list.c:
+	* src/nact/nact-iprofiles-list.h:
+	Removed files.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/nact-main-window.c:
+	Setup display of the window title and of the menu depending of
+	the currently selected action and its status.
+	Implements ICommandTab interface.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.c (nact_window_warn_count_modified):
+	New function.
+
+2009-07-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac:
+	Get ride of libglade, libgnome, libgnomeui deprecated libraries.
+
+	* src/nact/nact-profile-conditions-editor.c:
+	Align widgets.
+
+2009-07-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-window.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-action-conditions-editor.c:
+	* src/nact/nact-action-profiles-editor.c:
+	* src/nact/nact-profile-conditions-editor.c:
+	Make all dialogs transient for their parent in BaseWindow.
+
+2009-07-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac:
+	Get ride of libglade, libgnome, libgnomeui deprecated libraries.
+
+	* src/nact/nact-profile-conditions-editor.c:
+	Align widgets.
+
+2009-07-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-window.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-action-conditions-editor.c:
+	* src/nact/nact-action-profiles-editor.c:
+	* src/nact/nact-profile-conditions-editor.c:
+	Make all dialogs transient for their parent in BaseWindow.
+
+2009-07-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-action.c:
+	* src/common/na-action.h (na_action_get_new_profile_name):
+	New function.
+
+	* src/nact/nact-iprofile-conditions.c:
+	* src/nact/nact-iprofile-conditions.h:
+	Renamed as nact-iconditions.{c,h}.
+	IProfileConditions renamed accordingly.
+
+	* src/nact/nact-iprofile-item.c:
+	* src/nact/nact-iprofile-item.h: New files.
+	Define IProfileItem interface.
+
+	* src/nact/nact-action-conditions-editor.c:
+	* src/nact/nact-profile-conditions-editor.c:
+	* src/nact/nact-iprefs.c:
+	* src/nact/Makefile.am: Updated accordingly.
+
+2009-07-15 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-action-conditions-editor.c (on_save_clicked):
+	New function (do not know why it used to work without it!).
+
+	* src/nact/nact-action-conditions-editor.c
+	(set_current_action): Removed function.
+
+	* src/nact/nact-action-profiles-editor.c:
+	Begin with the rewriting with the new object hierarchy and the
+	new interfaces.
+
+	* src/nact/nact-iprofiles-list.c:
+	* src/nact/nact-iprofiles-list.h: New files.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	Remove references to NAPivot, rather use interface.
+	Now directly attach the NAAction to each line of the listbox.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h
+	(nact_window_get_action, nact_window_get_actions):
+	Removed functions.
+
+2009-07-14 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-utils.c:
+	Implement na_utils_schema_to_gslist function.
+
+	* src/nact/nact-assist-import.c:
+	Write the imported action to the I/O provider.
+
+2009-07-14 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Bump version number to 1.11.2.
+
+2009-07-14 Pierre Wieser <pwieser@trychlos.org>
+
+	Implement import assistant with new object hierarchy.
+
+	* src/common/na-action.c:
+	* src/common/na-action.h (na_action_get_profile):
+	Now returns a NAObject.
+
+	* src/common/na-action.c:
+	* src/common/na-action.h
+	(na_action_set_uuid, na_action_set_version,
+	na_action_add_profile): New functions.
+
+	* src/common/na-action-profile.c:
+	* src/common/na-action-profile.h
+	(na_action_profile_set_label, na_action_profile_set_isfile,
+	na_action_profile_set_isdir, na_action_profile_set_schemes):
+	New functions.
+
+	* src/common/na-action-profile.h:
+	Define ACTION_PROFILE_PREFIX as a way of identifying a profile.
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h (na_utils_dump_string_list,
+	na_utils_schema_to_gslist, na_utils_schema_to_boolean):
+	New functions.
+
+	* src/nact/nact-assistant.c:
+	* src/nact/nact-assistant.h:
+	* src/nact/nact-assist-export.c:
+	* src/nact/nact-assist-export.h:
+	* src/nact/nact-assist-import.c:
+	* src/nact/nact-gconf-keys.h:
+	* src/nact/nact-gconf-reader.c:
+	* src/nact/nact-gconf-reader.h:
+	* src/nact/nact-gconf-writer.c:
+	* src/nact/nact-gconf-writer.c: New files.
+
+	* src/nact/nact-gconf-schema.c:
+	* src/nact/nact-gconf-schema.h:
+	* src/nact/nact-gconf-schema-writer.c:
+	* src/nact/nact-gconf-schema-writer.h: Removed files.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h
+	(base_application_search_for_widget): New function.
+
+	* src/nact/base-window.c:
+	Call gtk_main/gtk_main_quit when we are running an assistant.
+
+2009-07-08 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-main-window.c:
+	Fix post-export selection mode.
+
+2009-07-03 Pierre Wieser <pwieser@trychlos.org>
+
+	Export actions.
+
+	* src/common/nautilus-actions-config.c:
+	* src/common/nautilus-actions-config.h:
+	* src/common/nautilus-actions-config-gconf.c:
+	* src/common/nautilus-actions-config-gconf.h:
+	* src/common/nautilus-actions-config-gconf-private.h:
+	* src/common/nautilus-actions-config-gconf-reader.c:
+	* src/common/nautilus-actions-config-gconf-reader.h:
+	* src/common/nautilus-actions-config-gconf-writer.c:
+	* src/common/nautilus-actions-config-gconf-writer.h:
+	* src/common/nautilus-actions-config-schema-writer.c:
+	* src/common/nautilus-actions-config-schema-writer.h:
+	* src/common/nautilus-actions-config-schema-reader.c:
+	* src/common/nautilus-actions-config-schema-reader.h: Removed files.
+
+	* src/common/Makefile.am: Updated accordingly.
+
+	* src/common/na-action.h: Define an export format.
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h
+	(na_utils_gslist_to_schema, na_utils_boolean_to_schema):
+	New functions.
+
+	* src/nact/nact-import-export.c:
+	* src/nact/nact-import-export.h: Removed files.
+
+	* src/nact/nact-gconf-schema.c:
+	* src/nact/nact-gconf-schema.h:
+	* src/nact/nact-gconf-schema-writer.c:
+	* src/nact/nact-gconf-schema-writer.h: New files.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_connect):
+	Removed function.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h
+	(nact_window_signal_connect_by_name): New function.
+
+	* src/nact/nact-action-conditions-editor.c
+	(nact_iprofile_conditions_initial_load): Use GtkBuilder size grouping.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h
+	(nact_iactions_list_get_selected_actions,
+	nact_iactions_list_set_multiple_selection): New functions.
+
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-iprefs.h
+	(nact_iprefs_get_export_folder_uri,
+	nact_iprefs_save_export_folder_uri): New functions.
+
+	* src/nact/nact-main-window.c: Implement export function.
+
+2009-07-02 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-pivot.c (action_changed_handler):
+	Use a milliseconds timeout to get a better UI reactivity.
+
+	* src/nact/nact-action-conditions-editor.c (on_cancel_clicked):
+	New function to trigger dialog response.
+
+	* src/nact/nact-action-conditions-editor.c
+	(on_initial_load_dialog): Make labels and buttons the same size.
+	(on_all_widgets_showed): Call
+	nact_iprofile_conditions_all_widgets_showed function.
+	(on_dialog_response): Advertize parent window of a new action.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h
+	(nact_iactions_list_set_selection,
+	nact_iactions_list_set_send_selection_changed_on_fill_list,
+	nact_iactions_list_set_is_filling_list,
+	on_key_press_event, on_enter_key_pressed): New functions.
+
+	* src/nact/nact-imenu-item.c:
+	* src/nact/nact-imenu-item.h (nact_imenu_item_size_labels,
+	nact_imenu_item_size_buttons): New functions.
+
+	* src/nact/nact-imenu-item.c (on_icon_changed):
+	Forces the display of an empty frame where there is no icon.
+
+	* nact/nact-iprofile-conditions.c (hide_legend_dialog):
+	Fixes bug which recorded a (0,0) position when the dialog closed.
+
+	* nact/nact-iprofile-conditions.c:
+	* nact/nact-iprofile-conditions.h
+	(nact_iprofile_conditions_size_labels,
+	nact_iprofile_conditions_size_buttons): New functions.
+
+	* src/nact/nact-main-window.c:
+	Do not trigger on_selection_changed when filling the Actions list.
+	Edit action when Enter key pressed.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h (set_current_action):
+	New virtual function.
+
+	* src/nact/nautilus-actions-config.ui:
+	Add tooltips to AddAction and EditAction buttons.
+	Encapsulates the IconImage into a IconFrame.
+
+2009-07-01 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h (recursive_search_for_child,
+	search_for_child_widget, base_application_get_dialog):
+	New functions.
+	All properties are now prefixed with "base-application-".
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_get_dialog,
+	do_get_dialog): New functions.
+	PROP_WINDOW_TOPLEVEL_WIDGET is renamed as
+	PROP_WINDOW_TOPLEVEL_DIALOG.
+	do_get_toplevel_widget is renamed as do_get_toplevel_dialog.
+	All properties are now prefixed with "base-window-".
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-action-conditions-editor.c:
+	* src/nact/nact-action-profiles-editor.c:
+	* src/nact/nact-profile-conditions-editor.c:
+	Updated accordingly.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h
+	(nact_iactions_list_set_focus): New function.
+
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-iprefs.h
+	(nact_iprefs_get_iprofile_conditions_folder_uri,
+	nact_iprefs_save_iprofile_conditions_folder_uri): New functions.
+
+	* src/nact/nact-iprofile-conditions.c:
+	Fix display of icon for new actions.
+	Save state and position of LegendDialog and GtkFileChooser.
+
+	* src/nact/nact-main-window.c:
+	Reset the focus to the ActionsList after each button click.
+
+	* src/nact/nautilus-actions-config.ui:
+	Add keyboard shortcuts to ActionsDialog buttons.
+	Import two new dialog boxes.
+
+2009-06-30 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-action-profile.c:
+	* src/common/na-action-profile.h
+	(na_action_profile_set_matchcase, na_action_profile_set_mimetypes,
+	na_action_profile_set_isfiledir, na_action_profile_set_multiple,
+	na_action_profile_set_scheme): New functions.
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h (na_utils_gstring_joinv,
+	na_utils_string_list_to_text, na_utils_text_to_string_list,
+	na_utils_remove_ascii_from_string_list): New functions.
+
+	* src/nact/nact-action-conditions-editor.c:
+	Call _dispose functions when closing the window.
+
+	* src/nact/nact-imenu-item.c:
+	* src/nact/nact-imenu-item.h (nact_imenu_item_dispose):
+	New function.
+
+	* src/nact/nact-iprofile-conditions.c:
+	* src/nact/nact-iprofile-conditions.h
+	(nact_iprofile_conditions_dispose): New function.
+
+	* src/nact/nact-iprofile-conditions.c:
+	All three tabs are now implemented.
+
+	* src/nact/nact-utils.c:
+	* src/nact/nact-utils.h: Removed files.
+
+	* src/nact/nact-prefs.c:
+	* src/nact/nact-prefs.h: Renamed as nact-iprefs.{c,h}.
+	Define NactIPrefs interface, to be implemented by NactWindows
+	which wish use GConf preferences.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/nact/nautilus-actions-config.ui:
+	Add LegendDialog window.
+	Remove all embedded action handlers (as I don't want pollute my
+	public namespace with these).
+
+2009-06-29 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-action.c:
+	* src/common/na-action.h (na_action_set_tooltip,
+	na_action_set_icon, na_action_are_equal, na_action_get_profile):
+	New functions.
+
+	* src/common/na-action.c
+	(na_action_new_with_profile): Provides a default profile name.
+	(na_action_duplicate): Provides a pointer to the duplicated action.
+	(na_action_are_equal): Implements profiles comparison.
+
+	* src/common/na-action-profile.c:
+	* src/common/na-action-profile.h (na_action_profile_set_path,
+	na_action_profile_set_parameters, na_action_profile_set_basenames,
+	na_action_profile_are_equal):
+	New functions.
+
+	* src/common/na-action-profile.c (na_action_profile_new):
+	No more accept a NULL profile name.
+
+	* src/common/na-action-profile.c:
+	* src/common/na-action-profile.h (na_action_profile_duplicate):
+	The duplicated profile points to the duplicated action.
+
+	* src/common/na-gconf.c:
+	Defines an association table between GConf keys and property
+	names.
+
+	* src/common/na-iio-provider.c:
+	Fist try to write to initial provider.
+
+	* src/common/na-utils.c:
+	* src/common/na-utils.h (na_utils_find_in_list,
+	na_utils_string_lists_are_equal): New functions.
+
+	* src/nact/base-application.c (display_dlg):
+	New mutualized function.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (dialog_response):
+	Returns a boolean to let the user refuse the closing.
+
+	* src/nact/nact-action-conditions-editor.c:
+	Update the dialog title if action has been modified.
+	Have Close or Cancel/Save buttons depending on action status.
+	Only save an action which has a not empty label.
+	Implements PathBrowse button.
+
+	* src/nact/nact-imenu-item.c:
+	* src/nact/nact-imenu-item.h (get_edited_action,
+	update_dialog_title, nact_imenu_item_has_label): New functions.
+
+	* src/nact/nact-imenu-item.c:
+	Implements IconBrowse button.
+
+2009-06-28 Pierre Wieser <pwieser@trychlos.org>
+
+	* po/POTFILES.in:
+	Replace src/nact/nact.c with src/nact/nact-main-window.c.
+	Replace src/nact/nautilus-actions-config.glade with
+	src/nact/nautilus-actions-config.ui.
+
+	* src/common/na-action.c:
+	* src/common/na-action.h:
+	UUID is no more a contruction only property.
+	NAAction is now initialized with suitable default values.
+	na_action_new_with_profile, na_action_get_provider: new functions.
+
+	* src/common/na-action-profile.c:
+	* src/common/na-action-profile.h:
+	Profile's name is no more a construction only property.
+	na_action_profile_copy function is renamed as
+	na_action_profile_duplicate.
+
+	* src/common/na-gconf.c:
+	Temporarily suspend test of writability status.
+	Record the last provider of an action.
+
+	* src/common/na-iio-provider.c:
+	delete_action: new function.
+
+	* src/nact/nact-action-conditions-editor.c:
+	* src/nact/nact-action-conditions-editor.h:
+	* src/nact/nact-action-profiles-editor.c:
+	* src/nact/nact-action-profiles-editor.h:
+	* src/nact/nact-profile-conditions-editor.c:
+	* src/nact/nact-profile-conditions-editor.h:
+	Definitive names for dialog management.
+
+	* src/nact/nact-imenu-item.c:
+	Connect the signal handler before setting the initial icon.
+
+	* src/nact/nact-iprofile-conditions.c:
+	* src/nact/nact-iprofile-conditions.h:
+	IActionConditions interface is renamed as IProfileConditions.
+
+	* src/nact/Makefile.am:
+	Updated accordingly.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h:
+	initial_load_toplevel, runtime_init_toplevel, all_widgets_showed:
+	new functions.
+
+	* src/nact/nact-imenu-item.c:
+	signal_recorded: new function.
+
+	* src/nact/nact-main-window.c:
+	Implement initial_load_toplevel and runtime_init_toplevel
+	functions.
+
+	* src/nact/nact-window.c:
+	nact_window_on_signal_recorded: new function.
+
+2009-06-26 Pierre Wieser <pwieser@trychlos.org>
+
+	Migration to GtkBuilder.
+	IPivotContainer interface definition.
+	IActionConditions and IMenuItem UI interface definitions.
+
+	* configure.ac:
+	Update Gtk+ dependancy to 2.12 to have gtk_builder functions.
+	Remove libglade dependancy.
+
+	* src/common/na-action-profile.c:
+	* src/common/na-action.c:
+	* src/common/na-gconf.c:
+	* src/common/na-object.c:
+	* src/common/na-pivot.c
+	(instance_dispose): g_free( self->private ).
+
+	* src/common/na-gconf.c:
+	Fix typo in comment.
+
+	* src/common/na-iio-provider.c:
+	Actions list is now automatically sorted by label.
+
+	* src/common/na-iio-provider.h:
+	Move signal definition here to be usable by providers.
+
+	* src/common/na-ipivot-container.c:
+	* src/common/na-ipivot-container.h: New files.
+
+	* src/common/na-pivot.c:
+	na_pivot_get_label_sorted_actions: Removed function.
+	na_pivot_add_notified, free_containers: New functions.
+	Remove PROP_NOTIFIED property.
+	Containers to be notified can be several to many, instead of
+	just only one.
+	Use NAIPivotContainer interface instead of sending a message.
+
+	* src/common/Makefile.am: Updated accordingly.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h
+	(base_application_get_icon_name,
+	base_application_get_main_window, base_application_run):
+	New functions.
+
+	* src/nact/nact-application.c:
+	Records the main window to be notified of an action modification.
+
+	* src/nact/nact-wnd-actions.c:
+	* src/nact/nact-wnd-actions.h:
+	Renamed to nact-main-window.{c,h}.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h:
+	New files.
+	Implement NAIPivotContainer interface.
+
+	* src/nact/nact-action-profile.c:
+	* src/nact/nact-action-profile.h:
+	New files.
+	Implement NactIMenuItem and NactIActionConditions interfaces.
+
+	* src/nact/nact-main-window.c:
+	Implements NAIPivotContainer interface.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h:
+	Remove libglade stuff.
+	Create the structure for derived windows/dialogs.
+
+	* src/nact/iaction-conditions.c:
+	* src/nact/iaction-conditions.h:
+	* src/nact/imenu-item.c:
+	* src/nact/imenu-item.h: New interface files.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/plugin/nautilus-actions.c:
+	Implements NAIPivotContainer interface.
+
+2009-06-20 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/na-gconf.c:
+	Implement loading of old versions.
+	Implement writing an action.
+
+	* src/common/na-action.c:
+	* src/common/na-action.h:
+	* src/common/na-gconf.c:
+	Add read-only attribute set when GConf key is not writable.
+
+	* src/common/na-action.c:
+	* src/common/na-action.h:
+	* src/common/na-action-profile.c:
+	* src/common/na-action-profile.h:
+	Object properties are renamed, and moved to include file.
+	Objects are created with suitable default values.
+	Finalize helper functions.
+
+	* src/common/na-iio-provider.c:
+	Record the provider in each NAAction object.
+
+2009-06-19 Pierre Wieser <pwieser@trychlos.org>
+
+	Getting NA (Nautilus Actions) as common objects prefix.
+
+	* src/common/na-action.c:
+	* src/common/na-action.h:
+	* src/common/na-action-profile.c:
+	* src/common/na-action-profile.h:
+	* src/common/na-gconf.c:
+	* src/common/na-gconf.h:
+	* src/common/na-gconf-keys.h:
+	* src/common/na-iio-provider.c:
+	* src/common/na-iio-provider.h:
+	* src/common/na-object.c:
+	* src/common/na-object.h:
+	* src/common/na-pivot.c:
+	* src/common/na-pivot.h:
+	* src/common/na-utils.c:
+	* src/common/na-utils.h: Renamed and updated accordingly.
+
+	* src/common/na-iio-provider.c:
+	* src/common/na-iio-provider.h:
+	* src/common/na-gconf.c:
+	* src/common/na-pivot.c:
+	na_iio_provider_load_actions renamed to na_iio_provider_read_actions.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h:
+	Define and implement new class BaseWindow.
+
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	Define and implement new interface NactIActionsList.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h:
+	Define and implement new class NactWindow.
+
+	* src/nact/nact-wnd-actions.c:
+	* src/nact/nact-wnd-actions.h:
+	Define and implement new class NactWndActions.
+
+	* src/nact/Makefile.am:
+	Updated accordingly.
+
+2009-06-18 Pierre Wieser <pwieser@trychlos.org>
+
+	Begin with porting NACT to new object hierarchy.
+
+	* src/common/nact-action.c:
+	* src/common/nact-action.h (nact_action_duplicate,
+	nact_action_get_version, nact_action_get_icon,
+	nact_action_set_new_uuid): New functions.
+
+	* src/common/nact-iio-provider.c:
+	* src/common/nact-iio-provider.h (+nact_iio_provider_write_action):
+	New function.
+
+	* src/common/nact-pivot.c:
+	* src/common/nact-pivot.h (nact_pivot_get_label_sorted_actions,
+	nact_pivot_get_action, nact_pivot_add_action):
+	New functions.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h: New base class.
+
+	* src/nact/nact-application.c:
+	* src/nact/nact-application.h: Updated accordingly.
+
+2009-06-14 Pierre Wieser <pwieser@trychlos.org>
+
+	* po/POTFILES.in: Add src/nact-application.c.
+
+	* src/nact/nact-application.c:
+	Fix error message to not embed markup.
+
+2009-06-12 Pierre Wieser <pwieser@trychlos.org>
+
+	Fix #353198 – Single window mode for Nact.
+
+	* configure.ac:
+	Add libunique dependancy.
+	Cleanup the code.
+
+	* src/nact/nact.c:
+	* src/nact/nact.h(nact_init_dialog):
+	Return the newly created GtkWindow.
+
+	* src/nact/nact-main.c (main):
+	Call gtk_init at the very beginning of the program.
+
+	* src/nact/nact-application.c:
+	Check for already running instance, and display a message if any.
+
+2009-06-11 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/nact-pivot.c:
+	* src/common/nact-pivot.h: Fix comment typo.
+
+	* src/nact/nact.c:
+	* src/nact/nact.h:
+	Externalize main function in nact-main.c.
+	init_dialog becomes public as nact_init_dialog.
+
+	* src/nact/nact-application.c:
+	* src/nact/nact-application.h: New NactApplication class.
+	Initialization stuff goes to nact-application.c:startup_appli().
+
+	* src/nact/nact-main.c: New file.
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+2009-06-10 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac:
+	Bump version number.
+	Update required Glib version to make sure to have GIO.
+
+	* src/common/nact-action-profile.c (nact_action_profile_free):
+	Fix disallocation of the profile by calling g_object_unref.
+
+	* src/common/nact-action-profile.c:
+	Remove all gnome-vfs code.
+
+	* src/plugin/nautilus-actions.c:
+	Move gnome_vfs_init call to nact_action_profile_parse_parameters.
+	Remove useless include files.
+
+2009-06-09 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Bump version number for 1.11.0 release.
+
+	* src/common/nact-action.c:
+	* src/common/nact-action.h
+	(nact_action_get_profile_ids, nact_action_free_profile_ids,
+	 nact_action_has_profile, nact_action_get_profile,
+	 nact_action_free_profile):
+	Remove functions and cleanup the code.
+
+	* src/common/nact-action-profile.c:
+	* src/common/nact-action-profile.h
+	(nact_action_profile_load): Remove function and cleanup the code.
+
+	* src/common/nact-gconf.c:
+	* src/common/nact-iio-provider.c:
+	Cleanup the code, adding documentation to public functions.
+
+	* src/common/nact-object.c:
+	* src/common/nact-object.h
+	(nact_object_empty_property): Remove function and cleanup the code.
+
+	* src/common/nact-pivot.c:
+	* src/common/nact-pivot.h
+	(nact_pivot_get_action): Remove function and cleanup the code.
+
+	* src/common/nact-uti.c:
+	* src/common/nact-uti.h (nactuti_free_object_list): Remove function.
+
+	* src/plugin/nautilus-actions.c:
+	The plugin now uses the new object hierarchy to handle menu items.
+	Fix #580378 (context menu doesn't update) reported by James Campos.
+	Cleanup the code.
+
+	* src/plugin/nautilus-actions-test.c:
+	* src/plugin/nautilus-actions-test.h:
+	* src/plugin/nautilus-actions-utils.c:
+	* src/plugin/nautilus-actions-utils.h:
+	Removed files as functions are now integrated in NactActionProfile
+	class.
+
+	* src/utils/nautilus-check-actions-changed.c:
+	* src/utils/Makefile.am:
+	No more build useless nautilus-actions-check-actions-changed program.
+
+2009-06-08 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/nact-action-profile.c:
+	* src/common/nact-action-profile.h:
+	* src/common/nact-action.c:
+	* src/common/nact-action.h:
+	* src/common/nact-gconf.c:
+	* src/common/nact-object.c:
+	* src/common/nact-object.h:
+	* src/common/nact-pivot.c:
+	* src/common/nact-pivot.h:
+	* src/plugin/nautilus-actions.c:
+	Reload list of actions instead of trying to update each object.
+
+2009-06-07 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/common/nact-pivot.c:
+	* src/common/nact-pivot.h:
+	* src/common/nact-gconf.c:
+	Update the NactPivotNotify structure to handle profile name.
+
+2009-06-07 Pierre Wieser <pwieser@trychlos.org>
+
+	Install the notification system.
+
+	* src/common/nautilus-actions.c:
+	Define new message "notify_nautilus_of_action_changed".
+
+	* src/common/nact-pivot.c:
+	Define new message "notify_pivot_of_action_changed".
+
+	* src/common/nact-pivot.h:
+	Rename and update nactPivotValue structure to NactPivotNotify.
+
+	* src/common/gconf.c:
+	Send message to NactPivot on action changed.
+
+2009-06-06 Pierre Wieser <pwieser@trychlos.org>
+
+	Remove NactIIOClient interface.
+	Fix make distcheck.
+	Fix Glade file adressing.
+
+	* src/common/nact-iio-client.c:
+	* src/common/nact-iio-client.h:
+	* src/common/nact-io-client.c:
+	* src/common/nact-io-client.c:
+	Remove files.
+
+	* src/common/Makefile.am:
+	* src/common/nact-action-profile.c:
+	* src/common/nact-action-profile.h:
+	* src/common/nact-action.c:
+	* src/common/nact-action.h:
+	* src/common/nact-gconf.c:
+	* src/common/nact-gconf.h:
+	* src/common/nact-iio-provider.c:
+	* src/common/nact-iio-provider.h:
+	* src/common/nact-pivot.c:
+	* src/common/nact-pivot.h:
+	* src/nact/Makefile.am:
+	* src/utils/Makefile.am:
+	Updated accordingly.
+
+	* src/common/nact-uti-lists.c:
+	* src/common/nact-uti-lists.h:
+	New files after renaming previous uti-lists.{c,h}.
+
+2009-06-05 Pierre Wieser <pwieser@trychlos.org>
+
+	Create pivot data structure NactPivotValue
+
+	* src/common/nact-gconf.c (value_to_pivot):
+	New function.
+
+	* src/common/nact-iio-provider.c
+	(nact_iio_provider_load_profile_properties):
+	Fix thisfn typo.
+
+	* src/common/nact-pivot.c
+	* src/common/nact-pivot.h (nact_pivot_free_pivot_value):
+	New function.
+
+2009-06-04 Pierre Wieser <pwieser@trychlos.org>
+
+	Create a whole new object model, and defines some communication
+	interfaces.
+
+	* src/plugin/nautilus-actions.c:
+	* src/plugin/nautilus-actions.h:
+	Connect and load list of NactAction actions.
+
+	* src/common/nact-gconf.c:
+	* src/common/nact-gconf.h
+	(nact_gconf_dispose, nact_gconf_dump): New functions.
+
+	* src/common/uti-lists.c:
+	* src/common/util-lists.h
+	(nactuti_free_string_list, nactuti_duplicate_string_list):
+	New functions.
+
+	* src/common/nact-action.c:
+	* src/common/nact-action.h:
+	* src/common/nact-action-profile.c:
+	* src/common/nact-action-profile.h:
+	* src/common/nact-gconf.c:
+	* src/common/nact-gconf.h:
+	Updated accordingly.
+
+	* src/common/nact-iio-client.c:
+	* src/common/nact-iio-client.h:
+	* src/common/nact-iio-provider.c:
+	* src/common/nact-iio-provider.c:
+	* src/common/nact-io-client.c:
+	* src/common/nact-io-client.h:
+	New files.
+
+2009-06-01 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Have a more funny package string.
+
+	* src/plugin/nautilus-module.c: Syslog at module initialization.
+
+	* src/plugin/nautilus-actions.c:
+	* src/plugin/nautilus-actions.h:
+	Move NautilusActions object data members to a private area.
+	Add forward declarations of, remove prefix from, static functions.
+	Do nothing on get_background_items callback.
+
+	* src/common/nact-action.c:
+	* src/common/nact-action.h:
+	* src/common/nact-action-profile.c:
+	* src/common/nact-action-profile.h:
+	* src/common/nact-gconf.c:
+	* src/common/nact-gconf.h:
+	* src/common/nact-gconf-keys.h:
+	* src/common/nact-storage.c:
+	* src/common/nact-storage.h:
+	New files, preparing for a new object hierarchy (with shorter names).
+
+	* src/common/uti-lists.c:
+	* src/common/uti-lists.h:
+	(nactuti_free_string_list) new function.
+
+2009-05-29 Pierre Wieser <pwieser@trychlos.org>
+
+	Move all sources directories under src/
+	Remove one directory level when installing Glade file
+	Rename libnautilus-actions/libnautilus-actions to common/libnact
+
+	* configure.ac:
+	* Makefile.am:
+	Build and install po/ directory after sources.
+
+	* All sources: Updated accordingly.
+
+	* src/nact/Makefile.am:
+	Remove one directory level when installing Glade file.
+
+2009-05-29 Pierre Wieser <pwieser@trychlos.org>
+
+	Include a short application description in all source headers
+
+	* plugin/nautilus-module.c:
+	Renamed from plugin/nautilus-actions-module.c.
+
+	* plugin/nautilus-actions.c:
+	Move log handler to nautilus-module.c.
+
+	* plugin/Makefile.am:
+	Updated accordingly.
+
+2009-05-29 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac:
+	Bump version number to 1.11 unstable.
+
+2009-05-29 Pierre Wieser <pwieser@trychlos.org>
+
+	Prepare for the 1.10.1 release
+
+2009-05-28 Pierre Wieser <pwieser@trychlos.org>
+
+	* plugin/nautilus-actions.c (nautilus_actions_get_file_items):
+	Fix iteration through profiles list.
+	Do not search through actions when the Nautilus-provided list is empty.
+
+	* plugin/nautilus-actions.c (get_hash_keys):
+	Remove no more used function.
+
+	* nact/nautilus-actions-config.glade:
+	Remove (useless) 'field_changed_cb' handler from the menu icon.
+
+	* nact/nact-editor.c:
+	* nact/nact-action-editor.c:
+	Restore tooltip display for the icon name depending on Gtk+ version.
+
+	* nact/nact.c:
+	* nact/nautilus-actions-config.glade:
+	Double-click on an action opens the editor.
+
+	* nact/nact-profile-editor.c:
+	Enable the OK button as soon as required fields are filled.
+
+	* m4/nact-maintainer-mode.m4:
+	* plugin/nautilus-actions.c:
+	Only enable syslog'ed debug messages when in maintainer mode.
+
+	* libnautilus-actions/Makefile.am:
+	Remove trailing whitespace.
+
+2009-05-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac:
+	* Makefile.am:
+	Reorganize install order so that plugin be installed last.
+
+	* icons/Makefile.am:
+	* libnautilus-actions/Makefile.am:
+	* nact/Makefile.am:
+	* plugin/Makefile.am:
+	* utils/Makefile.am:
+	Cleanup Makefile.am.
+
+	* .gitignore: Update to ignore Glade work files.
+
+	* plugin/Makefile.am:
+	* libnautilus-actions/Makefile.am:
+	Define G_LOG_DOMAIN variable.
+
+	* libnautilus-actions/nautilus-actions-config.c:
+	* libnautilus-actions/nautilus-actions-config.h:
+	nautilus_actions_config_action_free_all_profile_names,
+	nautilus_actions_config_action_get_first_profile_name,
+	nautilus_actions_config_action_get_profiles_count,
+	nautilus_actions_config_action_dump: new functions.
+
+	* nact/nact-action-editor.c:
+	* nact/nact-action-editor.h: New files to be able to edit an action
+	without having to deal with the profile stuff.
+
+	* nact/nautilus-actions-config.glade:
+	Add EditActionDialogExt dialog.
+
+	* nact/Makefile.am:
+	* nact/nact-editor.c:
+	* nact/nact-editor.h:
+	* nact/nact-profile-editor.c:
+	* nact/nact-profile-editor.h:
+	* nact/nact-utils.c:
+	* nact/nact-utils.h:
+	* po/POTFILES.in:
+	* po/ChangeLog: Updated accordingly.
+
+2009-05-18 Pierre Wieser <pwieser@trychlos.org>
+
+	Fix Glade regression I introduced myself when ansi-fying C sources !
+
+	* *.c, *.h: Almost all sources files impacted.
+
+	* m4/nact-maintainer-mode.m4: Creation.
+
+	* plugin/nautilus-actions.c: Add debug mode to syslog.
+
+2009-05-17 Pierre Wieser <pwieser@trychlos.org>
+
+	Releasing 1.10.0
+
+	* configure.ac: Update version number.
+
+2009-05-17 Pierre Wieser <pwieser@trychlos.org>
+
+	Make all sources ansi-compliant
+
+	* configure.ac: Use NACT_GNOME_COMPILE_WARNINGS	(see #582860).
+
+	* m4/nact-compiler-flags: Creation.
+
+	* *.c, *.h: Update almost all sources to be ansi-compliant.
+
+2009-05-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Created from configure.in,
+	update all Makefile.am, replacing deprecated INCLUDES with AM_CPPFLAGS.
+
+	* update po files
+
+	* Makefile.am: Add DISTCLEANFILES,
+	add DISTCHECK_CONFIGURE_FLAGS to be able to make distcheck successfully.
+
+	* icons/16x16/Makefile.am:
+	* icons/22x22/Makefile.am:
+	* icons/32x32/Makefile.am:
+	* icons/48x48/Makefile.am:
+	* icons/scalable/Makefile.am:
+	* nact/Makefile.am:
+	* plugin/Makefile.am:
+	* utils/Makefile.am:
+	Add EXTRA_DIST to be able to make distcheck successfully.
+
+2009-05-13 Pierre Wieser <pwieser@trychlos.org>
+
+	* nact/nact-editor.c:
+	* libnautilus-actions/nautilus-actions-config.c:
+	* libnautilus-actions/nautilus-actions-config-schema-reader.c:
+	Fix typos. Fixes #522605 reported by Andre Klapper <a9016009%40gmx.de>.
+
+	* libnautilus-actions/nautilus-actions-config-gconf-private.h:
+	Remove a quote. Fixes #573365 reported by Sergej
+	<sergio.durzu@ildeposito.org>.
+
+2009-05-12 Pierre Wieser <pwieser@trychlos.org>
+
+	* ChangeLog, ChangeLog-2008:
+	Split enormeous ChangeLog, only keeping recent history.
+
+2009-05-12 Bruce van der Kooij <brucevdkooij@gmail.com>
+
+	* plugin/nautilus-actions.c:
+	Call gnome_vfs_init at class initialization. Fixes #574919.
+
+2009-05-12 Pierre Wieser <pwieser@trychlos.org>
+
+	* nautilus-actions.doap: Update short description.
+	* MAINTAINERS: Update to point to nautilus-actions.doap.
+
+2009-04-13  Christian Persch  <chpe@gnome.org>
+
+	* autogen.sh:
+	* configure.in:
+	* po/LINGUAS:
+	Use newer intltool so the recent build break doesn't occur again.
+
+2009-04-12  Christian Persch  <chpe@gnome.org>
+
+	* po/LINGUAS: Fix the build by removing extra newline.
+
+2009-01-20  Stéphane Raimbault  <stephane.raimbault@gmail.com>
+
+	* nact/nautilus-actions-config.glade:
+	Marked 'Duplicate' string for translation. Fixes #568366.
