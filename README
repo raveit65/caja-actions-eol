@@ -36,3 +36,13 @@ Caja-Actions plugins.
     Caja-Actions itself uses plugins to load menus and actions from
     the storage space. These plugins are installed in PKGLIBDIR, usually
     something as /usr/lib/caja-actions/.
+
+Mate Installation
+==================
+./autogen.sh
+./configure --enable-compile-warnings=minimum
+if make fails on debian based distros use
+./configure --enable-compile-warnings=minimum LDFLAGS="-luuid"
+make
+sudo make install
+
