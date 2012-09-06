@@ -28,7 +28,7 @@
 
 AC_PREREQ([2.53])
 
-AC_INIT([Caja-Actions],[1.2.0],[maintainer@caja-actions.org])
+AC_INIT([Caja-Actions],[1.4.0],[chat-to-me@raveit.de])
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE
 
@@ -68,7 +68,7 @@ AC_CONFIG_MACRO_DIR([m4])
 
 # don't agree with maintainer mode use
 # see http://www.gnu.org/software/automake/manual/automake.html#index-AM_005fMAINTAINER_005fMODE-1001
-# but mate-autogen.sh forces its usage and mate_common_init requires it
+# but mate-autogen forces its usage and mate_common_init requires it
 AM_MAINTAINER_MODE
 
 # check for compiler characteristics and options
