@@ -6,5 +6,6 @@ _Name=Caja Actions Configuration
 _Comment=Add items to the Caja popup menu
 Exec=caja-actions-config-tool
 Icon=caja-actions
-Categories=Application;FileManager;DesktopSettings;Settings;AdvancedSettings;
+Categories=DesktopSettings;Settings;X-MATE;
 StartupNotify=true
+OnlyShowIn=X-Mate;
