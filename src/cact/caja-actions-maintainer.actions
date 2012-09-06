@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ui>
+    <menubar name="MainMenubar">
+        <placeholder name="MaintainerMenuPlace">
+            <menu action="MaintainerMenu">
+                <menuitem action="DumpSelectionItem" />
+                <menuitem action="BriefTreeStoreDumpItem" />
+                <menuitem action="ListModifiedItems" />
+                <menuitem action="DumpClipboard" />
+            </menu>
+        </placeholder>
+    </menubar>
+
+    <toolbar name="MaintainerToolbar">
+                <toolitem action="DumpSelectionItem" />
+                <toolitem action="BriefTreeStoreDumpItem" />
+                <toolitem action="ListModifiedItems" />
+                <toolitem action="DumpClipboard" />
+    </toolbar>
+</ui>

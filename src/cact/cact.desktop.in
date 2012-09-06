@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Encoding=UTF-8
+_Name=Caja Actions Configuration
+_Comment=Add items to the Caja popup menu
+Exec=caja-actions-config-tool
+Icon=caja-actions
+Categories=DesktopSettings;Settings;X-MATE;
+StartupNotify=true
+OnlyShowIn=Mate;

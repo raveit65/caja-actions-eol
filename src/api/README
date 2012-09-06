@@ -1,0 +1,8 @@
+This is the Caja-Actions extension interface.
+
+Each extension library should at least implement the interface defined
+in na-extension.h.
+
+Headers are installed as part of a development environment of such an
+extension. They are to be included by the extension as
+'#include <caja-actions/header.h>'.

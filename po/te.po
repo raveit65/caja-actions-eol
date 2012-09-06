@@ -1,0 +1,1886 @@
+# translation of caja-actions.master.te.po to Telugu
+# Telugu translation of caja-actions.
+# Copyright (C) 2009 caja-actions's COPYRIGHT HOLDER
+# This file is distributed under the same license as the caja-actions package.
+#
+# Krishna Babu K <kkrothap@redhat.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: caja-actions.master.te\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions&component=general\n"
+"POT-Creation-Date: 2009-10-25 16:32+0000\n"
+"PO-Revision-Date: 2009-10-27 19:09+0530\n"
+"Last-Translator: Krishna Babu K <kkrothap@redhat.com>\n"
+"Language-Team: Telugu <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../data/caja-actions.schemas.in.h:1 ../src/common/na-xml-names.h:144
+msgid "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
+msgstr "దస్త్రమునామపు మాదిరిలు చిన్నపెద్ద అక్షరతేడాలను గుర్తించాలి అంటే 'సత్యము', లేకపోతే 'అసత్యము'"
+
+#: ../data/caja-actions.schemas.in.h:2 ../src/common/na-xml-names.h:153
+msgid "'true' if the selection can have files, 'false' otherwise"
+msgstr "ఎంపిక దస్త్రములను కలిగివుండవలెనంటే 'సత్యము', లేకపోతే 'అసత్యము'"
+
+#: ../data/caja-actions.schemas.in.h:3 ../src/common/na-xml-names.h:160
+msgid "'true' if the selection can have folders, 'false' otherwise"
+msgstr "ఎంపిక ఫోల్డర్లను కలిగివుండవలెనంటే 'సత్యము', లేకపోతే 'అసత్యము'"
+
+#: ../data/caja-actions.schemas.in.h:4 ../src/common/na-xml-names.h:167
+msgid "'true' if the selection can have several items, 'false' otherwise"
+msgstr "ఎంపిక చాలా అంశములను కలిగివుండవలెనంటే 'సత్యము', లేకపోతే 'అసత్యము'"
+
+#: ../data/caja-actions.schemas.in.h:5 ../src/common/na-xml-names.h:120
+msgid "A description name of the profile"
+msgstr "ప్రొఫైల్ యొక్క వివరణ నామము"
+
+#: ../data/caja-actions.schemas.in.h:6 ../src/common/na-xml-names.h:149
+#| msgid ""
+#| "A list of strings with joker '*' or '?' to match the mimetypes of the "
+#| "selected file(s). Each selected items must match at least one of the "
+#| "mimetype patterns for the action to appear"
+msgid ""
+"A list of strings with joker '*' or '?' to match the mimetypes of the "
+"selected file(s). Each selected items must match at least one of the "
+"mimetype patterns for the action to appear. This only applies when targeting "
+"selection."
+msgstr ""
+"ఎంపికచేసిన దస్త్రము(ల) యొక్క మైమ్‌రకములను సరిపోల్చుటకు జోకర్ '*' లేదా '?'తో స్ట్రింగ్స్  యొక్క జాబితా. "
+"చర్య కనిపించుట కొరకు ప్రతి యెంపికచేసిన అంశము కనీసం వొక్క మైమ్‌రకపు మాదిరితోనైనా తప్పక సరిపోలవలెను. "
+"లక్ష్యపు యెంపిక అప్పుడే యిది ఆపాదించబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:7 ../src/common/na-xml-names.h:140
+#| msgid ""
+#| "A list of strings with joker '*' or '?' to match the name of the selected "
+#| "file(s)/folder(s). Each selected items must match at least one of the "
+#| "filename patterns for the action to appear"
+msgid ""
+"A list of strings with joker '*' or '?' to match the name of the selected "
+"file(s)/folder(s). Each selected items must match at least one of the "
+"filename patterns for the action to appear. This only applies when targeting "
+"selection."
+msgstr ""
+"ఎంపికచేసిన దస్త్రము(ల)/ఫోల్డరు(ల) నామముతో సరిపోల్చుటకు జోకర్‌ '*' లేదా '?'తో స్ట్రింగ్ యొక్క జాబితా. "
+"చర్య కనిపించుట కొరకు ఎంపిక కాబడిన ప్రతి అంశము కనీసం వొక దస్త్రమునామపు మాదిరితోనైనా సరిపోలవలెను. "
+"లక్ష్యపు యెంపిక అప్పుడే యిది ఆపాదించబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:8
+#| msgid "Add items to the Caja popup menu"
+msgid "Add an 'About' item in the Caja context menu"
+msgstr "'గురించి' అంశమును నాటిలస్ సందర్భ మెనూనందు జతచేయుము"
+
+#. i18n: name of the default profile when creating an action
+#: ../data/caja-actions.schemas.in.h:9 ../src/common/na-object-action.c:60
+msgid "Default profile"
+msgstr "అప్రమేయ ప్రొఫైల్"
+
+#: ../data/caja-actions.schemas.in.h:10
+msgid "Define a 'Caja Actions' root menu."
+msgstr "'నాటిలస్ చర్యల' రూట్ మెనూను నిర్వచించుము."
+
+#: ../data/caja-actions.schemas.in.h:11
+msgid ""
+"Defines if the item is an action or a menu. Possible values are : - \"Action"
+"\", - \"Menu\". The value is case sensitive and must not be localized."
+msgstr ""
+"అంశము చర్య లేదా మెనూ అయితేనే నిర్వచించుతుంది. సాధ్యమగు విలువలు : - \"Action"
+"\", - \"Menu\". విలువ చిన్నపెద్ద అక్షరముల తేడాగలది మరియు స్థానీకరించకూడదు."
+
+#: ../data/caja-actions.schemas.in.h:12
+msgid ""
+"Defines the list of valid URIs to be matched against the current folder. "
+"This is only used when targeting background or toolbar. All folders 'under' "
+"the specified URI are considered valid."
+msgstr ""
+"ప్రస్తుత ఫోల్డర్‌కు సరిపోలవలసిన విలువైన URIల జాబితాను నిర్వచిస్తుంది. "
+"బ్యాక్‌గ్రౌండ్ లేదా సాధనపట్టీను లక్ష్యము చేస్తున్నప్పుడే యిది వుపయోగించబడుతుంది. "
+"తెలుపబడిన URI 'క్రిందని' అన్ని సంచయములు చెల్లునటువంటివిగా పరిగణించబడినవి."
+
+#: ../data/caja-actions.schemas.in.h:13
+#| msgid ""
+#| "Defines the list of valid schemes to be matched against the selected "
+#| "items. The scheme is the protocol used to access the files. The keyword "
+#| "to use is the one used in the URI. Examples of valid URI include: file:///"
+#| "tmp/foo.txt sftp:///root@test.example.net/tmp/foo.txt The most common "
+#| "schemes are: 'file': local files 'sftp': files accessed via SSH 'ftp': "
+#| "files accessed via FTP 'smb': files accessed via Samba (Windows share) "
+#| "'dav': files accessed via WebDAV All schemes used by Caja can be used "
+#| "here."
+msgid ""
+"Defines the list of valid schemes to be matched against the selected items. "
+"The scheme is the protocol used to access the files. The keyword to use is "
+"the one used in the URI. Examples of valid URI include : - file:///tmp/foo."
+"txt - sftp:///root@test.example.net/tmp/foo.txt The most common schemes "
+"are : - 'file': local files - 'sftp': files accessed via SSH - 'ftp' : files "
+"accessed via FTP - 'smb' : files accessed via Samba (Windows share) - "
+"'dav' : files accessed via WebDAV All schemes used by Caja can be used "
+"here. This only applies when targeting selection."
+msgstr ""
+"ఎంపికచేసిన అంశములకు సరిపోలవలసిన విలువైన స్కీమాల జాబితాను నిర్వచిస్తుంది. స్కీమా అనునది దస్త్రములను "
+"యాక్సెస్ చేయుటకు వుపయోగించు ప్రొటోకాల్. దీనిని వుపయోగించుటకు కీపదము URI నందు వుపయోగించినదే. విలువైన "
+"URI యొక్క వుదాహరణలు: file:///tmp/foo.txt - sftp:///root@test.example.net/tmp/foo."
+"txt అతి సాదారణమైన స్కీమాలు: - 'file': స్థానిక దస్త్రములు - 'sftp': SSH ద్వారా యాక్సెస్ చేసిన దస్త్రములు - "
+"'ftp': FTP ద్వారా యాక్సెస్ చేసిన దస్త్రములు - 'smb': సాంబా (Windows భాగస్వామ్యం) ద్వారా యాక్సెస్ చేసిన దస్త్రములు - 'dav': WebDav ద్వారా యాక్సెస్ చేసిన దస్త్రములు నాటిలస్ ద్వారా వుపయోగించిన అన్ని స్కీములు "
+"యిక్కడ వుపయోగించబడతాయి. ఎంపికను లక్ష్యము చేసినప్పుడే యిది ఆపాదించబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:14
+msgid "Display Edit toolbar"
+msgstr "సరికూర్చు సాధనపట్టీను ప్రదర్శించుము"
+
+#: ../data/caja-actions.schemas.in.h:15
+msgid "Display File toolbar"
+msgstr "దస్త్రము సాధనపట్టీను ప్రదర్శించుము"
+
+#: ../data/caja-actions.schemas.in.h:16
+msgid "Display Help toolbar"
+msgstr "సహాయ సాధనపట్టీను ప్రదర్శించుము"
+
+#: ../data/caja-actions.schemas.in.h:17
+msgid "Display Tools toolbar"
+msgstr "సాధనముల సాధనపట్టీను ప్రదర్శించుము"
+
+#: ../data/caja-actions.schemas.in.h:18
+msgid ""
+"If TRUE, and if the user has defined a single root menu for its actions, "
+"then an 'About Caja Actions' will be displayed at end of the first "
+"submenu."
+msgstr ""
+"ఒకవేళ నిజమైతే, మరియు వినియోగదారి దాని చర్యల కొరకు వొంటరి రూట్ మెనూను నిర్వచించితే, "
+"అప్పుడు 'నాటిలస్ చర్యల గురించి' అనునది మొదటి వుపమెనూ చివరినందు ప్రదర్శించబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:19
+msgid ""
+"If TRUE, then a 'Caja Actions' item will be defined in the Caja "
+"context menu, and will a root menu of all available actions."
+msgstr ""
+"నిజమైతే, 'నాటిలస్ చర్యల' అంశము నాటిలస్ సందర్భ మెనూనందు నిర్వచించబడుతుంది, "
+"మరియు అందుబాటులో వున్న అన్ని చర్యల యొక్క రూట్ మెనూ అవుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:20 ../src/common/na-xml-names.h:93
+#| msgid ""
+#| "If the action is disabled, it will never appear in the Caja context "
+#| "menu"
+msgid "If the action is disabled, it will never appear in the Caja context menu."
+msgstr "చర్య అచేతనము చేయబడితే,అది యెప్పటికి నాటిలస్ కాంటెస్టు మెనూనందు కనబడదు"
+
+#: ../data/caja-actions.schemas.in.h:21 ../src/common/na-xml-names.h:168
+#| msgid ""
+#| "If you need one or more files or folders to be selected, set this key to "
+#| "'true'. If you want just one file or folder, set 'false'"
+msgid ""
+"If you need one or more files or folders to be selected, set this key to "
+"'true'. If you want just one file or folder, set 'false'. This only applies "
+"when targeting selection."
+msgstr ""
+"మీరు వొకటి లేక అంతకన్నా యెక్కువ దస్త్రములను లేదా ఫోల్డర్లను యెంపికచేయవలెనంటే, ఈ కీను 'సత్యము'కు "
+"అమర్చుము. మీకు వొక దస్త్రము లేదా ఫోల్డరు మాత్రమే కావలెనంటే, 'అసత్యము'కు అమర్చుము. "
+"ఇది ఎంపికను లక్ష్యము చేసినప్పుడు మాత్రమే ఆపాదించబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:22 ../src/common/na-xml-names.h:145
+#| msgid ""
+#| "If you need to match a filename in a case-sensitive manner, set this key "
+#| "to 'true'. If you also want, for example '*.jpg' to match 'photo.JPG', "
+#| "set 'false'"
+msgid ""
+"If you need to match a filename in a case-sensitive manner, set this key to "
+"'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
+"'false'. This only applies when targeting selection."
+msgstr ""
+"మీరు దస్త్రమునామము చిన్నా-పెద్ద అక్షరతేడా గుర్తించు రీతిలో సరిపోల్చవలసివస్తే, ఈ కీను 'సత్యము'కు "
+"అమర్చుము. ఒకవేళ మీరు, ఉదాహరణకు '*.jpg' అనునది 'photo.JPG'తో సరిపోలవలెనని అనుకుంటే గనుక, "
+"'అసత్యము'కు అమర్చుము. ఇది ఎంపిక లక్ష్యము చేసినప్పుడు మాత్రమే ఆపాదించబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:23
+msgid "Import mode"
+msgstr "దిగుమతి రీతి"
+
+#: ../data/caja-actions.schemas.in.h:24 ../src/common/na-xml-names.h:116
+#| msgid "The label of the menu item (mandatory)"
+msgid "Label of the item in the toolbar"
+msgstr "సాధనపట్టీనందలి అంశము యొక్క లేబుల్"
+
+#: ../data/caja-actions.schemas.in.h:25
+#| msgid ""
+#| "Last folder selected when browsing for a command in the Conditions tab"
+msgid "Last folder selected when browsing for a command in the Command tab."
+msgstr "ఆదేశ టాబ్‌నందలి ఆదేశము కొరకు అన్వేషించుచున్నప్పుడు యెంపికచేయబడిన చివరి ఫోల్డర్."
+
+#: ../data/caja-actions.schemas.in.h:26
+#| msgid ""
+#| "Last folder selected when browsing for a command in the Conditions tab"
+msgid "Last folder selected when browsing for an URI in the Background tab."
+msgstr "బ్యాక్‌గ్రౌండ్ టాబ్‌నందు URI కొరకు అన్వేషించుచున్నప్పుడు యెంపికచేయబడిన చివరి ఫోల్డర్."
+
+#: ../data/caja-actions.schemas.in.h:27
+#| msgid ""
+#| "Last folder selected when choosing a folder from where import new actions"
+msgid "Last folder selected when choosing a folder from where import new actions."
+msgstr "కొత్త చర్యలను దిగుమతిచేయుచోటునుండి ఫోల్డర్ యెంచుకుంటున్నప్పుడు యెంపికైన చివరి ఫోల్డర్."
+
+#: ../data/caja-actions.schemas.in.h:28
+#| msgid ""
+#| "Last folder selected when choosing a folder where to export the actions"
+msgid "Last folder selected when choosing a folder where to export the actions."
+msgstr "చర్యలను యెచటకి ఎగుమతి చేయాలో అనుదాని కొరకు ఫోల్డరును యెంచుకొనునప్పుడు యెంపికైన చివరి ఫోల్డర్."
+
+#: ../data/caja-actions.schemas.in.h:29
+msgid "Last import mode choosen by the user"
+msgstr "వినియోగదారి ద్వారా యెంచుకొనబడిన చివరి దిగుమతి రీతి"
+
+#: ../data/caja-actions.schemas.in.h:30
+msgid ""
+"Last import mode choosen by the user when he is asked for in import mode. "
+"Possible values are : - \"NoImport\": do not import an action whose UUID "
+"already exists, - \"Renumber\": allocate a new UUID if the imported UUID "
+"already exists, - \"Override\": override the existing action with the "
+"imported one."
+msgstr ""
+"దిగుమతి రీతినందు అతను అడుగబడినప్పుడు అతను యెంచుకొనిన ఆఖరి దిగుమతి రీతి. "
+"సాధ్యమగు విలువలు : - \"NoImport\": ఎవరి UUID అయితే యిప్పటికే వుందో వారి చర్యను "
+"దిగుమతి చేయవద్దు, - \"Renumber\": దిగుమతి చేసిన UUID యిప్పటికే వుంటే కొత్త "
+"UUID కేటాయించుము, - \"Override\": ఉన్న చర్యను దిగుమతి చేసిన దానితో వోవర్‌రైడ్ "
+"చేయుము."
+
+#: ../data/caja-actions.schemas.in.h:31
+msgid ""
+"Last import mode choosen in the Import assistant. Possible values are : - "
+"\"NoImport\": do not import an action whose UUID already exists, - \"Renumber"
+"\": allocate a new UUID if the imported UUID already exists, - \"Override\": "
+"override the existing action with the imported one, - \"Ask\": ask the user "
+"each time."
+msgstr ""
+"దిగుమతి సహాయకినందు యెంచుకొనిన ఆఖరి దిగుమతి రీతి. సాధ్యమగు విలువలు : - "
+"\"NoImport\": ఎవరి UUID అయితే యిప్పటికే వుందో వారి చర్యను దిగుమతి చేయవద్దు, "
+"- \"Renumber\": దిగుమతి చేసిన UUID యిప్పటికే వుంటే కొత్త UUID కేటాయించుము, "
+"- \"Override\": ఉన్న చర్యను దిగుమతి చేసిన దానితో వోవర్‌రైడ్ చేయుము. - \"Ask\": "
+"వినియోగదారిని ప్రతిసారి అడుగుము."
+
+#: ../data/caja-actions.schemas.in.h:32
+msgid "Last selected folder"
+msgstr "చివరిగా యెంపికైన ఫోల్డర్"
+
+#: ../data/caja-actions.schemas.in.h:33
+msgid "List of items at first level of the hierarchy"
+msgstr "హైరార్కీ యొక్క మొదటి స్థాయివద్ద అంశముల జాబితా"
+
+#: ../data/caja-actions.schemas.in.h:34 ../src/common/na-xml-names.h:95
+msgid "List of subitem ids"
+msgstr "ఉపఅంశపు idల జాబితా"
+
+#: ../data/caja-actions.schemas.in.h:35
+msgid "Main pane position"
+msgstr "ముఖ్య పేన్ స్థానము"
+
+#: ../data/caja-actions.schemas.in.h:36
+msgid ""
+"Ordered list of the IDs of the subitems. This may be actions or menus if the "
+"item is a menu, or profiles if the item is an action. If this list doesn't "
+"exist or is empty for an action, we load the found profiles in the order of "
+"the read operations."
+msgstr ""
+"ఉపఅంశముల యొక్క IDల యొక్క ఆర్డరు చేసిన జాబితా. అంశము మెనూ అయితే యిది "
+"చర్యలు లేదా మెనూలు కావచ్చును, లేదా అంశము చర్య అయితే ప్రొఫైల్స్. ఒకవేళ యీ జాబితా "
+"లేకపోయినా లేదా వొక చర్యకు ఖాళీగా వున్న, రీడ్ ఆపరేషన్ల క్రమములో మేము కనుగొనిన ప్రొఫైల్సును "
+"లోడు చేస్తాము."
+
+#: ../data/caja-actions.schemas.in.h:37
+msgid "Position and size of the Legend dialog"
+msgstr "లెజెండ్ డైలాగ్‌యొక్క స్థానము మరియు పరిమాణము"
+
+#: ../data/caja-actions.schemas.in.h:38
+#| msgid ""
+#| "Position and size of the Legend dialog ; default is set by the UI manager"
+msgid "Position and size of the Legend dialog ; default is set by the UI manager."
+msgstr "లెజెండ్ డైలాగుయొక్క స్థానము మరియు పరిమాణము ; అప్రమేయం అనునది UI నిర్వాహిక ద్వారా అమర్చబడింది."
+
+#: ../data/caja-actions.schemas.in.h:39
+#| msgid "Position and size of the command chooser window"
+msgid "Position and size of the URI chooser window"
+msgstr "URI యెంచుకొను విండోయొక్క స్థానము మరియు పరిమాణము"
+
+#: ../data/caja-actions.schemas.in.h:40
+#| msgid ""
+#| "Position and size of the command chooser window in the Conditions tab ; "
+#| "default is set by the window manager"
+msgid ""
+"Position and size of the URI chooser window in the Background tab ; default "
+"is set by the window manager."
+msgstr "బ్యాక్‌గ్రౌండ్ టాబ్‌నందు URI యెంచుకొను విండో యొక్క స్థానము మరియు పరిమాణము ; అప్రమేయం అనునది విండో నిర్వాహిక ద్వారా అమర్చబడింది."
+
+#: ../data/caja-actions.schemas.in.h:41
+msgid "Position and size of the command chooser window"
+msgstr "ఆదేశము యెంచుకొను విండోయొక్క స్థానము మరియు పరిమాణము"
+
+#: ../data/caja-actions.schemas.in.h:42
+#| msgid ""
+#| "Position and size of the command chooser window in the Conditions tab ; "
+#| "default is set by the window manager"
+msgid ""
+"Position and size of the command chooser window in the Command tab ; default "
+"is set by the window manager."
+msgstr "ఆదేశ టాబ్‌నందు ఆదేశము యెంచుకొను విండో యొక్క స్థానము మరియు పరిమాణము ; అప్రమేయం అనునది విండో నిర్వాహిక ద్వారా అమర్చబడింది."
+
+#: ../data/caja-actions.schemas.in.h:43
+msgid "Position and size of the export assistant window"
+msgstr "ఎగుమతి సహాయకి విండోయొక్క స్థానము మరియు పరిమాణము"
+
+#: ../data/caja-actions.schemas.in.h:44
+#| msgid ""
+#| "Position and size of the export assistant window ; default is set by the "
+#| "window manager"
+msgid ""
+"Position and size of the export assistant window ; default is set by the "
+"window manager."
+msgstr "ఎగుమతి సహాయకి విండో యొక్క స్థానము మరియు పరిమాణము ; అప్రమేయం అనునది విండో నిర్వాహిక ద్వారా అమర్చబడింది."
+
+#: ../data/caja-actions.schemas.in.h:45
+msgid "Position and size of the import assistant window"
+msgstr "దిగుమతి సహాయకి విండోయొక్క స్థానము మరియు పరిమాణము"
+
+#: ../data/caja-actions.schemas.in.h:46
+#| msgid ""
+#| "Position and size of the import assistant window ; default is set by the "
+#| "window manager"
+msgid ""
+"Position and size of the import assistant window ; default is set by the "
+"window manager."
+msgstr "దిగుమతి సహాయకి విండోయొక్క స్థానము మరియు పరిమాణము ; అప్రమేయం అనునది విండో నిర్వాహిక ద్వారా అమర్చబడింది."
+
+#: ../data/caja-actions.schemas.in.h:47
+#| msgid "Position and size of the Legend dialog"
+msgid "Position and size of the interaction dialog at import time"
+msgstr "దిగుమతి సమయం వద్ద యింటరాక్షన్ డైలాగ్ స్థానము మరియు పరిమాణము"
+
+#: ../data/caja-actions.schemas.in.h:48
+#| msgid ""
+#| "Position and size of the preferences dialog ; default is set by the "
+#| "window manager"
+msgid ""
+"Position and size of the interaction dialog at import time ; default is set "
+"by the window manager."
+msgstr ""
+"దిగుమతి సమయం వద్ద యింటరాక్షన్ డైలాగ్ యొక్క స్థానము మరియు పరిమాణము ; అప్రమేయం "
+"అనునది విండో నిర్వాహిక ద్వారా అమర్చబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:49
+msgid "Position and size of the main window"
+msgstr "ముఖ్య విండోయొక్క స్థానము మరియు పరిమాణము"
+
+#: ../data/caja-actions.schemas.in.h:50
+#| msgid ""
+#| "Position and size of the main window ; default is set by the window "
+#| "manager"
+msgid "Position and size of the main window ; default is set by the window manager."
+msgstr "ముఖ్య విండోయొక్క స్థానము మరియు పరిమాణము ; అప్రమేయం అనునది విండో నిర్వాహిక ద్వారా అమర్చబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:51
+msgid "Position and size of the preferences dialog"
+msgstr "అభీష్టాల డైలాగు యొక్క స్థానము మరియు పరిమాణము"
+
+#: ../data/caja-actions.schemas.in.h:52
+#| msgid ""
+#| "Position and size of the preferences dialog ; default is set by the "
+#| "window manager"
+msgid ""
+"Position and size of the preferences dialog ; default is set by the window "
+"manager."
+msgstr "అభీష్టాల డైలాగుయొక్క స్థానము మరియు పరిమాణము ; అప్రమేయం అనునది విండో నిర్వాహిక ద్వారా అమర్చబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:53
+msgid "Sort mode"
+msgstr "క్రమీకరణ రీతి"
+
+#: ../data/caja-actions.schemas.in.h:54 ../src/common/na-xml-names.h:107
+msgid "Targets background"
+msgstr "లక్ష్యముల బ్యాక్‌గ్రౌండ్"
+
+#: ../data/caja-actions.schemas.in.h:55 ../src/common/na-xml-names.h:104
+msgid "Targets selection"
+msgstr "లక్ష్యముల యెంపిక"
+
+#: ../data/caja-actions.schemas.in.h:56 ../src/common/na-xml-names.h:109
+msgid "Targets toolbar"
+msgstr "లక్ష్యముల సాధనపట్టి"
+
+#: ../data/caja-actions.schemas.in.h:57 ../src/common/na-xml-names.h:121
+#| msgid ""
+#| "The field is here to give the user a human readable name for a profile in "
+#| "the Nact interface. If not set there will be a default auto generated "
+#| "string set by default"
+msgid ""
+"The field is here to give the user a human readable name for a profile in "
+"the NACT interface. If not set there will be a default auto generated string "
+"set."
+msgstr ""
+"Nact యింటర్ఫేస్ నందలి ప్రొఫైల్‌కు వినియోగదారి చదవగలుగు నామమును యిచ్చుటకు ఈ క్షేత్రము వుంది. ఒకవేళ "
+"అమర్చకపోతే స్వయంచాలకంగా జనియింపబడు వొక అప్రమేయ స్ట్రింగ్ అమర్చబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:58 ../src/common/na-xml-names.h:88
+msgid "The icon of the menu item"
+msgstr "మెనూ అంశముయొక్క ప్రతిమ"
+
+#: ../data/caja-actions.schemas.in.h:59 ../src/common/na-xml-names.h:89
+#| msgid ""
+#| "The icon of the menu item that will appear next to the label in the "
+#| "Caja popup menu when the selection matches the appearance conditions "
+#| "settings"
+msgid ""
+"The icon of the menu item that will appear next to the label in the Caja "
+"popup menu when the selection matches the appearance conditions settings."
+msgstr ""
+"ఎంపిక అనునది అప్పీయరెన్స్ కండీషన్స్ అమరికలకు సరిపోలినప్పుడు నాటిలస్ పాపప్ మెనూనందు లేబుల్ ప్రక్కనే "
+"కనిపించు మెనూ అంశముయొక్క ప్రతిమ."
+
+#: ../data/caja-actions.schemas.in.h:60
+msgid ""
+"The label displayed besides of the icon in the Caja toolbar. Note that "
+"actual display may depend of your own Mate preferences."
+msgstr ""
+"నాటిలస్ సాధనపట్టీనందు ప్రతిమ ప్రక్కన ప్రదర్శించబడు లేబుల్. వాస్తవ ప్రదర్శన మీ స్వంత Mate "
+"అభీష్టాలపై అధారపడునని గమనించండి."
+
+#. MateConf schema descriptions
+#.
+#: ../data/caja-actions.schemas.in.h:61 ../src/common/na-xml-names.h:81
+msgid "The label of the menu item"
+msgstr "మెనూ అంశముయొక్క లేబుల్"
+
+#: ../data/caja-actions.schemas.in.h:62 ../src/common/na-xml-names.h:82
+#| msgid ""
+#| "The label of the menu item that will appear in the Caja popup menu "
+#| "when the selection matches the appearance condition settings"
+msgid ""
+"The label of the menu item that will appear in the Caja popup menu when "
+"the selection matches the appearance condition settings."
+msgstr ""
+"ఎంపిక అనునది అప్పీయరెన్స్ కండీషన్ అమరికలకు సరిపోలినప్పుడు నాటిలస్ పాపప్ మెనూనందు కనిపించు మెనూ "
+"అంశముయొక్క లేబుల్."
+
+#: ../data/caja-actions.schemas.in.h:63 ../src/common/na-xml-names.h:181
+msgid "The list of URIs on which the Background item applies"
+msgstr "బ్యాక్‌గ్రౌండ్ అంశము ఆపాదించబడే URIల యొక్క జాబితా"
+
+#: ../data/caja-actions.schemas.in.h:64 ../src/common/na-xml-names.h:139
+msgid "The list of pattern to match the selected file(s)/folder(s)"
+msgstr "ఎంపికచేసిన దస్త్రము(లు)/ఫోల్డరు(లు)కు సరిపోల్చుటకు మాదిరిల జాబితా"
+
+#: ../data/caja-actions.schemas.in.h:65 ../src/common/na-xml-names.h:148
+msgid "The list of patterns to match the mimetypes of the selected file(s)"
+msgstr "ఎంపికచేసిన దస్త్రము(ల) యొక్క మైమ్‌రకములను సరిపోల్చుటకు మాదిరిల జాబితా"
+
+#: ../data/caja-actions.schemas.in.h:66 ../src/common/na-xml-names.h:171
+msgid "The list of schemes where the selected files should be located"
+msgstr "ఎంపికచేయబడిన దస్త్రములు వుంచబడు స్కీమాల జాబితా"
+
+#: ../data/caja-actions.schemas.in.h:67 ../src/common/na-xml-names.h:127
+#: ../src/utils/caja-actions-new.c:71
+msgid "The parameters of the command"
+msgstr "ఆదేశము యొక్క పారామితులు"
+
+#: ../data/caja-actions.schemas.in.h:69
+#, no-c-format
+#| msgid ""
+#| "The parameters of the command to start when the user selects the menu "
+#| "item in the Caja popup menu. The parameters can contain some special "
+#| "tokens which are replaced by Caja information before starting the "
+#| "command: %d: base folder of the selected file(s) %f: the name of the "
+#| "selected file or the first one if many are selected %h: hostname of the "
+#| "URI %m: space-separated list of the basenames of the selected file(s)/"
+#| "folder(s) %M: space-separated list of the selected file(s)/folder(s), "
+#| "with their full paths %p: port number of the first URI %R: space-"
+#| "separated list of selected URIs %s: scheme of the URI %u: URI %U: "
+#| "username of the URI %%: a percent sign"
+msgid ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu. The parameters can contain some special tokens "
+"which are replaced by Caja information before starting the command: %d: "
+"base folder of the selected file(s) %f: the name of the selected file or the "
+"first one if many are selected %h: hostname of the URI %m: space-separated "
+"list of the basenames of the selected file(s)/folder(s) %M: space-separated "
+"list of the selected file(s)/folder(s), with their full paths %p: port "
+"number of the first URI %R: space-separated list of selected URIs %s: scheme "
+"of the URI %u: URI %U: username of the URI %%: a percent sign."
+msgstr ""
+"వినియోగదారి నాటిలస్ పాపప్ మెనూనందలి మెనూ అంశమును యెంపికచేయగానే ప్రారంభము కావలసిన ఆదేశముయొక్క పారామితులు."
+"ఆదేశము ప్రారంభము కావటానికి ముందుగా నాటిలస్ సమాచారముతో పునఃస్థాపించబడు కొన్ని ప్రత్యేక టోకెన్లనుపారామితలు "
+"కలిగివుంటాయి: %d: ఎంపికచేసిన దస్త్రము(ల) ఆధార ఫోల్డర్ %f: ఎంపికచేసిన దస్త్రము యొక్క నామము లేదా చాలావాటిని "
+"యెంపికచేసినచో మొదటిదాని నామము %h: URI యొక్క హోస్ట్ నామము %m: ఎంపికచేసిన దస్త్రము(ల)/ఫోల్డరు(ల) యొక్క "
+"ఆధారనామముల జాబితా %M: ఎంపికచేసిన దస్త్రము(ల)/ఫోల్డరు(ల) యొక్క జాబితా, వాటియొక్క పూర్తి పాత్‌లతో %p: మొదటి "
+"URI యొక్క పోర్టు సంఖ్య %R: ఎంపికచేసిన URIల జాబితా %s: URI యొక్క స్కీమా%u: URI %U: URI యొక్క "
+"వినియోగదారి నామము %%: ఒక శాతము గుర్తు."
+
+#: ../data/caja-actions.schemas.in.h:70 ../src/common/na-xml-names.h:124
+#: ../src/utils/caja-actions-new.c:70
+#: ../src/utils/caja-actions-new.c:73
+msgid "The path of the command"
+msgstr "ఆదేశముయొక్క పాత్"
+
+#: ../data/caja-actions.schemas.in.h:71 ../src/common/na-xml-names.h:125
+#| msgid ""
+#| "The path of the command to start when the user select the menu item in "
+#| "the Caja popup menu"
+msgid ""
+"The path of the command to start when the user select the menu item in the "
+"Caja popup menu."
+msgstr "వినియోగదారి నాటిలస్ పాపప్ మెనూనందలి మెనూ అంశమును యెంపికచేయగానే ప్రారంభముకావలసిన ఆదేశము యొక్క పాత్."
+
+#: ../data/caja-actions.schemas.in.h:72 ../src/common/na-xml-names.h:84
+#: ../src/utils/caja-actions-new.c:67
+msgid "The tooltip of the menu item"
+msgstr "మెనూ అంశముయొక్క సాధనచిట్కా"
+
+#: ../data/caja-actions.schemas.in.h:73 ../src/common/na-xml-names.h:85
+#| msgid ""
+#| "The tooltip of the menu item that will appear in the Caja statusbar "
+#| "when the user points to the Caja popup menu item with his/her mouse"
+msgid ""
+"The tooltip of the menu item that will appear in the Caja statusbar when "
+"the user points to the Caja popup menu item with his/her mouse."
+msgstr ""
+"వినియోగదారి తన మౌస్‌తో నాటిలస్ పాపప్ మెనూ అంశమును సూచించినప్పుడు నాటిలస్ స్థితిపట్టీ నందు కనిపించు మెనూ "
+"అంశముయొక్క సాధనచిట్కా."
+
+#: ../data/caja-actions.schemas.in.h:74 ../src/common/na-xml-names.h:185
+msgid "The version of the configuration format"
+msgstr "ఆకృతీకరణ ఫార్మాట్ యొక్క వర్షన్"
+
+#: ../data/caja-actions.schemas.in.h:75 ../src/common/na-xml-names.h:186
+#| msgid ""
+#| "The version of the configuration format that will be used to manage "
+#| "backward compatibility"
+msgid ""
+"The version of the configuration format that will be used to manage backward "
+"compatibility."
+msgstr "గతవాటితో సారూప్యతను నిర్వహించుటకు వుపయోగించబడు ఆకృతీకరణ ఫార్మాట్ యొక్క వర్షన్."
+
+#: ../data/caja-actions.schemas.in.h:76
+msgid ""
+"This preference indicates the preferred sort mode. Possible values are : - "
+"\"AscendingOrder\": the actions are maintained in ascending alphabetical "
+"order (historical behavior). - \"DescendingOrder\": the actions are "
+"maintained in descending alphabetical order. - \"ManualOrder\": user is free "
+"to reorder them via Caja-Actions configuration tool."
+msgstr ""
+"ఈ అభీష్టము అనునది అభీష్ట క్రమీకరణ రీతిని సూచిస్తుంది. సాధ్యమగు విలువలు : - "
+"\"AscendingOrder\": చర్యలు అనునవి ఆరోహణ అల్ఫాబేటిక్ క్రమమునందు "
+"నిర్వహించబడతాయి (సాధారణ ప్రవర్తన). - \"DescendingOrder\": చర్యలు "
+"అనునవి ఆవరోహణ అల్ఫాబేటిక్ క్రమమునందు నిర్వహించబడతాయి. - "
+"\"ManualOrder\": వినియోగదారి యిష్టానుసారం నాటిలస్-చర్యల సాధనము "
+"ద్వారా వాటిని క్రమపరచుకొనవచ్చును."
+
+#: ../data/caja-actions.schemas.in.h:77
+#| msgid ""
+#| "This setting is tied in with the 'isdir' setting. The valid combinations "
+#| "are: isfile=TRUE and isdir=FALSE: the selection may hold only files "
+#| "isfile=FALSE and isdir=TRUE: the selection may hold only folders "
+#| "isfile=TRUE and isdir=TRUE: the selection may hold both files and folders "
+#| "isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+#| "configuration will never appear)"
+msgid ""
+"This setting is tied in with the 'isdir' setting. The valid combinations "
+"are : - isfile=TRUE and isdir=FALSE: the selection may hold only files - "
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders - "
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders - "
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+msgstr ""
+"ఈ అమర్పు 'isdir' అమర్పుతో కట్టివుంచబడింది. చెల్లునటువంటి సంయోగములు: - isfile=TRUE మరియు "
+"isdir=FALSE: యెంపిక దస్త్రములను మాత్రమే కలిగివుండవచ్చును - isfile=FALSE మరియు isdir=TRUE: "
+"యెంపిక ఫోల్డర్లను మాత్రమే కలిగివుండవచ్చును - isfile=TRUE మరియు isdir=TRUE: యెంపిక దస్త్రములను "
+"మరియు ఫోల్డర్లను రెంటిని కలిగివుండవచ్చు - isfile=FALSE మరియు isdir=FALSE: ఇది వొక చెల్లని "
+"సంయోగము (మీ ఆకృతీకరణ యెప్పటికి కనిపించదు). ఎంపిక లక్ష్యము చేయునప్పుడే యిది ఆపాదించబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:78
+#| msgid ""
+#| "This setting is tied in with the 'isfile' setting. The valid combinations "
+#| "are: isfile=TRUE and isdir=FALSE: the selection may hold only files "
+#| "isfile=FALSE and isdir=TRUE: the selection may hold only folders "
+#| "isfile=TRUE and isdir=TRUE: the selection may hold both files and folders "
+#| "isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+#| "configuration will never appear)"
+msgid ""
+"This setting is tied in with the 'isfile' setting. The valid combinations "
+"are : - isfile=TRUE and isdir=FALSE: the selection may hold only files - "
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders - "
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders - "
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+msgstr ""
+"ఈ అమర్పు 'isfile' అమర్పుతో కట్టివుంచబడుతుంది. చెల్లునటువంటి సంయోగములు: - isfile=TRUE మరియు "
+"isdir=FALSE: యెంపిక దస్త్రములను మాత్రమే కలిగివుండవచ్చును - isfile=FALSE మరియు isdir=TRUE: "
+"యెంపిక ఫోల్డర్లను మాత్రమే కలిగివుండవచ్చును - isfile=TRUE మరియు isdir=TRUE: యెంపిక దస్త్రములను "
+"మరియు ఫోల్డర్లను రెంటిని కలిగివుండవచ్చు - isfile=FALSE మరియు isdir=FALSE: ఇది వొక చెల్లని "
+"సంయోగము (మీ ఆకృతీకరణ యెప్పటికి కనిపించదు). ఎంపిక లక్ష్యము చేయబడినప్పుడే యిది ఆపాదించబడుతుంది."
+
+#: ../data/caja-actions.schemas.in.h:79 ../src/common/na-xml-names.h:100
+#| msgid "The icon of the menu item"
+msgid "Type of the item"
+msgstr "అంశము యొక్క రకము"
+
+#: ../data/caja-actions.schemas.in.h:80
+msgid ""
+"UUID of the items at the first level of the hierarchy. If this key is not "
+"found or empty, then all found items are considered as a flat list."
+msgstr ""
+"హైరార్కీ యొక్క మొదటి స్థాయివద్ద అంశముల యొక్క UUID. ఒకవేళ యీ కీ కనబడక పోయినా "
+"లేదా ఖాళీ అయినా, అప్పుడు అన్ని కనుగొనబడిన అంశములు ఫ్లాట్ జాబితాగా పరిగణించబడతాయి."
+
+#: ../data/caja-actions.schemas.in.h:81
+msgid "Whether actions should be relabeled when pasted or duplicated"
+msgstr "అతికించినప్పుడు లేదా నకిలీ చేయబడినప్పుడు చర్యలు రీలేబుల్ చేయాలా"
+
+#: ../data/caja-actions.schemas.in.h:82
+msgid "Whether actions should be relabeled when pasted or duplicated."
+msgstr "అతికించినప్పుడు లేదా నకిలీ చేయబడినప్పుడు చర్యలు రీలేబుల్ చేయాలా."
+
+#: ../data/caja-actions.schemas.in.h:83
+msgid "Whether menus should be relabeled when pasted or duplicated"
+msgstr "అతికించినప్పుడు లేదా నకిలీ చేయబడినప్పుడు మెనూలు రీలేబుల్ చేయాలా"
+
+#: ../data/caja-actions.schemas.in.h:84
+msgid "Whether menus should be relabeled when pasted or duplicated."
+msgstr "అతికించినప్పుడు లేదా నకిలీ చేయబడినప్పుడు మెనూలు రీలేబుల్ చేయాలా."
+
+#: ../data/caja-actions.schemas.in.h:85
+msgid "Whether profiles should be relabeled when pasted or duplicated"
+msgstr "అతికించినప్పుడు లేదా నకిలీ చేయబడినప్పుడు ప్రొఫైల్సు రీలేబుల్ చేయాలా"
+
+#: ../data/caja-actions.schemas.in.h:86
+msgid "Whether profiles should be relabeled when pasted or duplicated."
+msgstr "అతికించినప్పుడు లేదా నకిలీ చేయబడినప్పుడు ప్రొఫైల్సు రీలేబుల్ చేయాలా."
+
+#: ../data/caja-actions.schemas.in.h:87
+msgid ""
+"Whether the action is candidate to be displayed in Caja toolbar. Note, "
+"that as of Caja -2.26, menus can not be candidate to toolbar display."
+msgstr ""
+"కేండిడేట్ చర్య నాటిలస్ సాధనపట్టీనందు ప్రదర్శించబడాలా. గమనిక, Caja -2.26 ప్రకారం, "
+"మెనూలు సాధనపట్టీ ప్రదర్శనకు కేండిడేట్ చేయబడలేవు."
+
+#: ../data/caja-actions.schemas.in.h:88 ../src/common/na-xml-names.h:92
+#: ../src/utils/caja-actions-new.c:69
+msgid "Whether the action is enabled"
+msgstr "చర్య చేతనముచేయవలెనా"
+
+#: ../data/caja-actions.schemas.in.h:89 ../src/common/na-xml-names.h:108
+msgid "Whether the action of menu targets the background Caja menus."
+msgstr "మెనూ యొక్క చర్య అనునది బ్యాక్‌గ్రౌండ్ నాటిలస్ మెనూలను లక్ష్యము చేయాలా."
+
+#: ../data/caja-actions.schemas.in.h:90 ../src/common/na-xml-names.h:105
+msgid ""
+"Whether the action of menu targets the selection Caja menus. This is the "
+"historical behavior."
+msgstr "మెనూ యొక్క చర్య ఎంపిక నాటిలస్ మెనూలను లక్ష్యము చేయాలా. ఇది చారిత్రక ప్రవర్తన."
+
+#: ../data/caja-actions.schemas.in.h:91 ../src/common/na-xml-names.h:114
+msgid ""
+"Whether the label displayed in the Caja toolbar besides of the icon is "
+"the same that the main item label."
+msgstr "నాటిలస్ సాధనపట్టీనందు ప్రతిమ ప్రక్కన ప్రదర్శించబడిన లేబుల్ ముఖ్య అంశము లేబుల్‌తో సరిపోల వలెనా."
+
+#: ../data/caja-actions.schemas.in.h:92 ../src/common/na-xml-names.h:113
+msgid "Whether the labels are the sames"
+msgstr "లేబుళ్ళు వొకేవి కావాలా"
+
+#: ../data/caja-actions.schemas.in.h:93
+msgid "Whether to display or not the Edit toolbar in the main window."
+msgstr "ముఖ్య విండోనందు సరికూర్చు సాధనపట్టీ ప్రదర్శించవలెనా లేదు."
+
+#: ../data/caja-actions.schemas.in.h:94
+msgid "Whether to display or not the File toolbar in the main window."
+msgstr "ముఖ్య విండోనందు దస్త్రము సాధనపట్టీ ప్రదర్శించవలెనా లేదా."
+
+#: ../data/caja-actions.schemas.in.h:95
+msgid "Whether to display or not the Help toolbar in the main window."
+msgstr "ముఖ్య విండోనందు సహాయ సాధనపట్టీ ప్రదర్శించబడవలెనా లేదా."
+
+#: ../data/caja-actions.schemas.in.h:96
+msgid "Whether to display or not the Tools toolbar in the main window."
+msgstr "ముఖ్య విండోనందు సాధనముల సాధనపట్టీ ప్రదర్శించబడవలెనా లేదా."
+
+#: ../data/caja-actions.schemas.in.h:97
+#| msgid "Width of the main window pane ; default is set by the UI manager"
+msgid "Width of the main window pane ; default is set by the UI manager."
+msgstr "ముఖ్య విండో పేన్ యొక్క వెడల్పు ; అప్రమేయం అనునది UI నిర్వాహిక ద్వారా అమర్చబడుతుంది."
+
+#. i18n: copied items have a label as 'Copy of original label'
+#: ../src/common/na-object-id.c:201
+#, c-format
+msgid "Copy of %s"
+msgstr "%s యొక్క నకలు"
+
+#: ../src/common/na-xml-names.h:96
+msgid ""
+"Ordered list of the IDs of the subitems. This may be actions or menus if the "
+"item is a menu, or profiles if the item is an action.\n"
+"If this list doesn't exist or is empty for an action, we load the found "
+"profiles in the order of the read operations."
+msgstr ""
+"ఉపఅంశముల యొక్క IDల క్రమపరచిన జాబితా. అంశము మెనూ అయితే యిది చర్యలు లేదా మెనూలు "
+"కావచ్చును, లేదా అంశము చర్య అయితే ప్రొఫైల్సు కావచ్చును.\n"
+"ఒక చర్య కొరకు ఈ జాబితా లేక పోయినా లేదా ఖాళీగా వున్నా, మనం రీడ్ ఆపరేషన్ల యొక్క క్రమములో "
+"కనబడిన ప్రొఫైల్సు లోడు చేస్తాము."
+
+#: ../src/common/na-xml-names.h:101
+msgid ""
+"Defines if the item is an action or a menu. Possible values are :\n"
+"- \"Action\",\n"
+"- \"Menu\".\n"
+"The value is case sensitive and must not be localized."
+msgstr ""
+"అంశము చర్య లేదా మెనూ అయితే నిర్వచిస్తుంది. సాధ్యమగు విలువలు :\n"
+"- \"Action\",\n"
+"- \"Menu\".\n"
+"విలువ అనునది చిన్న పెద్ద అక్షరం తేడాగలది మరియు స్థానీకరించకూడదు."
+
+#: ../src/common/na-xml-names.h:110
+msgid ""
+"Whether the action is candidate to be displayed in Caja toolbar.\n"
+"Note, that as of Caja -2.26, menus can not be candidate to toolbar "
+"display."
+msgstr ""
+"నాటిలస్ సాధనపట్టీ నందు ప్రదర్శించబడు చర్య అనునది కాండిడేట్ కావలెనా.\n"
+"గమనిక, Caja -2.26 ప్రకారము, మెనూ సాధనపట్టీ ప్రదర్శనకు కాండిడేట్ కాలేవు."
+
+#: ../src/common/na-xml-names.h:117
+msgid ""
+"The label displayed besides of the icon in the Caja toolbar.\n"
+"Note that actual display may depend of your own Mate preferences."
+msgstr ""
+"నాటిలస్ సాధనపట్టీనందు ప్రతిమ ప్రక్కన ప్రదర్శించబడు లేబుల్.\n"
+"వాస్తవ ప్రదర్శన అనునది మీ గ్నోమ్ అభీష్టాలపైన ఆధారపడవచ్చును."
+
+#. too long string for iso c: 665 (max=509)
+#: ../src/common/na-xml-names.h:129
+#| msgid ""
+#| "The parameters of the command to start when the user selects the menu "
+#| "item in the Caja popup menu.\n"
+#| "\n"
+#| "The parameters can contain some special tokens which are replaced by "
+#| "Caja information before starting the command:\n"
+#| "\n"
+#| "%d: base folder of the selected file(s)\n"
+#| "%f: the name of the selected file or the first one if many are selected\n"
+#| "%h: hostname of the URI\n"
+#| "%m: space-separated list of the basenames of the selected file(s)/folder"
+#| "(s)\n"
+#| "%M: space-separated list of the selected file(s)/folder(s), with their "
+#| "full paths\n"
+#| "%p: port number of the first URI\n"
+#| "%R: space-separated list of selected URIs\n"
+#| "%s: scheme of the URI\n"
+#| "%u: URI\n"
+#| "%U: username of the URI\n"
+#| "%%: a percent sign"
+msgid ""
+"The parameters of the command to start when the user selects the menu item "
+"in the Caja popup menu.\n"
+"\n"
+"The parameters can contain some special tokens which are replaced by "
+"Caja information before starting the command:\n"
+"\n"
+"%d: base folder of the selected file(s)\n"
+"%f: the name of the selected file or the first one if many are selected\n"
+"%h: hostname of the URI\n"
+"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
+"%M: space-separated list of the selected file(s)/folder(s), with their full "
+"paths\n"
+"%p: port number of the first URI\n"
+"%R: space-separated list of selected URIs\n"
+"%s: scheme of the URI\n"
+"%u: URI\n"
+"%U: username of the URI\n"
+"%%: a percent sign."
+msgstr ""
+"వినియోగదారి నాటిలస్ పాపప్ మెనూనందలి మెనూ అంశమును యెంపికచేయగానే ప్రారంభము కావలసిన ఆదేశముయొక్క "
+"పారామితులు.\n"
+"\n"
+"ఆదేశము ప్రారంభము కావటానికి ముందుగా నాటిలస్ సమాచారముతో పునఃస్థాపించబడు కొన్ని ప్రత్యేక టోకెన్లను పారామితలు "
+"కలిగివుంటాయి:\n"
+"\n"
+"%d: ఎంపికచేసిన దస్త్రము(ల) ఆధార ఫోల్డర్\n"
+"%f: ఎంపికచేసిన దస్త్రము యొక్క నామము లేదా చాలావాటిని యెంపికచేసినచో మొదటిదాని నామము\n"
+"%h: URI యొక్క హోస్ట్ నామము\n"
+"%m: ఎంపికచేసిన దస్త్రము(ల)/ఫోల్డరు(ల) యొక్క ఆధారనామముల జాబితా\n"
+"%M: ఎంపికచేసిన దస్త్రము(ల)/ఫోల్డరు(ల) యొక్క జాబితా, వాటియొక్క పూర్తి పాత్‌లతో\n"
+"%p: మొదటి URI యొక్క పోర్టు సంఖ్య\n"
+"%R: ఎంపికైన URIల జాబితా\n"
+"%s: URI యొక్క స్కీమ్\n"
+"%u: URI\n"
+"%U: URI యొక్క వినియోగదారి నామము\n"
+"%%: ఒక శాతము గుర్తు"
+
+#: ../src/common/na-xml-names.h:154
+#| msgid ""
+#| "This setting is tied in with the 'isdir' setting. The valid combinations "
+#| "are:\n"
+#| "\n"
+#| "isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+#| "isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+#| "isfile=TRUE and isdir=TRUE: the selection may hold both files and "
+#| "folders\n"
+#| "isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+#| "configuration will never appear)"
+msgid ""
+"This setting is tied in with the 'isdir' setting. The valid combinations "
+"are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+msgstr ""
+"ఈ అమర్పు 'isdir' అమర్పుతో బందించబడి వుంటుంది. చెల్లునటువంటి సంయోగములు:\n"
+"\n"
+"isfile=TRUE మరియు isdir=FALSE: యెంపిక దస్త్రములను మాత్రమే కలిగివుండవచ్చును\n"
+"isfile=FALSE మరియు isdir=TRUE: యెంపిక ఫోల్డర్లను మాత్రమే కలిగివుండవచ్చును\n"
+"isfile=TRUE మరియు isdir=TRUE: యెంపిక దస్త్రములను మరియు ఫోల్డర్లను రెంటిని కలిగివుండవచ్చు\n"
+"isfile=FALSE మరియు isdir=FALSE: ఇది వొక చెల్లని సంయోగము (మీ ఆకృతీకరణ యెప్పటికి కనిపించదు). "
+"ఎంపిక లక్ష్యము చేయబడినప్పుడే యిది ఆపాదించబడుతుంది."
+
+#: ../src/common/na-xml-names.h:161
+#| msgid ""
+#| "This setting is tied in with the 'isfile' setting. The valid combinations "
+#| "are:\n"
+#| "\n"
+#| "isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+#| "isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+#| "isfile=TRUE and isdir=TRUE: the selection may hold both files and "
+#| "folders\n"
+#| "isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+#| "configuration will never appear)"
+msgid ""
+"This setting is tied in with the 'isfile' setting. The valid combinations "
+"are:\n"
+"\n"
+"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
+"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
+"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
+"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"configuration will never appear). This only applies when targeting selection."
+msgstr ""
+"ఈ అమర్పు 'isfile' అమర్పుతో బందించబడివుంటుంది. చెల్లునటువంటి సంయోగములు:\n"
+"\n"
+"isfile=TRUE మరియు isdir=FALSE: యెంపిక దస్త్రములను మాత్రమే కలిగివుండవచ్చును\n"
+"isfile=FALSE మరియు isdir=TRUE: యెంపిక ఫోల్డర్లను మాత్రమే కలిగివుండవచ్చును\n"
+"isfile=TRUE మరియు isdir=TRUE: యెంపిక దస్త్రములను మరియు ఫోల్డర్లను రెంటిని కలిగివుండవచ్చు\n"
+"isfile=FALSE మరియు isdir=FALSE: ఇది వొక చెల్లని సంయోగము (మీ ఆకృతీకరణ యెప్పటికి కనిపించదు). "
+"ఎంపిక లక్ష్యము చేయబడినప్పుడు మాత్రమే యిది ఆపాదించబడుతుంది."
+
+#. too long string for iso c: 510 (max=509)
+#: ../src/common/na-xml-names.h:173
+#| msgid ""
+#| "Defines the list of valid schemes to be matched against the selected "
+#| "items. The scheme is the protocol used to access the files. The keyword "
+#| "to use is the one used in the URI.\n"
+#| "\n"
+#| "Examples of valid URI include:\n"
+#| "file:///tmp/foo.txt\n"
+#| "sftp:///root@test.example.net/tmp/foo.txt\n"
+#| "\n"
+#| "The most common schemes are:\n"
+#| "\n"
+#| "'file': local files\n"
+#| "'sftp': files accessed via SSH\n"
+#| "'ftp': files accessed via FTP\n"
+#| "'smb': files accessed via Samba (Windows share)\n"
+#| "'dav': files accessed via WebDAV\n"
+#| "\n"
+#| "All schemes used by Caja can be used here."
+msgid ""
+"Defines the list of valid schemes to be matched against the selected items. "
+"The scheme is the protocol used to access the files. The keyword to use is "
+"the one used in the URI.\n"
+"\n"
+"Examples of valid URI include:\n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"The most common schemes are:\n"
+"\n"
+"'file': local files\n"
+"'sftp': files accessed via SSH\n"
+"'ftp': files accessed via FTP\n"
+"'smb': files accessed via Samba (Windows share)\n"
+"'dav': files accessed via WebDAV\n"
+"\n"
+"All schemes used by Caja can be used here.\n"
+"This only applies when targeting selection."
+msgstr ""
+"స్కీమా అనునది దస్త్రములను యాక్సెస్ చేయుటకు వుపయోగించు ప్రొటోకాల్. దీనిని వుపయోగించుటకు కీపదము "
+"URI నందు వుపయోగించినదే.\n"
+"\n"
+"URI యొక్క వుదాహరణలు: \n"
+"file:///tmp/foo.txt\n"
+"sftp:///root@test.example.net/tmp/foo.txt\n"
+"\n"
+"అతి సాదారణమైన స్కీమాలు:\n"
+"\n"
+"'file': స్థానిక దస్త్రములు\n"
+"'sftp': SSH ద్వారా యాక్సెస్ చేసిన దస్త్రములు\n"
+"'ftp': FTP ద్వారా యాక్సెస్ చేసిన దస్త్రములు\n"
+"'smb': సాంబా (Windows భాగస్వామ్యం) ద్వారా యాక్సెస్ చేసిన దస్త్రములు\n"
+"'dav': WebDav ద్వారా యాక్సెస్ చేసిన దస్త్రములు\n"
+"\n"
+"నాటిలస్ ద్వారా వుపయోగించిన అన్ని స్కీములు యిక్కడ వుపయోగించగలము. "
+"ఎంపిక లక్ష్యము చేయబడినప్పుడు మాత్రమే యిది ఆపాదించబడుతుంది."
+
+#: ../src/common/na-xml-names.h:182
+msgid ""
+"Defines the list of valid URIs to be matched against the current folder.\n"
+" This is only used when targeting background or toolbar. All folders 'under' "
+"the specified URI are considered valid."
+msgstr ""
+"ప్రస్తుత ఫోల్డర్‌కు సరిపోల వలసిన విలువైన URIల జాబితాను నిర్వచిస్తుంది.\n"
+" బ్యాక్‌గ్రౌండును లేదా సాధనపట్టీను లక్ష్యము చేయబడినప్పుడు మాత్రమే యిది వుపయోగించబడుతుంది. "
+"తెలుపబడిన URI 'క్రిందిని' అన్ని ఫోల్డర్లు చెల్లునవిగా పరిగణించబడతాయి."
+
+#: ../src/nact/base-application.c:1132
+msgid "Unable to initialize the internationalization environment."
+msgstr "అంతర్జాతీయ వాతావరణమును సిద్దపరచలేక పోయింది."
+
+#: ../src/nact/base-application.c:1141
+msgid "Unable to initialize the Gtk+ user interface."
+msgstr "Gtk+ వినియోగదారి ఇంటర్ఫేసును సిద్దపరచలేక పోయింది."
+
+#: ../src/nact/base-application.c:1150
+msgid "Another instance of the application is already running."
+msgstr "అనువర్తనము యొక్క మరియొక సంభవము యిప్పటికే నడుచుచున్నది."
+
+#: ../src/nact/base-application.c:1159
+msgid "No filename provided for the UI XML definition."
+msgstr "UI XML నిర్వచనము కొరకు యెటువంటి దస్త్రమునామము అందించబడుటలేదు."
+
+#. i18n: Unable to load the XML definition from <filename>
+#: ../src/nact/base-application.c:1169
+#, c-format
+msgid "Unable to load the XML definition from %s."
+msgstr "XML నిర్వచనమును %s నుండి లోడు చేయలేక పోయింది."
+
+#: ../src/nact/base-application.c:1182
+msgid "Unable to set the default icon for the application."
+msgstr "అనువర్తనము కొరకు అప్రమేయ ప్రతిమను అమర్చలేక పోయింది."
+
+#: ../src/nact/base-application.c:1191
+msgid "Unable to get the main window of the application."
+msgstr "అనువర్తనము యొక్క ముఖ్యవిండోను పొందలేక పోయింది."
+
+#: ../src/nact/base-assistant.c:576
+msgid "Are you sure you want to quit this assistant ?"
+msgstr "మీరు ఈ సహాయకిని నిష్క్రమించుదామని అనుకొనుచున్నారా?"
+
+#: ../src/nact/base-window.c:1114
+#, c-format
+#| msgid "Unable to load the XML definition from %s."
+msgid "Unable to load %s XML definition."
+msgstr "%s XML నిర్వచనమును లోడు చేయలేక పోయింది."
+
+#: ../src/nact/nact-application.c:314
+msgid "Another instance of Caja Actions Configuration Tool is already running."
+msgstr "నాటిలస్ చర్యల ఆకృతీకరణి సాధనం యొక్క వేరొక సంభవం యిప్పటికే నడుచుచున్నది."
+
+#. i18n: another instance is already running: second line of error message
+#: ../src/nact/nact-application.c:316
+msgid "Please switch back to it."
+msgstr "దయచేసి దీనికి మారండి."
+
+#. static const gchar *thisfn = "nact_application_appli_get_application_name";
+#. g_debug( "%s: application=%p", thisfn, ( void * ) application );
+#. i18n: this is the application name, used in window title
+#: ../src/nact/nact-application.c:376
+msgid "Caja Actions Configuration Tool"
+msgstr "నాటిలస్ చర్యల ఆకృతీకరణ సాధనము"
+
+#. i18n: this is the title of the confirm page of the export assistant
+#: ../src/nact/nact-assistant-export.c:708
+msgid "About to export selected actions:"
+msgstr "ఎంపికచేసిన చర్యలు ఎగుమతి చేయబోతున్నది:"
+
+#. i18n: all exported actions go to one destination folder
+#: ../src/nact/nact-assistant-export.c:726
+msgid "Into the destination folder:"
+msgstr "గమ్యపు ఫోల్డరు లోనికి:"
+
+#: ../src/nact/nact-assistant-export.c:812
+msgid "Export canceled due to user action."
+msgstr "వినియోగదారి చర్య కారణంగా ఎగుమతి రద్దుచేయబడింది."
+
+#. i18n: result of the export assistant
+#: ../src/nact/nact-assistant-export.c:839
+#| msgid "Selected files have been imported:"
+msgid "Selected actions have been proceeded :"
+msgstr "ఎంపికచేసిన చర్యలు నిర్వహించబడినవి:"
+
+#. i18n: action as been successfully exported to <filename>
+#: ../src/nact/nact-assistant-export.c:857
+msgid "Successfully exported as"
+msgstr "ఇలా సమర్ధవంతంగా ఎగుమతైంది"
+
+#: ../src/nact/nact-assistant-export.c:880
+#| msgid "You may not have writing permissions on selected folder."
+msgid "You may not have write permissions on selected folder."
+msgstr "ఎంపికచేసిన ఫోల్డరుపై మీరు వ్రాయు అనుమతులను కలిగివుండక పోవచ్చును."
+
+#. i18n: The action <action_label> is about to be exported
+#: ../src/nact/nact-assistant-export-ask.c:312
+#, c-format
+msgid "The action \"%s\" is about to be exported."
+msgstr "ఈ \"%s\" చర్య ఎగుమతి అవబోతున్నది."
+
+#. i18n: the title of the confirm page of the import assistant
+#: ../src/nact/nact-assistant-import.c:535
+msgid "About to import selected files:"
+msgstr "ఎంపికచేసిన దస్త్రములను దిగుమతి చేయబోవుచున్నది:"
+
+#. i18n: result of the import assistant
+#: ../src/nact/nact-assistant-import.c:714
+#| msgid "Selected files have been imported:"
+msgid "Selected files have been proceeded :"
+msgstr "ఎంపికచేసిన దస్త్రములు నిర్వహించబడినవి :"
+
+#. i18n: indicate that the file has been successfully imported
+#: ../src/nact/nact-assistant-import.c:732
+msgid "Import OK"
+msgstr "దిగుమతి సరియే"
+
+#. i18n: this is the globally unique identifier and the label of the newly imported action
+#: ../src/nact/nact-assistant-import.c:738
+#, c-format
+msgid "UUID: %s\t%s"
+msgstr "UUID: %s\t%s"
+
+#. i18n: indicate that the file was not iported
+#: ../src/nact/nact-assistant-import.c:749
+msgid "Not imported"
+msgstr "దిగుమతి కాలేదు"
+
+#: ../src/nact/nact-assistant-import-ask.c:306
+#, c-format
+msgid ""
+"The action \"%s\" imported from \"%s\" has the same identifiant than the "
+"already existing \"%s\"."
+msgstr ""
+"\"%2$s\" నుండి దిగుమతి చేసిన చర్య \"%1$s\" అనునది యిప్పటికే వున్న \"%3$s\" కన్నా "
+"సరిపోలినది కలిగివుంది."
+
+#: ../src/nact/nact.desktop.in.h:1
+msgid "Add items to the Caja popup menu"
+msgstr "నాటిలస్ పాపప్ మెనూకు అంశములను జతచేయుము"
+
+#: ../src/nact/nact.desktop.in.h:2
+msgid "Caja Actions Configuration"
+msgstr "నాటిలస్ చర్యల ఆకృతీకరణ"
+
+#. i18n: header of the 'label' column in the treeview
+#: ../src/nact/nact-iactions-list.c:463
+#| msgid "_Label :"
+msgid "Label"
+msgstr "లేబుల్"
+
+#: ../src/nact/nact-iaction-tab.c:438
+msgid "<b>Menu properties</b>"
+msgstr "<b>మెనూ లక్షణములు</b>"
+
+#: ../src/nact/nact-iaction-tab.c:440
+msgid "<b>Action properties</b>"
+msgstr "<b>చర్యా లక్షణములు</b>"
+
+#: ../src/nact/nact-iaction-tab.c:531
+#| msgid "Caution: a label is mandatory for the action."
+msgid "Caution: a label is mandatory for the action or the menu."
+msgstr "జాగ్రత్త: చర్య లేదా మెనూనకు లేబుల్ అనునది తప్పనిసరి."
+
+#. i18n: label in front of the GtkEntry where user enters the action label
+#: ../src/nact/nact-iaction-tab.c:578
+#| msgid "_Label :"
+msgid "_Menu label :"
+msgstr "మెనూ లేబుల్ (_M):"
+
+#. i18n notes: when no icon is selected in the drop-down list
+#: ../src/nact/nact-iaction-tab.c:709
+msgid "None"
+msgstr "ఏదీకాదు"
+
+#: ../src/nact/nact-iaction-tab.c:782
+msgid "Choosing an icon"
+msgstr "ప్రతిమను యెంచుకొనుచున్నది"
+
+#. i18n notes : description of 'file' scheme
+#: ../src/nact/nact-iadvanced-tab.c:516
+msgid "Local files"
+msgstr "స్థానిక దస్త్రములు"
+
+#. i18n notes : description of 'sftp' scheme
+#: ../src/nact/nact-iadvanced-tab.c:518
+msgid "SSH files"
+msgstr "SSH దస్త్రములు"
+
+#. i18n notes : description of 'smb' scheme
+#: ../src/nact/nact-iadvanced-tab.c:520
+msgid "Windows files"
+msgstr "Windows దస్త్రములు"
+
+#. i18n notes : description of 'ftp' scheme
+#: ../src/nact/nact-iadvanced-tab.c:522
+msgid "FTP files"
+msgstr "FTP దస్త్రములు"
+
+#. i18n notes : description of 'dav' scheme
+#: ../src/nact/nact-iadvanced-tab.c:524
+msgid "WebDAV files"
+msgstr "Webdav దస్త్రములు"
+
+#. i18n notes : scheme name set for a new entry in the scheme list
+#: ../src/nact/nact-iadvanced-tab.c:568
+msgid "new-scheme"
+msgstr "కొత్త-స్కీమా"
+
+#: ../src/nact/nact-iadvanced-tab.c:569
+msgid "New scheme description"
+msgstr "కొత్త స్కీమా వివరణ"
+
+#. i18n: title of the FileChoose dialog when selecting an URI which
+#. * will be comparent to Caja 'current_folder'
+#.
+#: ../src/nact/nact-ibackground-tab.c:403
+#| msgid "Last selected folder"
+msgid "Select a folder"
+msgstr "ఫోల్డర్‌ను యెంపికచేయి"
+
+#: ../src/nact/nact-icommand-tab.c:414
+msgid "Caution: a label is mandatory for the profile."
+msgstr "జాగ్రత్త: ప్రోఫైల్‌నకు వొక లేబుల్ తప్పనిసరి."
+
+#: ../src/nact/nact-icommand-tab.c:566
+msgid "Choosing a command"
+msgstr "ఆదేశమును యెంచుకొనుచున్నది"
+
+#. i18n notes: example strings for the command preview
+#: ../src/nact/nact-icommand-tab.c:642
+msgid "/path/to"
+msgstr "/path/to"
+
+#: ../src/nact/nact-icommand-tab.c:643
+msgid "file1.txt"
+msgstr "file1.txt"
+
+#: ../src/nact/nact-icommand-tab.c:643
+msgid "file2.txt"
+msgstr "file2.txt"
+
+#: ../src/nact/nact-icommand-tab.c:644
+msgid " folder1"
+msgstr " ఫోల్డర్‌1"
+
+#: ../src/nact/nact-icommand-tab.c:644
+msgid "folder2"
+msgstr "ఫోల్డర్2"
+
+#: ../src/nact/nact-icommand-tab.c:645
+msgid " file1.txt"
+msgstr " file1.txt"
+
+#: ../src/nact/nact-icommand-tab.c:645
+msgid "folder1"
+msgstr "ఫోల్డర్1"
+
+#: ../src/nact/nact-icommand-tab.c:647
+msgid "test.example.net"
+msgstr "test.example.net"
+
+#: ../src/nact/nact-icommand-tab.c:648
+msgid "file.txt"
+msgstr "file.txt"
+
+#: ../src/nact/nact-icommand-tab.c:649
+msgid "folder"
+msgstr "ఫోల్డర్"
+
+#: ../src/nact/nact-icommand-tab.c:650
+msgid "8080"
+msgstr "8080"
+
+#: ../src/nact/nact-icommand-tab.c:654
+msgid "file:///path/to/file1.text"
+msgstr "file:///path/to/file1.text"
+
+#: ../src/nact/nact-icommand-tab.c:655
+msgid "file:///path/to/file2.text"
+msgstr "file:///path/to/file2.text"
+
+#: ../src/nact/nact-icommand-tab.c:656
+msgid "file:///path/to/a/dir"
+msgstr "file:///path/to/a/dir"
+
+#: ../src/nact/nact-icommand-tab.c:657
+msgid "file:///path/to/another/dir"
+msgstr "file:///path/to/another/dir"
+
+#. i18n: label in front of the GtkEntry where user enters the profile label
+#: ../src/nact/nact-icommand-tab.c:805
+msgid "_Label :"
+msgstr "లేబుల్ (_L):"
+
+#: ../src/nact/nact-icommand-tab.c:827
+msgid "e.g.,"
+msgstr "ఉ.దా.,"
+
+#: ../src/nact/nact-main-menubar.c:154 ../src/nact/nact-main-menubar.c:250
+msgid "_File"
+msgstr "దస్త్రము (_F)"
+
+#: ../src/nact/nact-main-menubar.c:155 ../src/nact/nact-main-menubar.c:254
+msgid "_Edit"
+msgstr "సరికూర్చు (_E)"
+
+#: ../src/nact/nact-main-menubar.c:156
+#| msgid "_File"
+msgid "_View"
+msgstr "దర్శించు (_V)"
+
+#: ../src/nact/nact-main-menubar.c:157
+#| msgid "_Tools"
+msgid "_Toolbars"
+msgstr "సాధనపట్టీలు (_T)"
+
+#: ../src/nact/nact-main-menubar.c:158 ../src/nact/nact-main-menubar.c:258
+msgid "_Tools"
+msgstr "సాధనములు (_T)"
+
+#: ../src/nact/nact-main-menubar.c:159
+msgid "_Maintainer"
+msgstr "నిర్వహకుడు (_M)"
+
+#: ../src/nact/nact-main-menubar.c:160 ../src/nact/nact-main-menubar.c:262
+msgid "_Help"
+msgstr "సహాయము (_H)"
+
+#: ../src/nact/nact-main-menubar.c:162
+msgid "New _menu"
+msgstr "కొత్త మెనూ (_m)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'New menu' item
+#: ../src/nact/nact-main-menubar.c:164
+#| msgid "Define a new profile attached to the current action."
+msgid "Insert a new menu at the current position"
+msgstr "ప్రస్తుత స్థానము వద్ద కొత్త మెనూను చేర్చుము"
+
+#: ../src/nact/nact-main-menubar.c:166
+msgid "_New action"
+msgstr "కొత్త చర్య (_N)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'New action' item
+#: ../src/nact/nact-main-menubar.c:168
+#| msgid "Define a new action."
+msgid "Define a new action"
+msgstr "కొత్త చర్యను నిర్వచించుము"
+
+#: ../src/nact/nact-main-menubar.c:170
+msgid "New _profile"
+msgstr "కొత్త ప్రొఫైల్ (_p)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'New profile' item
+#: ../src/nact/nact-main-menubar.c:172
+#| msgid "Define a new profile attached to the current action."
+msgid "Define a new profile attached to the current action"
+msgstr "ప్రస్తుత చర్యనకు అనుభందించి కొత్త ప్రొఫైల్‌ను నిర్వచించుము"
+
+#. i18n: tooltip displayed in the status bar when selecting 'Save' item
+#: ../src/nact/nact-main-menubar.c:176
+#| msgid ""
+#| "Record all the modified actions. Invalid actions will be silently ignored."
+msgid "Record all the modified actions. Invalid actions will be silently ignored"
+msgstr "అన్ని సవరించిన చర్యలను రికార్డు చేయుము. చెల్లని చర్యలు నిశ్శబ్దంగా వదిలివేయబడతాయి"
+
+#. i18n: tooltip displayed in the status bar when selecting 'Quit' item
+#: ../src/nact/nact-main-menubar.c:180
+#| msgid "Quit the application."
+msgid "Quit the application"
+msgstr "అనువర్తనమును నిష్క్రమించుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the Cut item
+#: ../src/nact/nact-main-menubar.c:184
+msgid "Cut the selected item(s) to the clipboard"
+msgstr "ఎంపికచేసిన అంశము(ల)ను క్లప్‌బోర్డునకు కోయుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the Copy item
+#: ../src/nact/nact-main-menubar.c:188
+msgid "Copy the selected item(s) to the clipboard"
+msgstr "ఎంపికచేసిన అంశము(ల)ను క్లిప్‌బోర్డునకు నకలుతీయుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the Paste item
+#: ../src/nact/nact-main-menubar.c:192
+msgid "Insert the content of the clipboard just before the current position"
+msgstr "ప్రస్తుత స్థానమునకు ముందల క్లిప్‌బోర్డు యొక్క సారమును చేర్చుము"
+
+#: ../src/nact/nact-main-menubar.c:194
+msgid "Paste _into"
+msgstr "దీనిలోకి అతికించుము (_i)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Paste Into item
+#: ../src/nact/nact-main-menubar.c:196
+msgid "Insert the content of the clipboard as first child of the current item"
+msgstr "ప్రస్తుత అంశము యొక్క మొదటి చైల్డు వలె క్లిప్‌బోర్డు యొక్క సారమును చేర్చుము"
+
+#: ../src/nact/nact-main-menubar.c:198
+msgid "D_uplicate"
+msgstr "నకిలీ (_u)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Duplicate item
+#: ../src/nact/nact-main-menubar.c:200
+msgid "Duplicate the selected item(s)"
+msgstr "ఎంపికచేసిన అంశము(ల)ను నకిలీచేయుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the Delete item
+#: ../src/nact/nact-main-menubar.c:204
+msgid "Delete the selected item(s)"
+msgstr "ఎంపికచేసిన అంశము(ల)ను తొలగించుము"
+
+#: ../src/nact/nact-main-menubar.c:206
+msgid "_Reload the list of actions"
+msgstr "చర్యల జాబితాను తిరిగిలోడు చేయుము (_R)"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'Reload' item
+#: ../src/nact/nact-main-menubar.c:208
+#| msgid "Cancel your current modifications and reload the list of actions."
+msgid "Cancel your current modifications and reload the list of actions"
+msgstr "మీ ప్రస్తుత సవరింపులను రద్దుచేసి మరియు చర్యల జాబితాను తిరిగిలోడు చేయుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'Preferences' item
+#: ../src/nact/nact-main-menubar.c:212
+#| msgid "Edit your preferences."
+msgid "Edit your preferences"
+msgstr "మీ అభీష్టాలను సరికూర్చుము"
+
+#: ../src/nact/nact-main-menubar.c:214
+msgid "_Expand all"
+msgstr "అన్నిటిని విస్తరించుము (_E)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Expand all item
+#: ../src/nact/nact-main-menubar.c:216
+msgid "Entirely expand the items hierarchy"
+msgstr "అంశముల హైరార్కీను మొత్తముగా విస్తరించుము"
+
+#: ../src/nact/nact-main-menubar.c:218
+msgid "_Collapse all"
+msgstr "అన్నిటిని కూల్చుము (_C)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Collapse all item
+#: ../src/nact/nact-main-menubar.c:220
+msgid "Entirely collapse the items hierarchy"
+msgstr "అంశముల హైరార్కీను మొత్తము కూల్చుము"
+
+#: ../src/nact/nact-main-menubar.c:222
+msgid "_Import assistant..."
+msgstr "దిగుమతి సహాయకి... (_I)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Import item
+#: ../src/nact/nact-main-menubar.c:224
+#| msgid ""
+#| "Import one or more actions from external (XML) files into your "
+#| "configuration."
+msgid "Import one or more actions from external (XML) files into your configuration"
+msgstr "ఒకటి లేదా అంతకన్నా యెక్కువ చర్యలను బహిర్గత (XML) దస్త్రములనుండి మీ ఆకృతీకరణకు దిగుమతి చేయుము"
+
+#: ../src/nact/nact-main-menubar.c:226
+msgid "E_xport assistant..."
+msgstr "ఎగుమతి సహాయకి... (_x)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Export item
+#: ../src/nact/nact-main-menubar.c:228
+#| msgid ""
+#| "Export one or more actions from your configuration to external XML files."
+msgid "Export one or more actions from your configuration to external XML files"
+msgstr "ఒకటి లేదా యెక్కువ చర్యలను మీ ఆకృతీకరణనుండి బహిర్గత XML దస్త్రములకు ఎగుమతిచేయుము"
+
+#: ../src/nact/nact-main-menubar.c:230
+#| msgid "Quit the application."
+msgid "_Dump the selection"
+msgstr "ఎంపికను డంప్ చేయుము (_D)"
+
+#. i18n: tooltip displayed in the status bar when selecting the Dump selection item
+#: ../src/nact/nact-main-menubar.c:232
+msgid "Recursively dump selected items"
+msgstr "ఎంపికైన అంశములను పునరావృతముగా డంప్ చేయుము"
+
+#: ../src/nact/nact-main-menubar.c:234
+msgid "_Brief tree store dump"
+msgstr "బ్రీఫ్ ట్రీ స్టోర్ డంప్ (_B)"
+
+#. i18n: tooltip displayed in the status bar when selecting the BriefTreeStoreDump item
+#: ../src/nact/nact-main-menubar.c:236
+msgid "Briefly dump the tree store"
+msgstr "ట్రీ స్టోర్‌ను టూకీగా డంప్ చేయుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the Help item
+#: ../src/nact/nact-main-menubar.c:240
+#| msgid "Display help about this program."
+msgid "Display help about this program"
+msgstr "ఈ ప్రోగ్రామ్ గురించి సహాయమును ప్రదర్శించుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the About item
+#: ../src/nact/nact-main-menubar.c:244
+#| msgid "Display informations about this program."
+msgid "Display informations about this program"
+msgstr "ఈ ప్రోగ్రామ్ గురించి సమాచారములు ప్రదర్శించుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
+#: ../src/nact/nact-main-menubar.c:252
+msgid "Display the File toolbar"
+msgstr "ఫైల్ సాధనపట్టీను ప్రదర్శించుము"
+
+#. i18n: tooltip displayed in the status bar when selecting the 'View Edit toolbar' item
+#: ../src/nact/nact-main-menubar.c:256
+msgid "Display the Edit toolbar"
+msgstr "సరికూర్చు సాధనపట్టీను ప్రదర్శించుము"
+
+#. i18n: tooltip displayed in the status bar when selecting 'View Tools toolbar' item
+#: ../src/nact/nact-main-menubar.c:260
+msgid "Display the Tools toolbar"
+msgstr "సాధనముల సాధనపట్టీను ప్రదర్శించుము"
+
+#. i18n: tooltip displayed in the status bar when selecting 'View Help toolbar' item
+#: ../src/nact/nact-main-menubar.c:264
+msgid "Display the Help toolbar"
+msgstr "సహాయ సాధనపట్టీను ప్రదర్శించుము"
+
+#. i18n: note the space at the beginning of the sentence
+#: ../src/nact/nact-main-menubar.c:475
+#, c-format
+msgid " %d menus, %d actions, %d profiles are currently displayed"
+msgstr " %d మెనూలు, %d చర్యలు, %d ప్రొఫైల్సు ప్రస్తుతం ప్రదర్శించబడుతున్నవి"
+
+#: ../src/nact/nact-main-window.c:1210
+#| msgid ""
+#| "Note that reloading a fresh list of actions requires that you give up "
+#| "with your current modifications."
+msgid ""
+"Reloading a fresh list of actions requires that you give up with your "
+"current modifications."
+msgstr "కొత్త చర్యల జాబితాను తిరిగిలోడు చేయుటకు మీరు మీ ప్రస్తుత సవరింపులను వదులుకోవలసి వుంటుంది"
+
+#: ../src/nact/nact-main-window.c:1213
+#| msgid "Are you sure you want to quit this assistant ?"
+msgid "Do you really want to do this ?"
+msgstr "మీరు దీనిని నిజంగా చేద్దామని అనుకొనుచున్నారా ?"
+
+#: ../src/nact/nact-main-window.c:1236
+msgid ""
+"One or more actions have been modified in the filesystem.\n"
+"You could keep to work with your current list of actions, or you may want to "
+"reload a fresh one."
+msgstr ""
+"ఈ ఫైలుసిస్టమ్‌నందు వొకటి లేదా యెక్కువ చర్యలు సవరించబడినవి.\n"
+"మీరు మీ ప్రస్తుత చర్యల జాబితాతో పనిచేయగలుగుతూనే వుంటారు, లేదా మీరు కొత్త దానిని తిరిగిలోడు చేయవచ్చును."
+
+#: ../src/nact/nact-main-window.c:1243
+msgid ""
+"Note that reloading a fresh list of actions requires that you give up with "
+"your current modifications."
+msgstr "కొత్త చర్యల జాబితాను తిరిగిలోడు చేయుటకు మీరు మీ ప్రస్తుత సవరింపులను వదులుకోవలసి వుంటుంది."
+
+#: ../src/nact/nact-main-window.c:1249
+msgid "Do you want to reload a fresh list of actions ?"
+msgstr "మీరు కొత్త చర్యల జాబితాను తిరిగిలోడు చేద్దామని అనుకొనుచున్నారా?"
+
+#: ../src/nact/nact-tree-model.c:1537
+#| msgid "Unable to parse XML file: %s."
+msgid "Unable to drop a profile here"
+msgstr "ఇక్కడ వొక ప్రొఫైల్‌ను వదలలేక పోయింది"
+
+#: ../src/nact/nact-tree-model.c:1538
+msgid "Unable to drop an action or a menu here"
+msgstr "చర్యను లేదా మెనూను యిక్కడ వదలలేక పోయింది"
+
+#: ../src/nact/nact-window.c:237
+#| msgid "An error has occured when trying to save the action"
+msgid "An error has occured when trying to save the item"
+msgstr "అంశమును దాయుటకు ప్రయత్నిస్తున్నప్పుడు వొక దోషము యెదురైంది"
+
+#: ../src/nact/nact-window.c:280
+#| msgid "An error has occured when trying to delete the action"
+msgid "An error has occured when trying to delete the item"
+msgstr "అంశమును తొలగించుటకు ప్రయత్నించునప్పుడు వొక దోషము యెదురైంది"
+
+#: ../src/nact/nact-window.c:336
+#, c-format
+#| msgid "Actions have been modified."
+msgid "Some items have been modified."
+msgstr "కొన్ని అంశములు సవరించబడినవి."
+
+#: ../src/nact/nact-window.c:337
+msgid "Are you sure you want to quit without saving them ?"
+msgstr "వాటిని దాయకుండానే మీరు నిష్క్రమించుదామని అనుకొనుచున్నారా?"
+
+#: ../src/nact/nact-xml-reader.c:122
+#, c-format
+msgid "Unable to parse XML file: %s."
+msgstr "XML ఫైలును పార్శ్ చేయలేక పోయింది: %s."
+
+#: ../src/nact/nact-xml-reader.c:123
+#, c-format
+msgid "Invalid XML root element: waited for '%s' or '%s', found '%s' at line %d."
+msgstr "చెల్లని XML root మూలకము: '%s' లేదా '%s' కొరకు వేచివుంది, '%s'ను %d వరుసవద్ద కనుగొన్నది."
+
+#: ../src/nact/nact-xml-reader.c:124
+#, c-format
+msgid "Waited for '%s' node, found (ignored) '%s' at line %d."
+msgstr "'%s' నోడు కొరకు వేచివుంది, (వదిలివేసిన) '%s'ను %d వరుసవద్ద కనుగొన్నది."
+
+#: ../src/nact/nact-xml-reader.c:125
+#, c-format
+msgid "Unexpected (ignored) '%s' node found at line %d."
+msgstr "ఊహించని (వదలివేసిన) '%s' నోడు %d వరుసవద్ద కనబడింది."
+
+#: ../src/nact/nact-xml-reader.c:126
+#, c-format
+msgid "Schema is ignored at line %d."
+msgstr "వరుస %d వద్ద స్కీమా వదిలివేయబడింది."
+
+#: ../src/nact/nact-xml-reader.c:127
+#, c-format
+msgid "Unexpected '%s' node found at line %d."
+msgstr "ఊహించని '%s' నోడు వరుస %d వద్ద కనుగొనబడింది."
+
+#: ../src/nact/nact-xml-reader.c:128
+#, c-format
+msgid "Unexpected '%s' entry found at line %d."
+msgstr "ఊహించని '%s' ప్రవేశము %d వరుసవద్ద కనబడింది."
+
+#: ../src/nact/nact-xml-reader.c:129
+#, c-format
+msgid "Mandatory node '%s' not found."
+msgstr "తప్పనిసరి నోడు '%s' కనబడలేదు."
+
+#: ../src/nact/nact-xml-reader.c:130
+msgid "No value found."
+msgstr "ఏ విలువ కనబడలేదు."
+
+#: ../src/nact/nact-xml-reader.c:131
+#, c-format
+msgid "Invalid UUID: waited for %s, found %s at line %d."
+msgstr "చెల్లని UUID: %s కొరకు వేచివుంది, %sను %d వరుసవద్ద కనుగొన్నది."
+
+#: ../src/nact/nact-xml-reader.c:132
+#, c-format
+msgid "Invalid content: waited for %s prefix, found %s at line %d."
+msgstr "చెల్లని సారము: %s ప్రిఫిక్స్ కొరకు వేచివుంది, %sను వరుస %d వద్ద కనుగొన్నది."
+
+#: ../src/nact/nact-xml-reader.c:133
+#, c-format
+msgid "Invalid UUID %s found at line %d."
+msgstr "చెల్లని UUID %s వరుస %d వద్ద కనుగొన్నది."
+
+#: ../src/nact/nact-xml-reader.c:134
+#, c-format
+#| msgid "Already existing action (UUID: %s) at line %d."
+msgid "Already existing action (UUID: %s)."
+msgstr "ఇప్పటికే వున్న చర్య (UUID: %s)."
+
+#: ../src/nact/nact-xml-reader.c:135
+#, c-format
+msgid "Value '%s' already set: new value ignored at line %d."
+msgstr "విలువ '%s' యిప్పటికే అమర్చబడింది: వరుస %d వద్ద కొత్త విలువ వదిలివేయబడింది."
+
+#: ../src/nact/nact-xml-reader.c:136
+msgid "UUID not found."
+msgstr "UUID కనుగొనబడలేదు."
+
+#: ../src/nact/nact-xml-reader.c:137
+msgid "Action label not found."
+msgstr "చర్యా లేబుల్ కనుగొనబడలేదు."
+
+#: ../src/nact/nact-xml-reader.c:1342
+msgid "Action was renumbered due to user request."
+msgstr "వినియోగదారి అభ్యర్ధన కారణంగా చర్య సంఖ్య తిరిగిపెట్టబడింది."
+
+#: ../src/nact/nact-xml-reader.c:1349
+msgid "Existing action was overriden due to user request."
+msgstr "వినియోగదారి అభ్యర్ధన కారణంగా వున్న చర్య వేరేదానితో వుంచబడింది."
+
+#: ../src/nact/nact-xml-reader.c:1358
+msgid "Import was canceled due to user request."
+msgstr "వినియోగదారి అభ్యర్ధన కారణంగా దిగుమతి రద్దుచేయబడింది."
+
+#. i18n: the action has been renumbered during import operation
+#: ../src/nact/nact-xml-reader.c:1396
+msgid "(renumbered)"
+msgstr "(మరలాసంఖ్యవుంచిన)"
+
+#. i18n: label of an automagic root submenu
+#. i18n: title of the About dialog box, when seen from Caja file manager
+#: ../src/plugin/caja-actions.c:629 ../src/plugin/caja-actions.c:701
+#| msgid "New Caja action"
+msgid "Caja Actions"
+msgstr "నాటిలస్ చర్యలు"
+
+#. i18n: tooltip of an automagic root submenu
+#: ../src/plugin/caja-actions.c:631
+msgid "A submenu which embeds the currently available Caja Actions extensions"
+msgstr "ప్రస్తుతం అందుబాటులోవున్న నాటిలస్ చర్యల పొడిగింపులను ఎంబెడ్ చేసే వుపమెనూ"
+
+#: ../src/plugin/caja-actions.c:678
+#| msgid "New Caja action"
+msgid "About Caja Actions"
+msgstr "నాటిలస్ చర్యలు గురించి"
+
+#: ../src/plugin/caja-actions.c:679
+#| msgid "Display informations about this program."
+msgid "Display information about Caja Actions"
+msgstr "నాటిలస్ చర్యల గురించి సమాచారమును ప్రదర్శించుము"
+
+#: ../src/runtime/na-iabout.c:177
+msgid ""
+"Caja Actions Configuration Tool is free software; you can redistribute "
+"it and/or modify it under the terms of the GNU General Public License as "
+"published by the Free Software Foundation; either version 2 of the License, "
+"or (at your option) any later version."
+msgstr ""
+"నాటిలస్ చర్యల ఆకృతీకరణ సాధనము ఉచిత సాఫ్టువేర్; ఉచిత సాఫ్టువేర్ సంస్థ తరుపున ప్రచురితమైన GNU జనరల్ "
+"పబ్లిక్ లైసెన్సు కు లోబడి దీనిని మీరు పునఃపంపిణి మరియు/లేదా సవరణ చేయవచ్చు; మీరు అనుసరించవలిసినది "
+"లైసెన్సు యొక్క వర్షన్ 2, లేదా (మీ ఐచ్చికం వద్ద) దాని తరువాతి వర్షన్ కాని."
+
+#: ../src/runtime/na-iabout.c:181
+msgid ""
+"Caja Actions Configuration Tool is distributed in the hope that it will "
+"be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General "
+"Public License for more details."
+msgstr ""
+"నాటిలస్ చర్యల ఆకృతీకరణ సాధనము అది ఉపయోగపడుతుందనే నమ్మకం తో పంపిణీ చేయబడింది, అయితే ఏ హామి లేదు; "
+"వ్యాపారసంబంధితంగా కాని లేదా ప్రతిపాదిత ప్రయోజనం కొరకు కాని హామీ లేదు. అధికవివరములకొరకు GNU జనరల్ పబ్లిక్ "
+"లైసెన్సు ను చూడండి."
+
+#: ../src/runtime/na-iabout.c:185
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"Caja Actions Configuration Tool ; if not, write to the Free Software "
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
+"USA."
+msgstr ""
+"నాటిలస్ చర్యల ఆకృతీకరణ సాధనముతో పాటు మీరు GNU జనరల్ పబ్లిక్ లైసెన్సు నకలు ను పొంది ఉంటారు; "
+"పొందకపోతే, Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, "
+"Boston. MA02110-1301, USA కు వ్రాయండి."
+
+#: ../src/runtime/na-iabout.c:207
+msgid "A graphical interface to create and edit your Caja actions."
+msgstr "మీ నాటిలస్ చర్యలను సృష్టించుటకు మరియు సరికూర్చుటకు వొక గ్రాఫికల్ యింటర్ఫేస్."
+
+#: ../src/runtime/na-iabout.c:208
+msgid ""
+"Copyright © 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright © 2009 Pierre Wieser <pwieser@trychlos.org>"
+msgstr ""
+"Copyright © 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright © 2009 Pierre Wieser <pwieser@trychlos.org>"
+
+#: ../src/runtime/na-iabout.c:213
+msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgstr "MATE అనువాదీకరణ ప్రోజెక్టు <mate-i18n@gnome.org>"
+
+#. i18n: default label for a newly created action
+#: ../src/runtime/na-object-action-fn.h:59
+msgid "New Caja action"
+msgstr "కొత్త నాటిలస్ చర్యలు"
+
+#. i18n: default label for a newly created menu
+#: ../src/runtime/na-object-menu-fn.h:47
+#| msgid "New Caja action"
+msgid "New Caja menu"
+msgstr "కొత్త నాటిలస్ మెను"
+
+#. i18n: default label for a newly created profile
+#: ../src/runtime/na-object-profile-fn.h:54
+#| msgid "New _profile"
+msgid "New profile"
+msgstr "కొత్త ప్రొఫైల్"
+
+#: ../src/test/test-parse-uris.c:56
+#, c-format
+msgid ""
+"URIs parsing test.\n"
+"\n"
+msgstr ""
+"URIల పార్శింగ్ పరిశీలన.\n"
+"\n"
+
+#: ../src/utils/caja-actions-new.c:66
+msgid "The label of the menu item (mandatory)"
+msgstr "మెనూ అంశముయొక్క లేబుల్ (తప్పనిసరి)"
+
+#: ../src/utils/caja-actions-new.c:66
+msgid "LABEL"
+msgstr "LABEL"
+
+#: ../src/utils/caja-actions-new.c:67
+msgid "TOOLTIP"
+msgstr "TOOLTIP"
+
+#: ../src/utils/caja-actions-new.c:68
+msgid "The icon of the menu item (filename or GTK stock ID)"
+msgstr "మెనూ అంశము యొక్క ప్రతిమ (దస్త్రమునామము లేదా GTK స్టాక్ ID)"
+
+#: ../src/utils/caja-actions-new.c:68
+msgid "ICON"
+msgstr "ICON"
+
+#: ../src/utils/caja-actions-new.c:70
+#: ../src/utils/caja-actions-new.c:73
+msgid "PATH"
+msgstr "PATH"
+
+#: ../src/utils/caja-actions-new.c:71
+msgid "PARAMS"
+msgstr "PARAMS"
+
+#: ../src/utils/caja-actions-new.c:72
+msgid ""
+"A pattern to match selected files against. May include wildcards (* or ?) "
+"(you must set one option for each pattern you need)"
+msgstr ""
+"ఎంపికచేసిన దస్త్రములను సరిపోల్చుటకు మాదిరి. వైల్డుకార్డ్స్ కూడా చేర్చవచ్చును (* లేదా ?) (మీకు కావలసిన "
+"ప్రతి మాదిరికి మీరు వొక ఐచ్చికాన్ని అమర్చాలి)"
+
+#: ../src/utils/caja-actions-new.c:72
+#: ../src/utils/caja-actions-new.c:74
+msgid "EXPR"
+msgstr "EXPR"
+
+#: ../src/utils/caja-actions-new.c:74
+msgid ""
+"A pattern to match selected files' mimetype against. May include wildcards "
+"(* or ?) (you must set one option for each pattern you need)"
+msgstr ""
+"ఎంపికచేసిన దస్త్రముల మైమ్‌టైప్ సరిపోల్చుటకు వొక మాదిరి. వైల్డుకార్డ్సును కూడా చేర్చవచ్చును (* లేదా ?) "
+"(మీకు కావలసిన ప్రతి మాదిరికి మీరు తప్పక వొక ఐచ్చికాన్ని అమర్చాలి)"
+
+#: ../src/utils/caja-actions-new.c:75
+msgid "Set it if the selection must only contain files"
+msgstr "ఎంపిక దస్త్రములను కలిగివుంటే మాత్రమే దీనిని అమర్చుము"
+
+#: ../src/utils/caja-actions-new.c:76
+msgid ""
+"Set it if the selection must only contain folders. Specify both '--isfile' "
+"and '--isdir' options is selection can contain both types of items"
+msgstr ""
+"ఎంపిక ఫోల్డర్లను కలిగివుంటే మాత్రమే దీనిని అమర్చుము. '--isfile' మరియు '--isdir' ఐచ్చికములు "
+"రెంటిని తెలుపుము is ఎంపిక రెండు రకముల అంశములను కలిగివుండగలదు"
+
+#: ../src/utils/caja-actions-new.c:77
+msgid "Set it if the selection can have several items"
+msgstr "ఎంపిక చాలా అంశములను కలిగివుంటే దీనిని అమర్చుము"
+
+#: ../src/utils/caja-actions-new.c:78
+msgid ""
+"A valid GVFS scheme where the selected files should be located (you must set "
+"one option for each scheme you need)"
+msgstr ""
+"ఎంపికచేసిన దస్త్రములను వుంచుటకు చెల్లునటువంటి GVFS స్కీము (మీకు కావలసిన ప్రతి స్కీమునకు మీరు "
+"వొక ఐచ్చికాన్ని అమర్చాలి)"
+
+#: ../src/utils/caja-actions-new.c:78
+msgid "SCHEME"
+msgstr "SCHEME"
+
+#: ../src/utils/caja-actions-new.c:84
+msgid "Directly import the newly created action in MateConf configuration"
+msgstr "కొత్త సృష్టించిన చర్యను MateConf ఆకృతీకరణనందు నేరుగా దిగుమతి చేయుము"
+
+#: ../src/utils/caja-actions-new.c:85
+msgid ""
+"The folder where to write the new action as a MateConf dump output [default: "
+"stdout]"
+msgstr "MateConf డంప్ అవుట్పుట్ వలె కొత్త చర్యను వ్రాయుటకు పోల్డరు [default: stdout]"
+
+#: ../src/utils/caja-actions-new.c:85
+msgid "DIR"
+msgstr "DIR"
+
+#: ../src/utils/caja-actions-new.c:118
+#: ../src/utils/caja-actions-schemas.c:86
+#, c-format
+msgid "Syntax error: %s\n"
+msgstr "సిన్టాక్సు దోషము: %s\n"
+
+#: ../src/utils/caja-actions-new.c:124
+#, c-format
+#| msgid "Error: an action label is mandatory."
+msgid "Error: an action label is mandatory.\n"
+msgstr "దోషము: ఒక చర్యా లేబుల్ తప్పనిసరి.\n"
+
+#: ../src/utils/caja-actions-new.c:129
+#, c-format
+#| msgid "Error: only one output option may be specified."
+msgid "Error: only one output option may be specified.\n"
+msgstr "దోషము: ఒక అవుట్పుట్ ఐచ్చికము మాత్రమే తెలుపవచ్చు.\n"
+
+#. i18n: Action <action_label> written to...
+#: ../src/utils/caja-actions-new.c:138
+#, c-format
+msgid "Action '%s' succesfully written to MateConf configuration.\n"
+msgstr "చర్య '%s' సమర్ధవంతంగా MateConf ఆకృతీకరణకు వ్రాయబడింది.\n"
+
+#. i18n: Action <action_label> written to <output_filename>...
+#: ../src/utils/caja-actions-new.c:145
+#, c-format
+msgid "Action '%s' succesfully written to %s, and ready to be imported in NACT.\n"
+msgstr "చర్య '%s' సమర్ధవంతంగా %sకు వ్రాయబడింది, మరియు NACT నందు దిగుమతి అగుటకు సిద్దముగావుంది.\n"
+
+#: ../src/utils/caja-actions-new.c:174
+msgid ""
+"Define a new action.\n"
+"\n"
+"  The created action defaults to be written to stdout.\n"
+"  It can also be written to an output folder, in a file later suitable for "
+"an import in NACT.\n"
+"  Or you may choose to directly write the action into your MateConf "
+"configuration."
+msgstr ""
+"కొత్త చర్యను నిర్వచించుము.\n"
+"\n"
+"  సృష్టించిన చర్యా అప్రమేయములు stdoutకు వ్రాయాలి.\n"
+"  ఇది అవుట్పుట్ ఫోల్డరునకు, ఫైలునందు తరువాత NACT నందు దిగుమతికి సూటగుకు వ్రాయబడగలదు.\n"
+"  లేదా మీరు నేరుగా చర్యను మీ MateConf ఆకృతీకరణకు వ్రాయవచ్చును."
+
+#: ../src/utils/caja-actions-new.c:191
+#: ../src/utils/caja-actions-schemas.c:148
+msgid ""
+"Bug reports are welcomed at http://bugzilla.gnome.org, or you may prefer to "
+"mail to <maintainer@caja-actions.org>.\n"
+msgstr ""
+"http://bugzilla.gnome.org వద్ద బగ్సు నివేదించవచ్చును, లేదా మీరు <maintainer@caja-"
+"actions.org>కు మెయిల్ చేయవచ్చు.\n"
+
+#: ../src/utils/caja-actions-new.c:199
+msgid "Output of the program"
+msgstr "ప్రోగ్రామ్ యొక్క అవుట్పుట్"
+
+#: ../src/utils/caja-actions-new.c:199
+msgid "Choose where the program creates the action"
+msgstr "ప్రోగ్రామ్ చర్యను యెక్కడ సృష్టించాలో యెంచుకొనుము"
+
+#: ../src/utils/caja-actions-new.c:302
+#: ../src/utils/caja-actions-schemas.c:258
+#, c-format
+msgid "Try %s --help for usage.\n"
+msgstr "వినియోగము కొరకు %s --help ప్రయత్నించండి.\n"
+
+#. { "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_mateconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
+#. { "output-filename"      , 'o', 0, G_OPTION_ARG_FILENAME, &output_fname   , N_("The file where to write the MateConf schema ('-' for stdout)"), N_("FILENAME") },
+#: ../src/utils/caja-actions-schemas.c:54
+msgid "Output the schema on stdout"
+msgstr "స్కీమాను stdoutపై అవుట్పుట్ చేయుము"
+
+#: ../src/utils/caja-actions-schemas.c:131
+msgid "Output the Caja Actions MateConf schema on stdout."
+msgstr "నాటిలస్ చర్యల MateConf స్కీమాను stdoutపై అవుట్పుట్ చేయుము."
+
