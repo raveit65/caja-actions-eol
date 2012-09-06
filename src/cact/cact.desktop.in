@@ -8,4 +8,4 @@ Exec=caja-actions-config-tool
 Icon=caja-actions
 Categories=DesktopSettings;Settings;X-MATE;
 StartupNotify=true
-OnlyShowIn=X-Mate;
+OnlyShowIn=Mate;
