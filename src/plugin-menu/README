@@ -1,7 +1,0 @@
-This is the Caja Actions plugin.
-
-The plugin is dynamically loaded by the Caja file manager.
-
-Please put only here code relevant to the plugin, and to itself only.
-I.e., code shared by the plugin with some other part of the package
-should go to runtime convenience library.
