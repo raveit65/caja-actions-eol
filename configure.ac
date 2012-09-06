@@ -17,10 +17,13 @@
 #
 # You should have received a copy of the GNU General Public
 # License along with this Library; see the file COPYING.  If not,
-# write to the Free Software Foundation, Inc., 59 Temple Place,
-# Suite 330, Boston, MA 02111-1307, USA.
+# write to the Free Software Foundation, Inc., 51 Franklin St,
+# Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # Authors:
+#   for MATE:
+#   Wolfgang Ulbrich <chat-to-me@raveit.de>
+#   for GNOME:
 #   Frederic Ruaudel <grumz@grumz.net>
 #   Rodrigo Moya <rodrigo@mate-db.org>
 #   Pierre Wieser <pwieser@trychlos.org>
