@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -36,19 +35,17 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <glib/gprintf.h>
+#include <locale.h>
 #include <stdlib.h>
 
 #include <api/na-core-utils.h>
 #include <api/na-iio-provider.h>
 #include <api/na-object-api.h>
 
+#include <core/na-mateconf-migration.h>
 #include <core/na-io-provider.h>
 #include <core/na-exporter.h>
 #include <core/na-updater.h>
-
-#include <io-mateconf/nagp-keys.h>
-
-#include <io-xml/naxml-formats.h>
 
 #include "console-utils.h"
 
@@ -68,6 +65,7 @@ static gboolean   disabled         = FALSE;
 static gboolean   target_selection = FALSE;
 static gboolean   target_location  = FALSE;
 static gboolean   nocontext        = FALSE;
+static gboolean   nolocation       = FALSE;
 static gboolean   target_toolbar   = FALSE;
 static gboolean   notoolbar        = FALSE;
 static gchar     *label_toolbar    = "";
@@ -82,32 +80,50 @@ static gboolean   isdir            = FALSE;
 static gboolean   accept_multiple  = FALSE;
 static gchar    **schemes_array    = NULL;
 static gchar    **folders_array    = NULL;
-static gchar     *output_dir       = NULL;
-static gboolean   output_mateconf     = FALSE;
+static gchar     *selection_count  = "";
+static gchar    **onlyshow_array   = NULL;
+static gchar    **notshow_array    = NULL;
+static gchar     *try_exec         = "";
+static gchar     *show_registered  = "";
+static gchar     *show_true        = "";
+static gchar     *show_running     = "";
+static gchar    **capability_array = NULL;
+/* output entries */
+static gboolean   output_stdout    = FALSE;
+static gboolean   output_desktop   = FALSE;
+/* misc entries */
 static gboolean   version          = FALSE;
 
 extern NADataGroup action_data_groups[];			/* defined in na-object-action-factory.c */
 extern NADataGroup profile_data_groups[];			/* defined in na-object-profile-factory.c */
 
 static const ArgFromDataDef st_arg_from_data_def[] = {
-		{ action_data_groups,  NA_FACTORY_OBJECT_ITEM_GROUP,       NAFO_DATA_LABEL,            &label },
-		{ action_data_groups,  NA_FACTORY_OBJECT_ITEM_GROUP,       NAFO_DATA_TOOLTIP,          &tooltip },
-		{ action_data_groups,  NA_FACTORY_OBJECT_ITEM_GROUP,       NAFO_DATA_ICON,             &icon },
-		{ action_data_groups,  NA_FACTORY_OBJECT_ITEM_GROUP,       NAFO_DATA_ENABLED,          &enabled },
-		{ action_data_groups,  NA_FACTORY_OBJECT_ACTION_GROUP,     NAFO_DATA_TARGET_SELECTION, &target_selection },
-		{ action_data_groups,  NA_FACTORY_OBJECT_ACTION_GROUP,     NAFO_DATA_TARGET_LOCATION,  &target_location },
-		{ action_data_groups,  NA_FACTORY_OBJECT_ACTION_GROUP,     NAFO_DATA_TARGET_TOOLBAR,   &target_toolbar },
-		{ action_data_groups,  NA_FACTORY_OBJECT_ACTION_GROUP,     NAFO_DATA_TOOLBAR_LABEL,    &label_toolbar },
-		{ profile_data_groups, NA_FACTORY_OBJECT_PROFILE_GROUP,    NAFO_DATA_PATH,             &command },
-		{ profile_data_groups, NA_FACTORY_OBJECT_PROFILE_GROUP,    NAFO_DATA_PARAMETERS,       &parameters },
-		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_BASENAMES,        &basenames_array },
-		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_MATCHCASE,        &matchcase },
-		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_MIMETYPES,        &mimetypes_array },
-		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_ISFILE,           &isfile },
-		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_ISDIR,            &isdir },
-		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_MULTIPLE,         &accept_multiple },
-		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_SCHEMES,          &schemes_array },
-		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_FOLDERS,          &folders_array },
+		{ action_data_groups,  NA_FACTORY_OBJECT_ITEM_GROUP,       NAFO_DATA_LABEL,              &label },
+		{ action_data_groups,  NA_FACTORY_OBJECT_ITEM_GROUP,       NAFO_DATA_TOOLTIP,            &tooltip },
+		{ action_data_groups,  NA_FACTORY_OBJECT_ITEM_GROUP,       NAFO_DATA_ICON,               &icon },
+		{ action_data_groups,  NA_FACTORY_OBJECT_ITEM_GROUP,       NAFO_DATA_ENABLED,            &enabled },
+		{ action_data_groups,  NA_FACTORY_OBJECT_ACTION_GROUP,     NAFO_DATA_TARGET_SELECTION,   &target_selection },
+		{ action_data_groups,  NA_FACTORY_OBJECT_ACTION_GROUP,     NAFO_DATA_TARGET_LOCATION,    &target_location },
+		{ action_data_groups,  NA_FACTORY_OBJECT_ACTION_GROUP,     NAFO_DATA_TARGET_TOOLBAR,     &target_toolbar },
+		{ action_data_groups,  NA_FACTORY_OBJECT_ACTION_GROUP,     NAFO_DATA_TOOLBAR_LABEL,      &label_toolbar },
+		{ profile_data_groups, NA_FACTORY_OBJECT_PROFILE_GROUP,    NAFO_DATA_PATH,               &command },
+		{ profile_data_groups, NA_FACTORY_OBJECT_PROFILE_GROUP,    NAFO_DATA_PARAMETERS,         &parameters },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_BASENAMES,          &basenames_array },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_MATCHCASE,          &matchcase },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_MIMETYPES,          &mimetypes_array },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_ISFILE,             &isfile },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_ISDIR,              &isdir },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_MULTIPLE,           &accept_multiple },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_SCHEMES,            &schemes_array },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_FOLDERS,            &folders_array },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_SELECTION_COUNT,    &selection_count },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_ONLY_SHOW,          &onlyshow_array },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_NOT_SHOW,           &notshow_array },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_TRY_EXEC,           &try_exec },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_SHOW_IF_REGISTERED, &show_registered },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_SHOW_IF_TRUE,       &show_true },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_SHOW_IF_RUNNING,    &show_running },
+		{ profile_data_groups, NA_FACTORY_OBJECT_CONDITIONS_GROUP, NAFO_DATA_CAPABILITITES,      &capability_array },
 		{ NULL }
 };
 
@@ -116,7 +132,9 @@ static GOptionEntry st_added_entries[] = {
 	{ "disabled"             , 'E', 0, G_OPTION_ARG_NONE        , &disabled,
 			N_( "Set it if the item should be disabled at creation" ), NULL },
 	{ "nocontext"            , 'C', 0, G_OPTION_ARG_NONE        , &nocontext,
-			N_( "Set it if the item doesn't target the context menu" ), NULL },
+			N_( "Set it if the item doesn't target the selection context menu" ), NULL },
+	{ "nolocation"           , 'T', 0, G_OPTION_ARG_NONE        , &nolocation,
+			N_( "Set it if the item doesn't target the location context menu" ), NULL },
 	{ "notoolbar"            , 'O', 0, G_OPTION_ARG_NONE        , &notoolbar,
 			N_( "Set it if the item doesn't target the toolbar" ), NULL },
 	{ "nocase"               , 'A', 0, G_OPTION_ARG_NONE        , &nocase,
@@ -126,10 +144,8 @@ static GOptionEntry st_added_entries[] = {
 
 static GOptionEntry output_entries[] = {
 
-	{ "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE        , &output_mateconf,
-			N_( "Store the newly created action as a MateConf configuration" ), NULL },
-	{ "output-dir"           , 'o', 0, G_OPTION_ARG_FILENAME    , &output_dir,
-			N_( "The path of the folder where to write the new action as a MateConf dump output [default: stdout]" ), N_( "<PATH>" ) },
+	{ "stdout" , 's', 0, G_OPTION_ARG_NONE, &output_stdout,  N_("Output the new item content on stdout (default)"), NULL },
+	{ "desktop", 'd', 0, G_OPTION_ARG_NONE, &output_desktop, N_("Create the new item as a .desktop file"), NULL },
 	{ NULL }
 };
 
@@ -140,13 +156,13 @@ static GOptionEntry misc_entries[] = {
 	{ NULL }
 };
 
-#define CANNOT_BOTH		_( "Error: '%s' and '%s' options cannot both be specified.\n" )
+#define CANNOT_BOTH		_( "Error: '%s' and '%s' options cannot both be specified\n" )
+#define DEPRECATED		_( "'%s' option is deprecated, see %s\n" )
 
 static GOptionEntry   *build_option_entries( const ArgFromDataDef *defs, guint nbdefs, const GOptionEntry *adds, guint nbadds );
 static GOptionContext *init_options( void );
 static NAObjectAction *get_action_from_cmdline( void );
-static gboolean        output_to_dir( NAObjectAction *action, gchar *dir, GSList **msgs );
-static gboolean        output_to_mateconf( NAObjectAction *action, GSList **msgs );
+static gboolean        output_to_desktop( NAObjectAction *action, GSList **msgs );
 static gboolean        output_to_stdout( const NAObjectAction *action, GSList **msgs );
 static void            exit_with_usage( void );
 
@@ -163,7 +179,14 @@ main( int argc, char** argv )
 	gint errors;
 
 	g_type_init();
+	setlocale( LC_ALL, "" );
 	console_init_log_handler();
+
+	/* pwi 2011-01-05
+	 * run MateConf migration tools before doing anything else
+	 * above all before allocating a new NAPivot
+	 */
+	na_mateconf_migration_run();
 
 	context = init_options();
 
@@ -207,6 +230,11 @@ main( int argc, char** argv )
 		target_selection = TRUE;
 	}
 
+	if( target_location && nolocation ){
+		g_printerr( CANNOT_BOTH, "--location", "--nolocation" );
+		errors += 1;
+	}
+
 	if( target_toolbar && notoolbar ){
 		g_printerr( CANNOT_BOTH, "--toolbar", "--notoolbar" );
 		errors += 1;
@@ -219,7 +247,17 @@ main( int argc, char** argv )
 		matchcase = TRUE;
 	}
 
-	if( output_mateconf && output_dir ){
+	if( accept_multiple && strlen( selection_count )){
+		g_printerr( CANNOT_BOTH, "--accept-multiple", "--selection-count" );
+		errors += 1;
+	}
+
+	if( onlyshow_array && notshow_array ){
+		g_printerr( CANNOT_BOTH, "--only-show-in", "--not-show-in" );
+		errors += 1;
+	}
+
+	if( output_stdout && output_desktop ){
 		g_printerr( _( "Error: only one output option may be specified.\n" ));
 		errors += 1;
 	}
@@ -230,15 +268,8 @@ main( int argc, char** argv )
 
 	action = get_action_from_cmdline();
 
-	if( output_mateconf ){
-		if( output_to_mateconf( action, &msg )){
-			/* i18n: Action <action_label> written to...*/
-			g_print( _( "Action '%s' succesfully written to MateConf configuration.\n" ), label );
-		}
-
-	} else if( output_dir ){
-		output_to_dir( action, output_dir, &msg );
-
+	if( output_desktop ){
+		output_to_desktop( action, &msg );
 	} else {
 		output_to_stdout( action, &msg );
 	}
@@ -313,10 +344,14 @@ init_options( void )
 	GOptionGroup *misc_group;
 	GOptionEntry *entries;
 
-	context = g_option_context_new( _( "Define a new action.\n\n"
-			"  The created action defaults to be written to stdout.\n"
-			"  It can also be written to an output folder, in a file later suitable for an import in NACT.\n"
-			"  Or you may choose to directly write the action into your MateConf configuration." ));
+	context = g_option_context_new( _( "Define a new action." ));
+
+	g_option_context_set_summary( context, _(
+			"The created action defaults to be written to stdout.\n"
+			"It can also be written to an output folder, in a file later suitable for an import in CACT.\n"
+			"Or you may choose to directly write the action into your Caja-Actions configuration." ));
+
+	g_option_context_set_translation_domain( context, GETTEXT_PACKAGE );
 
 	entries = build_option_entries( st_arg_from_data_def, G_N_ELEMENTS( st_arg_from_data_def ), st_added_entries, G_N_ELEMENTS( st_added_entries ) );
 
@@ -331,30 +366,29 @@ init_options( void )
 	g_option_context_add_main_entries( context, entries, NULL );
 #endif
 
-	description = g_strdup_printf( "%s.\n%s", PACKAGE_STRING,
-			_( "Bug reports are welcomed at http://bugzilla.gnome.org,"
-				" or you may prefer to mail to <maintainer@caja-actions.org>.\n" ));
-
-	g_option_context_set_description( context, description );
-
 	g_free( entries );
+
+	description = console_cmdline_get_description();
+	g_option_context_set_description( context, description );
 	g_free( description );
 
 	output_group = g_option_group_new(
 			"output", _( "Output of the program" ), _( "Choose where the program creates the action" ), NULL, NULL );
 	g_option_group_add_entries( output_group, output_entries );
+	g_option_group_set_translation_domain( output_group, GETTEXT_PACKAGE );
 	g_option_context_add_group( context, output_group );
 
 	misc_group = g_option_group_new(
 			"misc", _( "Miscellaneous options" ), _( "Miscellaneous options" ), NULL, NULL );
 	g_option_group_add_entries( misc_group, misc_entries );
+	g_option_group_set_translation_domain( misc_group, GETTEXT_PACKAGE );
 	g_option_context_add_group( context, misc_group );
 
 	return( context );
 }
 
 /*
- * allocate a new action, and fill it with values readen from command-line
+ * allocate a new action, and fill it with values read from command-line
  */
 static NAObjectAction *
 get_action_from_cmdline( void )
@@ -367,6 +401,10 @@ get_action_from_cmdline( void )
 	GSList *schemes;
 	GSList *folders;
 	gboolean toolbar_same_label;
+	gchar *msg;
+	GSList *only_show_in;
+	GSList *not_show_in;
+	GSList *capabilities;
 
 	action = na_object_action_new_with_defaults();
 	profile = NA_OBJECT_PROFILE(( GList * ) na_object_get_items( action )->data );
@@ -380,6 +418,7 @@ get_action_from_cmdline( void )
 	}
 	na_object_set_enabled( action, enabled );
 	na_object_set_target_selection( action, target_selection );
+	na_object_set_target_location( action, target_location );
 	na_object_set_target_toolbar( action, target_toolbar );
 
 	toolbar_same_label = FALSE;
@@ -406,8 +445,23 @@ get_action_from_cmdline( void )
 
 	na_object_set_matchcase( profile, matchcase );
 
-	i = 0;
 	mimetypes = NULL;
+	if( isfile ){
+		msg = g_strdup_printf( DEPRECATED, "accept-files", "mimetype" );
+		g_warning( "%s", msg );
+		g_free( msg );
+	}
+	if( isdir ){
+		msg = g_strdup_printf( DEPRECATED, "accept-dirs", "mimetype" );
+		g_warning( "%s", msg );
+		g_free( msg );
+	}
+	if( isfile && !isdir ){
+		mimetypes = g_slist_prepend( mimetypes, g_strdup( "all/allfiles" ));
+	} else if( isdir && !isfile ){
+		mimetypes = g_slist_prepend( mimetypes, g_strdup( "inode/directory" ));
+	}
+	i = 0;
 	while( mimetypes_array != NULL && mimetypes_array[i] != NULL ){
 		mimetypes = g_slist_append( mimetypes, g_strdup( mimetypes_array[i] ));
 		i++;
@@ -417,12 +471,15 @@ get_action_from_cmdline( void )
 		na_core_utils_slist_free( mimetypes );
 	}
 
-	if( !isfile && !isdir ){
-		isfile = TRUE;
+	if( accept_multiple ){
+		msg = g_strdup_printf( DEPRECATED, "accept-multiple", "selection-count" );
+		g_warning( "%s", msg );
+		g_free( msg );
+		selection_count = g_strdup( ">0" );
 	}
-	na_object_set_isfile( profile, isfile );
-	na_object_set_isdir( profile, isdir );
-	na_object_set_multiple( profile, accept_multiple );
+	if( strlen( selection_count )){
+		na_object_set_selection_count( profile, selection_count );
+	}
 
 	i = 0;
 	schemes = NULL;
@@ -446,67 +503,81 @@ get_action_from_cmdline( void )
 		na_core_utils_slist_free( folders );
 	}
 
+	if( onlyshow_array ){
+		only_show_in = NULL;
+		for( i = 0 ; onlyshow_array[i] && strlen( onlyshow_array[i] ) ; ++i ){
+			only_show_in = g_slist_append( only_show_in, g_strdup( onlyshow_array[i] ));
+		}
+		if( only_show_in && g_slist_length( only_show_in )){
+			na_object_set_only_show_in( profile, only_show_in );
+			na_core_utils_slist_free( only_show_in );
+		}
+	}
+
+	if( notshow_array ){
+		not_show_in = NULL;
+		for( i = 0 ; notshow_array[i] && strlen( notshow_array[i] ) ; ++i ){
+			not_show_in = g_slist_append( not_show_in, g_strdup( notshow_array[i] ));
+		}
+		if( not_show_in && g_slist_length( not_show_in )){
+			na_object_set_not_show_in( profile, not_show_in );
+			na_core_utils_slist_free( not_show_in );
+		}
+	}
+
+	if( try_exec && strlen( try_exec )){
+		na_object_set_try_exec( profile, try_exec );
+	}
+
+	if( show_registered && strlen( show_registered )){
+		na_object_set_show_if_registered( profile, show_registered );
+	}
+
+	if( show_true && strlen( show_true )){
+		na_object_set_show_if_true( profile, show_true );
+	}
+
+	if( show_running && strlen( show_running )){
+		na_object_set_show_if_running( profile, show_running );
+	}
+
+	if( capability_array ){
+		capabilities = NULL;
+		for( i = 0 ; capability_array[i] && strlen( capability_array[i] ) ; ++i ){
+			const gchar *cap = ( const gchar * ) capability_array[i];
+			/* 'Owner', 'Readable', 'Writable', 'Executable' and 'Local' */
+			if( strcmp( cap, "Owner" ) &&
+				strcmp( cap, "Readable" ) &&
+				strcmp( cap, "Writable" ) &&
+				strcmp( cap, "Executable" ) &&
+				strcmp( cap, "Local" )){
+					g_warning( "%s: unknown capability", cap );
+			}  else {
+				capabilities = g_slist_append( capabilities, g_strdup( capability_array[i] ));
+			}
+		}
+		if( capabilities && g_slist_length( capabilities )){
+			na_object_set_capabilities( profile, capabilities );
+			na_core_utils_slist_free( capabilities );
+		}
+	}
+
 	return( action );
 }
 
-static gboolean
-output_to_dir( NAObjectAction *action, gchar *dir, GSList **msgs )
-{
-	gboolean code;
-	gboolean writable_dir;
-	gchar *msg;
-	NAUpdater *updater;
-	GQuark format;
-	gchar *fname;
-
-	code = FALSE;
-	writable_dir = FALSE;
-
-	if( na_core_utils_dir_is_writable_path( dir )){
-		writable_dir = TRUE;
-
-	} else if( g_mkdir_with_parents( dir, 0700 )){
-		/* i18n: unable to create <output_dir> dir: <strerror_message> */
-		msg = g_strdup_printf( _( "Error: unable to create %s dir: %s" ), dir, g_strerror( errno ));
-		*msgs = g_slist_append( *msgs, msg );
-
-	} else {
-		writable_dir = na_core_utils_dir_is_writable_path( dir );
-	}
-
-	if( writable_dir ){
-		updater = na_updater_new();
-		format = g_quark_from_string( NAXML_FORMAT_MATECONF_ENTRY );
-		fname = na_exporter_to_file( NA_PIVOT( updater ), NA_OBJECT_ITEM( action ), dir, format, msgs );
-
-		if( fname ){
-			/* i18n: Action <action_label> written to <output_filename>...*/
-			g_print( _( "Action '%s' succesfully written to %s, and ready to be imported in NACT.\n" ), label, fname );
-			g_free( fname );
-		}
-
-		g_object_unref( updater );
-	}
-
-	return( code );
-}
-
 /*
- * initialize MateConf as an I/O provider
- * then writes the action
+ * write the new item as a .desktop file
  */
 static gboolean
-output_to_mateconf( NAObjectAction *action, GSList **msgs )
+output_to_desktop( NAObjectAction *action, GSList **msgs )
 {
 	NAUpdater *updater;
-	GList *providers;
 	NAIOProvider *provider;
 	guint ret;
 	gboolean code;
 
 	updater = na_updater_new();
-	providers = na_io_provider_get_providers_list( NA_PIVOT( updater ));
-	provider = na_io_provider_find_provider_by_id( providers, "na-mateconf" );
+	provider = na_io_provider_find_io_provider_by_id( NA_PIVOT( updater ), "na-desktop" );
 
 	if( provider ){
 		na_object_set_provider( action, provider );
@@ -514,7 +585,8 @@ output_to_mateconf( NAObjectAction *action, GSList **msgs )
 		code = ( ret == NA_IIO_PROVIDER_CODE_OK );
 
 	} else {
-		*msgs = g_slist_append( *msgs, _( "Error: unable to find 'na-mateconf' provider." ));
+		/* i18n: 'na-desktop' is a plugin identifier - do not translate */
+		*msgs = g_slist_append( *msgs, _( "Error: unable to find 'na-desktop' i/o provider." ));
 		code = FALSE;
 	}
 
@@ -528,12 +600,10 @@ output_to_stdout( const NAObjectAction *action, GSList **msgs )
 {
 	gboolean ret;
 	NAUpdater *updater;
-	GQuark format;
 	gchar *buffer;
 
 	updater = na_updater_new();
-	format = g_quark_from_string( NAXML_FORMAT_MATECONF_ENTRY );
-	buffer = na_exporter_to_buffer( NA_PIVOT( updater ), NA_OBJECT_ITEM( action ), format, msgs );
+	buffer = na_exporter_to_buffer( NA_PIVOT( updater ), NA_OBJECT_ITEM( action ), "Desktop1", msgs );
 	ret = ( buffer != NULL );
 
 	if( buffer ){
@@ -552,6 +622,7 @@ output_to_stdout( const NAObjectAction *action, GSList **msgs )
 static void
 exit_with_usage( void )
 {
+	/* i18: '--help' is a command-line option - do not translate */
 	g_printerr( _( "Try %s --help for usage.\n" ), g_get_prgname());
 	exit( EXIT_FAILURE );
 }

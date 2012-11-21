@@ -1,0 +1,762 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NAIImporter</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch03.html" title="Public extension interfaces">
+<link rel="prev" href="NAIIOProvider.html" title="NAIIOProvider">
+<link rel="next" href="NAIExporter.html" title="NAIExporter">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="NAIIOProvider.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="NAIExporter.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#NAIImporter.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#NAIImporter.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#NAIImporter.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#NAIImporter.prerequisites" class="shortcut">Prerequisites</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="NAIImporter"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="NAIImporter.top_of_page"></a>NAIImporter</span></h2>
+<p>NAIImporter — The Import Interface</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="NAIImporter.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-iimporter.h&gt;
+
+#define             <a class="link" href="NAIImporter.html#NA-TYPE-IIMPORTER:CAPS" title="NA_TYPE_IIMPORTER">NA_TYPE_IIMPORTER</a>
+#define             <a class="link" href="NAIImporter.html#NA-IIMPORTER:CAPS" title="NA_IIMPORTER()">NA_IIMPORTER</a>                        (instance)
+#define             <a class="link" href="NAIImporter.html#NA-IS-IIMPORTER:CAPS" title="NA_IS_IIMPORTER()">NA_IS_IIMPORTER</a>                     (instance)
+#define             <a class="link" href="NAIImporter.html#NA-IIMPORTER-GET-INTERFACE:CAPS" title="NA_IIMPORTER_GET_INTERFACE()">NA_IIMPORTER_GET_INTERFACE</a>          (instance)
+                    <a class="link" href="NAIImporter.html#NAIImporter-struct" title="NAIImporter">NAIImporter</a>;
+                    <a class="link" href="NAIImporter.html#NAIImporterInterface" title="NAIImporterInterface">NAIImporterInterface</a>;
+enum                <a class="link" href="NAIImporter.html#NAIImporterImportMode" title="enum NAIImporterImportMode">NAIImporterImportMode</a>;
+enum                <a class="link" href="NAIImporter.html#NAIImporterImportStatus" title="enum NAIImporterImportStatus">NAIImporterImportStatus</a>;
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="NAIImporter.html#NAIImporterAskUserFn" title="NAIImporterAskUserFn ()">NAIImporterAskUserFn</a>                (<em class="parameter"><code>const <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *imported</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *existing</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *fn_data</code></em>);
+<a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="returnvalue">NAObjectItem</span></a> *      <a class="link" href="NAIImporter.html#NAIImporterCheckFn" title="NAIImporterCheckFn ()">NAIImporterCheckFn</a>                  (<em class="parameter"><code>const <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *imported</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *fn_data</code></em>);
+                    <a class="link" href="NAIImporter.html#NAIImporterImportFromUriParms" title="NAIImporterImportFromUriParms">NAIImporterImportFromUriParms</a>;
+                    <a class="link" href="NAIImporter.html#NAIImporterImportFromUriParmsv2" title="NAIImporterImportFromUriParmsv2">NAIImporterImportFromUriParmsv2</a>;
+                    <a class="link" href="NAIImporter.html#NAIImporterManageImportModeParms" title="NAIImporterManageImportModeParms">NAIImporterManageImportModeParms</a>;
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="NAIImporter.html#na-iimporter-import-from-uri" title="na_iimporter_import_from_uri ()">na_iimporter_import_from_uri</a>        (<em class="parameter"><code>const <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> *importer</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="NAIImporter.html#NAIImporterImportFromUriParmsv2" title="NAIImporterImportFromUriParmsv2"><span class="type">NAIImporterImportFromUriParmsv2</span></a> *parms</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="NAIImporter.html#na-iimporter-manage-import-mode" title="na_iimporter_manage_import_mode ()">na_iimporter_manage_import_mode</a>     (<em class="parameter"><code><a class="link" href="NAIImporter.html#NAIImporterManageImportModeParms" title="NAIImporterManageImportModeParms"><span class="type">NAIImporterManageImportModeParms</span></a> *parms</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAIImporter.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GInterface
+   +----NAIImporter
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAIImporter.prerequisites"></a><h2>Prerequisites</h2>
+<p>
+NAIImporter requires
+ <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>.</p>
+</div>
+<div class="refsect1">
+<a name="NAIImporter.description"></a><h2>Description</h2>
+<p>
+The <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> interface imports items from the outside world
+into <span class="productname">Caja-Actions</span>™ repository (see <a class="link" href="NAIIOProvider.html" title="NAIIOProvider"><span class="type">NAIIOProvider</span></a> interface for how
+these items will be later managed to be store somewhere).
+</p>
+<p>
+In version 1 of the <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> interface, <span class="productname">Caja-Actions</span>™ used to
+provide the implementation with all was needed to be able to manage
+the import process up to be ready for insertion, including the
+deduplication if required.
+</p>
+<p>
+This used to put on the implementation the responsability to check
+for the unicity of the imported identifier, maybe asking the caller
+(via provided callback functions) what to do with it, maybe
+reallocating a new identifier, and so on...
+</p>
+<p>
+Starting with <span class="productname">Caja-Actions</span>™ version 3.2, this interface is bumped to
+a version 2 which greatly simplifies it.
+</p>
+<p>
+The I/O provider which implements the <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> interface is no
+more required to check for existence of the imported items, but this
+check is pushed back to the caller responsability.
+</p>
+<p>
+Rationale is that only the caller is able to check against a valid
+repository in its current import context, while the <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a>
+provider should only be responsible to import an item in memory.
+</p>
+<p>
+</p>
+<div class="refsect2">
+<a name="id387965"></a><h3>Versions historic</h3>
+<div class="table">
+<a name="id397041"></a><p class="title"><b>Table 4. Historic of the versions of the <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> interface</b></p>
+<div class="table-contents"><table summary="Historic of the versions of the NAIImporter interface" border="1">
+<colgroup>
+<col align="center" class="na-version">
+<col align="center" class="api-version">
+<col align="center" class="current">
+</colgroup>
+<thead><tr>
+<th align="center">
+<span class="productname">Caja-Actions</span>™ version</th>
+<th align="center">
+<a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> interface version</th>
+<th align="center"> </th>
+<th align="center"> </th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">from 2.30 up to 3.1.5</td>
+<td align="center">1</td>
+<td align="center"> </td>
+<td align="center">deprecated</td>
+</tr>
+<tr>
+<td align="center">since 3.2</td>
+<td align="center">2</td>
+<td align="center">current version</td>
+<td align="center"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="NAIImporter.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NA-TYPE-IIMPORTER:CAPS"></a><h3>NA_TYPE_IIMPORTER</h3>
+<pre class="programlisting">#define NA_TYPE_IIMPORTER                      ( na_iimporter_get_type())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IIMPORTER:CAPS"></a><h3>NA_IIMPORTER()</h3>
+<pre class="programlisting">#define NA_IIMPORTER( instance )               ( G_TYPE_CHECK_INSTANCE_CAST( instance, NA_TYPE_IIMPORTER, NAIImporter ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IS-IIMPORTER:CAPS"></a><h3>NA_IS_IIMPORTER()</h3>
+<pre class="programlisting">#define NA_IS_IIMPORTER( instance )            ( G_TYPE_CHECK_INSTANCE_TYPE( instance, NA_TYPE_IIMPORTER ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IIMPORTER-GET-INTERFACE:CAPS"></a><h3>NA_IIMPORTER_GET_INTERFACE()</h3>
+<pre class="programlisting">#define NA_IIMPORTER_GET_INTERFACE( instance ) ( G_TYPE_INSTANCE_GET_INTERFACE(( instance ), NA_TYPE_IIMPORTER, NAIImporterInterface ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporter-struct"></a><h3>NAIImporter</h3>
+<pre class="programlisting">typedef struct _NAIImporter NAIImporter;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporterInterface"></a><h3>NAIImporterInterface</h3>
+<pre class="programlisting">typedef struct {
+	/**
+	 * get_version:
+	 * @instance: the NAIImporter provider.
+	 *
+	 * Caja-Actions calls this method each time it needs to know
+	 * which version of this interface the plugin implements.
+	 *
+	 * If this method is not implemented by the plugin,
+	 * Caja-Actions considers that the plugin only implements
+	 * the version 1 of the NAIImporter interface.
+	 *
+	 * Return value: if implemented, this method must return the version
+	 * number of this interface the I/O provider is supporting.
+	 *
+	 * Defaults to 1.
+	 *
+	 * Since: 2.30
+	 */
+	guint ( *get_version )    ( const NAIImporter *instance );
+
+	/**
+	 * import_from_uri:
+	 * @instance: the NAIImporter provider.
+	 * @parms: a NAIImporterImportFromUriParms structure.
+	 *
+	 * Imports an item.
+	 *
+	 * If the provider implements the version 1 of this interface, then
+	 * @parms is supposed to map to NAIImporterImportFromUriParms structure.
+	 *
+	 * Contrarily, if the provider implements the version 2 of the interface,
+	 * then @parms is supposed to map to a NAIImporterImportFromUriParmsv2
+	 * structure.
+	 *
+	 * Return value: the return code of the operation.
+	 *
+	 * Since: 2.30
+	 */
+	guint ( *import_from_uri )( const NAIImporter *instance, void *parms );
+} NAIImporterInterface;
+</pre>
+<p>
+This defines the interface that a <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> should implement.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIImporterInterface.get-version"></a>get_version</code></em> ()</span></p></td>
+<td>[should] returns the version of this interface that the
+plugin implements.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIImporterInterface.import-from-uri"></a>import_from_uri</code></em> ()</span></p></td>
+<td>[should] imports an item.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporterImportMode"></a><h3>enum NAIImporterImportMode</h3>
+<pre class="programlisting">typedef enum {
+	IMPORTER_MODE_NO_IMPORT = 1,
+	IMPORTER_MODE_RENUMBER,
+	IMPORTER_MODE_OVERRIDE,
+	IMPORTER_MODE_ASK
+} NAIImporterImportMode;
+</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">NAIImporterImportMode</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<p>
+Define the mode of an import operation.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IMPORTER-MODE-NO-IMPORT:CAPS"></a><span class="term"><code class="literal">IMPORTER_MODE_NO_IMPORT</code></span></p></td>
+<td>a "do not import" mode.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-MODE-RENUMBER:CAPS"></a><span class="term"><code class="literal">IMPORTER_MODE_RENUMBER</code></span></p></td>
+<td>reallocate a new id when the imported one already exists.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-MODE-OVERRIDE:CAPS"></a><span class="term"><code class="literal">IMPORTER_MODE_OVERRIDE</code></span></p></td>
+<td>override the existing id with the imported one.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-MODE-ASK:CAPS"></a><span class="term"><code class="literal">IMPORTER_MODE_ASK</code></span></p></td>
+<td>ask the user for what to do with this particular item.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporterImportStatus"></a><h3>enum NAIImporterImportStatus</h3>
+<pre class="programlisting">typedef enum {
+	IMPORTER_CODE_OK = 0,
+	IMPORTER_CODE_PROGRAM_ERROR,
+	IMPORTER_CODE_NOT_WILLING_TO,
+	IMPORTER_CODE_NO_ITEM_ID,
+	IMPORTER_CODE_NO_ITEM_TYPE,
+	IMPORTER_CODE_UNKNOWN_ITEM_TYPE,
+	IMPORTER_CODE_CANCELLED,
+	IMPORTER_CODE_NOT_LOADABLE
+} NAIImporterImportStatus;
+</pre>
+<p>
+Define the return status of an import operation.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="IMPORTER-CODE-OK:CAPS"></a><span class="term"><code class="literal">IMPORTER_CODE_OK</code></span></p></td>
+<td>import ok.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-CODE-PROGRAM-ERROR:CAPS"></a><span class="term"><code class="literal">IMPORTER_CODE_PROGRAM_ERROR</code></span></p></td>
+<td>a program error has been detected.
+                                  You should open a bug in
+                                  <a class="ulink" href="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" target="_top">Bugzilla</a>.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-CODE-NOT-WILLING-TO:CAPS"></a><span class="term"><code class="literal">IMPORTER_CODE_NOT_WILLING_TO</code></span></p></td>
+<td>the plugin is not willing to import the uri.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-CODE-NO-ITEM-ID:CAPS"></a><span class="term"><code class="literal">IMPORTER_CODE_NO_ITEM_ID</code></span></p></td>
+<td>item id not found.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-CODE-NO-ITEM-TYPE:CAPS"></a><span class="term"><code class="literal">IMPORTER_CODE_NO_ITEM_TYPE</code></span></p></td>
+<td>item type not found.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-CODE-UNKNOWN-ITEM-TYPE:CAPS"></a><span class="term"><code class="literal">IMPORTER_CODE_UNKNOWN_ITEM_TYPE</code></span></p></td>
+<td>unknown item type.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-CODE-CANCELLED:CAPS"></a><span class="term"><code class="literal">IMPORTER_CODE_CANCELLED</code></span></p></td>
+<td>operation cancelled by the user.
+</td>
+</tr>
+<tr>
+<td><p><a name="IMPORTER-CODE-NOT-LOADABLE:CAPS"></a><span class="term"><code class="literal">IMPORTER_CODE_NOT_LOADABLE</code></span></p></td>
+<td>the file is considered as not loadable at all.
+                                  This is not a matter of which I/O provider has been tried,
+                                  but the file is empty, or too big, or eventually not a
+                                  regular file.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporterAskUserFn"></a><h3>NAIImporterAskUserFn ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               NAIImporterAskUserFn                (<em class="parameter"><code>const <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *imported</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *existing</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *fn_data</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">NAIImporterAskUserFn</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<p>
+In version 1 of the interface, this function may be provided by the
+caller as a convenience way for the <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> to ask the user to
+know what to do in the case of a duplicate id.
+</p>
+<p>
+If this function is not provided, and the <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> does not have
+any other way to ask the user, then a 'no import' policy should be
+preferred when managing duplicate identifiers.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>imported</code></em> :</span></p></td>
+<td>the currently imported <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>existing</code></em> :</span></p></td>
+<td>an already existing <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> with same id.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fn_data</code></em> :</span></p></td>
+<td>some data to be passed to the function.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the import mode chosen by the user, which must not be
+<a class="link" href="NAIImporter.html#IMPORTER-MODE-ASK:CAPS"><code class="literal">IMPORTER_MODE_ASK</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporterCheckFn"></a><h3>NAIImporterCheckFn ()</h3>
+<pre class="programlisting"><a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="returnvalue">NAObjectItem</span></a> *      NAIImporterCheckFn                  (<em class="parameter"><code>const <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *imported</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *fn_data</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">NAIImporterCheckFn</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<p>
+In version 1 of the interface, this function may be provided by
+the caller in order the <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> provider be able to check for
+pre-existence of the imported item.
+This function should return the already existing item which has the
+same id than the currently being imported one, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if the
+imported id will be unique.
+</p>
+<p>
+If this function is not provided, then the <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> provider will not
+be able to check for duplicates. In this case, the id of the imported item
+should be systematically regenerated as a unique id, regardless of the
+asked import mode.
+</p>
+<p>
+Standard N-A callers provide a function which checks for the existance
+of the newly imported item :
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>
+      first among the current list of just imported items
+    </p></li>
+<li class="listitem"><p>
+      and then amon the items currently visible in the main window.
+    </p></li>
+</ul></div>
+<p>
+Items which may have been loaded by NAPivot at the start of the
+application, and deleted meanwhile, are just ignored.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>imported</code></em> :</span></p></td>
+<td>the currently imported <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> -derived object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fn_data</code></em> :</span></p></td>
+<td>some data to be passed to the function.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the already existing <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> with same id, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporterImportFromUriParms"></a><h3>NAIImporterImportFromUriParms</h3>
+<pre class="programlisting">typedef struct {
+	guint                version;
+	gchar               *uri;
+	guint                asked_mode;
+	gboolean             exist;
+	guint                import_mode;
+	NAObjectItem        *imported;
+	NAIImporterCheckFn   check_fn;
+	void                *check_fn_data;
+	NAIImporterAskUserFn ask_fn;
+	void                *ask_fn_data;
+	GSList              *messages;
+} NAIImporterImportFromUriParms;
+</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">NAIImporterImportFromUriParms</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<p>
+This structure allows all used parameters when importing from an URI
+to be passed and received through a single structure.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIImporterImportFromUriParms.version"></a>version</code></em>;</span></p></td>
+<td>[in] the version of this structure;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIImporterImportFromUriParms.uri"></a>uri</code></em>;</span></p></td>
+<td>[in] uri of the file to be imported;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIImporterImportFromUriParms.asked-mode"></a>asked_mode</code></em>;</span></p></td>
+<td>[in] asked import mode;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NAIImporterImportFromUriParms.exist"></a>exist</code></em>;</span></p></td>
+<td>[out] whether the imported Id already existed;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIImporterImportFromUriParms.import-mode"></a>import_mode</code></em>;</span></p></td>
+<td>[out] actually used import mode;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *<em class="structfield"><code><a name="NAIImporterImportFromUriParms.imported"></a>imported</code></em>;</span></p></td>
+<td>[out] the imported <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> -derived object, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAIImporter.html#NAIImporterCheckFn" title="NAIImporterCheckFn ()"><span class="type">NAIImporterCheckFn</span></a> <em class="structfield"><code><a name="NAIImporterImportFromUriParms.check-fn"></a>check_fn</code></em>;</span></p></td>
+<td>[in] a <a class="link" href="NAIImporter.html#NAIImporterCheckFn" title="NAIImporterCheckFn ()"><code class="function">NAIImporterCheckFn()</code></a> function to check the existence
+of the imported id;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">void</span> *<em class="structfield"><code><a name="NAIImporterImportFromUriParms.check-fn-data"></a>check_fn_data</code></em>;</span></p></td>
+<td>[in] <em class="parameter"><code>check_fn</code></em> data;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAIImporter.html#NAIImporterAskUserFn" title="NAIImporterAskUserFn ()"><span class="type">NAIImporterAskUserFn</span></a> <em class="structfield"><code><a name="NAIImporterImportFromUriParms.ask-fn"></a>ask_fn</code></em>;</span></p></td>
+<td>[in] a <a class="link" href="NAIImporter.html#NAIImporterAskUserFn" title="NAIImporterAskUserFn ()"><code class="function">NAIImporterAskUserFn()</code></a> function to ask the user what to
+do in case of a duplicate id;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">void</span> *<em class="structfield"><code><a name="NAIImporterImportFromUriParms.ask-fn-data"></a>ask_fn_data</code></em>;</span></p></td>
+<td>[in] <em class="parameter"><code>ask_fn</code></em> data;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> *<em class="structfield"><code><a name="NAIImporterImportFromUriParms.messages"></a>messages</code></em>;</span></p></td>
+<td>[in/out] a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of localized strings;
+the provider may append messages to this list, but
+shouldn't reinitialize it;
+since structure version 1.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporterImportFromUriParmsv2"></a><h3>NAIImporterImportFromUriParmsv2</h3>
+<pre class="programlisting">typedef struct {
+	guint         version;
+	guint         content;
+	const gchar  *uri;
+	NAObjectItem *imported;
+	GSList       *messages;
+} NAIImporterImportFromUriParmsv2;
+</pre>
+<p>
+This structure allows all used parameters when importing from an URI
+to be passed and received through a single structure.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIImporterImportFromUriParmsv2.version"></a>version</code></em>;</span></p></td>
+<td>[in] the version of the structure, equals to 2;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIImporterImportFromUriParmsv2.content"></a>content</code></em>;</span></p></td>
+<td>[in] the version of the description content, equals to 1;
+since structure version 2.</td>
+</tr>
+<tr>
+<td><p><span class="term">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIImporterImportFromUriParmsv2.uri"></a>uri</code></em>;</span></p></td>
+<td>[in] uri of the file to be imported;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *<em class="structfield"><code><a name="NAIImporterImportFromUriParmsv2.imported"></a>imported</code></em>;</span></p></td>
+<td>[out] the imported <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> -derived object, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> *<em class="structfield"><code><a name="NAIImporterImportFromUriParmsv2.messages"></a>messages</code></em>;</span></p></td>
+<td>[in/out] a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of localized strings;
+the provider may append messages to this list, but
+shouldn't reinitialize it;
+since structure version 1.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIImporterManageImportModeParms"></a><h3>NAIImporterManageImportModeParms</h3>
+<pre class="programlisting">typedef struct {
+	guint                version;
+	NAObjectItem        *imported;
+	guint                asked_mode;
+	NAIImporterCheckFn   check_fn;
+	void                *check_fn_data;
+	NAIImporterAskUserFn ask_fn;
+	void                *ask_fn_data;
+	gboolean             exist;
+	guint                import_mode;
+	GSList              *messages;
+} NAIImporterManageImportModeParms;
+</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">NAIImporterManageImportModeParms</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<p>
+This structure allows all used parameters when managing the import mode
+to be passed and received through a single structure.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIImporterManageImportModeParms.version"></a>version</code></em>;</span></p></td>
+<td>[in] the version of the structure content, equals to 1;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *<em class="structfield"><code><a name="NAIImporterManageImportModeParms.imported"></a>imported</code></em>;</span></p></td>
+<td>[in] the imported <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> -derived object;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIImporterManageImportModeParms.asked-mode"></a>asked_mode</code></em>;</span></p></td>
+<td>[in] asked import mode;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAIImporter.html#NAIImporterCheckFn" title="NAIImporterCheckFn ()"><span class="type">NAIImporterCheckFn</span></a> <em class="structfield"><code><a name="NAIImporterManageImportModeParms.check-fn"></a>check_fn</code></em>;</span></p></td>
+<td>[in] a <a class="link" href="NAIImporter.html#NAIImporterCheckFn" title="NAIImporterCheckFn ()"><span class="type">NAIImporterCheckFn</span></a> function to check the existence of the imported id;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">void</span> *<em class="structfield"><code><a name="NAIImporterManageImportModeParms.check-fn-data"></a>check_fn_data</code></em>;</span></p></td>
+<td>[in] <em class="parameter"><code>check_fn</code></em> data;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAIImporter.html#NAIImporterAskUserFn" title="NAIImporterAskUserFn ()"><span class="type">NAIImporterAskUserFn</span></a> <em class="structfield"><code><a name="NAIImporterManageImportModeParms.ask-fn"></a>ask_fn</code></em>;</span></p></td>
+<td>[in] a <a class="link" href="NAIImporter.html#NAIImporterAskUserFn" title="NAIImporterAskUserFn ()"><span class="type">NAIImporterAskUserFn</span></a> function to ask the user what to do in case of a duplicate id;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">void</span> *<em class="structfield"><code><a name="NAIImporterManageImportModeParms.ask-fn-data"></a>ask_fn_data</code></em>;</span></p></td>
+<td>[in] <em class="parameter"><code>ask_fn</code></em> data;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NAIImporterManageImportModeParms.exist"></a>exist</code></em>;</span></p></td>
+<td>[out] whether the imported Id already existed;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIImporterManageImportModeParms.import-mode"></a>import_mode</code></em>;</span></p></td>
+<td>[out] actually used import mode;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> *<em class="structfield"><code><a name="NAIImporterManageImportModeParms.messages"></a>messages</code></em>;</span></p></td>
+<td>[in/out] a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of localized strings;
+the provider may append messages to this list, but shouldn't reinitialize it;
+since structure version 1.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-iimporter-import-from-uri"></a><h3>na_iimporter_import_from_uri ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               na_iimporter_import_from_uri        (<em class="parameter"><code>const <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> *importer</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="NAIImporter.html#NAIImporterImportFromUriParmsv2" title="NAIImporterImportFromUriParmsv2"><span class="type">NAIImporterImportFromUriParmsv2</span></a> *parms</code></em>);</pre>
+<p>
+Tries to import a <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> from the URI specified in <em class="parameter"><code>parms</code></em>, returning
+the result in <em class="structfield"><code><em class="parameter"><code>parms-&gt;imported</code></em></code></em>.
+</p>
+<p>
+Note that, starting with <span class="productname">Caja-Actions</span>™ 3.2, the <em class="parameter"><code>parms</code></em> argument is no more a
+<a class="link" href="NAIImporter.html#NAIImporterImportFromUriParms" title="NAIImporterImportFromUriParms"><span class="type">NAIImporterImportFromUriParms</span></a> pointer, but a <a class="link" href="NAIImporter.html#NAIImporterImportFromUriParmsv2" title="NAIImporterImportFromUriParmsv2"><span class="type">NAIImporterImportFromUriParmsv2</span></a>
+one.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>importer</code></em> :</span></p></td>
+<td>this <a class="link" href="NAIImporter.html" title="NAIImporter"><span class="type">NAIImporter</span></a> instance.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>parms</code></em> :</span></p></td>
+<td>a <a class="link" href="NAIImporter.html#NAIImporterImportFromUriParmsv2" title="NAIImporterImportFromUriParmsv2"><span class="type">NAIImporterImportFromUriParmsv2</span></a> structure.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the return code of the operation.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-iimporter-manage-import-mode"></a><h3>na_iimporter_manage_import_mode ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               na_iimporter_manage_import_mode     (<em class="parameter"><code><a class="link" href="NAIImporter.html#NAIImporterManageImportModeParms" title="NAIImporterManageImportModeParms"><span class="type">NAIImporterManageImportModeParms</span></a> *parms</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_iimporter_manage_import_mode</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>parms</code></em> :</span></p></td>
+<td>a <a class="link" href="NAIImporter.html#NAIImporterManageImportModeParms" title="NAIImporterManageImportModeParms"><span class="type">NAIImporterManageImportModeParms</span></a> struct.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="NAIImporter.html#NAIImporterImportStatus" title="enum NAIImporterImportStatus"><span class="type">NAIImporterImportStatus</span></a> status of the operation:
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+<p>
+IMPORTER_CODE_OK if we can safely insert the action:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem"><p>the id doesn't already exist</p></li>
+<li class="listitem"><p>or the id already exists, but import mode is renumber</p></li>
+<li class="listitem"><p>or the id already exists, but import mode is override</p></li>
+</ul></div>
+</li>
+<li class="listitem"><p>
+IMPORTER_CODE_CANCELLED if user chooses to cancel the operation
+</p></li>
+</ul></div>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

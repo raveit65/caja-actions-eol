@@ -1,0 +1,1037 @@
+<sect2 id="usage-conditions">
+  <title>Defining the conditions</title>
+  <para>
+    Whether your action will eventually be displayed in &caja; file manager
+    context menus or in its toolbar depends on the conditions you will have
+    defined for it.
+  </para>
+  <para>
+    Conditions may be put against the location the file manager currently
+    points to, or against the currently selected items in this location.
+  </para>
+  <para>
+    Each time the selection or the location change in the file manager,
+    &prodname; checks all your actions, comparing the defined conditions
+    against the new location and selection: all defined conditions must
+    be satisfied in order your action be actually displayed. 
+  </para>
+
+  <sect3 id="usage-conditions-basenames">
+    <title>Basename-based conditions</title>
+    <para>
+      You may decide that your action will appear depending on the basenames
+      of the items currently selected in the file-manager: you may define that each
+      item of the selection must meet some sort of basename, and you may simultaneously
+      decide that none of the selected item(s) can have some other sort of basename.
+    </para>
+    <para>
+      Click on the <guilabel>Basenames</guilabel> tab to show the page
+      which will permit you to configure your basename-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-basenames">
+      <title>Basename-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-basenames-tab.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define basename-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The basename-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, basename-based conditions are built as a list of
+      &must_match; and &must_not_match;
+      patterns. In order for your action to be a candidate regarding these basename-based
+      conditions, each element of the selection must be valid for all the listed
+      conditions: the basename of each element must match at least one of the defined
+      &must_match; patterns, and must not match any of
+      the defined &must_not_match; patterns.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your basename-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your basename-based conditions will
+      be checked against the basename of the current location.
+    </para>
+    <para>
+      Defining a new basename-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> or click on 
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              button to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the basename you want match.
+            </para>
+            <tip>
+              <para>
+                A basename-based condition may use &asterisk; or
+                &question_mark; wildcard characters.
+              </para>
+            </tip>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a &must_match;
+          or a &must_not_match; condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match one of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button in the same
+          row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Depending of your target operating system, make sure that the
+      <guilabel>Match case</guilabel> checkbox is activated (or not). 
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          When activated, all filters are considered as case sensitive,
+          which means that <filename>/my/file</filename> filename is
+          considered distinct from <filename>/My/File</filename> one.
+        </para>
+        <para>
+          This is the default behavior on Unix-like systems.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          When deactivated, filters are considered as case insensitive,
+          which means that <filename>/my/file</filename> and
+          <filename>/My/File</filename> filenames are considered the same
+          name.
+        </para>
+        <para>
+          This is most probably what you want if you target some sort of
+          &windows; system.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Removing a defined basename-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the basename-based condition is just one
+      &laquosp;<literal>must match one of *</literal>&spraquo; condition.
+      As all basenames always match the &asterisk;
+      condition, this just means that basename-based conditions are not
+      considered as relevant for the action.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-mimetypes">
+    <title>Mimetype-based conditions</title>
+    <para>
+      You may decide that your action will appear depending on the mimetypes
+      of the items currently selected in the file-manager: you may define that each
+      item of the selection must meet some sort of mimetype; and you may simultaneously
+      decide that none of the selected item(s) can have some other sort of mimetype.
+    </para>
+    <para>
+      Click on the <guilabel>Mimetypes</guilabel> tab to show the page
+      which will permit you to configure your mimetype-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-mimetypes">
+      <title>Mimetype-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-mimetypes-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define mimetype-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The mimetype-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, mimetype-based conditions are built as a list of
+      &must_match; and &must_not_match; patterns.
+      In order for your action to be a candidate regarding these mimetype-based
+      conditions, each element of the selection must be valid for all the listed
+      conditions: the mimetype of each element must match at least one of the defined
+      &must_match; patterns, and must not match any of
+      the defined &must_not_match; patterns.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your mimetype-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your mimetype-based conditions will
+      be checked against the mimetype of the current location, which happens to
+      be the well known &laquosp;inode/directory&spraquo; mimetype.
+    </para>
+    <para>
+      Defining a new mimetype-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> or click on 
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              button to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the mimetype you want match.
+            </para>
+            <para>
+              A mimetype must be defined as a <literal>group/subgroup</literal>
+              expression.
+            </para>
+            <tip>
+              <para>
+                The &asterisk; wildcard is supported only in some situations:
+              </para>
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    The &laquosp;<literal>*/*</literal>&spraquo; expression
+                    matches all mimetypes. As a convenient shortcut, the
+                    &asterisk; literal is also accepted for this same purpose.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    A <literal>group/*</literal> string
+                    matches all subgroups of <literal>group</literal> mimetype.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The <literal>*/subgroup</literal> string
+                    is not accepted as a valid wildcard.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </tip>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a &must_match; or a &must_not_match; condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match one of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button in the same
+          row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Removing a defined mimetype-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the mimetype-based condition is just one
+      &laquosp;<literal>must match one of */*</literal>&spraquo; condition.
+      As all mimetypes always match the &laquosp;<literal>*/*</literal>&spraquo;,
+      this just means that mimetypes are not considered as relevant 
+      for the action.
+    </para>
+    <example>
+      <title>Example of usual mimetypes</title>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <literal>all/all</literal>
+          </term>
+          <listitem>
+            <para>
+              Matches all items.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <literal>all/allfiles</literal>
+          </term>
+          <listitem>
+            <para>
+              Matches all regular files.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <literal>inode/directory</literal>
+          </term>
+          <listitem>
+            <para>
+              Matches only directories.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </example>
+  </sect3>
+
+  <sect3 id="usage-conditions-folders">
+    <title>Folder-based conditions</title>
+    <para>
+      You may decide that your action will appear depending on the directory
+      the items currently selected in the file-manager are located in:
+      you may define that each item of the selection must be located in one
+      hierarchy or in another; and you may simultaneously
+      decide that none of the selected item(s) can be located in some other
+      hierarchy.
+    </para>
+    <para>
+      A folder-based condition must be understood as the specification
+      of the hierarchy in which the currently examined item should (or
+      should not) stay: this is a pattern on the dirname of the element.
+    </para>
+    <para>
+      Click on the <guilabel>Folders</guilabel> tab to show the page
+      which will permit you to configure your folder-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-folders">
+      <title>Folder-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-folders-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define folder-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The folder-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, folder-based conditions are built as a list of
+      &must_match; and &must_not_match; patterns.
+      In order for your action to be a candidate regarding these folder-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: each element must be located in one of the defined
+      &must_match; folders, and must not match any of the defined
+      &must_not_match; folders.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the
+      defined conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your folder-based
+      conditions will be checked against the dirname of each currently
+      selected items.
+      When targeting the location context menu or the toolbar,
+      your folder-based conditions will be checked against the current
+      location.
+    </para>
+    <para>
+      Defining a new folder-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> or click on 
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              button to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the folder you want match.
+            </para>
+            <tip>
+              <para>
+                The &asterisk; and &question_mark; characters
+                are accepted as wildcards at any level of the defined
+                folder filter.
+              </para>
+            </tip>
+          </listitem>
+          <listitem>
+            <para>
+              Or click on
+              <guibutton>Browse</guibutton> to select a folder on the file system.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a &must_match; or a &must_not_match;
+          condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match one of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button in the same
+          row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Removing a defined folder-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the folder-based condition is just one
+      &laquosp;<literal>must match one of /</literal>&spraquo; condition.
+      As <literal>/</literal> is always the top of an Unix-like file system,
+      then all selected items always match this condition.
+    </para>
+    <note>
+      <para>
+        If you target a &windows; system, then this default value may
+        not be what you actually want.
+      </para>
+    </note>
+  </sect3>
+
+  <sect3 id="usage-conditions-schemes">
+    <title>Scheme-base-conditions</title>
+    <para>
+      You may decide that your action will appear depending on the schemes
+      of the URIs of the items currently selected in the file-manager:
+      you may define that each item of the selection must have some scheme;
+      and you may simultaneously
+      decide that none of the selected item(s) may have some other scheme.
+    </para>
+    <para>
+      Click on the <guilabel>Schemes</guilabel> tab to show the page
+      which will permit you to configure your scheme-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-schemes">
+      <title>Scheme-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-schemes-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define scheme-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The scheme-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, scheme-based conditions are built as a list of
+      &must_match; and &must_not_match; patterns.
+      In order for your action to be a candidate regarding these scheme-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: the scheme of each element must match at least one
+      of the defined &must_match; patterns, and must not match any of
+      the defined &must_not_match; patterns.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your scheme-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your scheme-based conditions will
+      be checked against the scheme of the current location.
+    </para>
+    <para>
+      Defining a new scheme-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> or click on 
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              button to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the scheme you want match.
+            </para>
+            <tip>
+              <para>
+                Scheme-based conditions only accept &asterisk; wildcard,
+                which stands for &laquosp;any scheme&spraquo;.
+              </para>
+            </tip>
+          </listitem>
+          <listitem>
+            <para>
+              Or click on
+              <guibutton>Common</guibutton> to select a scheme among those
+              predefined in 
+              <menuchoice>
+                <guimenu>Edit</guimenu>
+                <guimenuitem>Preferences</guimenuitem>
+              </menuchoice>.
+            </para>
+            <figure id="cact-FIG-add-scheme">
+              <title>Selecting a scheme among predefined defaults</title>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="figures/cact-new-scheme.png" format="PNG"/>
+                  </imageobject>
+                  <textobject>
+                    <phrase>Show the list of predefined schemes.</phrase>
+                  </textobject>
+                  <caption>
+                    <para>Selecting a scheme among predefined defaults</para>
+                  </caption>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            <para>
+              A new scheme may only be selected here if it is not already
+              defined as a scheme filter.
+            </para>
+            <para>
+              To select a new scheme, click <guibutton>OK</guibutton>, or
+              double-click on the desired row.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a &must_match; or a &must_not_match; condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match one of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button
+          in the same row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Removing a defined scheme-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the scheme-based condition is just one
+      &laquosp;<literal>must match one of *</literal>&spraquo; condition,
+      which means that schemes are not relevant for this action.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-capabilities">
+    <title>Capability-based conditions</title>
+    <para>
+      Capabilities are some properties that a file may exhibit to the user.
+    </para>
+    <para>
+      But except for the <literal>Local</literal> capability, all others
+      depend on the user who executes the command.
+    </para>
+    <para>
+      You may so decide that your action will appear, or not, depending
+      on the capabilities of the selected item(s) <abbrev>vs.</abbrev>
+      the current user.
+    </para>
+    <para>
+      Click on the <guilabel>Capabilities</guilabel> tab to show the page
+      which will permit you to configure your capability-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-capabilities">
+      <title>Capability-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-capabilities-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define capability-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The capability-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, capability-based conditions are built as a list of
+      &laquosp;must match all of&spraquo; and &must_not_match; patterns.
+      In order for your action to be a candidate regarding these capability-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: the capability of each element must match each
+      of the defined &laquosp;must match all of&spraquo; capabilities,
+      and must not match any of the defined &must_not_match; ones.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your capability-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your capability-based conditions will
+      be checked against those of of the current location.
+    </para>
+    <para>
+      Defining a new capability-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the capability you want match.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Or click on
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              to open the <guilabel>Adding a new capability</guilabel> dialog
+              box.
+            </para>
+            <figure id="cact-FIG-add-capability">
+              <title>Managed capabilities</title>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="figures/cact-new-capability.png" format="PNG"/>
+                  </imageobject>
+                  <textobject>
+                    <phrase>Shows the list of managed capabilities.</phrase>
+                  </textobject>
+                  <caption>
+                    <para>The list of managed capabilities</para>
+                  </caption>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            <para>
+              A new capability may only be selected here if it is not already
+              defined as a capability filter.
+            </para>
+            <para>
+              To select a new capability, click <guibutton>OK</guibutton>, or
+              double-click on the desired row.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a &laquosp;must match all of&spraquo;
+          or a &must_not_match; condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match all of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button in the same
+          row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Removing a defined capability-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the capability-based condition list is empty. This means
+      that capabilities are not relevant for this action.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-count">
+    <title>Selection count condition</title>
+    <para>
+      You may define that your action will only appear if the current
+      selection in the file manager has some precise count, or some
+      precise relation with a given count.
+    </para>
+    <example>
+      <title>A selection count use case</title>
+      <para>
+        If your action consists in displaying the differences between
+        two files, you may define here
+        &laquosp;<literal>Count = (equal to) 2</literal>&spraquo;.
+      </para>
+    </example>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-environment">
+      <title>Environment-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-environment-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>
+              Shows the tab which lets you define environment-based conditions.
+              This includes the selection count configuration, the desktop
+              selection, along with the runtime filters.
+            </phrase>
+          </textobject>
+          <caption>
+            <para>The environment-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      The selection count condition is defined in the
+      <guilabel>Appears if selection contains</guilabel> frame.
+    </para>
+    <figure id="cact-FIG-frame-count">
+      <title>Selection count condition frame</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-selection-count-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>
+              Focus on the <guilabel>Appears if selection contains</guilabel> frame.
+            </phrase>
+          </textobject>
+          <caption>
+            <para>Selection count condition frame</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      When targeting the selection context menu, the count condition
+      defined here will be checked against the count of currently
+      selected items. When targeting the location context menu or
+      the toolbar, the count condition will be checked against zero
+      because there is no selected item in this case.
+    </para>
+    <para>
+      To define a selection count condition:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Select in the <guilabel>Count</guilabel> drop-down list
+          the operator you want apply to the selection count:
+        </para>
+        <simplelist type="vert">
+          <member><literal>&lt;</literal> <termdef>(strictly less than)</termdef></member>
+          <member><literal>=</literal> <termdef>(equal to)</termdef></member>
+          <member><literal>&gt;</literal> <termdef>(strictly greater than)</termdef></member>
+        </simplelist>
+      </listitem>
+      <listitem>
+        <para>
+          Enter the reference count you wish.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      The selection count defaults to
+      &laquosp;<literal>Count > (strictly greater than) 0</literal>&spraquo;,
+      which means that the action will be a candidate to be displayed
+      as soon as at least one item is selected in the file manager.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-desktop">
+    <title>Desktop selection</title>
+    <para>
+      You may define that your action:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          will always appear,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          or will only appear in some given desktop environments,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          or will not appear in some given desktop environments.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Only one choice between these three items is possible.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </para>
+    <para>
+      The desktop selection is defined in the
+      <guilabel>Desktop environment</guilabel> frame.
+    </para>
+    <figure id="cact-FIG-frame-desktop">
+      <title>Desktop selection frame</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-desktop-environment-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>
+              Focus on the <guilabel>Desktop environment</guilabel> frame.
+            </phrase>
+          </textobject>
+          <caption>
+            <para>Desktop selection frame</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      To define the desktop environment condition:
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          First select the type of filter:
+        </para>
+        <simplelist type="vert">
+          <member>should your action always appear, regardless of
+           the desktop environment ?</member>
+          <member>should your action only appear in some desktop
+           environment(s) ?</member>
+          <member>should your action never appear in some
+           desktop environment(s) ?</member>
+        </simplelist>
+      </listitem>
+      <listitem>
+        <para>
+          If your action should not always appear, then
+          select the relevant desktop environment(s) in the listbox
+          in the right side.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      The targeted desktop environment condition defaults to
+      &laquosp;<literal>Always appear</literal>&spraquo;,
+      which means that the action will be a candidate to be displayed
+      regardless of the current desktop environment.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-executable">
+    <title>Executable found condition</title>
+    <para>
+      You may define that your action will only appear if some
+      prerequisite package is installed on your system. This is
+      checked here by specifying that a specific file, known or
+      at least supposed to be provided by the package, must be
+      present on the file system, and executable.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </para>
+    <para>
+      The executable found condition is defined in the
+      <guilabel>Execution environment</guilabel> frame.
+    </para>
+    <figure id="cact-FIG-frame-execution-environment">
+      <title>Execution environment frame</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-execution-environment-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>
+              Focus on the <guilabel>Execution environment</guilabel> frame.
+            </phrase>
+          </textobject>
+          <caption>
+            <para>Execution environment frame</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      To define the relevant file, enter its full filename in the
+      <guilabel>Appears if the file is executable</guilabel> entry
+      box, or click on <guibutton>Browse</guibutton> to select a file
+      on the file system.
+    </para>
+    <para>
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </para>
+    <tip>
+      <para>
+        You may embed some parameters in the searched filename.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+  </sect3>
+
+  <sect3 id="usage-conditions-dbus">
+    <title>D-Bus registration condition</title>
+    <para>
+      You may define that your action will only appear if some given
+      name is registered on the D-Bus system at runtime.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <guilabel>Execution environment</guilabel> frame.
+    </para>
+    <para>
+      To define the relevant name, enter it in the
+      <guilabel>Appears if the name is registered on D-Bus</guilabel>
+      entry box.
+    </para>
+    <para>
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </para>
+    <tip>
+      <para>
+        You may embed some parameters in the searched name.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+  </sect3>
+
+  <sect3 id="usage-conditions-true">
+    <title>Customized condition</title>
+    <para>
+      You may define that your action will only appear if some given
+      command outputs a <literal>true</literal> string on its standard
+      output.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <guilabel>Execution environment</guilabel> frame.
+    </para>
+    <para>
+      This lets you define your own customized condition filter,
+      by writing a small script which outputs, or not, the
+      <literal>true</literal> string on stdout when it is ran.
+    </para>
+    <para>
+      To define the command, enter it in the
+      <guilabel>Appears if the command outputs "true"</guilabel>
+      entry box.
+    </para>
+    <para>
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </para>
+    <tip>
+      <para>
+        You may embed some parameters in the executed filename or its options.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+  </sect3>
+
+  <sect3 id="usage-conditions-run">
+    <title>Running process condition</title>
+    <para>
+      You may define that your action will only appear if some given
+      binary is currently running.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <guilabel>Execution environment</guilabel> frame.
+    </para>
+    <para>
+      To define the binary, enter its name in the
+      <guilabel>Appears if the binary is running</guilabel>
+      entry box, or click on <guibutton>Browse</guibutton> to select
+      a file on the file system.
+    </para>
+    <note>
+      <para>
+        Even if you enter here the full filename of a binary, only
+        its basename will be searched for in the processes list
+        at runtime.
+      </para>
+    </note>
+    <para>
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </para>
+    <tip>
+      <para>
+        You may embed some parameters in the searched name.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+  </sect3>
+</sect2>

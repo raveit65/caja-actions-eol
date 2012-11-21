@@ -37,6 +37,13 @@
 
 #include <gdk/gdk.h>
 
+/* patch provided by Mathias Clasen
+ * see http://git.gnome.org/browse/libegg/commit/?id=0be81fa47fb5dabba2be40888ed5d4b16f0ae6a3
+ */
+#if GTK_CHECK_VERSION( 2, 91, 7 )
+#include <gdk/gdkx.h>
+#endif
+
 #define EGG_TYPE_SM_CLIENT_XSMP            (egg_sm_client_xsmp_get_type ())
 #define EGG_SM_CLIENT_XSMP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), EGG_TYPE_SM_CLIENT_XSMP, EggSMClientXSMP))
 #define EGG_SM_CLIENT_XSMP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), EGG_TYPE_SM_CLIENT_XSMP, EggSMClientXSMPClass))
@@ -373,7 +380,11 @@ sm_client_xsmp_startup (EggSMClient *client,
       free (ret_client_id);
 
       gdk_threads_enter ();
+#if GTK_CHECK_VERSION( 2, 91, 7 )
+      gdk_x11_set_sm_client_id (xsmp->client_id);
+#else
       gdk_set_sm_client_id (xsmp->client_id);
+#endif
       gdk_threads_leave ();
 
       g_debug ("Got client ID \"%s\"", xsmp->client_id);

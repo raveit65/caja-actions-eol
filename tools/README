@@ -1,0 +1,7 @@
+tools
+-----
+This directory contains some development tools.
+These tools are not distributed in the tarball, and are only present in
+git (that I use here as some sort of backup repository).
+
+P. Wieser, Dec. 2010

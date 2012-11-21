@@ -31,6 +31,12 @@
                 <menuitem action="ViewToolsToolbarItem" />
                 <menuitem action="ViewHelpToolbarItem" />
             </menu>
+	        <menu action="NotebookLabelMenu">
+	            <menuitem action="TabsPosLeftItem" />
+	            <menuitem action="TabsPosRightItem" />
+	            <menuitem action="TabsPosTopItem" />
+	            <menuitem action="TabsPosBottomItem" />
+	        </menu>
         </menu>
         <menu action="ToolsMenu">
             <menuitem action="ImportItem" />
@@ -44,7 +50,7 @@
         </menu>
     </menubar>
 
-    <popup name="Popup">
+    <popup name="TreeContext">
             <menuitem action="NewMenuItem" />
             <menuitem action="NewActionItem" />
             <menuitem action="NewProfileItem" />

@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -64,7 +63,9 @@ static void             exit_with_usage( void );
 int
 main( int argc, char **argv )
 {
-	NAIImporterUriParms parms;
+	NAImporterParms parms;
+	GList *import_results;
+	NAImporterResult *result;
 
 	g_type_init();
 
@@ -72,26 +73,25 @@ main( int argc, char **argv )
 	check_options( argc, argv, context );
 
 	NAPivot *pivot = na_pivot_new();
+	na_pivot_set_loadable( pivot, !PIVOT_LOAD_DISABLED & !PIVOT_LOAD_INVALID );
+	na_pivot_load_items( pivot );
 
-	parms.version = 1;
-	parms.uri = uri;
-	parms.mode = IMPORTER_MODE_ASK;
-	parms.imported = NULL;
+	parms.uris = g_slist_prepend( NULL, uri );
 	parms.check_fn = NULL;
 	parms.check_fn_data = NULL;
-	parms.messages = NULL;
+	parms.preferred_mode = IMPORTER_MODE_ASK;
+	parms.parent_toplevel = NULL;
 
-	guint code = na_importer_import_from_uri( pivot, &parms );
+	import_results = na_importer_import_from_uris( pivot, &parms );
 
-	g_print( "%s: return code from import is %u.\n", g_get_prgname(), code );
-
-	if( parms.imported ){
-		na_object_dump( parms.imported );
-		g_object_unref( parms.imported );
+	result = import_results->data;
+	if( result->imported ){
+		na_object_dump( result->imported );
+		g_object_unref( result->imported );
 	}
 
-	na_core_utils_slist_dump( parms.messages );
-	na_core_utils_slist_free( parms.messages );
+	na_core_utils_slist_dump( NULL, result->messages );
+	na_core_utils_slist_free( result->messages );
 
 	return( 0 );
 }

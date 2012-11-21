@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -46,13 +45,22 @@
 #include "nagp-writer.h"
 #include "nagp-keys.h"
 
+#ifdef NA_ENABLE_DEPRECATED
+static void write_start_write_type( NagpMateConfProvider *provider, NAObjectItem *item );
+static void write_start_write_version( NagpMateConfProvider *provider, NAObjectItem *item );
+#endif
+
 /*
  * API function: should only be called through NAIIOProvider interface
  */
 gboolean
 nagp_iio_provider_is_willing_to_write( const NAIIOProvider *provider )
 {
+#ifdef NA_ENABLE_DEPRECATED
 	return( TRUE );
+#else
+	return( FALSE );
+#endif
 }
 
 /*
@@ -69,7 +77,8 @@ nagp_iio_provider_is_willing_to_write( const NAIIOProvider *provider )
 gboolean
 nagp_iio_provider_is_able_to_write( const NAIIOProvider *provider )
 {
-	/*static const gchar *thisfn = "nagp_iio_provider_is_able_to_write";*/
+#ifdef NA_ENABLE_DEPRECATED
+	static const gchar *thisfn = "nagp_iio_provider_is_able_to_write";
 	static const gchar *path = "/apps/caja-actions/foo";
 	NagpMateConfProvider *self;
 	gboolean able_to = FALSE;
@@ -82,21 +91,35 @@ nagp_iio_provider_is_able_to_write( const NAIIOProvider *provider )
 
 	if( !self->private->dispose_has_run ){
 
-		if( !na_mateconf_utils_write_string( self->private->mateconf, path, "1", NULL )){
-			able_to = FALSE;
-
-		} else if( !mateconf_client_recursive_unset( self->private->mateconf, path, 0, NULL )){
+		if( !na_mateconf_utils_write_string( self->private->mateconf, path, "foo", NULL )){
 			able_to = FALSE;
 
 		} else {
-			able_to = TRUE;
+			gchar *str = na_mateconf_utils_read_string( self->private->mateconf, path, FALSE, NULL );
+			if( strcmp( str, "foo" )){
+				able_to = FALSE;
+
+			} else if( !mateconf_client_recursive_unset( self->private->mateconf, path, 0, NULL )){
+				able_to = FALSE;
+
+			} else {
+				able_to = TRUE;
+			}
+
+			g_free( str );
 		}
 	}
 
-	/*g_debug( "%s: provider=%p, able_to=%s", thisfn, ( void * ) provider, able_to ? "True":"False" );*/
+	mateconf_client_suggest_sync( self->private->mateconf, NULL );
+
+	g_debug( "%s: provider=%p, able_to=%s", thisfn, ( void * ) provider, able_to ? "True":"False" );
 	return( able_to );
+#else
+	return( FALSE );
+#endif
 }
 
+#ifdef NA_ENABLE_DEPRECATED
 /*
  * update an existing item or write a new one
  * in all cases, it is much more easy to delete the existing  entries
@@ -213,22 +236,46 @@ guint
 nagp_writer_write_start( const NAIFactoryProvider *writer, void *writer_data,
 							const NAIFactoryObject *object, GSList **messages  )
 {
-	MateConfClient *mateconf;
-	gchar *id;
-	gchar *path;
-
 	if( NA_IS_OBJECT_ITEM( object )){
-		id = na_object_get_id( object );
-		path = g_strdup_printf( "%s/%s/%s", NAGP_CONFIGURATIONS_PATH, id, NAGP_ENTRY_TYPE );
-		mateconf = NAGP_MATECONF_PROVIDER( writer )->private->mateconf;
-
-		na_mateconf_utils_write_string( mateconf, path, NA_IS_OBJECT_ACTION( object ) ? NAGP_VALUE_TYPE_ACTION : NAGP_VALUE_TYPE_MENU, NULL );
-
-		g_free( path );
-		g_free( id );
+		write_start_write_type( NAGP_MATECONF_PROVIDER( writer ), NA_OBJECT_ITEM( object ));
+		write_start_write_version( NAGP_MATECONF_PROVIDER( writer ), NA_OBJECT_ITEM( object ));
 	}
 
 	return( NA_IIO_PROVIDER_CODE_OK );
+}
+
+static void
+write_start_write_type( NagpMateConfProvider *provider, NAObjectItem *item )
+{
+	gchar *id, *path;
+
+	id = na_object_get_id( item );
+	path = g_strdup_printf( "%s/%s/%s", NAGP_CONFIGURATIONS_PATH, id, NAGP_ENTRY_TYPE );
+
+	na_mateconf_utils_write_string(
+			provider->private->mateconf,
+			path,
+			NA_IS_OBJECT_ACTION( item ) ? NAGP_VALUE_TYPE_ACTION : NAGP_VALUE_TYPE_MENU,
+			NULL );
+
+	g_free( path );
+	g_free( id );
+}
+
+static void
+write_start_write_version( NagpMateConfProvider *provider, NAObjectItem *item )
+{
+	gchar *id, *path;
+	guint iversion;
+
+	id = na_object_get_id( item );
+	path = g_strdup_printf( "%s/%s/%s", NAGP_CONFIGURATIONS_PATH, id, NAGP_ENTRY_IVERSION );
+
+	iversion = na_object_get_iversion( item );
+	na_mateconf_utils_write_int( provider->private->mateconf, path, iversion, NULL );
+
+	g_free( path );
+	g_free( id );
 }
 
 guint
@@ -238,7 +285,7 @@ nagp_writer_write_data( const NAIFactoryProvider *provider, void *writer_data,
 {
 	static const gchar *thisfn = "nagp_writer_write_data";
 	guint code;
-	NADataDef *def;
+	const NADataDef *def;
 	gchar *this_id;
 	gchar *this_path, *path;
 	gchar *msg;
@@ -252,9 +299,9 @@ nagp_writer_write_data( const NAIFactoryProvider *provider, void *writer_data,
 
 	msg = NULL;
 	code = NA_IIO_PROVIDER_CODE_OK;
+	def = na_data_boxed_get_data_def( boxed );
 
-	if( na_data_boxed_is_set( boxed )){
-		def = na_data_boxed_get_data_def( boxed );
+	if( !na_data_boxed_is_default( boxed ) || def->write_if_default ){
 
 		if( NA_IS_OBJECT_PROFILE( object )){
 			NAObjectItem *parent = NA_OBJECT_ITEM( na_object_get_parent( object ));
@@ -275,8 +322,8 @@ nagp_writer_write_data( const NAIFactoryProvider *provider, void *writer_data,
 
 		switch( def->type ){
 
-			case NAFD_TYPE_STRING:
-				str_value = na_data_boxed_get_as_string( boxed );
+			case NA_DATA_TYPE_STRING:
+				str_value = na_boxed_get_string( NA_BOXED( boxed ));
 				na_mateconf_utils_write_string( mateconf, path, str_value, &msg );
 				if( msg ){
 					*messages = g_slist_append( *messages, msg );
@@ -285,8 +332,8 @@ nagp_writer_write_data( const NAIFactoryProvider *provider, void *writer_data,
 				g_free( str_value );
 				break;
 
-			case NAFD_TYPE_LOCALE_STRING:
-				str_value = na_data_boxed_get_as_string( boxed );
+			case NA_DATA_TYPE_LOCALE_STRING:
+				str_value = na_boxed_get_string( NA_BOXED( boxed ));
 				na_mateconf_utils_write_string( mateconf, path, str_value, &msg );
 				if( msg ){
 					*messages = g_slist_append( *messages, msg );
@@ -295,8 +342,8 @@ nagp_writer_write_data( const NAIFactoryProvider *provider, void *writer_data,
 				g_free( str_value );
 				break;
 
-			case NAFD_TYPE_BOOLEAN:
-				bool_value = GPOINTER_TO_UINT( na_data_boxed_get_as_void( boxed ));
+			case NA_DATA_TYPE_BOOLEAN:
+				bool_value = GPOINTER_TO_UINT( na_boxed_get_as_void( NA_BOXED( boxed )));
 				na_mateconf_utils_write_bool( mateconf, path, bool_value, &msg );
 				if( msg ){
 					*messages = g_slist_append( *messages, msg );
@@ -304,8 +351,8 @@ nagp_writer_write_data( const NAIFactoryProvider *provider, void *writer_data,
 				}
 				break;
 
-			case NAFD_TYPE_STRING_LIST:
-				slist_value = ( GSList * ) na_data_boxed_get_as_void( boxed );
+			case NA_DATA_TYPE_STRING_LIST:
+				slist_value = ( GSList * ) na_boxed_get_as_void( NA_BOXED( boxed ));
 				na_mateconf_utils_write_string_list( mateconf, path, slist_value, &msg );
 				if( msg ){
 					*messages = g_slist_append( *messages, msg );
@@ -314,8 +361,8 @@ nagp_writer_write_data( const NAIFactoryProvider *provider, void *writer_data,
 				na_core_utils_slist_free( slist_value );
 				break;
 
-			case NAFD_TYPE_UINT:
-				uint_value = GPOINTER_TO_UINT( na_data_boxed_get_as_void( boxed ));
+			case NA_DATA_TYPE_UINT:
+				uint_value = GPOINTER_TO_UINT( na_boxed_get_as_void( NA_BOXED( boxed )));
 				na_mateconf_utils_write_int( mateconf, path, uint_value, &msg );
 				if( msg ){
 					*messages = g_slist_append( *messages, msg );
@@ -346,3 +393,4 @@ nagp_writer_write_done( const NAIFactoryProvider *writer, void *writer_data,
 {
 	return( NA_IIO_PROVIDER_CODE_OK );
 }
+#endif /* NA_ENABLE_DEPRECATED */

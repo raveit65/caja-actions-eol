@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -45,65 +44,60 @@
 #ifndef __CACT_TREE_MODEL_H__
 #define __CACT_TREE_MODEL_H__
 
-#include <gtk/gtk.h>
-
 #include <api/na-object.h>
 
-#include "base-window.h"
+#include "cact-tree-view.h"
 
 G_BEGIN_DECLS
 
-#define CACT_TREE_MODEL_TYPE				( cact_tree_model_get_type())
-#define CACT_TREE_MODEL( object )			( G_TYPE_CHECK_INSTANCE_CAST(( object ), CACT_TREE_MODEL_TYPE, CactTreeModel ))
-#define CACT_TREE_MODEL_CLASS( klass )		( G_TYPE_CHECK_CLASS_CAST(( klass ), CACT_TREE_MODEL_TYPE, CactTreeModelClass ))
-#define CACT_IS_TREE_MODEL( object )		( G_TYPE_CHECK_INSTANCE_TYPE(( object ), CACT_TREE_MODEL_TYPE ))
-#define CACT_IS_TREE_MODEL_CLASS( klass )	( G_TYPE_CHECK_CLASS_TYPE(( klass ), CACT_TREE_MODEL_TYPE ))
-#define CACT_TREE_MODEL_GET_CLASS( object )	( G_TYPE_INSTANCE_GET_CLASS(( object ), CACT_TREE_MODEL_TYPE, CactTreeModelClass ))
+#define CACT_TYPE_TREE_MODEL                ( cact_tree_model_get_type())
+#define CACT_TREE_MODEL( object )           ( G_TYPE_CHECK_INSTANCE_CAST(( object ), CACT_TYPE_TREE_MODEL, CactTreeModel ))
+#define CACT_TREE_MODEL_CLASS( klass )      ( G_TYPE_CHECK_CLASS_CAST(( klass ), CACT_TYPE_TREE_MODEL, CactTreeModelClass ))
+#define CACT_IS_TREE_MODEL( object )        ( G_TYPE_CHECK_INSTANCE_TYPE(( object ), CACT_TYPE_TREE_MODEL ))
+#define CACT_IS_TREE_MODEL_CLASS( klass )   ( G_TYPE_CHECK_CLASS_TYPE(( klass ), CACT_TYPE_TREE_MODEL ))
+#define CACT_TREE_MODEL_GET_CLASS( object ) ( G_TYPE_INSTANCE_GET_CLASS(( object ), CACT_TYPE_TREE_MODEL, CactTreeModelClass ))
 
-typedef struct CactTreeModelPrivate CactTreeModelPrivate;
+typedef struct _CactTreeModelPrivate        CactTreeModelPrivate;
 
 typedef struct {
+	/*< private >*/
 	GtkTreeModelFilter    parent;
 	CactTreeModelPrivate *private;
 }
 	CactTreeModel;
 
-typedef struct CactTreeModelClassPrivate CactTreeModelClassPrivate;
+typedef struct _CactTreeModelClassPrivate   CactTreeModelClassPrivate;
 
 typedef struct {
+	/*< private >*/
 	GtkTreeModelFilterClass    parent;
 	CactTreeModelClassPrivate *private;
 }
 	CactTreeModelClass;
 
-/* column ordering of the tree view
+/**
+ * Column ordering in the tree view
  */
 enum {
-	IACTIONS_LIST_ICON_COLUMN = 0,
-	IACTIONS_LIST_LABEL_COLUMN,
-	IACTIONS_LIST_NAOBJECT_COLUMN,
-	IACTIONS_LIST_N_COLUMN
+	TREE_COLUMN_ICON = 0,
+	TREE_COLUMN_LABEL,
+	TREE_COLUMN_NAOBJECT,
+	TREE_N_COLUMN
 };
 
-/* iter on tree store
- */
-typedef gboolean ( *FnIterOnStore )( CactTreeModel *, GtkTreePath *, NAObject *, gpointer );
+GType          cact_tree_model_get_type( void );
 
-GType        cact_tree_model_get_type( void );
+CactTreeModel *cact_tree_model_new( BaseWindow *window, GtkTreeView *view, CactTreeMode mode );
 
-void         cact_tree_model_initial_load( BaseWindow *window, GtkTreeView *treeview );
-void         cact_tree_model_runtime_init( CactTreeModel *model, gboolean have_dnd );
-void         cact_tree_model_dispose( CactTreeModel *model );
+GtkTreePath   *cact_tree_model_delete       ( CactTreeModel *model, NAObject *object );
+void           cact_tree_model_fill         ( CactTreeModel *model, GList *items );
+GtkTreePath   *cact_tree_model_insert_before( CactTreeModel *model, const NAObject *object, GtkTreePath *path );
+GtkTreePath   *cact_tree_model_insert_into  ( CactTreeModel *model, const NAObject *object, GtkTreePath *path );
 
-void         cact_tree_model_display( CactTreeModel *model, NAObject *object );
-void         cact_tree_model_display_order_change( CactTreeModel *model, gint order_mode );
-void         cact_tree_model_dump( CactTreeModel *model );
-void         cact_tree_model_fill( CactTreeModel *model, GList *items, gboolean are_profiles_displayed );
-GtkTreePath *cact_tree_model_insert( CactTreeModel *model, const NAObject *object, GtkTreePath *path, NAObject **parent );
-GtkTreePath *cact_tree_model_insert_into( CactTreeModel *model, const NAObject *object, GtkTreePath *path, NAObject **parent );
-void         cact_tree_model_iter( CactTreeModel *model, FnIterOnStore fn, gpointer user_data );
-NAObject    *cact_tree_model_object_at_path( CactTreeModel *model, GtkTreePath *path );
-GtkTreePath *cact_tree_model_remove( CactTreeModel *model, NAObject *object );
+NAObjectItem  *cact_tree_model_get_item_by_id( const CactTreeModel *model, const gchar *id );
+GList         *cact_tree_model_get_items     ( const CactTreeModel *model, guint mode );
+NAObject      *cact_tree_model_object_at_path( const CactTreeModel *model, GtkTreePath *path );
+GtkTreePath   *cact_tree_model_object_to_path( const CactTreeModel *model, const NAObject *object );
 
 G_END_DECLS
 

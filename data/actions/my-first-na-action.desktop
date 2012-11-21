@@ -1,0 +1,21 @@
+
+[Desktop Entry]
+Type=Action
+Icon[en_US]=gtk-about
+Icon[en]=gtk-about
+Icon[C]=gtk-about
+Tooltip[en_US]=This will execute an action with some parameters
+Tooltip[en]=This will execute an action with some parameters
+Tooltip[C]=This will execute an action with some parameters
+ToolbarLabel[en_US]=My first action
+ToolbarLabel[en]=My first action
+ToolbarLabel[C]=My first action
+Name[en_US]=My first action
+Name[en]=My first action
+Name[C]=My first action
+Profiles=profile-zero;
+Enabled = false
+
+[X-Action-Profile profile-zero]
+Exec=matedialog --info --text="%c selected item(s): %f"
+Name[en_US]=Default profile

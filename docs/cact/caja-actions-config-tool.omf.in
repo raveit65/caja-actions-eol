@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<omf>
+  <resource>
+    <subject category="GNOME|Utilities"/>
+    <type>user's guide</type>
+    <relation seriesid="0ef1bb15-2edd-ef24-7941-18db1cc3da9c90"/>
+    <rights type="GNU FDL" license.version="1.3" holder="Pierre Wieser"/>
+  </resource>
+</omf>

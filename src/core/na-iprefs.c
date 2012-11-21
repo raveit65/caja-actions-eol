@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,410 +31,203 @@
 #include <config.h>
 #endif
 
-#include <api/na-mateconf-utils.h>
-#include <api/na-iimporter.h>
+#include <string.h>
 
+#include <api/na-core-utils.h>
+
+#include "na-importer.h"
 #include "na-iprefs.h"
+#include "na-settings.h"
 
-/* private interface data
+typedef struct {
+	guint        id;
+	const gchar *str;
+}
+	EnumMap;
+
+/* sort mode of the items in the file manager context menu
+ * enum is defined in core/na-iprefs.h
  */
-struct NAIPrefsInterfacePrivate {
-	MateConfClient *mateconf;
+#define ORDER_ALPHA_ASC_STR					"AscendingOrder"
+#define ORDER_ALPHA_DESC_STR				"DescendingOrder"
+#define ORDER_MANUAL_STR					"ManualOrder"
+
+static EnumMap st_order_mode[] = {
+	{ IPREFS_ORDER_ALPHA_ASCENDING,  ORDER_ALPHA_ASC_STR },
+	{ IPREFS_ORDER_ALPHA_DESCENDING, ORDER_ALPHA_DESC_STR },
+	{ IPREFS_ORDER_MANUAL,           ORDER_MANUAL_STR },
+	{ 0 }
 };
 
-#define DEFAULT_ORDER_MODE_INT				IPREFS_ORDER_ALPHA_ASCENDING
-#define DEFAULT_ORDER_MODE_STR				"AscendingOrder"
-
-static MateConfEnumStringPair order_mode_table[] = {
-	{ IPREFS_ORDER_ALPHA_ASCENDING ,		"AscendingOrder" },
-	{ IPREFS_ORDER_ALPHA_DESCENDING,		"DescendingOrder" },
-	{ IPREFS_ORDER_MANUAL          ,		"ManualOrder" },
-	{ 0, NULL }
+static EnumMap st_tabs_pos[] = {
+	{ 1+GTK_POS_LEFT,   "Left" },
+	{ 1+GTK_POS_RIGHT,  "Right" },
+	{ 1+GTK_POS_TOP,    "Top" },
+	{ 1+GTK_POS_BOTTOM, "Bottom" },
+	{ 0 }
 };
 
-#define DEFAULT_IMPORT_MODE_INT				IMPORTER_MODE_NO_IMPORT
-#define DEFAULT_IMPORT_MODE_STR				"NoImport"
+static const gchar *enum_map_string_from_id( const EnumMap *map, guint id );
+static guint        enum_map_id_from_string( const EnumMap *map, const gchar *str );
 
-static MateConfEnumStringPair import_mode_table[] = {
-	{ IMPORTER_MODE_NO_IMPORT,				DEFAULT_IMPORT_MODE_STR },
-	{ IMPORTER_MODE_RENUMBER,				"Renumber" },
-	{ IMPORTER_MODE_OVERRIDE,				"Override" },
-	{ IMPORTER_MODE_ASK,					"Ask" },
-	{ 0, NULL }
-};
-
-static gboolean st_initialized = FALSE;
-static gboolean st_finalized = FALSE;
-
-static GType register_type( void );
-static void  interface_base_init( NAIPrefsInterface *klass );
-static void  interface_base_finalize( NAIPrefsInterface *klass );
-
-static void  write_string( NAIPrefs *instance, const gchar *name, const gchar *value );
-
-GType
-na_iprefs_get_type( void )
-{
-	static GType iface_type = 0;
-
-	if( !iface_type ){
-		iface_type = register_type();
-	}
-
-	return( iface_type );
-}
-
-static GType
-register_type( void )
-{
-	static const gchar *thisfn = "na_iprefs_register_type";
-	GType type;
-
-	static const GTypeInfo info = {
-		sizeof( NAIPrefsInterface ),
-		( GBaseInitFunc ) interface_base_init,
-		( GBaseFinalizeFunc ) interface_base_finalize,
-		NULL,
-		NULL,
-		NULL,
-		0,
-		0,
-		NULL
-	};
-
-	g_debug( "%s", thisfn );
-
-	type = g_type_register_static( G_TYPE_INTERFACE, "NAIPrefs", &info, 0 );
-
-	g_type_interface_add_prerequisite( type, G_TYPE_OBJECT );
-
-	return( type );
-}
-
-static void
-interface_base_init( NAIPrefsInterface *klass )
-{
-	static const gchar *thisfn = "na_iprefs_interface_base_init";
-
-	if( !st_initialized ){
-
-		g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
-
-		klass->private = g_new0( NAIPrefsInterfacePrivate, 1 );
-
-		klass->private->mateconf = mateconf_client_get_default();
-
-		st_initialized = TRUE;
-	}
-}
-
-static void
-interface_base_finalize( NAIPrefsInterface *klass )
-{
-	static const gchar *thisfn = "na_iprefs_interface_base_finalize";
-
-	if( !st_finalized ){
-
-		g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
-
-		st_finalized = TRUE;
-
-		g_object_unref( klass->private->mateconf );
-
-		g_free( klass->private );
-	}
-}
-
-/**
+/*
  * na_iprefs_get_order_mode:
- * @instance: this #NAIPrefs interface instance.
+ * @mandatory: if not %NULL, a pointer to a boolean which will receive the
+ *  mandatory property.
  *
  * Returns: the order mode currently set.
- *
- * Note: this function returns a suitable default value even if the key
- * is not found in MateConf preferences or no schema has been installed.
- *
- * Note: please take care of keeping the default value synchronized with
- * those defined in schemas.
  */
-gint
-na_iprefs_get_order_mode( NAIPrefs *instance )
+guint
+na_iprefs_get_order_mode( gboolean *mandatory )
 {
-	gint alpha_order = DEFAULT_ORDER_MODE_INT;
-	gint order_int;
-	gchar *order_str;
+	gchar *order_mode_str;
+	guint order_mode;
 
-	g_return_val_if_fail( NA_IS_IPREFS( instance ), DEFAULT_ORDER_MODE_INT );
+	order_mode_str = na_settings_get_string( NA_IPREFS_ITEMS_LIST_ORDER_MODE, NULL, mandatory );
+	order_mode = enum_map_id_from_string( st_order_mode, order_mode_str );
+	g_free( order_mode_str );
 
-	if( st_initialized && !st_finalized ){
-
-		order_str = na_iprefs_read_string(
-				instance,
-				IPREFS_DISPLAY_ALPHABETICAL_ORDER,
-				DEFAULT_ORDER_MODE_STR );
-
-		if( mateconf_string_to_enum( order_mode_table, order_str, &order_int )){
-			alpha_order = order_int;
-		}
-
-		g_free( order_str );
-	}
-
-	return( alpha_order );
+	return( order_mode );
 }
 
-/**
+/*
+ * na_iprefs_get_order_mode_by_label:
+ * @label: the label.
+ *
+ * This function converts a label (e.g. 'ManualOrder') stored in user preferences
+ * into the corresponding integer internally used. This is needed e.g. when
+ * monitoring the preferences changes.
+ *
+ * Returns: the order mode currently set.
+ */
+guint
+na_iprefs_get_order_mode_by_label( const gchar *label )
+{
+	guint order_mode;
+
+	order_mode = enum_map_id_from_string( st_order_mode, label );
+
+	return( order_mode );
+}
+
+/*
  * na_iprefs_set_order_mode:
- * @instance: this #NAIPrefs interface instance.
  * @mode: the new value to be written.
  *
  * Writes the current status of 'alphabetical order' to the MateConf
  * preference system.
  */
 void
-na_iprefs_set_order_mode( NAIPrefs *instance, gint mode )
+na_iprefs_set_order_mode( guint mode )
 {
 	const gchar *order_str;
 
-	g_return_if_fail( NA_IS_IPREFS( instance ));
-
-	if( st_initialized && !st_finalized ){
-
-		order_str = mateconf_enum_to_string( order_mode_table, mode );
-
-		write_string(
-				instance,
-				IPREFS_DISPLAY_ALPHABETICAL_ORDER,
-				order_str ? order_str : DEFAULT_ORDER_MODE_STR );
-	}
-}
-
-/**
- * na_iprefs_get_import_mode:
- * @mateconf: a #GCongClient client.
- * @name: name of the import key to be readen
- *
- * Returns: the import mode currently set.
- *
- * Note: this function returns a suitable default value even if the key
- * is not found in MateConf preferences or no schema has been installed.
- *
- * Note: please take care of keeping the default value synchronized with
- * those defined in schemas.
- */
-guint
-na_iprefs_get_import_mode( MateConfClient *mateconf, const gchar *name )
-{
-	gint import_mode = DEFAULT_IMPORT_MODE_INT;
-	gint import_int;
-	gchar *import_str;
-	gchar *path;
-
-	path = mateconf_concat_dir_and_key( IPREFS_MATECONF_PREFS_PATH, name );
-
-	import_str = na_mateconf_utils_read_string(
-			mateconf,
-			path,
-			TRUE,
-			DEFAULT_IMPORT_MODE_STR );
-
-	if( mateconf_string_to_enum( import_mode_table, import_str, &import_int )){
-		import_mode = import_int;
-	}
-
-	g_free( import_str );
-	g_free( path );
-
-	return( import_mode );
-}
-
-/**
- * na_iprefs_set_import_mode:
- * @mateconf: a #GCongClient client.
- * @mode: the new value to be written.
- *
- * Writes the current status of 'import mode' to the MateConf
- * preference system.
- */
-void
-na_iprefs_set_import_mode( MateConfClient *mateconf, const gchar *name, guint mode )
-{
-	const gchar *import_str;
-	gchar *path;
-
-	path = mateconf_concat_dir_and_key( IPREFS_MATECONF_PREFS_PATH, name );
-
-	import_str = mateconf_enum_to_string( import_mode_table, mode );
-
-	na_mateconf_utils_write_string(
-			mateconf,
-			path,
-			import_str ? import_str : DEFAULT_IMPORT_MODE_STR,
-			NULL );
-
-	g_free( path );
-}
-
-/**
- * na_iprefs_get_mateconf_client:
- * @instance: this #NAIPrefs interface instance.
- *
- * Returns: a MateConfClient object.
- */
-MateConfClient *
-na_iprefs_get_mateconf_client( const NAIPrefs *instance )
-{
-	MateConfClient *client;
-
-	g_return_val_if_fail( NA_IS_IPREFS( instance ), NULL );
-
-	client = NULL;
-
-	if( st_initialized && !st_finalized ){
-
-		client = NA_IPREFS_GET_INTERFACE( instance )->private->mateconf;
-	}
-
-	return( client );
-}
-
-/**
- * na_iprefs_read_bool:
- * @instance: this #NAIPrefs interface instance.
- * @name: the name of the preference entry.
- * @default_value: default value to be returned if the entry is not found,
- * no default value is available in the schema, of there is no schema at
- * all.
- *
- * Returns: the boolean value.
- */
-gboolean
-na_iprefs_read_bool( const NAIPrefs *instance, const gchar *name, gboolean default_value )
-{
-	gchar *path;
-	gboolean ret;
-
-	g_return_val_if_fail( NA_IS_IPREFS( instance ), FALSE );
-
-	ret = FALSE;
-
-	if( st_initialized && !st_finalized ){
-
-		path = mateconf_concat_dir_and_key( IPREFS_MATECONF_PREFS_PATH, name );
-		ret = na_mateconf_utils_read_bool( na_iprefs_get_mateconf_client( instance ), path, TRUE, default_value );
-		g_free( path );
-	}
-
-	return( ret );
-}
-
-/**
- * na_iprefs_read_string:
- * @instance: this #NAIPrefs interface instance.
- * @name: the preference key.
- * @default_value: the default value, used if entry is not found and
- * there is no schema.
- *
- * Returns: the value, as a newly allocated string which should be
- * g_free() by the caller.
- */
-gchar *
-na_iprefs_read_string( const NAIPrefs *instance, const gchar *name, const gchar *default_value )
-{
-	gchar *path;
-	gchar *value;
-
-	g_return_val_if_fail( NA_IS_IPREFS( instance ), NULL );
-
-	value = NULL;
-
-	if( st_initialized && !st_finalized ){
-
-		path = mateconf_concat_dir_and_key( IPREFS_MATECONF_PREFS_PATH, name );
-		value = na_mateconf_utils_read_string( na_iprefs_get_mateconf_client( instance ), path, TRUE, default_value );
-		g_free( path );
-	}
-
-	return( value );
-}
-
-/**
- * na_iprefs_read_string_list:
- * @instance: this #NAIPrefs interface instance.
- * @name: the preference key.
- * @default_value: a default value, used if entry is not found, or there
- * is no default value in the schema, of there is no schema at all.
- *
- * Returns: the list value, which should be na_utils_free_string_list()
- * by the caller.
- */
-GSList *
-na_iprefs_read_string_list( const NAIPrefs *instance, const gchar *name, const gchar *default_value )
-{
-	gchar *path;
-	GSList *list;
-
-	g_return_val_if_fail( NA_IS_IPREFS( instance ), NULL );
-
-	list = NULL;
-
-	if( st_initialized && !st_finalized ){
-
-		path = mateconf_concat_dir_and_key( IPREFS_MATECONF_PREFS_PATH, name );
-		list = na_mateconf_utils_read_string_list( na_iprefs_get_mateconf_client( instance ), path );
-		g_free( path );
-
-		if(( !list || !g_slist_length( list )) && default_value ){
-			g_slist_free( list );
-			list = g_slist_append( NULL, g_strdup( default_value ));
-		}
-	}
-
-	return( list );
+	order_str = enum_map_string_from_id( st_order_mode, mode );
+	na_settings_set_string( NA_IPREFS_ITEMS_LIST_ORDER_MODE, order_str );
 }
 
 /*
- * na_iprefs_write_string:
- * @instance: this #NAIPrefs interface instance.
- * @name: the preference key.
- * @value: the value to be written.
+ * na_iprefs_get_tabs_pos:
+ * @mandatory: if not %NULL, a pointer to a boolean which will receive the
+ *  mandatory property.
  *
- * Writes the value as the given MateConf preference.
+ * Returns: the tabs position of the main window.
  */
-static void
-write_string( NAIPrefs *instance, const gchar *name, const gchar *value )
+guint
+na_iprefs_get_tabs_pos( gboolean *mandatory )
 {
-	gchar *path;
+	gchar *tabs_pos_str;
+	guint tabs_pos;
 
-	g_return_if_fail( NA_IS_IPREFS( instance ));
+	tabs_pos_str = na_settings_get_string( NA_IPREFS_MAIN_TABS_POS, NULL, mandatory );
+	tabs_pos = enum_map_id_from_string( st_tabs_pos, tabs_pos_str );
+	g_free( tabs_pos_str );
 
-	if( st_initialized && !st_finalized ){
-
-		path = mateconf_concat_dir_and_key( IPREFS_MATECONF_PREFS_PATH, name );
-		na_mateconf_utils_write_string( na_iprefs_get_mateconf_client( instance ), path, value, NULL );
-		g_free( path );
-	}
+	return( tabs_pos-1 );
 }
 
-/**
- * na_iprefs_write_string_list
- * @instance: this #NAIPrefs interface instance.
- * @name: the preference key.
- * @value: the value to be written.
+/*
+ * na_iprefs_set_tabs_pos:
+ * @position: the new value to be written.
  *
- * Writes the value as the given MateConf preference.
+ * Writes the current status of 'tabs position' to the preference system.
  */
 void
-na_iprefs_write_string_list( const NAIPrefs *instance, const gchar *name, GSList *list )
+na_iprefs_set_tabs_pos( guint position )
 {
-	gchar *path;
+	const gchar *tabs_pos_str;
 
-	g_return_if_fail( NA_IS_IPREFS( instance ));
+	tabs_pos_str = enum_map_string_from_id( st_tabs_pos, 1+position );
+	na_settings_set_string( NA_IPREFS_MAIN_TABS_POS, tabs_pos_str );
+}
 
-	if( st_initialized && !st_finalized ){
+/*
+ * na_iprefs_write_level_zero:
+ * @items: the #GList of items whose first level is to be written.
+ * @messages: a pointer to a #GSList in which we will add happening
+ *  error messages;
+ *  the pointer may be %NULL;
+ *  if not %NULL, the #GSList must have been initialized by the
+ *  caller.
+ *
+ * Rewrite the level-zero items in MateConf preferences.
+ *
+ * Returns: %TRUE if successfully written (i.e. writable, not locked,
+ * and so on), %FALSE else.
+ *
+ * @messages #GSList is only filled up in case of an error has occured.
+ * If there is no error (na_iprefs_write_level_zero() returns %TRUE), then
+ * the caller may safely assume that @messages is returned in the same
+ * state that it has been provided.
+ */
+gboolean
+na_iprefs_write_level_zero( const GList *items, GSList **messages )
+{
+	gboolean written;
+	const GList *it;
+	gchar *id;
+	GSList *content;
 
-		path = mateconf_concat_dir_and_key( IPREFS_MATECONF_PREFS_PATH, name );
-		na_mateconf_utils_write_string_list( na_iprefs_get_mateconf_client( instance ), path, list, NULL );
-		g_free( path );
+	written = FALSE;
+	content = NULL;
+
+	for( it = items ; it ; it = it->next ){
+		id = na_object_get_id( it->data );
+		content = g_slist_prepend( content, id );
 	}
+	content = g_slist_reverse( content );
+
+	written = na_settings_set_string_list( NA_IPREFS_ITEMS_LEVEL_ZERO_ORDER, content );
+
+	na_core_utils_slist_free( content );
+
+	return( written );
+}
+
+static const gchar *
+enum_map_string_from_id( const EnumMap *map, guint id )
+{
+	const EnumMap *i = map;
+
+	while( i->id ){
+		if( i->id == id ){
+			return( i->str );
+		}
+		i++;
+	}
+	return( map->str );
+}
+
+static guint
+enum_map_id_from_string( const EnumMap *map, const gchar *str )
+{
+	const EnumMap *i = map;
+
+	while( i->id ){
+		if( !strcmp( i->str, str )){
+			return( i->id );
+		}
+		i++;
+	}
+	return( map->id );
 }

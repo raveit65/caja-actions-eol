@@ -1,0 +1,9 @@
+docs
+----
+As of Caja-Actions 3.0, the documentation is composed of two main
+parts:
+- the Reference Manual describes all features of the product, rather
+  targeting developers and packagers;
+- the Caja-Actions Configuration Tool User's Manual.
+
+P. Wieser, Dec. 2010

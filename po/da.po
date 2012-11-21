@@ -93,10 +93,10 @@ msgstr "Et beskrivende navn til profilen"
 #: ../src/common/caja-actions-config-mateconf-private.h:87
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
-"the Nact interface. If not set there will be a default auto generated string "
+"the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr ""
-"Feltets formål er at give brugeren et læsevenligt navn til profilen i Nact-"
+"Feltets formål er at give brugeren et læsevenligt navn til profilen i Cact-"
 "grænsefladen. Hvis ikke angivet vil en automatisk genereret standardstreng "
 "blive sat som standard"
 
@@ -392,28 +392,28 @@ msgstr ""
 "knude er <%s> i stedet for <%s>)"
 
 #. i18n notes: will be displayed in a dialog
-#: ../src/nact/nact.c:229
+#: ../src/cact/cact.c:229
 #, c-format
 msgid "Can't duplicate action '%s'!"
 msgstr "Kan ikke duplikere handling \"%s\"!"
 
 #. create columns on the tree view
-#: ../src/nact/nact.c:344 ../src/nact/nact-import-export.c:179
+#: ../src/cact/cact.c:344 ../src/cact/cact-import-export.c:179
 msgid "Icon"
 msgstr "Ikon"
 
-#: ../src/nact/nact.c:349 ../src/nact/nact-import-export.c:184
+#: ../src/cact/cact.c:349 ../src/cact/cact-import-export.c:184
 msgid "Label"
 msgstr "Etiket"
 
-#: ../src/nact/nact.c:373 ../src/nact/nact-action-editor.c:161
-#: ../src/nact/nact-editor.c:663 ../src/nact/nact-import-export.c:331
-#: ../src/nact/nact-profile-editor.c:567
+#: ../src/cact/cact.c:373 ../src/cact/cact-action-editor.c:161
+#: ../src/cact/cact-editor.c:663 ../src/cact/cact-import-export.c:331
+#: ../src/cact/cact-profile-editor.c:567
 msgid "Could not load interface for Caja Actions Config Tool"
 msgstr ""
 "Kunne ikke indlæse grænseflade til konfiguration af Caja-handlinger"
 
-#: ../src/nact/nact-application.c:291
+#: ../src/cact/cact-application.c:291
 msgid ""
 "<b>Another instance of Caja Actions Configurator is already running.</"
 "b>\n"
@@ -422,178 +422,178 @@ msgid ""
 msgstr ""
 
 #. i18n: window title
-#: ../src/nact/nact-application.c:294
-#: ../src/nact/caja-actions-config.glade.h:64
+#: ../src/cact/cact-application.c:294
+#: ../src/cact/caja-actions-config.glade.h:64
 msgid "Caja Actions"
 msgstr "Caja-handlinger"
 
-#: ../src/nact/nact.desktop.in.h:1
+#: ../src/cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "Tilføj menupunkter til Caja pop op-menuen"
 
-#: ../src/nact/nact.desktop.in.h:2
+#: ../src/cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "Konfiguration af Caja-handlinger"
 
-#: ../src/nact/nact-action-editor.c:186 ../src/nact/nact-action-editor.c:189
-#: ../src/nact/nact-editor.c:681 ../src/nact/nact-editor.c:684
+#: ../src/cact/cact-action-editor.c:186 ../src/cact/cact-action-editor.c:189
+#: ../src/cact/cact-editor.c:681 ../src/cact/cact-editor.c:684
 msgid "Icon of the menu item in the Caja popup menu"
 msgstr "Ikon til menupunktet i Caja pop op-menuen"
 
-#: ../src/nact/nact-action-editor.c:230
+#: ../src/cact/cact-action-editor.c:230
 msgid "Add a new action"
 msgstr "Tilføj en ny handling"
 
-#: ../src/nact/nact-action-editor.c:234
+#: ../src/cact/cact-action-editor.c:234
 #, c-format
 msgid "Edit action \"%s\""
 msgstr "Redigér handling \"%s\""
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../src/nact/nact-editor.c:195
+#: ../src/cact/cact-editor.c:195
 msgid "None"
 msgstr "Intet"
 
 #. i18n notes: will be displayed in a dialog
-#: ../src/nact/nact-editor.c:485
+#: ../src/cact/cact-editor.c:485
 #, c-format
 msgid "Can't copy action's profile '%s'!"
 msgstr "Kan ikke kopiere handlingsprofil \"%s\"!"
 
 #. i18n notes: will be displayed in a dialog
-#: ../src/nact/nact-editor.c:509
+#: ../src/cact/cact-editor.c:509
 #, c-format
 msgid "Can't paste action's profile '%s'!"
 msgstr "Kan ikke indsætte handlingsprofil \"%s\"!"
 
 #. printf ("profile_name : %s\n", action_profile->desc_name);
 #. i18n notes: this is the default name of a copied profile
-#: ../src/nact/nact-editor.c:514
+#: ../src/cact/cact-editor.c:514
 #, c-format
 msgid "%s Copy"
 msgstr "%s-kopi"
 
 #. i18n notes: will be displayed in a dialog
-#: ../src/nact/nact-editor.c:573
+#: ../src/cact/cact-editor.c:573
 #, c-format
 msgid "Can't delete action's profile '%s'!"
 msgstr "Kan ikke slette handlingsprofil \"%s\"!"
 
-#: ../src/nact/nact-editor.c:626
+#: ../src/cact/cact-editor.c:626
 msgid "Profile Name"
 msgstr "Profilnavn"
 
-#: ../src/nact/nact-editor.c:706
+#: ../src/cact/cact-editor.c:706
 msgid "Add a New Action"
 msgstr "Tilføj ny handling"
 
-#: ../src/nact/nact-editor.c:710
+#: ../src/cact/cact-editor.c:710
 #, c-format
 msgid "Edit Action \"%s\""
 msgstr "Redigér handling \"%s\""
 
-#: ../src/nact/nact-import-export.c:223
+#: ../src/cact/cact-import-export.c:223
 #, c-format
 msgid "Can't parse file '%s' as MateConf schema description file!"
 msgstr "Kan ikke fortolke fil \"%s\" som MateConf-skema-beskrivelsesfil!"
 
 #. i18n notes: %s is the label of the action (eg, 'Mount ISO')
-#: ../src/nact/nact-import-export.c:244
+#: ../src/cact/cact-import-export.c:244
 #, c-format
 msgid "Action '%s' importation failed!"
 msgstr "Handling \"%s\"-import fejlede!"
 
 #. initialize the default schemes
 #. i18n notes : description of 'file' scheme
-#: ../src/nact/nact-prefs.c:172
+#: ../src/cact/cact-prefs.c:172
 #, c-format
 msgid "%sLocal Files"
 msgstr "%sLokale filer"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../src/nact/nact-prefs.c:174
+#: ../src/cact/cact-prefs.c:174
 #, c-format
 msgid "%sSSH Files"
 msgstr "%sSSH-filer"
 
 #. i18n notes : description of 'smb' scheme
-#: ../src/nact/nact-prefs.c:176
+#: ../src/cact/cact-prefs.c:176
 #, c-format
 msgid "%sWindows Files"
 msgstr "%sWindows-filer"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../src/nact/nact-prefs.c:178
+#: ../src/cact/cact-prefs.c:178
 #, c-format
 msgid "%sFTP Files"
 msgstr "%sFTP-filer"
 
 #. i18n notes : description of 'dav' scheme
-#: ../src/nact/nact-prefs.c:180
+#: ../src/cact/cact-prefs.c:180
 #, c-format
 msgid "%sWebdav Files"
 msgstr "%sWebDAV-filer"
 
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../src/nact/nact-profile-editor.c:299
+#: ../src/cact/cact-profile-editor.c:299
 msgid "new-scheme"
 msgstr "ny-type"
 
-#: ../src/nact/nact-profile-editor.c:300
+#: ../src/cact/cact-profile-editor.c:300
 msgid "New Scheme Description"
 msgstr "Beskrivelse på ny type"
 
-#: ../src/nact/nact-profile-editor.c:396
+#: ../src/cact/cact-profile-editor.c:396
 msgid "Scheme"
 msgstr "Type"
 
-#: ../src/nact/nact-profile-editor.c:407
+#: ../src/cact/cact-profile-editor.c:407
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: ../src/nact/nact-profile-editor.c:608
+#: ../src/cact/cact-profile-editor.c:608
 msgid "Add a New Profile"
 msgstr "Tilføj en ny profil"
 
-#: ../src/nact/nact-profile-editor.c:612
+#: ../src/cact/cact-profile-editor.c:612
 #, c-format
 msgid "Edit Profile \"%s\""
 msgstr "Redigér profil \"%s\""
 
 #. i18n notes: example strings for the command preview
-#: ../src/nact/nact-utils.c:196
+#: ../src/cact/cact-utils.c:196
 msgid "/path/to"
 msgstr "/sti/til"
 
-#: ../src/nact/nact-utils.c:197 ../src/nact/nact-utils.c:199
+#: ../src/cact/cact-utils.c:197 ../src/cact/cact-utils.c:199
 msgid "file1.txt"
 msgstr "fil1.txt"
 
-#: ../src/nact/nact-utils.c:197
+#: ../src/cact/cact-utils.c:197
 msgid "file2.txt"
 msgstr "fil2.txt"
 
-#: ../src/nact/nact-utils.c:198 ../src/nact/nact-utils.c:199
+#: ../src/cact/cact-utils.c:198 ../src/cact/cact-utils.c:199
 msgid "folder1"
 msgstr "mappe1"
 
-#: ../src/nact/nact-utils.c:198
+#: ../src/cact/cact-utils.c:198
 msgid "folder2"
 msgstr "mappe2"
 
-#: ../src/nact/nact-utils.c:201
+#: ../src/cact/cact-utils.c:201
 msgid "test.example.net"
 msgstr "test.eksempel.dk"
 
-#: ../src/nact/nact-utils.c:202
+#: ../src/cact/cact-utils.c:202
 msgid "file.txt"
 msgstr "fil.txt"
 
-#: ../src/nact/nact-utils.c:203
+#: ../src/cact/cact-utils.c:203
 msgid "folder"
 msgstr "mappe"
 
-#: ../src/nact/caja-actions-config.glade.h:1
+#: ../src/cact/caja-actions-config.glade.h:1
 msgid ""
 "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
 "(C) 2009 Pierre Wieser <pwieser@trychlos.org>"
@@ -601,12 +601,12 @@ msgstr ""
 "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
 "(C) 2009 Pierre Wieser <pwieser@trychlos.org>"
 
-#: ../src/nact/caja-actions-config.glade.h:4
+#: ../src/cact/caja-actions-config.glade.h:4
 #, no-c-format
 msgid "<b>%%</b>: a percent sign"
 msgstr "<b>%%</b>: et procenttegn"
 
-#: ../src/nact/caja-actions-config.glade.h:6
+#: ../src/cact/caja-actions-config.glade.h:6
 #, no-c-format
 msgid ""
 "<b>%M</b>: space-separated list of the selected file(s)/folder(s) with their "
@@ -615,29 +615,29 @@ msgstr ""
 "<b>%M</b>: liste over de(n) valgte fil(er)/mappe(r) med deres komplette sti, "
 "adskilt af mellemrum"
 
-#: ../src/nact/caja-actions-config.glade.h:8
+#: ../src/cact/caja-actions-config.glade.h:8
 #, no-c-format
 msgid "<b>%U</b>: username of the MateVFS URI"
 msgstr "<b>%U</b>: brugernavn til MateVFS URI"
 
-#: ../src/nact/caja-actions-config.glade.h:10
+#: ../src/cact/caja-actions-config.glade.h:10
 #, no-c-format
 msgid "<b>%d</b>: base folder of the selected file(s)"
 msgstr "<b>%d</b>: grundmappe til de valgte filer"
 
-#: ../src/nact/caja-actions-config.glade.h:12
+#: ../src/cact/caja-actions-config.glade.h:12
 #, no-c-format
 msgid ""
 "<b>%f</b>: the name of the selected file or the 1st one if many are selected"
 msgstr ""
 "<b>%f</b>: navnet på den valgte fil eller den første, hvis flere er valgt"
 
-#: ../src/nact/caja-actions-config.glade.h:14
+#: ../src/cact/caja-actions-config.glade.h:14
 #, no-c-format
 msgid "<b>%h</b>: hostname of the MateVFS URI"
 msgstr "<b>%h</b>: værtsnavn til MateVFS URI"
 
-#: ../src/nact/caja-actions-config.glade.h:16
+#: ../src/cact/caja-actions-config.glade.h:16
 #, no-c-format
 msgid ""
 "<b>%m</b>: space-separated list of the basenames of the selected\n"
@@ -646,50 +646,50 @@ msgstr ""
 "<b>%m</b>: liste over grundnavne på de valgte filer/mapper,\n"
 "adskilt af mellemrum"
 
-#: ../src/nact/caja-actions-config.glade.h:19
+#: ../src/cact/caja-actions-config.glade.h:19
 #, no-c-format
 msgid "<b>%s</b>: scheme of the MateVFS URI"
 msgstr "<b>%s</b>: type på MateVFS URI"
 
-#: ../src/nact/caja-actions-config.glade.h:21
+#: ../src/cact/caja-actions-config.glade.h:21
 #, no-c-format
 msgid "<b>%u</b>: MateVFS URI"
 msgstr "<b>%u</b>: MateVFS URI"
 
-#: ../src/nact/caja-actions-config.glade.h:22
+#: ../src/cact/caja-actions-config.glade.h:22
 msgid "<b>Action</b>"
 msgstr "<b>Handling</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:23
+#: ../src/cact/caja-actions-config.glade.h:23
 msgid "<b>Appears if file matches</b>"
 msgstr "<b>Vises hvis fil passer</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:24
+#: ../src/cact/caja-actions-config.glade.h:24
 msgid "<b>Appears if scheme is in this list</b>"
 msgstr "<b>Vises hvis type findes i denne liste:</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:25
+#: ../src/cact/caja-actions-config.glade.h:25
 msgid "<b>Appears if selection contains</b>"
 msgstr "<b>Vises hvis valg indeholder:</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:26
+#: ../src/cact/caja-actions-config.glade.h:26
 msgid "<b>Caja Menu Item</b>"
 msgstr "<b>Caja-menupunkt</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:27
+#: ../src/cact/caja-actions-config.glade.h:27
 msgid "<b>Profiles</b>"
 msgstr "<b>Profiler</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:29
+#: ../src/cact/caja-actions-config.glade.h:29
 #, no-c-format
 msgid "<i><b><span size=\"small\">e.g., %s</span></b></i>"
 msgstr "<i><b><span size=\"small\">fx, %s</span></b></i>"
 
-#: ../src/nact/caja-actions-config.glade.h:30
+#: ../src/cact/caja-actions-config.glade.h:30
 msgid "<span size=\"larger\"><b>Parameter Legend</b></span>"
 msgstr "<span size=\"larger\"><b>Parameterbeskrivelse</b></span>"
 
-#: ../src/nact/caja-actions-config.glade.h:31
+#: ../src/cact/caja-actions-config.glade.h:31
 msgid ""
 "<span weight=\"bold\" size=\"larger\">place primary text here</span>\n"
 "\n"
@@ -699,7 +699,7 @@ msgstr ""
 "\n"
 "placér sekundær tekst her"
 
-#: ../src/nact/caja-actions-config.glade.h:34
+#: ../src/cact/caja-actions-config.glade.h:34
 msgid ""
 "A string with wildcards (? or *) that will be used to match the filenames. "
 "You can set several filename patterns by separating them with a semi-colon "
@@ -708,7 +708,7 @@ msgstr ""
 "En streng med jokertegn (? eller *), som bruges til at sammenligne "
 "filnavnene. Du kan angive flere filmønstre adskilt af semikolon (;)."
 
-#: ../src/nact/caja-actions-config.glade.h:35
+#: ../src/cact/caja-actions-config.glade.h:35
 msgid ""
 "A string with wildcards (? or *) that will be used to match the mimetypes of "
 "files. You can set several mimetype patterns by separating them with a semi-"
@@ -717,31 +717,31 @@ msgstr ""
 "En streng med jokertegn (? eller *), som bruges til at bestemme filers MIME-"
 "typer. Du kan angive flere MIME-type-mønstre adskilt af semikolon (;)."
 
-#: ../src/nact/caja-actions-config.glade.h:36
+#: ../src/cact/caja-actions-config.glade.h:36
 msgid "Action"
 msgstr "Handling"
 
-#: ../src/nact/caja-actions-config.glade.h:37
+#: ../src/cact/caja-actions-config.glade.h:37
 msgid "Advanced Conditions"
 msgstr "Avancerede betingelser"
 
-#: ../src/nact/caja-actions-config.glade.h:38
+#: ../src/cact/caja-actions-config.glade.h:38
 msgid "Appears if selection has multiple files or folders"
 msgstr "Vises hvis valg indeholder flere filer eller mapper"
 
-#: ../src/nact/caja-actions-config.glade.h:39
+#: ../src/cact/caja-actions-config.glade.h:39
 msgid "Both"
 msgstr "Begge"
 
-#: ../src/nact/caja-actions-config.glade.h:40
+#: ../src/cact/caja-actions-config.glade.h:40
 msgid "Click to add a new scheme."
 msgstr "Klik for at tilføje en ny type."
 
-#: ../src/nact/caja-actions-config.glade.h:41
+#: ../src/cact/caja-actions-config.glade.h:41
 msgid "Click to choose a command from the file chooser dialog."
 msgstr "Klik for at vælge en kommando fra filvælger-vinduet."
 
-#: ../src/nact/caja-actions-config.glade.h:42
+#: ../src/cact/caja-actions-config.glade.h:42
 msgid ""
 "Click to choose a custom icon from a file instead of a predefined icon from "
 "the drop-down list."
@@ -749,11 +749,11 @@ msgstr ""
 "Klik for at vælge et brugerdefineret ikon fra en fil, i stedet for et "
 "prædefineret ikon fra rullegardinet."
 
-#: ../src/nact/caja-actions-config.glade.h:43
+#: ../src/cact/caja-actions-config.glade.h:43
 msgid "Click to remove the selected scheme."
 msgstr "Klik for at fjerne den valgte type."
 
-#: ../src/nact/caja-actions-config.glade.h:44
+#: ../src/cact/caja-actions-config.glade.h:44
 msgid ""
 "Click to toggle the display of the list of special tokens you can use in the "
 "parameter field."
@@ -761,41 +761,41 @@ msgstr ""
 "Klik for at slå visning af en en liste med specielle symboler, som du kan "
 "bruge i parameterfeltet til/fra."
 
-#: ../src/nact/caja-actions-config.glade.h:45
+#: ../src/cact/caja-actions-config.glade.h:45
 msgid "Conditions"
 msgstr "Krav"
 
-#: ../src/nact/caja-actions-config.glade.h:46
+#: ../src/cact/caja-actions-config.glade.h:46
 msgid "Create a copy of the selected action."
 msgstr "Opret en kopi af den valgte handling."
 
-#: ../src/nact/caja-actions-config.glade.h:47
+#: ../src/cact/caja-actions-config.glade.h:47
 msgid ""
 "Delete the action without any confirmation nor the possibility to restore it."
 msgstr ""
 "Slet handlingen uden bekræftelse og ej heller muligheden for at genskabe den."
 
-#: ../src/nact/caja-actions-config.glade.h:48
+#: ../src/cact/caja-actions-config.glade.h:48
 msgid "Duplicate"
 msgstr "Duplikering"
 
-#: ../src/nact/caja-actions-config.glade.h:49
+#: ../src/cact/caja-actions-config.glade.h:49
 msgid "Export existing configs"
 msgstr "Eksportér eksisterende konfigurationer"
 
-#: ../src/nact/caja-actions-config.glade.h:50
+#: ../src/cact/caja-actions-config.glade.h:50
 msgid "File to Import:"
 msgstr "Fil til import:"
 
-#: ../src/nact/caja-actions-config.glade.h:51
+#: ../src/cact/caja-actions-config.glade.h:51
 msgid "Filenames:"
 msgstr "Filnavne:"
 
-#: ../src/nact/caja-actions-config.glade.h:52
+#: ../src/cact/caja-actions-config.glade.h:52
 msgid "Icon:"
 msgstr "Ikon:"
 
-#: ../src/nact/caja-actions-config.glade.h:53
+#: ../src/cact/caja-actions-config.glade.h:53
 msgid ""
 "If selected, the filename patterns will be matched case sensitive (eg, *.jpg "
 "will not match photo.JPG)"
@@ -803,27 +803,27 @@ msgstr ""
 "Hvis valgt vil filnavnmønstrene blive tilpasset versalfølsom (fx. *.jpg vil "
 "ikke passe som foto.JPG)"
 
-#: ../src/nact/caja-actions-config.glade.h:54
+#: ../src/cact/caja-actions-config.glade.h:54
 msgid "Import new configurations"
 msgstr "Importér nye konfigurationer"
 
-#: ../src/nact/caja-actions-config.glade.h:55
+#: ../src/cact/caja-actions-config.glade.h:55
 msgid "Import/Export"
 msgstr "Import/eksport"
 
-#: ../src/nact/caja-actions-config.glade.h:56
+#: ../src/cact/caja-actions-config.glade.h:56
 msgid "Import/Export Settings"
 msgstr "Opsætning af import/eksport"
 
-#: ../src/nact/caja-actions-config.glade.h:57
+#: ../src/cact/caja-actions-config.glade.h:57
 msgid "Label of the menu item in the Caja popup menu."
 msgstr "Etiket til menupunktet i Caja pop op-menuen."
 
-#: ../src/nact/caja-actions-config.glade.h:58
+#: ../src/cact/caja-actions-config.glade.h:58
 msgid "Label:"
 msgstr "Etiket:"
 
-#: ../src/nact/caja-actions-config.glade.h:59
+#: ../src/cact/caja-actions-config.glade.h:59
 msgid ""
 "Manage importation of external action configurations and exportation of "
 "existing actions."
@@ -831,23 +831,23 @@ msgstr ""
 "Håndtér importen af eksterne handlings-konfigurationer og eksporten af "
 "eksisterende handlinger."
 
-#: ../src/nact/caja-actions-config.glade.h:60
+#: ../src/cact/caja-actions-config.glade.h:60
 msgid "Match case"
 msgstr "Passende sag"
 
-#: ../src/nact/caja-actions-config.glade.h:61
+#: ../src/cact/caja-actions-config.glade.h:61
 msgid "Mimetypes:"
 msgstr "MIME-typer:"
 
-#: ../src/nact/caja-actions-config.glade.h:62
+#: ../src/cact/caja-actions-config.glade.h:62
 msgid "Caja Action Editor"
 msgstr "Redigering af Caja-handlinger"
 
-#: ../src/nact/caja-actions-config.glade.h:63
+#: ../src/cact/caja-actions-config.glade.h:63
 msgid "Caja Action Profile Editor"
 msgstr "Redigering af Caja-handlingsprofil"
 
-#: ../src/nact/caja-actions-config.glade.h:65
+#: ../src/cact/caja-actions-config.glade.h:65
 msgid ""
 "Caja Actions Configuration Tool\n"
 "Application to configure Caja Action extension"
@@ -855,15 +855,15 @@ msgstr ""
 "Værktøj til konfiguration af Caja-handlinger\n"
 "Program til konfiguration af Caja-handlings-udvidelsen"
 
-#: ../src/nact/caja-actions-config.glade.h:67
+#: ../src/cact/caja-actions-config.glade.h:67
 msgid "Only files"
 msgstr "Kun filer"
 
-#: ../src/nact/caja-actions-config.glade.h:68
+#: ../src/cact/caja-actions-config.glade.h:68
 msgid "Only folders"
 msgstr "Kun mapper"
 
-#: ../src/nact/caja-actions-config.glade.h:69
+#: ../src/cact/caja-actions-config.glade.h:69
 msgid ""
 "Parameters that will be sent to the program. Click on the 'Legend' button to "
 "see the different replacement tokens."
@@ -871,23 +871,23 @@ msgstr ""
 "Parametre som sendes til programmet. Klik på \"Beskrivelse\"-knappen for at "
 "se de forskellige erstatnings-symboler."
 
-#: ../src/nact/caja-actions-config.glade.h:70
+#: ../src/cact/caja-actions-config.glade.h:70
 msgid "Parameters:"
 msgstr "Parametre:"
 
-#: ../src/nact/caja-actions-config.glade.h:71
+#: ../src/cact/caja-actions-config.glade.h:71
 msgid "Path:"
 msgstr "Sti:"
 
-#: ../src/nact/caja-actions-config.glade.h:72
+#: ../src/cact/caja-actions-config.glade.h:72
 msgid "Project website"
 msgstr "Projektets websted"
 
-#: ../src/nact/caja-actions-config.glade.h:73
+#: ../src/cact/caja-actions-config.glade.h:73
 msgid "Save in Folder:"
 msgstr "Gem i mappe:"
 
-#: ../src/nact/caja-actions-config.glade.h:74
+#: ../src/cact/caja-actions-config.glade.h:74
 msgid ""
 "Select the configurations you want to export. Use Shift or Ctrl key to "
 "select more than one."
@@ -895,15 +895,15 @@ msgstr ""
 "Vælg de konfigurationer du ønsker at eksportere. Brug skift- eller ctrl-"
 "tasten til at vælge flere."
 
-#: ../src/nact/caja-actions-config.glade.h:75
+#: ../src/cact/caja-actions-config.glade.h:75
 msgid "Select the configurations you want to export:"
 msgstr "Vælg de konfigurationer du vil eksportere:"
 
-#: ../src/nact/caja-actions-config.glade.h:76
+#: ../src/cact/caja-actions-config.glade.h:76
 msgid "Select the file you want to import."
 msgstr "Vælg den fil du ønsker at importere."
 
-#: ../src/nact/caja-actions-config.glade.h:77
+#: ../src/cact/caja-actions-config.glade.h:77
 msgid ""
 "Select the folder you want your config to be saved in. This folder must "
 "exist."
@@ -911,7 +911,7 @@ msgstr ""
 "Vælg en mappe hvori du ønsker at gemme din konfiguration. Denne mappe skal "
 "eksistere."
 
-#: ../src/nact/caja-actions-config.glade.h:78
+#: ../src/cact/caja-actions-config.glade.h:78
 msgid ""
 "Select the kind of files where you want your action to appear. If you don't "
 "know what to choose, try selecting just 'file' which is the most common "
@@ -922,37 +922,37 @@ msgstr ""
 "valg. Du kan tilføje en ny type ved at klikke på \"+\" knappen."
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../src/nact/caja-actions-config.glade.h:80
+#: ../src/cact/caja-actions-config.glade.h:80
 msgid "The MATE Translation Project <mate-i18n@gnome.org>"
 msgstr ""
 "Lasse Bang Mikkelsen\n"
 "Peter Bach\n"
 "Mads Lundby"
 
-#: ../src/nact/caja-actions-config.glade.h:81
+#: ../src/cact/caja-actions-config.glade.h:81
 msgid ""
 "The command that will be launched by selecting the action in Caja popup "
 "menu."
 msgstr ""
 "Kommandoen som vil blive kørt når handlingen vælges i Caja pop op-menuen."
 
-#: ../src/nact/caja-actions-config.glade.h:82
+#: ../src/cact/caja-actions-config.glade.h:82
 msgid "This software is licensed under the GNU Genaral Public License (GPL)"
 msgstr "Dette program er licenseret under GNU General Public License (GPL)"
 
-#: ../src/nact/caja-actions-config.glade.h:83
+#: ../src/cact/caja-actions-config.glade.h:83
 msgid "Tooltip of the menu item that will appear in the Caja statusbar."
 msgstr "Værktøjstip på menupunktet som vil vises i Caja statusbjælken."
 
-#: ../src/nact/caja-actions-config.glade.h:84
+#: ../src/cact/caja-actions-config.glade.h:84
 msgid "Tooltip:"
 msgstr "Værktøjstip:"
 
-#: ../src/nact/caja-actions-config.glade.h:85
+#: ../src/cact/caja-actions-config.glade.h:85
 msgid "_Browse"
 msgstr "_Gennemse"
 
-#: ../src/nact/caja-actions-config.glade.h:86
+#: ../src/cact/caja-actions-config.glade.h:86
 msgid "_Legend"
 msgstr "_Beskrivelse"
 

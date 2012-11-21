@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -34,7 +33,7 @@
 
 #include <core/na-io-provider.h>
 
-#include "cact-gtk-utils.h"
+#include "base-gtk-utils.h"
 #include "cact-main-statusbar.h"
 
 typedef struct {
@@ -44,36 +43,50 @@ typedef struct {
 }
 	StatusbarTimeoutDisplayStruct;
 
-#define LOCKED_IMAGE					PKGDATADIR "/locked.png"
+#define LOCKED_IMAGE					PKGUIDIR "/locked.png"
 
 static GtkStatusbar *get_statusbar( const CactMainWindow *window );
 static gboolean      display_timeout( StatusbarTimeoutDisplayStruct *stds );
 static void          display_timeout_free( StatusbarTimeoutDisplayStruct *stds );
 
 /**
- * cact_main_statusbar_initial_load_toplevel:
+ * cact_main_statusbar_initialize_gtk_toplevel:
  * @window: the #CactMainWindow.
  *
  * Initial loading of the UI.
  */
 void
-cact_main_statusbar_initial_load_toplevel( CactMainWindow *window )
+cact_main_statusbar_initialize_gtk_toplevel( CactMainWindow *window )
 {
-	static const gchar *thisfn = "cact_main_statusbar_initial_load_toplevel";
+	static const gchar *thisfn = "cact_main_statusbar_initialize_gtk_toplevel";
 	gint width, height;
 	GtkStatusbar *bar;
-	GtkRequisition requisition;
 	GtkFrame *frame;
+/* gtk_widget_size_request() is deprecated since Gtk+ 3.0
+ * see http://library.gnome.org/devel/gtk/unstable/GtkWidget.html#gtk-widget-render-icon
+ * and http://git.gnome.org/browse/gtk+/commit/?id=07eeae15825403037b7df139acf9bfa104d5559d
+ */
+#if GTK_CHECK_VERSION( 2, 91, 7 )
+	GtkRequisition minimal_size, natural_size;
+#else
+	GtkRequisition requisition;
+#endif
 
 	g_debug( "%s: window=%p", thisfn, ( void * ) window );
 
 	gtk_icon_size_lookup( GTK_ICON_SIZE_MENU, &width, &height );
 
 	bar = get_statusbar( window );
+	frame = GTK_FRAME( base_window_get_widget( BASE_WINDOW( window ), "ActionLockedFrame" ));
+
+#if GTK_CHECK_VERSION( 2, 91, 7 )
+	gtk_widget_get_preferred_size( GTK_WIDGET( bar ), &minimal_size, &natural_size );
+	gtk_widget_set_size_request( GTK_WIDGET( bar ), natural_size.width, height+8 );
+#else
 	gtk_widget_size_request( GTK_WIDGET( bar ), &requisition );
 	gtk_widget_set_size_request( GTK_WIDGET( bar ), requisition.width, height+8 );
+#endif
 
-	frame = GTK_FRAME( base_window_get_widget( BASE_WINDOW( window ), "ActionLockedFrame" ));
 	gtk_widget_set_size_request( GTK_WIDGET( frame ), width+4, height+4 );
 	gtk_frame_set_shadow_type( frame, GTK_SHADOW_IN );
 }
@@ -158,10 +171,7 @@ cact_main_statusbar_display_with_timeout( CactMainWindow *window, const gchar *c
 void
 cact_main_statusbar_hide_status( CactMainWindow *window, const gchar *context )
 {
-	static const gchar *thisfn = "cact_main_statusbar_hide_status";
 	GtkStatusbar *bar;
-
-	g_debug( "%s: window=%p, context=%s", thisfn, ( void * ) window, context );
 
 	bar = get_statusbar( window );
 
@@ -187,13 +197,11 @@ cact_main_statusbar_set_locked( CactMainWindow *window, gboolean readonly, gint 
 	GtkStatusbar *bar;
 	GtkFrame *frame;
 	GtkImage *image;
-	GdkPixbuf *pixbuf;
 	gchar *tooltip;
 	gboolean set_pixbuf;
 
 	g_debug( "%s: window=%p, readonly=%s, reason=%d", thisfn, ( void * ) window, readonly ? "True":"False", reason );
 
-	pixbuf = NULL;
 	set_pixbuf = TRUE;
 	bar = get_statusbar( window );
 	frame = GTK_FRAME( base_window_get_widget( BASE_WINDOW( window ), "ActionLockedFrame" ));
@@ -215,7 +223,7 @@ cact_main_statusbar_set_locked( CactMainWindow *window, gboolean readonly, gint 
 	}
 
 	if( set_pixbuf ){
-		cact_gtk_utils_render( NULL, image, GTK_ICON_SIZE_MENU );
+		base_gtk_utils_render( NULL, image, GTK_ICON_SIZE_MENU );
 	}
 }
 

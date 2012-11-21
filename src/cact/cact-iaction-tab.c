@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -40,81 +39,62 @@
 
 #include <core/na-io-provider.h>
 
-#include "base-iprefs.h"
 #include "base-window.h"
 #include "cact-application.h"
-#include "cact-iprefs.h"
 #include "cact-main-statusbar.h"
-#include "cact-gtk-utils.h"
-#include "cact-iactions-list.h"
+#include "base-gtk-utils.h"
 #include "cact-main-tab.h"
 #include "cact-iaction-tab.h"
+#include "cact-icon-chooser.h"
 
 /* private interface data
  */
-struct CactIActionTabInterfacePrivate {
+struct _CactIActionTabInterfacePrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
-/* columns in the icon combobox
+/* Context identifier, set against the menubar
  */
-enum {
-	ICON_STOCK_COLUMN = 0,
-	ICON_LABEL_COLUMN,
-	ICON_N_COLUMN
-};
+#define IACTION_TAB_CONTEXT				"cact-iaction-tab-context"
 
-#define IPREFS_ICONS_DIALOG					"icons-chooser"
-#define IPREFS_ICONS_PATH					"icons-path"
-
-/* IActionTab properties, set against the GObject instance
+/* data set against the instance
  */
-#define IACTION_TAB_PROP_STATUS_CONTEXT		"cact-iaction-tab-status-context"
+typedef struct {
+	gboolean on_selection_change;
+}
+	IActionData;
 
-static gboolean st_initialized = FALSE;
-static gboolean st_finalized = FALSE;
-static gboolean st_on_selection_change = FALSE;
+#define IACTION_TAB_PROP_DATA			"cact-iaction-tab-data"
 
-static GType         register_type( void );
-static void          interface_base_init( CactIActionTabInterface *klass );
-static void          interface_base_finalize( CactIActionTabInterface *klass );
+static guint st_initializations = 0;	/* interface initialisation count */
 
-static void          on_iactions_list_column_edited( CactIActionTab *instance, NAObject *object, gchar *text, gint column );
-static void          on_tab_updatable_selection_changed( CactIActionTab *instance, gint count_selected );
-static void          on_tab_updatable_provider_changed( CactIActionTab *instance, NAObjectItem *item );
+static GType        register_type( void );
+static void         interface_base_init( CactIActionTabInterface *klass );
+static void         interface_base_finalize( CactIActionTabInterface *klass );
 
-static void          on_target_selection_toggled( GtkToggleButton *button, CactIActionTab *instance );
-static void          on_target_location_toggled( GtkToggleButton *button, CactIActionTab *instance );
+static void         on_base_initialize_gtk( CactIActionTab *instance, GtkWindow *toplevel, gpointer user_data );
+static void         on_base_initialize_window( CactIActionTab *instance, gpointer user_data );
 
-static void          check_for_label( CactIActionTab *instance, GtkEntry *entry, const gchar *label );
-static void          on_label_changed( GtkEntry *entry, CactIActionTab *instance );
-static void          set_label_label( CactIActionTab *instance, const gchar *color );
+static void         on_tree_view_content_changed( CactIActionTab *instance, NAObject *object, gpointer user_data );
+static void         on_main_selection_changed( CactIActionTab *instance, GList *selected_items, gpointer user_data );
 
-static void          on_target_toolbar_toggled( GtkToggleButton *button, CactIActionTab *instance );
+static void         on_target_selection_toggled( GtkToggleButton *button, CactIActionTab *instance );
+static void         on_target_location_toggled( GtkToggleButton *button, CactIActionTab *instance );
+static void         check_for_label( CactIActionTab *instance, GtkEntry *entry, const gchar *label );
+static void         on_label_changed( GtkEntry *entry, CactIActionTab *instance );
+static void         set_label_label( CactIActionTab *instance, const gchar *color );
+static void         on_target_toolbar_toggled( GtkToggleButton *button, CactIActionTab *instance );
+static void         on_toolbar_same_label_toggled( GtkToggleButton *button, CactIActionTab *instance );
+static void         toolbar_same_label_set_sensitive( CactIActionTab *instance, NAObjectItem *item );
+static void         setup_toolbar_label( CactIActionTab *instance, NAObjectItem *item, const gchar *label );
+static void         on_toolbar_label_changed( GtkEntry *entry, CactIActionTab *instance );
+static void         toolbar_label_set_sensitive( CactIActionTab *instance, NAObjectItem *item );
+static void         on_tooltip_changed( GtkEntry *entry, CactIActionTab *instance );
+static void         on_icon_browse( GtkButton *button, CactIActionTab *instance );
+static void         on_icon_changed( GtkEntry *entry, CactIActionTab *instance );
 
-static void          on_toolbar_same_label_toggled( GtkToggleButton *button, CactIActionTab *instance );
-static void          toolbar_same_label_set_sensitive( CactIActionTab *instance, NAObjectItem *item );
-
-static void          setup_toolbar_label( CactIActionTab *instance, NAObjectItem *item, const gchar *label );
-static void          on_toolbar_label_changed( GtkEntry *entry, CactIActionTab *instance );
-static void          toolbar_label_set_sensitive( CactIActionTab *instance, NAObjectItem *item );
-
-static void          on_tooltip_changed( GtkEntry *entry, CactIActionTab *instance );
-
-static GtkTreeModel *create_stock_icon_model( void );
-static void          icon_combo_list_fill( GtkComboBoxEntry* combo );
-static void          on_icon_browse( GtkButton *button, CactIActionTab *instance );
-static void          on_icon_changed( GtkEntry *entry, CactIActionTab *instance );
-static gint          sort_stock_ids( gconstpointer a, gconstpointer b );
-static gchar        *strip_underscore( const gchar *text );
-static void          release_icon_combobox( CactIActionTab *instance );
-
-static GtkButton    *get_enabled_button( CactIActionTab *instance );
-static void          on_enabled_toggled( GtkToggleButton *button, CactIActionTab *instance );
-
-static void          on_readonly_toggled( GtkToggleButton *button, CactIActionTab *instance );
-
-static void          display_provider_name( CactIActionTab *instance, NAObjectItem *item );
+static IActionData *get_iaction_data( CactIActionTab *instance );
+static void         on_instance_finalized( gpointer user_data, CactIActionTab *instance );
 
 GType
 cact_iaction_tab_get_type( void )
@@ -150,7 +130,7 @@ register_type( void )
 
 	type = g_type_register_static( G_TYPE_INTERFACE, "CactIActionTab", &info, 0 );
 
-	g_type_interface_add_prerequisite( type, BASE_WINDOW_TYPE );
+	g_type_interface_add_prerequisite( type, BASE_TYPE_WINDOW );
 
 	return( type );
 }
@@ -160,14 +140,14 @@ interface_base_init( CactIActionTabInterface *klass )
 {
 	static const gchar *thisfn = "cact_iaction_tab_interface_base_init";
 
-	if( !st_initialized ){
+	if( !st_initializations ){
 
 		g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
 
 		klass->private = g_new0( CactIActionTabInterfacePrivate, 1 );
-
-		st_initialized = TRUE;
 	}
+
+	st_initializations += 1;
 }
 
 static void
@@ -175,14 +155,53 @@ interface_base_finalize( CactIActionTabInterface *klass )
 {
 	static const gchar *thisfn = "cact_iaction_tab_interface_base_finalize";
 
-	if( st_initialized && !st_finalized ){
+	st_initializations -= 1;
+
+	if( !st_initializations ){
 
 		g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
 
-		st_finalized = TRUE;
-
 		g_free( klass->private );
 	}
+}
+
+/**
+ * cact_iaction_tab_init:
+ * @instance: this #CactIActionTab instance.
+ *
+ * Initialize the interface
+ * Connect to #BaseWindow signals
+ */
+void
+cact_iaction_tab_init( CactIActionTab *instance )
+{
+	static const gchar *thisfn = "cact_iaction_tab_init";
+	IActionData *data;
+
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
+
+	g_debug( "%s: instance=%p (%s)",
+			thisfn,
+			( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
+
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( instance ),
+			BASE_SIGNAL_INITIALIZE_GTK,
+			G_CALLBACK( on_base_initialize_gtk ));
+
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( instance ),
+			BASE_SIGNAL_INITIALIZE_WINDOW,
+			G_CALLBACK( on_base_initialize_window ));
+
+	cact_main_tab_init( CACT_MAIN_WINDOW( instance ), TAB_ACTION );
+
+	data = get_iaction_data( instance );
+	data->on_selection_change = FALSE;
+
+	g_object_weak_ref( G_OBJECT( instance ), ( GWeakNotify ) on_instance_finalized, NULL );
 }
 
 /*
@@ -194,173 +213,140 @@ interface_base_finalize( CactIActionTabInterface *klass )
  * GTK_ICON_SIZE_DIALOG       : 48x48
  *
  * icon is rendered for GTK_ICON_SIZE_MENU (na_object_item_get_pixbuf)
+ *
+ * Starting with 3.0.3, the ComboBox is dynamically created into its container.
+ * Starting with 3.1.0, the ComboBox is replaced with a GtkEntry (thanks to new
+ * Icon Chooser).
  */
-void
-cact_iaction_tab_initial_load_toplevel( CactIActionTab *instance )
+static void
+on_base_initialize_gtk( CactIActionTab *instance, GtkWindow *toplevel, void *user_data )
 {
-	static const gchar *thisfn = "cact_iaction_tab_initial_load_toplevel";
-	GtkWidget *icon_widget;
-	GtkTreeModel *model;
-	GtkButton *button;
-	GtkRequisition requisition;
+	static const gchar *thisfn = "cact_iaction_tab_on_base_initialize_gtk";
 	GtkFrame *frame;
+	GtkButton *button;
 	gint size;
 
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
+/* gtk_widget_size_request() is deprecated since Gtk+ 3.0
+ * see http://library.gnome.org/devel/gtk/unstable/GtkWidget.html#gtk-widget-render-icon
+ * and http://git.gnome.org/browse/gtk+/commit/?id=07eeae15825403037b7df139acf9bfa104d5559d
+ */
+#if GTK_CHECK_VERSION( 2, 91, 7 )
+	GtkRequisition minimal_size, natural_size;
+#else
+	GtkRequisition requisition;
+#endif
+
 	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
-	if( st_initialized && !st_finalized ){
+	g_debug( "%s: instance=%p (%s), toplevel=%p, user_data=%p",
+			thisfn,
+			( void * ) instance, G_OBJECT_TYPE_NAME( instance ),
+			( void * ) toplevel,
+			( void * ) user_data );
 
-		button = GTK_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconBrowseButton" ));
-		gtk_widget_size_request( GTK_WIDGET( button ), &requisition );
-		g_debug( "%s: button requisition width=%d, height=%d", thisfn, requisition.width, requisition.height );
-		frame = GTK_FRAME( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconFrame" ));
-		size = requisition.height - 4;
-		gtk_widget_set_size_request( GTK_WIDGET( frame ), size, size );
-		gtk_frame_set_shadow_type( frame, GTK_SHADOW_IN );
+	button = GTK_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconBrowseButton" ));
+	frame = GTK_FRAME( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconFrame" ));
 
-		icon_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconComboBoxEntry" );
-		model = create_stock_icon_model();
-		gtk_combo_box_set_model( GTK_COMBO_BOX( icon_widget ), model );
-		g_object_unref( model );
-		icon_combo_list_fill( GTK_COMBO_BOX_ENTRY( icon_widget ));
-	}
+#if GTK_CHECK_VERSION( 2, 91, 7 )
+	gtk_widget_get_preferred_size( GTK_WIDGET( button ), &minimal_size, &natural_size );
+	size = MAX( minimal_size.height, natural_size.height );
+#else
+	gtk_widget_size_request( GTK_WIDGET( button ), &requisition );
+	size = requisition.height;
+#endif
+
+	gtk_widget_set_size_request( GTK_WIDGET( frame ), size, size );
+	gtk_frame_set_shadow_type( frame, GTK_SHADOW_IN );
 }
 
-void
-cact_iaction_tab_runtime_init_toplevel( CactIActionTab *instance )
+static void
+on_base_initialize_window( CactIActionTab *instance, void *user_data )
 {
-	static const gchar *thisfn = "cact_iaction_tab_runtime_init_toplevel";
-	GtkWidget *label_widget, *tooltip_widget, *icon_widget;
-	GtkButton *enabled_button;
+	static const gchar *thisfn = "cact_iaction_tab_on_base_initialize_window";
+	GtkWidget *label_widget, *tooltip_widget, *icon_entry;
 	GtkWidget *button;
 
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
 	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
-	if( st_initialized && !st_finalized ){
+	g_debug( "%s: instance=%p (%s), user_data=%p",
+			thisfn,
+			( void * ) instance, G_OBJECT_TYPE_NAME( instance ),
+			( void * ) user_data );
 
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( instance ),
-				MAIN_WINDOW_SIGNAL_SELECTION_CHANGED,
-				G_CALLBACK( on_tab_updatable_selection_changed ));
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( instance ),
+			MAIN_SIGNAL_SELECTION_CHANGED,
+			G_CALLBACK( on_main_selection_changed ));
 
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( instance ),
-				TAB_UPDATABLE_SIGNAL_PROVIDER_CHANGED,
-				G_CALLBACK( on_tab_updatable_provider_changed ));
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( instance ),
+			MAIN_SIGNAL_ITEM_UPDATED,
+			G_CALLBACK( on_tree_view_content_changed ));
 
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( instance ),
-				IACTIONS_LIST_SIGNAL_COLUMN_EDITED,
-				G_CALLBACK( on_iactions_list_column_edited ));
+	button = base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetSelectionButton" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( button ),
+			"toggled",
+			G_CALLBACK( on_target_selection_toggled ));
 
-		button = base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetSelectionButton" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( button ),
-				"toggled",
-				G_CALLBACK( on_target_selection_toggled ));
+	button = base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetLocationButton" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( button ),
+			"toggled",
+			G_CALLBACK( on_target_location_toggled ));
 
-		button = base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetLocationButton" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( button ),
-				"toggled",
-				G_CALLBACK( on_target_location_toggled ));
+	label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelEntry" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( label_widget ),
+			"changed",
+			G_CALLBACK( on_label_changed ));
 
-		label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelEntry" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( label_widget ),
-				"changed",
-				G_CALLBACK( on_label_changed ));
+	button = base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetToolbarButton" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( button ),
+			"toggled",
+			G_CALLBACK( on_target_toolbar_toggled ));
 
-		button = base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetToolbarButton" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( button ),
-				"toggled",
-				G_CALLBACK( on_target_toolbar_toggled ));
+	button = base_window_get_widget( BASE_WINDOW( instance ), "ToolbarSameLabelButton" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( button ),
+			"toggled",
+			G_CALLBACK( on_toolbar_same_label_toggled ));
 
-		button = base_window_get_widget( BASE_WINDOW( instance ), "ToolbarSameLabelButton" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( button ),
-				"toggled",
-				G_CALLBACK( on_toolbar_same_label_toggled ));
+	label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionToolbarLabelEntry" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( label_widget ),
+			"changed",
+			G_CALLBACK( on_toolbar_label_changed ));
 
-		label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionToolbarLabelEntry" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( label_widget ),
-				"changed",
-				G_CALLBACK( on_toolbar_label_changed ));
+	tooltip_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionTooltipEntry" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( tooltip_widget ),
+			"changed",
+			G_CALLBACK( on_tooltip_changed ));
 
-		tooltip_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionTooltipEntry" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( tooltip_widget ),
-				"changed",
-				G_CALLBACK( on_tooltip_changed ));
+	icon_entry = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconEntry" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( icon_entry ),
+			"changed",
+			G_CALLBACK( on_icon_changed ));
 
-		icon_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconComboBoxEntry" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( GTK_BIN( icon_widget )->child ),
-				"changed",
-				G_CALLBACK( on_icon_changed ));
-
-		button = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconBrowseButton" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( button ),
-				"clicked",
-				G_CALLBACK( on_icon_browse ));
-
-		enabled_button = get_enabled_button( instance );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( enabled_button ),
-				"toggled",
-				G_CALLBACK( on_enabled_toggled ));
-
-		button = base_window_get_widget( BASE_WINDOW( instance ), "ActionReadonlyButton" );
-		base_window_signal_connect(
-				BASE_WINDOW( instance ),
-				G_OBJECT( button ),
-				"toggled",
-				G_CALLBACK( on_readonly_toggled ));
-	}
-}
-
-void
-cact_iaction_tab_all_widgets_showed( CactIActionTab *instance )
-{
-	static const gchar *thisfn = "cact_iaction_tab_all_widgets_showed";
-
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
-	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
-
-	if( st_initialized && !st_finalized ){
-	}
-}
-
-void
-cact_iaction_tab_dispose( CactIActionTab *instance )
-{
-	static const gchar *thisfn = "cact_iaction_tab_dispose";
-
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
-	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
-
-	if( st_initialized && !st_finalized ){
-
-		release_icon_combobox( instance );
-	}
+	button = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconBrowseButton" );
+	base_window_signal_connect(
+			BASE_WINDOW( instance ),
+			G_OBJECT( button ),
+			"clicked",
+			G_CALLBACK( on_icon_browse ));
 }
 
 /**
@@ -380,224 +366,183 @@ cact_iaction_tab_has_label( CactIActionTab *instance )
 
 	g_return_val_if_fail( CACT_IS_IACTION_TAB( instance ), FALSE );
 
-	if( st_initialized && !st_finalized ){
-
-		label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelEntry" );
-		label = gtk_entry_get_text( GTK_ENTRY( label_widget ));
-		has_label = ( g_utf8_strlen( label, -1 ) > 0 );
-	}
+	label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelEntry" );
+	label = gtk_entry_get_text( GTK_ENTRY( label_widget ));
+	has_label = ( g_utf8_strlen( label, -1 ) > 0 );
 
 	return( has_label );
 }
 
 static void
-on_iactions_list_column_edited( CactIActionTab *instance, NAObject *object, gchar *text, gint column )
+on_tree_view_content_changed( CactIActionTab *instance, NAObject *object, gpointer user_data )
 {
 	GtkWidget *label_widget;
+	gchar *label;
 
 	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
-	if( st_initialized && !st_finalized ){
-
-		if( NA_IS_OBJECT_ACTION( object )){
-			label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelEntry" );
-			gtk_entry_set_text( GTK_ENTRY( label_widget ), text );
-		}
+	if( object && NA_IS_OBJECT_ITEM( object )){
+		label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelEntry" );
+		label = na_object_get_label( object );
+		gtk_entry_set_text( GTK_ENTRY( label_widget ), label );
+		g_free( label );
 	}
 }
 
 static void
-on_tab_updatable_selection_changed( CactIActionTab *instance, gint count_selected )
+on_main_selection_changed( CactIActionTab *instance, GList *selected_items, gpointer user_data )
 {
-	static const gchar *thisfn = "cact_iaction_tab_on_tab_updatable_selection_changed";
-	NAObjectItem *item;
+	static const gchar *thisfn = "cact_iaction_tab_on_main_selection_changed";
+	guint count_selected;
 	gboolean enable_tab;
+	NAObjectItem *item;
+	gboolean editable;
 	gboolean target_selection, target_location, target_toolbar;
 	gboolean enable_label;
 	gboolean same_label;
-	GtkWidget *label_widget, *tooltip_widget, *icon_widget, *title_widget;
+	GtkWidget *label_widget, *tooltip_widget, *icon_widget;
 	gchar *label, *tooltip, *icon;
 	GtkButton *icon_button;
-	GtkButton *enabled_button;
-	GtkToggleButton *readonly_button;
-	gboolean enabled_item;
 	GtkToggleButton *toggle;
-	gboolean editable;
-	GtkNotebook *notebook;
-	GtkWidget *page;
+	IActionData *data;
 
-	g_debug( "%s: instance=%p, count_selected=%d", thisfn, ( void * ) instance, count_selected );
 	g_return_if_fail( BASE_IS_WINDOW( instance ));
 	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
-	if( st_initialized && !st_finalized ){
+	count_selected = g_list_length( selected_items );
+	g_debug( "%s: instance=%p (%s), selected_items=%p (count=%u)",
+			thisfn,
+			( void * ) instance, G_OBJECT_TYPE_NAME( instance ),
+			( void * ) selected_items, count_selected );
 
-		st_on_selection_change = TRUE;
+	enable_tab = ( count_selected == 1 );
+	cact_main_tab_enable_page( CACT_MAIN_WINDOW( instance ), TAB_ACTION, enable_tab );
 
-		g_object_get(
-				G_OBJECT( instance ),
-				TAB_UPDATABLE_PROP_EDITED_ACTION, &item,
-				TAB_UPDATABLE_PROP_EDITABLE, &editable,
-				NULL );
+	data = get_iaction_data( instance );
+	data->on_selection_change = TRUE;
 
-		g_return_if_fail( !item || NA_IS_OBJECT_ITEM( item ));
+	g_object_get(
+		G_OBJECT( instance ),
+		MAIN_PROP_ITEM, &item,
+		MAIN_PROP_EDITABLE, &editable,
+		NULL );
 
-		enable_tab = ( count_selected == 1 );
-		cact_main_tab_enable_page( CACT_MAIN_WINDOW( instance ), TAB_ACTION, enable_tab );
+	target_selection =
+			enable_tab &&
+			item != NULL &&
+			NA_IS_OBJECT_ACTION( item ) &&
+			na_object_is_target_selection( item );
 
-		target_selection = ( item && (
-				( NA_IS_OBJECT_ACTION( item ) && na_object_is_target_selection( item )) ||
-				( NA_IS_OBJECT_MENU( item ))));
+	target_location =
+			enable_tab &&
+			item != NULL &&
+			NA_IS_OBJECT_ACTION( item ) &&
+			na_object_is_target_location( item );
 
-		target_location = ( item && (
-				( NA_IS_OBJECT_ACTION( item ) && na_object_is_target_location( item )) ||
-				( NA_IS_OBJECT_MENU( item ))));
+	target_toolbar =
+			enable_tab &&
+			item != NULL &&
+			NA_IS_OBJECT_ACTION( item ) &&
+			na_object_is_target_toolbar( item );
 
-		target_toolbar = ( item && (
-				( NA_IS_OBJECT_ACTION( item ) && na_object_is_target_toolbar( NA_OBJECT_ACTION( item )))));
+	toggle = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetSelectionButton" ));
+	gtk_toggle_button_set_active( toggle, target_selection || ( item && NA_IS_OBJECT_MENU( item )));
+	gtk_widget_set_sensitive( GTK_WIDGET( toggle ), item && NA_IS_OBJECT_ACTION( item ));
+	base_gtk_utils_set_editable( G_OBJECT( toggle ), editable );
 
-		toggle = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetSelectionButton" ));
-		gtk_toggle_button_set_active( toggle, target_selection );
-		gtk_widget_set_sensitive( GTK_WIDGET( toggle ), item && NA_IS_OBJECT_ACTION( item ));
-		cact_gtk_utils_set_editable( GTK_OBJECT( toggle ), editable );
+	toggle = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetLocationButton" ));
+	gtk_toggle_button_set_active( toggle, target_location || ( item && NA_IS_OBJECT_MENU( item )));
+	gtk_widget_set_sensitive( GTK_WIDGET( toggle ), item && NA_IS_OBJECT_ACTION( item ));
+	base_gtk_utils_set_editable( G_OBJECT( toggle ), editable );
 
-		toggle = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetLocationButton" ));
-		gtk_toggle_button_set_active( toggle, target_location );
-		gtk_widget_set_sensitive( GTK_WIDGET( toggle ), item && NA_IS_OBJECT_ACTION( item ));
-		cact_gtk_utils_set_editable( GTK_OBJECT( toggle ), editable );
-
-		enable_label = ( item && ( NA_IS_OBJECT_MENU( item ) || target_selection || target_location ));
-		label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelEntry" );
-		label = item ? na_object_get_label( item ) : g_strdup( "" );
-		label = label ? label : g_strdup( "" );
-		gtk_entry_set_text( GTK_ENTRY( label_widget ), label );
-		if( item ){
-			check_for_label( instance, GTK_ENTRY( label_widget ), label );
-		}
-		g_free( label );
-		gtk_widget_set_sensitive( label_widget, enable_label );
-		cact_gtk_utils_set_editable( GTK_OBJECT( label_widget ), editable );
-
-		toggle = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetToolbarButton" ));
-		gtk_toggle_button_set_active( toggle, target_toolbar );
-		gtk_widget_set_sensitive( GTK_WIDGET( toggle ), item && NA_IS_OBJECT_ACTION( item ));
-		cact_gtk_utils_set_editable( GTK_OBJECT( toggle ), editable );
-
-		toggle = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ToolbarSameLabelButton" ));
-		same_label = item && NA_IS_OBJECT_ACTION( item ) ? na_object_is_toolbar_same_label( NA_OBJECT_ACTION( item )) : FALSE;
-		gtk_toggle_button_set_active( toggle, same_label );
-		toolbar_same_label_set_sensitive( instance, item );
-		cact_gtk_utils_set_editable( GTK_OBJECT( toggle ), editable );
-
-		label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionToolbarLabelEntry" );
-		label = item && NA_IS_OBJECT_ACTION( item ) ? na_object_get_toolbar_label( item ) : g_strdup( "" );
-		label = label ? label : g_strdup( "" );
-		gtk_entry_set_text( GTK_ENTRY( label_widget ), label );
-		g_free( label );
-		toolbar_label_set_sensitive( instance, item );
-		cact_gtk_utils_set_editable( GTK_OBJECT( label_widget ), editable );
-
-		tooltip_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionTooltipEntry" );
-		tooltip = item ? na_object_get_tooltip( item ) : g_strdup( "" );
-		tooltip = tooltip ? tooltip : g_strdup( "" );
-		gtk_entry_set_text( GTK_ENTRY( tooltip_widget ), tooltip );
-		g_free( tooltip );
-		gtk_widget_set_sensitive( tooltip_widget, item != NULL );
-		cact_gtk_utils_set_editable( GTK_OBJECT( tooltip_widget ), editable );
-
-		icon_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconComboBoxEntry" );
-		icon = item ? na_object_get_icon( item ) : g_strdup( "" );
-		icon = icon ? icon : g_strdup( "" );
-		gtk_entry_set_text( GTK_ENTRY( GTK_BIN( icon_widget )->child ), icon );
-		g_free( icon );
-		gtk_widget_set_sensitive( icon_widget, item != NULL );
-		cact_gtk_utils_set_editable( GTK_OBJECT( icon_widget ), editable );
-
-		icon_button = GTK_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconBrowseButton" ));
-		gtk_widget_set_sensitive( GTK_WIDGET( icon_button ), item != NULL );
-		cact_gtk_utils_set_editable( GTK_OBJECT( icon_button ), editable );
-
-		if( enable_tab ){
-			notebook = GTK_NOTEBOOK( base_window_get_widget( BASE_WINDOW( instance ), "MainNotebook" ));
-			page = gtk_notebook_get_nth_page( notebook, TAB_ACTION );
-			title_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionPropertiesTitle" );
-			if( item && NA_IS_OBJECT_MENU( item )){
-				gtk_notebook_set_tab_label_text( notebook, page, _( "Menu" ));
-				gtk_label_set_markup( GTK_LABEL( title_widget ), _( "<b>Menu properties</b>" ));
-			} else {
-				gtk_notebook_set_tab_label_text( notebook, page, _( "Action" ));
-				gtk_label_set_markup( GTK_LABEL( title_widget ), _( "<b>Action properties</b>" ));
-			}
-		}
-
-		enabled_button = get_enabled_button( instance );
-		enabled_item = item ? na_object_is_enabled( NA_OBJECT_ITEM( item )) : FALSE;
-		gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( enabled_button ), enabled_item );
-		gtk_widget_set_sensitive( GTK_WIDGET( enabled_button ), item != NULL );
-		cact_gtk_utils_set_editable( GTK_OBJECT( enabled_button ), editable );
-
-		/* read-only toggle only indicates the intrinsic writability status of this item
-		 * _not_ the writability status of the provider
-		 */
-		readonly_button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionReadonlyButton" ));
-		gtk_toggle_button_set_active( readonly_button, item ? na_object_is_readonly( item ) : FALSE );
-		gtk_widget_set_sensitive( GTK_WIDGET( readonly_button ), item != NULL );
-		cact_gtk_utils_set_editable( GTK_OBJECT( readonly_button ), FALSE );
-
-		label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionItemID" );
-		label = item ? na_object_get_id( item ) : g_strdup( "" );
-		gtk_label_set_text( GTK_LABEL( label_widget ), label );
-		g_free( label );
-		gtk_widget_set_sensitive( label_widget, item != NULL );
-
-		display_provider_name( instance, item );
-
-		st_on_selection_change = FALSE;
+	enable_label = target_selection || target_location || ( item && NA_IS_OBJECT_MENU( item ));
+	label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelEntry" );
+	label = item ? na_object_get_label( item ) : g_strdup( "" );
+	label = label ? label : g_strdup( "" );
+	gtk_entry_set_text( GTK_ENTRY( label_widget ), label );
+	if( item ){
+		check_for_label( instance, GTK_ENTRY( label_widget ), label );
 	}
-}
+	g_free( label );
+	gtk_widget_set_sensitive( label_widget, enable_label );
+	base_gtk_utils_set_editable( G_OBJECT( label_widget ), editable );
 
-static void
-on_tab_updatable_provider_changed( CactIActionTab *instance, NAObjectItem *item )
-{
-	static const gchar *thisfn = "cact_iaction_tab_on_tab_updatable_provider_changed";
+	toggle = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionTargetToolbarButton" ));
+	gtk_toggle_button_set_active( toggle, target_toolbar );
+	gtk_widget_set_sensitive( GTK_WIDGET( toggle ), item && NA_IS_OBJECT_ACTION( item ));
+	base_gtk_utils_set_editable( G_OBJECT( toggle ), editable );
 
-	g_debug( "%s: instance=%p, item=%p", thisfn, ( void * ) instance, ( void * ) item );
+	toggle = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ToolbarSameLabelButton" ));
+	same_label = item && NA_IS_OBJECT_ACTION( item ) ? na_object_is_toolbar_same_label( item ) : FALSE;
+	gtk_toggle_button_set_active( toggle, same_label );
+	gtk_widget_set_sensitive( GTK_WIDGET( toggle ), target_toolbar );
+	base_gtk_utils_set_editable( G_OBJECT( toggle ), editable );
 
-	if( st_initialized && !st_finalized ){
+	label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionToolbarLabelEntry" );
+	label = item && NA_IS_OBJECT_ACTION( item ) ? na_object_get_toolbar_label( item ) : g_strdup( "" );
+	gtk_entry_set_text( GTK_ENTRY( label_widget ), label );
+	g_free( label );
+	gtk_widget_set_sensitive( label_widget, target_toolbar && !same_label );
+	base_gtk_utils_set_editable( G_OBJECT( label_widget ), editable );
 
-		display_provider_name( instance, item );
-	}
+	label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionToolbarLabelLabel" );
+	gtk_widget_set_sensitive( label_widget, target_toolbar && !same_label );
+
+	tooltip_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionTooltipEntry" );
+	tooltip = item ? na_object_get_tooltip( item ) : g_strdup( "" );
+	tooltip = tooltip ? tooltip : g_strdup( "" );
+	gtk_entry_set_text( GTK_ENTRY( tooltip_widget ), tooltip );
+	g_free( tooltip );
+	base_gtk_utils_set_editable( G_OBJECT( tooltip_widget ), editable );
+
+	icon_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconEntry" );
+	icon = item ? na_object_get_icon( item ) : g_strdup( "" );
+	icon = icon ? icon : g_strdup( "" );
+	gtk_entry_set_text( GTK_ENTRY( icon_widget ), icon );
+	g_free( icon );
+	base_gtk_utils_set_editable( G_OBJECT( icon_widget ), editable );
+
+	icon_button = GTK_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconBrowseButton" ));
+	base_gtk_utils_set_editable( G_OBJECT( icon_button ), editable );
+
+	data->on_selection_change = FALSE;
 }
 
 static void
 on_target_selection_toggled( GtkToggleButton *button, CactIActionTab *instance )
 {
 	static const gchar *thisfn = "cact_iaction_tab_on_target_selection_toggled";
-	NAObjectAction *action;
+	NAObjectItem *item;
 	gboolean is_target;
 	gboolean editable;
+	IActionData *data;
 
-	if( !st_on_selection_change ){
-		g_debug( "%s: button=%p, instance=%p", thisfn, ( void * ) button, ( void * ) instance );
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
+
+	data = get_iaction_data( instance );
+
+	if( !data->on_selection_change ){
+		g_debug( "%s: button=%p, instance=%p (%s)",
+				thisfn,
+				( void * ) button,
+				( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
 
 		g_object_get(
-				G_OBJECT( instance ),
-				TAB_UPDATABLE_PROP_EDITED_ACTION, &action,
-				TAB_UPDATABLE_PROP_EDITABLE, &editable,
-				NULL );
+			G_OBJECT( instance ),
+			MAIN_PROP_ITEM, &item,
+			MAIN_PROP_EDITABLE, &editable,
+			NULL );
 
 		g_debug( "%s: item=%p (%s), editable=%s",
-				thisfn, ( void * ) action, action ? G_OBJECT_TYPE_NAME( action ) : "(null)",
+				thisfn, ( void * ) item, item ? G_OBJECT_TYPE_NAME( item ) : "null",
 				editable ? "True":"False" );
 
-		if( action && NA_IS_OBJECT_ACTION( action )){
-
+		if( item && NA_IS_OBJECT_ACTION( item )){
 			is_target = gtk_toggle_button_get_active( button );
 
 			if( editable ){
-				na_object_set_target_selection( action, is_target );
-				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ENABLE_TAB, action );
-				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, action, FALSE );
+				na_object_set_target_selection( item, is_target );
+				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, item, 0 );
 
 			} else {
 				g_signal_handlers_block_by_func(( gpointer ) button, on_target_selection_toggled, instance );
@@ -612,31 +557,37 @@ static void
 on_target_location_toggled( GtkToggleButton *button, CactIActionTab *instance )
 {
 	static const gchar *thisfn = "cact_iaction_tab_on_target_location_toggled";
-	NAObjectAction *action;
+	NAObjectItem *item;
 	gboolean is_target;
 	gboolean editable;
+	IActionData *data;
 
-	if( !st_on_selection_change ){
-		g_debug( "%s: button=%p, instance=%p", thisfn, ( void * ) button, ( void * ) instance );
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
+
+	data = get_iaction_data( instance );
+
+	if( !data->on_selection_change ){
+		g_debug( "%s: button=%p, instance=%p (%s)",
+				thisfn,
+				( void * ) button,
+				( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
 
 		g_object_get(
-				G_OBJECT( instance ),
-				TAB_UPDATABLE_PROP_EDITED_ACTION, &action,
-				TAB_UPDATABLE_PROP_EDITABLE, &editable,
-				NULL );
+			G_OBJECT( instance ),
+			MAIN_PROP_ITEM, &item,
+			MAIN_PROP_EDITABLE, &editable,
+			NULL );
 
 		g_debug( "%s: item=%p (%s), editable=%s",
-				thisfn, ( void * ) action, action ? G_OBJECT_TYPE_NAME( action ) : "(null)",
+				thisfn, ( void * ) item, item ? G_OBJECT_TYPE_NAME( item ) : "null",
 				editable ? "True":"False" );
 
-		if( action && NA_IS_OBJECT_ACTION( action )){
-
+		if( item && NA_IS_OBJECT_ACTION( item )){
 			is_target = gtk_toggle_button_get_active( button );
 
 			if( editable ){
-				na_object_set_target_location( action, is_target );
-				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ENABLE_TAB, action );
-				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, action, FALSE );
+				na_object_set_target_location( item, is_target );
+				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, item, 0 );
 
 			} else {
 				g_signal_handlers_block_by_func(( gpointer ) button, on_target_location_toggled, instance );
@@ -650,58 +601,68 @@ on_target_location_toggled( GtkToggleButton *button, CactIActionTab *instance )
 static void
 check_for_label( CactIActionTab *instance, GtkEntry *entry, const gchar *label )
 {
-	NAObjectItem *edited;
+	NAObjectItem *item;
 
 	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 	g_return_if_fail( GTK_IS_ENTRY( entry ));
 
-	if( st_initialized && !st_finalized ){
+	cact_main_statusbar_hide_status(
+			CACT_MAIN_WINDOW( instance ),
+			IACTION_TAB_CONTEXT );
 
-		cact_main_statusbar_hide_status(
+	set_label_label( instance, "black" );
+
+	g_object_get(
+			G_OBJECT( instance ),
+			MAIN_PROP_ITEM, &item,
+			NULL );
+
+	if( item && g_utf8_strlen( label, -1 ) == 0 ){
+
+		/* i18n: status bar message when the action label is empty */
+		cact_main_statusbar_display_status(
 				CACT_MAIN_WINDOW( instance ),
-				IACTION_TAB_PROP_STATUS_CONTEXT );
+				IACTION_TAB_CONTEXT,
+				_( "Caution: a label is mandatory for the action or the menu." ));
 
-		set_label_label( instance, "black" );
-
-		g_object_get(
-				G_OBJECT( instance ),
-				TAB_UPDATABLE_PROP_EDITED_ACTION, &edited,
-				NULL );
-
-		if( edited && g_utf8_strlen( label, -1 ) == 0 ){
-
-			/* i18n: status bar message when the action label is empty */
-			cact_main_statusbar_display_status(
-					CACT_MAIN_WINDOW( instance ),
-					IACTION_TAB_PROP_STATUS_CONTEXT,
-					_( "Caution: a label is mandatory for the action or the menu." ));
-
-			set_label_label( instance, "red" );
-		}
+		set_label_label( instance, "red" );
 	}
 }
 
 static void
 on_label_changed( GtkEntry *entry, CactIActionTab *instance )
 {
-	NAObjectItem *edited;
+	static const gchar *thisfn = "cact_iaction_tab_on_label_changed";
+	NAObjectItem *item;
 	const gchar *label;
+	IActionData *data;
 
-	g_object_get(
-			G_OBJECT( instance ),
-			TAB_UPDATABLE_PROP_EDITED_ACTION, &edited,
-			NULL );
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
-	if( edited ){
-		label = gtk_entry_get_text( entry );
-		na_object_set_label( edited, label );
-		check_for_label( instance, entry, label );
+	data = get_iaction_data( instance );
 
-		if( NA_IS_OBJECT_ACTION( edited )){
-			setup_toolbar_label( instance, edited, label );
+	if( !data->on_selection_change ){
+		g_debug( "%s: entry=%p, instance=%p (%s)",
+				thisfn,
+				( void * ) entry,
+				( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
+
+		g_object_get(
+				G_OBJECT( instance ),
+				MAIN_PROP_ITEM, &item,
+				NULL );
+
+		if( item ){
+			label = gtk_entry_get_text( entry );
+			na_object_set_label( item, label );
+			check_for_label( instance, entry, label );
+
+			if( NA_IS_OBJECT_ACTION( item )){
+				setup_toolbar_label( instance, item, label );
+			}
+
+			g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, item, MAIN_DATA_LABEL );
 		}
-
-		g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, edited, TRUE );
 	}
 }
 
@@ -709,40 +670,59 @@ static void
 set_label_label( CactIActionTab *instance, const gchar *color_str )
 {
 	GtkWidget *label;
-	GdkColor color;
 
 	label = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelLabel" );
+
+/* gtk_widget_modify_fg() is deprecated as of Gtk+ 3.0
+ */
+#if GTK_CHECK_VERSION( 2, 91, 7 )
+	GdkRGBA color;
+	gdk_rgba_parse( &color, color_str );
+	gtk_widget_override_color( label, GTK_STATE_FLAG_ACTIVE, &color );
+#else
+	GdkColor color;
 	gdk_color_parse( color_str, &color );
 	gtk_widget_modify_fg( label, GTK_STATE_NORMAL, &color );
+#endif
 }
 
 static void
 on_target_toolbar_toggled( GtkToggleButton *button, CactIActionTab *instance )
 {
 	static const gchar *thisfn = "cact_iaction_tab_on_target_toolbar_toggled";
-	NAObjectAction *action;
+	NAObjectAction *item;
 	gboolean is_target;
 	gboolean editable;
+	IActionData *data;
 
-	if( !st_on_selection_change ){
-		g_debug( "%s: button=%p, instance=%p", thisfn, ( void * ) button, ( void * ) instance );
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
+
+	data = get_iaction_data( instance );
+
+	if( !data->on_selection_change ){
+		g_debug( "%s: button=%p, instance=%p (%s)",
+				thisfn,
+				( void * ) button,
+				( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
 
 		g_object_get(
 				G_OBJECT( instance ),
-				TAB_UPDATABLE_PROP_EDITED_ACTION, &action,
-				TAB_UPDATABLE_PROP_EDITABLE, &editable,
+				MAIN_PROP_ITEM, &item,
+				MAIN_PROP_EDITABLE, &editable,
 				NULL );
 
-		if( action && NA_IS_OBJECT_ACTION( action )){
+		g_debug( "%s: item=%p (%s), editable=%s",
+				thisfn, ( void * ) item, item ? G_OBJECT_TYPE_NAME( item ) : "null",
+				editable ? "True":"False" );
 
+		if( item && NA_IS_OBJECT_ACTION( item )){
 			is_target = gtk_toggle_button_get_active( button );
 
 			if( editable ){
-				na_object_set_target_toolbar( action, is_target );
-				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ENABLE_TAB, action );
-				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, action, FALSE );
-				toolbar_same_label_set_sensitive( instance, NA_OBJECT_ITEM( action ));
-				toolbar_label_set_sensitive( instance, NA_OBJECT_ITEM( action ));
+				na_object_set_target_toolbar( item, is_target );
+				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, item, 0 );
+				toolbar_same_label_set_sensitive( instance, NA_OBJECT_ITEM( item ));
+				toolbar_label_set_sensitive( instance, NA_OBJECT_ITEM( item ));
 
 			} else {
 				g_signal_handlers_block_by_func(( gpointer ) button, on_target_toolbar_toggled, instance );
@@ -757,36 +737,49 @@ static void
 on_toolbar_same_label_toggled( GtkToggleButton *button, CactIActionTab *instance )
 {
 	static const gchar *thisfn = "cact_iaction_tab_on_toolbar_same_label_toggled";
-	NAObjectItem *edited;
+	NAObjectItem *item;
 	gboolean same_label;
 	gboolean editable;
 	gchar *label;
 	GtkWidget *label_widget;
+	IActionData *data;
 
-	if( !st_on_selection_change ){
-		g_debug( "%s: button=%p, instance=%p", thisfn, ( void * ) button, ( void * ) instance );
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
+
+	data = get_iaction_data( instance );
+
+	if( !data->on_selection_change ){
+		g_debug( "%s: button=%p, instance=%p (%s)",
+				thisfn,
+				( void * ) button,
+				( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
 
 		g_object_get(
 				G_OBJECT( instance ),
-				TAB_UPDATABLE_PROP_EDITED_ACTION, &edited,
-				TAB_UPDATABLE_PROP_EDITABLE, &editable,
+				MAIN_PROP_ITEM, &item,
+				MAIN_PROP_EDITABLE, &editable,
 				NULL );
 
-		if( edited && NA_IS_OBJECT_ACTION( edited )){
+		g_debug( "%s: item=%p (%s), editable=%s",
+				thisfn, ( void * ) item, item ? G_OBJECT_TYPE_NAME( item ) : "null",
+				editable ? "True":"False" );
 
+		if( item && NA_IS_OBJECT_ACTION( item )){
 			same_label = gtk_toggle_button_get_active( button );
 
 			if( editable ){
-				na_object_set_toolbar_same_label( NA_OBJECT_ACTION( edited ), same_label );
+				na_object_set_toolbar_same_label( NA_OBJECT_ACTION( item ), same_label );
+
 				if( same_label ){
-					label = na_object_get_label( edited );
+					label = na_object_get_label( item );
 					label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionToolbarLabelEntry" );
 					gtk_entry_set_text( GTK_ENTRY( label_widget ), label );
 					g_free( label );
 				}
-				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, edited, FALSE );
-				toolbar_same_label_set_sensitive( instance, NA_OBJECT_ITEM( edited ));
-				toolbar_label_set_sensitive( instance, NA_OBJECT_ITEM( edited ));
+
+				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, item, 0 );
+				toolbar_same_label_set_sensitive( instance, NA_OBJECT_ITEM( item ));
+				toolbar_label_set_sensitive( instance, NA_OBJECT_ITEM( item ));
 
 			} else {
 				g_signal_handlers_block_by_func(( gpointer ) button, on_toolbar_same_label_toggled, instance );
@@ -829,20 +822,32 @@ setup_toolbar_label( CactIActionTab *instance, NAObjectItem *item, const gchar *
 static void
 on_toolbar_label_changed( GtkEntry *entry, CactIActionTab *instance )
 {
-	NAObjectItem *edited;
+	static const gchar *thisfn = "cact_iaction_tab_on_toolbar_label_changed";
+	NAObjectItem *item;
 	const gchar *label;
+	IActionData *data;
 
-	g_object_get(
-			G_OBJECT( instance ),
-			TAB_UPDATABLE_PROP_EDITED_ACTION, &edited,
-			NULL );
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
-	if( edited && NA_IS_OBJECT_ACTION( edited )){
+	data = get_iaction_data( instance );
 
-		label = gtk_entry_get_text( entry );
-		na_object_set_toolbar_label( NA_OBJECT_ACTION( edited ), label );
+	if( !data->on_selection_change ){
+		g_debug( "%s: entry=%p, instance=%p (%s)",
+				thisfn,
+				( void * ) entry,
+				( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
 
-		g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, edited, FALSE );
+		g_object_get(
+				G_OBJECT( instance ),
+				MAIN_PROP_ITEM, &item,
+				NULL );
+
+		if( item && NA_IS_OBJECT_ACTION( item )){
+			label = gtk_entry_get_text( entry );
+			na_object_set_toolbar_label( NA_OBJECT_ACTION( item ), label );
+
+			g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, item, 0 );
+		}
 	}
 }
 
@@ -862,128 +867,65 @@ toolbar_label_set_sensitive( CactIActionTab *instance, NAObjectItem *item )
 static void
 on_tooltip_changed( GtkEntry *entry, CactIActionTab *instance )
 {
-	NAObjectItem *edited;
+	static const gchar *thisfn = "cact_iaction_tab_on_tooltip_changed";
+	NAObjectItem *item;
+	IActionData *data;
 
-	g_object_get(
-			G_OBJECT( instance ),
-			TAB_UPDATABLE_PROP_EDITED_ACTION, &edited,
-			NULL );
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
-	if( edited ){
-		na_object_set_tooltip( edited, gtk_entry_get_text( entry ));
-		g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, edited, FALSE );
-	}
-}
+	data = get_iaction_data( instance );
 
-static GtkTreeModel *
-create_stock_icon_model( void )
-{
-	GtkStockItem stock_item;
-	gchar* label;
-	GtkListStore *model;
-	GtkTreeIter row;
-	GSList *stock_list, *iter;
-	GtkIconTheme *icon_theme;
-	GtkIconInfo *icon_info;
+	if( !data->on_selection_change ){
+		g_debug( "%s: entry=%p, instance=%p (%s)",
+				thisfn,
+				( void * ) entry,
+				( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
 
-	model = gtk_list_store_new( ICON_N_COLUMN, G_TYPE_STRING, G_TYPE_STRING );
+		g_object_get(
+				G_OBJECT( instance ),
+				MAIN_PROP_ITEM, &item,
+				NULL );
 
-	gtk_list_store_append( model, &row );
-	/* i18n notes: when no icon is selected in the drop-down list */
-	gtk_list_store_set( model, &row, ICON_STOCK_COLUMN, "", ICON_LABEL_COLUMN, _( "None" ), -1 );
-
-	stock_list = gtk_stock_list_ids();
-	icon_theme = gtk_icon_theme_get_default();
-	stock_list = g_slist_sort( stock_list, ( GCompareFunc ) sort_stock_ids );
-
-	for( iter = stock_list ; iter ; iter = iter->next ){
-		icon_info = gtk_icon_theme_lookup_icon( icon_theme, ( gchar * ) iter->data, GTK_ICON_SIZE_MENU, GTK_ICON_LOOKUP_GENERIC_FALLBACK );
-		if( icon_info ){
-			if( gtk_stock_lookup(( gchar * ) iter->data, &stock_item )){
-				gtk_list_store_append( model, &row );
-				label = strip_underscore( stock_item.label );
-				gtk_list_store_set( model, &row, ICON_STOCK_COLUMN, ( gchar * ) iter->data, ICON_LABEL_COLUMN, label, -1 );
-				g_free( label );
-			}
-			gtk_icon_info_free( icon_info );
+		if( item ){
+			na_object_set_tooltip( item, gtk_entry_get_text( entry ));
+			g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, item, 0 );
 		}
 	}
-
-	g_slist_foreach( stock_list, ( GFunc ) g_free, NULL );
-	g_slist_free( stock_list );
-
-	return( GTK_TREE_MODEL( model ));
-}
-
-static void
-icon_combo_list_fill( GtkComboBoxEntry* combo )
-{
-	GtkCellRenderer *cell_renderer_pix;
-	GtkCellRenderer *cell_renderer_text;
-
-	if( gtk_combo_box_entry_get_text_column( combo ) == -1 ){
-		gtk_combo_box_entry_set_text_column( combo, ICON_STOCK_COLUMN );
-	}
-	gtk_cell_layout_clear( GTK_CELL_LAYOUT( combo ));
-
-	cell_renderer_pix = gtk_cell_renderer_pixbuf_new();
-	gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( combo ), cell_renderer_pix, FALSE );
-	gtk_cell_layout_add_attribute( GTK_CELL_LAYOUT( combo ), cell_renderer_pix, "stock-id", ICON_STOCK_COLUMN );
-
-	cell_renderer_text = gtk_cell_renderer_text_new();
-	gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( combo ), cell_renderer_text, TRUE );
-	gtk_cell_layout_add_attribute( GTK_CELL_LAYOUT( combo ), cell_renderer_text, "text", ICON_LABEL_COLUMN );
-
-	gtk_combo_box_set_active( GTK_COMBO_BOX( combo ), 0 );
 }
 
 static void
 on_icon_browse( GtkButton *button, CactIActionTab *instance )
 {
-	GtkWidget *dialog;
-	GtkWindow *toplevel;
-	gchar *filename;
-	GtkWidget *icon_widget;
-	CactApplication *application;
-	NAUpdater *updater;
-	gchar *path;
+	static const gchar *thisfn = "cact_iaction_tab_on_icon_browse";
+	NAObjectItem *item;
+	GtkWidget *icon_entry;
+	gchar *icon_name;
+	gchar *new_icon_name;
 
-	toplevel = base_window_get_toplevel( BASE_WINDOW( instance ));
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
-	dialog = gtk_file_chooser_dialog_new(
-			_( "Choosing an icon" ),
-			toplevel,
-			GTK_FILE_CHOOSER_ACTION_OPEN,
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-			GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
-			NULL
-			);
+	g_debug( "%s: button=%p, instance=%p (%s)",
+			thisfn,
+			( void * ) button,
+			( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
 
-	base_iprefs_position_named_window( BASE_WINDOW( instance ), GTK_WINDOW( dialog ), IPREFS_ICONS_DIALOG );
+	g_object_get(
+			G_OBJECT( instance ),
+			MAIN_PROP_ITEM, &item,
+			NULL );
 
-	application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( instance )));
-	updater = cact_application_get_updater( application );
+	if( item ){
+		icon_name = na_object_get_icon( item );
+		new_icon_name = cact_icon_chooser_choose_icon( BASE_WINDOW( instance ), icon_name );
 
-	path = na_iprefs_read_string( NA_IPREFS( updater ), IPREFS_ICONS_PATH, "" );
-	if( path && g_utf8_strlen( path, -1 )){
-		gtk_file_chooser_set_current_folder( GTK_FILE_CHOOSER( dialog ), path );
+		if( g_utf8_collate( icon_name, new_icon_name ) != 0 ){
+			icon_entry = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconEntry" );
+			gtk_entry_set_text( GTK_ENTRY( icon_entry ), new_icon_name );
+		}
+
+		g_free( icon_name );
+		g_free( new_icon_name );
 	}
-	g_free( path );
-
-	if( gtk_dialog_run( GTK_DIALOG( dialog )) == GTK_RESPONSE_ACCEPT ){
-		filename = gtk_file_chooser_get_filename( GTK_FILE_CHOOSER( dialog ));
-		icon_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconComboBoxEntry" );
-		gtk_entry_set_text( GTK_ENTRY( GTK_BIN( icon_widget )->child ), filename );
-	    g_free (filename);
-
-		path = gtk_file_chooser_get_current_folder( GTK_FILE_CHOOSER( dialog ));
-	    cact_iprefs_write_string( BASE_WINDOW( instance ), IPREFS_ICONS_PATH, path );
-		g_free( path );
-	  }
-
-	base_iprefs_save_named_window_position( BASE_WINDOW( instance ), GTK_WINDOW( dialog ), IPREFS_ICONS_DIALOG );
-
-	gtk_widget_destroy( dialog );
 }
 
 static void
@@ -991,167 +933,68 @@ on_icon_changed( GtkEntry *icon_entry, CactIActionTab *instance )
 {
 	static const gchar *thisfn = "cact_iaction_tab_on_icon_changed";
 	GtkImage *image;
-	NAObjectItem *edited;
-	const gchar *icon_name;
+	NAObjectItem *item;
+	gchar *icon_name;
+	IActionData *data;
 
-	g_debug( "%s: entry=%p, instance=%p", thisfn, ( void * ) icon_entry, ( void * ) instance );
+	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
+
+	g_debug( "%s: icon_entry=%p, instance=%p (%s)",
+			thisfn,
+			( void * ) icon_entry,
+			( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
 
 	icon_name = NULL;
+	data = get_iaction_data( instance );
 
 	g_object_get(
 			G_OBJECT( instance ),
-			TAB_UPDATABLE_PROP_EDITED_ACTION, &edited,
+			MAIN_PROP_ITEM, &item,
 			NULL );
 
-	if( edited ){
-		icon_name = gtk_entry_get_text( icon_entry );
-		na_object_set_icon( edited, icon_name );
-		g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, edited, TRUE );
-	}
-
-	image = GTK_IMAGE( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconImage" ));
-	cact_gtk_utils_render( icon_name, image, GTK_ICON_SIZE_MENU );
-}
-
-static gint
-sort_stock_ids( gconstpointer a, gconstpointer b )
-{
-	GtkStockItem stock_item_a;
-	GtkStockItem stock_item_b;
-	gchar *label_a, *label_b;
-	gboolean is_a, is_b;
-	int retv = 0;
-
-	is_a = gtk_stock_lookup(( gchar * ) a, &stock_item_a );
-	is_b = gtk_stock_lookup(( gchar * ) b, &stock_item_b );
-
-	if( is_a && !is_b ){
-		retv = 1;
-
-	} else if( !is_a && is_b ){
-		retv = -1;
-
-	} else if( !is_a && !is_b ){
-		retv = 0;
-
-	} else {
-		label_a = strip_underscore( stock_item_a.label );
-		label_b = strip_underscore( stock_item_b.label );
-		retv = na_core_utils_str_collate( label_a, label_b );
-		g_free( label_a );
-		g_free( label_b );
-	}
-
-	return( retv );
-}
-
-static gchar *
-strip_underscore( const gchar *text )
-{
-	/* Code from gtk-demo */
-	gchar *p, *q, *result;
-
-	result = g_strdup( text );
-	p = q = result;
-	while( *p ){
-		if( *p != '_' ){
-			*q = *p;
-			q++;
-		}
-		p++;
-	}
-	*q = '\0';
-
-	return( result );
-}
-
-static void
-release_icon_combobox( CactIActionTab *instance )
-{
-	GtkWidget *combo;
-	GtkTreeModel *model;
-
-	combo = base_window_get_widget( BASE_WINDOW( instance ), "ActionIconComboBoxEntry" );
-	model = gtk_combo_box_get_model( GTK_COMBO_BOX( combo ));
-	gtk_list_store_clear( GTK_LIST_STORE( model ));
-}
-
-static GtkButton *
-get_enabled_button( CactIActionTab *instance )
-{
-	return( GTK_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionEnabledButton" )));
-}
-
-static void
-on_enabled_toggled( GtkToggleButton *button, CactIActionTab *instance )
-{
-	static const gchar *thisfn = "cact_iaction_tab_on_enabled_toggled";
-	NAObjectItem *edited;
-	gboolean enabled;
-	gboolean editable;
-
-	if( !st_on_selection_change ){
-		g_debug( "%s: button=%p, instance=%p", thisfn, ( void * ) button, ( void * ) instance );
-
-		g_object_get(
-				G_OBJECT( instance ),
-				TAB_UPDATABLE_PROP_EDITED_ACTION, &edited,
-				TAB_UPDATABLE_PROP_EDITABLE, &editable,
-				NULL );
-
-		if( edited && NA_IS_OBJECT_ITEM( edited )){
-
-			enabled = gtk_toggle_button_get_active( button );
-
-			if( editable ){
-				na_object_set_enabled( edited, enabled );
-				g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, edited, FALSE );
-
-			} else {
-				g_signal_handlers_block_by_func(( gpointer ) button, on_enabled_toggled, instance );
-				gtk_toggle_button_set_active( button, !enabled );
-				g_signal_handlers_unblock_by_func(( gpointer ) button, on_enabled_toggled, instance );
-			}
-		}
-	}
-}
-
-static void
-on_readonly_toggled( GtkToggleButton *button, CactIActionTab *instance )
-{
-	static const gchar *thisfn = "cact_iaction_tab_on_readonly_toggled";
-	gboolean active;
-
-	if( !st_on_selection_change ){
-		g_debug( "%s: button=%p, instance=%p", thisfn, ( void * ) button, ( void * ) instance );
-
-		active = gtk_toggle_button_get_active( button );
-
-		g_signal_handlers_block_by_func(( gpointer ) button, on_readonly_toggled, instance );
-		gtk_toggle_button_set_active( button, !active );
-		g_signal_handlers_unblock_by_func(( gpointer ) button, on_readonly_toggled, instance );
-	}
-}
-
-static void
-display_provider_name( CactIActionTab *instance, NAObjectItem *item )
-{
-	GtkWidget *label_widget;
-	gchar *label;
-	NAIOProvider *provider;
-
-	label_widget = base_window_get_widget( BASE_WINDOW( instance ), "ActionItemProvider" );
-	label = NULL;
 	if( item ){
-		provider = na_object_get_provider( item );
-		if( provider ){
-			label = na_io_provider_get_name( provider );
+		if( !data->on_selection_change ){
+			icon_name = g_strdup( gtk_entry_get_text( icon_entry ));
+			na_object_set_icon( item, icon_name );
+			g_signal_emit_by_name( G_OBJECT( instance ), TAB_UPDATABLE_SIGNAL_ITEM_UPDATED, item, MAIN_DATA_ICON );
+
+		} else {
+			icon_name = na_object_get_icon( item );
 		}
 	}
-	if( !label ){
-		label = g_strdup( "" );
+
+	/* icon_name may be null if there is no current item
+	 * in such a case, we blank the image
+	 */
+	image = GTK_IMAGE( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconImage" ));
+	base_gtk_utils_render( icon_name, image, GTK_ICON_SIZE_SMALL_TOOLBAR );
+	g_free( icon_name );
+}
+
+static IActionData *
+get_iaction_data( CactIActionTab *instance )
+{
+	IActionData *data;
+
+	data = ( IActionData * ) g_object_get_data( G_OBJECT( instance ), IACTION_TAB_PROP_DATA );
+
+	if( !data ){
+		data = g_new0( IActionData, 1 );
+		g_object_set_data( G_OBJECT( instance ), IACTION_TAB_PROP_DATA, data );
 	}
-	gtk_label_set_text( GTK_LABEL( label_widget ), label );
-	g_free( label );
-	gtk_widget_set_sensitive( label_widget, item != NULL );
+
+	return( data );
+}
+
+static void
+on_instance_finalized( gpointer user_data, CactIActionTab *instance )
+{
+	static const gchar *thisfn = "cact_iaction_tab_on_instance_finalized";
+	IActionData *data;
+
+	g_debug( "%s: instance=%p, user_data=%p", thisfn, ( void * ) instance, ( void * ) user_data );
+
+	data = get_iaction_data( instance );
+
+	g_free( data );
 }

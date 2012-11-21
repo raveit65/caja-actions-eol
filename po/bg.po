@@ -16,25 +16,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../nact/nact.desktop.in.h:1
+#: ../cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "Добавяне на елементи към контекстното меню на Caja"
 
-#: ../nact/nact.desktop.in.h:2
+#: ../cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "Настройки на действията на Caja"
 
-#: ../nact/caja-actions-config.glade.h:1
+#: ../cact/caja-actions-config.glade.h:1
 #, fuzzy
 msgid "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>"
 msgstr "Авторски права: (C) 2005 Frederic Ruaudel <grumz@grumz.net>"
 
-#: ../nact/caja-actions-config.glade.h:3
+#: ../cact/caja-actions-config.glade.h:3
 #, no-c-format
 msgid "<b>%%</b>: a percent sign"
 msgstr "<b>%%</b>: знак за процент"
 
-#: ../nact/caja-actions-config.glade.h:5
+#: ../cact/caja-actions-config.glade.h:5
 #, no-c-format
 msgid ""
 "<b>%M</b>: space-separated list of the selected file(s)/folder(s) with their "
@@ -43,17 +43,17 @@ msgstr ""
 "<b>%M</b>: списък с пълните имена и пътища на избраните файлове/папки "
 "разделени с интервал."
 
-#: ../nact/caja-actions-config.glade.h:7
+#: ../cact/caja-actions-config.glade.h:7
 #, fuzzy, no-c-format
 msgid "<b>%U</b>: username of the MateVFS URI"
 msgstr "<b>%U</b>: потребителско име за адрес за mate-vfs"
 
-#: ../nact/caja-actions-config.glade.h:9
+#: ../cact/caja-actions-config.glade.h:9
 #, no-c-format
 msgid "<b>%d</b>: base folder of the selected file(s)"
 msgstr "<b>%d</b>: папката, в която се намират избраните файлове"
 
-#: ../nact/caja-actions-config.glade.h:11
+#: ../cact/caja-actions-config.glade.h:11
 #, no-c-format
 msgid ""
 "<b>%f</b>: the name of the selected file or the 1st one if many are selected"
@@ -61,12 +61,12 @@ msgstr ""
 "<b>%f</b>: името на избрания файл или името на първия от много избрани "
 "файлове"
 
-#: ../nact/caja-actions-config.glade.h:13
+#: ../cact/caja-actions-config.glade.h:13
 #, fuzzy, no-c-format
 msgid "<b>%h</b>: hostname of the MateVFS URI"
 msgstr "<b>%h</b>: името на хост за адрес за mate-vfs"
 
-#: ../nact/caja-actions-config.glade.h:15
+#: ../cact/caja-actions-config.glade.h:15
 #, no-c-format
 msgid ""
 "<b>%m</b>: space-separated list of the basenames of the selected\n"
@@ -75,50 +75,50 @@ msgstr ""
 "<b>%m</b>: списък с имената на избраните файлове/папки без техните надпапки, "
 "разделени с интервали."
 
-#: ../nact/caja-actions-config.glade.h:18
+#: ../cact/caja-actions-config.glade.h:18
 #, fuzzy, no-c-format
 msgid "<b>%s</b>: scheme of the MateVFS URI"
 msgstr "<b>%s</b>: схема за адрес за mate-vfs"
 
-#: ../nact/caja-actions-config.glade.h:20
+#: ../cact/caja-actions-config.glade.h:20
 #, fuzzy, no-c-format
 msgid "<b>%u</b>: MateVFS URI"
 msgstr "<b>%u</b>: адрес за mate-vfs"
 
-#: ../nact/caja-actions-config.glade.h:21
+#: ../cact/caja-actions-config.glade.h:21
 msgid "<b>Action</b>"
 msgstr "<b>Действие</b>"
 
-#: ../nact/caja-actions-config.glade.h:22
+#: ../cact/caja-actions-config.glade.h:22
 msgid "<b>Appears if file matches</b>"
 msgstr "<b>Появяване, ако файла пасва</b>"
 
-#: ../nact/caja-actions-config.glade.h:23
+#: ../cact/caja-actions-config.glade.h:23
 msgid "<b>Appears if scheme is in this list</b>"
 msgstr "<b>Появяване, ако схемата е списъка</b>"
 
-#: ../nact/caja-actions-config.glade.h:24
+#: ../cact/caja-actions-config.glade.h:24
 msgid "<b>Appears if selection contains</b>"
 msgstr "<b>Появяване, ако избраните обекти съдържат</b>"
 
-#: ../nact/caja-actions-config.glade.h:25
+#: ../cact/caja-actions-config.glade.h:25
 msgid "<b>Caja Menu Item</b>"
 msgstr "<b>Елемент от менюто на Caja</b>"
 
-#: ../nact/caja-actions-config.glade.h:26
+#: ../cact/caja-actions-config.glade.h:26
 msgid "<b>Profiles</b>"
 msgstr ""
 
-#: ../nact/caja-actions-config.glade.h:28
+#: ../cact/caja-actions-config.glade.h:28
 #, no-c-format
 msgid "<i><b><span size=\"small\">e.g., %s</span></b></i>"
 msgstr "<i><b><span size=\"small\">напр: %s</span></b></i>"
 
-#: ../nact/caja-actions-config.glade.h:29
+#: ../cact/caja-actions-config.glade.h:29
 msgid "<span size=\"larger\"><b>Parameter Legend</b></span>"
 msgstr "<span size=\"larger\"><b>Легенда на параметрите</b></span>"
 
-#: ../nact/caja-actions-config.glade.h:30
+#: ../cact/caja-actions-config.glade.h:30
 msgid ""
 "<span weight=\"bold\" size=\"larger\">place primary text here</span>\n"
 "\n"
@@ -128,7 +128,7 @@ msgstr ""
 "\n"
 "поставете допълнителния текст тук"
 
-#: ../nact/caja-actions-config.glade.h:33
+#: ../cact/caja-actions-config.glade.h:33
 msgid ""
 "A string with wildcards (? or *) that will be used to match the filenames. "
 "You can set several filename patterns by separating them with a semi-colon "
@@ -138,7 +138,7 @@ msgstr ""
 "да напаснат имената на файлове. Можете да въведете няколко шаблона като ги "
 "разделите с „;“."
 
-#: ../nact/caja-actions-config.glade.h:34
+#: ../cact/caja-actions-config.glade.h:34
 msgid ""
 "A string with wildcards (? or *) that will be used to match the mimetypes of "
 "files. You can set several mimetype patterns by separating them with a semi-"
@@ -148,32 +148,32 @@ msgstr ""
 "да напасне вида на файловете по MIME. Можете да въведете няколко шаблона "
 "като ги разделите с „;“."
 
-#: ../nact/caja-actions-config.glade.h:35
+#: ../cact/caja-actions-config.glade.h:35
 #, fuzzy
 msgid "Action"
 msgstr "<b>Действие</b>"
 
-#: ../nact/caja-actions-config.glade.h:36
+#: ../cact/caja-actions-config.glade.h:36
 msgid "Advanced Conditions"
 msgstr "Допълнителни условия"
 
-#: ../nact/caja-actions-config.glade.h:37
+#: ../cact/caja-actions-config.glade.h:37
 msgid "Appears if selection has multiple files or folders"
 msgstr "Появяване, ако са избрани множество обекти"
 
-#: ../nact/caja-actions-config.glade.h:38
+#: ../cact/caja-actions-config.glade.h:38
 msgid "Both"
 msgstr "И двете"
 
-#: ../nact/caja-actions-config.glade.h:39
+#: ../cact/caja-actions-config.glade.h:39
 msgid "Click to add a new scheme."
 msgstr "Натиснете за добавянето на нова схема."
 
-#: ../nact/caja-actions-config.glade.h:40
+#: ../cact/caja-actions-config.glade.h:40
 msgid "Click to choose a command from the file chooser dialog."
 msgstr "Натиснете за избор на команда от прозореца за избор на файлове."
 
-#: ../nact/caja-actions-config.glade.h:41
+#: ../cact/caja-actions-config.glade.h:41
 msgid ""
 "Click to choose a custom icon from a file instead of a predefined icon from "
 "the drop-down list."
@@ -181,11 +181,11 @@ msgstr ""
 "Натиснете за избор на произволна икона от файл вместо шаблонните икони в "
 "падащия списък."
 
-#: ../nact/caja-actions-config.glade.h:42
+#: ../cact/caja-actions-config.glade.h:42
 msgid "Click to remove the selected scheme."
 msgstr "Натиснете за премахването на избраната схема."
 
-#: ../nact/caja-actions-config.glade.h:43
+#: ../cact/caja-actions-config.glade.h:43
 #, fuzzy
 msgid ""
 "Click to toggle the display of the list of special tokens you can use in the "
@@ -193,41 +193,41 @@ msgid ""
 msgstr ""
 "Натиснете, за да видите специалните последователности в полето за параметри."
 
-#: ../nact/caja-actions-config.glade.h:44
+#: ../cact/caja-actions-config.glade.h:44
 msgid "Conditions"
 msgstr "Условия"
 
-#: ../nact/caja-actions-config.glade.h:45
+#: ../cact/caja-actions-config.glade.h:45
 msgid "Create a copy of the selected action."
 msgstr "Копиране на избраното действие."
 
-#: ../nact/caja-actions-config.glade.h:46
+#: ../cact/caja-actions-config.glade.h:46
 msgid ""
 "Delete the action without any confirmation nor the possibility to restore it."
 msgstr ""
 "Изтриване на действието без потвърждение и без възможност за възстановяване."
 
-#: ../nact/caja-actions-config.glade.h:47
+#: ../cact/caja-actions-config.glade.h:47
 msgid "Duplicate"
 msgstr ""
 
-#: ../nact/caja-actions-config.glade.h:48
+#: ../cact/caja-actions-config.glade.h:48
 msgid "Export existing configs"
 msgstr "Изнасяне на текущите настройки"
 
-#: ../nact/caja-actions-config.glade.h:49
+#: ../cact/caja-actions-config.glade.h:49
 msgid "File to Import:"
 msgstr "Файл за внасяне:"
 
-#: ../nact/caja-actions-config.glade.h:50
+#: ../cact/caja-actions-config.glade.h:50
 msgid "Filenames:"
 msgstr "Имена на файлове:"
 
-#: ../nact/caja-actions-config.glade.h:51
+#: ../cact/caja-actions-config.glade.h:51
 msgid "Icon:"
 msgstr "Икона:"
 
-#: ../nact/caja-actions-config.glade.h:52
+#: ../cact/caja-actions-config.glade.h:52
 msgid ""
 "If selected, the filename patterns will be matched case sensitive (eg, *.jpg "
 "will not match photo.JPG)"
@@ -235,27 +235,27 @@ msgstr ""
 "Ако е избрано, шаблоните за имената на файлове ще зачитат регистъра на "
 "буквите (напр. *.jpg, няма да напасне с photo.JPG)"
 
-#: ../nact/caja-actions-config.glade.h:53
+#: ../cact/caja-actions-config.glade.h:53
 msgid "Import new configurations"
 msgstr "Внасяне на нови настройки"
 
-#: ../nact/caja-actions-config.glade.h:54
+#: ../cact/caja-actions-config.glade.h:54
 msgid "Import/Export"
 msgstr "Внасяне/изнасяне"
 
-#: ../nact/caja-actions-config.glade.h:55
+#: ../cact/caja-actions-config.glade.h:55
 msgid "Import/Export Settings"
 msgstr "Настройки на внасянето/изнасянето"
 
-#: ../nact/caja-actions-config.glade.h:56
+#: ../cact/caja-actions-config.glade.h:56
 msgid "Label of the menu item in the Caja popup menu."
 msgstr "Етикет на елемента от контекстното меню на Caja."
 
-#: ../nact/caja-actions-config.glade.h:57
+#: ../cact/caja-actions-config.glade.h:57
 msgid "Label:"
 msgstr "Етикет:"
 
-#: ../nact/caja-actions-config.glade.h:58
+#: ../cact/caja-actions-config.glade.h:58
 msgid ""
 "Manage importation of external action configurations and exportation of "
 "existing actions."
@@ -263,28 +263,28 @@ msgstr ""
 "Управление на внасянето на настройки от външни източници и изнасянето на "
 "съществуващите действия."
 
-#: ../nact/caja-actions-config.glade.h:59
+#: ../cact/caja-actions-config.glade.h:59
 msgid "Match case"
 msgstr "Зачитане на регистъра"
 
-#: ../nact/caja-actions-config.glade.h:60
+#: ../cact/caja-actions-config.glade.h:60
 msgid "Mimetypes:"
 msgstr "Вид на файловете по MIME:"
 
-#: ../nact/caja-actions-config.glade.h:61
+#: ../cact/caja-actions-config.glade.h:61
 msgid "Caja Action Editor"
 msgstr "Редактор на действията за Caja"
 
-#: ../nact/caja-actions-config.glade.h:62
+#: ../cact/caja-actions-config.glade.h:62
 #, fuzzy
 msgid "Caja Action Profile Editor"
 msgstr "Редактор на действията за Caja"
 
-#: ../nact/caja-actions-config.glade.h:63
+#: ../cact/caja-actions-config.glade.h:63
 msgid "Caja Actions"
 msgstr "Действията за Caja"
 
-#: ../nact/caja-actions-config.glade.h:64
+#: ../cact/caja-actions-config.glade.h:64
 #, fuzzy
 msgid ""
 "Caja Actions Configuration Tool\n"
@@ -293,15 +293,15 @@ msgstr ""
 "Инструмент за настройване на действията на Caja\n"
 "Приложението за настройване на разширението за Caja"
 
-#: ../nact/caja-actions-config.glade.h:66
+#: ../cact/caja-actions-config.glade.h:66
 msgid "Only files"
 msgstr "Само файлове"
 
-#: ../nact/caja-actions-config.glade.h:67
+#: ../cact/caja-actions-config.glade.h:67
 msgid "Only folders"
 msgstr "Само папки"
 
-#: ../nact/caja-actions-config.glade.h:68
+#: ../cact/caja-actions-config.glade.h:68
 msgid ""
 "Parameters that will be sent to the program. Click on the 'Legend' button to "
 "see the different replacement tokens."
@@ -309,23 +309,23 @@ msgstr ""
 "Параметри, които ще бъдат подадени на командата. Натиснете бутона „Легенда“, "
 "за да разгледате специалните последователности."
 
-#: ../nact/caja-actions-config.glade.h:69
+#: ../cact/caja-actions-config.glade.h:69
 msgid "Parameters:"
 msgstr "Параметри:"
 
-#: ../nact/caja-actions-config.glade.h:70
+#: ../cact/caja-actions-config.glade.h:70
 msgid "Path:"
 msgstr "Път:"
 
-#: ../nact/caja-actions-config.glade.h:71
+#: ../cact/caja-actions-config.glade.h:71
 msgid "Project Website"
 msgstr "Уеб сайт на проекта"
 
-#: ../nact/caja-actions-config.glade.h:72
+#: ../cact/caja-actions-config.glade.h:72
 msgid "Save in Folder:"
 msgstr "Запазване в папка:"
 
-#: ../nact/caja-actions-config.glade.h:73
+#: ../cact/caja-actions-config.glade.h:73
 msgid ""
 "Select the configurations you want to export. Use Shift or Ctrl key to "
 "select more than one."
@@ -333,21 +333,21 @@ msgstr ""
 "Избор на настройките, които да се изнесат. За избиране на повече от една "
 "използвайте клавишите Shift/Ctrl."
 
-#: ../nact/caja-actions-config.glade.h:74
+#: ../cact/caja-actions-config.glade.h:74
 msgid "Select the configurations you want to export:"
 msgstr "Избор на настройките, които да се изнесат: "
 
-#: ../nact/caja-actions-config.glade.h:75
+#: ../cact/caja-actions-config.glade.h:75
 msgid "Select the file you want to import."
 msgstr "Избор на файла, който да се внесе."
 
-#: ../nact/caja-actions-config.glade.h:76
+#: ../cact/caja-actions-config.glade.h:76
 msgid ""
 "Select the folder you want your config to be saved in. This folder must "
 "exist."
 msgstr "Изберете съществуваща папка, в която да се запишат настройките."
 
-#: ../nact/caja-actions-config.glade.h:77
+#: ../cact/caja-actions-config.glade.h:77
 msgid ""
 "Select the kind of files where you want your action to appear. If you don't "
 "know what to choose, try selecting just 'file' which is the most common "
@@ -358,11 +358,11 @@ msgstr ""
 "добавите схема чрез натискане на бутона със знак „+“."
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../nact/caja-actions-config.glade.h:79
+#: ../cact/caja-actions-config.glade.h:79
 msgid "The MATE Translation Project <mate-i18n@gnome.org>"
 msgstr ""
 
-#: ../nact/caja-actions-config.glade.h:80
+#: ../cact/caja-actions-config.glade.h:80
 msgid ""
 "The command that will be launched by selecting the action in Caja popup "
 "menu."
@@ -370,196 +370,196 @@ msgstr ""
 "Командата, която ще бъде стартирана при избиране на действието в "
 "контекстното меню на Caja."
 
-#: ../nact/caja-actions-config.glade.h:81
+#: ../cact/caja-actions-config.glade.h:81
 msgid "This software is licensed under the GNU Genaral Public License (GPL)"
 msgstr ""
 "Тази програма е лицензирана под условията на Общия публичен лиценз на GNU "
 "(GPL)"
 
-#: ../nact/caja-actions-config.glade.h:82
+#: ../cact/caja-actions-config.glade.h:82
 msgid "Tooltip of the menu item that will appear in the Caja statusbar."
 msgstr ""
 "Подсказка за елемента на менюто ще се появява в лентата за състояние на "
 "Caja"
 
-#: ../nact/caja-actions-config.glade.h:83
+#: ../cact/caja-actions-config.glade.h:83
 msgid "Tooltip:"
 msgstr "Подсказка:"
 
-#: ../nact/caja-actions-config.glade.h:84
+#: ../cact/caja-actions-config.glade.h:84
 msgid "_Browse"
 msgstr "_Избор"
 
-#: ../nact/caja-actions-config.glade.h:85
+#: ../cact/caja-actions-config.glade.h:85
 msgid "_Legend"
 msgstr ""
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact.c:163
+#: ../cact/cact.c:163
 #, fuzzy, c-format
 msgid "Can't duplicate action '%s'!"
 msgstr "Действието  „%s“ не може да си копира!"
 
 #. create columns on the tree view
-#: ../nact/nact.c:277 ../nact/nact-import-export.c:162
+#: ../cact/cact.c:277 ../cact/cact-import-export.c:162
 msgid "Icon"
 msgstr "Икона"
 
-#: ../nact/nact.c:282 ../nact/nact-import-export.c:167
+#: ../cact/cact.c:282 ../cact/cact-import-export.c:167
 msgid "Label"
 msgstr "Етикет"
 
-#: ../nact/nact.c:303 ../nact/nact-editor.c:628
-#: ../nact/nact-import-export.c:312 ../nact/nact-profile-editor.c:495
+#: ../cact/cact.c:303 ../cact/cact-editor.c:628
+#: ../cact/cact-import-export.c:312 ../cact/cact-profile-editor.c:495
 msgid "Could not load interface for Caja Actions Config Tool"
 msgstr ""
 "Файлът с описание на интерфейса на действията за Caja не може да бъде "
 "зареден"
 
 #. i18n notes: example strings for the command preview
-#: ../nact/nact-utils.c:185
+#: ../cact/cact-utils.c:185
 msgid "/path/to"
 msgstr "/път/до"
 
-#: ../nact/nact-utils.c:186 ../nact/nact-utils.c:188
+#: ../cact/cact-utils.c:186 ../cact/cact-utils.c:188
 msgid "file1.txt"
 msgstr "файл1.txt"
 
-#: ../nact/nact-utils.c:186
+#: ../cact/cact-utils.c:186
 msgid "file2.txt"
 msgstr "файл2.txt"
 
-#: ../nact/nact-utils.c:187 ../nact/nact-utils.c:188
+#: ../cact/cact-utils.c:187 ../cact/cact-utils.c:188
 msgid "folder1"
 msgstr "папка1"
 
-#: ../nact/nact-utils.c:187
+#: ../cact/cact-utils.c:187
 msgid "folder2"
 msgstr "папка2"
 
-#: ../nact/nact-utils.c:190
+#: ../cact/cact-utils.c:190
 msgid "test.example.net"
 msgstr "тест.домейн.net"
 
-#: ../nact/nact-utils.c:191
+#: ../cact/cact-utils.c:191
 msgid "file.txt"
 msgstr "файл.txt"
 
-#: ../nact/nact-utils.c:192
+#: ../cact/cact-utils.c:192
 msgid "folder"
 msgstr "папка"
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../nact/nact-editor.c:168
+#: ../cact/cact-editor.c:168
 msgid "None"
 msgstr "Няма"
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:449
+#: ../cact/cact-editor.c:449
 #, fuzzy, c-format
 msgid "Can't copy action's profile '%s'!"
 msgstr "Файлът „%s“ не може да се анализира!"
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:474
+#: ../cact/cact-editor.c:474
 #, fuzzy, c-format
 msgid "Can't paste action's profile '%s'!"
 msgstr "Файлът „%s“ не може да се анализира!"
 
 #. i18n notes: this is the default name of a copied profile
-#: ../nact/nact-editor.c:479
+#: ../cact/cact-editor.c:479
 #, c-format
 msgid "%s Copy"
 msgstr ""
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:539
+#: ../cact/cact-editor.c:539
 #, fuzzy, c-format
 msgid "Can't delete action's profile '%s'!"
 msgstr "Действието  „%s“ не може да си копира!"
 
-#: ../nact/nact-editor.c:591
+#: ../cact/cact-editor.c:591
 msgid "Profile Name"
 msgstr ""
 
-#: ../nact/nact-editor.c:644
+#: ../cact/cact-editor.c:644
 msgid "Icon of the menu item in the Caja popup menu"
 msgstr "Етикет на елемента от контекстното меню на Caja"
 
-#: ../nact/nact-editor.c:666
+#: ../cact/cact-editor.c:666
 msgid "Add a New Action"
 msgstr "Добавяне на ново действие"
 
-#: ../nact/nact-editor.c:670
+#: ../cact/cact-editor.c:670
 #, c-format
 msgid "Edit Action \"%s\""
 msgstr "Редактиране на действието „%s“"
 
-#: ../nact/nact-import-export.c:205
+#: ../cact/cact-import-export.c:205
 #, fuzzy, c-format
 msgid "Can't parse file '%s' as MateConf schema description file!"
 msgstr "Файлът „%s“ не може да се анализира като файл с описания на MateConf!"
 
 #. i18n notes: %s is the label of the action (eg, 'Mount ISO')
-#: ../nact/nact-import-export.c:226
+#: ../cact/cact-import-export.c:226
 #, fuzzy, c-format
 msgid "Action '%s' importation failed!"
 msgstr "Неуспешно внасяне на действието „%s“!"
 
 #. initialize the default schemes
 #. i18n notes : description of 'file' scheme
-#: ../nact/nact-prefs.c:164
+#: ../cact/cact-prefs.c:164
 #, c-format
 msgid "%sLocal Files"
 msgstr "%sЛокални файлове"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../nact/nact-prefs.c:166
+#: ../cact/cact-prefs.c:166
 #, c-format
 msgid "%sSSH Files"
 msgstr "%sФайлове от SSH"
 
 #. i18n notes : description of 'smb' scheme
-#: ../nact/nact-prefs.c:168
+#: ../cact/cact-prefs.c:168
 #, c-format
 msgid "%sWindows Files"
 msgstr "%sФайлове от Windows"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../nact/nact-prefs.c:170
+#: ../cact/cact-prefs.c:170
 #, c-format
 msgid "%sFTP Files"
 msgstr "%sФайлове от FTP"
 
 #. i18n notes : description of 'dav' scheme
-#: ../nact/nact-prefs.c:172
+#: ../cact/cact-prefs.c:172
 #, c-format
 msgid "%sWebdav Files"
 msgstr "%sФайлове от WebDAV"
 
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../nact/nact-profile-editor.c:243
+#: ../cact/cact-profile-editor.c:243
 msgid "new-scheme"
 msgstr "нова-схема"
 
-#: ../nact/nact-profile-editor.c:244
+#: ../cact/cact-profile-editor.c:244
 msgid "New Scheme Description"
 msgstr "Описание на нова схема"
 
-#: ../nact/nact-profile-editor.c:329
+#: ../cact/cact-profile-editor.c:329
 msgid "Scheme"
 msgstr "Схема"
 
-#: ../nact/nact-profile-editor.c:341
+#: ../cact/cact-profile-editor.c:341
 msgid "Description"
 msgstr "Описание"
 
-#: ../nact/nact-profile-editor.c:532
+#: ../cact/cact-profile-editor.c:532
 #, fuzzy
 msgid "Add a New Profile"
 msgstr "Добавяне на ново действие"
 
-#: ../nact/nact-profile-editor.c:536
+#: ../cact/cact-profile-editor.c:536
 #, fuzzy, c-format
 msgid "Edit Profile \"%s\""
 msgstr "Редактиране на действието „%s“"
@@ -742,7 +742,7 @@ msgstr ""
 #: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
-"the Nact interface. If not set there will be a default auto generated string "
+"the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr ""
 

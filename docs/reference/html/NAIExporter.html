@@ -1,0 +1,807 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NAIExporter</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch03.html" title="Public extension interfaces">
+<link rel="prev" href="NAIImporter.html" title="NAIImporter">
+<link rel="next" href="ch04.html" title="DBus services">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="NAIImporter.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="ch04.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#NAIExporter.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#NAIExporter.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#NAIExporter.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#NAIExporter.prerequisites" class="shortcut">Prerequisites</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="NAIExporter"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="NAIExporter.top_of_page"></a>NAIExporter</span></h2>
+<p>NAIExporter — The Export Interface</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="NAIExporter.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-iexporter.h&gt;
+
+#define             <a class="link" href="NAIExporter.html#NA-TYPE-IEXPORTER:CAPS" title="NA_TYPE_IEXPORTER">NA_TYPE_IEXPORTER</a>
+#define             <a class="link" href="NAIExporter.html#NA-IEXPORTER:CAPS" title="NA_IEXPORTER()">NA_IEXPORTER</a>                        (instance)
+#define             <a class="link" href="NAIExporter.html#NA-IS-IEXPORTER:CAPS" title="NA_IS_IEXPORTER()">NA_IS_IEXPORTER</a>                     (instance)
+#define             <a class="link" href="NAIExporter.html#NA-IEXPORTER-GET-INTERFACE:CAPS" title="NA_IEXPORTER_GET_INTERFACE()">NA_IEXPORTER_GET_INTERFACE</a>          (instance)
+                    <a class="link" href="NAIExporter.html#NAIExporter-struct" title="NAIExporter">NAIExporter</a>;
+                    <a class="link" href="NAIExporter.html#NAIExporterInterface" title="NAIExporterInterface">NAIExporterInterface</a>;
+enum                <a class="link" href="NAIExporter.html#NAIExporterExportStatus" title="enum NAIExporterExportStatus">NAIExporterExportStatus</a>;
+                    <a class="link" href="NAIExporter.html#NAIExporterFormat" title="NAIExporterFormat">NAIExporterFormat</a>;
+                    <a class="link" href="NAIExporter.html#NAIExporterFormatv2" title="NAIExporterFormatv2">NAIExporterFormatv2</a>;
+                    <a class="link" href="NAIExporter.html#NAIExporterFileParms" title="NAIExporterFileParms">NAIExporterFileParms</a>;
+                    <a class="link" href="NAIExporter.html#NAIExporterFileParmsv2" title="NAIExporterFileParmsv2">NAIExporterFileParmsv2</a>;
+                    <a class="link" href="NAIExporter.html#NAIExporterBufferParms" title="NAIExporterBufferParms">NAIExporterBufferParms</a>;
+                    <a class="link" href="NAIExporter.html#NAIExporterBufferParmsv2" title="NAIExporterBufferParmsv2">NAIExporterBufferParmsv2</a>;
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAIExporter.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GInterface
+   +----NAIExporter
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAIExporter.prerequisites"></a><h2>Prerequisites</h2>
+<p>
+NAIExporter requires
+ <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>.</p>
+</div>
+<div class="refsect1">
+<a name="NAIExporter.description"></a><h2>Description</h2>
+<p>
+The <a class="link" href="NAIExporter.html" title="NAIExporter"><span class="type">NAIExporter</span></a> interface exports items to the outside world. Each
+implementation may provide one or more formats.
+</p>
+<p>
+</p>
+<div class="refsect2">
+<a name="id416335"></a><h3>Export format identifier</h3>
+<p>
+  For its own internal needs, <span class="productname">Caja-Actions</span>™ requires that each export
+  format have its own identifier, as an ASCII string.
+ </p>
+<p>
+  In order to avoid any collision, this export format identifier is
+  allocated by the <span class="productname">Caja-Actions</span>™ maintainers team. If you wish provide
+  yourself a new export format, and so need a new export format identifier,
+  please contact the maintainers (see caja-actions.doap at the
+  root of the source tree).
+ </p>
+<p>
+  Below is a list of currently allocated export format identifiers.
+  This list has been last updated on 2010, July 28th.
+ </p>
+<div class="table">
+<a name="id420996"></a><p class="title"><b>Table 5. Currently allocated export format identifiers</b></p>
+<div class="table-contents"><table summary="Currently allocated export format identifiers" border="1">
+<colgroup>
+<col class="id">
+<col class="label">
+<col class="holder">
+<col align="center" class="allocated">
+</colgroup>
+<thead><tr>
+<th>Identifier</th>
+<th>Name</th>
+<th>Holder</th>
+<th align="center">Allocated on</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code class="literal">Ask</code></td>
+<td>Reserved for <span class="productname">Caja-Actions</span>™ internal needs</td>
+<td>
+<span class="productname">Caja-Actions</span>™</td>
+<td align="center">2010-02-15</td>
+</tr>
+<tr>
+<td><code class="literal">Desktop1</code></td>
+<td>NA Desktop module</td>
+<td>
+<span class="productname">Caja-Actions</span>™</td>
+<td align="center">2010-07-28</td>
+</tr>
+<tr>
+<td><code class="literal">MateConfSchemaV1</code></td>
+<td>NA XML module</td>
+<td>
+<span class="productname">Caja-Actions</span>™</td>
+<td align="center">2010-02-15</td>
+</tr>
+<tr>
+<td><code class="literal">MateConfSchemaV2</code></td>
+<td>NA XML module</td>
+<td>
+<span class="productname">Caja-Actions</span>™</td>
+<td align="center">2010-02-15</td>
+</tr>
+<tr>
+<td><code class="literal">MateConfEntry</code></td>
+<td>NA XML module</td>
+<td>
+<span class="productname">Caja-Actions</span>™</td>
+<td align="center">2010-02-15</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<p>
+</p>
+<p>
+</p>
+<div class="refsect2">
+<a name="id390492"></a><h3>Versions historic</h3>
+<div class="table">
+<a name="id393880"></a><p class="title"><b>Table 6. Historic of the versions of the <a class="link" href="NAIExporter.html" title="NAIExporter"><span class="type">NAIExporter</span></a> interface</b></p>
+<div class="table-contents"><table summary="Historic of the versions of the NAIExporter interface" border="1">
+<colgroup>
+<col align="center" class="na-version">
+<col align="center" class="api-version">
+<col align="center" class="current">
+</colgroup>
+<thead><tr>
+<th align="center">
+<span class="productname">Caja-Actions</span>™ version</th>
+<th align="center">
+<a class="link" href="NAIExporter.html" title="NAIExporter"><span class="type">NAIExporter</span></a> interface version</th>
+<th align="center"> </th>
+<th align="center"> </th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">from 2.30 to 3.1.5</td>
+<td align="center">1</td>
+<td align="center"> </td>
+<td align="center">deprecated</td>
+</tr>
+<tr>
+<td align="center">since 3.2</td>
+<td align="center">2</td>
+<td align="center">current version</td>
+<td align="center"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="NAIExporter.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NA-TYPE-IEXPORTER:CAPS"></a><h3>NA_TYPE_IEXPORTER</h3>
+<pre class="programlisting">#define NA_TYPE_IEXPORTER                      ( na_iexporter_get_type())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IEXPORTER:CAPS"></a><h3>NA_IEXPORTER()</h3>
+<pre class="programlisting">#define NA_IEXPORTER( instance )               ( G_TYPE_CHECK_INSTANCE_CAST( instance, NA_TYPE_IEXPORTER, NAIExporter ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IS-IEXPORTER:CAPS"></a><h3>NA_IS_IEXPORTER()</h3>
+<pre class="programlisting">#define NA_IS_IEXPORTER( instance )            ( G_TYPE_CHECK_INSTANCE_TYPE( instance, NA_TYPE_IEXPORTER ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IEXPORTER-GET-INTERFACE:CAPS"></a><h3>NA_IEXPORTER_GET_INTERFACE()</h3>
+<pre class="programlisting">#define NA_IEXPORTER_GET_INTERFACE( instance ) ( G_TYPE_INSTANCE_GET_INTERFACE(( instance ), NA_TYPE_IEXPORTER, NAIExporterInterface ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporter-struct"></a><h3>NAIExporter</h3>
+<pre class="programlisting">typedef struct _NAIExporter NAIExporter;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporterInterface"></a><h3>NAIExporterInterface</h3>
+<pre class="programlisting">typedef struct {
+	/**
+	 * get_version:
+	 * @instance: this NAIExporter instance.
+	 *
+	 * Caja-Actions calls this method each time it needs to know
+	 * which version of this interface the plugin implements.
+	 *
+	 * If this method is not implemented by the plugin,
+	 * Caja-Actions considers that the plugin only implements
+	 * the version 1 of the NAIImporter interface.
+	 *
+	 * Return value: if implemented, this method must return the version
+	 * number of this interface the I/O provider is supporting.
+	 *
+	 * Defaults to 1.
+	 *
+	 * Since: 2.30
+	 */
+	guint   ( *get_version )( const NAIExporter *instance );
+
+	/**
+	 * get_name:
+	 * @instance: this NAIExporter instance.
+	 *
+	 * Return value: if implemented, the method should return the name to be
+	 * displayed, as a newly allocated string which will be g_free() by the
+	 * caller.
+	 *
+	 * This may be the name of the module itself, but this also may be a
+	 * special name the modules gives to this interface.
+	 *
+	 * Defaults to a NULL string.
+	 *
+	 * Since: 2.30
+	 */
+	gchar * ( *get_name )   ( const NAIExporter *instance );
+
+	/**
+	 * get_formats:
+	 * @instance: this NAIExporter instance.
+	 *
+	 * For its own internal needs, Caja-Actions requires each export
+	 * format has its own unique identifier (in fact, just a small ASCII
+	 * string).
+	 *
+	 * To avoid any collision, the format identifier is allocated by the
+	 * Caja-Actions maintainers team. If you wish develop a new export
+	 * format, and so need a new format identifier, please contact the
+	 * maintainers (see caja-actions.doap).
+	 *
+	 * Return value:
+	 * - Interface v1:
+	 *   a null-terminated list of NAIExporterFormat structures
+	 *   which describes the formats supported by this NAIExporter
+	 *   provider.
+	 *   The returned list is owned by the NAIExporter provider,
+	 *   and should not be freed nor released by the caller.
+	 *
+	 * - Interface v2:
+	 *   a GList of NAIExporterFormatv2 structures
+	 *   which describes the formats supported by this NAIExporter
+	 *   provider.
+	 *   The caller should then invoke the free_formats() method
+	 *   in order the provider be able to release the resources
+	 *   allocated to the list.
+	 *
+	 * Defaults to NULL (no format at all).
+	 *
+	 * Since: 2.30
+	 */
+	void *  ( *get_formats )( const NAIExporter *instance );
+
+	/**
+	 * free_formats:
+	 * @instance: this NAIExporter instance.
+	 * @formats: a null-terminated list of NAIExporterFormatv2 structures,
+	 *  as returned by get_formats() method above.
+	 *
+	 * Free the resources allocated to the @formats list.
+	 *
+	 * Since: 3.2
+	 */
+	void    ( *free_formats )( const NAIExporter *instance, GList *formats );
+
+	/**
+	 * to_file:
+	 * @instance: this NAIExporter instance.
+	 * @parms: a NAIExporterFileParmsv2 structure.
+	 *
+	 * Exports the specified 'exported' to the target 'folder' in the required
+	 * 'format'.
+	 *
+	 * Return value: the NAIExporterExportStatus status of the operation.
+	 *
+	 * Since: 2.30
+	 */
+	guint   ( *to_file )    ( const NAIExporter *instance, NAIExporterFileParmsv2 *parms );
+
+	/**
+	 * to_buffer:
+	 * @instance: this NAIExporter instance.
+	 * @parms: a NAIExporterFileParmsv2 structure.
+	 *
+	 * Exports the specified 'exported' to a newly allocated 'buffer' in
+	 * the required 'format'. The allocated 'buffer' will be g_free()
+	 * by the caller.
+	 *
+	 * Return value: the NAIExporterExportStatus status of the operation.
+	 *
+	 * Since: 2.30
+	 */
+	guint   ( *to_buffer )  ( const NAIExporter *instance, NAIExporterBufferParmsv2 *parms );
+} NAIExporterInterface;
+</pre>
+<p>
+This defines the interface that a <a class="link" href="NAIExporter.html" title="NAIExporter"><span class="type">NAIExporter</span></a> should implement.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIExporterInterface.get-version"></a>get_version</code></em> ()</span></p></td>
+<td>[should] returns the version of this interface the plugin implements.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIExporterInterface.get-name"></a>get_name</code></em> ()</span></p></td>
+<td>[should] returns the public plugin name.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIExporterInterface.get-formats"></a>get_formats</code></em> ()</span></p></td>
+<td>[should] returns the list of supported formats.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIExporterInterface.free-formats"></a>free_formats</code></em> ()</span></p></td>
+<td>[should] free a list of formats</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIExporterInterface.to-file"></a>to_file</code></em> ()</span></p></td>
+<td>[should] exports an item to a file.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIExporterInterface.to-buffer"></a>to_buffer</code></em> ()</span></p></td>
+<td>[should] exports an item to a buffer.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporterExportStatus"></a><h3>enum NAIExporterExportStatus</h3>
+<pre class="programlisting">typedef enum {
+	NA_IEXPORTER_CODE_OK = 0,
+	NA_IEXPORTER_CODE_INVALID_ITEM,
+	NA_IEXPORTER_CODE_INVALID_TARGET,
+	NA_IEXPORTER_CODE_INVALID_FORMAT,
+	NA_IEXPORTER_CODE_UNABLE_TO_WRITE,
+	NA_IEXPORTER_CODE_ERROR,
+} NAIExporterExportStatus;
+</pre>
+<p>
+The reasons for which an item may not have been exported
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="NA-IEXPORTER-CODE-OK:CAPS"></a><span class="term"><code class="literal">NA_IEXPORTER_CODE_OK</code></span></p></td>
+<td>export OK.
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-IEXPORTER-CODE-INVALID-ITEM:CAPS"></a><span class="term"><code class="literal">NA_IEXPORTER_CODE_INVALID_ITEM</code></span></p></td>
+<td>exported item was found invalid.
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-IEXPORTER-CODE-INVALID-TARGET:CAPS"></a><span class="term"><code class="literal">NA_IEXPORTER_CODE_INVALID_TARGET</code></span></p></td>
+<td>selected target was found invalid.
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-IEXPORTER-CODE-INVALID-FORMAT:CAPS"></a><span class="term"><code class="literal">NA_IEXPORTER_CODE_INVALID_FORMAT</code></span></p></td>
+<td>asked format was found invalid.
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-IEXPORTER-CODE-UNABLE-TO-WRITE:CAPS"></a><span class="term"><code class="literal">NA_IEXPORTER_CODE_UNABLE_TO_WRITE</code></span></p></td>
+<td>unable to write the item.
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-IEXPORTER-CODE-ERROR:CAPS"></a><span class="term"><code class="literal">NA_IEXPORTER_CODE_ERROR</code></span></p></td>
+<td>other undetermined error.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporterFormat"></a><h3>NAIExporterFormat</h3>
+<pre class="programlisting">typedef struct {
+	gchar     *format;
+	gchar     *label;
+	gchar     *description;
+} NAIExporterFormat;
+</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">NAIExporterFormat</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<p>
+This structure describes a supported output format.
+It must be provided by each <a class="link" href="NAIExporter.html" title="NAIExporter"><span class="type">NAIExporter</span></a> implementation
+(see e.g. <code class="filename">src/io-xml/caxml-formats.c</code>).
+</p>
+<p>
+When listing available export formats, the instance returns a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a>
+of these structures.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFormat.format"></a>format</code></em>;</span></p></td>
+<td>format identifier (ascii).</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFormat.label"></a>label</code></em>;</span></p></td>
+<td>short label to be displayed in dialog (UTF-8 localized)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFormat.description"></a>description</code></em>;</span></p></td>
+<td>full description of the format (UTF-8 localized);
+mainly used in the export assistant.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporterFormatv2"></a><h3>NAIExporterFormatv2</h3>
+<pre class="programlisting">typedef struct {
+	guint        version;
+	NAIExporter *provider;
+	gchar       *format;
+	gchar       *label;
+	gchar       *description;
+	GdkPixbuf   *pixbuf;
+} NAIExporterFormatv2;
+</pre>
+<p>
+This structure describes a supported output format.
+It must be provided by each <a class="link" href="NAIExporter.html" title="NAIExporter"><span class="type">NAIExporter</span></a> implementation
+(see e.g. <code class="filename">src/io-xml/caxml-formats.c</code>).
+</p>
+<p>
+When listing available export formats, the <em class="parameter"><code>provider</code></em> must return a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a>
+of these structures.
+</p>
+<p>
+</p>
+<div class="refsect2">
+<a name="id423974"></a><h3>Versions historic</h3>
+<div class="table">
+<a name="id423980"></a><p class="title"><b>Table 7. Historic of the versions of the <a class="link" href="NAIExporter.html#NAIExporterFormatv2" title="NAIExporterFormatv2"><span class="type">NAIExporterFormatv2</span></a> structure</b></p>
+<div class="table-contents"><table summary="Historic of the versions of the NAIExporterFormatv2 structure" border="1">
+<colgroup>
+<col align="center" class="na-version">
+<col align="center" class="api-version">
+<col align="center" class="current">
+</colgroup>
+<thead><tr>
+<th align="center">
+<span class="productname">Caja-Actions</span>™ version</th>
+<th align="center">
+<a class="link" href="NAIExporter.html#NAIExporterFormatv2" title="NAIExporterFormatv2"><span class="type">NAIExporterFormatv2</span></a> structure version</th>
+<th align="center"> </th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">since 2.30</td>
+<td align="center">1</td>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="center">since 3.2</td>
+<td align="center">2</td>
+<td align="center">current version</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIExporterFormatv2.version"></a>version</code></em>;</span></p></td>
+<td>the version of this <a class="link" href="NAIExporter.html#NAIExporterFormatv2" title="NAIExporterFormatv2"><span class="type">NAIExporterFormatv2</span></a> structure;
+equals to 2;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAIExporter.html" title="NAIExporter"><span class="type">NAIExporter</span></a> *<em class="structfield"><code><a name="NAIExporterFormatv2.provider"></a>provider</code></em>;</span></p></td>
+<td>the <a class="link" href="NAIExporter.html" title="NAIExporter"><span class="type">NAIExporter</span></a> provider for this format;
+since structure version 2.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFormatv2.format"></a>format</code></em>;</span></p></td>
+<td>format identifier (ascii, allocated by the Caja-Actions team);
+since structure version 2.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFormatv2.label"></a>label</code></em>;</span></p></td>
+<td>short label to be displayed in dialog (UTF-8 localized);
+since structure version 2.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFormatv2.description"></a>description</code></em>;</span></p></td>
+<td>full description of the format (UTF-8 localized);
+mainly used as a tooltip;
+since structure version 2.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> *<em class="structfield"><code><a name="NAIExporterFormatv2.pixbuf"></a>pixbuf</code></em>;</span></p></td>
+<td>an image to be associated with this export format;
+this pixbuf is supposed to be rendered with GTK_ICON_SIZE_DIALOG size;
+since structure version 2.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporterFileParms"></a><h3>NAIExporterFileParms</h3>
+<pre class="programlisting">typedef struct {
+	guint         version;
+	NAObjectItem *exported;
+	gchar        *folder;
+	GQuark        format;
+	gchar        *basename;
+	GSList       *messages;
+} NAIExporterFileParms;
+</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">NAIExporterFileParms</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<p>
+The structure that the implementation receives as a parameter of
+<a class="link" href="NAIExporter.html#NAIExporterInterface.to-file"><code class="function">NAIExporterInterface.to_file()</code></a> interface method.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIExporterFileParms.version"></a>version</code></em>;</span></p></td>
+<td>[in] version of this structure;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *<em class="structfield"><code><a name="NAIExporterFileParms.exported"></a>exported</code></em>;</span></p></td>
+<td>[in] exported NAObjectItem-derived object;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFileParms.folder"></a>folder</code></em>;</span></p></td>
+<td>[in] URI of the target folder;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> <em class="structfield"><code><a name="NAIExporterFileParms.format"></a>format</code></em>;</span></p></td>
+<td>[in] export format as a GQuark;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFileParms.basename"></a>basename</code></em>;</span></p></td>
+<td>[out] basename of the exported file;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> *<em class="structfield"><code><a name="NAIExporterFileParms.messages"></a>messages</code></em>;</span></p></td>
+<td>[in/out] a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of localized strings;
+the provider may append messages to this list,
+but shouldn't reinitialize it;
+since structure version 1.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporterFileParmsv2"></a><h3>NAIExporterFileParmsv2</h3>
+<pre class="programlisting">typedef struct {
+	guint         version;
+	guint         content;
+	NAObjectItem *exported;
+	gchar        *folder;
+	gchar        *format;
+	gchar        *basename;
+	GSList       *messages;
+} NAIExporterFileParmsv2;
+</pre>
+<p>
+The structure that the plugin receives as a parameter of
+<a class="link" href="NAIExporter.html#NAIExporterInterface.to-file"><code class="function">NAIExporterInterface.to_file()</code></a> interface method.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIExporterFileParmsv2.version"></a>version</code></em>;</span></p></td>
+<td>[in] version of this structure;
+equals to 2;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIExporterFileParmsv2.content"></a>content</code></em>;</span></p></td>
+<td>[in] version of the content of this structure;
+equals to 1;
+since structure version 2.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *<em class="structfield"><code><a name="NAIExporterFileParmsv2.exported"></a>exported</code></em>;</span></p></td>
+<td>[in] exported NAObjectItem-derived object;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFileParmsv2.folder"></a>folder</code></em>;</span></p></td>
+<td>[in] URI of the target folder;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFileParmsv2.format"></a>format</code></em>;</span></p></td>
+<td>[in] export format string identifier;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterFileParmsv2.basename"></a>basename</code></em>;</span></p></td>
+<td>[out] basename of the exported file;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> *<em class="structfield"><code><a name="NAIExporterFileParmsv2.messages"></a>messages</code></em>;</span></p></td>
+<td>[in/out] a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of localized strings;
+the provider may append messages to this list,
+but shouldn't reinitialize it;
+since structure version 1.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporterBufferParms"></a><h3>NAIExporterBufferParms</h3>
+<pre class="programlisting">typedef struct {
+	guint         version;
+	NAObjectItem *exported;
+	GQuark        format;
+	gchar        *buffer;
+	GSList       *messages;
+} NAIExporterBufferParms;
+</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">NAIExporterBufferParms</code> is deprecated and should not be used in newly-written code. 3.2</p>
+</div>
+<p>
+The structure that the plugin receives as a parameter of
+<a class="link" href="NAIExporter.html#NAIExporterInterface.to-buffer"><code class="function">NAIExporterInterface.to_buffer()</code></a> interface method.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIExporterBufferParms.version"></a>version</code></em>;</span></p></td>
+<td>[in] version of this structure;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *<em class="structfield"><code><a name="NAIExporterBufferParms.exported"></a>exported</code></em>;</span></p></td>
+<td>[in] exported NAObjectItem-derived object;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> <em class="structfield"><code><a name="NAIExporterBufferParms.format"></a>format</code></em>;</span></p></td>
+<td>[in] export format as a GQuark;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterBufferParms.buffer"></a>buffer</code></em>;</span></p></td>
+<td>[out] buffer which contains the exported object;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> *<em class="structfield"><code><a name="NAIExporterBufferParms.messages"></a>messages</code></em>;</span></p></td>
+<td>[in/out] a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of localized strings;
+the provider may append messages to this list,
+but shouldn't reinitialize it;
+since structure version 1.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIExporterBufferParmsv2"></a><h3>NAIExporterBufferParmsv2</h3>
+<pre class="programlisting">typedef struct {
+	guint         version;
+	guint         content;
+	NAObjectItem *exported;
+	gchar        *format;
+	gchar        *buffer;
+	GSList       *messages;
+} NAIExporterBufferParmsv2;
+</pre>
+<p>
+The structure that the plugin receives as a parameter of
+<a class="link" href="NAIExporter.html#NAIExporterInterface.to-buffer"><code class="function">NAIExporterInterface.to_buffer()</code></a> interface method.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIExporterBufferParmsv2.version"></a>version</code></em>;</span></p></td>
+<td>[in] version of this structure;
+equals to 2;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NAIExporterBufferParmsv2.content"></a>content</code></em>;</span></p></td>
+<td>[in] version of the content of this structure;
+equals to 1;
+since structure version 2.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> *<em class="structfield"><code><a name="NAIExporterBufferParmsv2.exported"></a>exported</code></em>;</span></p></td>
+<td>[in] exported NAObjectItem-derived object;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterBufferParmsv2.format"></a>format</code></em>;</span></p></td>
+<td>[in] export format string identifier;
+since structure version 2.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NAIExporterBufferParmsv2.buffer"></a>buffer</code></em>;</span></p></td>
+<td>[out] buffer which contains the exported object;
+since structure version 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> *<em class="structfield"><code><a name="NAIExporterBufferParmsv2.messages"></a>messages</code></em>;</span></p></td>
+<td>[in/out] a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of localized strings;
+the provider may append messages to this list,
+but shouldn't reinitialize it;
+since structure version 1.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.2</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

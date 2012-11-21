@@ -290,13 +290,13 @@ msgstr ""
 msgid ""
 "When set to true (most probably as a mandatory key), this prevents all "
 "items, menus and actions, readen from .desktop files to being modified in "
-"NACT."
+"CACT."
 msgstr ""
 
 #: ../data/caja-actions-prefs.schemas.in.h:50
 msgid ""
 "When set to true (most probably as a mandatory key), this prevents all "
-"items, menus and actions, readen from MateConf to being modified in NACT."
+"items, menus and actions, readen from MateConf to being modified in CACT."
 msgstr ""
 
 #: ../data/caja-actions-prefs.schemas.in.h:51
@@ -412,7 +412,7 @@ msgstr ""
 #, c-format
 msgid ""
 "Copyright %s 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
-"Copyright %s 2009, 2010 Pierre Wieser <pwieser@trychlos.org>"
+"Copyright %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
 
 #: ../src/core/na-icontext-factory.c:47
@@ -1001,7 +1001,7 @@ msgstr ""
 "%U: nome de usuario da URI MateVFS\n"
 "%%: un signo de porcentaxe"
 
-#: ../src/io-desktop/nadp-desktop-provider.c:215
+#: ../src/io-desktop/cadp-desktop-provider.c:215
 #, fuzzy
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Editor de accións de Caja"
@@ -1011,78 +1011,78 @@ msgstr "Editor de accións de Caja"
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Configuración de Accións de Caja"
 
-#: ../src/io-xml/naxml-reader.c:147
+#: ../src/io-xml/caxml-reader.c:147
 #, c-format
 msgid "Item ID %s already exists."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:148
+#: ../src/io-xml/caxml-reader.c:148
 msgid "Item ID not found."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:149
+#: ../src/io-xml/caxml-reader.c:149
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:150
+#: ../src/io-xml/caxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:151
+#: ../src/io-xml/caxml-reader.c:151
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:152
+#: ../src/io-xml/caxml-reader.c:152
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr ""
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/naxml-reader.c:154
+#: ../src/io-xml/caxml-reader.c:154
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:155
+#: ../src/io-xml/caxml-reader.c:155
 #, c-format
 msgid "Invalid XML root element %s found at line %d while waiting for %s."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:156
+#: ../src/io-xml/caxml-reader.c:156
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:157
+#: ../src/io-xml/caxml-reader.c:157
 #, c-format
 msgid "Node %s at line %d has not been dealt with."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:1322
+#: ../src/io-xml/caxml-reader.c:1322
 msgid "Item was renumbered due to user request."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:1328
+#: ../src/io-xml/caxml-reader.c:1328
 msgid "Existing item was overriden due to user request."
 msgstr ""
 
-#: ../src/io-xml/naxml-reader.c:1337
+#: ../src/io-xml/caxml-reader.c:1337
 msgid "Import was canceled due to user request."
 msgstr ""
 
 #. i18n: the action has been renumbered during import operation
-#: ../src/io-xml/naxml-reader.c:1376
+#: ../src/io-xml/caxml-reader.c:1376
 msgid "(renumbered)"
 msgstr ""
 
-#: ../src/io-xml/naxml-formats.c:48
+#: ../src/io-xml/caxml-formats.c:48
 msgid "Export as a _full MateConf schema file"
 msgstr ""
 
-#: ../src/io-xml/naxml-formats.c:49
+#: ../src/io-xml/caxml-formats.c:49
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1090,11 +1090,11 @@ msgid ""
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 
-#: ../src/io-xml/naxml-formats.c:58
+#: ../src/io-xml/caxml-formats.c:58
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr ""
 
-#: ../src/io-xml/naxml-formats.c:59
+#: ../src/io-xml/caxml-formats.c:59
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
@@ -1105,11 +1105,11 @@ msgid ""
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 
-#: ../src/io-xml/naxml-formats.c:71
+#: ../src/io-xml/caxml-formats.c:71
 msgid "Export as a MateConf _dump file"
 msgstr ""
 
-#: ../src/io-xml/naxml-formats.c:72
+#: ../src/io-xml/caxml-formats.c:72
 msgid ""
 "This format has been introduced in v 1.11 serie, and should be the preferred "
 "format for newly exported items.\n"
@@ -1121,122 +1121,122 @@ msgid ""
 "- or via the mateconftool-2 --load command-line tool."
 msgstr ""
 
-#: ../src/nact/base-application.c:1292
+#: ../src/cact/base-application.c:1292
 msgid "Unable to initialize the internationalization environment."
 msgstr ""
 
-#: ../src/nact/base-application.c:1301
+#: ../src/cact/base-application.c:1301
 msgid "Unable to initialize the Gtk+ user interface."
 msgstr ""
 
-#: ../src/nact/base-application.c:1310
+#: ../src/cact/base-application.c:1310
 msgid "Another instance of the application is already running."
 msgstr ""
 
-#: ../src/nact/base-application.c:1319
+#: ../src/cact/base-application.c:1319
 msgid "No filename provided for the UI XML definition."
 msgstr ""
 
 #. i18n: Unable to load the XML definition from <filename>
-#: ../src/nact/base-application.c:1329
+#: ../src/cact/base-application.c:1329
 #, c-format
 msgid "Unable to load the XML definition from %s."
 msgstr ""
 
-#: ../src/nact/base-application.c:1342
+#: ../src/cact/base-application.c:1342
 msgid "Unable to set the default icon for the application."
 msgstr ""
 
-#: ../src/nact/base-application.c:1351
+#: ../src/cact/base-application.c:1351
 msgid "Unable to get the main window of the application."
 msgstr ""
 
-#: ../src/nact/base-assistant.c:577
+#: ../src/cact/base-assistant.c:577
 msgid "Are you sure you want to quit this assistant ?"
 msgstr ""
 
-#: ../src/nact/base-window.c:1200
+#: ../src/cact/base-window.c:1200
 #, c-format
 msgid "Unable to load %s XML definition."
 msgstr ""
 
-#: ../src/nact/base-window.c:1286
+#: ../src/cact/base-window.c:1286
 #, c-format
 msgid "Unable to load %s UI XML definition: %s"
 msgstr ""
 
-#: ../src/nact/egg-desktop-file.c:165
+#: ../src/cact/egg-desktop-file.c:165
 #, c-format
 msgid "File is not a valid .desktop file"
 msgstr ""
 
-#: ../src/nact/egg-desktop-file.c:188
+#: ../src/cact/egg-desktop-file.c:188
 #, c-format
 msgid "Unrecognized desktop file Version '%s'"
 msgstr ""
 
-#: ../src/nact/egg-desktop-file.c:958
+#: ../src/cact/egg-desktop-file.c:958
 #, fuzzy, c-format
 msgid "Starting %s"
 msgstr "Creando %s..."
 
-#: ../src/nact/egg-desktop-file.c:1100
+#: ../src/cact/egg-desktop-file.c:1100
 #, c-format
 msgid "Application does not accept documents on command line"
 msgstr ""
 
-#: ../src/nact/egg-desktop-file.c:1168
+#: ../src/cact/egg-desktop-file.c:1168
 #, c-format
 msgid "Unrecognized launch option: %d"
 msgstr ""
 
-#: ../src/nact/egg-desktop-file.c:1373
+#: ../src/cact/egg-desktop-file.c:1373
 #, c-format
 msgid "Can't pass document URIs to a 'Type=Link' desktop entry"
 msgstr ""
 
-#: ../src/nact/egg-desktop-file.c:1394
+#: ../src/cact/egg-desktop-file.c:1394
 #, c-format
 msgid "Not a launchable item"
 msgstr ""
 
-#: ../src/nact/egg-sm-client.c:239
+#: ../src/cact/egg-sm-client.c:239
 msgid "Disable connection to session manager"
 msgstr ""
 
-#: ../src/nact/egg-sm-client.c:242
+#: ../src/cact/egg-sm-client.c:242
 msgid "Specify file containing saved configuration"
 msgstr ""
 
-#: ../src/nact/egg-sm-client.c:242
+#: ../src/cact/egg-sm-client.c:242
 msgid "FILE"
 msgstr "FICHEIRO"
 
-#: ../src/nact/egg-sm-client.c:245
+#: ../src/cact/egg-sm-client.c:245
 msgid "Specify session management ID"
 msgstr ""
 
-#: ../src/nact/egg-sm-client.c:245
+#: ../src/cact/egg-sm-client.c:245
 msgid "ID"
 msgstr ""
 
-#: ../src/nact/egg-sm-client.c:267
+#: ../src/cact/egg-sm-client.c:267
 msgid "Session management options:"
 msgstr ""
 
-#: ../src/nact/egg-sm-client.c:268
+#: ../src/cact/egg-sm-client.c:268
 msgid "Show session management options"
 msgstr ""
 
-#: ../src/nact/nact-application.c:72
+#: ../src/cact/cact-application.c:72
 msgid "Set it to run multiple instances of the program [unique]"
 msgstr ""
 
-#: ../src/nact/nact-application.c:74
+#: ../src/cact/cact-application.c:74
 msgid "Output the version number, and exit gracefully [no]"
 msgstr ""
 
-#: ../src/nact/nact-application.c:353
+#: ../src/cact/cact-application.c:353
 #, fuzzy
 msgid ""
 "Another instance of Caja Actions Configuration Tool is already running."
@@ -1245,572 +1245,572 @@ msgstr ""
 "Accións de Caja"
 
 #. i18n: another instance is already running: second line of error message
-#: ../src/nact/nact-application.c:355
+#: ../src/cact/cact-application.c:355
 msgid "Please switch back to it."
 msgstr ""
 
-#. static const gchar *thisfn = "nact_application_appli_get_application_name";
+#. static const gchar *thisfn = "cact_application_appli_get_application_name";
 #. g_debug( "%s: application=%p", thisfn, ( void * ) application );
 #. i18n: this is the application name, used in window title
-#: ../src/nact/nact-application.c:413
+#: ../src/cact/cact-application.c:413
 #, fuzzy
 msgid "Caja Actions Configuration Tool"
 msgstr "Configuración de Accións de Caja"
 
-#: ../src/nact/nact-assistant-export.c:679
+#: ../src/cact/cact-assistant-export.c:679
 msgid "About to export selected items:"
 msgstr ""
 
-#: ../src/nact/nact-assistant-export.c:693
+#: ../src/cact/cact-assistant-export.c:693
 msgid "Into the destination folder:"
 msgstr ""
 
-#: ../src/nact/nact-assistant-export.c:753
+#: ../src/cact/cact-assistant-export.c:753
 msgid "Export canceled due to user action."
 msgstr ""
 
 #. i18n: result of the export assistant
-#: ../src/nact/nact-assistant-export.c:781
+#: ../src/cact/cact-assistant-export.c:781
 msgid "Selected actions have been proceeded :"
 msgstr ""
 
 #. i18n: action as been successfully exported to <filename>
-#: ../src/nact/nact-assistant-export.c:799
+#: ../src/cact/cact-assistant-export.c:799
 msgid "Successfully exported as"
 msgstr ""
 
-#: ../src/nact/nact-assistant-export.c:822
+#: ../src/cact/cact-assistant-export.c:822
 msgid "You may not have write permissions on selected folder."
 msgstr ""
 
 #. i18n: the title of the confirm page of the import assistant
-#: ../src/nact/nact-assistant-import.c:563
+#: ../src/cact/cact-assistant-import.c:563
 msgid "About to import selected files:"
 msgstr ""
 
 #. i18n: result of the import assistant
-#: ../src/nact/nact-assistant-import.c:788
+#: ../src/cact/cact-assistant-import.c:788
 msgid "Selected files have been proceeded :"
 msgstr ""
 
 #. i18n: indicate that the file has been successfully imported
-#: ../src/nact/nact-assistant-import.c:806
+#: ../src/cact/cact-assistant-import.c:806
 msgid "Import OK"
 msgstr ""
 
 #. i18n: this is the globally unique identifier and the label of the newly imported action
-#: ../src/nact/nact-assistant-import.c:812
+#: ../src/cact/cact-assistant-import.c:812
 #, c-format
 msgid "UUID: %s\t%s"
 msgstr ""
 
 #. i18n: indicate that the file was not iported
-#: ../src/nact/nact-assistant-import.c:823
+#: ../src/cact/cact-assistant-import.c:823
 msgid "Not imported"
 msgstr ""
 
-#: ../src/nact/nact.desktop.in.h:1
+#: ../src/cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "Engadir elementos ao menú emerxente de Caja"
 
-#: ../src/nact/nact.desktop.in.h:2
+#: ../src/cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "Configuración de Accións de Caja"
 
 #. i18n: The action <label> is about to be exported
-#: ../src/nact/nact-export-ask.c:326
+#: ../src/cact/cact-export-ask.c:326
 #, c-format
 msgid "The action \"%s\" is about to be exported."
 msgstr ""
 
 #. i18n: The menu <label> is about to be exported
-#: ../src/nact/nact-export-ask.c:329
+#: ../src/cact/cact-export-ask.c:329
 #, c-format
 msgid "The menu \"%s\" is about to be exported."
 msgstr ""
 
-#: ../src/nact/nact-export-format.c:46
+#: ../src/cact/cact-export-format.c:46
 msgid "_Ask me"
 msgstr ""
 
-#: ../src/nact/nact-export-format.c:47
+#: ../src/cact/cact-export-format.c:47
 msgid ""
 "You will be asked for the format to choose each time an item is about to be "
 "exported."
 msgstr ""
 
-#: ../src/nact/nact-iaction-tab.c:525
+#: ../src/cact/cact-iaction-tab.c:525
 msgid "Menu"
 msgstr "Menú"
 
-#: ../src/nact/nact-iaction-tab.c:526
+#: ../src/cact/cact-iaction-tab.c:526
 msgid "<b>Menu properties</b>"
 msgstr "<b>Propiedades do menú</b>"
 
-#: ../src/nact/nact-iaction-tab.c:528
+#: ../src/cact/cact-iaction-tab.c:528
 msgid "Action"
 msgstr "Acción"
 
-#: ../src/nact/nact-iaction-tab.c:529
+#: ../src/cact/cact-iaction-tab.c:529
 msgid "<b>Action properties</b>"
 msgstr "<b>Propiedades da acción</b>"
 
-#: ../src/nact/nact-iaction-tab.c:677
+#: ../src/cact/cact-iaction-tab.c:677
 msgid "Caution: a label is mandatory for the action or the menu."
 msgstr "Precaución: a etiqueta é obrigatoria para a acción ou o menú."
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../src/nact/nact-iaction-tab.c:893
+#: ../src/cact/cact-iaction-tab.c:893
 msgid "None"
 msgstr "Ningún"
 
-#: ../src/nact/nact-iaction-tab.c:954
+#: ../src/cact/cact-iaction-tab.c:954
 msgid "Choosing an icon"
 msgstr "Seleccionando unha icona"
 
-#: ../src/nact/nact-icommand-tab.c:416
+#: ../src/cact/cact-icommand-tab.c:416
 msgid "Caution: a label is mandatory for the profile."
 msgstr "Precaución: a etiqueta é obrigatoria para o perfil."
 
-#: ../src/nact/nact-icommand-tab.c:573
+#: ../src/cact/cact-icommand-tab.c:573
 msgid "Choosing a command"
 msgstr "Seleccionando unha orde"
 
 #. i18n notes: example strings for the command preview
-#: ../src/nact/nact-icommand-tab.c:652
+#: ../src/cact/cact-icommand-tab.c:652
 msgid "/path/to"
 msgstr "/ruta/a"
 
-#: ../src/nact/nact-icommand-tab.c:653
+#: ../src/cact/cact-icommand-tab.c:653
 msgid "file1.txt"
 msgstr "ficheiro1.txt"
 
-#: ../src/nact/nact-icommand-tab.c:653
+#: ../src/cact/cact-icommand-tab.c:653
 msgid "file2.txt"
 msgstr "ficheiro2.txt"
 
-#: ../src/nact/nact-icommand-tab.c:654
+#: ../src/cact/cact-icommand-tab.c:654
 msgid " folder1"
 msgstr " cartafol1"
 
-#: ../src/nact/nact-icommand-tab.c:654
+#: ../src/cact/cact-icommand-tab.c:654
 msgid "folder2"
 msgstr "cartafol2"
 
-#: ../src/nact/nact-icommand-tab.c:655
+#: ../src/cact/cact-icommand-tab.c:655
 msgid " file1.txt"
 msgstr " ficheiro1.txt"
 
-#: ../src/nact/nact-icommand-tab.c:655
+#: ../src/cact/cact-icommand-tab.c:655
 msgid "folder1"
 msgstr "cartafol1"
 
-#: ../src/nact/nact-icommand-tab.c:657
+#: ../src/cact/cact-icommand-tab.c:657
 msgid "test.example.net"
 msgstr "proba.exemplo.net"
 
-#: ../src/nact/nact-icommand-tab.c:658
+#: ../src/cact/cact-icommand-tab.c:658
 msgid "file.txt"
 msgstr "ficheiro.txt"
 
-#: ../src/nact/nact-icommand-tab.c:659
+#: ../src/cact/cact-icommand-tab.c:659
 msgid "folder"
 msgstr "cartafol"
 
-#: ../src/nact/nact-icommand-tab.c:660
+#: ../src/cact/cact-icommand-tab.c:660
 msgid "8080"
 msgstr "8080"
 
-#: ../src/nact/nact-icommand-tab.c:664
+#: ../src/cact/cact-icommand-tab.c:664
 msgid "file:///path/to/file1.text"
 msgstr "file:///camiño/ao/ficheiro1.text"
 
-#: ../src/nact/nact-icommand-tab.c:665
+#: ../src/cact/cact-icommand-tab.c:665
 msgid "file:///path/to/file2.text"
 msgstr "file:///camiño/ao/ficheiro2.text"
 
-#: ../src/nact/nact-icommand-tab.c:666
+#: ../src/cact/cact-icommand-tab.c:666
 msgid "file:///path/to/a/dir"
 msgstr "file:///camiño/ao/cartafol"
 
-#: ../src/nact/nact-icommand-tab.c:667
+#: ../src/cact/cact-icommand-tab.c:667
 msgid "file:///path/to/another/dir"
 msgstr "file:///camiño/a/outro/cartafol"
 
-#: ../src/nact/nact-icommand-tab.c:846
+#: ../src/cact/cact-icommand-tab.c:846
 msgid "e.g.,"
 msgstr "p.ex."
 
 #. i18n: title of the FileChoose dialog when selecting an URI which
 #. * will be compare to Caja 'current_folder'
 #.
-#: ../src/nact/nact-ifolders-tab.c:558 ../src/nact/nact-ifolders-tab.c:589
+#: ../src/cact/cact-ifolders-tab.c:558 ../src/cact/cact-ifolders-tab.c:589
 msgid "Select a folder"
 msgstr "Seleccionar un cartafol:"
 
-#: ../src/nact/nact-main-menubar.c:106 ../src/nact/nact-main-menubar.c:213
+#: ../src/cact/cact-main-menubar.c:106 ../src/cact/cact-main-menubar.c:213
 msgid "_File"
 msgstr "_Ficheiro"
 
-#: ../src/nact/nact-main-menubar.c:107 ../src/nact/nact-main-menubar.c:217
+#: ../src/cact/cact-main-menubar.c:107 ../src/cact/cact-main-menubar.c:217
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../src/nact/nact-main-menubar.c:108
+#: ../src/cact/cact-main-menubar.c:108
 msgid "_View"
 msgstr "_Ver"
 
-#: ../src/nact/nact-main-menubar.c:109
+#: ../src/cact/cact-main-menubar.c:109
 msgid "_Toolbars"
 msgstr "Barras de _ferramentas"
 
-#: ../src/nact/nact-main-menubar.c:110 ../src/nact/nact-main-menubar.c:221
+#: ../src/cact/cact-main-menubar.c:110 ../src/cact/cact-main-menubar.c:221
 msgid "_Tools"
 msgstr "_Ferramentas"
 
-#: ../src/nact/nact-main-menubar.c:111
+#: ../src/cact/cact-main-menubar.c:111
 msgid "_Maintainer"
 msgstr "_Mantedor"
 
-#: ../src/nact/nact-main-menubar.c:112 ../src/nact/nact-main-menubar.c:225
+#: ../src/cact/cact-main-menubar.c:112 ../src/cact/cact-main-menubar.c:225
 msgid "_Help"
 msgstr "A_xuda"
 
-#: ../src/nact/nact-main-menubar.c:114
+#: ../src/cact/cact-main-menubar.c:114
 msgid "New _menu"
 msgstr "Novo _menú"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New menu' item
-#: ../src/nact/nact-main-menubar.c:116
+#: ../src/cact/cact-main-menubar.c:116
 msgid "Insert a new menu at the current position"
 msgstr "Inserir un menú novo na posición actual"
 
-#: ../src/nact/nact-main-menubar.c:118
+#: ../src/cact/cact-main-menubar.c:118
 msgid "_New action"
 msgstr "Acción _nova"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New action' item
-#: ../src/nact/nact-main-menubar.c:120
+#: ../src/cact/cact-main-menubar.c:120
 msgid "Define a new action"
 msgstr "Definir unha acción nova"
 
-#: ../src/nact/nact-main-menubar.c:122
+#: ../src/cact/cact-main-menubar.c:122
 msgid "New _profile"
 msgstr "_Perfil novo"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New profile' item
-#: ../src/nact/nact-main-menubar.c:124
+#: ../src/cact/cact-main-menubar.c:124
 msgid "Define a new profile attached to the current action"
 msgstr "Definir un perfil novo acoplado coa acción actual"
 
 #. i18n: tooltip displayed in the status bar when selecting 'Save' item
-#: ../src/nact/nact-main-menubar.c:128
+#: ../src/cact/cact-main-menubar.c:128
 msgid ""
 "Record all the modified actions. Invalid actions will be silently ignored"
 msgstr ""
 
 #. i18n: tooltip displayed in the status bar when selecting 'Quit' item
-#: ../src/nact/nact-main-menubar.c:132
+#: ../src/cact/cact-main-menubar.c:132
 msgid "Quit the application"
 msgstr "Saír do aplicativo"
 
 #. i18n: tooltip displayed in the status bar when selecting the Cut item
-#: ../src/nact/nact-main-menubar.c:136
+#: ../src/cact/cact-main-menubar.c:136
 msgid "Cut the selected item(s) to the clipboard"
 msgstr "Cortar os elementos seleccionados ao portapapeis"
 
 #. i18n: tooltip displayed in the status bar when selecting the Copy item
-#: ../src/nact/nact-main-menubar.c:140
+#: ../src/cact/cact-main-menubar.c:140
 msgid "Copy the selected item(s) to the clipboard"
 msgstr "Copiar os elementos seleccionados ao portapapeis"
 
 #. i18n: tooltip displayed in the status bar when selecting the Paste item
-#: ../src/nact/nact-main-menubar.c:144
+#: ../src/cact/cact-main-menubar.c:144
 msgid "Insert the content of the clipboard just before the current position"
 msgstr "Inserir un contido ao portapapeis xusto despois da posición actual"
 
-#: ../src/nact/nact-main-menubar.c:146
+#: ../src/cact/cact-main-menubar.c:146
 msgid "Paste _into"
 msgstr "Pegar _en"
 
 #. i18n: tooltip displayed in the status bar when selecting the Paste Into item
-#: ../src/nact/nact-main-menubar.c:148
+#: ../src/cact/cact-main-menubar.c:148
 msgid "Insert the content of the clipboard as first child of the current item"
 msgstr ""
 "Inserir o contido do portapapeis como primeiro fillo do elemento actual"
 
-#: ../src/nact/nact-main-menubar.c:150
+#: ../src/cact/cact-main-menubar.c:150
 msgid "D_uplicate"
 msgstr "D_uplicar"
 
 #. i18n: tooltip displayed in the status bar when selecting the Duplicate item
-#: ../src/nact/nact-main-menubar.c:152
+#: ../src/cact/cact-main-menubar.c:152
 #, fuzzy
 msgid "Duplicate the selected item(s)"
 msgstr "Prema para quitar o esquema seleccionado."
 
 #. i18n: tooltip displayed in the status bar when selecting the Delete item
-#: ../src/nact/nact-main-menubar.c:156
+#: ../src/cact/cact-main-menubar.c:156
 #, fuzzy
 msgid "Delete the selected item(s)"
 msgstr "Prema para quitar o esquema seleccionado."
 
-#: ../src/nact/nact-main-menubar.c:158
+#: ../src/cact/cact-main-menubar.c:158
 msgid "_Reload the items"
 msgstr ""
 
 #. i18n: tooltip displayed in the status bar when selecting the 'Reload' item
-#: ../src/nact/nact-main-menubar.c:160
+#: ../src/cact/cact-main-menubar.c:160
 msgid ""
 "Cancel your current modifications and reload the initial list of menus and "
 "actions"
 msgstr ""
 
 #. i18n: tooltip displayed in the status bar when selecting the 'Preferences' item
-#: ../src/nact/nact-main-menubar.c:164
+#: ../src/cact/cact-main-menubar.c:164
 msgid "Edit your preferences"
 msgstr ""
 
-#: ../src/nact/nact-main-menubar.c:166
+#: ../src/cact/cact-main-menubar.c:166
 msgid "_Expand all"
 msgstr "_Expandir todo"
 
 #. i18n: tooltip displayed in the status bar when selecting the Expand all item
-#: ../src/nact/nact-main-menubar.c:168
+#: ../src/cact/cact-main-menubar.c:168
 msgid "Entirely expand the items hierarchy"
 msgstr "Expandir completamente a xerarquía dos elementos"
 
-#: ../src/nact/nact-main-menubar.c:170
+#: ../src/cact/cact-main-menubar.c:170
 msgid "_Collapse all"
 msgstr "_Contraer todo"
 
 #. i18n: tooltip displayed in the status bar when selecting the Collapse all item
-#: ../src/nact/nact-main-menubar.c:172
+#: ../src/cact/cact-main-menubar.c:172
 msgid "Entirely collapse the items hierarchy"
 msgstr "Contraer completamente a xerarquiá dos elementos"
 
-#: ../src/nact/nact-main-menubar.c:175
+#: ../src/cact/cact-main-menubar.c:175
 msgid "_Import assistant..."
 msgstr ""
 
 #. i18n: tooltip displayed in the status bar when selecting the Import item
-#: ../src/nact/nact-main-menubar.c:177
+#: ../src/cact/cact-main-menubar.c:177
 msgid ""
 "Import one or more actions from external (XML) files into your configuration"
 msgstr ""
 
-#: ../src/nact/nact-main-menubar.c:179
+#: ../src/cact/cact-main-menubar.c:179
 msgid "E_xport assistant..."
 msgstr ""
 
 #. i18n: tooltip displayed in the status bar when selecting the Export item
-#: ../src/nact/nact-main-menubar.c:181
+#: ../src/cact/cact-main-menubar.c:181
 msgid ""
 "Export one or more actions from your configuration to external XML files"
 msgstr ""
 
-#: ../src/nact/nact-main-menubar.c:184
+#: ../src/cact/cact-main-menubar.c:184
 msgid "_Dump the selection"
 msgstr ""
 
 #. i18n: tooltip displayed in the status bar when selecting the Dump selection item
-#: ../src/nact/nact-main-menubar.c:186
+#: ../src/cact/cact-main-menubar.c:186
 msgid "Recursively dump selected items"
 msgstr ""
 
-#: ../src/nact/nact-main-menubar.c:188
+#: ../src/cact/cact-main-menubar.c:188
 msgid "_Brief tree store dump"
 msgstr ""
 
 #. i18n: tooltip displayed in the status bar when selecting the BriefTreeStoreDump item
-#: ../src/nact/nact-main-menubar.c:190
+#: ../src/cact/cact-main-menubar.c:190
 msgid "Briefly dump the tree store"
 msgstr ""
 
-#: ../src/nact/nact-main-menubar.c:192
+#: ../src/cact/cact-main-menubar.c:192
 msgid "_List modified items"
 msgstr ""
 
 #. i18n: tooltip displayed in the status bar when selecting the ListModifiedItems item
-#: ../src/nact/nact-main-menubar.c:194
+#: ../src/cact/cact-main-menubar.c:194
 msgid "List the modified items"
 msgstr "Lista dos elementos modificados"
 
-#: ../src/nact/nact-main-menubar.c:196
+#: ../src/cact/cact-main-menubar.c:196
 msgid "_Dump the clipboard"
 msgstr "_Volcar o portapapeis"
 
 #. i18n: tooltip displayed in the status bar when selecting the DumpClipboard item
-#: ../src/nact/nact-main-menubar.c:198
+#: ../src/cact/cact-main-menubar.c:198
 msgid "Dump the content of the clipboard object"
 msgstr "Volcar o contido do obxecto do portapapeis"
 
 #. i18n: tooltip displayed in the status bar when selecting the Help item
-#: ../src/nact/nact-main-menubar.c:203
+#: ../src/cact/cact-main-menubar.c:203
 msgid "Display help about this program"
 msgstr "Mostrar a axuda sobre este programa"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
-#: ../src/nact/nact-main-menubar.c:207
+#: ../src/cact/cact-main-menubar.c:207
 msgid "Display informations about this program"
 msgstr "Mostrar información sobre este programa"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
-#: ../src/nact/nact-main-menubar.c:215
+#: ../src/cact/cact-main-menubar.c:215
 msgid "Display the File toolbar"
 msgstr "Mostrar a barra de ferramentas de Ficheiro"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View Edit toolbar' item
-#: ../src/nact/nact-main-menubar.c:219
+#: ../src/cact/cact-main-menubar.c:219
 msgid "Display the Edit toolbar"
 msgstr "Mostrar a barra de ferramentas de Editar"
 
 #. i18n: tooltip displayed in the status bar when selecting 'View Tools toolbar' item
-#: ../src/nact/nact-main-menubar.c:223
+#: ../src/cact/cact-main-menubar.c:223
 msgid "Display the Tools toolbar"
 msgstr "Mostrar a barra de ferramentas de Ferramentas"
 
 #. i18n: tooltip displayed in the status bar when selecting 'View Help toolbar' item
-#: ../src/nact/nact-main-menubar.c:227
+#: ../src/cact/cact-main-menubar.c:227
 msgid "Display the Help toolbar"
 msgstr "Mostrar a barra de ferramentas de Axuda"
 
 #. i18n: note the space at the beginning of the sentence
-#: ../src/nact/nact-main-menubar.c:451
+#: ../src/cact/cact-main-menubar.c:451
 #, c-format
 msgid " %d menu(s), %d action(s), %d profile(s) are currently loaded"
 msgstr "actualmente hai %d menú(s), %d acción(s), %d perfil(es) cargados"
 
-#: ../src/nact/nact-main-menubar-edit.c:242
+#: ../src/cact/cact-main-menubar-edit.c:242
 msgid "Not all items have been cut as following ones are not modifiable:"
 msgstr ""
 
-#: ../src/nact/nact-main-menubar-edit.c:492
+#: ../src/cact/cact-main-menubar-edit.c:492
 msgid "Not all items have been deleted as following ones are not modifiable:"
 msgstr ""
 
-#: ../src/nact/nact-main-menubar-file.c:200
+#: ../src/cact/cact-main-menubar-file.c:200
 #, fuzzy
 msgid "New profile"
 msgstr "Engadir unha acción nova"
 
-#: ../src/nact/nact-main-window.c:1338
+#: ../src/cact/cact-main-window.c:1338
 msgid ""
 "Reloading a fresh list of actions requires that you give up with your "
 "current modifications."
 msgstr ""
 
-#: ../src/nact/nact-main-window.c:1341
+#: ../src/cact/cact-main-window.c:1341
 msgid "Do you really want to do this ?"
 msgstr ""
 
-#: ../src/nact/nact-main-window.c:1364
+#: ../src/cact/cact-main-window.c:1364
 msgid ""
 "One or more actions have been modified in the filesystem.\n"
 "You could keep to work with your current list of actions, or you may want to "
 "reload a fresh one."
 msgstr ""
 
-#: ../src/nact/nact-main-window.c:1371
+#: ../src/cact/cact-main-window.c:1371
 msgid ""
 "Note that reloading a fresh list of actions requires that you give up with "
 "your current modifications."
 msgstr ""
 
-#: ../src/nact/nact-main-window.c:1377
+#: ../src/cact/cact-main-window.c:1377
 msgid "Do you want to reload a fresh list of actions ?"
 msgstr ""
 
-#: ../src/nact/nact-providers-list.c:117
+#: ../src/cact/cact-providers-list.c:117
 msgid "To be read"
 msgstr ""
 
-#: ../src/nact/nact-providers-list.c:125
+#: ../src/cact/cact-providers-list.c:125
 msgid "Writable"
 msgstr ""
 
-#: ../src/nact/nact-providers-list.c:133
+#: ../src/cact/cact-providers-list.c:133
 msgid "I/O Provider"
 msgstr ""
 
 #. i18n: default name when the I/O providers doesn't provide one
-#: ../src/nact/nact-providers-list.c:210
+#: ../src/cact/cact-providers-list.c:210
 msgid "no name"
 msgstr ""
 
 #. i18n: name displayed when the corresponding I/O provider is unavailable at runtime
-#: ../src/nact/nact-providers-list.c:214
+#: ../src/cact/cact-providers-list.c:214
 msgid "unavailable I/O provider"
 msgstr ""
 
 #. i18n notes : description of 'file' scheme
-#: ../src/nact/nact-schemes-list.c:244
+#: ../src/cact/cact-schemes-list.c:244
 msgid "Local files"
 msgstr "Ficheiros locais"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../src/nact/nact-schemes-list.c:246
+#: ../src/cact/cact-schemes-list.c:246
 msgid "SSH files"
 msgstr "Ficheiros SSH"
 
 #. i18n notes : description of 'smb' scheme
-#: ../src/nact/nact-schemes-list.c:248
+#: ../src/cact/cact-schemes-list.c:248
 msgid "Windows files"
 msgstr "Ficheiros de Windows"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../src/nact/nact-schemes-list.c:250
+#: ../src/cact/cact-schemes-list.c:250
 msgid "FTP files"
 msgstr "Ficheiros FTP"
 
 #. i18n notes : description of 'dav' scheme
-#: ../src/nact/nact-schemes-list.c:252
+#: ../src/cact/cact-schemes-list.c:252
 msgid "WebDAV files"
 msgstr "Ficheiros WebDAV"
 
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../src/nact/nact-schemes-list.c:784
+#: ../src/cact/cact-schemes-list.c:784
 msgid "new-scheme"
 msgstr "novo-esquema"
 
-#: ../src/nact/nact-schemes-list.c:785
+#: ../src/cact/cact-schemes-list.c:785
 msgid "New scheme description"
 msgstr "Descrición do esquema nova"
 
-#: ../src/nact/nact-tree-model-dnd.c:120
+#: ../src/cact/cact-tree-model-dnd.c:120
 msgid "Unable to drop a profile here"
 msgstr "Aquí non se pode soltar un perfil"
 
-#: ../src/nact/nact-tree-model-dnd.c:121
+#: ../src/cact/cact-tree-model-dnd.c:121
 msgid "Unable to drop an action or a menu here"
 msgstr "Aquí non se pode soltar unha acción ou un menú"
 
-#: ../src/nact/nact-tree-model-dnd.c:122
+#: ../src/cact/cact-tree-model-dnd.c:122
 msgid "Unable to drop here as parent is not writable"
 msgstr "Non se pode soltar aquí xa que o pai non é escribíbel"
 
-#: ../src/nact/nact-tree-model-dnd.c:123
+#: ../src/cact/cact-tree-model-dnd.c:123
 msgid "Unable to drop here as level zero is not writable"
 msgstr "Non se pode soltar aquí xa que o nivel cero non é escribíbel"
 
-#: ../src/nact/nact-tree-model-dnd.c:853
+#: ../src/cact/cact-tree-model-dnd.c:853
 msgid "Some messages have occurred during drop operation."
 msgstr "Mostráronse algúns mensaxes durante a operación de soltado."
 
-#: ../src/nact/nact-window.c:358
+#: ../src/cact/cact-window.c:358
 msgid "An error has occured when trying to save the item"
 msgstr ""
 
-#: ../src/nact/nact-window.c:404
+#: ../src/cact/cact-window.c:404
 msgid "An error has occured when trying to delete the item"
 msgstr ""
 
-#: ../src/nact/nact-window.c:461
+#: ../src/cact/cact-window.c:461
 #, c-format
 msgid "Some items have been modified."
 msgstr ""
 
-#: ../src/nact/nact-window.c:462
+#: ../src/cact/cact-window.c:462
 msgid "Are you sure you want to quit without saving them ?"
 msgstr ""
 
@@ -1945,7 +1945,7 @@ msgid ""
 "\n"
 "  The created action defaults to be written to stdout.\n"
 "  It can also be written to an output folder, in a file later suitable for "
-"an import in NACT.\n"
+"an import in CACT.\n"
 "  Or you may choose to directly write the action into your MateConf "
 "configuration."
 msgstr ""
@@ -1968,7 +1968,7 @@ msgstr " Fallou: Non se pode crear %s: %s\n"
 #: ../src/utils/caja-actions-new.c:484
 #, c-format
 msgid ""
-"Action '%s' succesfully written to %s, and ready to be imported in NACT.\n"
+"Action '%s' succesfully written to %s, and ready to be imported in CACT.\n"
 msgstr ""
 
 #: ../src/utils/caja-actions-new.c:517

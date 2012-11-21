@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -31,6 +30,8 @@
 #ifndef __CACT_MAIN_TAB_H__
 #define __CACT_MAIN_TAB_H__
 
+#include <api/na-icontext.h>
+
 #include "cact-main-window.h"
 
 /**
@@ -41,32 +42,29 @@
  * Here as defined signals and properties common to all tabs.
  */
 
-/* properties set against the GObject instance
- */
-#define TAB_UPDATABLE_PROP_EDITED_ACTION				"cact-tab-updatable-edited-action"
-#define TAB_UPDATABLE_PROP_EDITED_PROFILE				"cact-tab-updatable-edited-profile"
-#define TAB_UPDATABLE_PROP_SELECTED_ROW					"cact-tab-updatable-selected-row"
-#define TAB_UPDATABLE_PROP_EDITABLE						"cact-tab-updatable-editable"
-#define TAB_UPDATABLE_PROP_REASON						"cact-tab-updatable-reason"
-
 /* signals
+ *
+ * TAB_UPDATABLE_SIGNAL_ITEM_UPDATED: see definition in cact-main-window.c
  */
 #define TAB_UPDATABLE_SIGNAL_ITEM_UPDATED				"cact-tab-updatable-item-updated"
-#define TAB_UPDATABLE_SIGNAL_ENABLE_TAB					"cact-tab-updatable-enable-tab"
-#define TAB_UPDATABLE_SIGNAL_PROVIDER_CHANGED			"cact-tab-updatable-provider-changed"
 
 /* notebook tabs
  */
-
 enum {
 	TAB_ACTION = 0,
 	TAB_COMMAND,
+	TAB_EXECUTION,
+	TAB_BASENAMES,
+	TAB_MIMETYPES,
 	TAB_FOLDERS,
-	TAB_CONDITIONS,
-	TAB_ADVANCED
+	TAB_SCHEMES,
+	TAB_CAPABILITIES,
+	TAB_ENVIRONMENT,
+	TAB_PROPERTIES
 };
 
-void     cact_main_tab_enable_page( CactMainWindow *window, gint page, gboolean enabled );
+void     cact_main_tab_init           ( CactMainWindow *window, gint page );
+void     cact_main_tab_enable_page    ( CactMainWindow *window, gint page, gboolean enabled );
 gboolean cact_main_tab_is_page_enabled( CactMainWindow *window, gint page );
 
 G_END_DECLS

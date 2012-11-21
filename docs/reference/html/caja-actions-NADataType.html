@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NADataType</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch05.html" title="Data Factory Management System">
+<link rel="prev" href="NADataBoxed.html" title="NADataBoxed">
+<link rel="next" href="caja-actions-NADataDef-NADataGroup.html" title="NADataDef, NADataGroup">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="NADataBoxed.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="caja-actions-NADataDef-NADataGroup.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#caja-actions-NADataType.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#caja-actions-NADataType.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="caja-actions-NADataType"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="caja-actions-NADataType.top_of_page"></a>NADataType</span></h2>
+<p>NADataType — The Data Factory Type Definitions</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="caja-actions-NADataType.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-data-types.h&gt;
+
+enum                <a class="link" href="caja-actions-NADataType.html#NADataType" title="enum NADataType">NADataType</a>;
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="caja-actions-NADataType.html#na-data-types-get-mateconf-dump-key" title="na_data_types_get_mateconf_dump_key ()">na_data_types_get_mateconf_dump_key</a>    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> type</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="caja-actions-NADataType.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="caja-actions-NADataType.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NADataType"></a><h3>enum NADataType</h3>
+<pre class="programlisting">typedef enum {
+	NA_DATA_TYPE_BOOLEAN = 1,
+	NA_DATA_TYPE_POINTER,
+	NA_DATA_TYPE_STRING,
+	NA_DATA_TYPE_STRING_LIST,
+	NA_DATA_TYPE_LOCALE_STRING,
+	NA_DATA_TYPE_UINT,
+	NA_DATA_TYPE_UINT_LIST,
+} NADataType;
+</pre>
+<p>
+Each elementary data which would take advantage of <a class="link" href="NABoxed.html" title="NABoxed"><span class="type">NABoxed</span></a> facilities
+should be typed at instanciation time.
+</p>
+<p>
+<a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> implementations should provide a primitive for reading
+(resp. writing) a value for each of these elementary data types.
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>
+Please note that this enumeration may be compiled in by the extensions.
+They must so remain fixed, unless you are prepared to see strange effects
+(e.g. an extension has been compiled with <a class="link" href="caja-actions-NADataType.html#NA-DATA-TYPE-STRING:CAPS"><code class="literal">NA_DATA_TYPE_STRING</code></a> = 2, while you
+have inserted another element, making it to 3 !) - or you know what
+you are doing...
+  </p>
+<p>
+    So, only add new items at the end of the enum. You have been warned!
+  </p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="NA-DATA-TYPE-BOOLEAN:CAPS"></a><span class="term"><code class="literal">NA_DATA_TYPE_BOOLEAN</code></span></p></td>
+<td>a boolean
+                             can be initialized with "true" or "false" (case insensitive)
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-DATA-TYPE-POINTER:CAPS"></a><span class="term"><code class="literal">NA_DATA_TYPE_POINTER</code></span></p></td>
+<td>a ( void * ) pointer
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-DATA-TYPE-STRING:CAPS"></a><span class="term"><code class="literal">NA_DATA_TYPE_STRING</code></span></p></td>
+<td>an ASCII string
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-DATA-TYPE-STRING-LIST:CAPS"></a><span class="term"><code class="literal">NA_DATA_TYPE_STRING_LIST</code></span></p></td>
+<td>a list of ASCII strings
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-DATA-TYPE-LOCALE-STRING:CAPS"></a><span class="term"><code class="literal">NA_DATA_TYPE_LOCALE_STRING</code></span></p></td>
+<td>a localized UTF-8 string
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-DATA-TYPE-UINT:CAPS"></a><span class="term"><code class="literal">NA_DATA_TYPE_UINT</code></span></p></td>
+<td>an unsigned integer
+</td>
+</tr>
+<tr>
+<td><p><a name="NA-DATA-TYPE-UINT-LIST:CAPS"></a><span class="term"><code class="literal">NA_DATA_TYPE_UINT_LIST</code></span></p></td>
+<td>a list of unsigned integers
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-types-get-mateconf-dump-key"></a><h3>na_data_types_get_mateconf_dump_key ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       na_data_types_get_mateconf_dump_key    (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> type</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>the FactoryData type.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the MateConf key suitable for this type.
+The returned key is owned by the factory data management system, and
+should not be released by the caller.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

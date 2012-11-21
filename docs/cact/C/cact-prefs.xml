@@ -1,0 +1,177 @@
+<sect2 id="usage-prefs">
+  <title>Setting your own preferences</title>
+    <para>
+      Choose
+      <menuchoice>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Preferences</guimenuitem>
+      </menuchoice>
+      to access to the configuration of your preferences.
+    </para>
+
+  <sect3 id="usage-prefs-runtime">
+    <title>Runtime preferences</title>
+    <figure id="cact-FIG-prefs-runtime">
+      <title>Runtime preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-runtime.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define runtime preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Runtime preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect3>
+
+  <sect3 id="usage-prefs-execution">
+    <title>Runtime execution preferences</title>
+    <figure id="cact-FIG-prefs-execution">
+      <title>Runtime execution preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-execution.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define runtime execution preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Runtime execution preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <figure id="cact-FIG-prefs-desktop">
+      <title>Desktop selection</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-desktop.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Let the user explicitely configure the current desktop.</phrase>
+          </textobject>
+          <caption>
+            <para>Desktop selection</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect3>
+
+  <sect3 id="usage-prefs-ui">
+    <title>User interface preferences</title>
+    <figure id="cact-FIG-prefs-ui">
+      <title>UI preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-ui.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define UI preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>UI preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect3>
+
+  <sect3 id="usage-prefs-import">
+    <title>Import preferences</title>
+    <figure id="cact-FIG-prefs-import">
+      <title>Import preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-import.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define import preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Import preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+    </para>
+  </sect3>
+
+  <sect3 id="usage-prefs-export">
+    <title>Export preferences</title>
+    <figure id="cact-FIG-prefs-export">
+      <title>Export preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-export.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define export preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Export preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+    </para>
+  </sect3>
+
+  <sect3 id="usage-prefs-schemes">
+    <title>Schemes preferences</title>
+    <figure id="cact-FIG-prefs-schemes">
+      <title>Schemes preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-schemes.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define schemes preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Schemes preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+    </para>
+  </sect3>
+
+  <sect3 id="usage-prefs-providers">
+    <title>I/O providers preferences</title>
+    <figure id="cact-FIG-prefs-io-providers">
+      <title>I/O providers preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-io-providers.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define I/O providers preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>I/O providers preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+    </para>
+  </sect3>
+
+</sect2>

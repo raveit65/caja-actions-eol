@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NAObjectMenu</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch06.html" title="NAObject Hierarchy">
+<link rel="prev" href="NAObjectProfile.html" title="NAObjectProfile">
+<link rel="next" href="NAIDuplicable.html" title="NAIDuplicable">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="NAObjectProfile.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch06.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="NAIDuplicable.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#NAObjectMenu.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#NAObjectMenu.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#NAObjectMenu.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#NAObjectMenu.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#NAObjectMenu.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="NAObjectMenu"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="NAObjectMenu.top_of_page"></a>NAObjectMenu</span></h2>
+<p>NAObjectMenu — The Menu Class Definition</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="NAObjectMenu.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-object-menu.h&gt;
+
+#define             <a class="link" href="NAObjectMenu.html#NA-TYPE-OBJECT-MENU:CAPS" title="NA_TYPE_OBJECT_MENU">NA_TYPE_OBJECT_MENU</a>
+#define             <a class="link" href="NAObjectMenu.html#NA-OBJECT-MENU:CAPS" title="NA_OBJECT_MENU()">NA_OBJECT_MENU</a>                      (object)
+#define             <a class="link" href="NAObjectMenu.html#NA-IS-OBJECT-MENU:CAPS" title="NA_IS_OBJECT_MENU()">NA_IS_OBJECT_MENU</a>                   (object)
+                    <a class="link" href="NAObjectMenu.html#NAObjectMenu-struct" title="NAObjectMenu">NAObjectMenu</a>;
+<a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="returnvalue">NAObjectMenu</span></a> *      <a class="link" href="NAObjectMenu.html#na-object-menu-new" title="na_object_menu_new ()">na_object_menu_new</a>                  (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="returnvalue">NAObjectMenu</span></a> *      <a class="link" href="NAObjectMenu.html#na-object-menu-new-with-defaults" title="na_object_menu_new_with_defaults ()">na_object_menu_new_with_defaults</a>    (<em class="parameter"><code><span class="type">void</span></code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAObjectMenu.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a class="link" href="NAObject.html" title="NAObject">NAObject</a>
+         +----<a class="link" href="NAObjectId.html" title="NAObjectId">NAObjectId</a>
+               +----<a class="link" href="NAObjectItem.html" title="NAObjectItem">NAObjectItem</a>
+                     +----NAObjectMenu
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAObjectMenu.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+NAObjectMenu implements
+ <a class="link" href="NAIDuplicable.html" title="NAIDuplicable">NAIDuplicable</a>,  <a class="link" href="NAIContext.html" title="NAIContext">NAIContext</a> and  <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject">NAIFactoryObject</a>.</p>
+</div>
+<div class="refsect1">
+<a name="NAObjectMenu.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-all-mimetypes" title='The "na-factory-data-all-mimetypes" property'>na-factory-data-all-mimetypes</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-basenames" title='The "na-factory-data-basenames" property'>na-factory-data-basenames</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-capabilitites" title='The "na-factory-data-capabilitites" property'>na-factory-data-capabilitites</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-description" title='The "na-factory-data-description" property'>na-factory-data-description</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-enabled" title='The "na-factory-data-enabled" property'>na-factory-data-enabled</a>"  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-folders" title='The "na-factory-data-folders" property'>na-factory-data-folders</a>"  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-icon" title='The "na-factory-data-icon" property'>na-factory-data-icon</a>"     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-id" title='The "na-factory-data-id" property'>na-factory-data-id</a>"       <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-items" title='The "na-factory-data-items" property'>na-factory-data-items</a>"    <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-items-slist" title='The "na-factory-data-items-slist" property'>na-factory-data-items-slist</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-iversion" title='The "na-factory-data-iversion" property'>na-factory-data-iversion</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>                 : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-label" title='The "na-factory-data-label" property'>na-factory-data-label</a>"    <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-matchcase" title='The "na-factory-data-matchcase" property'>na-factory-data-matchcase</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-mimetypes" title='The "na-factory-data-mimetypes" property'>na-factory-data-mimetypes</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-not-show-in" title='The "na-factory-data-not-show-in" property'>na-factory-data-not-show-in</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-only-show-in" title='The "na-factory-data-only-show-in" property'>na-factory-data-only-show-in</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-parent" title='The "na-factory-data-parent" property'>na-factory-data-parent</a>"   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-provider" title='The "na-factory-data-provider" property'>na-factory-data-provider</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-provider-data" title='The "na-factory-data-provider-data" property'>na-factory-data-provider-data</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-readonly" title='The "na-factory-data-readonly" property'>na-factory-data-readonly</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-schemes" title='The "na-factory-data-schemes" property'>na-factory-data-schemes</a>"  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-selection-count" title='The "na-factory-data-selection-count" property'>na-factory-data-selection-count</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-shortcut" title='The "na-factory-data-shortcut" property'>na-factory-data-shortcut</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-show-if-registered" title='The "na-factory-data-show-if-registered" property'>na-factory-data-show-if-registered</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-show-if-running" title='The "na-factory-data-show-if-running" property'>na-factory-data-show-if-running</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-show-if-true" title='The "na-factory-data-show-if-true" property'>na-factory-data-show-if-true</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-tooltip" title='The "na-factory-data-tooltip" property'>na-factory-data-tooltip</a>"  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+  "<a class="link" href="NAObjectMenu.html#NAObjectMenu--na-factory-data-try-exec" title='The "na-factory-data-try-exec" property'>na-factory-data-try-exec</a>" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAObjectMenu.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="NAObjectMenu.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NA-TYPE-OBJECT-MENU:CAPS"></a><h3>NA_TYPE_OBJECT_MENU</h3>
+<pre class="programlisting">#define NA_TYPE_OBJECT_MENU                ( na_object_menu_get_type())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-OBJECT-MENU:CAPS"></a><h3>NA_OBJECT_MENU()</h3>
+<pre class="programlisting">#define NA_OBJECT_MENU( object )           ( G_TYPE_CHECK_INSTANCE_CAST( object, NA_TYPE_OBJECT_MENU, NAObjectMenu ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IS-OBJECT-MENU:CAPS"></a><h3>NA_IS_OBJECT_MENU()</h3>
+<pre class="programlisting">#define NA_IS_OBJECT_MENU( object )        ( G_TYPE_CHECK_INSTANCE_TYPE( object, NA_TYPE_OBJECT_MENU ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu-struct"></a><h3>NAObjectMenu</h3>
+<pre class="programlisting">typedef struct _NAObjectMenu NAObjectMenu;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-menu-new"></a><h3>na_object_menu_new ()</h3>
+<pre class="programlisting"><a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="returnvalue">NAObjectMenu</span></a> *      na_object_menu_new                  (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Allocates a new <a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="type">NAObjectMenu</span></a> object.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the newly allocated <a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="type">NAObjectMenu</span></a> object.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-menu-new-with-defaults"></a><h3>na_object_menu_new_with_defaults ()</h3>
+<pre class="programlisting"><a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="returnvalue">NAObjectMenu</span></a> *      na_object_menu_new_with_defaults    (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Allocates a new <a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="type">NAObjectMenu</span></a> object, and setup default values.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the newly allocated <a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="type">NAObjectMenu</span></a> object.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="NAObjectMenu.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-all-mimetypes"></a><h3>The <code class="literal">"na-factory-data-all-mimetypes"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-all-mimetypes" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>The generic wildcard may be coded as '*', or '*/*' or 'all' or 'all/*' or 'all/all'. In each case, we will try to spend as less time as possible to check selection mimetypes.</p>
+<p>Default value: TRUE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-basenames"></a><h3>The <code class="literal">"na-factory-data-basenames"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-basenames" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-capabilitites"></a><h3>The <code class="literal">"na-factory-data-capabilitites"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-capabilitites" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-description"></a><h3>The <code class="literal">"na-factory-data-description"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-description" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-enabled"></a><h3>The <code class="literal">"na-factory-data-enabled"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-enabled"  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p></p>
+<p>Default value: TRUE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-folders"></a><h3>The <code class="literal">"na-factory-data-folders"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-folders"  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-icon"></a><h3>The <code class="literal">"na-factory-data-icon"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-icon"     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-id"></a><h3>The <code class="literal">"na-factory-data-id"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-id"       <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p>Internal identifier of the NAObjectId object. Historically a UUID used as a MateConf directory (thus ASCII, case insensitive), it is also the basename of the .desktop file (thus UTF-8, case sensitive).</p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-items"></a><h3>The <code class="literal">"na-factory-data-items"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-items"    <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p>List of subitems objects.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-items-slist"></a><h3>The <code class="literal">"na-factory-data-items-slist"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-items-slist" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-iversion"></a><h3>The <code class="literal">"na-factory-data-iversion"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-iversion" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>                 : Read / Write</pre>
+<p>The version of the configuration format that will be used to manage backward compatibility.</p>
+<p>Default value: 3</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-label"></a><h3>The <code class="literal">"na-factory-data-label"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-label"    <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: "Empty label"</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-matchcase"></a><h3>The <code class="literal">"na-factory-data-matchcase"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-matchcase" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p></p>
+<p>Default value: TRUE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-mimetypes"></a><h3>The <code class="literal">"na-factory-data-mimetypes"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-mimetypes" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-not-show-in"></a><h3>The <code class="literal">"na-factory-data-not-show-in"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-not-show-in" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p>Defaults to none.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-only-show-in"></a><h3>The <code class="literal">"na-factory-data-only-show-in"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-only-show-in" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p>Defaults to all.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-parent"></a><h3>The <code class="literal">"na-factory-data-parent"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-parent"   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p>The NAObjectItem which is the parent of this object.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-provider"></a><h3>The <code class="literal">"na-factory-data-provider"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-provider" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p>A pointer to the NAIOProvider object.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-provider-data"></a><h3>The <code class="literal">"na-factory-data-provider-data"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-provider-data" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p>A pointer to some NAIOProvider specific data.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-readonly"></a><h3>The <code class="literal">"na-factory-data-readonly"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-readonly" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<p>Is the item only readable ? This is an intrinsic property, dynamically set when the item is unserialized. This property being FALSE doesn't mean that the item will actually be updatable, as this also depend of parameters set by user and administrator. Also, a property initially set to FALSE when first unserializing may be set toTRUE if an eccor occurs on a later write operation.</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-schemes"></a><h3>The <code class="literal">"na-factory-data-schemes"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-schemes"  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write</pre>
+<p></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-selection-count"></a><h3>The <code class="literal">"na-factory-data-selection-count"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-selection-count" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: "&gt;0"</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-shortcut"></a><h3>The <code class="literal">"na-factory-data-shortcut"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-shortcut" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-show-if-registered"></a><h3>The <code class="literal">"na-factory-data-show-if-registered"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-show-if-registered" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-show-if-running"></a><h3>The <code class="literal">"na-factory-data-show-if-running"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-show-if-running" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-show-if-true"></a><h3>The <code class="literal">"na-factory-data-show-if-true"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-show-if-true" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-tooltip"></a><h3>The <code class="literal">"na-factory-data-tooltip"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-tooltip"  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p>The tooltip of the menu item that will appear in the file manager statusbar when the user points to the file manager context menu item with his/her mouse.</p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectMenu--na-factory-data-try-exec"></a><h3>The <code class="literal">"na-factory-data-try-exec"</code> property</h3>
+<pre class="programlisting">  "na-factory-data-try-exec" <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write</pre>
+<p></p>
+<p>Default value: ""</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

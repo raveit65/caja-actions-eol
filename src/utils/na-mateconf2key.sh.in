@@ -1,0 +1,757 @@
+#!/bin/ksh
+# Caja-Actions
+# A Caja extension which offers configurable context menu actions.
+#
+# Copyright (C) 2005 The MATE Foundation
+# Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+# Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
+#
+# Caja-Actions is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General  Public  License  as
+# published by the Free Software Foundation; either  version  2  of
+# the License, or (at your option) any later version.
+#
+# Caja-Actions is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public  License
+# along with Caja-Actions; see the file  COPYING.  If  not,  see
+# <http://www.gnu.org/licenses/>.
+#
+# Authors:
+#   Frederic Ruaudel <grumz@grumz.net>
+#   Rodrigo Moya <rodrigo@mate-db.org>
+#   Pierre Wieser <pwieser@trychlos.org>
+#   ... and many others (see AUTHORS)
+
+errs=0										# will be the exit code of the script
+my_cmd="${0}"								# e.g. "./make-ks.sh"
+my_parms="$*"								# e.g. "-host toaster"
+my_cmdline="${my_cmd} ${my_parms}"
+me="${my_cmd##*/}"							# e.g. "make-ks.sh"
+											# used in msg and msgerr functions
+my_tmproot="/tmp/$(echo ${me} | sed 's?\..*$??').$$"
+											# e.g. "/tmp/make-ks.1978"
+
+# These three functions must be defined using the name() syntax in order
+# to share traps with the caller process (cf. man (1) ksh).
+#
+trap_exit()
+{
+	clear_tmpfiles
+	[ "${opt_verbose}" = "yes" -o ${errs} -gt 0 ] && msg "exiting with code ${errs}"
+	exit ${errs}
+}
+
+trap_int()
+{
+	msg "quitting on keyboard interrupt"
+	let errs+=1
+	exit
+}
+
+trap_term()
+{
+	[ "${opt_verbose}" = "yes" ] && msg "quitting on TERM signal"
+	exit
+}
+
+# setup the different trap functions
+trap 'trap_term' TERM
+trap 'trap_int'  INT
+trap 'trap_exit' EXIT
+
+function clear_tmpfiles
+{
+	\rm -f ${my_tmproot}.*
+}
+
+function msg
+{
+	typeset _eol="\n"
+	[ $# -ge 2 ] && _eol="${2}"
+	printf "[%s] %s${_eol}" ${me} "${1}"
+	return 0
+}
+
+function msgerr
+{
+	msg "error: ${1}" 1>&2
+	return $?
+}
+
+function msgwarn
+{
+	msg "warning: ${1}" 1>&2
+	return $?
+}
+
+function msg_help
+{
+	msg_version
+	echo "
+ This program is meant to safely migrate items, menus and actions, and
+ preferences from MateConf to .desktop files.
+ Users items and preferences are automatically migrated when Caja-Actions
+ menu plugin is loaded by Caja file-manager, or when one of the utilities
+ is run by the user.
+ A system administrator should nonetheless run himself this script with '--admin'
+ option in order to migrate mandatory items and preferences he or a predecessor
+ may have previously set.
+
+ Usage: ${my_cmd} [options]
+   --[no]help                print this message, and exit [${opt_help_def}]
+   --[no]version             print script version, and exit [${opt_version_def}]
+   --[no]dummy               dummy execution [${opt_dummy_def}]
+   --[no]verbose             runs verbosely [${opt_verbose_def}]
+   --dir=/dirname            directory where the migrated objects must be stored [${opt_dir_def}]
+   --[no]force               force the rewriting of an already existing item [${opt_force_def}]
+   --[no]delete              delete the item after the migration [${opt_delete_def}]
+   --[no]admin               only execute administration tasks [${opt_admin_def}]"
+}
+
+function msg_version
+{
+	echo "
+ @PACKAGE_NAME@ v @PACKAGE_VERSION@
+ Copyright (C) 2011, 2012 Pierre Wieser."
+}
+
+function command
+{
+	typeset _cmd="${1}"
+
+	if [ "${opt_dummy}" = "yes" -o "${opt_verbose}" = "yes" ]; then
+		typeset _prefix=""
+		[ "${opt_dummy}" = "yes" ] && _prefix="[dummy] "
+		echo "${_prefix}${_cmd}"
+	fi
+
+	if [ "${opt_dummy}" = "no" ]; then
+		eval ${_cmd}
+	fi
+}
+
+# initialize common command-line options
+nbopt=$#
+opt_help=
+opt_help_def="no"
+opt_dummy=
+opt_dummy_def="yes"
+opt_version=
+opt_version_def="no"
+opt_verbose=
+opt_verbose_def="no"
+
+# a first loop over command line arguments to detect verbose mode
+while :
+do
+	# break when all arguments have been read
+	case $# in
+		0)
+			break
+			;;
+	esac
+
+	# get and try to interpret the next argument
+	_option=$1
+	shift
+
+	# make all options have two hyphens
+	_orig_option=${_option}
+	case ${_option} in
+		--*)
+			;;
+		-*)
+			_option=-${_option}
+				;;
+		esac
+
+	# now process options and their argument
+	case ${_option} in
+		--noverb | --noverbo | --noverbos | --noverbose)
+			opt_verbose="no"
+			;;
+		--verb | --verbo | --verbos | --verbose)
+			opt_verbose="yes"
+				;;
+	esac
+done
+
+[ "${opt_verbose}" = "yes" ] && msg "setting opt_verbose to 'yes'"
+
+# we have scanned all command-line arguments in order to detect an
+# opt_verbose option;
+# reset now arguments so that they can be scanned again in main script
+set -- ${my_parms}
+
+# setting defaults
+# at this time, we consider that root only want run admin tasks
+if [ $(id -u) -eq 0 ]; then
+	opt_dir_def="/usr"
+	conf_dir="@sysconfdir@/xdg"
+	dir_mode="0755"
+else
+	opt_dir_def="${HOME}/.local"
+	conf_dir="${HOME}/.config"
+	dir_mode="0750"
+fi
+
+# interpreting command-line arguments
+opt_dir=
+opt_dir_def="${opt_dir_def}/share/file-manager/actions"
+
+# default is to not force rewriting of already existing items
+# instead they are renumbered
+opt_force=
+opt_force_def="no"
+
+# default is to not delete the migrated item
+opt_delete=
+opt_delete_def="no"
+
+# default is to run for standard user
+opt_admin=
+opt_admin_def="no"
+
+# path of the branch which contains the configurations
+na_package="/apps/@PACKAGE@"
+na_configurations="${na_package}/configurations"
+na_preferences="${na_package}/preferences"
+na_mandatory="${na_package}/mandatory"
+na_providers="${na_package}/io-providers"
+
+# read an item from MateConf, printing as .desktop on stdout
+na_print_program="@bindir@/caja-actions-print"
+
+# loop over command line arguments
+pos=0
+while :
+do
+	# break when all arguments have been read
+	case $# in
+		0)
+			break
+			;;
+	esac
+
+	# get and try to interpret the next argument
+	option=$1
+	shift
+
+	# make all options have two hyphens
+	orig_option=${option}
+	case ${option} in
+		--*)
+			;;
+		-*)
+			option=-${option}
+			;;
+	esac
+
+	# split and extract argument for options that take one
+	case ${option} in
+		--*=*)
+			optarg=$(echo ${option} | sed -e 's/^[^=]*=//')
+			option=$(echo ${option} | sed 's/=.*//')
+			;;
+		# these options take a mandatory argument
+		# since, we didn't find it in 'option', so it should be
+		# next word in the command line
+		--di | --dir)
+			optarg=$1
+			shift
+			;;
+	esac
+
+	# now process options and their argument
+	case ${option} in
+		--a | --ad | --adm | --admi | --admin)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_admin to 'yes'"
+			opt_admin="yes"
+			;;
+		--de | --del | --dele | --delet | --delete)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_delete to 'yes'"
+			opt_delete="yes"
+			;;
+		--di | --dir)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_dir to '${optarg}'"
+			opt_dir="${optarg}"
+			;;
+		--du | --dum | --dumm | --dummy)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_dummy to 'yes'"
+			opt_dummy="yes"
+			;;
+		--f | --fo | --for | --forc | --force)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_force to 'yes'"
+			opt_force="yes"
+			;;
+		--h | --he | --hel | --help)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_help to 'yes'"
+			opt_help="yes"
+			;;
+		--noa | --noad | --noadm | --noadmi | --noadmin)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_admin to 'no'"
+			opt_admin="no"
+			;;
+		--node | --nodel | --nodele | --nodelet | --nodelete)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_delete to 'no'"
+			opt_delete="no"
+			;;
+		--nodu | --nodum | --nodumm | --nodummy)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_dummy to 'no'"
+			opt_dummy="no"
+			;;
+		--nof | --nofo | --nofor | --noforc | --noforce)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_force to 'no'"
+			opt_force="no"
+			;;
+		--noh | --nohe | --nohel | --nohelp)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_help to 'no'"
+			opt_help="no"
+			;;
+		--noverb | --noverbo | --noverbos | --noverbose)
+			;;
+		--novers | --noversi | --noversio | --noversion)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_version to 'no'"
+			opt_version="no"
+			;;
+		--verb | --verbo | --verbos | --verbose)
+			;;
+		--vers | --versi | --versio | --version)
+			[ "${opt_verbose}" = "yes" ] && msg "setting opt_version to 'yes'"
+			opt_version="yes"
+			;;
+		--*)
+			msgerr "unrecognized option: '${orig_option}'"
+			let errs+=1
+			;;
+		# positional parameters
+		*)
+			let pos+=1
+			#if [ ${pos} -eq 1 ]; then
+			#	[ "${opt_verbose}" = "yes" ] && msg "setting opt_output to '${option}'"
+			#	opt_output=${option}
+			#else
+				msgerr "unexpected positional parameter #${pos}: '${option}'"
+				let errs+=1
+			#fi
+			;;
+	esac
+done
+
+# set option defaults
+# does not work with /bin/sh ??
+#set | grep -e '^opt_' | cut -d= -f1 | while read _name; do
+#	if [ "$(echo ${_name} | sed 's/.*\(_def\)/\1/')" != "_def" ]; then
+#		_value="$(eval echo "$"${_name})"
+#		if [ "${_value}" = "" ]; then
+#			eval ${_name}="$(eval echo "$"${_name}_def)"
+#		fi
+#	fi
+#done
+
+opt_help=${opt_help:-${opt_help_def}}
+opt_dummy=${opt_dummy:-${opt_dummy_def}}
+opt_verbose=${opt_verbose:-${opt_verbose_def}}
+opt_version=${opt_version:-${opt_version_def}}
+
+opt_dir=${opt_dir:-${opt_dir_def}}
+opt_delete=${opt_delete:-${opt_delete_def}}
+opt_force=${opt_force:-${opt_force_def}}
+opt_admin=${opt_admin:-${opt_admin_def}}
+
+if [ "${opt_help}" = "yes" -o ${nbopt} -eq 0 ]; then
+	msg_help
+	echo ""
+	exit
+fi
+
+if [ "${opt_version}" = "yes" ]; then
+	msg_version
+	echo ""
+	exit
+fi
+
+# only root may run with '--admin' option
+# but root may also run with standard option for his own needs
+if [ "${opt_admin}" = "yes" -a $(id -u) -ne 0 ]; then
+	msgerr "only root may run with '--admin' option"
+	let errs+=1
+fi
+
+if [ ${errs} -gt 0 ]; then
+	msg "${errs} error(s) have been detected"
+	msg "try '${my_cmd} --help' for usage"
+	exit
+fi
+
+function add_pref
+{
+	typeset _group="${1}"
+	typeset _key="${2}"
+	typeset _type="${3}"
+	typeset _value="${4}"
+
+	typeset _newvalue="${4}"
+	if [ "${_type}" = "list" ]; then
+		_newvalue="$(echo "${_value}" | sed -e 's/^\[//' -e 's/]$//' -e 's/,/;/g');"
+	fi
+
+	# make sure that MateConf is at the end of the list of I/O providers
+	if [ "${_key}" = "io-providers-order" ]; then
+		if [ "$(echo ${_newvalue} | grep na-mateconf)" != "" ]; then
+			typeset _v="$(echo "${_newvalue}" | sed -e 's/na-mateconf//');na-mateconf;"
+			_newvalue="$(echo "${_v}" | sed -e 's/;\+/;/g')"
+		fi
+	fi
+
+	echo "${_key} = ${_newvalue}" >> ${my_tmproot}.${_group}
+}
+
+function add_pref_provider
+{
+	typeset _group="${1}"
+	typeset _key="${2}"
+	typeset _value="${3}"
+
+	typeset _groupname="$(echo "${_group}" | sed 's/ /_/g')"
+	echo "${_key} = ${value}" >> ${my_tmproot}.${_groupname}
+}
+
+function create_first_level
+{
+	typeset _newvalue="$(echo "$1" | sed -e 's/^\[//' -e 's/]$//' -e 's/,/;/g');"
+	echo "ItemsList = ${_newvalue}" >> ${my_tmproot}.zero
+}
+
+# ---------------------------------------------------------------------
+# MAIN CODE
+
+# if we do not have mateconftool-2, then exit
+which mateconftool-2 1>/dev/null 2>&1 || { msg "mateconftool-2: not available"; exit 1; }
+
+# create the destination directory if it does not yet exist
+command "mkdir -m ${dir_mode} -p ${opt_dir} || exit 1"
+
+let nbitems=0
+let new=0
+let ignored=0
+let duplicates=0
+
+# list objects in configurations/ subdir
+# each object, action or menu, is then exported in .a .desktop format
+# to be written to its .desktop file
+if [ "${opt_admin}" = "no" ]; then
+	for dir in $(mateconftool-2 --all-dirs ${na_configurations}); do
+		id=${dir##*/}
+		let nbitems+=1
+		[ "${opt_verbose}" = "yes" ] && msg "item=${id}"
+		if [ ! -e ${opt_dir}/${id}.desktop -o "${opt_force}" = "yes" ]; then
+			command "${na_print_program} --id ${id} | grep -v 'caja-actions-print' > ${opt_dir}/${id}.desktop"
+			let new+=1
+		else
+			# the item has most probably already been migrated
+			# if there is no sensible modification, just ignore it
+			# else create a copy with a new id
+			msgwarn "${opt_dir}/${id}.desktop already exists"
+			tmpfile=$(mktemp)
+			command "${na_print_program} --id ${id} | grep -v 'caja-actions-print' > ${tmpfile}"
+			diff -qB ${tmpfile} ${opt_dir}/${id}.desktop 1>/dev/null 2>&1
+			if [ $? -eq 0 ]; then
+				msg "${opt_dir}/${id}.desktop has no modification, just ignoring it"
+				let ignored+=1
+				command "rm -f ${tmpfile}"
+			else
+				i=0
+				while [ -e ${opt_dir}/${id}-${i}.desktop ]; do
+					let i+=1
+				done
+				command "mv ${tmpfile} ${opt_dir}/${id}-${i}.desktop"
+				let duplicates+=1
+			fi
+		fi
+	done
+	msg "${nbitems} items read from MateConf: new=${new}, ignored=${ignored}, duplicates=${duplicates}"
+fi
+
+# we are using this same script to migrate preferences to .conf files
+# mandatory preferences go to SYSCONFDIR/xdg/caja-actions/caja-actions.conf
+# while user preferences go to HOME/.config/caja-actions/caja-actions.conf
+# Note also that the MateConf I/O provider will be disabled for writings
+# after this migration
+destdir=${conf_dir}/@PACKAGE@
+command "mkdir -m ${dir_mode} -p ${destdir}"
+destconf=${destdir}/@PACKAGE@.conf
+rm -f ${my_tmproot}.cact
+rm -f ${my_tmproot}.runtime
+rm -f ${my_tmproot}.io-provider_*
+
+if [ "${opt_admin}" = "no" ]; then
+	mateconftool-2 --all-entries ${na_preferences} | while read key x value; do
+		case ${key} in
+			add-capability-dialog)
+				add_pref "cact" "capability-add-capability-wsp" list "${value}"
+				;;
+			add-scheme-dialog)
+				add_pref "cact" "scheme-add-scheme-wsp" list "${value}"
+				;;
+			assistant-esc-confirm)
+				add_pref "cact" "${key}" str "${value}"
+				;;
+			assistant-esc-quit)
+				add_pref "cact" "${key}" str "${value}"
+				;;
+			auto-save-on)
+				add_pref "cact" "main-save-auto" str "${value}"
+				;;
+			auto-save-period)
+				add_pref "cact" "main-save-period" str "${value}"
+				;;
+			export-assistant)
+				add_pref "cact" "export-assistant-wsp" list "${value}"
+				;;
+			export-ask-user)
+				add_pref "cact" "export-ask-user-wsp" list "${value}"
+				;;
+			export-ask-user-last-format)
+				add_pref "cact" "${key}" str "${value}"
+				;;
+			export-folder-uri)
+				add_pref "cact" "export-assistant-lfu" str "${value}"
+				;;
+			export-format)
+				add_pref "cact" "export-preferred-format" str "${value}"
+				;;
+			icommand-command-chooser)
+				add_pref "cact" "command-command-chooser-wsp" list "${value}"
+				;;
+			icommand-folder-uri)
+				add_pref "cact" "command-command-chooser-lfu" list "${value}"
+				;;
+			icommand-legend-dialog)
+				add_pref "cact" "command-legend-wsp" list "${value}"
+				;;
+			icommand-working-dir-dialog)
+				add_pref "cact" "command-working-dir-chooser-wsp" list "${value}"
+				;;
+			icommand-working-dir-uri)
+				add_pref "cact" "command-working-dir-chooser-lfu" str "${value}"
+				;;
+			icons-chooser)
+				add_pref "cact" "item-icon-chooser-wsp" list "${value}"
+				;;
+			icons-path)
+				add_pref "cact" "item-icon-chooser-last-file-uri" str "${value}"
+				;;
+			ienvironment-show-if-running-dialog)
+				add_pref "cact" "environment-show-if-running-wsp" list "${value}"
+				;;
+			ienvironment-show-if-running-uri)
+				add_pref "cact" "environment-show-if-running-lfu" str "${value}"
+				;;
+			ienvironment-try-exec-dialog)
+				add_pref "cact" "environment-try-exec-wsp" list "${value}"
+				;;
+			ienvironment-try-exec-uri)
+				add_pref "cact" "environment-try-exec-lfu" str "${value}"
+				;;
+			ifolders-chooser)
+				add_pref "cact" "folder-chooser-wsp" list "${value}"
+				;;
+			ifolders-path)
+				add_pref "cact" "folder-chooser-lfu" str "file://${value}"
+				;;
+			import-ask-user)
+				add_pref "cact" "import-ask-user-wsp" list "${value}"
+				;;
+			import-ask-user-last-mode)
+				add_pref "cact" "${key}" str "${value}"
+				;;
+			import-assistant)
+				add_pref "cact" "import-assistant-wsp" list "${value}"
+				;;
+			import-folder-uri)
+				add_pref "cact" "import-assistant-lfu" str "${value}"
+				;;
+			import-keep-choice)
+				add_pref "cact" "import-ask-user-keep-last-choice" list "${value}"
+				;;
+			import-mode)
+				add_pref "cact" "import-preferred-mode" str "${value}"
+				;;
+			io-providers-order)
+				add_pref "cact" "io-providers-write-order" list "${value}"
+				;;
+			iprefs-add-about-item)
+				add_pref "runtime" "items-add-about-item" str "${value}"
+				;;
+			iprefs-alphabetical-order)
+				add_pref "runtime" "items-list-order-mode" str "${value}"
+				;;
+			iprefs-create-root-menu)
+				add_pref "runtime" "items-create-root-menu" str "${value}"
+				;;
+			iprefs-level-zero)
+				# for now, keep the level zero order as a runtime preference
+				# in caja-actions.conf
+				#create_first_level "${value}"
+				add_pref "runtime" "items-level-zero-order" list "${value}"
+				;;
+			iprefs-relabel-actions)
+				add_pref "cact" "relabel-when-duplicate-action" str "${value}"
+				;;
+			iprefs-relabel-menus)
+				add_pref "cact" "relabel-when-duplicate-menu" str "${value}"
+				;;
+			iprefs-relabel-profiles)
+				add_pref "cact" "relabel-when-duplicate-profile" str "${value}"
+				;;
+			main-edit-toolbar)
+				add_pref "cact" "main-toolbar-edit-display" str "${value}"
+				;;
+			main-file-toolbar)
+				add_pref "cact" "main-toolbar-file-display" str "${value}"
+				;;
+			main-help-toolbar)
+				add_pref "cact" "main-toolbar-help-display" str "${value}"
+				;;
+			main-tools-toolbar)
+				add_pref "cact" "main-toolbar-tools-display" str "${value}"
+				;;
+			main-paned)
+				add_pref "cact" "main-paned-width" str "${value}"
+				;;
+			main-window)
+				add_pref "cact" "main-window-wsp" list "${value}"
+				;;
+			preferences-editor)
+				add_pref "cact" "preferences-wsp" list "${value}"
+				;;
+			schemes)
+				add_pref "cact" "scheme-default-list" list "${value}"
+				;;
+		esac
+	done
+fi
+
+# migrate mandatory keys
+# /apps/caja-actions/mandatory/all/locked -> [runtime]
+# /apps/caja-actions/mandatory/<provider_id>/locked -> [io-provider <provider_id>]
+if [ "${opt_admin}" = "yes" ]; then
+	for dir in $(mateconftool-2 --all-dirs ${na_mandatory}); do
+		bdir=${dir##*/}
+		if [ "${bdir}" != "na-mateconf" ]; then
+			value=$(mateconftool-2 --get ${dir}/locked 2>/dev/null)
+			if [ "${value}" != "" ]; then
+				# 'all/locked' means 'all preferences are read-only'
+				if [ "${bdir}" = "all" ]; then
+					add_pref "runtime" "preferences-locked" str "${value}"
+				# '<provider_id>/locked' means that the i/o provider is read-only
+				elif [ "${value}" = "true" ]; then
+					add_pref_provider "io-provider ${bdir}" "writable" "false"
+				fi
+			fi
+		fi
+	done
+fi
+
+# migrate io-providers keys
+# locking MateConf (not reconducting its keys), but setting it as read-only
+if [ "${opt_admin}" = "no" ]; then
+	for dir in $(mateconftool-2 --all-dirs ${na_providers}); do
+		bdir=${dir##*/}
+		if [ "${bdir}" != "na-mateconf" ]; then
+			mateconftool-2 --all-entries ${dir} | while read key x value; do
+				case ${key} in
+					read-at-startup)
+						add_pref_provider "io-provider ${bdir}" "readable" "${value}"
+						;;
+					writable)
+						add_pref_provider "io-provider ${bdir}" "${key}" "${value}"
+						;;
+				esac
+			done
+		fi
+	done
+fi
+
+# whether we are running admin tasks or not, we try to force the MateConf i/o provider
+# to be locked
+cat <<! >${my_tmproot}.io-provider_na-mateconf
+# Starting with 3.1.0, MateConf as I/O provider is deprecated
+readable=true
+writable = false
+!
+
+let nbprefs=0
+
+if [ -e ${destconf} ]; then
+	msg "${destconf} already exists: do not replace it, update the N-A configuration file instead"
+	command "@pkglibexecdir@/na-set-conf --group 'io-provider na-mateconf' --key writable --type bool --value false"
+else
+	nbprefs=$(cat ${my_tmproot}.cact ${my_tmproot}.runtime ${my_tmproot}.io-provider_* 2>/dev/null | wc -l)
+
+	if [ ${nbprefs} -gt 0 ]; then
+		rm -f ${destconf}
+		if [ -s ${my_tmproot}.cact ]; then
+			cat <<! >>${destconf}
+
+[cact]
+$(sort < ${my_tmproot}.cact 2>/dev/null)
+!
+		fi
+		if [ -s ${my_tmproot}.runtime ]; then
+			cat <<! >>${destconf}
+
+[runtime]
+$(sort < ${my_tmproot}.runtime 2>/dev/null)
+!
+		fi
+		for f in $(ls -1 ${my_tmproot}.io-provider_* 2>/dev/null); do
+			group="$(echo ${f} | sed -e "s,^${my_tmproot}\.,," -e 's/_/ /g')"
+			cat <<! >>${destconf}
+
+[${group}]
+$(sort < ${f})
+!
+		done
+	fi
+
+	msg "${nbprefs} migrated preferences"
+fi
+
+#if [ -s ${my_tmproot}.zero ]; then
+#	cat <<! >${opt_dir}/level-zero.directory
+#[Desktop Entry]
+#$(cat ${my_tmproot}.zero)
+#!
+#fi
+
+# force sync
+killall mateconfd-2 2>/dev/null
+
+let count=${nbitems}+${nbprefs}
+#echo "count=${count}"
+
+# at the end, we delete all package branch from MateConf
+if [ "${opt_delete}" = "yes" -a ${count} -gt 0 ]; then
+	if [ "${opt_admin}" = "yes" ]; then
+		# rather a bad hack to find where mandatory keys are stored by MateConf
+		# na-delete-xmltree directly removes our branch from the XML tree!
+		xml=$(find /etc -name mateconf.xml.mandatory)/%mateconf-tree.xml
+		path='/mateconf/dir[@name="apps"]/dir[@name="@PACKAGE@"]'
+		command "@pkglibexecdir@/na-delete-xmltree --path '${path}' --xml ${xml} > ${xml}2"
+		command "mv ${xml}2 ${xml}"
+	else
+		# this does not work for mandatory items
+		command "mateconftool-2 --recursive-unset ${na_package}"
+	fi
+fi
+
+# re-force sync
+killall mateconfd-2 2>/dev/null
+
+exit

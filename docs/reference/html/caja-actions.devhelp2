@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
+<book xmlns="http://www.devhelp.net/book" title="Caja-Actions Reference Manual" link="index.html" author="" name="caja-actions" version="2" language="c">
+  <chapters>
+    <sub name="Caja-Actions Overview" link="ch01.html">
+      <sub name="What is it ?" link="na-what-is-it.html"/>
+      <sub name="Getting Caja-Actions" link="na-getting.html"/>
+      <sub name="Distribution content" link="na-dist-content.html"/>
+      <sub name="Compiling the Caja-Actions package" link="na-compiling.html"/>
+      <sub name="About this document" link="na-about.html"/>
+    </sub>
+    <sub name="Extending Caja-Actions" link="ch02.html">
+      <sub name="Plugins" link="caja-actions-Plugins.html"/>
+    </sub>
+    <sub name="Public extension interfaces" link="ch03.html">
+      <sub name="NAIIOProvider" link="NAIIOProvider.html"/>
+      <sub name="NAIImporter" link="NAIImporter.html"/>
+      <sub name="NAIExporter" link="NAIExporter.html"/>
+    </sub>
+    <sub name="DBus services" link="ch04.html">
+      <sub name="D-Bus" link="caja-actions-D-Bus.html"/>
+    </sub>
+    <sub name="Data Factory Management System" link="ch05.html">
+      <sub name="NAIFactoryProvider" link="NAIFactoryProvider.html"/>
+      <sub name="NAIFactoryObject" link="NAIFactoryObject.html"/>
+      <sub name="NABoxed" link="NABoxed.html"/>
+      <sub name="NADataBoxed" link="NADataBoxed.html"/>
+      <sub name="NADataType" link="caja-actions-NADataType.html"/>
+      <sub name="NADataDef, NADataGroup" link="caja-actions-NADataDef-NADataGroup.html"/>
+      <sub name="Constants" link="caja-actions-Constants.html"/>
+    </sub>
+    <sub name="NAObject Hierarchy" link="ch06.html">
+      <sub name="NAObject" link="NAObject.html"/>
+      <sub name="NAObjectId" link="NAObjectId.html"/>
+      <sub name="NAObjectItem" link="NAObjectItem.html"/>
+      <sub name="NAObjectAction" link="NAObjectAction.html"/>
+      <sub name="NAObjectProfile" link="NAObjectProfile.html"/>
+      <sub name="NAObjectMenu" link="NAObjectMenu.html"/>
+      <sub name="NAIDuplicable" link="NAIDuplicable.html"/>
+      <sub name="NAIContext" link="NAIContext.html"/>
+      <sub name="API" link="caja-actions-API.html"/>
+    </sub>
+    <sub name="Miscellaneous API" link="ch07.html">
+      <sub name="NAMateConfMonitor" link="NAMateConfMonitor.html"/>
+      <sub name="MateConf Misc" link="caja-actions-MateConf-Misc.html"/>
+      <sub name="Core Misc" link="caja-actions-Core-Misc.html"/>
+      <sub name="NATimeout" link="caja-actions-NATimeout.html"/>
+    </sub>
+    <sub name="Object Hierarchy" link="object-tree.html"/>
+    <sub name="API Index" link="api-index-full.html"/>
+    <sub name="Index of deprecated symbols" link="api-index-deprecated.html"/>
+    <sub name="Index of new symbols in Caja-Actions v 2.30" link="api-index-2-30.html"/>
+    <sub name="Index of new symbols in Caja-Actions v 3.1" link="api-index-3-1.html"/>
+    <sub name="Index of new symbols in Caja-Actions v 3.2" link="api-index-3-2.html"/>
+  </chapters>
+  <functions>
+    <keyword type="" name="Developing a Caja-Actions plugin" link="caja-actions-Plugins.html#id417335"/>
+    <keyword type="" name="Versions historic" link="caja-actions-Plugins.html#id387642"/>
+    <keyword type="function" name="na_extension_startup ()" link="caja-actions-Plugins.html#na-extension-startup" since="2.30"/>
+    <keyword type="function" name="na_extension_get_version ()" link="caja-actions-Plugins.html#na-extension-get-version" since="2.30"/>
+    <keyword type="function" name="na_extension_list_types ()" link="caja-actions-Plugins.html#na-extension-list-types" since="2.30"/>
+    <keyword type="function" name="na_extension_shutdown ()" link="caja-actions-Plugins.html#na-extension-shutdown" since="2.30"/>
+    <keyword type="" name="I/O provider identifier" link="NAIIOProvider.html#id397582"/>
+    <keyword type="" name="Versions historic" link="NAIIOProvider.html#id420589"/>
+    <keyword type="macro" name="NA_TYPE_IIO_PROVIDER" link="NAIIOProvider.html#NA-TYPE-IIO-PROVIDER:CAPS"/>
+    <keyword type="macro" name="NA_IIO_PROVIDER()" link="NAIIOProvider.html#NA-IIO-PROVIDER:CAPS"/>
+    <keyword type="macro" name="NA_IS_IIO_PROVIDER()" link="NAIIOProvider.html#NA-IS-IIO-PROVIDER:CAPS"/>
+    <keyword type="macro" name="NA_IIO_PROVIDER_GET_INTERFACE()" link="NAIIOProvider.html#NA-IIO-PROVIDER-GET-INTERFACE:CAPS"/>
+    <keyword type="struct" name="NAIIOProvider" link="NAIIOProvider.html#NAIIOProvider-struct"/>
+    <keyword type="struct" name="NAIIOProviderInterface" link="NAIIOProvider.html#NAIIOProviderInterface"/>
+    <keyword type="enum" name="enum NAIIOProviderWritabilityStatus" link="NAIIOProvider.html#NAIIOProviderWritabilityStatus"/>
+    <keyword type="enum" name="enum NAIIOProviderOperationStatus" link="NAIIOProvider.html#NAIIOProviderOperationStatus"/>
+    <keyword type="function" name="na_iio_provider_item_changed ()" link="NAIIOProvider.html#na-iio-provider-item-changed" since="2.30"/>
+    <keyword type="signal" name="The &quot;io-provider-item-changed&quot; signal" link="NAIIOProvider.html#NAIIOProvider-io-provider-item-changed"/>
+    <keyword type="" name="Versions historic" link="NAIImporter.html#id387965"/>
+    <keyword type="macro" name="NA_TYPE_IIMPORTER" link="NAIImporter.html#NA-TYPE-IIMPORTER:CAPS"/>
+    <keyword type="macro" name="NA_IIMPORTER()" link="NAIImporter.html#NA-IIMPORTER:CAPS"/>
+    <keyword type="macro" name="NA_IS_IIMPORTER()" link="NAIImporter.html#NA-IS-IIMPORTER:CAPS"/>
+    <keyword type="macro" name="NA_IIMPORTER_GET_INTERFACE()" link="NAIImporter.html#NA-IIMPORTER-GET-INTERFACE:CAPS"/>
+    <keyword type="struct" name="NAIImporter" link="NAIImporter.html#NAIImporter-struct"/>
+    <keyword type="struct" name="NAIImporterInterface" link="NAIImporter.html#NAIImporterInterface"/>
+    <keyword type="enum" name="enum NAIImporterImportMode" link="NAIImporter.html#NAIImporterImportMode" deprecated="3.2"/>
+    <keyword type="enum" name="enum NAIImporterImportStatus" link="NAIImporter.html#NAIImporterImportStatus"/>
+    <keyword type="function" name="NAIImporterAskUserFn ()" link="NAIImporter.html#NAIImporterAskUserFn" deprecated="3.2" since="2.30"/>
+    <keyword type="function" name="NAIImporterCheckFn ()" link="NAIImporter.html#NAIImporterCheckFn" deprecated="3.2" since="2.30"/>
+    <keyword type="struct" name="NAIImporterImportFromUriParms" link="NAIImporter.html#NAIImporterImportFromUriParms" deprecated="3.2" since="2.30"/>
+    <keyword type="struct" name="NAIImporterImportFromUriParmsv2" link="NAIImporter.html#NAIImporterImportFromUriParmsv2" since="3.2"/>
+    <keyword type="struct" name="NAIImporterManageImportModeParms" link="NAIImporter.html#NAIImporterManageImportModeParms" deprecated="3.2" since="2.30"/>
+    <keyword type="function" name="na_iimporter_import_from_uri ()" link="NAIImporter.html#na-iimporter-import-from-uri" since="2.30"/>
+    <keyword type="function" name="na_iimporter_manage_import_mode ()" link="NAIImporter.html#na-iimporter-manage-import-mode" deprecated="3.2" since="2.30"/>
+    <keyword type="" name="Export format identifier" link="NAIExporter.html#id416335"/>
+    <keyword type="" name="Versions historic" link="NAIExporter.html#id390492"/>
+    <keyword type="macro" name="NA_TYPE_IEXPORTER" link="NAIExporter.html#NA-TYPE-IEXPORTER:CAPS"/>
+    <keyword type="macro" name="NA_IEXPORTER()" link="NAIExporter.html#NA-IEXPORTER:CAPS"/>
+    <keyword type="macro" name="NA_IS_IEXPORTER()" link="NAIExporter.html#NA-IS-IEXPORTER:CAPS"/>
+    <keyword type="macro" name="NA_IEXPORTER_GET_INTERFACE()" link="NAIExporter.html#NA-IEXPORTER-GET-INTERFACE:CAPS"/>
+    <keyword type="struct" name="NAIExporter" link="NAIExporter.html#NAIExporter-struct"/>
+    <keyword type="struct" name="NAIExporterInterface" link="NAIExporter.html#NAIExporterInterface"/>
+    <keyword type="enum" name="enum NAIExporterExportStatus" link="NAIExporter.html#NAIExporterExportStatus"/>
+    <keyword type="struct" name="NAIExporterFormat" link="NAIExporter.html#NAIExporterFormat" deprecated="3.2"/>
+    <keyword type="struct" name="NAIExporterFormatv2" link="NAIExporter.html#NAIExporterFormatv2" since="3.2"/>
+    <keyword type="" name="Versions historic" link="NAIExporter.html#id423974"/>
+    <keyword type="struct" name="NAIExporterFileParms" link="NAIExporter.html#NAIExporterFileParms" deprecated="3.2"/>
+    <keyword type="struct" name="NAIExporterFileParmsv2" link="NAIExporter.html#NAIExporterFileParmsv2" since="3.2"/>
+    <keyword type="struct" name="NAIExporterBufferParms" link="NAIExporter.html#NAIExporterBufferParms" deprecated="3.2"/>
+    <keyword type="struct" name="NAIExporterBufferParmsv2" link="NAIExporter.html#NAIExporterBufferParmsv2" since="3.2"/>
+    <keyword type="macro" name="CAJA_ACTIONS_DBUS_SERVICE" link="caja-actions-D-Bus.html#CAJA-ACTIONS-DBUS-SERVICE:CAPS"/>
+    <keyword type="macro" name="CAJA_ACTIONS_DBUS_TRACKER_PATH" link="caja-actions-D-Bus.html#CAJA-ACTIONS-DBUS-TRACKER-PATH:CAPS"/>
+    <keyword type="macro" name="CAJA_ACTIONS_DBUS_TRACKER_IFACE" link="caja-actions-D-Bus.html#CAJA-ACTIONS-DBUS-TRACKER-IFACE:CAPS"/>
+    <keyword type="" name="Versions historic" link="NAIFactoryProvider.html#id411726"/>
+    <keyword type="macro" name="NA_TYPE_IFACTORY_PROVIDER" link="NAIFactoryProvider.html#NA-TYPE-IFACTORY-PROVIDER:CAPS"/>
+    <keyword type="macro" name="NA_IFACTORY_PROVIDER()" link="NAIFactoryProvider.html#NA-IFACTORY-PROVIDER:CAPS"/>
+    <keyword type="macro" name="NA_IS_IFACTORY_PROVIDER()" link="NAIFactoryProvider.html#NA-IS-IFACTORY-PROVIDER:CAPS"/>
+    <keyword type="macro" name="NA_IFACTORY_PROVIDER_GET_INTERFACE()" link="NAIFactoryProvider.html#NA-IFACTORY-PROVIDER-GET-INTERFACE:CAPS"/>
+    <keyword type="struct" name="NAIFactoryProvider" link="NAIFactoryProvider.html#NAIFactoryProvider-struct"/>
+    <keyword type="struct" name="NAIFactoryProviderInterface" link="NAIFactoryProvider.html#NAIFactoryProviderInterface"/>
+    <keyword type="function" name="na_ifactory_provider_read_item ()" link="NAIFactoryProvider.html#na-ifactory-provider-read-item" since="2.30"/>
+    <keyword type="function" name="na_ifactory_provider_write_item ()" link="NAIFactoryProvider.html#na-ifactory-provider-write-item" since="2.30"/>
+    <keyword type="" name="Versions historic" link="NAIFactoryObject.html#id390851"/>
+    <keyword type="macro" name="NA_TYPE_IFACTORY_OBJECT" link="NAIFactoryObject.html#NA-TYPE-IFACTORY-OBJECT:CAPS"/>
+    <keyword type="macro" name="NA_IFACTORY_OBJECT()" link="NAIFactoryObject.html#NA-IFACTORY-OBJECT:CAPS"/>
+    <keyword type="macro" name="NA_IS_IFACTORY_OBJECT()" link="NAIFactoryObject.html#NA-IS-IFACTORY-OBJECT:CAPS"/>
+    <keyword type="macro" name="NA_IFACTORY_OBJECT_GET_INTERFACE()" link="NAIFactoryObject.html#NA-IFACTORY-OBJECT-GET-INTERFACE:CAPS"/>
+    <keyword type="struct" name="NAIFactoryObject" link="NAIFactoryObject.html#NAIFactoryObject-struct"/>
+    <keyword type="struct" name="NAIFactoryObjectInterface" link="NAIFactoryObject.html#NAIFactoryObjectInterface"/>
+    <keyword type="function" name="na_ifactory_object_get_data_boxed ()" link="NAIFactoryObject.html#na-ifactory-object-get-data-boxed" since="2.30"/>
+    <keyword type="function" name="na_ifactory_object_get_data_groups ()" link="NAIFactoryObject.html#na-ifactory-object-get-data-groups" since="2.30"/>
+    <keyword type="function" name="na_ifactory_object_get_as_void ()" link="NAIFactoryObject.html#na-ifactory-object-get-as-void" since="2.30"/>
+    <keyword type="function" name="na_ifactory_object_set_from_void ()" link="NAIFactoryObject.html#na-ifactory-object-set-from-void" since="2.30"/>
+    <keyword type="macro" name="NA_TYPE_BOXED" link="NABoxed.html#NA-TYPE-BOXED:CAPS"/>
+    <keyword type="macro" name="NA_BOXED()" link="NABoxed.html#NA-BOXED:CAPS"/>
+    <keyword type="macro" name="NA_IS_BOXED()" link="NABoxed.html#NA-IS-BOXED:CAPS"/>
+    <keyword type="struct" name="NABoxed" link="NABoxed.html#NABoxed-struct"/>
+    <keyword type="function" name="na_boxed_set_type ()" link="NABoxed.html#na-boxed-set-type" since="3.1"/>
+    <keyword type="function" name="na_boxed_are_equal ()" link="NABoxed.html#na-boxed-are-equal" since="3.1"/>
+    <keyword type="function" name="na_boxed_copy ()" link="NABoxed.html#na-boxed-copy" since="3.1"/>
+    <keyword type="function" name="na_boxed_dump ()" link="NABoxed.html#na-boxed-dump" since="3.1"/>
+    <keyword type="function" name="na_boxed_get_boolean ()" link="NABoxed.html#na-boxed-get-boolean" since="3.1"/>
+    <keyword type="function" name="na_boxed_get_pointer ()" link="NABoxed.html#na-boxed-get-pointer" since="3.1"/>
+    <keyword type="function" name="na_boxed_get_string ()" link="NABoxed.html#na-boxed-get-string" since="3.1"/>
+    <keyword type="function" name="na_boxed_get_string_list ()" link="NABoxed.html#na-boxed-get-string-list" since="3.1"/>
+    <keyword type="function" name="na_boxed_get_uint ()" link="NABoxed.html#na-boxed-get-uint" since="3.1"/>
+    <keyword type="function" name="na_boxed_get_uint_list ()" link="NABoxed.html#na-boxed-get-uint-list" since="3.1"/>
+    <keyword type="function" name="na_boxed_get_as_value ()" link="NABoxed.html#na-boxed-get-as-value" since="3.1"/>
+    <keyword type="function" name="na_boxed_get_as_void ()" link="NABoxed.html#na-boxed-get-as-void" since="3.1"/>
+    <keyword type="function" name="na_boxed_new_from_string ()" link="NABoxed.html#na-boxed-new-from-string" since="3.1"/>
+    <keyword type="function" name="na_boxed_set_from_boxed ()" link="NABoxed.html#na-boxed-set-from-boxed" since="3.1"/>
+    <keyword type="function" name="na_boxed_set_from_string ()" link="NABoxed.html#na-boxed-set-from-string" since="3.1"/>
+    <keyword type="function" name="na_boxed_set_from_value ()" link="NABoxed.html#na-boxed-set-from-value" since="3.1"/>
+    <keyword type="function" name="na_boxed_set_from_void ()" link="NABoxed.html#na-boxed-set-from-void" since="3.1"/>
+    <keyword type="macro" name="NA_TYPE_DATA_BOXED" link="NADataBoxed.html#NA-TYPE-DATA-BOXED:CAPS"/>
+    <keyword type="macro" name="NA_DATA_BOXED()" link="NADataBoxed.html#NA-DATA-BOXED:CAPS"/>
+    <keyword type="macro" name="NA_IS_DATA_BOXED()" link="NADataBoxed.html#NA-IS-DATA-BOXED:CAPS"/>
+    <keyword type="struct" name="NADataBoxed" link="NADataBoxed.html#NADataBoxed-struct"/>
+    <keyword type="function" name="na_data_boxed_new ()" link="NADataBoxed.html#na-data-boxed-new" since="2.30"/>
+    <keyword type="function" name="na_data_boxed_get_data_def ()" link="NADataBoxed.html#na-data-boxed-get-data-def" since="2.30"/>
+    <keyword type="function" name="na_data_boxed_get_param_spec ()" link="NADataBoxed.html#na-data-boxed-get-param-spec" since="2.30"/>
+    <keyword type="function" name="na_data_boxed_are_equal ()" link="NADataBoxed.html#na-data-boxed-are-equal" deprecated="3.1: Use na_boxed_are_equal() instead." since="2.30"/>
+    <keyword type="function" name="na_data_boxed_is_default ()" link="NADataBoxed.html#na-data-boxed-is-default" since="2.30"/>
+    <keyword type="function" name="na_data_boxed_is_valid ()" link="NADataBoxed.html#na-data-boxed-is-valid" since="2.30"/>
+    <keyword type="function" name="na_data_boxed_dump ()" link="NADataBoxed.html#na-data-boxed-dump" deprecated="3.1: Use na_boxed_dump() instead." since="2.30"/>
+    <keyword type="function" name="na_data_boxed_set_data_def ()" link="NADataBoxed.html#na-data-boxed-set-data-def" since="2.30"/>
+    <keyword type="function" name="na_data_boxed_get_as_string ()" link="NADataBoxed.html#na-data-boxed-get-as-string" deprecated="3.1: Use na_boxed_get_string() instead." since="2.30"/>
+    <keyword type="function" name="na_data_boxed_get_as_void ()" link="NADataBoxed.html#na-data-boxed-get-as-void" deprecated="3.1: Use na_boxed_get_as_void() instead." since="2.30"/>
+    <keyword type="function" name="na_data_boxed_get_as_value ()" link="NADataBoxed.html#na-data-boxed-get-as-value" deprecated="3.1: Use na_boxed_get_as_value() instead." since="2.30"/>
+    <keyword type="function" name="na_data_boxed_set_from_boxed ()" link="NADataBoxed.html#na-data-boxed-set-from-boxed" deprecated="3.1: Use na_boxed_set_from_boxed() instead." since="2.30"/>
+    <keyword type="function" name="na_data_boxed_set_from_string ()" link="NADataBoxed.html#na-data-boxed-set-from-string" deprecated="3.1: Use na_boxed_set_from_string() instead." since="2.30"/>
+    <keyword type="function" name="na_data_boxed_set_from_value ()" link="NADataBoxed.html#na-data-boxed-set-from-value" deprecated="3.1: Use na_boxed_set_from_value() instead." since="2.30"/>
+    <keyword type="function" name="na_data_boxed_set_from_void ()" link="NADataBoxed.html#na-data-boxed-set-from-void" deprecated="3.1: Use na_boxed_set_from_void() instead." since="2.30"/>
+    <keyword type="enum" name="enum NADataType" link="caja-actions-NADataType.html#NADataType" since="2.30"/>
+    <keyword type="function" name="na_data_types_get_mateconf_dump_key ()" link="caja-actions-NADataType.html#na-data-types-get-mateconf-dump-key" since="2.30"/>
+    <keyword type="struct" name="NADataDef" link="caja-actions-NADataDef-NADataGroup.html#NADataDef"/>
+    <keyword type="struct" name="NADataGroup" link="caja-actions-NADataDef-NADataGroup.html#NADataGroup"/>
+    <keyword type="function" name="na_data_def_get_data_def ()" link="caja-actions-NADataDef-NADataGroup.html#na-data-def-get-data-def" since="2.30"/>
+    <keyword type="macro" name="NA_FACTORY_OBJECT_ID_GROUP" link="caja-actions-Constants.html#NA-FACTORY-OBJECT-ID-GROUP:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_ID" link="caja-actions-Constants.html#NAFO-DATA-ID:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_LABEL" link="caja-actions-Constants.html#NAFO-DATA-LABEL:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_PARENT" link="caja-actions-Constants.html#NAFO-DATA-PARENT:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_CONDITIONS" link="caja-actions-Constants.html#NAFO-DATA-CONDITIONS:CAPS"/>
+    <keyword type="macro" name="NA_FACTORY_OBJECT_ITEM_GROUP" link="caja-actions-Constants.html#NA-FACTORY-OBJECT-ITEM-GROUP:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_IVERSION" link="caja-actions-Constants.html#NAFO-DATA-IVERSION:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_TYPE" link="caja-actions-Constants.html#NAFO-DATA-TYPE:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_TOOLTIP" link="caja-actions-Constants.html#NAFO-DATA-TOOLTIP:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_ICON" link="caja-actions-Constants.html#NAFO-DATA-ICON:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_ICON_NOLOC" link="caja-actions-Constants.html#NAFO-DATA-ICON-NOLOC:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_DESCRIPTION" link="caja-actions-Constants.html#NAFO-DATA-DESCRIPTION:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_SHORTCUT" link="caja-actions-Constants.html#NAFO-DATA-SHORTCUT:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_SUBITEMS" link="caja-actions-Constants.html#NAFO-DATA-SUBITEMS:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_SUBITEMS_SLIST" link="caja-actions-Constants.html#NAFO-DATA-SUBITEMS-SLIST:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_ENABLED" link="caja-actions-Constants.html#NAFO-DATA-ENABLED:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_READONLY" link="caja-actions-Constants.html#NAFO-DATA-READONLY:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_PROVIDER" link="caja-actions-Constants.html#NAFO-DATA-PROVIDER:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_PROVIDER_DATA" link="caja-actions-Constants.html#NAFO-DATA-PROVIDER-DATA:CAPS"/>
+    <keyword type="macro" name="NA_FACTORY_OBJECT_ACTION_GROUP" link="caja-actions-Constants.html#NA-FACTORY-OBJECT-ACTION-GROUP:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_VERSION" link="caja-actions-Constants.html#NAFO-DATA-VERSION:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_TARGET_SELECTION" link="caja-actions-Constants.html#NAFO-DATA-TARGET-SELECTION:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_TARGET_LOCATION" link="caja-actions-Constants.html#NAFO-DATA-TARGET-LOCATION:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_TARGET_TOOLBAR" link="caja-actions-Constants.html#NAFO-DATA-TARGET-TOOLBAR:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_TOOLBAR_LABEL" link="caja-actions-Constants.html#NAFO-DATA-TOOLBAR-LABEL:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_TOOLBAR_SAME_LABEL" link="caja-actions-Constants.html#NAFO-DATA-TOOLBAR-SAME-LABEL:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_LAST_ALLOCATED" link="caja-actions-Constants.html#NAFO-DATA-LAST-ALLOCATED:CAPS"/>
+    <keyword type="macro" name="NA_FACTORY_ACTION_V1_GROUP" link="caja-actions-Constants.html#NA-FACTORY-ACTION-V1-GROUP:CAPS"/>
+    <keyword type="macro" name="NA_FACTORY_OBJECT_MENU_GROUP" link="caja-actions-Constants.html#NA-FACTORY-OBJECT-MENU-GROUP:CAPS"/>
+    <keyword type="macro" name="NA_FACTORY_OBJECT_PROFILE_GROUP" link="caja-actions-Constants.html#NA-FACTORY-OBJECT-PROFILE-GROUP:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_DESCNAME" link="caja-actions-Constants.html#NAFO-DATA-DESCNAME:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_DESCNAME_NOLOC" link="caja-actions-Constants.html#NAFO-DATA-DESCNAME-NOLOC:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_PATH" link="caja-actions-Constants.html#NAFO-DATA-PATH:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_PARAMETERS" link="caja-actions-Constants.html#NAFO-DATA-PARAMETERS:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_WORKING_DIR" link="caja-actions-Constants.html#NAFO-DATA-WORKING-DIR:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_EXECUTION_MODE" link="caja-actions-Constants.html#NAFO-DATA-EXECUTION-MODE:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_STARTUP_NOTIFY" link="caja-actions-Constants.html#NAFO-DATA-STARTUP-NOTIFY:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_STARTUP_WMCLASS" link="caja-actions-Constants.html#NAFO-DATA-STARTUP-WMCLASS:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_EXECUTE_AS" link="caja-actions-Constants.html#NAFO-DATA-EXECUTE-AS:CAPS"/>
+    <keyword type="macro" name="NA_FACTORY_OBJECT_CONDITIONS_GROUP" link="caja-actions-Constants.html#NA-FACTORY-OBJECT-CONDITIONS-GROUP:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_BASENAMES" link="caja-actions-Constants.html#NAFO-DATA-BASENAMES:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_MATCHCASE" link="caja-actions-Constants.html#NAFO-DATA-MATCHCASE:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_MIMETYPES" link="caja-actions-Constants.html#NAFO-DATA-MIMETYPES:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_MIMETYPES_IS_ALL" link="caja-actions-Constants.html#NAFO-DATA-MIMETYPES-IS-ALL:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_ISFILE" link="caja-actions-Constants.html#NAFO-DATA-ISFILE:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_ISDIR" link="caja-actions-Constants.html#NAFO-DATA-ISDIR:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_MULTIPLE" link="caja-actions-Constants.html#NAFO-DATA-MULTIPLE:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_SCHEMES" link="caja-actions-Constants.html#NAFO-DATA-SCHEMES:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_FOLDERS" link="caja-actions-Constants.html#NAFO-DATA-FOLDERS:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_SELECTION_COUNT" link="caja-actions-Constants.html#NAFO-DATA-SELECTION-COUNT:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_ONLY_SHOW" link="caja-actions-Constants.html#NAFO-DATA-ONLY-SHOW:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_NOT_SHOW" link="caja-actions-Constants.html#NAFO-DATA-NOT-SHOW:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_TRY_EXEC" link="caja-actions-Constants.html#NAFO-DATA-TRY-EXEC:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_SHOW_IF_REGISTERED" link="caja-actions-Constants.html#NAFO-DATA-SHOW-IF-REGISTERED:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_SHOW_IF_TRUE" link="caja-actions-Constants.html#NAFO-DATA-SHOW-IF-TRUE:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_SHOW_IF_RUNNING" link="caja-actions-Constants.html#NAFO-DATA-SHOW-IF-RUNNING:CAPS"/>
+    <keyword type="macro" name="NAFO_DATA_CAPABILITITES" link="caja-actions-Constants.html#NAFO-DATA-CAPABILITITES:CAPS"/>
+    <keyword type="macro" name="NA_TYPE_OBJECT" link="NAObject.html#NA-TYPE-OBJECT:CAPS"/>
+    <keyword type="macro" name="NA_OBJECT()" link="NAObject.html#NA-OBJECT:CAPS"/>
+    <keyword type="macro" name="NA_IS_OBJECT()" link="NAObject.html#NA-IS-OBJECT:CAPS"/>
+    <keyword type="struct" name="NAObject" link="NAObject.html#NAObject-struct"/>
+    <keyword type="struct" name="NAObjectClass" link="NAObject.html#NAObjectClass"/>
+    <keyword type="function" name="na_object_object_reset_origin ()" link="NAObject.html#na-object-object-reset-origin" since="2.30"/>
+    <keyword type="function" name="na_object_object_ref ()" link="NAObject.html#na-object-object-ref" since="2.30"/>
+    <keyword type="function" name="na_object_object_unref ()" link="NAObject.html#na-object-object-unref" since="2.30"/>
+    <keyword type="function" name="na_object_object_dump ()" link="NAObject.html#na-object-object-dump" since="2.30"/>
+    <keyword type="function" name="na_object_object_dump_norec ()" link="NAObject.html#na-object-object-dump-norec" since="2.30"/>
+    <keyword type="function" name="na_object_object_dump_tree ()" link="NAObject.html#na-object-object-dump-tree" since="2.30"/>
+    <keyword type="function" name="na_object_object_check_status_rec ()" link="NAObject.html#na-object-object-check-status-rec" since="2.30"/>
+    <keyword type="function" name="na_object_get_hierarchy ()" link="NAObject.html#na-object-get-hierarchy" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_object_free_hierarchy ()" link="NAObject.html#na-object-free-hierarchy" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_object_object_debug_invalid ()" link="NAObject.html#na-object-object-debug-invalid" since="2.30"/>
+    <keyword type="macro" name="NA_TYPE_OBJECT_ID" link="NAObjectId.html#NA-TYPE-OBJECT-ID:CAPS"/>
+    <keyword type="macro" name="NA_OBJECT_ID()" link="NAObjectId.html#NA-OBJECT-ID:CAPS"/>
+    <keyword type="macro" name="NA_IS_OBJECT_ID()" link="NAObjectId.html#NA-IS-OBJECT-ID:CAPS"/>
+    <keyword type="struct" name="NAObjectId" link="NAObjectId.html#NAObjectId-struct"/>
+    <keyword type="struct" name="NAObjectIdClass" link="NAObjectId.html#NAObjectIdClass"/>
+    <keyword type="function" name="na_object_id_sort_alpha_asc ()" link="NAObjectId.html#na-object-id-sort-alpha-asc" since="2.30"/>
+    <keyword type="function" name="na_object_id_sort_alpha_desc ()" link="NAObjectId.html#na-object-id-sort-alpha-desc" since="2.30"/>
+    <keyword type="function" name="na_object_id_prepare_for_paste ()" link="NAObjectId.html#na-object-id-prepare-for-paste" since="2.30"/>
+    <keyword type="function" name="na_object_id_set_copy_of_label ()" link="NAObjectId.html#na-object-id-set-copy-of-label" since="2.30"/>
+    <keyword type="function" name="na_object_id_set_new_id ()" link="NAObjectId.html#na-object-id-set-new-id" since="2.30"/>
+    <keyword type="macro" name="NA_TYPE_OBJECT_ITEM" link="NAObjectItem.html#NA-TYPE-OBJECT-ITEM:CAPS"/>
+    <keyword type="macro" name="NA_OBJECT_ITEM()" link="NAObjectItem.html#NA-OBJECT-ITEM:CAPS"/>
+    <keyword type="macro" name="NA_IS_OBJECT_ITEM()" link="NAObjectItem.html#NA-IS-OBJECT-ITEM:CAPS"/>
+    <keyword type="struct" name="NAObjectItem" link="NAObjectItem.html#NAObjectItem-struct"/>
+    <keyword type="enum" name="enum NAItemTarget" link="NAObjectItem.html#NAItemTarget"/>
+    <keyword type="function" name="na_object_item_is_finally_writable ()" link="NAObjectItem.html#na-object-item-is-finally-writable" since="3.1"/>
+    <keyword type="function" name="na_object_item_set_writability_status ()" link="NAObjectItem.html#na-object-item-set-writability-status" since="3.1"/>
+    <keyword type="function" name="na_object_item_get_item ()" link="NAObjectItem.html#na-object-item-get-item" since="2.30"/>
+    <keyword type="function" name="na_object_item_get_position ()" link="NAObjectItem.html#na-object-item-get-position" since="2.30"/>
+    <keyword type="function" name="na_object_item_append_item ()" link="NAObjectItem.html#na-object-item-append-item" since="2.30"/>
+    <keyword type="function" name="na_object_item_insert_at ()" link="NAObjectItem.html#na-object-item-insert-at" since="2.30"/>
+    <keyword type="function" name="na_object_item_insert_item ()" link="NAObjectItem.html#na-object-item-insert-item" since="2.30"/>
+    <keyword type="function" name="na_object_item_remove_item ()" link="NAObjectItem.html#na-object-item-remove-item" since="2.30"/>
+    <keyword type="function" name="na_object_item_get_items_count ()" link="NAObjectItem.html#na-object-item-get-items-count" since="2.30"/>
+    <keyword type="function" name="na_object_item_count_items ()" link="NAObjectItem.html#na-object-item-count-items" since="2.30"/>
+    <keyword type="function" name="na_object_item_copyref_items ()" link="NAObjectItem.html#na-object-item-copyref-items" since="3.1"/>
+    <keyword type="function" name="na_object_item_free_items ()" link="NAObjectItem.html#na-object-item-free-items" since="3.1"/>
+    <keyword type="function" name="na_object_item_rebuild_children_slist ()" link="NAObjectItem.html#na-object-item-rebuild-children-slist" since="2.30"/>
+    <keyword type="function" name="na_object_item_deals_with_version ()" link="NAObjectItem.html#na-object-item-deals-with-version" since="2.30"/>
+    <keyword type="macro" name="NA_TYPE_OBJECT_ACTION" link="NAObjectAction.html#NA-TYPE-OBJECT-ACTION:CAPS"/>
+    <keyword type="macro" name="NA_OBJECT_ACTION()" link="NAObjectAction.html#NA-OBJECT-ACTION:CAPS"/>
+    <keyword type="macro" name="NA_IS_OBJECT_ACTION()" link="NAObjectAction.html#NA-IS-OBJECT-ACTION:CAPS"/>
+    <keyword type="struct" name="NAObjectAction" link="NAObjectAction.html#NAObjectAction-struct"/>
+    <keyword type="function" name="na_object_action_new ()" link="NAObjectAction.html#na-object-action-new" since="2.30"/>
+    <keyword type="function" name="na_object_action_new_with_profile ()" link="NAObjectAction.html#na-object-action-new-with-profile" since="2.30"/>
+    <keyword type="function" name="na_object_action_new_with_defaults ()" link="NAObjectAction.html#na-object-action-new-with-defaults" since="2.30"/>
+    <keyword type="function" name="na_object_action_get_new_profile_name ()" link="NAObjectAction.html#na-object-action-get-new-profile-name" since="2.30"/>
+    <keyword type="function" name="na_object_action_attach_profile ()" link="NAObjectAction.html#na-object-action-attach-profile" since="2.30"/>
+    <keyword type="function" name="na_object_action_set_last_version ()" link="NAObjectAction.html#na-object-action-set-last-version" since="2.30"/>
+    <keyword type="property" name="The &quot;na-factory-data-all-mimetypes&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-all-mimetypes"/>
+    <keyword type="property" name="The &quot;na-factory-data-basenames&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-basenames"/>
+    <keyword type="property" name="The &quot;na-factory-data-capabilitites&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-capabilitites"/>
+    <keyword type="property" name="The &quot;na-factory-data-description&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-description"/>
+    <keyword type="property" name="The &quot;na-factory-data-enabled&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-enabled"/>
+    <keyword type="property" name="The &quot;na-factory-data-folders&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-folders"/>
+    <keyword type="property" name="The &quot;na-factory-data-icon&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-icon"/>
+    <keyword type="property" name="The &quot;na-factory-data-id&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-id"/>
+    <keyword type="property" name="The &quot;na-factory-data-items&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-items"/>
+    <keyword type="property" name="The &quot;na-factory-data-items-slist&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-items-slist"/>
+    <keyword type="property" name="The &quot;na-factory-data-iversion&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-iversion"/>
+    <keyword type="property" name="The &quot;na-factory-data-label&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-label"/>
+    <keyword type="property" name="The &quot;na-factory-data-last-allocated&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-last-allocated"/>
+    <keyword type="property" name="The &quot;na-factory-data-matchcase&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-matchcase"/>
+    <keyword type="property" name="The &quot;na-factory-data-mimetypes&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-mimetypes"/>
+    <keyword type="property" name="The &quot;na-factory-data-not-show-in&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-not-show-in"/>
+    <keyword type="property" name="The &quot;na-factory-data-only-show-in&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-only-show-in"/>
+    <keyword type="property" name="The &quot;na-factory-data-parent&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-parent"/>
+    <keyword type="property" name="The &quot;na-factory-data-provider&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-provider"/>
+    <keyword type="property" name="The &quot;na-factory-data-provider-data&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-provider-data"/>
+    <keyword type="property" name="The &quot;na-factory-data-readonly&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-readonly"/>
+    <keyword type="property" name="The &quot;na-factory-data-schemes&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-schemes"/>
+    <keyword type="property" name="The &quot;na-factory-data-selection-count&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-selection-count"/>
+    <keyword type="property" name="The &quot;na-factory-data-shortcut&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-shortcut"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-registered&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-show-if-registered"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-running&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-show-if-running"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-true&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-show-if-true"/>
+    <keyword type="property" name="The &quot;na-factory-data-target-location&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-target-location"/>
+    <keyword type="property" name="The &quot;na-factory-data-target-selection&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-target-selection"/>
+    <keyword type="property" name="The &quot;na-factory-data-target-toolbar&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-target-toolbar"/>
+    <keyword type="property" name="The &quot;na-factory-data-toolbar-label&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-toolbar-label"/>
+    <keyword type="property" name="The &quot;na-factory-data-toolbar-same-label&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-toolbar-same-label"/>
+    <keyword type="property" name="The &quot;na-factory-data-tooltip&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-tooltip"/>
+    <keyword type="property" name="The &quot;na-factory-data-try-exec&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-try-exec"/>
+    <keyword type="property" name="The &quot;na-factory-data-version&quot; property" link="NAObjectAction.html#NAObjectAction--na-factory-data-version"/>
+    <keyword type="macro" name="NA_TYPE_OBJECT_PROFILE" link="NAObjectProfile.html#NA-TYPE-OBJECT-PROFILE:CAPS"/>
+    <keyword type="macro" name="NA_OBJECT_PROFILE()" link="NAObjectProfile.html#NA-OBJECT-PROFILE:CAPS"/>
+    <keyword type="macro" name="NA_IS_OBJECT_PROFILE()" link="NAObjectProfile.html#NA-IS-OBJECT-PROFILE:CAPS"/>
+    <keyword type="struct" name="NAObjectProfile" link="NAObjectProfile.html#NAObjectProfile-struct"/>
+    <keyword type="function" name="na_object_profile_new ()" link="NAObjectProfile.html#na-object-profile-new" since="2.30"/>
+    <keyword type="function" name="na_object_profile_new_with_defaults ()" link="NAObjectProfile.html#na-object-profile-new-with-defaults" since="2.30"/>
+    <keyword type="function" name="na_object_profile_convert_v2_to_last ()" link="NAObjectProfile.html#na-object-profile-convert-v2-to-last" since="2.30"/>
+    <keyword type="property" name="The &quot;na-factory-data-all-mimetypes&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-all-mimetypes"/>
+    <keyword type="property" name="The &quot;na-factory-data-basenames&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-basenames"/>
+    <keyword type="property" name="The &quot;na-factory-data-capabilitites&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-capabilitites"/>
+    <keyword type="property" name="The &quot;na-factory-data-descname&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-descname"/>
+    <keyword type="property" name="The &quot;na-factory-data-execute-as&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-execute-as"/>
+    <keyword type="property" name="The &quot;na-factory-data-execution-mode&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-execution-mode"/>
+    <keyword type="property" name="The &quot;na-factory-data-folders&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-folders"/>
+    <keyword type="property" name="The &quot;na-factory-data-id&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-id"/>
+    <keyword type="property" name="The &quot;na-factory-data-matchcase&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-matchcase"/>
+    <keyword type="property" name="The &quot;na-factory-data-mimetypes&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-mimetypes"/>
+    <keyword type="property" name="The &quot;na-factory-data-not-show-in&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-not-show-in"/>
+    <keyword type="property" name="The &quot;na-factory-data-only-show-in&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-only-show-in"/>
+    <keyword type="property" name="The &quot;na-factory-data-parameters&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-parameters"/>
+    <keyword type="property" name="The &quot;na-factory-data-parent&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-parent"/>
+    <keyword type="property" name="The &quot;na-factory-data-path&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-path"/>
+    <keyword type="property" name="The &quot;na-factory-data-schemes&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-schemes"/>
+    <keyword type="property" name="The &quot;na-factory-data-selection-count&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-selection-count"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-registered&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-show-if-registered"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-running&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-show-if-running"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-true&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-show-if-true"/>
+    <keyword type="property" name="The &quot;na-factory-data-startup-notify&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-startup-notify"/>
+    <keyword type="property" name="The &quot;na-factory-data-startup-wm-class&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-startup-wm-class"/>
+    <keyword type="property" name="The &quot;na-factory-data-try-exec&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-try-exec"/>
+    <keyword type="property" name="The &quot;na-factory-data-working-dir&quot; property" link="NAObjectProfile.html#NAObjectProfile--na-factory-data-working-dir"/>
+    <keyword type="macro" name="NA_TYPE_OBJECT_MENU" link="NAObjectMenu.html#NA-TYPE-OBJECT-MENU:CAPS"/>
+    <keyword type="macro" name="NA_OBJECT_MENU()" link="NAObjectMenu.html#NA-OBJECT-MENU:CAPS"/>
+    <keyword type="macro" name="NA_IS_OBJECT_MENU()" link="NAObjectMenu.html#NA-IS-OBJECT-MENU:CAPS"/>
+    <keyword type="struct" name="NAObjectMenu" link="NAObjectMenu.html#NAObjectMenu-struct"/>
+    <keyword type="function" name="na_object_menu_new ()" link="NAObjectMenu.html#na-object-menu-new" since="2.30"/>
+    <keyword type="function" name="na_object_menu_new_with_defaults ()" link="NAObjectMenu.html#na-object-menu-new-with-defaults" since="2.30"/>
+    <keyword type="property" name="The &quot;na-factory-data-all-mimetypes&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-all-mimetypes"/>
+    <keyword type="property" name="The &quot;na-factory-data-basenames&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-basenames"/>
+    <keyword type="property" name="The &quot;na-factory-data-capabilitites&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-capabilitites"/>
+    <keyword type="property" name="The &quot;na-factory-data-description&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-description"/>
+    <keyword type="property" name="The &quot;na-factory-data-enabled&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-enabled"/>
+    <keyword type="property" name="The &quot;na-factory-data-folders&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-folders"/>
+    <keyword type="property" name="The &quot;na-factory-data-icon&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-icon"/>
+    <keyword type="property" name="The &quot;na-factory-data-id&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-id"/>
+    <keyword type="property" name="The &quot;na-factory-data-items&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-items"/>
+    <keyword type="property" name="The &quot;na-factory-data-items-slist&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-items-slist"/>
+    <keyword type="property" name="The &quot;na-factory-data-iversion&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-iversion"/>
+    <keyword type="property" name="The &quot;na-factory-data-label&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-label"/>
+    <keyword type="property" name="The &quot;na-factory-data-matchcase&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-matchcase"/>
+    <keyword type="property" name="The &quot;na-factory-data-mimetypes&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-mimetypes"/>
+    <keyword type="property" name="The &quot;na-factory-data-not-show-in&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-not-show-in"/>
+    <keyword type="property" name="The &quot;na-factory-data-only-show-in&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-only-show-in"/>
+    <keyword type="property" name="The &quot;na-factory-data-parent&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-parent"/>
+    <keyword type="property" name="The &quot;na-factory-data-provider&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-provider"/>
+    <keyword type="property" name="The &quot;na-factory-data-provider-data&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-provider-data"/>
+    <keyword type="property" name="The &quot;na-factory-data-readonly&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-readonly"/>
+    <keyword type="property" name="The &quot;na-factory-data-schemes&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-schemes"/>
+    <keyword type="property" name="The &quot;na-factory-data-selection-count&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-selection-count"/>
+    <keyword type="property" name="The &quot;na-factory-data-shortcut&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-shortcut"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-registered&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-show-if-registered"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-running&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-show-if-running"/>
+    <keyword type="property" name="The &quot;na-factory-data-show-if-true&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-show-if-true"/>
+    <keyword type="property" name="The &quot;na-factory-data-tooltip&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-tooltip"/>
+    <keyword type="property" name="The &quot;na-factory-data-try-exec&quot; property" link="NAObjectMenu.html#NAObjectMenu--na-factory-data-try-exec"/>
+    <keyword type="" name="&#10;  Modification status in Caja-Actions configuration tool&#10; " link="NAIDuplicable.html#id380415"/>
+    <keyword type="" name="Versions historic" link="NAIDuplicable.html#id447691"/>
+    <keyword type="macro" name="NA_TYPE_IDUPLICABLE" link="NAIDuplicable.html#NA-TYPE-IDUPLICABLE:CAPS"/>
+    <keyword type="macro" name="NA_IDUPLICABLE()" link="NAIDuplicable.html#NA-IDUPLICABLE:CAPS"/>
+    <keyword type="macro" name="NA_IS_IDUPLICABLE()" link="NAIDuplicable.html#NA-IS-IDUPLICABLE:CAPS"/>
+    <keyword type="macro" name="NA_IDUPLICABLE_GET_INTERFACE()" link="NAIDuplicable.html#NA-IDUPLICABLE-GET-INTERFACE:CAPS"/>
+    <keyword type="struct" name="NAIDuplicable" link="NAIDuplicable.html#NAIDuplicable-struct"/>
+    <keyword type="struct" name="NAIDuplicableInterface" link="NAIDuplicable.html#NAIDuplicableInterface"/>
+    <keyword type="macro" name="IDUPLICABLE_SIGNAL_MODIFIED_CHANGED" link="NAIDuplicable.html#IDUPLICABLE-SIGNAL-MODIFIED-CHANGED:CAPS"/>
+    <keyword type="macro" name="IDUPLICABLE_SIGNAL_VALID_CHANGED" link="NAIDuplicable.html#IDUPLICABLE-SIGNAL-VALID-CHANGED:CAPS"/>
+    <keyword type="function" name="na_iduplicable_dispose ()" link="NAIDuplicable.html#na-iduplicable-dispose" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_dump ()" link="NAIDuplicable.html#na-iduplicable-dump" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_duplicate ()" link="NAIDuplicable.html#na-iduplicable-duplicate" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_check_status ()" link="NAIDuplicable.html#na-iduplicable-check-status" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_get_origin ()" link="NAIDuplicable.html#na-iduplicable-get-origin" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_is_valid ()" link="NAIDuplicable.html#na-iduplicable-is-valid" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_is_modified ()" link="NAIDuplicable.html#na-iduplicable-is-modified" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_set_origin ()" link="NAIDuplicable.html#na-iduplicable-set-origin" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_set_modified ()" link="NAIDuplicable.html#na-iduplicable-set-modified" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_iduplicable_register_consumer ()" link="NAIDuplicable.html#na-iduplicable-register-consumer" since="2.30"/>
+    <keyword type="enum" name="enum DuplicableMode" link="NAIDuplicable.html#DuplicableMode"/>
+    <keyword type="macro" name="NA_TYPE_ICONTEXT" link="NAIContext.html#NA-TYPE-ICONTEXT:CAPS"/>
+    <keyword type="macro" name="NA_ICONTEXT_GET_INTERFACE()" link="NAIContext.html#NA-ICONTEXT-GET-INTERFACE:CAPS"/>
+    <keyword type="struct" name="NAIContext" link="NAIContext.html#NAIContext-struct"/>
+    <keyword type="struct" name="NAIContextInterfacePrivate" link="NAIContext.html#NAIContextInterfacePrivate"/>
+    <keyword type="struct" name="NAIContextInterface" link="NAIContext.html#NAIContextInterface"/>
+    <keyword type="function" name="na_icontext_are_equal ()" link="NAIContext.html#na-icontext-are-equal" since="3.1"/>
+    <keyword type="function" name="na_icontext_check_mimetypes ()" link="NAIContext.html#na-icontext-check-mimetypes" since="2.30"/>
+    <keyword type="function" name="na_icontext_copy ()" link="NAIContext.html#na-icontext-copy" since="3.1"/>
+    <keyword type="function" name="na_icontext_is_candidate ()" link="NAIContext.html#na-icontext-is-candidate" since="2.30"/>
+    <keyword type="function" name="na_icontext_is_valid ()" link="NAIContext.html#na-icontext-is-valid" since="2.30"/>
+    <keyword type="function" name="na_icontext_read_done ()" link="NAIContext.html#na-icontext-read-done" since="2.30"/>
+    <keyword type="function" name="na_icontext_set_scheme ()" link="NAIContext.html#na-icontext-set-scheme" since="2.30"/>
+    <keyword type="function" name="na_icontext_set_only_desktop ()" link="NAIContext.html#na-icontext-set-only-desktop" since="2.30"/>
+    <keyword type="function" name="na_icontext_set_not_desktop ()" link="NAIContext.html#na-icontext-set-not-desktop"/>
+    <keyword type="function" name="na_icontext_replace_folder ()" link="NAIContext.html#na-icontext-replace-folder" since="2.30"/>
+    <keyword type="macro" name="na_object_duplicate()" link="caja-actions-API.html#na-object-duplicate"/>
+    <keyword type="macro" name="na_object_check_status()" link="caja-actions-API.html#na-object-check-status"/>
+    <keyword type="macro" name="na_object_get_origin()" link="caja-actions-API.html#na-object-get-origin"/>
+    <keyword type="macro" name="na_object_is_valid()" link="caja-actions-API.html#na-object-is-valid"/>
+    <keyword type="macro" name="na_object_is_modified()" link="caja-actions-API.html#na-object-is-modified"/>
+    <keyword type="macro" name="na_object_set_origin()" link="caja-actions-API.html#na-object-set-origin"/>
+    <keyword type="macro" name="na_object_set_modified()" link="caja-actions-API.html#na-object-set-modified" deprecated=""/>
+    <keyword type="macro" name="na_object_reset_origin()" link="caja-actions-API.html#na-object-reset-origin"/>
+    <keyword type="macro" name="na_object_set_writability_status()" link="caja-actions-API.html#na-object-set-writability-status"/>
+    <keyword type="macro" name="na_object_is_finally_writable()" link="caja-actions-API.html#na-object-is-finally-writable"/>
+    <keyword type="macro" name="na_object_check_mimetypes()" link="caja-actions-API.html#na-object-check-mimetypes"/>
+    <keyword type="macro" name="na_object_dump()" link="caja-actions-API.html#na-object-dump"/>
+    <keyword type="macro" name="na_object_dump_norec()" link="caja-actions-API.html#na-object-dump-norec"/>
+    <keyword type="macro" name="na_object_dump_tree()" link="caja-actions-API.html#na-object-dump-tree"/>
+    <keyword type="macro" name="na_object_ref()" link="caja-actions-API.html#na-object-ref"/>
+    <keyword type="macro" name="na_object_unref()" link="caja-actions-API.html#na-object-unref"/>
+    <keyword type="macro" name="na_object_debug_invalid()" link="caja-actions-API.html#na-object-debug-invalid"/>
+    <keyword type="macro" name="na_object_get_id()" link="caja-actions-API.html#na-object-get-id"/>
+    <keyword type="macro" name="na_object_get_label()" link="caja-actions-API.html#na-object-get-label"/>
+    <keyword type="macro" name="na_object_get_label_noloc()" link="caja-actions-API.html#na-object-get-label-noloc"/>
+    <keyword type="macro" name="na_object_get_parent()" link="caja-actions-API.html#na-object-get-parent"/>
+    <keyword type="macro" name="na_object_set_id()" link="caja-actions-API.html#na-object-set-id"/>
+    <keyword type="macro" name="na_object_set_label()" link="caja-actions-API.html#na-object-set-label"/>
+    <keyword type="macro" name="na_object_set_parent()" link="caja-actions-API.html#na-object-set-parent"/>
+    <keyword type="macro" name="na_object_sort_alpha_asc()" link="caja-actions-API.html#na-object-sort-alpha-asc"/>
+    <keyword type="macro" name="na_object_sort_alpha_desc()" link="caja-actions-API.html#na-object-sort-alpha-desc"/>
+    <keyword type="macro" name="na_object_prepare_for_paste()" link="caja-actions-API.html#na-object-prepare-for-paste"/>
+    <keyword type="macro" name="na_object_set_copy_of_label()" link="caja-actions-API.html#na-object-set-copy-of-label"/>
+    <keyword type="macro" name="na_object_set_new_id()" link="caja-actions-API.html#na-object-set-new-id"/>
+    <keyword type="macro" name="na_object_get_tooltip()" link="caja-actions-API.html#na-object-get-tooltip"/>
+    <keyword type="macro" name="na_object_get_icon()" link="caja-actions-API.html#na-object-get-icon"/>
+    <keyword type="macro" name="na_object_get_icon_noloc()" link="caja-actions-API.html#na-object-get-icon-noloc"/>
+    <keyword type="macro" name="na_object_get_description()" link="caja-actions-API.html#na-object-get-description"/>
+    <keyword type="macro" name="na_object_get_items()" link="caja-actions-API.html#na-object-get-items"/>
+    <keyword type="macro" name="na_object_get_items_slist()" link="caja-actions-API.html#na-object-get-items-slist"/>
+    <keyword type="macro" name="na_object_is_enabled()" link="caja-actions-API.html#na-object-is-enabled"/>
+    <keyword type="macro" name="na_object_is_readonly()" link="caja-actions-API.html#na-object-is-readonly"/>
+    <keyword type="macro" name="na_object_get_provider()" link="caja-actions-API.html#na-object-get-provider"/>
+    <keyword type="macro" name="na_object_get_provider_data()" link="caja-actions-API.html#na-object-get-provider-data"/>
+    <keyword type="macro" name="na_object_get_iversion()" link="caja-actions-API.html#na-object-get-iversion"/>
+    <keyword type="macro" name="na_object_get_shortcut()" link="caja-actions-API.html#na-object-get-shortcut"/>
+    <keyword type="macro" name="na_object_set_tooltip()" link="caja-actions-API.html#na-object-set-tooltip"/>
+    <keyword type="macro" name="na_object_set_icon()" link="caja-actions-API.html#na-object-set-icon"/>
+    <keyword type="macro" name="na_object_set_description()" link="caja-actions-API.html#na-object-set-description"/>
+    <keyword type="macro" name="na_object_set_items()" link="caja-actions-API.html#na-object-set-items"/>
+    <keyword type="macro" name="na_object_set_items_slist()" link="caja-actions-API.html#na-object-set-items-slist"/>
+    <keyword type="macro" name="na_object_set_enabled()" link="caja-actions-API.html#na-object-set-enabled"/>
+    <keyword type="macro" name="na_object_set_readonly()" link="caja-actions-API.html#na-object-set-readonly"/>
+    <keyword type="macro" name="na_object_set_provider()" link="caja-actions-API.html#na-object-set-provider"/>
+    <keyword type="macro" name="na_object_set_provider_data()" link="caja-actions-API.html#na-object-set-provider-data"/>
+    <keyword type="macro" name="na_object_set_iversion()" link="caja-actions-API.html#na-object-set-iversion"/>
+    <keyword type="macro" name="na_object_set_shortcut()" link="caja-actions-API.html#na-object-set-shortcut"/>
+    <keyword type="macro" name="na_object_get_item()" link="caja-actions-API.html#na-object-get-item"/>
+    <keyword type="macro" name="na_object_get_position()" link="caja-actions-API.html#na-object-get-position"/>
+    <keyword type="macro" name="na_object_append_item()" link="caja-actions-API.html#na-object-append-item"/>
+    <keyword type="macro" name="na_object_insert_at()" link="caja-actions-API.html#na-object-insert-at"/>
+    <keyword type="macro" name="na_object_insert_item()" link="caja-actions-API.html#na-object-insert-item"/>
+    <keyword type="macro" name="na_object_remove_item()" link="caja-actions-API.html#na-object-remove-item"/>
+    <keyword type="macro" name="na_object_get_items_count()" link="caja-actions-API.html#na-object-get-items-count"/>
+    <keyword type="macro" name="na_object_count_items()" link="caja-actions-API.html#na-object-count-items"/>
+    <keyword type="macro" name="na_object_copyref_items()" link="caja-actions-API.html#na-object-copyref-items"/>
+    <keyword type="macro" name="na_object_free_items()" link="caja-actions-API.html#na-object-free-items"/>
+    <keyword type="macro" name="na_object_get_version()" link="caja-actions-API.html#na-object-get-version"/>
+    <keyword type="macro" name="na_object_is_target_selection()" link="caja-actions-API.html#na-object-is-target-selection"/>
+    <keyword type="macro" name="na_object_is_target_location()" link="caja-actions-API.html#na-object-is-target-location"/>
+    <keyword type="macro" name="na_object_is_target_toolbar()" link="caja-actions-API.html#na-object-is-target-toolbar"/>
+    <keyword type="macro" name="na_object_get_toolbar_label()" link="caja-actions-API.html#na-object-get-toolbar-label"/>
+    <keyword type="macro" name="na_object_is_toolbar_same_label()" link="caja-actions-API.html#na-object-is-toolbar-same-label"/>
+    <keyword type="macro" name="na_object_get_last_allocated()" link="caja-actions-API.html#na-object-get-last-allocated"/>
+    <keyword type="macro" name="na_object_set_version()" link="caja-actions-API.html#na-object-set-version"/>
+    <keyword type="macro" name="na_object_set_target_selection()" link="caja-actions-API.html#na-object-set-target-selection"/>
+    <keyword type="macro" name="na_object_set_target_location()" link="caja-actions-API.html#na-object-set-target-location"/>
+    <keyword type="macro" name="na_object_set_target_toolbar()" link="caja-actions-API.html#na-object-set-target-toolbar"/>
+    <keyword type="macro" name="na_object_set_toolbar_label()" link="caja-actions-API.html#na-object-set-toolbar-label"/>
+    <keyword type="macro" name="na_object_set_toolbar_same_label()" link="caja-actions-API.html#na-object-set-toolbar-same-label"/>
+    <keyword type="macro" name="na_object_set_last_allocated()" link="caja-actions-API.html#na-object-set-last-allocated"/>
+    <keyword type="macro" name="na_object_set_last_version()" link="caja-actions-API.html#na-object-set-last-version"/>
+    <keyword type="macro" name="na_object_reset_last_allocated()" link="caja-actions-API.html#na-object-reset-last-allocated"/>
+    <keyword type="macro" name="na_object_attach_profile()" link="caja-actions-API.html#na-object-attach-profile"/>
+    <keyword type="macro" name="na_object_get_path()" link="caja-actions-API.html#na-object-get-path"/>
+    <keyword type="macro" name="na_object_get_parameters()" link="caja-actions-API.html#na-object-get-parameters"/>
+    <keyword type="macro" name="na_object_get_working_dir()" link="caja-actions-API.html#na-object-get-working-dir"/>
+    <keyword type="macro" name="na_object_get_execution_mode()" link="caja-actions-API.html#na-object-get-execution-mode"/>
+    <keyword type="macro" name="na_object_get_startup_notify()" link="caja-actions-API.html#na-object-get-startup-notify"/>
+    <keyword type="macro" name="na_object_get_startup_class()" link="caja-actions-API.html#na-object-get-startup-class"/>
+    <keyword type="macro" name="na_object_get_execute_as()" link="caja-actions-API.html#na-object-get-execute-as"/>
+    <keyword type="macro" name="na_object_set_path()" link="caja-actions-API.html#na-object-set-path"/>
+    <keyword type="macro" name="na_object_set_parameters()" link="caja-actions-API.html#na-object-set-parameters"/>
+    <keyword type="macro" name="na_object_set_working_dir()" link="caja-actions-API.html#na-object-set-working-dir"/>
+    <keyword type="macro" name="na_object_set_execution_mode()" link="caja-actions-API.html#na-object-set-execution-mode"/>
+    <keyword type="macro" name="na_object_set_startup_notify()" link="caja-actions-API.html#na-object-set-startup-notify"/>
+    <keyword type="macro" name="na_object_set_startup_class()" link="caja-actions-API.html#na-object-set-startup-class"/>
+    <keyword type="macro" name="na_object_set_execute_as()" link="caja-actions-API.html#na-object-set-execute-as"/>
+    <keyword type="macro" name="na_object_get_basenames()" link="caja-actions-API.html#na-object-get-basenames"/>
+    <keyword type="macro" name="na_object_get_matchcase()" link="caja-actions-API.html#na-object-get-matchcase"/>
+    <keyword type="macro" name="na_object_get_mimetypes()" link="caja-actions-API.html#na-object-get-mimetypes"/>
+    <keyword type="macro" name="na_object_get_all_mimetypes()" link="caja-actions-API.html#na-object-get-all-mimetypes"/>
+    <keyword type="macro" name="na_object_get_folders()" link="caja-actions-API.html#na-object-get-folders"/>
+    <keyword type="macro" name="na_object_get_schemes()" link="caja-actions-API.html#na-object-get-schemes"/>
+    <keyword type="macro" name="na_object_get_only_show_in()" link="caja-actions-API.html#na-object-get-only-show-in"/>
+    <keyword type="macro" name="na_object_get_not_show_in()" link="caja-actions-API.html#na-object-get-not-show-in"/>
+    <keyword type="macro" name="na_object_get_try_exec()" link="caja-actions-API.html#na-object-get-try-exec"/>
+    <keyword type="macro" name="na_object_get_show_if_registered()" link="caja-actions-API.html#na-object-get-show-if-registered"/>
+    <keyword type="macro" name="na_object_get_show_if_true()" link="caja-actions-API.html#na-object-get-show-if-true"/>
+    <keyword type="macro" name="na_object_get_show_if_running()" link="caja-actions-API.html#na-object-get-show-if-running"/>
+    <keyword type="macro" name="na_object_get_selection_count()" link="caja-actions-API.html#na-object-get-selection-count"/>
+    <keyword type="macro" name="na_object_get_capabilities()" link="caja-actions-API.html#na-object-get-capabilities"/>
+    <keyword type="macro" name="na_object_set_basenames()" link="caja-actions-API.html#na-object-set-basenames"/>
+    <keyword type="macro" name="na_object_set_matchcase()" link="caja-actions-API.html#na-object-set-matchcase"/>
+    <keyword type="macro" name="na_object_set_mimetypes()" link="caja-actions-API.html#na-object-set-mimetypes"/>
+    <keyword type="macro" name="na_object_set_all_mimetypes()" link="caja-actions-API.html#na-object-set-all-mimetypes"/>
+    <keyword type="macro" name="na_object_set_folders()" link="caja-actions-API.html#na-object-set-folders"/>
+    <keyword type="macro" name="na_object_replace_folder()" link="caja-actions-API.html#na-object-replace-folder"/>
+    <keyword type="macro" name="na_object_set_scheme()" link="caja-actions-API.html#na-object-set-scheme"/>
+    <keyword type="macro" name="na_object_set_schemes()" link="caja-actions-API.html#na-object-set-schemes"/>
+    <keyword type="macro" name="na_object_set_only_show_in()" link="caja-actions-API.html#na-object-set-only-show-in"/>
+    <keyword type="macro" name="na_object_set_only_desktop()" link="caja-actions-API.html#na-object-set-only-desktop"/>
+    <keyword type="macro" name="na_object_set_not_show_in()" link="caja-actions-API.html#na-object-set-not-show-in"/>
+    <keyword type="macro" name="na_object_set_not_desktop()" link="caja-actions-API.html#na-object-set-not-desktop"/>
+    <keyword type="macro" name="na_object_set_try_exec()" link="caja-actions-API.html#na-object-set-try-exec"/>
+    <keyword type="macro" name="na_object_set_show_if_registered()" link="caja-actions-API.html#na-object-set-show-if-registered"/>
+    <keyword type="macro" name="na_object_set_show_if_true()" link="caja-actions-API.html#na-object-set-show-if-true"/>
+    <keyword type="macro" name="na_object_set_show_if_running()" link="caja-actions-API.html#na-object-set-show-if-running"/>
+    <keyword type="macro" name="na_object_set_selection_count()" link="caja-actions-API.html#na-object-set-selection-count"/>
+    <keyword type="macro" name="na_object_set_capabilities()" link="caja-actions-API.html#na-object-set-capabilities"/>
+    <keyword type="macro" name="NA_MATECONF_MONITOR_TYPE" link="NAMateConfMonitor.html#NA-MATECONF-MONITOR-TYPE:CAPS" deprecated=""/>
+    <keyword type="macro" name="NA_MATECONF_MONITOR()" link="NAMateConfMonitor.html#NA-MATECONF-MONITOR:CAPS" deprecated=""/>
+    <keyword type="macro" name="NA_IS_MATECONF_MONITOR()" link="NAMateConfMonitor.html#NA-IS-MATECONF-MONITOR:CAPS" deprecated=""/>
+    <keyword type="struct" name="NAMateConfMonitor" link="NAMateConfMonitor.html#NAMateConfMonitor-struct"/>
+    <keyword type="function" name="na_mateconf_monitor_new ()" link="NAMateConfMonitor.html#na-mateconf-monitor-new" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_mateconf_monitor_release_monitors ()" link="NAMateConfMonitor.html#na-mateconf-monitor-release-monitors" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_get_subdirs ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-get-subdirs" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_free_subdirs ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-free-subdirs" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_has_entry ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-has-entry" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_get_entries ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-get-entries" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_get_bool_from_entries ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-get-bool-from-entries" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_get_string_from_entries ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-get-string-from-entries" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_get_string_list_from_entries ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-get-string-list-from-entries" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_dump_entries ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-dump-entries" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_free_entries ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-free-entries" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_read_bool ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-read-bool" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_read_int ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-read-int" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_read_string ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-read-string" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_read_string_list ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-read-string-list" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_write_bool ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-write-bool" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_write_int ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-write-int" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_write_string ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-write-string" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_write_string_list ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-write-string-list" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_remove_entry ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-remove-entry" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_slist_from_string ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-slist-from-string" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_mateconf_utils_slist_to_string ()" link="caja-actions-MateConf-Misc.html#na-mateconf-utils-slist-to-string" deprecated="3.1" since="2.30"/>
+    <keyword type="function" name="na_core_utils_boolean_from_string ()" link="caja-actions-Core-Misc.html#na-core-utils-boolean-from-string" since="2.30"/>
+    <keyword type="function" name="na_core_utils_str_add_prefix ()" link="caja-actions-Core-Misc.html#na-core-utils-str-add-prefix" deprecated="3.2" since="2.30"/>
+    <keyword type="function" name="na_core_utils_str_collate ()" link="caja-actions-Core-Misc.html#na-core-utils-str-collate" since="2.30"/>
+    <keyword type="function" name="na_core_utils_str_remove_char ()" link="caja-actions-Core-Misc.html#na-core-utils-str-remove-char" since="2.30"/>
+    <keyword type="function" name="na_core_utils_str_remove_suffix ()" link="caja-actions-Core-Misc.html#na-core-utils-str-remove-suffix" since="2.30"/>
+    <keyword type="function" name="na_core_utils_str_split_first_word ()" link="caja-actions-Core-Misc.html#na-core-utils-str-split-first-word" since="2.30"/>
+    <keyword type="function" name="na_core_utils_str_subst ()" link="caja-actions-Core-Misc.html#na-core-utils-str-subst"/>
+    <keyword type="function" name="na_core_utils_slist_add_message ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-add-message"/>
+    <keyword type="function" name="na_core_utils_slist_duplicate ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-duplicate" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_dump ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-dump" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_from_array ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-from-array" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_from_split ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-from-split" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_join_at_end ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-join-at-end" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_remove_ascii ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-remove-ascii" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_remove_utf8 ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-remove-utf8" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_to_array ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-to-array" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_to_text ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-to-text" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_setup_element ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-setup-element" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_count ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-count" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_find_negated ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-find-negated" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_are_equal ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-are-equal" since="2.30"/>
+    <keyword type="function" name="na_core_utils_slist_free ()" link="caja-actions-Core-Misc.html#na-core-utils-slist-free" since="2.30"/>
+    <keyword type="function" name="na_core_utils_gstring_joinv ()" link="caja-actions-Core-Misc.html#na-core-utils-gstring-joinv" since="2.30"/>
+    <keyword type="function" name="na_core_utils_selcount_get_ope_int ()" link="caja-actions-Core-Misc.html#na-core-utils-selcount-get-ope-int"/>
+    <keyword type="function" name="na_core_utils_dir_is_writable_path ()" link="caja-actions-Core-Misc.html#na-core-utils-dir-is-writable-path" since="2.30"/>
+    <keyword type="function" name="na_core_utils_dir_is_writable_uri ()" link="caja-actions-Core-Misc.html#na-core-utils-dir-is-writable-uri" since="2.30"/>
+    <keyword type="function" name="na_core_utils_dir_list_perms ()" link="caja-actions-Core-Misc.html#na-core-utils-dir-list-perms" since="3.1"/>
+    <keyword type="function" name="na_core_utils_dir_split_ext ()" link="caja-actions-Core-Misc.html#na-core-utils-dir-split-ext" since="2.30"/>
+    <keyword type="function" name="na_core_utils_file_delete ()" link="caja-actions-Core-Misc.html#na-core-utils-file-delete" since="2.30"/>
+    <keyword type="function" name="na_core_utils_file_exists ()" link="caja-actions-Core-Misc.html#na-core-utils-file-exists" since="2.30"/>
+    <keyword type="function" name="na_core_utils_file_is_loadable ()" link="caja-actions-Core-Misc.html#na-core-utils-file-is-loadable" since="3.1"/>
+    <keyword type="function" name="na_core_utils_file_load_from_uri ()" link="caja-actions-Core-Misc.html#na-core-utils-file-load-from-uri" since="2.30"/>
+    <keyword type="function" name="na_core_utils_print_version ()" link="caja-actions-Core-Misc.html#na-core-utils-print-version" since="2.30"/>
+    <keyword type="struct" name="NATimeout" link="caja-actions-NATimeout.html#NATimeout" since="3.1"/>
+    <keyword type="function" name="NATimeoutFunc ()" link="caja-actions-NATimeout.html#NATimeoutFunc" since="3.1"/>
+    <keyword type="function" name="na_timeout_event ()" link="caja-actions-NATimeout.html#na-timeout-event"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_WRITABLE" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-WRITABLE:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_UNAVAILABLE" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-UNAVAILABLE:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_INCOMPLETE_API" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-INCOMPLETE-API:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_NOT_WILLING_TO" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-NOT-WILLING-TO:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_NOT_ABLE_TO" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-NOT-ABLE-TO:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_LOCKED_BY_ADMIN" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-LOCKED-BY-ADMIN:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_LOCKED_BY_USER" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-LOCKED-BY-USER:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_ITEM_READONLY" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-ITEM-READONLY:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_NO_PROVIDER_FOUND" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-NO-PROVIDER-FOUND:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_LEVEL_ZERO" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-LEVEL-ZERO:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_STATUS_UNDETERMINED" link="NAIIOProvider.html#NA-IIO-PROVIDER-STATUS-UNDETERMINED:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_CODE_OK" link="NAIIOProvider.html#NA-IIO-PROVIDER-CODE-OK:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_CODE_PROGRAM_ERROR" link="NAIIOProvider.html#NA-IIO-PROVIDER-CODE-PROGRAM-ERROR:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_CODE_NOT_WILLING_TO_RUN" link="NAIIOProvider.html#NA-IIO-PROVIDER-CODE-NOT-WILLING-TO-RUN:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_CODE_WRITE_ERROR" link="NAIIOProvider.html#NA-IIO-PROVIDER-CODE-WRITE-ERROR:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_CODE_DELETE_SCHEMAS_ERROR" link="NAIIOProvider.html#NA-IIO-PROVIDER-CODE-DELETE-SCHEMAS-ERROR:CAPS"/>
+    <keyword type="constant" name="NA_IIO_PROVIDER_CODE_DELETE_CONFIG_ERROR" link="NAIIOProvider.html#NA-IIO-PROVIDER-CODE-DELETE-CONFIG-ERROR:CAPS"/>
+    <keyword type="constant" name="IMPORTER_MODE_NO_IMPORT" link="NAIImporter.html#IMPORTER-MODE-NO-IMPORT:CAPS"/>
+    <keyword type="constant" name="IMPORTER_MODE_RENUMBER" link="NAIImporter.html#IMPORTER-MODE-RENUMBER:CAPS"/>
+    <keyword type="constant" name="IMPORTER_MODE_OVERRIDE" link="NAIImporter.html#IMPORTER-MODE-OVERRIDE:CAPS"/>
+    <keyword type="constant" name="IMPORTER_MODE_ASK" link="NAIImporter.html#IMPORTER-MODE-ASK:CAPS"/>
+    <keyword type="constant" name="IMPORTER_CODE_OK" link="NAIImporter.html#IMPORTER-CODE-OK:CAPS"/>
+    <keyword type="constant" name="IMPORTER_CODE_PROGRAM_ERROR" link="NAIImporter.html#IMPORTER-CODE-PROGRAM-ERROR:CAPS"/>
+    <keyword type="constant" name="IMPORTER_CODE_NOT_WILLING_TO" link="NAIImporter.html#IMPORTER-CODE-NOT-WILLING-TO:CAPS"/>
+    <keyword type="constant" name="IMPORTER_CODE_NO_ITEM_ID" link="NAIImporter.html#IMPORTER-CODE-NO-ITEM-ID:CAPS"/>
+    <keyword type="constant" name="IMPORTER_CODE_NO_ITEM_TYPE" link="NAIImporter.html#IMPORTER-CODE-NO-ITEM-TYPE:CAPS"/>
+    <keyword type="constant" name="IMPORTER_CODE_UNKNOWN_ITEM_TYPE" link="NAIImporter.html#IMPORTER-CODE-UNKNOWN-ITEM-TYPE:CAPS"/>
+    <keyword type="constant" name="IMPORTER_CODE_CANCELLED" link="NAIImporter.html#IMPORTER-CODE-CANCELLED:CAPS"/>
+    <keyword type="constant" name="IMPORTER_CODE_NOT_LOADABLE" link="NAIImporter.html#IMPORTER-CODE-NOT-LOADABLE:CAPS"/>
+    <keyword type="constant" name="NA_IEXPORTER_CODE_OK" link="NAIExporter.html#NA-IEXPORTER-CODE-OK:CAPS"/>
+    <keyword type="constant" name="NA_IEXPORTER_CODE_INVALID_ITEM" link="NAIExporter.html#NA-IEXPORTER-CODE-INVALID-ITEM:CAPS"/>
+    <keyword type="constant" name="NA_IEXPORTER_CODE_INVALID_TARGET" link="NAIExporter.html#NA-IEXPORTER-CODE-INVALID-TARGET:CAPS"/>
+    <keyword type="constant" name="NA_IEXPORTER_CODE_INVALID_FORMAT" link="NAIExporter.html#NA-IEXPORTER-CODE-INVALID-FORMAT:CAPS"/>
+    <keyword type="constant" name="NA_IEXPORTER_CODE_UNABLE_TO_WRITE" link="NAIExporter.html#NA-IEXPORTER-CODE-UNABLE-TO-WRITE:CAPS"/>
+    <keyword type="constant" name="NA_IEXPORTER_CODE_ERROR" link="NAIExporter.html#NA-IEXPORTER-CODE-ERROR:CAPS"/>
+    <keyword type="constant" name="NA_DATA_TYPE_BOOLEAN" link="caja-actions-NADataType.html#NA-DATA-TYPE-BOOLEAN:CAPS"/>
+    <keyword type="constant" name="NA_DATA_TYPE_POINTER" link="caja-actions-NADataType.html#NA-DATA-TYPE-POINTER:CAPS"/>
+    <keyword type="constant" name="NA_DATA_TYPE_STRING" link="caja-actions-NADataType.html#NA-DATA-TYPE-STRING:CAPS"/>
+    <keyword type="constant" name="NA_DATA_TYPE_STRING_LIST" link="caja-actions-NADataType.html#NA-DATA-TYPE-STRING-LIST:CAPS"/>
+    <keyword type="constant" name="NA_DATA_TYPE_LOCALE_STRING" link="caja-actions-NADataType.html#NA-DATA-TYPE-LOCALE-STRING:CAPS"/>
+    <keyword type="constant" name="NA_DATA_TYPE_UINT" link="caja-actions-NADataType.html#NA-DATA-TYPE-UINT:CAPS"/>
+    <keyword type="constant" name="NA_DATA_TYPE_UINT_LIST" link="caja-actions-NADataType.html#NA-DATA-TYPE-UINT-LIST:CAPS"/>
+    <keyword type="constant" name="ITEM_TARGET_SELECTION" link="NAObjectItem.html#ITEM-TARGET-SELECTION:CAPS"/>
+    <keyword type="constant" name="ITEM_TARGET_LOCATION" link="NAObjectItem.html#ITEM-TARGET-LOCATION:CAPS"/>
+    <keyword type="constant" name="ITEM_TARGET_TOOLBAR" link="NAObjectItem.html#ITEM-TARGET-TOOLBAR:CAPS"/>
+    <keyword type="constant" name="ITEM_TARGET_ANY" link="NAObjectItem.html#ITEM-TARGET-ANY:CAPS"/>
+  </functions>
+</book>

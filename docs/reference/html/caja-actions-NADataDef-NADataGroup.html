@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NADataDef, NADataGroup</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch05.html" title="Data Factory Management System">
+<link rel="prev" href="caja-actions-NADataType.html" title="NADataType">
+<link rel="next" href="caja-actions-Constants.html" title="Constants">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="caja-actions-NADataType.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="caja-actions-Constants.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#caja-actions-NADataDef-NADataGroup.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#caja-actions-NADataDef-NADataGroup.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="caja-actions-NADataDef-NADataGroup"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="caja-actions-NADataDef-NADataGroup.top_of_page"></a>NADataDef, NADataGroup</span></h2>
+<p>NADataDef, NADataGroup — The Data Factory Structure Definitions</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="caja-actions-NADataDef-NADataGroup.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-data-def.h&gt;
+
+                    <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef">NADataDef</a>;
+                    <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup">NADataGroup</a>;
+const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="returnvalue">NADataDef</span></a> *   <a class="link" href="caja-actions-NADataDef-NADataGroup.html#na-data-def-get-data-def" title="na_data_def_get_data_def ()">na_data_def_get_data_def</a>            (<em class="parameter"><code>const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup"><span class="type">NADataGroup</span></a> *group</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *group_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="caja-actions-NADataDef-NADataGroup.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> and <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup"><span class="type">NADataGroup</span></a> are structures which handle the list of
+elementary datas for each and every <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> which happens to
+implement the <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> interface.
+</p>
+</div>
+<div class="refsect1">
+<a name="caja-actions-NADataDef-NADataGroup.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NADataDef"></a><h3>NADataDef</h3>
+<pre class="programlisting">typedef struct {
+	gchar     *name;
+	gboolean   readable;
+	gboolean   writable;
+	gboolean   has_property;
+	gchar     *short_label;
+	gchar     *long_label;
+	guint      type;
+	gchar     *default_value;
+	gboolean   write_if_default;
+	gboolean   copyable;
+	gboolean   comparable;
+	gboolean   mandatory;
+	gboolean   localizable;
+	gchar     *mateconf_entry;
+	gchar     *desktop_entry;
+	gchar      option_short;
+	gchar     *option_long;
+	gint       option_flags;
+	GOptionArg option_arg;
+	gchar     *option_label;
+	gchar     *option_arg_label;
+} NADataDef;
+</pre>
+<p>
+This structure fully describes an elementary factory data.
+Each <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> item definition may include several groups of
+this structure.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.name"></a>name</code></em>;</span></p></td>
+<td>both the id and the canonical name.
+Used when getting/setting properties.
+Is defined in na-ifactory-object-data.h and must be globally unique.
+Must be an invariant as it is known from plugin extensions.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NADataDef.readable"></a>readable</code></em>;</span></p></td>
+<td>whether the data should be read on unserialization operations.
+If FALSE, then no attempt will be made to read it
+and the data will have to be set dynamically.
+When a data has been written once (see below), and unless
+special cases (see e.g. type), it should remain readable
+even if it has becomen obsolete (for backward compatibility).</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NADataDef.writable"></a>writable</code></em>;</span></p></td>
+<td>whether the data is to be written on serialization operations.
+If FALSE, then no attempt will be made to write it.
+Mainly set to FALSE for dynamically set variables and
+obsoleted ones.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NADataDef.has-property"></a>has_property</code></em>;</span></p></td>
+<td>whether a property should be set for this variable ?
+Set to FALSE for obsolete variables.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.short-label"></a>short_label</code></em>;</span></p></td>
+<td>short localizable descriptive name.
+Used in GParamSpec and in schemas.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.long-label"></a>long_label</code></em>;</span></p></td>
+<td>long, if not complete, localizable description.
+Used in GParamSpec and in schemas?</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="NADataDef.type"></a>type</code></em>;</span></p></td>
+<td>the elementary NA_DATA_TYPE_xxx data type.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.default-value"></a>default_value</code></em>;</span></p></td>
+<td>the default to assign when creating a new object.
+This default is also displayed in command-line help
+of caja-actions-new utility.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NADataDef.write-if-default"></a>write_if_default</code></em>;</span></p></td>
+<td>write this value even if it is the default value ?
+Should default to FALSE.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NADataDef.copyable"></a>copyable</code></em>;</span></p></td>
+<td>whether this data should be automatically copied when
+we are duplicating an object to another ?
+In all cases, the implementation is always triggered
+by the <code class="function">copy()</code> interface method.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NADataDef.comparable"></a>comparable</code></em>;</span></p></td>
+<td>whether this data should be compared when we
+are testing two objects for equality.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NADataDef.mandatory"></a>mandatory</code></em>;</span></p></td>
+<td>whether this data must be not null and not empty
+when we are testing for validity of an object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="NADataDef.localizable"></a>localizable</code></em>;</span></p></td>
+<td>whether this is a localizable data when serializing or exporting.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.mateconf-entry"></a>mateconf_entry</code></em>;</span></p></td>
+<td>same entry is also used for MateConf-based XML docs.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.desktop-entry"></a>desktop_entry</code></em>;</span></p></td>
+<td>entry in .desktop files.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> <em class="structfield"><code><a name="NADataDef.option-short"></a>option_short</code></em>;</span></p></td>
+<td>the short version of a command-line parameter in caja-actions-new,
+or 0.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.option-long"></a>option_long</code></em>;</span></p></td>
+<td>the long version of the same command-line parameter in caja-actions-new,
+or NULL.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="NADataDef.option-flags"></a>option_flags</code></em>;</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Commandline-option-parser.html#GOptionFlags"><span class="type">GOptionFlags</span></a> for the command-line parameter, or 0.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Commandline-option-parser.html#GOptionArg"><span class="type">GOptionArg</span></a> <em class="structfield"><code><a name="NADataDef.option-arg"></a>option_arg</code></em>;</span></p></td>
+<td>the type of the option, or 0.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.option-label"></a>option_label</code></em>;</span></p></td>
+<td>the localizable description for the variable in caja-actions-new.
+Defaults to <em class="parameter"><code>short_label</code></em> if NULL.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataDef.option-arg-label"></a>option_arg_label</code></em>;</span></p></td>
+<td>the localizable description for the argument.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NADataGroup"></a><h3>NADataGroup</h3>
+<pre class="programlisting">typedef struct {
+	gchar     *group;
+	NADataDef *def;
+} NADataGroup;
+</pre>
+<p>
+This structure fully describes a logical group of data.
+Each <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> item definition is built from a list of
+these groups.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="NADataGroup.group"></a>group</code></em>;</span></p></td>
+<td>the name of the group, as defined in na-ifactory-object-data.h.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> *<em class="structfield"><code><a name="NADataGroup.def"></a>def</code></em>;</span></p></td>
+<td>the list of the corresponding data structures.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-def-get-data-def"></a><h3>na_data_def_get_data_def ()</h3>
+<pre class="programlisting">const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="returnvalue">NADataDef</span></a> *   na_data_def_get_data_def            (<em class="parameter"><code>const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup"><span class="type">NADataGroup</span></a> *group</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *group_name</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>group</code></em> :</span></p></td>
+<td>a <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup"><span class="type">NADataGroup</span></a> structure array.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>group_name</code></em> :</span></p></td>
+<td>the searched group name.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>the searched data name.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> structure, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

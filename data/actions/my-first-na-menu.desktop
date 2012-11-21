@@ -1,0 +1,14 @@
+
+[Desktop Entry]
+Type=Menu
+Name[en_US]=My First Caja-Actions menu
+Name[en]=My First Caja-Actions menu
+Name[C]=My First Caja-Actions menu
+ItemsList=my-first-na-action;show-na-parameters;open-terminal-here;
+Tooltip[en_US]=Contains some default Caja-Actions actions
+Tooltip[en]=Contains some default Caja-Actions actions
+Tooltip[C]=Contains some default Caja-Actions actions
+Icon[en_US]=/usr/share/icons/hicolor/22x22/mimetypes/application-x-catalog.png
+Icon[en]=/usr/share/icons/hicolor/22x22/mimetypes/application-x-catalog.png
+Icon[C]=/usr/share/icons/hicolor/22x22/mimetypes/application-x-catalog.png
+Enabled = false

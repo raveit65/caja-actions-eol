@@ -1,0 +1,2913 @@
+2011-12-31 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-importer.c:
+	* src/core/na-importer.h (na_importer_free_ask_mode): Removed function.
+
+2011-12-30 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-import-mode.c:
+	* src/core/na-import-mode.h: Implement NAImportMode object class.
+
+	* src/core/na-importer.c:
+	* src/core/na-importer.h
+	(na_importer_get_modes,	na_importer_get_ask_mode): New functions.
+
+	* src/core/na-ioptions-list.c:
+	* src/core/na-ioptions-list.h (free_options, free_ask_option):
+	Add 'container_parent' as an argument of the methods.
+
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-export-ask.c: Updated accordingly.
+
+	* src/nact/nact-preferences-editor.c:
+	Implement NAIOptionsList interface for Import mode tab.
+
+	* src/nact/nact-preferences.ui: Updated accordingly.
+
+2011-12-29 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-import-mode.c (instance_finalize): Free private structure.
+
+	* src/nact/nact-preferences-editor.c (on_base_initialize_gtk_toplevel):
+	Remove unused variables.
+
+2011-12-28 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-application.c (class_init): Property labels are not translatable.
+
+	* src/nact/base-application.h: Review comments.
+
+	* src/nact/main.c (main): Set command-line arguments here.
+
+	* src/nact/nact-application.c (class_init): Remove "updater" property.
+
+	* src/nact/nact-application.c:
+	* src/nact/nact-application.h (nact_application_new): Have an empty constructor.
+
+2011-12-27 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/io-desktop/export-desktop.png: New file.
+
+	* src/io-desktop/nadp-formats.c (nadp_formats_get_formats): Define an icon
+	for desktop export format.
+
+	* src/io-desktop/Makefile.am: Updated accordingly.
+
+	* src/io-xml/export-dump.png:
+	* src/io-xml/export-schemas-v1.png:
+	* src/io-xml/export-schemas-v2.png: New files.
+
+	* src/io-xml/naxml-formats.c (naxml_formats_get_formats): Define icons for
+	XML export formats.
+
+	* src/io-xml/Makefile.am: Updated accordingly.
+
+	* src/core/na-import-mode.c:
+	* src/core/na-import-mode.h:
+	* src/core/na-ioption.c:
+	* src/core/na-ioption.h:
+	* src/core/na-ioptions-list.c:
+	* src/core/na-ioptions-list.h: New files.
+
+	* src/core/Makefile.am: Updated accordingly.
+
+	* src/core/na-gtk-utils.c:
+	* src/core/na-gtk-utils.h:
+	* src/nact/base-gtk-utils.c:
+	* src/nact/base-gtk-utils.h (base_gtk_utils_set_editable,
+	base_gtk_utils_radio_set_initial_state,
+	base_gtk_utils_radio_reset_initial_state): Move functions to na-gtk-utils.
+
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-preferences-editor.c: Updated accordingly.
+
+2011-12-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-gtk-utils.c:
+	* src/core/na-gtk-utils.h
+	(na_gtk_utils_search_for_child_widget): Renamed as na_gtk_utils_find_widget_by_name().
+
+	* src/core/na-importer-ask.c:
+	* src/nact/base-window.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-tree-view.c: Updated accordingly.
+
+2011-12-23 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-gtk-utils.c:
+	* src/core/na-gtk-utils.h (na_gtk_utils_find_widget_by_type): New function.
+
+2011-12-22 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-export-format.c: Remove superfluous gdk-pixbuf.h include.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: New "export-assistant-paned-width" preference.
+
+	* src/nact/nact-assistant-export.c
+	(instance_dispose, on_base_initialize_base_window):
+	Keep the position of the horizontal pane as a user preference.
+
+	* src/nact/nact-assistant-export.ui: Give a more kind name to the pane.
+
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-export.ui: Whole refactoring.
+
+	* src/nact/nact-export-format.c:
+	* src/nact/nact-export-format.h: Refactor to display in a GtkTreeView.
+
+	* src/nact/base-assistant.c (do_run): Destroy the assistant when quitting.
+
+	* src/core/na-export-format.c:
+	* src/core/na-export-format.h
+	(na_export_format_get_exporter): Renamed as na_export_format_get_provider().
+	(na_export_format_get_pixbuf): New function.
+
+	* src/core/na-exporter.c
+	(exporter_free_formats): Fix the test.
+	(find_exporter_for_format): Updated accordingly.
+
+2011-12-21 Pierre Wieser <pwieser@trychlos.org>
+
+	NAIExporter interface upgrade.
+
+	* src/api/na-iexporter.h:
+	Define a new NAIExporterFormatExt structure, which embeds a GdkPixbuf.
+
+	* src/core/na-export-format.c:
+	* src/core/na-export-format.h (na_export_format_new):
+	Updated to new NAIExporterFormatExt structure.
+
+	* src/core/na-exporter.c (na_exporter_get_formats):
+	Take into account the new NAIExporter interface version.
+
+	* src/io-desktop/nadp-desktop-provider.c: Updated to new NAIExporter
+	interface version.
+
+	* src/io-desktop/nadp-formats.c
+	(nadp_formats_get_formats, nadp_formats_free_formats): New functions.
+
+	* src/io-xml/naxml-formats.c: Updated to the new NAIExporter interface
+	version.
+
+	* src/io-xml/naxml-formats.c:
+	* src/io-xml/naxml-formats.h
+	(naxml_formats_get_formats, naxml_formats_free_formats): New functions.
+
+2011-12-20 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-menubar.c: Do not talk about XML files on import/export.
+
+	* src/nact/nact-assistant-import.c
+	(prepare_confirm, prepare_importdone):
+	Force immediate redraw with Gtk2.
+	(prepare_importdone): Color the URI depending of the status.
+
+	* src/nact/nact-assistant-import.ui:
+	Display the import mode in only one GtkLabel.
+
+2011-12-19 Pierre Wieser <pwieser@trychlos.org>
+
+	Review import assistant.
+	- File selection: enable to forward if at least one loadable file.
+	- Import mode: replace the radio button group with a list view.
+	- Confirm and Summary pages: fully review the layout.
+
+	* src/nact/Makefile.am:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-assistant-import.ui: Updated accordingly.
+
+	* src/nact/base-gtk-utils.c
+	(base_gtk_utils_get_pixbuf, base_gtk_utils_render): Fix typos in a comment.
+
+2011-12-14 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-match-list.c (nact_match_list_on_selection_changed):
+	Fix typo in the comment.
+
+	* src/nact/nact-export-format.c (draw_in_vbox): Increment spacing.
+
+2011-12-13 Pierre Wieser <pwieser@trychlos.org>
+
+	* docs/reference/Makefile.am: Fix (one more time) the build.
+
+	* docs/reference/nautilus-actions-sections.txt: Add new functions.
+
+	Have a distinct interface definition for import assistant.
+
+	* src/nact/nact-assistant-import.ui: New file.
+
+	* po/POTFILES.in:
+	* src/nact/Makefile.am:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nautilus-actions-config-tool.ui: Updated accordingly.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	* src/nact/nact-assistant-export.ui: Add a padding to GtkFileChoosers.
+
+	* src/nact/nautilus-actions-config-tool.ui: Let a page be scrolled.
+
+	* src/nact/nact-assistant-export.ui: Remove useless placeholder.
+
+2011-12-12 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-preferences.ui:
+	Fix vertical expand in runtime execution tab and auto-save frame.
+
+	* src/nact/nact-assistant-export.ui:
+	* src/nact/nautilus-actions-config-tool.ui:
+	* src/nact/nact-export-format.c (draw_in_vbox): Make assistant labels wrappable.
+
+	* src/io-desktop/nadp-formats.c:
+	* src/io-xml/naxml-formats.c: Review the description of the export formats.
+
+	* configure.ac:
+	* src/core/na-gtk-utils.c:
+	* src/core/na-importer-ask.ui:
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-capability.ui:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-add-scheme.ui:
+	* src/nact/nact-assistant-export.ui:
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-icon-chooser.ui:
+	* src/nact/nact-main-tab.c:
+	* src/nact/nact-menubar.c:
+	* src/nact/nact-preferences.ui:
+	* src/nact/nact-schemes-list.c:
+	* src/nact/nact-tree-model-dnd.c:
+	* src/nact/nautilus-actions-config-tool.ui: Now requires Gtk 2.20.
+
+	* tools/release-tarball.sh: Automatically installs manuals on the website
+	when releasing a new stable version.
+
+2011-12-09 Pierre Wieser <pwieser@trychlos.org>
+
+	* tools/release-tarball.sh: Take _build builddir into account.
+
+	* configure.ac: Post release bump version.
+
+	* NEWS:
+	* TODO: Update before release.
+
+	* src/core/na-gconf-migration.c (na_gconf_migration_run):
+	Run verbosely.
+
+	* src/utils/na-gconf2key.sh.in: Fix unset variable.
+
+	* src/nact/nact-match-list.c (insert_new_row):
+	New rows now default to be 'matched'.
+
+	* src/core/na-updater.c (na_updater_delete_item):
+	Do not try to remove from the backend an item which has never been written.
+
+	* src/nact/nact-menubar-file.c:
+	Fix typo in translatable message.
+	(nact_menubar_file_save_items): Reinitialize messages pointer.
+
+	* src/nact/nact-tree-ieditable.c (add_to_deleted_rec):
+	Only count as deleted items which were read from the backend.
+	Compute level zero status.
+
+	* src/core/na-importer-ask.c (na_importer_ask_user):
+	* src/core/na-settings.h:
+	Change import default mode and export default format to 'Ask'.
+
+	* src/io-xml/naxml-writer.c
+	(write_data_schema_v2, write_data_dump):
+	String and uint lists have the GConf format (between square brackets).
+
+	* src/io-xml/naxml-reader.c (read_done_action_read_profiles):
+	Make sure we have at least one profile attached to the action.
+
+	* src/io-gconf/nagp-reader.c (read_done_action_read_profiles):
+	Make sure we have at least one profile attached to the action.
+
+	* src/io-desktop/nadp-desktop-file.c:
+	* src/io-desktop/nadp-desktop-file.h (nadp_desktop_file_has_profile):
+	New function.
+
+	* src/io-desktop/nadp-reader.c
+	(item_from_desktop_path):
+	Replace the warning with an error message to be returned to the caller.
+	(read_done_action_read_profiles):
+	Attach at least a default profile to the action.
+	(read_done_action_load_profile):
+	Define a default profile if not found in .desktop file.
+
+	* src/core/na-icontext-factory.c: Fix mimetypes and schemes default values.
+
+	* src/core/na-icontext.c (is_compatible_scheme): Fix scheme test.
+
+2011-12-06 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/utils/na-gconf2key.sh.in:
+	Fix permissions when creating the configuration directory.
+
+	* src/core/na-settings.c (settings_new):
+	* src/io-desktop/nadp-writer.c
+	(nadp_iio_provider_is_able_to_write, nadp_iio_provider_write_item):
+	Fix permissions when creating the configuration directory.
+
+	* src/api/na-core-utils.h:
+	* src/core/na-core-utils.c (na_core_utils_dir_list_perms): New function.
+
+	* src/nact/nact-tree-model-dnd.c (drop_uri_list):
+	Fix and improve error messages during drop operations.
+
+	Fix a coredump when trying to import an empty file by DnD.
+	Extend the fix by checking the size and the type of the candidate.
+
+	* src/api/na-core-utils.h:
+	* src/core/na-core-utils.c (na_core_utils_file_is_loadable): New function.
+
+	* src/api/na-iimporter.h (IMPORTER_CODE_NOT_LOADABLE): New return code.
+
+	* src/core/na-importer.c (import_from_uri):
+	Do not try other modules one the first detects that a file is not loadable.
+
+	* src/io-desktop/nadp-desktop-file.c (nadp_desktop_file_new_from_uri):
+	* src/io-desktop/nadp-reader.c (nadp_reader_iimporter_import_from_uri):
+	* src/io-xml/naxml-reader.c (naxml_reader_import_from_uri):
+	Check whether the file is loadable before trying to import it.
+
+	* src/nact/nact-main-tab.h:
+	* src/nact/nact-main-window.h: Fix comments.
+
+	* src/nact/nact-main-window.c: Fix typo.
+
+	* src/nact/nact-tree-model.c (nact_tree_model_new):
+	No more connect to base-window-initialize-gtk signal.
+	Initialize model without waiting for signal triggering.
+
+	* src/nact/nact-tree-view.c (instance_constructed):
+	No more connect to base-window-initialize-gtk signal.
+
+2011-12-05 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-importer-ask.c (import_ask_new):
+	* src/nact/nact-add-capability-dialog.c (on_base_initialize_gtk_toplevel):
+	* src/nact/nact-add-capability.ui:
+	* src/nact/nact-add-scheme-dialog.c (on_base_initialize_gtk_toplevel):
+	* src/nact/nact-add-scheme.ui:
+	* src/nact/nact-export-ask.c (on_base_initialize_gtk_toplevel):
+	* src/nact/nact-icon-chooser.c (on_base_initialize_gtk_toplevel):
+	* src/nact/nact-icon-chooser.ui:
+	* src/nact/nact-preferences-editor.c (on_base_initialize_gtk_toplevel):
+	Remove (deprecated since 2.22) 'has_separator' property from GtkDialog.
+
+	* src/io-xml/naxml-reader.c (naxml_reader_import_from_uri):
+	Display an synthetic error message if cannot handle the file.
+
+	* src/io-desktop/nadp-reader.c (nadp_reader_iimporter_import_from_uri):
+	Display an synthetic error message if cannot handle the file.
+
+	* po/POTFILES.in: Updated accordingly.
+
+	* src/core/na-importer.c (import_from_uri): Only display error messages
+	of the interface which has eventually successfully imported the item.
+
+	* src/core/na-importer.c (import_from_uri):
+	Make sure of the population against which we check for existance.
+
+	* src/core/na-iimporter.h: Improve comment.
+
+2011-12-04 Pierre Wieser <pwieser@trychlos.org>
+
+	* docs/nact/Makefile.am: Work-around against #664768.
+
+	When a bug is detected in dblatex, we re-run it in debug mode, so that
+	we may be able to get the .pdf from temp directory.
+
+	* docs/nact/Makefile.am: Fix User's Manual generation.
+
+	* docs/reference/nautilus-actions-docs.xml: API only changes on minor versions.
+
+	* run-autogen.sh: Do not automatically make && make install after configure.
+
+	* run-distcheck.sh: Fix cleanup before making distcheck.
+
+2011-12-03 Pierre Wieser <pwieser@trychlos.org>
+
+	* tools/check-headers.sh: Fix when builddir not equal to srcdir.
+
+	* run-distcheck.sh: Make sure that the document wil be rebuilt.
+
+	* m4/na-enable-manuals.m4:
+	Fix the test as possible values are 'gdt', 'db2html' and 'no.
+
+	* docs/reference/Makefile.am: Fix when builddir not equal to srcdir.
+
+2011-12-02 Pierre Wieser <pwieser@trychlos.org>
+
+	Do not build the documentation at all if not asked for.
+
+	* m4/na-enable-manuals.m4: new ENABLE_MANUALS conditional.
+
+	* docs/nact/Makefile.am:
+	Make use of new ENABLE_MANUALS conditional.
+	Also test for conditionals when installing.
+
+	* run-autogen.sh: Yet improve the build script.
+
+2011-12-01 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-importer-ask.c (na_importer_ask_user):
+	Save window size and position when quitting, restoring it on next init.
+
+2011-11-30 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-gtk-utils.c:
+	* src/core/na-gtk-utils.h
+	(na_gtk_utils_restore_position_window, na_gtk_utils_save_window_position):
+	New functions.
+
+	* src/nact/base-gtk-utils.c
+	(base_gtk_utils_restore_window_position, base_gtk_utils_save_window_position):
+	Updated accordingly.
+
+	* src/nact/base-gtk-utils.h: Fix a comment.
+
+	* src/core/na-importer-ask.c:
+	* src/core/na-importer-ask.h: Now derives from GObject.
+
+	* src/core/na-importer-ask.c (import_ask_new):
+	All one-time initialization is made here, being able to return NULL if failed.
+
+	* src/core/na-importer-ask.c (on_destroy_toplevel):
+	NAImporterAsk is now attached to its parent, and destroyed with it.
+
+	* src/nact/nact-assistant-import.c (assistant_apply):
+	Make the assistant the parent of NAImporterAsk (instead of main window).
+
+2011-11-29 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-object-item-factory.c:
+	Do not let a read or imported item go until the UI with an empty label.
+
+	* src/io-xml/naxml-reader.c (schema_parse_schema_content):
+	Only search for identifier in <applyto> schema key.
+
+2011-11-28 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/io-desktop/nadp-desktop-file.c (check_key_file):
+	- Do not even try to read zero byte length files.
+	- Check Type key before trying to import the file.
+
+	* src/core/na-importer-ask.c:
+	* src/core/na-importer-ask.ui: Make NAImporterAsk normally answer to
+	response codes, and quit on Esc.
+
+	* nact/nact-export-format.c (draw_in_vbox): Use gtk_misc functions.
+
+	* run-autogen.sh:
+	* run-distcheck.sh: Review in order to be able to build several guests
+	from a common single source tree.
+
+	* src/nact/nact-assistant-export.c (assist_initial_load_target_folder):
+	Get ride of the superfluous 'name' entry field when selecting the folder.
+
+	* src/nact/nact-export-ask.c (nact_export_ask_user):
+	Actually do not export the item if the user cancels the operation.
+
+	* src/io-desktop/nadp-desktop-file.c (nadp_desktop_file_new_from_uri):
+	Only display debug messages (try to minimize warnings on import).
+
+	* src/io-xml/naxml-reader.c
+	(publish_undealt_nodes): Removed useless (and buggy) function.
+	(manage_import_mode): Returns all messages to the caller.
+
+	* src/io-desktop/nadp-reader.c (nadp_reader_iimporter_import_from_uri):
+	Returns all messages to the caller.
+
+2011-11-27 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-gtk-utils.c (base_gtk_utils_restore_window_position):
+	Limit the window size, maximizing with the screen size.
+
+	* nact/nact-tree-view.h:
+	* nact/nact-tree-view.c: Define parent property.
+
+	* nact/nact-tree-view.c (on_tree_view_realized):
+	Delay all signal connection until the widget be actually realized.
+
+	* src/nact/nact-sort-buttons.c (on_base_initialize_buttons):
+	Delay the connection to the NactTreeView signal until we are sure the
+	widget is realized.
+
+	* src/nact/nact-main-window.c (on_base_initialize_gtk_toplevel):
+	Delay the initialization of the NactTreeView until the Gtk toplevel has
+	been loaded from XML Glade file.
+
+	* src/nact/nact-assistant-export.c: Adapt to gtk3.
+
+	* src/nact/nact-export-format.c (nact_export_format_init_display):
+	Remove the useless intermediate GtkGrid.
+
+	* src/nact/nact-assistant-export.ui: Let the format selection be scrolled.
+
+	* src/core/na-gtk-utils.c (dump_children):
+	Also dump the address of the child widget.
+	Also dump children which do not have a name (dynamically allocated).
+
+2011-11-26 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-tree-ieditable.c (do_insert_before): Re-reverse the list
+	before returning so that the list returns as unchanged to the caller.
+
+	* src/io-desktop/nadp-desktop-file.c (nadp_desktop_file_new_from_uri):
+	Slightly optimize code.
+
+	* src/core/na-importer.c (na_importer_import_from_list): Fix comments.
+
+	* src/io-xml/naxml-reader.c (naxml_reader_import_from_uri): Do not return
+	any error message if we do not identify at least a well-formed document
+	with a known root node.
+
+	* src/api/na-boxed.h:
+	* src/api/na-timeout.h:
+	* src/core/na-boxed.c:
+	* src/core/na-data-boxed.c:
+	* src/core/na-gconf-migration.c:
+	* src/core/na-gconf-monitor.c:
+	* src/core/na-gconf-utils.c:
+	* src/core/na-icontext.c:
+	* src/core/na-iduplicable.c:
+	* src/core/na-iprefs.c:
+	* src/core/na-object-item.c:
+	* src/core/na-object.c:
+	* src/core/na-settings.c:
+	* src/core/na-updater.c: Only reference minor version in 'Since:' and
+	'Deprecated' comments.
+
+	* run-autogen.sh: Change development installation directory to _install.
+
+	* configure.ac: gtk-doc and gnome-doc-utils are no more mandatory packages.
+
+	m4_ifdef is not a good way to test if these packages are available, as the
+	m4 files default ot be distributed.
+
+	* Makefile.am: Explicitely disable scrollkeeper here when making distcheck.
+
+2011-11-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* docs/nact/Makefile.am: Fully review the NACT User's Manual build.
+
+	* configure.ac: gtk-doc and gnome-doc-utils are no more mandatory packages.
+
+	* Makefile.am:
+	No more try to rebuild manuals when making distcheck.
+	Move gnome-doc-utils.make and gtk-doc.make to MAINTAINERCLEANFILES target.
+
+	* run-autogen.sh:
+	Rename 'autogen_target' variable to 'target'.
+	Remove distcheck target as doc is enough to build manuals.
+
+	* run-distcheck.sh: Update to new 'target' variable and 'doc' target.
+
+	* docs/reference/Makefile.am:
+	gtk-doc is no more a mandatory package.
+	Requires gtk-doc 1.15 to take advantage of new source option.
+
+	* docs/reference/nautilus-actions-docs.xml: Bump copyright year.
+
+2011-11-21 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Remove empty children from GtkAssistant container.
+
+	* src/nact/nact-assistant-import.c:
+	Adapt to the new way Gtk+ 3.2 builds the assistant.
+
+	* src/nact/base-application.c (appli_initialize_gtk): Fix a typo.
+
+	* src/core/na-gtk-utils.c (na_gtk_utils_dump_children):
+	Increment the level of the first child of the hierarchy.
+
+	* run-autogen.sh: Be able to run from another directory.
+
+2011-11-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_dump_children): New function.
+
+	* src/core/na-gtk-utils.c:
+	* src/core/na-gtk-utils.h (na_gtk_utils_dump_children): New function.
+
+	* docs/nact/C/nact-conditions.xml:
+	* docs/nact/C/nact-edit.xml:
+	* docs/nact/C/nact-execution.xml:
+	* docs/nact/C/nact-profiles.xml:
+	* docs/nact/C/nact-sorting.xml:
+	* src/nact/nact-assistant-import.c:
+	Fix with advices of Christian Kirbach.
+	Fix #660399, reported by Christian Kirbach.
+
+2011-11-15 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-export-format.c:
+	* src/nact/nact-main-toolbar.c:
+	Get ride of deprecated GtkHBox and GtkVBox.
+
+2011-11-05 Pierre Wieser <pwieser@trychlos.org>
+
+	* run-autogen.sh, run-distcheck.sh: Defines a special 'distcheck' mode.
+
+2011-11-02 Pierre Wieser <pwieser@trychlos.org>
+
+	* docs/nact/C/nact-conditions.xml:
+	* docs/nact/C/nact-edit.xml:
+	* docs/nact/C/nact-execution.xml:
+	* docs/nact/C/nact-menus.xml:
+	* docs/nact/C/nact-profiles.xml:
+	Apply patch provided by Christian Kirbach.
+	Fix #661498 reported by Christian Kirbach.
+
+	* docs/nact/C/nact-conditions.xml: Replace 'regarding' with
+	'regardless'.
+	From #660399, reported by Gabor Karsay.
+
+2011-11-02 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/io-desktop/nadp-writer.c (nadp_iio_provider_is_able_to_write):
+	* src/nact/base-gtk-utils.c (base_gtk_utils_select_file_with_preview):
+	* src/nact/nact-assistant-import.c (prepare_confirm):
+	* src/nact/nact-clipboard.c (nact_clipboard_dnd_set):
+	* src/nact/nact-main-statusbar.c (nact_main_statusbar_set_locked):
+	* src/nact/nact-preferences-editor.c (desktop_setup):
+	* src/nact/nact-providers-list.c (on_selection_changed):
+	* src/test/test-virtuals-without-test.c (first_instance_dispose):
+	Remove set but unused variables.
+
+2011-07-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Fix test for nautilus_menu_provider_get_toolbar_items().
+	Fix #655237 - Toolbar icons are not created.
+
+2011-07-03 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Post-release version bump.
+
+	* NEWS: Update before releasing.
+
+	* TODO: Update before releasing.
+
+	* src/utils/na-gconf2key.sh.in:	Update comment.
+
+	* docs/nact/C/nact-conditions.xml:
+	* docs/nact/C/nact-execution.xml:
+	* docs/nact/C/nact-where.xml:
+	Fix #652664 - [doc] couple of spelling and improvement suggestions;
+	patch provided by Christian Kirbach.
+
+2011-06-10 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-boxed.c (string_to_array):
+	Accepts now both semi-comma-separated list of strings and
+	comma-separated between square brackets (à la GConf) from string lists.
+
+	* src/io-xml/naxml-reader.c (slist_to_string):
+	Formats string list as a semi-comma-separated list of strings for NABoxed.
+
+	* src/utils/na-gconf2key.sh.in: No more obsolete the GConf reading,
+	as it may sometimes be needed to re-migrate a newly inserted item.
+
+	* src/io-gconf/nagp-reader.c (get_boxed_from_path):
+	Only allocate a new box when a non-null value has been read.
+
+	* src/core/na-settings.c (read_key_value_from_key_file):
+	Also dump the value read from a key file.
+
+	* src/core/na-gconf-utils.c (dump_entry): Also dump list values.
+
+2011-06-08 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/api/na-object-api.h:
+	* docs/reference/nautilus-actions-sections.txt
+	(na_object_is_file, na_object_is_dir, na_object_is_multiple):
+	Macros are moved from the official API as deprecated.
+
+	* src/core/na-icontext-factory.c
+	(ISFILE, ISDIR): No more declare properties for deprecated data.
+	(SCHEMES): Declare 'file' as the default.
+
+	* src/core/na-factory-object.c:
+	* src/core/na-factory-object.h (na_factory_object_is_set): New function.
+
+	* src/core/na-object-action.c (ifactory_object_read_done):
+	Dump the rough read data.
+	First create a v2 profile before converting it to last version.
+
+	* src/core/na-object-menu.c (ifactory_object_read_done):
+	Dump the rough read data.
+
+	* src/core/na-object-profile.c
+	(ifactory_object_read_done): Dump the rough read data.
+	(convert_pre_v3_isfiledir): Test if 'isfile' is set before using it.
+
+	* src/io-desktop/nadp-reader.c (nadp_iio_provider_read_items):
+	* src/io-gconf/nagp-reader.c (nagp_iio_provider_read_items):
+	* src/io-xml/naxml-reader.c (naxml_reader_import_from_uri):
+	Dump the whole read item, maybe after conversion.
+
+2011-05-22 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-iimporter.c (na_iimporter_manage_import_mode):
+	Setup default values.
+
+	* src/io-desktop/nadp-reader.c (nadp_reader_iimporter_import_from_uri):
+	Add trace message before unreffing the imported object.
+
+	* src/nact/nact-assistant-import.c (assistant_apply):
+	Do not try to import an empty list.
+
+	* src/nact/nact-tree-ieditable.c (nact_tree_ieditable_insert_items):
+	Check for non empty list.
+
+2011-05-20 Pierre Wieser <pwieser@trychlos.org>
+
+	* tools/release-tarball.sh: Use new Gnome release script ftpadmin.
+
+	* nautilus-actions.doap: Update download page and mailing list infos.
+
+	* configure.ac: Post release version bump.
+
+2011-05-19 Pierre Wieser <pwieser@trychlos.org>
+
+	* docs/nact/figures: Update screenshots.
+
+	* docs/nact/C/nact-properties.xml: New file.
+
+2011-05-18 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-selected-info.c: Extract filename for a GFile location.
+
+	* src/utils/na-gconf2keys.sh: Requires ksh.
+
+	* src/core/na-settings.c: Create the configuration directory if
+	doesn't exist yet.
+
+2011-03-14 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/test/Makefile.am: Do not build test programs in release mode.
+
+	* docs/nact/C/nact-sorting.xml:
+	* docs/nact/C/nautilus-actions-config-tool.xml: Fix some typos.
+
+	* docs/nact/C/articleinfo.xml:
+	Convert to *nix-like file.
+	Update manual copyright.
+
+	* docs/nact/C/figures/nact-desktop-environment-frame.png:
+	* docs/nact/C/figures/nact-execution-environment-frame.png:
+	* docs/nact/C/figures/nact-preferences-export.png:
+	* docs/nact/C/figures/nact-preferences-import.png:
+	* docs/nact/C/figures/nact-preferences-io-providers.png:
+	* docs/nact/C/figures/nact-preferences-runtime.png:
+	* docs/nact/C/figures/nact-preferences-schemes.png:
+	* docs/nact/C/figures/nact-preferences-ui.png:
+	* docs/nact/C/figures/nact-schemes-tab.png:
+	* docs/nact/C/figures/nact-target-location.png:
+	* docs/nact/C/figures/nact-working-directory-frame.png:
+	* docs/nact/C/figures/nact-export-done.png:
+	* docs/nact/C/figures/nact-export-format.png:
+	* docs/nact/C/figures/nact-export-home.png:
+	* docs/nact/C/figures/nact-export-items.png:
+	* docs/nact/C/figures/nact-export-summary.png:
+	* docs/nact/C/figures/nact-export-target.png:
+	* docs/nact/C/figures/nact-import-done.png:
+	* docs/nact/C/figures/nact-import-files.png:
+	* docs/nact/C/figures/nact-import-home.png:
+	* docs/nact/C/figures/nact-import-mode.png:
+	* docs/nact/C/figures/nact-import-resultat.png:
+	* docs/nact/C/figures/nact-import-summary.png:
+	* docs/nact/C/figures/nact-preferences-desktop.png:
+	* docs/nact/C/figures/nact-preferences-execution.png:
+	Updated and new screenshots for version 3.1.
+
+2011-03-13 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Post-release version bump.
+
+2011-03-11 Pierre Wieser <pwieser@trychlos.org>
+
+	* NEWS: Pre-release update.
+
+	* src/core/na-tokens.c (execute_action_command):
+	Only use g_spawn_async_with_pipes when required by execution mode
+	(work-around for #644289).
+	Do not close child pid before the end of the child process.
+
+2011-02-26 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Post-release bump version.
+
+	* NEWS: Pre-release udate.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: NA_IPREFS_PLUGIN_MENU_LOG user preference renamed.
+
+	* src/plugin-menu/nautilus-module.c (set_log_handler):
+	Test if log are enabled before installing the log handler.
+
+	* src/plugin-menu/nautilus-actions.c:
+	* src/plugin-menu/nautilus-actions.h (nautilus_action_is_log_enabled):
+	Removed function. Fix #643359.
+
+	* configure.ac: Post-release bump version.
+
+2011-02-25 Pierre Wieser <pwieser@trychlos.org>
+
+	* NEWS:
+	* README:
+	* README-GCONF: Update before releasing.
+
+	* src/api/na-core-utils.h:
+	* src/core/na-core-utils.c (na_core_utils_str_subst): New function.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h:
+	Rename "terminal-prefix" user preference as "terminal-pattern".
+
+	* src/core/na-tokens.c:
+	* src/core/na-tokens.h (na_tokens_command_from_terminal_prefix):
+	Renamed as na_tokens_command_for_terminal().
+
+	* docs/reference/nautilus-actions-sections.txt:
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-preferences.ui: Updated accordingly.
+
+	* src/nact/nact-iexecution-tab.c (on_main_selection_changed):
+	Disable not implemented frames.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Add a tooltip comment on not yet implemented fields.
+
+	* src/core/na-icontext.c (is_candidate_for_show_in):
+	First try desktop from user preferences.
+
+	NASettings is now a private singleton which allocates itself when needed.
+	Preference are so available anywhere without requiring an object.
+
+	* src/core/na-importer-ask.c (na_importer_ask_user):
+	* src/core/na-importer.c (import_from_uri):
+	* src/core/na-io-provider.c (na_io_provider_is_conf_readable):
+	* src/core/na-iprefs.c:
+	* src/core/na-iprefs.h:
+	* src/core/na-pivot.c (instance_constructed, instance_dispose):
+	* src/core/na-pivot.h (na_pivot_get_settings):
+	* src/core/na-settings.c:
+	* src/core/na-settings.h:
+	* src/core/na-tokens.c:
+	* src/core/na-tokens.h(na_tokens_execute_action):
+	* src/core/na-updater.c (are_preferences_locked):
+	* src/nact/base-gtk-utils.c:
+	* src/nact/nact-assistant-export.c (nact_assistant_export_run):
+	* src/nact/nact-assistant-import.c (nact_assistant_import_run):
+	* src/nact/nact-clipboard.c (export_row_object):
+	* src/nact/nact-export-ask.c (nact_export_ask_user):
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-ifolders-tab.c (on_browse_folder_clicked):
+	* src/nact/nact-main-toolbar.c (nact_main_toolbar_init):
+	* src/nact/nact-main-window.c (on_base_initialize_base_window):
+	* src/nact/nact-menubar-file.c (nact_menubar_file_save_items):
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-providers-list.c (nact_providers_list_save):
+	* src/nact/nact-schemes-list.c (init_view_get_default_list):
+	* src/nact/nact-sort-buttons.c (on_base_initialize_buttons):
+	* src/nact/nact-tree-model-dnd.c (drop_uri_list):
+	* src/nact/nact-tree-model.c (nact_tree_model_new):
+	* src/plugin-menu/nautilus-actions.c:
+	* src/utils/nautilus-actions-run.c: Updated accordingly.
+
+	Current desktop environment can be a user preference
+
+	* src/core/na-desktop-environment.c:
+	* src/core/na-desktop-environment.h: New files.
+
+	* po/POTFILES.in:
+	* src/core/Makefile.am:
+	* src/core/na-icontext.c (is_candidate_for_show_in):
+	* nact/nact-ienvironment-tab.c
+	(nact_ienvironment_tab_runtime_init_toplevel): Updated accordingly.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h:
+	Define new NA_IPREFS_DESKTOP_ENVIRONMENT user preference.
+	(set_key_value): Setting a NULL string actually removes the key.
+
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-preferences.ui: Let the user choose his desktop.
+
+	* src/core/na-iabout.c: Renamed as src/core/na-about.c.
+	* src/core/na-iabout.h: Renamed as src/core/na-about.h.
+	NAIAbout is no more an interface, but just a set of functions.
+
+	* src/core/Makefile.am:
+	* src/core/na-core-utils.c (na_core_utils_print_version):
+	* src/nact/nact-application.c (nact_application_new_with_args):
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-menubar-help.c (nact_menubar_help_on_about):
+	* src/plugin-menu/nautilus-actions.c (execute_about): Updated accordingly.
+
+2011-02-24 Pierre Wieser <pwieser@trychlos.org>
+
+	Improve ExecutionMode implementation by defining a new user preference
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: Define new NA_IPREFS_TERMINAL_PREFIX user preference.
+
+	* src/core/na-tokens.c:
+	* src/core/na-tokens.h
+	(na_tokens_command_from_terminal_prefix): New function.
+	(na_tokens_execute_action): New NASettings parameter.
+
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-preferences.ui: Let the user edit the preference.
+
+	* src/utils/nautilus-actions-run.c:
+	* po/POTFILES.in: Updated accordingly.
+
+2011-02-23 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: Define a new NA_IPREFS_PLUGIN_LOG user preference.
+
+	* src/plugin-menu/nautilus-actions.c:
+	* src/plugin-menu/nautilus-actions.h (nautilus_action_is_log_enabled):
+	New function.
+
+	* src/plugin-menu/nautilus-module.c (log_handler): Send debug trace to
+	syslog if the NA_IPREFS_PLUGIN_LOG preference is set.
+
+	* configure.ac: Bump Nautilus required version to 2.16
+	for having nautilus_menu_provider_emit_items_updated_signal() function.
+
+	* configure.ac:
+	* src/plugin-menu/nautilus-actions.c:
+	Check for nautilus_menu_provider_get_toolbar_items() function.
+
+	* src/core/na-selected-info.c (instance_init, instance_finalize):
+	Improve debug messages.
+
+	* src/core/na-icontext.c: 
+	* src/nact/nact-ienvironment-tab.c: Improve list of desktop environments
+	(see http://standards.freedesktop.org/menu-spec/latest/apb.html).
+
+	Move Nautilus-Actions configuration files to nautilus-actions/ subdir
+
+	* src/core/na-settings.c (na_settings_new):
+	* src/utils/na-gconf2key.sh.in: Updated accordingly.
+
+	Implement execution mode property
+
+	* m4/na-check-for-gtk.m4: Check for Gio-unix.
+
+	* src/core/na-object-profile-factory.c: Improve translation comment.
+
+	* src/core/na-tokens.c (execute_action_command): Display output.
+
+2011-02-21 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/api/na-object.h:
+	* src/core/na-object.c (na_object_get_hierarchy, na_object_free_hierarchy):
+	Deprecated functions.
+
+	* src/core/na-object-id.c (v_new_id): No more call na_object_get_hierarchy().
+
+	Rewrite copy stack to get ride of iteration on class hierarchy
+
+	* src/api/na-object-api.h
+	(na_object_copy, na_object_get_hierarchy): Removed macros.
+
+	* src/api/na-icontext.h:
+	* src/core/na-icontext.c (na_icontext_copy): New function.
+
+	* src/core/na-object.c (object_copy_iter, iter_on_class_hierarchy):
+	* src/core/na-object-item.c (object_copy):
+	* src/core/na-object-action.c (object_copy):
+	* src/core/na-object-profile.c (object_copy):
+	* src/core/na-object-menu.c (object_copy): Updated accordingly.
+
+	Rewrite validity status check stack
+
+	* src/api/na-icontext.h:
+	* src/core/na-icontext.c (na_icontext_are_equal): New function.
+
+	* src/core/na-factory-object.c (na_factory_object_is_valid):
+	* src/core/na-object.c (iduplicable_is_valid):
+	* src/core/na-object-id.c (object_is_valid):
+	* src/core/na-object-id-factory.c:
+	* src/core/na-object-item.c (object_is_valid):
+	* src/core/na-object-action.c (object_is_valid):
+	* src/core/na-object-profile.c (object_is_valid):
+	* src/core/na-object-menu.c (object_is_valid): Updated accordingly.
+
+	Rewrite modification status check stack
+
+	* src/api/na-object-item.h:
+	* src/core/na-object-item.c (na_object_item_are_equal): Removed function.
+
+	* src/api/na-object.h:
+	* src/core/na-factory-object.c:
+	* src/core/na-iduplicable.c: Improve comment.
+
+	* src/core/na-object.c:
+	* src/core/na-object-id.c:
+	* src/core/na-object-menu.c:
+	* src/core/na-object-action.c:
+	* src/core/na-object-profile.c: Modification is checked from
+	NAObject-virtual method instead of NAIFactoryObject interface.
+
+	* src/api/na-iduplicable.h:
+	* src/api/na-iduplicable.c (v_are_equal, v_is_valid): Default to TRUE.
+
+	* src/core/na-icontext.c (is_candidate_for_mimetypes): Fix check.
+
+	* src/api/na-icontext.h:
+	* src/core/na-icontext.c (na_icontext_is_all_mimetypes):
+	Renamed as na_icontext_check_mimetypes().
+
+	* src/api/na-ifactory-object-data.h:
+	* src/api/na-object-api.h:
+	* src/core/na-icontext-factory.c:
+	* src/core/na-object-profile.c: Updated accordingly.
+
+	* src/core/na-icontext.c (is_valid_isfiledir): Deprecated function.
+
+	* src/core/na-icontext.c (na_icontext_get_running_environment):
+	Fix value test.
+
+	* src/core/na-boxed.c (string_list_from_string,
+	string_list_from_value, string_list_from_void): Check for duplicates.
+
+	* src/utils/nautilus-actions-new.c: Fix default mimetype.
+
+	* src/core/na-icontext.c (get_running_environment): New function.
+
+	* src/utils/na-print-schemas.c: Also display menu schemas.
+
+	* src/core/na-icontext-factory.c (NAFO_DATA_ISFILE, NAFO_DATA_ISDIR):
+	Data are deprecated and not writable.
+
+	* src/utils/nautilus-actions-new.c: Mimetypes default to */*.
+
+2011-02-20 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-icontext-factory.c (NAFO_DATA_TRY_EXEC,
+	NAFO_DATA_SHOW_IF_REGISTERED, NAFO_DATA_SHOW_IF_TRUE,
+	NAFO_DATA_SHOW_IF_RUNNING, NAFO_DATA_CAPABILITITES): Fix options definition.
+
+	* src/utils/nautilus-actions-new.c: Add try-exec, show-if-registered,
+	show-if-true, show-if-running and capability options.
+	
+	* src/core/na-icontext-factory.c (NAFO_DATA_SCHEMES, NAFO_DATA_FOLDERS,
+	NAFO_DATA_SELECTION_COUNT, NAFO_DATA_ONLY_SHOW, NAFO_DATA_NOT_SHOW):
+	* src/core/na-object-action-factory.c (NAFO_DATA_TARGET_SELECTION,
+	NAFO_DATA_TARGET_LOCATION, NAFO_DATA_TARGET_TOOLBAR):
+	* src/core/na-object-item-factory.c (NAFO_DATA_ENABLED):
+	Fix options definition.
+
+	* src/utils/nautilus-actions-new.c: Add only-show-in and not-show-in options.
+
+	* src/core/na-icontext-factory.c
+	(NAFO_DATA_SELECTION_COUNT): Fix option definition.
+
+	* src/utils/nautilus-actions-new.c: Add selection-count option.
+
+	* src/core/na-data-boxed.c (string_is_default, string_list_is_default,
+	locale_is_default): Fix default value test.
+
+2011-02-19 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/api/na-object-api.h (na_object_set_isfile, na_object_set_isdir,
+	na_object_set_multiple): Deprecated functions.
+
+	* src/core/na-icontext-factory.c (is_file, is_dir, accept_multiple):
+	Deprecated data.
+
+	* src/utils/nautilus-actions-new.c: Updated accordingly.
+
+	* src/nact/nact-providers-list.c:
+	* src/nact/nact-schemes-list.c: Does not recompute if preferences are
+	locked, but use na_updater_are_preferences_locked() function.
+
+	* src/api/na-iio-provider.h:
+	Define new reason when the level zero is not writable.
+
+	* src/core/na-updater.c:
+	* src/core/na-updater.h (na_updater_is_item_writable):
+	Renamed as na_updater_check_item_writability_status.
+
+	* src/nact/nact-main-window.c (setup_writability_status):
+	* src/nact/nact-menubar-edit.c (get_deletables):
+	* src/nact/nact-tree-model-dnd.c (is_parent_accept_new_children):
+	Updated accordingly.
+
+	* src/nact/base-assistant.c (class_init):
+	Apply patch provided by Christian Kirback. Fix #640920.
+
+2011-02-17 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-pivot.h:
+	* src/core/na-pivot.c: Define new 'pivot-prop-loadable' property.
+
+	* src/nact/base-window.h:
+	* src/nact/base-window.c (class_init):
+	Defines a new 'base-window-willing-to-quit' stop-with-accumulator signal.
+
+	* src/nact/nact-main-window.c:
+	Connect to the signal instead of implementing a virtual method.
+
+2011-02-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-iduplicable.c (interface_base_init):
+	* src/core/na-settings.c (class_init):
+	* src/nact/base-window.c (class_init):
+	Use G_SIGNAL_RUN_CLEANUP signal flag when an object handler is defined.
+
+	* docs/reference/Makefile.am:
+	* src/nact/Makefile.am:
+	* run-distcheck.sh: Fix make distcheck.
+
+	* docs/reference/Makefile.am:
+	Do not documente NAGconfMonitor class when deprecated symbols are disabled.
+
+	* src/api/na-data-boxed.h:
+	* src/api/na-gconf-utils.h:
+	* src/core/na-data-boxed.c:
+	* src/core/na-iduplicable.c:
+	* src/io-gconf/nagp-gconf-provider.c: Do not compile deprecated functions.
+
+	* configure.ac:
+	* m4/na-maintainer-mode.m4: Add --enable-deprecated configure option.
+
+	* src/api/na-object-api.h (na_object_set_modified): Deprecated macro.
+
+	* src/api/na-iduplicable.h:
+	* src/core/na-iduplicable.c (na_iduplicable_set_modified):
+	Deprecated function.
+
+	* src/core/na-factory-object.c (na_factory_object_are_equal):
+	* src/nact/nact-tree-ieditable.c (on_object_modified_status_changed):
+	Improve debug messages.
+
+	* src/core/na-icontext-factory.c:
+	* src/core/na-object-action-factory.c:
+	* src/core/na-object-id-factory.c: Set missing default values.
+
+	* src/core/na-object-action.c (ifactory_object_are_equal):
+	An action is modified as soon as at least one profile is modified.
+
+	* src/core/na-icontext-factory.c: Fix string list regression
+
+	* src/core/na-boxed.c: Fix regression when setting values.
+
+	* src/core/na-selected-info.c (query_file_attributes):
+	Keep selection info even when unable to query attributes.
+	Fix #641464.
+
+2011-02-15 Pierre Wieser <pwieser@trychlos.org>
+
+	Do not compile with GConf library when disabled
+
+	* src/api/na-gconf-monitor.h:
+	* src/api/na-gconf-utils.h:
+	* src/core/na-gconf-migration.c:
+	* src/core/na-gconf-monitor.c:
+	* src/core/na-gconf-utils.c:
+	* src/io-gconf/Makefile.am:
+	* src/io-xml/naxml-reader.c:
+	* src/utils/Makefile.am: Updated accordingly.
+
+2011-02-14 Pierre Wieser <pwieser@trychlos.org>
+
+	Add --enable-gconf configure argument
+	Define HAVE_GCONF conditional
+
+	* m4/na-check-for-gconf.m4: New file.
+
+	* configure.ac:
+	* data/gconf-schemas/Makefile.am: Updated accordingly.
+
+	Only GConf writing operations are marked deprecated
+
+	* src/api/na-gconf-monitor.h:
+	* src/api/na-gconf-utils.h:
+	* src/core/na-gconf-monitor.c:
+	* src/core/na-gconf-utils.c:
+	* src/io-gconf/nagp-writer.c:
+	* src/io-gconf/nagp-writer.h: Updated accordingly.
+
+	No more use deprecated functions
+
+	* src/core/na-factory-object.c:
+	* src/io-desktop/nadp-reader.c:
+	* src/io-desktop/nadp-writer.c:
+	* src/io-gconf/nagp-reader.c:
+	* src/io-gconf/nagp-writer.c:
+	* src/io-xml/naxml-reader.c:
+	* src/io-xml/naxml-writer.c: Updated accordingly.
+
+	NADataBoxed class now derives from NABoxed
+
+	* src/api/na-boxed.h:
+	* src/api/na-data-boxed.h:
+	* src/api/na-data-types.h:
+	* src/core/na-boxed.c:
+	* src/core/na-core-utils.c:
+	* src/core/na-data-boxed.c:
+	* src/core/na-data-types.c:
+	* src/core/na-factory-object.c:
+	* src/core/na-ifactory-object.c:
+	* src/core/na-settings.c:
+	* src/io-desktop/nadp-writer.c:
+	* src/io-gconf/nagp-writer.c:
+	* src/io-xml/naxml-writer.c: Updated accordingly.
+
+	* src/api/na-boxed.h:
+	* src/core/na-boxed.c: Convert to the NABoxed class.
+
+	* src/core/na-settings.c: Updated accordingly.
+
+	* src/api/na-data-boxed.h:
+	* src/core/na-data-boxed.c: NADataBoxed class is no more deprecated.
+
+	Merge NABoxed and NADataBoxed data type definitions.
+	Data type are remaned as NA_DATA_TYPE.
+
+	* src/api/na-boxed.h:
+	* src/api/na-data-def.h:
+	* src/api/na-data-types.h:
+	* src/core/na-boxed.c:
+	* src/core/na-data-boxed.c:
+	* src/core/na-data-types.c:
+	* src/core/na-factory-object.c:
+	* src/core/na-icontext-factory.c:
+	* src/core/na-ifactory-object.c:
+	* src/core/na-object-action-factory.c:
+	* src/core/na-object-id-factory.c:
+	* src/core/na-object-item-factory.c:
+	* src/core/na-object-profile-factory.c:
+	* src/core/na-settings.c:
+	* src/io-desktop/nadp-reader.c:
+	* src/io-desktop/nadp-writer.c:
+	* src/io-gconf/nagp-reader.c:
+	* src/io-gconf/nagp-writer.c:
+	* src/io-xml/naxml-reader.c:
+	* src/io-xml/naxml-writer.c:
+	* src/utils/na-print-schemas.c: Updated accordingly.
+
+2011-02-07 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/api/na-iduplicable.h:
+	* src/core/na-iduplicable.c:
+	Deprecate NA_IDUPLICABLE_SIGNAL_STATUS_CHANGED signal.
+	Define new IDUPLICABLE_SIGNAL_MODIFIED_CHANGED and IDUPLICABLE_SIGNAL_VALID_CHANGED.
+
+	* src/api/na-object-api.h:
+	* src/core/na-object.c:
+	* src/core/na-object-item.c:
+	* src/core/na-object-item.h:
+	Deprecated na_object_check_status_up macro.
+	Merge na_object_item_check_status() and na_object_item_check_status_up().
+
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-ibasenames-tab.c:
+	* src/nact/nact-icapabilities-tab.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-ienvironment-tab.c:
+	* src/nact/nact-iexecution-tab.c:
+	* src/nact/nact-ifolders-tab.c:
+	* src/nact/nact-iproperties-tab.c:
+	* src/nact/nact-ischemes-tab.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h:
+	* src/nact/nact-match-list.c: Properties are renamed.
+
+	* src/nact/nact-main-tab.c:
+	* src/nact/nact-main-tab.h (nact_main_tab_get_context): Removed function.
+
+2011-02-03 Pierre Wieser <pwieser@trychlos.org>
+
+	In the process of replacing NactIActionsList interface with:
+	- the NactTreeView class
+	- plus the NactTreeIEditable interface.
+
+	Almost all NACT files modified. Compilation is OK.
+
+2011-02-02 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-tree-model.h (nact_tree_model_get_items):
+	* src/nact/nact-tree-view.c:
+	* src/nact/nact-tree-view.h (nact_tree_view_get_items): New functions.
+
+	Allow an items list to be referenced in a new list.
+
+	* src/api/na-object-api.h (na_object_ref_items): New macro.
+
+	* src/api/na-object-item.h:
+	* src/core/na-object-item.c (na_object_item_ref_items): New function.
+
+	* src/nact/nact-assistant-export.c
+	(instance_dispose, on_tree_view_selection_changed): Updated accordingly.
+
+	Review NAObject reference management
+
+	* src/api/na-object-api.h
+	(na_object_unref_items, na_object_unref_items_rec): Removed macros.
+	(na_object_free_items): New macro.
+
+	* src/api/na-object-item.h:
+	* src/core/na-object-item.c
+	(na_object_item_unref_items, na_object_item_unref_items_rec): Removed functions.
+	(na_object_item_free_items): New function.
+
+	* src/core/na-io-provider.c (na_io_provider_load_items):
+	* src/core/na-object.c (na_object_object_ref, na_object_object_unref):
+	* src/core/na-pivot.c (instance_dispose, na_pivot_load_items,
+	na_pivot_set_new_items):
+	* src/nact/nact-assistant-import.c (assistant_apply):
+	* src/nact/nact-iactions-list-bis.c (nact_iactions_list_bis_get_items):
+	* src/nact/nact-iactions-list.c (free_items_callback):
+	* src/nact/nact-main-menubar-edit.c (nact_main_menubar_edit_on_cut,
+	nact_main_menubar_edit_on_copy, nact_main_menubar_edit_on_paste,
+	nact_main_menubar_edit_on_paste_into,
+	nact_main_menubar_edit_on_duplicate, nact_main_menubar_edit_on_delete):
+	* src/nact/nact-main-menubar-file.c
+	(nact_main_menubar_file_on_new_menu,
+	nact_main_menubar_file_on_new_action,
+	nact_main_menubar_file_on_new_profile):
+	* src/nact/nact-main-menubar-maintainer.c
+	(nact_main_menubar_maintainer_on_dump_selection):
+	* src/nact/nact-main-menubar.c (on_update_sensitivities):
+	* src/nact/nact-main-window.c (instance_dispose,
+	nact_main_window_remove_deleted, reload):
+	* src/nact/nact-tree-model-dnd.c (drop_uri_list):
+	* src/nact/nact-tree-model.c (fill_tree_store):
+	* src/nact/nact-tree-view.c (on_selection_changed_cleanup_handler):
+	* src/plugin-menu/nautilus-actions.c (get_menus_items): Updated
+	accordingl
+	* src/nact/nact-main-menubar-maintainer.c
+	(nact_main_menubar_maintainer_on_dump_selection):
+	* src/nact/nact-main-menubar.c (on_update_sensitivities):
+	* src/nact/nact-main-window.c (instance_dispose,
+	nact_main_window_remove_deleted, reload):
+	* src/nact/nact-tree-model-dnd.c (drop_uri_list):
+	* src/nact/nact-tree-model.c (fill_tree_store):
+	* src/nact/nact-tree-view.c (on_selection_changed_cleanup_handler):
+	* src/plugin-menu/nautilus-actions.c (get_menus_items):
+	Updated accordingly.
+
+	New NactTreeView convenience class
+
+	* src/nact/nact-tree-view.c:
+	* src/nact/nact-tree-view.h: New files.
+
+	* src/nact/Makefile.am:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-iactions-list-priv.c:
+	* src/nact/nact-iactions-list.h:
+	* src/nact/nact-marshal.list:
+	* src/nact/nact-tree-model.c: Updated accordingly.
+
+2011-02-02 Pierre Wieser <pwieser@trychlos.org>
+
+	Refactoring of menubar files:
+	- nact-main-menubar-*.c are renamed as nact-menubar-*.c.
+	- nact-main-menubar-*.h are removed.
+
+	* src/nact/Makefile.am:
+	* src/nact/nact-confirm-logout.c:
+	* src/nact/nact-iactions-list.c: Updated accordingly.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h: Remove MAIN_WINDOW_SIGNAL_UPDATE_ACTION_SENSITIVITIES
+	which is replaced by NactMenubar internal MENUBAR_SIGNAL_UPDATE_SENSITIVITIES one.
+
+	Termination of the main window is managed in NactMainWindow.
+
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h (nact_main_window_quit): New function.
+
+	* src/nact/nact-main-menubar-file.c: Updated accordingly.
+
+	Move a NASettings getter to NAUpdater
+
+	* src/core/na-updater.c:
+	* src/core/na-updater.h (na_updater_should_pasted_be_relabeled): New function.
+
+	* src/nact/nact-main-menubar-edit.c:
+	* src/nact/nact-main-menubar-edit.h
+	(nact_main_menubar_edit_is_pasted_object_relabeled): Removed function.
+
+	* src/nact/nact-tree-model-dnd.c (drop_inside): Updated accordingly.
+
+	* src/nact/base-application.c (class_init):
+	* src/nact/base-assistant.c (class_init):
+	* src/nact/base-window.c (class_init):
+	* src/nact/nact-main-window.c (instance_constructed):
+	Setup construction properties.
+
+	* src/nact/nact-application.c:
+	* src/nact/nact-application.h (nact_application_get_updater):
+	Set NactApplication as a const argument.
+
+	Deprecate NAIPivotConsumer interface
+
+	* src/core/na-ipivot-consumer.c:
+	* src/core/na-ipivot-consumer.h: Removed files.
+
+	* src/core/Makefile.am:
+	* src/core/na-pivot.c:
+	* src/core/na-pivot.h:
+	* src/nact/nact-application.c:
+	* src/nact/nact-main-menubar-file.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-menubar.c: Updated accordingly.
+
+	* src/core/na-pivot.c:
+	* src/core/na-pivot.h
+	(na_pivot_set_automatic_reload): Remove unused function.
+
+	* src/test/test-reader.c: Updated accordingly.
+
+	* src/nact/nact-main-window.c (instance_constructed):
+	Connect to PIVOT_SIGNAL_ITEMS_CHANGED signal.
+
+	Rename nact-gtk-utils to base-gtk-utils and merge base-iprefs into it
+
+	* src/nact/base-iprefs.c:
+	* src/nact/base-iprefs.c: Removed files.
+
+	* src/nact/Makefile.am:
+	* src/nact/base-gtk-utils.c:
+	* src/nact/base-gtk-utils.h:
+	* src/nact/base-window.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-export-format.c:
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-ibasenames-tab.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-ienvironment-tab.c:
+	* src/nact/nact-iexecution-tab.c:
+	* src/nact/nact-ifolders-tab.c:
+	* src/nact/nact-iproperties-tab.c:
+	* src/nact/nact-ischemes-tab.c:
+	* src/nact/nact-main-statusbar.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-match-list.c:
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-providers-list.c:
+	* src/nact/nact-schemes-list.c:
+	* src/nact/nact-tree-model.c: Updated accordingly.
+
+	Convert the get_wp_id() BaseIPrefsInterface method to "base-window-wsp-name"
+	BaseWindow property
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: New NA_IPREFS_CONFIRM_LOGOUT_WSP user preference.
+
+	* src/nact/base-iprefs.c:
+	* src/nact/base-iprefs.h
+	(base_iprefs_position_named_window, base_iprefs_save_named_window_position):
+	Removed functions.
+	(get_wsp_id): Remove interface method.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h: New BASE_PROP_WSP_NAME BaseWindow property.
+
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-confirm-logout.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-ifolders-tab.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences-editor.c: Updated accordingly.
+
+	* src/core/na-updater.c:
+	* src/core/na-updater.h (na_updater_are_preferences_locked): New function.
+
+	Homogeneize marshalling
+
+	* src/core/na-marshal: Renamed as src/core/na-marshal.def
+	* src/nact/nact-marshal.list: Renamed as src/nact/nact-marshal.def
+
+	* src/core/Makefile.am:
+	* src/nact/Makefile.am:
+	* src/nact/nact-iactions-list.c (interface_base_init):
+	* src/nact/nact-main-window.c (class_init): Updated accordingly.
+
+2011-02-01 Pierre Wieser <pwieser@trychlos.org>
+
+	Review menu items sensitivity updates
+
+	* src/api/na-object-api.h
+	(na_object_is_finally_writable, na_object_set_writability_status): New macros.
+
+	* src/api/na-object-item.h:
+	* src/core/na-object-item.c
+	(na_object_item_is_finally_writable, na_object_item_set_writability_status):
+	New functions.
+
+	* src/core/na-updater.c:
+	* src/core/na-updater.h (na_updater_load_items): New function.
+
+	* src/nact/nact-application.c (appli_main_window_new):
+	* /src/nact/nact-main-window.c (on_base_initialize_base_window):
+	No more load items when instanciating the main window, but when
+	initializing it.
+
+	* src/nact/nact-iactions-list.c (nact_iactions_list_all_widgets_showed):
+	Send the IACTIONS_LIST_SIGNAL_LIST_COUNT_UPDATED message to update the menubar.
+
+	* src/nact/nact-main-menubar-edit.c (nact_main_menubar_edit_on_update_sensitivities):
+	* src/nact/nact-main-menubar-file.c (nact_main_menubar_file_on_update_sensitivities):
+	* src/nact/nact-menubar-priv.h:
+	* src/nact/nact-menubar.c (on_iactions_list_selection_changed):
+	Rely on indicators pre-computed on selection changes.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h (nact_window_has_writable_providers):
+	Removed function.
+
+	* src/nact/nact-menubar-priv.h:
+	* src/nact/nact-menubar.c: Updated accordingly.
+
+	* src/core/na-iprefs.c:
+	* src/core/na-iprefs.h (na_iprefs_is_level_zero_writable):
+	Moved to NAUpdater class.
+
+	* src/core/na-updater.c:
+	* src/core/na-updater.h (na_updater_is_level_zero_writable):
+	Moved from NAIPrefs.
+
+	* src/nact/nact-menubar-priv.h:
+	* src/nact/nact-menubar.c (on_base_initialize_window):
+	* src/nact/nact-sort-buttons.c (enable_buttons):
+	* src/nact/nact-tree-model-dnd.c (is_parent_accept_new_childs):
+	Updated accordingly.
+
+	Review I/O providers writability status management.
+
+	* src/api/na-iio-provider.h: Review writability reason.
+
+	* src/core/na-io-provider.c:
+	* src/core/na-io-provider.h
+	(na_io_provider_is_able_to_write, na_io_provider_is_willing_to_write):
+	Removed functions.
+	(na_io_provider_is_finally_writable): New function.
+
+	* src/core/na-pivot.c:
+	* src/core/na-pivot.h
+	(na_pivot_is_configuration_locked_by_admin): Removed function.
+
+	* src/core/na-updater.c
+	* src/core/na-updater.h (na_updater_is_item_writable):
+	* src/nact/nact-main-menubar-edit.c (get_deletables):
+	* src/nact/nact-main-window.c: Updated accordingly.
+
+2011-01-31 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-menubar.c (nact_main_menubar_enable_item):
+	Renamed as nact_menubar_enable_item() and moved to private resources.
+
+	* src/nact/nact-main-menubar-edit.c:
+	* src/nact/nact-main-menubar-file.c:
+	* src/nact/nact-main-menubar-help.c:
+	* src/nact/nact-main-menubar-tools.c:
+	* src/nact/nact-main-menubar-view.c:
+	* src/nact/nact-menubar-priv.h:
+	* src/nact/nact-menubar.h: Updated accordingly.
+
+	Move MenubarIndicatorsStruct structure to private instance data
+
+	* src/nact/nact-menubar-priv.h: New file.
+
+	* src/nact/Makefile.am:
+	* src/nact/nact-main-menubar-edit.c:
+	* src/nact/nact-main-menubar-edit.h:
+	* src/nact/nact-main-menubar-file.c:
+	* src/nact/nact-main-menubar-file.h:
+	* src/nact/nact-main-menubar-help.c:
+	* src/nact/nact-main-menubar-help.h:
+	* src/nact/nact-main-menubar-maintainer.c:
+	* src/nact/nact-main-menubar-maintainer.h:
+	* src/nact/nact-main-menubar-tools.c:
+	* src/nact/nact-main-menubar-tools.h:
+	* src/nact/nact-main-menubar-view.c:
+	* src/nact/nact-main-menubar-view.h:
+	* src/nact/nact-menubar.c:
+	* src/nact/nact-menubar.h: Updated accordingly.
+
+	Define a new NactMenubar convenience class
+
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-menubar.h: Renamed as nact-menubar.{c,h}.
+
+	* src/nact/Makefile.am:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-main-menubar-edit.h:
+	* src/nact/nact-main-menubar-file.h:
+	* src/nact/nact-main-menubar-help.c:
+	* src/nact/nact-main-menubar-help.h:
+	* src/nact/nact-main-menubar-maintainer.c:
+	* src/nact/nact-main-menubar-maintainer.h:
+	* src/nact/nact-main-menubar-tools.c:
+	* src/nact/nact-main-menubar-tools.h:
+	* src/nact/nact-main-menubar-view.c:
+	* src/nact/nact-main-menubar-view.h:
+	* src/nact/nact-main-window.c: Updated accordingly.
+
+	* src/api/na-boxed.h:
+	* src/core/na-boxed.c (na_boxed_dump): New function.
+
+	* src/core/na-settings.c (on_keyfile_changed_timeout): Fix segfault.
+
+	* src/nact/nact-preferences-editor.c (on_dialog_ok): Spare a function.
+
+	* src/core/na-marshal: New file.
+
+2011-01-28 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/Makefile.am: Generate na_cclosure_masharl functions.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: No more try to summarize notifications here.
+
+	* src/plugin-menu/nautilus-actions.c (instance_constructed):
+	Register NASettings callbacks on the runtime keys.
+
+	* src/nact/nact-main-window.c:
+	(NAIPivotConsumer->on_display_order_changed):
+	Moved to on_settings_order_mode_changed() function.
+	(NAIPivotConsumer->on_autosave_changed):
+	Moved to nact_main_menubar_file_install_autosave() new function.
+
+	* src/nact/nact-main-menubar-file.c:
+	* src/nact/nact-main-menubar-file.h
+	(nact_main_menubar_file_install_autosave): New function.
+
+	* src/core/na-iprefs.c:
+	* src/core/na-iprefs.h (na_iprefs_get_order_mode_by_label):
+	New function.
+
+	* src/core/na-icontext.c (is_candidate_for_basenames):
+	Fix case insenstive comparison (bug reported by Johan Spee).
+
+	Whole refactoring of BaseWindow / BaseAssistant / BaseDialog
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h: Add new exit codes.
+
+	* src/nact/base-assistant.c:
+	* src/nact/base-assistant.h:
+	Remove 'warn-on-cancel' unused property.
+	(base_assistant_set_cancel_on_esc, base_assistant_set_warn_on_esc):
+	Remove unused functions.
+	Implement run() virtual method.
+
+	* src/nact/base-dialog.c:
+	* src/nact/base-dialog.h:
+	Implement run() virtual method.
+	Define new cancel() and ok() virtual methods.
+
+	* src/nact/base-iprefs.c:
+	* src/nact/base-iprefs.h (iprefs_get_window_id): Renamed as get_wsp_id().
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h
+	(dialog_response, delete_event): Remove no more used virtual methods.
+	(run): Define new virtual method.
+
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-confirm-logout.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences-editor.c: Updated accordingly.
+
+2011-01-26 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-providers-list.c:
+	* src/nact/nact-providers-list.h (nact_providers_list_create_model):
+	Do not initialize the widgets with the future BaseWindow.
+
+	* src/nact/nact-preferences-editor.c (preferences_editor_new):
+	Updated accordingly.
+
+	* src/nact/nact-schemes-list.c: Only ask for preferences once.
+
+	* src/nact/nact-assistant-import.c (assist_new):
+	Reload the common XML UI file into the private builder.
+
+	* src/nact/base-dialog.c:
+	* src/nact/base-dialog.h:
+	* src/nact/base-window.h: Do some code and comments cleanup.
+
+	* src/nact/base-builder.c (base_builder_get_toplevel_by_name):
+	* src/nact/base-iprefs.c (base_iprefs_position_named_window):
+	* src/nact/base-window.c (setup_builder):
+	Add a debug message.
+
+2011-01-24 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/plugin-menu/nautilus-actions.c:
+	* src/plugin-menu/nautilus-actions.h:
+	Takes advantage of the new NASettings signal notification system.
+
+	* src/core/na-pivot.c:
+	* src/core/na-pivot.h: Review the notification system.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h:
+	Add a signal notification to the existing callback pregistration system.
+
+	* data/gconf-schemas/nautilus-actions-prefs.schemas.in:
+	* docs/des-ema/des-ema-0.15:
+	* docs/nact/C/nact-conditions.xml:
+	* docs/nact/C/nact-menus.xml:
+	* src/api/na-extension.h:
+	* src/api/na-ifactory-provider.h:
+	* src/api/na-iio-provider.h:
+	* src/api/na-object.h:
+	* src/core/na-core-utils.c:
+	* src/core/na-factory-object.c:
+	* src/core/na-gconf-utils.c:
+	* src/core/na-icontext-factory.c:
+	* src/core/na-icontext.c:
+	* src/core/na-ifactory-provider.c:
+	* src/core/na-io-provider.c:
+	* src/core/na-io-provider.h:
+	* src/core/na-iprefs.c:
+	* src/core/na-object-action.c:
+	* src/core/na-object-id-factory.c:
+	* src/core/na-object-id.c:
+	* src/core/na-object-item-factory.c:
+	* src/core/na-object-item.c:
+	* src/core/na-pivot.h:
+	* src/core/na-settings.c:
+	* src/core/na-settings.h:
+	* src/core/na-tokens.h:
+	* src/io-desktop/nadp-desktop-file.c:
+	* src/io-desktop/nadp-reader.c:
+	* src/io-desktop/nadp-utils.c:
+	* src/io-gconf/nagp-reader.c:
+	* src/io-xml/naxml-reader.c:
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nautilus-actions-config-tool.ui:
+	* src/plugin-menu/nautilus-actions.c:
+	* src/utils/nautilus-actions-new.c:
+	* src/utils/nautilus-actions-run.c:
+	* tools/check-headers.sh:
+	* tools/init-finalize-diff.sh:
+	Apply patch provided by Christian Kirbach. Fix #640216.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	* src/utils/na-delete-xmltree.c:
+	* src/utils/nautilus-actions-print.c:
+	Fix string errors reported by fr translation team.
+
+	* src/api/na-timeout.h:
+	* src/core/na-timeout.c: New files.
+
+	* src/api/Makefile.am:
+	* src/core/Makefile.am: Updated accordingly.
+
+	* src/core/na-pivot.c (on_item_changed_timeout):
+	* src/core/na-settings.c (on_keyfile_changed_timeout):
+	* src/io-desktop/nadp-desktop-provider.c (on_monitor_timeout):
+	* src/plugin-menu/nautilus-actions.c (on_change_event_timeout):
+	Take advantage of new NATimeout convenience structure.
+
+	* src/api/na-iio-provider.h:
+	* src/core/na-io-provider.c:
+	* src/core/na-io-provider.h: Fix comments.
+
+	* src/core/na-iio-provider.c (interface_base_init):
+	The 'item-changed' signal actually does not send any argument.
+
+	* src/core/na-pivot.c:
+	* src/core/na-pivot.h (na_pivot_on_item_changed_handler):
+	Updated accordingly.
+
+2011-01-22 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-window.c: Handles the recorded signals in a GList.
+
+	* src/nact/base-window.h (is_willing_to_quit): Fix the comment.
+
+	* src/nact/nact-main-window.c
+	(base_is_willing_to_quit, on_base_initialize_gtk_toplevel):
+	Calls the parent class method if willing to quit.
+
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h
+	(nact_window_is_item_writable): Remove unused function.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h
+	(runtime_init_toplevel): Renamed as initialize_base_window().
+	(class_init): Fix cclosure_marshall for signals without argument.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h
+	(get_toplevel_name, get_ui_filename): Removed virtual functions.
+
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-confirm-logout.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences-editor.c: Updated accordingly.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h:
+	Revert commits dfb26ec5, 1991b3b7 and 4d0c43bb due to new virtual method
+	handling paradigm.
+	Pass the GtkWindow toplevel as a parameter of 'base-window-initialize-gtk'
+	signal.
+	initial_load_toplevel() virtual method is renamed as initialize_gtk_toplevel().
+
+	* src/nact/nact-main-window.c:
+	No more connect to the signal, but implement the virtual method.
+
+	* src/nact/base-application.c (appli_initialize_manage_options):
+	* src/nact/base-application.h (manage_options):
+	* src/nact/nact-application.c (appli_manage_options):
+	Revert commit 3acf600874.
+
+	* src/test/test-virtuals.c: Do some more tests on virtual methods.
+
+	* src/nact/base-window.c (on_initialize_gtk_toplevel_class_handler,
+	on_initialize_base_window_class_handler,
+	on_all_widgets_showed_class_handler, base_window_is_willing_to_quit):
+	Succssively invoke all derived class methods.
+
+	* src/nact/base-window.h (initial_load_toplevel, runtime_init_toplevel,
+	all_widgets_showed, is_willing_to_quit): Update comments.
+
+	* src/nact/base-application.c (appli_initialize_manage_options):
+	Successively invoke all derived class methods.
+
+	* src/nact/base-application.h (manage_options): Update comment.
+
+	* src/nact/nact-application.c (appli_manage_options): Updated accordingly.
+
+	* src/nact/base-builder.c:
+	* src/nact/base-builder.h (base_builder_get_toplevel_by_name):
+	Use a const BaseBuilder as argument;
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_get_widget_from_gtk):
+	Removed function.
+
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nact-gtk-utils.h (nact_gtk_utils_get_widget_by_name):
+	New function.
+
+	* src/nact/nact-icon-chooser.c (on_destroy): Updated accordingly.
+
+	* src/nact/base-application.c (appli_initialize_unique_app):
+	Fix reverse test.
+
+	* src/nact/base-builder.c:
+	* src/nact/base-builder.h (base_builder_load_named_toplevel):
+	Renamed as base_builder_get_toplevel_by_name().
+
+	* src/nact/base-window.c: Updated accordingly.
+
+2011-01-21 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_peek_widget):
+	Renamed as base_window_get_widget_from_gtk().
+
+	* src/nact/nact-icon-chooser.c: Updated accordingly.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_get_named_toplevel):
+	Renamed as base_window_get_gtk_toplevel_by_name().
+
+	* src/nact/nact-icommand-tab.c: Updated accordingly.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_get_toplevel):
+	Renamed as base_window_get_gtk_toplevel().
+
+	* src/nact/base-application.c:
+	* src/nact/base-assistant.c:
+	* src/nact/base-iprefs.c:
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-confirm-logout.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-ifolders-tab.c:
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-match-list.c:
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-tree-model-dnd.c: Updated accordingly.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h: Rename signal defines.
+
+	* src/nact/base-assistant.c:
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-confirm-logout.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences-editor.c: Updated accordingly.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h:
+	Remove unused properties.
+	(base_window_error_dlg, base_window_yesno_dlg): Removed functions.
+
+	* src/nact/base-assistant.c:
+	* src/nact/nact-main-menubar-edit.c:
+	* src/nact/nact-main-menubar-file.c:
+	* src/nact/nact-main-window.c
+	* src/nact/nact-window.c: Updated accordingly.
+
+	* src/nact/base-window-class.h: Removed file.
+
+	* src/nact/base-window.h:
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* src/utils/na-gconf2key.sh.in:
+	Get ride of possible error messages when forcing gconfd-2 synchro.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h (base_application_message_dlg,
+	base_application_error_dlg, base_application_yesno_dlg):
+	Functions are moved to BaseWindow class.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h
+	(base_window_display_yesno_dlg, base_window_display_message_dlg):
+	New functions.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h
+	(base_application_get_ui_filename): Removed function.
+	(get_ui_filename): Removed virtual method.
+
+	* src/nact/nact-application.c
+	(appli_get_gtkbuilder_filename):Removed function.
+
+	* src/nact/base-window.c (base_window_init): Rewrite BaseWindow initialization.
+
+	* src/nact/nact-main-window.c (nact_main_window_new):
+	Initialize the main window with XML UI properties.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h: Rename initialization properties.
+
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-confirm-logout.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences-editor.c: Updated accordingly.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h:
+	Define new 'base-application-description' property.
+	Remove unused properties.
+
+	* src/nact/nact-application.c (nact_application_new):
+	Make use of the new property at instanciation time.
+
+2011-01-20 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_display_error_dlg): New function.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h (base_application_get_icon_name):
+	Removed function.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h
+	(initialize_i18n, initialize_application_name, get_application_name,
+	initialize_default_icon, get_icon_name, initialize_gtk,
+	initialize_session_manager, get_unique_app_name, initialize_ui,
+	initialize_unique_app, initialize, run, get_main_window,
+	initialize_application): Remove virtual methods.
+
+	* src/nact/nact-application.c (appli_get_application_name,
+	appli_get_icon_name, appli_get_unique_app_name,
+	appli_initialize_application):  Removed functions.
+
+	* src/nact/nact-application.c (nact_application_new_with_args):
+	Make NactApplication initializes with these new properties.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application.h: Define new properties.
+
+	* src/nact/base-application-class.h: Removed file.
+
+	* src/nact/Makefile.am:
+	* src/nact/base-application.h:
+	* src/nact/base-window-class.h:
+	* src/nact/base-window.h: Updated accordingly.
+
+	* src/nact/base-application-class.h (main_window_new):
+	* src/nact/base-application.c (application_do_run):
+	* src/nact/nact-application.c
+	* src/nact/nact-main-window.h (appli_main_window_new):
+	Move the creation of the main window to the main_window_new() method.
+	Remove base_application_get_main_window() function.
+
+	* src/nact/base-application-class.h (manage_options):
+	* src/nact/base-application.c:
+	* src/nact/nact-application.c: Return exit code of the program.
+
+	* src/nact/nact-tree-model-dnd.c
+	(drop_inside, is_drop_possible, drop_uri_list):
+	* src/nact/base-window.c (is_main):
+	Remove base_application_get_main_window() invocations.
+
+	* src/nact/nact-main.c: Renamed as main.c
+
+	* src/nact/Makefile.am: Updated accordingly.
+
+	* tools/Makefile.am: Generate the check-header.c source if it is missing.
+
+	* src/plugin-tracker/na-tracker-dbus.c:
+	* src/plugin-tracker/na-tracker-dbus.h:
+	* src/plugin-tracker/na-tracker.c:
+	* src/plugin-tracker/na-tracker.h: Cosmetic changes in src/plugin-tracker headers.
+
+	* src/plugin-menu/nautilus-actions.c:
+	* src/plugin-menu/nautilus-actions.h: Cosmetic changes in src/plugin-menu headers.
+
+	* src/nact/base-application.c:
+	* src/nact/base-application-class.h:
+	* src/nact/base-assistant.c:
+	* src/nact/base-assistant.h:
+	* src/nact/base-builder.c:
+	* src/nact/base-builder.h:
+	* src/nact/base-dialog.c:
+	* src/nact/base-dialog.h:
+	* src/nact/base-iprefs.c:
+	* src/nact/base-iprefs.h:
+	* src/nact/base-window.c:
+	* src/nact/base-window-class.h:
+	* src/nact/egg-tree-multi-dnd.h:
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-capability-dialog.h:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-add-scheme-dialog.h:
+	* src/nact/nact-application.c:
+	* src/nact/nact-application.h:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-export.h:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-assistant-import.h:
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-clipboard.h:
+	* src/nact/nact-confirm-logout.c:
+	* src/nact/nact-confirm-logout.h:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-export-ask.h:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-iactions-list.h:
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-iaction-tab.h:
+	* src/nact/nact-ibasenames-tab.c:
+	* src/nact/nact-ibasenames-tab.h:
+	* src/nact/nact-icapabilities-tab.c:
+	* src/nact/nact-icapabilities-tab.h:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icommand-tab.h:
+	* src/nact/nact-icon-chooser.h:
+	* src/nact/nact-ienvironment-tab.c:
+	* src/nact/nact-ienvironment-tab.h:
+	* src/nact/nact-iexecution-tab.c:
+	* src/nact/nact-iexecution-tab.h:
+	* src/nact/nact-ifolders-tab.c:
+	* src/nact/nact-ifolders-tab.h:
+	* src/nact/nact-imimetypes-tab.c:
+	* src/nact/nact-imimetypes-tab.h:
+	* src/nact/nact-iproperties-tab.c:
+	* src/nact/nact-iproperties-tab.h:
+	* src/nact/nact-ischemes-tab.c:
+	* src/nact/nact-ischemes-tab.h:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-main-window.h:
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-preferences-editor.h:
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-tree-model.h:
+	* src/nact/nact-tree-model-priv.h:
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h: Cosmetic changes in src/nact headers.
+
+	* src/io-xml/naxml-provider.c:
+	* src/io-xml/naxml-provider.h:
+	* src/io-xml/naxml-reader.c:
+	* src/io-xml/naxml-reader.h:
+	* src/io-xml/naxml-writer.c:
+	* src/io-xml/naxml-writer.h: Cosmetic changes in src/io-xml headers.
+
+	* src/io-gconf/nagp-gconf-provider.c:
+	* src/io-gconf/nagp-gconf-provider.h: Cosmetic changes in src/io-gconf headers.
+
+	* src/io-desktop/nadp-desktop-file.c:
+	* src/io-desktop/nadp-desktop-file.h:
+	* src/io-desktop/nadp-desktop-provider.c:
+	* src/io-desktop/nadp-desktop-provider.h:
+	* src/io-desktop/nadp-monitor.c:
+	* src/io-desktop/nadp-monitor.h: Cosmetic changes in src/io-desktop headers.
+
+	* src/core/na-export-format.h:
+	* src/core/na-iabout.h:
+	* src/core/na-importer-ask.h:
+	* src/core/na-io-provider.h:
+	* src/core/na-ipivot-consumer.h:
+	* src/core/na-module.h:
+	* src/core/na-pivot.h:
+	* src/core/na-selected-info.h:
+	* src/core/na-settings.h:
+	* src/core/na-tokens.h:
+	* src/core/na-updater.h: Cosmetic changes in src/core headers.
+
+	* src/api/na-data-boxed.h:
+	* src/api/na-data-types.h:
+	* src/api/na-gconf-monitor.h:
+	* src/api/na-gconf-utils.h:
+	* src/api/na-icontext.h:
+	* src/api/na-iduplicable.h:
+	* src/api/na-iexporter.h:
+	* src/api/na-ifactory-object.h:
+	* src/api/na-ifactory-provider.h:
+	* src/api/na-iio-provider.h:
+	* src/api/na-object-action.h:
+	* src/api/na-object.h:
+	* src/api/na-object-id.h:
+	* src/api/na-object-item.h:
+	* src/api/na-object-menu.h:
+	* src/api/na-object-profile.h:
+	* src/core/na-data-boxed.c: Cosmetic changes in src/api headers.
+
+	* src/utils/na-gconf2key.sh.in:
+	* tools/check-headers.sh:
+	* tools/check-po.sh:
+	* tools/init-finalize-diff.sh:
+	* tools/release-tarball.sh: Replace basename with a shell substitution.
+
+2011-01-19 Pierre Wieser <pwieser@trychlos.org>
+
+	* tools/release-tarball.sh: Full script rewrite.
+
+	* README-GCONF:
+	* Makefile.am: Add README-GCONF to the distribution.
+
+	* tools/check-po.sh: Script rewriting.
+
+	* NEWS: Update before 3.0.7 release.
+
+2011-01-18 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-export-format.c (na_export_format_get_description):
+	* src/core/na-importer-ask.c (na_importer_ask_user):
+	* src/core/na-importer.c (import_from_uri):
+	* src/core/na-io-provider.c (na_io_provider_get_name):
+	* src/core/na-iprefs.c:
+	* src/core/na-iprefs.h (na_iprefs_get_import_mode,
+	na_iprefs_get_order_mode, na_iprefs_get_export_format):
+	* src/core/na-settings.c:
+	* src/nact/nact-assistant-export.c (on_initial_load_dialog):
+	* nact/nact-assistant-import.c (runtime_init_duplicates):
+	* src/nact/nact-clipboard.c (export_row_object):
+	* src/nact/nact-export-ask.c:
+	* nact/nact-export-format.c:
+	* src/nact/nact-export-format.h(nact_export_format_init_display):
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nact-gtk-utils.h (nact_gtk_utils_radio_set_initial_state,
+	nact_gtk_utils_radio_reset_initial_state,
+	nact_gtk_utils_toggle_set_initial_state,
+	nact_gtk_utils_toggle_reset_initial_state):
+	* src/nact/nact-ienvironment-tab.c
+	(on_tab_updatable_selection_changed):
+	* src/nact/nact-iexecution-tab.c (on_tab_updatable_selection_changed):
+	* src/nact/nact-main-window.c (on_base_runtime_init_toplevel):
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-preferences.ui:
+	* src/nact/nact-tree-model-dnd.c (drop_uri_list):
+	* src/nact/nact-tree-model.c (tree_model_new):
+	Manage locked and mandatory preferences.
+
+	* src/core/na-boxed.c (na_boxed_new_from_string_with_sep):
+	Do not eat last character.
+
+	* README-GCONF:
+	* src/core/na-settings.h:
+	* src/utils/na-gconf2key.sh.in:
+	Rename 'import-mode-keep-last-choice' as 'import-ask-user-keep-last-choice'.
+
+2011-01-17 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-preferences-editor.c:
+	Reopen the Preferences on the last used tab.
+
+	* src/core/na-boxed.c (na_boxed_new_from_string_with_sep):
+	Fix handling of last separator.
+
+	* src/nact/nact-schemes-list.c: Do not allow modification
+	of default schemes list if preferences are locked or property
+	mandatory.
+
+	* src/core/na-io-provider.c:
+	* src/core/na-io-provider.h (na_io_provider_is_conf_readable,
+	na_io_provider_is_conf_writable):
+	Returns mandatory flag.
+	List I/O providers in write order.
+
+	* src/core/na-updater.c (na_updater_is_item_writable): Updated accordingly.
+
+	* src/nact/nact-providers-list.c: Do not allow modification of I/O
+	providers readability/writability/write order properties if
+	preferences are locked or properties mandatory.
+
+	* src/core/na-module.c (na_module_release_modules): Release the loaded module.
+
+2011-01-16 Pierre Wieser <pwieser@trychlos.org>
+
+	* run-distcheck.sh: New file.
+
+	Add a script to check completeness of header files.
+
+	* tools/.gitignore:
+	* tools/Makefile.am:
+	* tools/check-headers.sh: New files.
+
+	* src/test/test-include.c:
+	Renamed as tools/check-header.c and set it as ignored by git.
+
+	* src/test/.gitignore:
+	* src/test/Makefile.am: Updated accordingly.
+
+	* Makefile.am:
+	* configure.ac: configure in tools/.
+
+	* src/api/na-data-boxed.h:
+	* src/api/na-data-types.h:
+	* src/api/na-gconf-monitor.h:
+	* src/api/na-gconf-utils.h: Test for NA_DISABLE_DEPRECATED deprecation define.
+
+	* run-distcheck.sh: New file.
+
+	* tools/check-po.sh: Rewrite to have options and messages management.
+
+	* src/utils/na-gconf2key.sh.in: Review comment.
+
+	* src/utils/Makefile.am: Add na-gconf2key.sh.in to the distributed files.
+
+	* docs/reference/Makefile.am: Set the deprecation flags for gtkdoc-scan.
+
+	* tools/check-po.sh: Set the count of errors as exit code.
+
+	* po/POTFILES.in: Updated.
+
+	* src/api/na-gconf-utils.h:
+	* src/core/na-gconf-utils.c: Is marked deprecated as of 3.1.0.
+
+	* src/api/na-gconf-monitor.h:
+	* src/core/na-gconf-monitor.c: Is marked deprecated as of 3.1.0.
+
+	* src/utils/nautilus-actions-new.c: Output to stdout or as .desktop file.
+
+	* src/utils/na-print-schemas.c: Add a deprecation comment.
+
+	* src/core/na-io-provider.c:
+	* src/core/na-io-provider.h (na_io_provider_find_io_provider_by_id):
+	New function.
+
+	* src/utils/nautilus-actions-print.c: Move program summary as a global def.
+
+2011-01-15 Pierre Wieser <pwieser@trychlos.org>
+
+	* tools/init-finalize-diff.sh: Fix the interpretation of debug messages.
+
+	* src/test/test-module.c:
+	* src/test/test-module-plugin.c: New files.
+
+	* src/test/.gitignore:
+	* src/test/Makefile.am: Updated accordingly.
+	 
+	* src/nact/nact-schemes-list.c: Remove gconf-client.h include.
+
+	* src/nact/base-iprefs.c
+	(base_iprefs_position_named_window): Do not force a null window size or position.
+
+	* src/core/na-settings.c
+	(na_settings_get_string_list): Do not allocate an empty string list.
+
+	* src/core/na-pivot.c (instance_dispose): Release the NASettings object.
+
+	* src/core/na-object-id.c:
+	* src/core/na-object-item.c: Remove no more used instance_init debug messages.
+
+	* src/core/na-data-boxed.c:
+	* src/core/na-gconf-monitor.c:
+	* src/core/na-io-provider.c:
+	* src/core/na-tokens.c:
+	* src/core/na-updater.c:
+	* src/io-desktop/nadp-desktop-file.c:
+	* src/io-desktop/nadp-desktop-provider.c:
+	* src/io-desktop/nadp-monitor.c:
+	* src/io-gconf/nagp-gconf-provider.c:
+	* src/io-xml/naxml-provider.c:
+	* src/nact/base-application.c:
+	* src/nact/base-builder.c:
+	* src/nact/base-window.c: 
+	* src/nact/nact-application.c:
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-window.c: Add instance_finalize debug message.
+
+	* src/core/na-core-utils.c (na_core_utils_slist_dump): Display string length.
+
+	* src/core/na-boxed.c
+	(na_boxed_free): Only free a non null structure.
+	(na_boxed_new_from_string_with_sep): Do not try to split an empty string.
+	(na_boxed_get_boolean, na_boxed_get_pointer, na_boxed_get_string,
+	na_boxed_get_string_list, na_boxed_get_uint, na_boxed_get_uint_list):
+	Do not try to return a value for a null structure.
+
+	* m4/na-maintainer-mode.m4: Define a conditional when in maintainer mode.
+
+2011-01-14 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/utils/na-delete-xmltree.c:
+	* src/utils/nautilus-actions-print.c: Add localization code.
+
+	* src/utils/nautilus-actions-new.c:
+	* src/utils/nautilus-actions-run.c:
+	* src/utils/nautilus-actions-schemas.c: Add locale.h include.
+
+	* src/core/na-boxed.c (boxed_new, na_boxed_copy, na_boxed_new_from_string,
+	na_boxed_new_from_string_with_sep, na_boxed_free):
+	Add debug messages when allocating/freeing a NABoxed structure.
+
+	* src/nact/nact-icommand-tab.c (on_wdir_browse):
+	Remove no more used default value.
+
+	* src/nact/nact-icon-chooser.c
+	(fillup_icons_by_path, on_path_selection_changed): Store last folder uri.
+
+	* src/core/na-settings.h: Preference renamed accordingly.
+
+	* README-GCONF:
+	* src/core/na-settings.h:
+	* src/utils/na-gconf2key.sh.in:
+	'-last-folder-uri' preferences are renamed as '-lfu'.
+
+	* src/core/na-settings.c: Set default values.
+
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nact-gtk-utils.h (nact_gtk_utils_select_file,
+	nact_gtk_utils_select_file_with_preview, nact_gtk_utils_select_dir):
+	Remove no more used default value.
+
+	* src/nact/nact-icommand-tab.c (on_path_browse, on_wdir_browse):
+	* src/nact/nact-ienvironment-tab.c (on_try_exec_browse,
+	on_show_if_running_browse): Updated accordingly.
+
+	* src/core/na-boxed.c (string_list_from_array, uint_list_from_array):
+	Do not allocate the empty last element.
+
+	* src/core/na-io-provider.c (load_items_get_merged_list):
+	* src/core/na-iprefs.c (na_iprefs_get_io_providers):
+	Use the correct list pointer.
+
+	* src/core/na-iprefs.c:
+	* src/core/na-iprefs.h
+	(na_iprefs_get_export_format, na_iprefs_set_export_format):
+	Functions moved from src/nact/nact-iprefs.c.
+
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-iprefs.h: Removed files.
+
+	* src/nact/Makefile.am:
+	* src/nact/base-window.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-export-format.c:
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-ifolders-tab.c:
+	* src/nact/nact-main-toolbar.c:
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-tree-model-dnd.c: Updated accordingly.
+
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-iprefs.h (nact_iprefs_write_bool, nact_iprefs_write_uint,
+	nact_iprefs_write_string): Remove deprecated functions.
+
+	* src/nact/nact-main-toolbar.c (nact_main_toolbar_activate):
+	Updated accordingly.
+
+	* src/nact/base-iprefs.c:
+	* src/nact/base-iprefs.h (base_iprefs_get_int, base_iprefs_set_int):
+	Remove deprecated functions.
+
+	* src/nact/nact-icon-chooser.c (instance_dispose, on_base_runtime_init_dialog):
+	* src/nact/nact-main-window.c (instance_dispose, on_base_initial_load_toplevel):
+	Updated accordingly.
+
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-iprefs.h (nact_iprefs_migrate_key): Remove deprecated function.
+
+	* src/nact/nact-icommand-tab.c (nact_icommand_tab_initial_load_toplevel):
+	Updated accordingly.
+
+	Global renaming of preferences.
+
+	* README-GCONF:
+	* src/api/na-iio-provider.h:
+	* src/core/na-export-format.h:
+	* src/core/na-exporter.h:
+	* src/core/na-importer-ask.h:
+	* src/core/na-importer.c:
+	* src/core/na-io-provider.c:
+	* src/core/na-io-provider.h:
+	* src/core/na-iprefs.c:
+	* src/core/na-iprefs.h:
+	* src/core/na-module.c:
+	* src/core/na-pivot.c:
+	* src/core/na-pivot.h:
+	* src/core/na-settings.c:
+	* src/core/na-settings.h:
+	* src/core/na-updater.c:
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-assistant-export.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-export-ask.c:
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nact-iactions-list.c:
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-ienvironment-tab.c:
+	* src/nact/nact-ifolders-tab.c:
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-iprefs.h:
+	* src/nact/nact-main-menubar-edit.c:
+	* src/nact/nact-main-menubar-file.c:
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-main-toolbar.c:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences-editor.c:
+	* src/nact/nact-providers-list.c:
+	* src/nact/nact-schemes-list.c:
+	* src/nact/nact-sort-buttons.c:
+	* src/nact/nact-tree-model-dnd.c:
+	* src/nact/nact-tree-model.c:
+	* src/nact/nact-window.c:
+	* src/nact/nact-window.h:
+	* src/plugin-menu/nautilus-actions.c:
+	* src/utils/na-gconf2key.sh.in:
+	* src/utils/nautilus-actions-new.c: Rename preferences.
+>>>>>>> Globally rename preferences
+
+2011-01-13 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: Preference names are defined as '#define' values.
+
+	* README-GCONF:
+	* src/utils/na-gconf2key.sh.in: Adjust preferences.
+
+	* src/core/na-iprefs.c:
+	* src/core/na-iprefs.h: NAIPrefs is no more an interface.
+
+	* src/api/na-iimporter.h:
+	* src/core/na-importer-ask.c:
+	* src/core/na-importer-ask.h:
+	* src/core/na-importer.c: Updated accordingly.
+
+2011-01-12 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-iprefs.c:
+	* src/nact/nact-iprefs.h: Get ride of GConf.
+
+	* README-GCONF:
+	* src/core/na-settings.c:
+	* src/utils/na-gconf2key.sh.in: Add omitted 'export-ask-user-last-format' key.
+
+	* src/nact/nact-icommand-tab.c:
+	* src/nact/nact-ienvironment-tab.c: Update to new preferences.
+
+	* README-GCONF:
+	* src/core/na-settings.c:
+	* src/utils/na-gconf2key.sh.in:
+	'folder-last-path' key is renamed as 'folder-last-folder-uri'.
+
+	* src/nact/nact-ifolders-tab.c: Updated accordingly.
+
+	* README-GCONF:
+	* src/core/na-settings.c:
+	* src/utils/na-gconf2key.sh.in: Add 'export-ask-user-wsp' preference.
+
+	* src/nact/nact-add-capability-dialog.c (base_get_iprefs_window_id):
+	* src/nact/nact-add-scheme-dialog.c (base_get_iprefs_window_id):
+	* src/nact/nact-assistant-export.c (window_get_iprefs_window_id):
+	* src/nact/nact-assistant-import.c (window_get_iprefs_window_id):
+	* src/nact/nact-export-ask.c (base_get_iprefs_window_id):
+	* src/nact/nact-main-window.c
+	(instance_dispose, base_get_iprefs_window_id):
+	* src/nact/nact-preferences-editor.c (base_get_iprefs_window_id):
+	Update all preference names when saving/restoring window size and position.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: All getters/setters are implemented.
+
+	* src/nact/base-iprefs.c: Remove GConf stuff.
+
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-icon-chooser.ui: Implement all preferences.
+
+	* src/utils/na-gconf2key.sh.in:
+	Renamed preferences for windows size and position '-wsp'.
+	Also delete from GConf if only preferences have been migrated.
+	Re-sync after tree delete.
+
+	* src/api/na-boxed.h:
+	* src/core/na-boxed.c
+	(na_boxed_get_string, na_boxed_get_uint, na_boxed_get_uint_list):
+	New functions.
+
+	* configure.ac: Enable silent rules by default.
+
+	* run-autogen.sh: Add sysconfdir argument to autogen.sh
+
+	* src/nact/nact-gtk-utils.c (nact_gtk_utils_get_pixbuf):
+	Search a pixbuf by icon theme if not found as filename or stock.
+
+	* src/nact/base-window.c:
+	* src/nact/base-window.h (base_window_peek_widget): New function.
+
+	* src/nact/nact-icon-chooser.c:
+	* src/nact/nact-icon-chooser.h:
+	* src/nact/nact-icon-chooser.ui: New files.
+	
+	* src/nact/Makefile.am:
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nautilus-actions-config-tool.ui: Updated accordingly.
+
+	* src/core/na-settings.c (content_load_keys):
+	Do not warn if configuration file does not exist.
+
+	* src/api/na-boxed.h:
+	* src/api/na-data-boxed.h:
+	* src/api/na-data-types.h:
+	* src/core/na-boxed.c:
+	* src/core/na-data-boxed.c:
+	* src/core/na-data-types.c:
+	Update reference documentation to deprecate NADataBoxed and NADataType
+	in favor of NABoxed.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: Configuration monitoring.
+
+	* src/plugin-menu/nautilus-actions.c:
+	Monitor all runtime preferences with only one callback.
+
+	* src/api/na-boxed.h:
+	* src/core/na-boxed.c (na_boxed_get_pointer): New function.
+
+	* run-autogen.sh: Add sysconfdir argument to autogen.sh.
+
+	* src/api/na-data-types.h:
+	* src/core/na-data-types.c
+	(na_data_types_copy, na_data_types_free): Removed functions.
+
+	* README-GCONF:
+	* src/utils/na-gconf2key.sh.in: Fix two key label conversions.
+
+	* src/api/na-boxed.h:
+	* src/core/na-boxed.c: New files.
+
+	* src/api/Makefile.am:
+	* src/core/Makefile.am: Updated accordingly.
+
+2011-01-10 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/api/na-data-types.h:
+	* src/core/na-data-types.c
+	(na_data_types_copy, na_data_types_free, na_data_types_get_label):
+	New functions.
+
+	* src/core/na-settings.c
+	(monitor_io_provider_read_status, monitor_key): Register monitored keys.
+
+	* src/core/na-settings.h
+	(na_settings_get_boolean_ex, na_settings_get_string_list):
+	New functions.
+
+	* src/plugin-menu/nautilus-actions.c:
+	Implement runtime preferences monitoring.
+	No more use deprecated na_pivot_set_automatic_reload().
+
+	* src/core/na-pivot.c:
+	* src/core/na-pivot.h:
+	Replace GConf preferences monitoring with NASettings.
+	Define new PIVOT_SIGNAL_ITEMS_CHANGED signal.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h
+	(na_settings_register_key_callback,
+	na_settings_register_global_callback, na_settings_get_boolean):
+	New functions.
+
+	* src/api/na-iio-provider.h:
+	* src/core/na-io-provider.h: IIO_PROVIDER_SIGNAL_ITEM_CHANGED signal
+	definition is moved (and renamed) from public API to internal one.
+
+	* src/core/na-iio-provider.c (interface_base_init):
+	* src/core/na-io-provider.c (io_provider_set_provider):
+	* src/core/na-pivot.c (on_item_changed_timeout): Updated accordingly.
+
+	* src/core/na-iio-provider.c
+	* src/core/na-settings.c (na_settings_new):
+	* src/utils/na-gconf2key.sh.in: Global configuration file goes to /etc/xdg.
+
+	* src/core/na-pivot.c:
+	* src/core/na-pivot.h (na_pivot_register):
+	* src/core/na-settings.c:
+	* src/core/na-settings.h (na_settings_register):
+	* src/plugin-menu/nautilus-actions.c (instance_constructed):
+	Fix compilation.
+
+2011-01-09 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/base-application.c (display_dlg): Setup parent window.
+
+	* src/api/na-iimporter.h:
+	* src/core/na-io-provider.c:
+	* src/core/na-object-id.c:
+	* src/core/na-object-item.c:
+	* src/io-desktop/nadp-utils.c:
+	* src/nact/nact-assistant-import.c:
+	* src/nact/nact-iactions-list-bis.c:
+	* src/nact/nact-iactions-list.h:
+	* src/nact/nact-main-window.c:
+	* src/nact/nact-preferences.ui:
+	* src/nact/nact-tree-model.c: Remove all deprecated references to an UUID.
+
+	* po/POTFILES.in: Add src/io-desktop/nadp-formats.c file.
+
+	* src/core/na-object-profile-factory.c:
+	Remove %o/%O parameters from description of version 2.0.
+	Add a missing line feed.
+
+	* tools/check-po.sh: Adapt to glade files.
+
+2011-01-08 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/utils/nautilus-actions-new.c (init_options):
+	* src/utils/nautilus-actions-run.c (init_options):
+	* src/utils/nautilus-actions-schemas.c (init_options):
+	Initialize translation domain for GOptionContext.
+
+	* src/core/na-data-boxed.c
+	(string_spec, slist_spec, bool_spec, pointer_spec, uint_spec):
+	* src/core/na-export-format.c
+	(na_export_format_get_label, na_export_format_get_description):
+	* src/core/na-iabout.c (na_iabout_display):
+	* src/core/na-object-action.c (na_object_action_new_with_defaults):
+	* src/core/na-object-menu.c (na_object_menu_new_with_defaults):
+	* src/io-xml/naxml-writer.c (write_data_schema_v1_element):
+	* src/nact/nact-add-capability-dialog.c (on_base_runtime_init_dialog):
+	* src/nact/nact-ienvironment-tab.c (nact_ienvironment_tab_runtime_init_toplevel):
+	* src/nact/nact-iproperties-tab.c (on_tab_updatable_selection_changed):
+	* src/nact/nact-main-menubar-file.c (nact_main_menubar_file_save_items):
+	* src/nact/nact-match-list.c (get_must_match_header, insert_new_row):
+	* src/nact/nact-tree-model-dnd.c
+	(is_drop_possible, is_drop_possible_before_iter,
+	is_drop_possible_into_dest, is_parent_accept_new_childs):
+	Use gettext() to display localized static strings.
+
+	* src/api/na-data-def.h: Complete the description of the fields.
+
+	* src/core/na-io-provider.c:
+	* src/core/na-object-profile-factory.c:
+	* src/nact/nact-assistant-export.ui:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Fix various mistakes and mispellings reported by Fr translation team.
+
+	* configure.ac: Post-release bump version number.
+
+2011-01-07 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-pivot.c (na_pivot_register): New function.
+
+	* src/plugin-menu/nautilus-actions.c:
+	Replace NAIPivotConsumer interface with na_settings() accessors.
+
+	* src/core/na-settings.c:
+	* src/core/na-settings.h: New files.
+
+	* src/utils/na-gconf2key.sh.in:
+	Make sure that GConf is at the end of the list of I/O providers.
+	Make sure that GConf is locked.
+	Migrate all I/O provider preferences.
+
+	* configure.ac:
+	* src/utils/Makefile.am:
+	* src/utils/na-gconf2key.sh.in:
+	nautilus-actions-gconf2desktop.sh.in is renamed as na-gconf2key.sh.in,
+	and is installed in PKGLIBEXECDIR.
+
+	* src/core/Makefile.am:
+	* src/core/na-gconf-migration.c: Updated accordingly.
+
+	* src/utils/Makefile.am:
+	nautilus-actions-delete is renamed as na-delete-xmltree,
+	and is installed in PKGLIBEXECDIR.
+
+	* src/core/na-core-utils.c (na_core_utils_print_version):
+	Print the compilation version of GLib2 and Gtk+ when in debug mode.
+
+	* src/utils/Makefile.am:
+	nautilus-actions-schemas is renamed as na-print-schemas,
+	and is installed in PKGLIBEXECDIR.
+
+2011-01-06 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/nact-main-window.c (iabout_get_toplevel):
+	Let the About dialog get the toplevel window.
+
+	* src/nact/nact-preferences.ui:
+	* src/nact/nautilus-actions-config-tool.ui:
+	Apply patch provided by Christian Kirbach. Fix #638548.
+
+	Use the same script to migrate items and preferences.
+
+	* README-GCONF: Document migrated and renamed preferences.
+
+	* src/utils/nautilus-actions-gconf2desktop.sh.in:
+	Rewrite migrated preferences as keyed files.
+	At last, remove the whole Nautilus-Actions tree from GConf.
+
+2011-01-05 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/utils/console-utils.c (console_cmdline_get_description):
+	Returns the full address of the page to enter a new bug in Bugzilla.
+
+	* src/core/na-gconf-migration.c:
+	* src/core/na-gconf-migration.h (na_gconf_migration_run): New function.
+
+	* src/core/Makefile.am: Updated accordingly.
+
+	* src/nact/nact-main.c (main):
+	* src/plugin-menu/nautilus-module.c (nautilus_module_initialize):
+	* src/utils/nautilus-actions-new.c (main):
+	* src/utils/nautilus-actions-run.c (main):
+	Automatically run the migration tool at startup.
+
+	* src/utils/nautilus-actions-gconf2desktop.sh.in:
+	* src/utils/nautilus-actions-delete.c:
+	* src/utils/nautilus-actions-print.c:
+	New items migration script and programs.
+	They take care of migrating users and mandatory items to .desktop files.
+
+	* configure.ac:
+	* src/utils/Makefile.am:
+	* src/utils/.gitignore: Updated accordingly.
+
+2011-01-04 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-tokens.c (na_tokens_new_from_selection):
+	No more prepare the list string of selection.
+	Directly build the selection list in the correct order.
+	(execute_action_command): Setup the working directory.
+
+	* src/core/na-tokens.c:
+	* src/core/na-tokens.h (na_tokens_parse_parameters):
+	Renamed as na_tokens_parse_for_display() as filenames are not quoted
+	when displayed as part of an expanded label.
+
+	* src/nact/nact-icommand-tab.c (parse_parameters):
+	* src/plugin-menu/nautilus-actions.c (expand_tokens_item):
+	Updated accordingly.
+
+	* configure.ac: Fix "API Reference generation" message.
+
+	* m4/na-enable-manuals.m4:
+	Better specify that --enable-html-manuals (resp. pdf) are for user's manuals.
+
+	* src/core/na-selected-info.c (new_from_uri):
+	- Add an excerpt from RFC 2396 about valid characters in URIs.
+	- Prefer the filename from g_filename_from_uri() when possible.
+
+	* src/core/na-tokens.c
+	(na_tokens_new_from_selection): Also g_shell_quote() the URI to preserve quotes.
+	(build_string_lists_item): Removed function.
+
+	* src/core/na-iabout.c (na_iabout_display):
+	Fix typo in comment, adding a note to the translators.
+
+2011-01-03 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/core/na-io-provider.c:
+	* src/core/na-io-provider.h (na_io_provider_are_writings_authorized):
+	New function.
+
+	* configure.ac: Define a conditional if we have both GSettings and GConf.
+
+	* src/core/na-gsettings-migrate.c:
+	* src/core/na-gsettings-migrate.h: New files.
+
+	* src/core/Makefile.am: Updated accordingly.
+
+	* src/core/na-pivot.c (instance_constructed):
+	Call na_gsettings_migrate() if we have both GSettings and GConf.
+
+	* configure.ac:
+	- Define HAVE_GSETTINGS variable.
+	- Define HAVE_GCONF variable.
+
+2011-01-02 Pierre Wieser <pwieser@trychlos.org>
+
+	* src/nact/egg-desktop-file.c:
+	Get ride of tests for Gtk+ 2.12.0 as this is the minimal required version.
+
+	* src/nact/base-keysyms.h:
+	* src/nact/egg-sm-client-private.h:
+	* src/nact/egg-sm-client-xsmp.c: 
+	* src/nact/nact-add-capability-dialog.c:
+	* src/nact/nact-add-scheme-dialog.c:
+	* src/nact/nact-main-tab.c:
+	* src/nact/nact-clipboard.c:
+	* src/nact/nact-tree-model-dnd.c:
+	* src/nact/nact-gtk-utils.c:
+	* src/nact/nact-iaction-tab.c:
+	* src/nact/nact-main-statusbar.c:
+	* src/nact/nact-main-menubar.c:
+	* src/nact/nact-schemes-list.c: Use GTK_CHECK_VERSION macro.
+
+	* configure.ac:
+	* m4/na-check-for-gtk.m4:
+	Move back gtk_required variable to improve readibility of configure.ac.
+
+2011-01-01 Pierre Wieser <pwieser@trychlos.org>
+
+	* configure.ac: Post release version bump.
+
+	* NEWS: Update NEWS before release.
+
+	* src/plugin-menu/nautilus-actions.c (create_root_menu):
+	Update the root menu label to better reflect the product name.
+
+	* src/nact/nautilus-actions-config-tool.ui:
+	Use gtk-find instead of gtk-find-and-replace stock icon for browse buttons.
+
+	* src/nact/nact-iaction-tab.c (nact_iaction_tab_initial_load_toplevel):
+	Display again stock icons in NACT.
+	Fix #638461 - Stock icons are no more displayed in NACT.
+
+	* Almost all files modified:
+	Update copyright message.
+	Set Nautilus-Actions as being the actual official product name.
+
+	* src/core/na-selected-info.c (new_from_nautilus_file_info):
+	Fix pathname breakdown for 'x-nautilus-desktop:///' URI.
+	Fix #638450 - Nautilus crashes when opening Trash or Network.

@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -33,41 +32,36 @@
 #endif
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <libintl.h>
 
 #include <api/na-core-utils.h>
 
-#include <core/na-iabout.h>
-#include <core/na-ipivot-consumer.h>
+#include <core/na-about.h>
 
 #include "cact-application.h"
 #include "cact-main-window.h"
 
 /* private class data
  */
-struct CactApplicationClassPrivate {
+struct _CactApplicationClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct CactApplicationPrivate {
+struct _CactApplicationPrivate {
 	gboolean   dispose_has_run;
 	NAUpdater *updater;
 };
 
-/* private instance properties
- */
-enum {
-	CACT_APPLICATION_PROP_UPDATER_ID = 1
-};
-
-#define CACT_APPLICATION_PROP_UPDATER	"cact-application-prop-updater"
+static const gchar *st_application_name	= N_( "Caja-Actions Configuration Tool" );
+static const gchar *st_description		= N_( "A user interface to edit your own contextual actions" );
+static const gchar *st_unique_name		= "org.mate.caja-actions.ConfigurationTool";
 
 static gboolean     st_non_unique_opt = FALSE;
 static gboolean     st_version_opt    = FALSE;
 
-static GOptionEntry st_entries[] = {
+static GOptionEntry st_option_entries[] = {
 	{ "non-unique", 'n', 0, G_OPTION_ARG_NONE, &st_non_unique_opt,
 			N_( "Set it to run multiple instances of the program [unique]" ), NULL },
 	{ "version"   , 'v', 0, G_OPTION_ARG_NONE, &st_version_opt,
@@ -80,19 +74,12 @@ static BaseApplicationClass *st_parent_class = NULL;
 static GType    register_type( void );
 static void     class_init( CactApplicationClass *klass );
 static void     instance_init( GTypeInstance *instance, gpointer klass );
-static void     instance_get_property( GObject *object, guint property_id, GValue *value, GParamSpec *spec );
-static void     instance_set_property( GObject *object, guint property_id, const GValue *value, GParamSpec *spec );
 static void     instance_dispose( GObject *application );
 static void     instance_finalize( GObject *application );
 
 static gboolean appli_manage_options( BaseApplication *application );
-static gboolean appli_initialize_unique_app( BaseApplication *application );
-static gboolean appli_initialize_application( BaseApplication *application );
-static gchar   *appli_get_application_name( BaseApplication *application );
-static gchar   *appli_get_icon_name( BaseApplication *application );
-static gchar   *appli_get_unique_app_name( BaseApplication *application );
-static gchar   *appli_get_gtkbuilder_filename( BaseApplication *application );
-static GObject *appli_get_main_window( BaseApplication *application );
+static gboolean appli_init_application( BaseApplication *application );
+static gboolean appli_create_windows( BaseApplication *application );
 
 GType
 cact_application_get_type( void )
@@ -126,7 +113,7 @@ register_type( void )
 
 	g_debug( "%s", thisfn );
 
-	type = g_type_register_static( BASE_APPLICATION_TYPE, "CactApplication", &info, 0 );
+	type = g_type_register_static( BASE_TYPE_APPLICATION, "CactApplication", &info, 0 );
 
 	return( type );
 }
@@ -136,7 +123,6 @@ class_init( CactApplicationClass *klass )
 {
 	static const gchar *thisfn = "cact_application_class_init";
 	GObjectClass *object_class;
-	GParamSpec *spec;
 	BaseApplicationClass *appli_class;
 
 	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
@@ -146,27 +132,13 @@ class_init( CactApplicationClass *klass )
 	object_class = G_OBJECT_CLASS( klass );
 	object_class->dispose = instance_dispose;
 	object_class->finalize = instance_finalize;
-	object_class->get_property = instance_get_property;
-	object_class->set_property = instance_set_property;
-
-	spec = g_param_spec_pointer(
-			CACT_APPLICATION_PROP_UPDATER,
-			CACT_APPLICATION_PROP_UPDATER,
-			"NAUpdater object pointer",
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, CACT_APPLICATION_PROP_UPDATER_ID, spec );
 
 	klass->private = g_new0( CactApplicationClassPrivate, 1 );
 
 	appli_class = BASE_APPLICATION_CLASS( klass );
 	appli_class->manage_options = appli_manage_options;
-	appli_class->initialize_unique_app = appli_initialize_unique_app;
-	appli_class->initialize_application = appli_initialize_application;
-	appli_class->get_application_name = appli_get_application_name;
-	appli_class->get_icon_name = appli_get_icon_name;
-	appli_class->get_unique_app_name = appli_get_unique_app_name;
-	appli_class->get_ui_filename = appli_get_gtkbuilder_filename;
-	appli_class->get_main_window = appli_get_main_window;
+	appli_class->init_application = appli_init_application;
+	appli_class->create_windows = appli_create_windows;
 }
 
 static void
@@ -175,9 +147,11 @@ instance_init( GTypeInstance *application, gpointer klass )
 	static const gchar *thisfn = "cact_application_instance_init";
 	CactApplication *self;
 
+	g_return_if_fail( CACT_IS_APPLICATION( application ));
+
 	g_debug( "%s: application=%p (%s), klass=%p",
 			thisfn, ( void * ) application, G_OBJECT_TYPE_NAME( application ), ( void * ) klass );
-	g_assert( CACT_IS_APPLICATION( application ));
+
 	self = CACT_APPLICATION( application );
 
 	self->private = g_new0( CactApplicationPrivate, 1 );
@@ -186,60 +160,18 @@ instance_init( GTypeInstance *application, gpointer klass )
 }
 
 static void
-instance_get_property( GObject *object, guint property_id, GValue *value, GParamSpec *spec )
-{
-	CactApplication *self;
-
-	g_assert( CACT_IS_APPLICATION( object ));
-	self = CACT_APPLICATION( object );
-
-	if( !self->private->dispose_has_run ){
-
-		switch( property_id ){
-			case CACT_APPLICATION_PROP_UPDATER_ID:
-				g_value_set_pointer( value, self->private->updater );
-				break;
-
-			default:
-				G_OBJECT_WARN_INVALID_PROPERTY_ID( object, property_id, spec );
-				break;
-		}
-	}
-}
-
-static void
-instance_set_property( GObject *object, guint property_id, const GValue *value, GParamSpec *spec )
-{
-	CactApplication *self;
-
-	g_assert( CACT_IS_APPLICATION( object ));
-	self = CACT_APPLICATION( object );
-
-	if( !self->private->dispose_has_run ){
-
-		switch( property_id ){
-			case CACT_APPLICATION_PROP_UPDATER_ID:
-				self->private->updater = g_value_get_pointer( value );
-				break;
-
-			default:
-				G_OBJECT_WARN_INVALID_PROPERTY_ID( object, property_id, spec );
-				break;
-		}
-	}
-}
-
-static void
 instance_dispose( GObject *application )
 {
 	static const gchar *thisfn = "cact_application_instance_dispose";
 	CactApplication *self;
 
-	g_debug( "%s: application=%p (%s)", thisfn, ( void * ) application, G_OBJECT_TYPE_NAME( application ));
 	g_return_if_fail( CACT_IS_APPLICATION( application ));
+
 	self = CACT_APPLICATION( application );
 
 	if( !self->private->dispose_has_run ){
+
+		g_debug( "%s: application=%p (%s)", thisfn, ( void * ) application, G_OBJECT_TYPE_NAME( application ));
 
 		self->private->dispose_has_run = TRUE;
 
@@ -260,8 +192,10 @@ instance_finalize( GObject *application )
 	static const gchar *thisfn = "cact_application_instance_finalize";
 	CactApplication *self;
 
-	g_debug( "%s: application=%p", thisfn, ( void * ) application );
 	g_return_if_fail( CACT_IS_APPLICATION( application ));
+
+	g_debug( "%s: application=%p (%s)", thisfn, ( void * ) application, G_OBJECT_TYPE_NAME( application ));
+
 	self = CACT_APPLICATION( application );
 
 	g_free( self->private );
@@ -273,23 +207,125 @@ instance_finalize( GObject *application )
 }
 
 /**
- * Returns a newly allocated CactApplication object.
+ * cact_application_new:
  *
- * @argc: count of command-line arguments.
- *
- * @argv: command-line arguments.
+ * Returns: a newly allocated CactApplication object.
  */
 CactApplication *
-cact_application_new_with_args( int argc, char **argv )
+cact_application_new( void )
 {
-	return(
-			g_object_new(
-					CACT_APPLICATION_TYPE,
-					BASE_APPLICATION_PROP_ARGC, argc,
-					BASE_APPLICATION_PROP_ARGV, argv,
-					BASE_APPLICATION_PROP_OPTIONS, st_entries,
-					NULL )
-	);
+	CactApplication *application;
+
+	application = g_object_new( CACT_TYPE_APPLICATION, NULL );
+
+	g_object_set( G_OBJECT( application ),
+			BASE_PROP_OPTIONS,          st_option_entries,
+			BASE_PROP_APPLICATION_NAME, gettext( st_application_name ),
+			BASE_PROP_DESCRIPTION,      gettext( st_description ),
+			BASE_PROP_ICON_NAME,        na_about_get_icon_name(),
+			BASE_PROP_UNIQUE_NAME,      st_unique_name,
+			NULL );
+
+	return( application );
+}
+
+/*
+ * overriden to manage command-line options
+ */
+static gboolean
+appli_manage_options( BaseApplication *application )
+{
+	static const gchar *thisfn = "cact_application_appli_manage_options";
+	gboolean ret;
+
+	g_return_val_if_fail( CACT_IS_APPLICATION( application ), FALSE );
+
+	g_debug( "%s: application=%p", thisfn, ( void * ) application );
+
+	ret = TRUE;
+
+	/* display the program version ?
+	 * if yes, then stops here
+	 */
+	if( st_version_opt ){
+		na_core_utils_print_version();
+		ret = FALSE;
+	}
+
+	/* run the application as non-unique ?
+	 */
+	if( ret && st_non_unique_opt ){
+		g_object_set( G_OBJECT( application ), BASE_PROP_UNIQUE_NAME, "", NULL );
+	}
+
+	/* call parent class */
+	if( ret && BASE_APPLICATION_CLASS( st_parent_class )->manage_options ){
+		ret = BASE_APPLICATION_CLASS( st_parent_class )->manage_options( application );
+	}
+
+	return( ret );
+}
+
+/*
+ * initialize the application
+ */
+static gboolean
+appli_init_application( BaseApplication *application )
+{
+	static const gchar *thisfn = "cact_application_appli_init_application";
+	gboolean ret;
+	CactApplicationPrivate *priv;
+
+	g_return_val_if_fail( CACT_IS_APPLICATION( application ), FALSE );
+
+	g_debug( "%s: application=%p", thisfn, ( void * ) application );
+
+	ret = TRUE;
+	priv = CACT_APPLICATION( application )->private;
+
+	/* create the NAPivot object (loading the plugins and so on)
+	 * after having dealt with command-line arguments
+	 */
+	priv->updater = na_updater_new();
+	na_pivot_set_loadable( NA_PIVOT( priv->updater ), PIVOT_LOAD_ALL );
+
+	/* call parent class */
+	if( ret && BASE_APPLICATION_CLASS( st_parent_class )->init_application ){
+		ret = BASE_APPLICATION_CLASS( st_parent_class )->init_application( application );
+	}
+
+	return( ret );
+}
+
+/*
+ * create application startup windows
+ */
+static gboolean
+appli_create_windows( BaseApplication *application )
+{
+	static const gchar *thisfn = "cact_application_appli_create_windows";
+	gboolean ret;
+	CactMainWindow *window;
+
+	g_return_val_if_fail( CACT_IS_APPLICATION( application ), FALSE );
+
+	g_debug( "%s: application=%p", thisfn, ( void * ) application );
+
+	ret = FALSE;
+
+	/* creating main window
+	 */
+	window = cact_main_window_new( CACT_APPLICATION( application ));
+
+	if( window ){
+		g_return_val_if_fail( CACT_IS_MAIN_WINDOW( window ), FALSE );
+		ret = TRUE;
+
+	} else {
+		g_object_set( G_OBJECT( application ), BASE_PROP_CODE, BASE_EXIT_CODE_INIT_WINDOW, NULL );
+	}
+
+	return( ret );
 }
 
 /**
@@ -302,7 +338,7 @@ cact_application_new_with_args( int argc, char **argv )
  * It should not be g_free() not g_object_unref() by the caller.
  */
 NAUpdater *
-cact_application_get_updater( CactApplication *application )
+cact_application_get_updater( const CactApplication *application )
 {
 	NAUpdater *updater = NULL;
 
@@ -314,152 +350,4 @@ cact_application_get_updater( CactApplication *application )
 	}
 
 	return( updater );
-}
-
-/*
- * overriden to manage command-line options
- */
-static gboolean
-appli_manage_options( BaseApplication *application )
-{
-	gboolean ok;
-
-	/* call parent class */
-	ok = BASE_APPLICATION_CLASS( st_parent_class )->manage_options( application );
-
-	if( ok ){
-		if( st_version_opt ){
-			na_core_utils_print_version();
-			ok = FALSE;
-		}
-	}
-
-	return( ok );
-}
-
-/*
- * overrided to provide a personalized error message
- */
-static gboolean
-appli_initialize_unique_app( BaseApplication *application )
-{
-	gboolean ok;
-	gchar *msg1, *msg2;
-
-	/* call parent class */
-	ok = BASE_APPLICATION_CLASS( st_parent_class )->initialize_unique_app( application );
-
-	if( !ok ){
-		msg1 = g_strdup( _( "Another instance of Caja Actions Configuration Tool is already running." ));
-		/* i18n: another instance is already running: second line of error message */
-		msg2 = g_strdup( _( "Please switch back to it." ));
-
-		g_object_set( G_OBJECT( application ),
-				BASE_APPLICATION_PROP_EXIT_MESSAGE1, msg1,
-				BASE_APPLICATION_PROP_EXIT_MESSAGE2, msg2,
-				NULL );
-
-		g_free( msg2 );
-		g_free( msg1 );
-	}
-
-	return( ok );
-}
-
-/*
- * Overrided to complete the initialization of the application:
- * - allocate the #NApivot here, so that it will be available when the
- *   #CactMainWindow will require it
- * - do not register #CactApplication as a NAIPivotConsumer as this is
- *   essentially the CactMainwindow which will receive and deal with
- *   NAPivot notification messages
- *
- * At last, let the base class do its work, i.e. creating the main window.
- *
- * When the pivot will be empty, NAIDuplicable signals must yet be
- * recorded in the system. Done here because :
- * - I don't want do this in NAPivot which is also used by the plugin,
- * - this is the last place where I'm pretty sure NAObject has not yet
- *   been registered.
- * So we allocate a new NAObject-derived object to be sure the interface
- * is correctly initialized.
- */
-static gboolean
-appli_initialize_application( BaseApplication *application )
-{
-	static const gchar *thisfn = "cact_application_appli_initialize_application";
-	gboolean ok;
-
-	g_debug( "%s: application=%p", thisfn, ( void * ) application );
-
-	CACT_APPLICATION( application )->private->updater = na_updater_new();
-	na_pivot_set_loadable( NA_PIVOT( CACT_APPLICATION( application )->private->updater ), PIVOT_LOAD_ALL );
-	na_pivot_load_items( NA_PIVOT( CACT_APPLICATION( application )->private->updater ));
-
-	/* call parent class */
-	ok = BASE_APPLICATION_CLASS( st_parent_class )->initialize_application( application );
-
-	return( ok );
-}
-
-static gchar *
-appli_get_application_name( BaseApplication *application )
-{
-	/*static const gchar *thisfn = "cact_application_appli_get_application_name";*/
-
-	/*g_debug( "%s: application=%p", thisfn, ( void * ) application );*/
-
-	/* i18n: this is the application name, used in window title */
-	return( g_strdup( _( "Caja Actions Configuration Tool" )));
-}
-
-static gchar *
-appli_get_icon_name( BaseApplication *application )
-{
-	static const gchar *thisfn = "cact_application_appli_get_icon_name";
-
-	g_debug( "%s: application=%p", thisfn, ( void * ) application );
-
-	return( na_iabout_get_icon_name());
-}
-
-static gchar *
-appli_get_unique_app_name( BaseApplication *application )
-{
-	static const gchar *thisfn = "cact_application_appli_get_unique_app_name";
-
-	g_debug( "%s: application=%p", thisfn, ( void * ) application );
-
-	if( st_non_unique_opt ){
-		return( g_strdup( "" ));
-	}
-
-	return( g_strdup( "org.caja-actions.ConfigurationTool" ));
-}
-
-static gchar *
-appli_get_gtkbuilder_filename( BaseApplication *application )
-{
-	return( g_strdup( PKGDATADIR "/caja-actions-config-tool.ui" ));
-}
-
-/*
- * this should be called only once as base class is supposed to keep
- * the pointer to the main BaseWindow window as a property
- */
-static GObject *
-appli_get_main_window( BaseApplication *application )
-{
-	static const gchar *thisfn = "cact_application_appli_get_main_window";
-	BaseWindow *window;
-
-	g_debug( "%s: application=%p", thisfn, ( void * ) application );
-
-	window = BASE_WINDOW( cact_main_window_new( application ));
-
-	na_pivot_register_consumer(
-			NA_PIVOT( cact_application_get_updater( CACT_APPLICATION( application ))),
-			NA_IPIVOT_CONSUMER( window ));
-
-	return( G_OBJECT( window ));
 }

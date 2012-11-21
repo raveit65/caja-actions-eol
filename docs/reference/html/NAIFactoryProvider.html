@@ -1,0 +1,495 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NAIFactoryProvider</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch05.html" title="Data Factory Management System">
+<link rel="prev" href="ch05.html" title="Data Factory Management System">
+<link rel="next" href="NAIFactoryObject.html" title="NAIFactoryObject">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch05.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="NAIFactoryObject.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#NAIFactoryProvider.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#NAIFactoryProvider.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#NAIFactoryProvider.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#NAIFactoryProvider.prerequisites" class="shortcut">Prerequisites</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="NAIFactoryProvider"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="NAIFactoryProvider.top_of_page"></a>NAIFactoryProvider</span></h2>
+<p>NAIFactoryProvider — The Data Factory Provider Interface v 1</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="NAIFactoryProvider.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-ifactory_provider.h&gt;
+
+#define             <a class="link" href="NAIFactoryProvider.html#NA-TYPE-IFACTORY-PROVIDER:CAPS" title="NA_TYPE_IFACTORY_PROVIDER">NA_TYPE_IFACTORY_PROVIDER</a>
+#define             <a class="link" href="NAIFactoryProvider.html#NA-IFACTORY-PROVIDER:CAPS" title="NA_IFACTORY_PROVIDER()">NA_IFACTORY_PROVIDER</a>                (instance)
+#define             <a class="link" href="NAIFactoryProvider.html#NA-IS-IFACTORY-PROVIDER:CAPS" title="NA_IS_IFACTORY_PROVIDER()">NA_IS_IFACTORY_PROVIDER</a>             (instance)
+#define             <a class="link" href="NAIFactoryProvider.html#NA-IFACTORY-PROVIDER-GET-INTERFACE:CAPS" title="NA_IFACTORY_PROVIDER_GET_INTERFACE()">NA_IFACTORY_PROVIDER_GET_INTERFACE</a>  (instance)
+                    <a class="link" href="NAIFactoryProvider.html#NAIFactoryProvider-struct" title="NAIFactoryProvider">NAIFactoryProvider</a>;
+                    <a class="link" href="NAIFactoryProvider.html#NAIFactoryProviderInterface" title="NAIFactoryProviderInterface">NAIFactoryProviderInterface</a>;
+<span class="returnvalue">void</span>                <a class="link" href="NAIFactoryProvider.html#na-ifactory-provider-read-item" title="na_ifactory_provider_read_item ()">na_ifactory_provider_read_item</a>      (<em class="parameter"><code>const <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> *reader</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *reader_data</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> **messages</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="NAIFactoryProvider.html#na-ifactory-provider-write-item" title="na_ifactory_provider_write_item ()">na_ifactory_provider_write_item</a>     (<em class="parameter"><code>const <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> *writer</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *writer_data</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> **messages</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryProvider.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GInterface
+   +----NAIFactoryProvider
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryProvider.prerequisites"></a><h2>Prerequisites</h2>
+<p>
+NAIFactoryProvider requires
+ <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>.</p>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryProvider.description"></a><h2>Description</h2>
+<p>
+<span class="productname">Caja-Actions</span>™ has to deal with a relatively great number of elementary datas,
+reading them from different supports, storing and displaying them,
+then re-writing these same datas, with several output formats, and so on.
+</p>
+<p>
+This has rapidly become a pain, if not just a bug generator.
+Each new data must be described, have a schema to be stored in
+(historical storage subsystem) MateConf; import and export assistants
+must be carefully updated to export the new data...
+</p>
+<p>
+The <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> aims to simplify and organize all the work
+which must be done around each and every elementary data. It is based
+on three main things:
+</p>
+<p>
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem"><p><b>Elementary datas are banalized. </b>
+        whether they are a string, an integer, a boolean, a simple
+        or double-linked list, each elementary data is encapsuled
+        into a <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a>, small sort of structure (incidentally,
+        which acts almost as the new GLib <a href="http://library.gnome.org/devel/glib/unstable/glib-GVariant.html#GVariant"><span class="type">GVariant</span></a>, but too late,
+        guys :)).
+      </p></li>
+<li class="listitem"><p><b>Our objects are de-structured. </b>
+        Instead of organizing our elementary datas into structures,
+        our objects are just flat lists of <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a>.
+      </p></li>
+<li class="listitem"><p><b>A full, centralized, data dictionary is defined. </b>
+        Now that our elementary datas are banalized and de-structured,
+        it is simple enough to describe each of these datas with all
+        iss properties in one single, centralized, place.
+      </p></li>
+</ol></div>
+<p>
+</p>
+<p>
+Of course, I/O providers are good candidates to be users of this
+<a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> interface.
+</p>
+<p>
+Without this interface, each and every I/O provider must,
+for example when reading an item, have the list of data to be
+read for each item, then read each individual data, then
+organize them in a I/O structure..
+Each time a new data is added to an object, as e.g. a new condition,
+then all available I/O providers must be updated: read the data,
+write the data, then display the data, and so on..
+</p>
+<p>
+With this <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> interface, the I/O provider has just to
+deal with reading/writing elementary types. It does need to know that
+it will have to read, name, tooltip, description. It just needs to know
+how to read a string.
+And while we do not introduce another data type, the I/O provider
+does not need any maintenance even if we add lot of new data, conditions
+labels, and so on.
+</p>
+<p>
+So, this is the interface used by data factory management system for
+providing serialization/unserialization services. This interface may
+be implemented by I/O providers which would take advantage of this
+system.
+</p>
+<p>
+</p>
+<div class="refsect2">
+<a name="id411726"></a><h3>Versions historic</h3>
+<div class="table">
+<a name="id387784"></a><p class="title"><b>Table 8. Historic of the versions of the <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> interface</b></p>
+<div class="table-contents"><table summary="Historic of the versions of the NAIFactoryProvider interface" border="1">
+<colgroup>
+<col align="center" class="na-version">
+<col align="center" class="api-version">
+<col align="center" class="current">
+</colgroup>
+<thead><tr>
+<th align="center">
+<span class="productname">Caja-Actions</span>™ version</th>
+<th align="center">
+<a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> interface version</th>
+<th align="center"> </th>
+</tr></thead>
+<tbody><tr>
+<td align="center">since 2.30</td>
+<td align="center">1</td>
+<td align="center">current version</td>
+</tr></tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryProvider.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NA-TYPE-IFACTORY-PROVIDER:CAPS"></a><h3>NA_TYPE_IFACTORY_PROVIDER</h3>
+<pre class="programlisting">#define NA_TYPE_IFACTORY_PROVIDER                      ( na_ifactory_provider_get_type())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IFACTORY-PROVIDER:CAPS"></a><h3>NA_IFACTORY_PROVIDER()</h3>
+<pre class="programlisting">#define NA_IFACTORY_PROVIDER( instance )               ( G_TYPE_CHECK_INSTANCE_CAST( instance, NA_TYPE_IFACTORY_PROVIDER, NAIFactoryProvider ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IS-IFACTORY-PROVIDER:CAPS"></a><h3>NA_IS_IFACTORY_PROVIDER()</h3>
+<pre class="programlisting">#define NA_IS_IFACTORY_PROVIDER( instance )            ( G_TYPE_CHECK_INSTANCE_TYPE( instance, NA_TYPE_IFACTORY_PROVIDER ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IFACTORY-PROVIDER-GET-INTERFACE:CAPS"></a><h3>NA_IFACTORY_PROVIDER_GET_INTERFACE()</h3>
+<pre class="programlisting">#define NA_IFACTORY_PROVIDER_GET_INTERFACE( instance ) ( G_TYPE_INSTANCE_GET_INTERFACE(( instance ), NA_TYPE_IFACTORY_PROVIDER, NAIFactoryProviderInterface ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIFactoryProvider-struct"></a><h3>NAIFactoryProvider</h3>
+<pre class="programlisting">typedef struct _NAIFactoryProvider NAIFactoryProvider;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIFactoryProviderInterface"></a><h3>NAIFactoryProviderInterface</h3>
+<pre class="programlisting">typedef struct {
+	/**
+	 * get_version:
+	 * @instance: this #NAIFactoryProvider instance.
+	 *
+	 * Defaults to 1.
+	 *
+	 * Returns: the version of this interface supported by @instance implementation.
+	 *
+	 * Since: 2.30
+	 */
+	guint         ( *get_version )( const NAIFactoryProvider *instance );
+
+	/**
+	 * read_start:
+	 * @reader: this #NAIFactoryProvider instance.
+	 * @reader_data: the data associated to this instance, as provided
+	 *  when na_ifactory_provider_read_item() was called.
+	 * @object: the #NAIFactoryObject object which comes to be read.
+	 * @messages: a pointer to a #GSList list of strings; the provider
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * API called by #NAIFactoryObject just before starting with reading data.
+	 *
+	 * Since: 2.30
+	 */
+	void          ( *read_start ) ( const NAIFactoryProvider *reader, void *reader_data, const NAIFactoryObject *object, GSList **messages  );
+
+	/**
+	 * read_data:
+	 * @reader: this #NAIFactoryProvider instance.
+	 * @reader_data: the data associated to this instance, as provided
+	 *  when na_ifactory_provider_read_item() was called.
+	 * @object: the #NAIFactoryobject being unserialized.
+	 * @def: a #NADataDef structure which identifies the data to be unserialized.
+	 * @messages: a pointer to a #GSList list of strings; the provider
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * This method must be implemented in order any data be read.
+	 *
+	 * Returns: a newly allocated NADataBoxed which contains the read value.
+	 * Should return %NULL if data is not found.
+	 *
+	 * Since: 2.30
+	 */
+	NADataBoxed * ( *read_data )  ( const NAIFactoryProvider *reader, void *reader_data, const NAIFactoryObject *object, const NADataDef *def, GSList **messages );
+
+	/**
+	 * read_done:
+	 * @reader: this #NAIFactoryProvider instance.
+	 * @reader_data: the data associated to this instance, as provided
+	 *  when na_ifactory_provider_read_item() was called.
+	 * @object: the #NAIFactoryObject object which comes to be read.
+	 * @messages: a pointer to a #GSList list of strings; the provider
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * API called by #NAIFactoryObject when all data have been read.
+	 * Implementor may take advantage of this to do some cleanup.
+	 *
+	 * Since: 2.30
+	 */
+	void          ( *read_done )  ( const NAIFactoryProvider *reader, void *reader_data, const NAIFactoryObject *object, GSList **messages  );
+
+	/**
+	 * write_start:
+	 * @writer: this #NAIFactoryProvider instance.
+	 * @writer_data: the data associated to this instance.
+	 * @object: the #NAIFactoryObject object which comes to be written.
+	 * @messages: a pointer to a #GSList list of strings; the provider
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * API called by #NAIFactoryObject just before starting with writing data.
+	 *
+	 * Returns: a NAIIOProvider operation return code.
+	 *
+	 * Since: 2.30
+	 */
+	guint         ( *write_start )( const NAIFactoryProvider *writer, void *writer_data, const NAIFactoryObject *object, GSList **messages  );
+
+	/**
+	 * write_data:
+	 * @writer: this #NAIFactoryProvider instance.
+	 * @writer_data: the data associated to this instance.
+	 * @object: the #NAIFactoryObject object being written.
+	 * @def: the description of the data to be written.
+	 * @value: the #NADataBoxed to be written down.
+	 * @messages: a pointer to a #GSList list of strings; the provider
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * Write the data embedded in @value down to @instance.
+	 *
+	 * This method must be implemented in order any data be written.
+	 *
+	 * Returns: a NAIIOProvider operation return code.
+	 *
+	 * Since: 2.30
+	 */
+	guint         ( *write_data ) ( const NAIFactoryProvider *writer, void *writer_data, const NAIFactoryObject *object, const NADataBoxed *boxed, GSList **messages );
+
+	/**
+	 * write_done:
+	 * @writer: this #NAIFactoryProvider instance.
+	 * @writer_data: the data associated to this instance.
+	 * @object: the #NAIFactoryObject object which comes to be written.
+	 * @messages: a pointer to a #GSList list of strings; the provider
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * API called by #NAIFactoryObject when all data have been written.
+	 * Implementor may take advantage of this to do some cleanup.
+	 *
+	 * Returns: a NAIIOProvider operation return code.
+	 *
+	 * Since: 2.30
+	 */
+	guint         ( *write_done ) ( const NAIFactoryProvider *writer, void *writer_data, const NAIFactoryObject *object, GSList **messages  );
+} NAIFactoryProviderInterface;
+</pre>
+<p>
+This defines the interface that a <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> may implement.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryProviderInterface.get-version"></a>get_version</code></em> ()</span></p></td>
+<td>returns the version of this interface the plugin implements.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryProviderInterface.read-start"></a>read_start</code></em> ()</span></p></td>
+<td>triggered just before reading an item.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryProviderInterface.read-data"></a>read_data</code></em> ()</span></p></td>
+<td>reads an item.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryProviderInterface.read-done"></a>read_done</code></em> ()</span></p></td>
+<td>triggered at the end of item reading.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryProviderInterface.write-start"></a>write_start</code></em> ()</span></p></td>
+<td>triggered just before writing an item.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryProviderInterface.write-data"></a>write_data</code></em> ()</span></p></td>
+<td>writes an item.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryProviderInterface.write-done"></a>write_done</code></em> ()</span></p></td>
+<td>triggered at the end of item writing.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-ifactory-provider-read-item"></a><h3>na_ifactory_provider_read_item ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_ifactory_provider_read_item      (<em class="parameter"><code>const <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> *reader</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *reader_data</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> **messages</code></em>);</pre>
+<p>
+This function is to be called by a <a class="link" href="NAIIOProvider.html" title="NAIIOProvider"><span class="type">NAIIOProvider</span></a> which would wish read
+its items. The function takes care of collecting and structuring data,
+while the callback interface methods <a class="link" href="NAIFactoryProvider.html#NAIFactoryProviderInterface.read-start"><code class="function">NAIFactoryProviderInterface.read_start()</code></a>,
+<a class="link" href="NAIFactoryProvider.html#NAIFactoryProviderInterface.read-data"><code class="function">NAIFactoryProviderInterface.read_data()</code></a> and <a class="link" href="NAIFactoryProvider.html#NAIFactoryProviderInterface.read-done"><code class="function">NAIFactoryProviderInterface.read_done()</code></a>
+just have to fill a given <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> with the ad-hoc data type.
+</p>
+<p>
+</p>
+<div class="example">
+<a name="id409272"></a><p class="title"><b>Example 3. </b></p>
+<div class="example-contents">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="comment">/*</span>
+<span class="comment"> * allocate the object to be read</span>
+<span class="comment"> */</span>
+<span class="usertype">NAObjectItem</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">item </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="NAObjectItem.html#NA-OBJECT-ITEM:CAPS">NA_OBJECT_ITEM</a></span><span class="symbol">(</span><span class="normal"> </span><span class="function"><a href="NAObjectAction.html#na-object-action-new">na_object_action_new</a></span><span class="symbol">());</span>
+<span class="comment">/*</span>
+<span class="comment"> * some data we may need to have access to in callback methods</span>
+<span class="comment"> */</span>
+<span class="type">void</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">data</span><span class="symbol">;</span>
+<span class="comment">/*</span>
+<span class="comment"> * now call interface function</span>
+<span class="comment"> */</span>
+<span class="function"><a href="NAIFactoryProvider.html#na-ifactory-provider-read-item">na_ifactory_provider_read_item</a></span><span class="symbol">(</span>
+<span class="normal">    </span><span class="function"><a href="NAIFactoryProvider.html#NA-IFACTORY-PROVIDER:CAPS">NA_IFACTORY_PROVIDER</a></span><span class="symbol">(</span><span class="normal"> provider </span><span class="symbol">),</span>
+<span class="normal">    data</span><span class="symbol">,</span>
+<span class="normal">    </span><span class="function"><a href="NAIFactoryObject.html#NA-IFACTORY-OBJECT:CAPS">NA_IFACTORY_OBJECT</a></span><span class="symbol">(</span><span class="normal"> item </span><span class="symbol">),</span>
+<span class="normal">    messages </span><span class="symbol">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+<p><br class="example-break">
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reader</code></em> :</span></p></td>
+<td>the instance which implements this <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> interface.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reader_data</code></em> :</span></p></td>
+<td>instance data which will be provided back to the interface
+methods</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> object to be unserialilzed.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>messages</code></em> :</span></p></td>
+<td>a pointer to a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of strings; the implementation
+may append messages to this list, but shouldn't reinitialize it.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-ifactory-provider-write-item"></a><h3>na_ifactory_provider_write_item ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               na_ifactory_provider_write_item     (<em class="parameter"><code>const <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> *writer</code></em>,
+                                                         <em class="parameter"><code><span class="type">void</span> *writer_data</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> **messages</code></em>);</pre>
+<p>
+This function is to be called by a <a class="link" href="NAIIOProvider.html" title="NAIIOProvider"><span class="type">NAIIOProvider</span></a> which would wish write
+an item. The function takes care of collecting and writing elementary data.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>writer</code></em> :</span></p></td>
+<td>the instance which implements this <a class="link" href="NAIFactoryProvider.html" title="NAIFactoryProvider"><span class="type">NAIFactoryProvider</span></a> interface.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>writer_data</code></em> :</span></p></td>
+<td>instance data.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> derived object to be serialized.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>messages</code></em> :</span></p></td>
+<td>a pointer to a <a href="http://library.gnome.org/devel/glib/unstable/glib-Singly-Linked-Lists.html#GSList"><span class="type">GSList</span></a> list of strings; the implementation
+may append messages to this list, but shouldn't reinitialize it.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a NAIIOProvider operation return code.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

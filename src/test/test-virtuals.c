@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -33,29 +32,35 @@
  * not.
  *
  * We define three classes, and some virtual functions :
- * class A: fn1, fn2, fn3
- * class AB: implements fn1, fn2
- * class ABC: implements fn1, fn3
+ * class 'first': fn_a, fn_b, fn_c
+ * class 'second', derived from 'first', implements fn_a, fn_b
+ * class 'three', derived from 'second': implements fn_a, fn_c
  *
- * Public entry points are defined in class A: we check that calling
+ * Public entry points are defined in class 'first': we check that calling
  * public entry points with an object of each class actually calls the
  * relevant virtual function.
  *
- * Also we check that calling the parent class is possible even if the
+ * Also we check if calling the parent class is possible even if the
  * parent class has not explicitely defined the virtual function.
+ *
+ * NOTE: this only works if we do _not_ set the virtual method to NULL
+ * in intermediate classes.
  */
 
 #include <glib-object.h>
 #include <glib.h>
 
-#define PWI_FIRST_TYPE			( pwi_first_get_type())
-#define PWI_FIRST( object )		( G_TYPE_CHECK_INSTANCE_CAST( object, PWI_FIRST_TYPE, PwiFirst ))
-#define PWI_FIRST_CLASS( klass )	( G_TYPE_CHECK_CLASS_CAST( klass, PWI_FIRST_TYPE, PwiFirstClass ))
-#define PWI_IS_FIRST( object )		( G_TYPE_CHECK_INSTANCE_TYPE( object, PWI_FIRST_TYPE ))
-#define PWI_IS_FIRST_CLASS( klass )	( G_TYPE_CHECK_CLASS_TYPE(( klass ), PWI_FIRST_TYPE ))
-#define PWI_FIRST_GET_CLASS( object )	( G_TYPE_INSTANCE_GET_CLASS(( object ), PWI_FIRST_TYPE, PwiFirstClass ))
+#define PWI_TYPE_FIRST					( pwi_first_get_type())
+#define PWI_FIRST( object )				( G_TYPE_CHECK_INSTANCE_CAST( object, PWI_TYPE_FIRST, PwiFirst ))
+#define PWI_FIRST_CLASS( klass )		( G_TYPE_CHECK_CLASS_CAST( klass, PWI_TYPE_FIRST, PwiFirstClass ))
+#define PWI_IS_FIRST( object )			( G_TYPE_CHECK_INSTANCE_TYPE( object, PWI_TYPE_FIRST ))
+#define PWI_IS_FIRST_CLASS( klass )		( G_TYPE_CHECK_CLASS_TYPE(( klass ), PWI_TYPE_FIRST ))
+#define PWI_FIRST_GET_CLASS( object )	( G_TYPE_INSTANCE_GET_CLASS(( object ), PWI_TYPE_FIRST, PwiFirstClass ))
 
-typedef struct PwiFirstPrivate PwiFirstPrivate;
+typedef struct {
+	void *empty;						/* so that gcc -pedantic is happy */
+}
+	PwiFirstPrivate;
 
 typedef struct {
 	GObject          parent;
@@ -63,7 +68,10 @@ typedef struct {
 }
 	PwiFirst;
 
-typedef struct PwiFirstClassPrivate PwiFirstClassPrivate;
+typedef struct {
+	void *empty;						/* so that gcc -pedantic is happy */
+}
+	PwiFirstClassPrivate;
 
 typedef struct {
 	GObjectClass          parent;
@@ -76,96 +84,13 @@ typedef struct {
 }
 	PwiFirstClass;
 
-GType pwi_first_get_type( void );
-
-void pwi_first_fn_a( PwiFirst *instance );
-void pwi_first_fn_b( PwiFirst *instance );
-void pwi_first_fn_c( PwiFirst *instance );
-
-#define PWI_FIRST_SECOND_TYPE			( pwi_first_second_get_type())
-#define PWI_FIRST_SECOND( object )		( G_TYPE_CHECK_INSTANCE_CAST( object, PWI_FIRST_SECOND_TYPE, PwiFirstSecond ))
-#define PWI_FIRST_SECOND_CLASS( klass )		( G_TYPE_CHECK_CLASS_CAST( klass, PWI_FIRST_SECOND_TYPE, PwiFirstSecondClass ))
-#define PWI_IS_FIRST_SECOND( object )		( G_TYPE_CHECK_INSTANCE_TYPE( object, PWI_FIRST_SECOND_TYPE ))
-#define PWI_IS_FIRST_SECOND_CLASS( klass )	( G_TYPE_CHECK_CLASS_TYPE(( klass ), PWI_FIRST_SECOND_TYPE ))
-#define PWI_FIRST_SECOND_GET_CLASS( object )	( G_TYPE_INSTANCE_GET_CLASS(( object ), PWI_FIRST_SECOND_TYPE, PwiFirstSecondClass ))
-
-typedef struct PwiFirstSecondPrivate PwiFirstSecondPrivate;
-
-typedef struct {
-	PwiFirst               parent;
-	PwiFirstSecondPrivate *private;
-}
-	PwiFirstSecond;
-
-typedef struct PwiFirstSecondClassPrivate PwiFirstSecondClassPrivate;
-
-typedef struct {
-	PwiFirstClass               parent;
-	PwiFirstSecondClassPrivate *private;
-}
-	PwiFirstSecondClass;
-
-GType pwi_first_second_get_type( void );
-
-#define PWI_FIRST_SECOND_THREE_TYPE			( pwi_first_second_three_get_type())
-#define PWI_FIRST_SECOND_THREE( object )		( G_TYPE_CHECK_INSTANCE_CAST( object, PWI_FIRST_SECOND_THREE_TYPE, PwiFirstSecondThree ))
-#define PWI_FIRST_SECOND_THREE_CLASS( klass )		( G_TYPE_CHECK_CLASS_CAST( klass, PWI_FIRST_SECOND_THREE_TYPE, PwiFirstSecondThreeClass ))
-#define PWI_IS_FIRST_SECOND_THREE( object )		( G_TYPE_CHECK_INSTANCE_TYPE( object, PWI_FIRST_SECOND_THREE_TYPE ))
-#define PWI_IS_FIRST_SECOND_THREE_CLASS( klass )	( G_TYPE_CHECK_CLASS_TYPE(( klass ), PWI_FIRST_SECOND_THREE_TYPE ))
-#define PWI_FIRST_SECOND_THREE_GET_CLASS( object )	( G_TYPE_INSTANCE_GET_CLASS(( object ), PWI_FIRST_SECOND_THREE_TYPE, PwiFirstSecondThreeClass ))
-
-typedef struct PwiFirstSecondThreePrivate PwiFirstSecondThreePrivate;
-
-typedef struct {
-	PwiFirstSecond              parent;
-	PwiFirstSecondThreePrivate *private;
-}
-	PwiFirstSecondThree;
-
-typedef struct PwiFirstSecondThreeClassPrivate PwiFirstSecondThreeClassPrivate;
-
-typedef struct {
-	PwiFirstSecondClass              parent;
-	PwiFirstSecondThreeClassPrivate *private;
-}
-	PwiFirstSecondThreeClass;
-
-GType pwi_first_second_three_get_type( void );
-
-struct PwiFirstClassPrivate {
-	void *empty;						/* so that gcc -pedantic is happy */
-};
-
-struct PwiFirstPrivate {
-	void *empty;						/* so that gcc -pedantic is happy */
-};
-
-static GObjectClass *st_first_parent_class = NULL;
-
-static GType first_register_type( void );
-static void  first_class_init( PwiFirstClass *klass );
-static void  first_instance_init( GTypeInstance *instance, gpointer klass );
-static void  first_instance_dispose( GObject *application );
-static void  first_instance_finalize( GObject *application );
-
-static void  do_first_fn_a( PwiFirst *instance );
-static void  do_first_fn_b( PwiFirst *instance );
-static void  do_first_fn_c( PwiFirst *instance );
-
-GType
-pwi_first_get_type( void )
-{
-	static GType type = 0;
-
-	if( !type ){
-		type = first_register_type();
-	}
-
-	return( type );
-}
+static GObjectClass *pwi_first_parent_class = NULL;
+static GType pwi_first_get_type( void );
+static void  pwi_first_class_init( PwiFirstClass *klass );
+static void  pwi_first_init( PwiFirst *instance, gpointer klass );
 
 static GType
-first_register_type( void )
+pwi_first_register_type( void )
 {
 	static const gchar *thisfn = "first_register_type";
 
@@ -173,31 +98,56 @@ first_register_type( void )
 		sizeof( PwiFirstClass ),
 		( GBaseInitFunc ) NULL,
 		( GBaseFinalizeFunc ) NULL,
-		( GClassInitFunc ) first_class_init,
+		( GClassInitFunc ) pwi_first_class_init,
 		NULL,
 		NULL,
 		sizeof( PwiFirst ),
 		0,
-		( GInstanceInitFunc ) first_instance_init
+		( GInstanceInitFunc ) pwi_first_init
 	};
 
 	g_debug( "%s", thisfn );
 	return( g_type_register_static( G_TYPE_OBJECT, "PwiFirst", &info, 0 ));
 }
 
-static void
-first_class_init( PwiFirstClass *klass )
+static GType
+pwi_first_get_type( void )
 {
-	static const gchar *thisfn = "first_class_init";
-	GObjectClass *object_class;
+	static GType type = 0;
+
+	if( !type ){
+		type = pwi_first_register_type();
+	}
+
+	return( type );
+}
+
+static void
+do_first_fn_a( PwiFirst *instance )
+{
+	g_debug( "do_first_fn_a: instance=%p", ( void * ) instance );
+}
+
+static void
+do_first_fn_b( PwiFirst *instance )
+{
+	g_debug( "do_first_fn_b: instance=%p", ( void * ) instance );
+}
+
+static void
+do_first_fn_c( PwiFirst *instance )
+{
+	g_debug( "do_first_fn_c: instance=%p", ( void * ) instance );
+}
+
+static void
+pwi_first_class_init( PwiFirstClass *klass )
+{
+	static const gchar *thisfn = "pwi_first_class_init";
 
 	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
 
-	st_first_parent_class = g_type_class_peek_parent( klass );
-
-	object_class = G_OBJECT_CLASS( klass );
-	object_class->dispose = first_instance_dispose;
-	object_class->finalize = first_instance_finalize;
+	pwi_first_parent_class = g_type_class_peek_parent( klass );
 
 	klass->private = g_new0( PwiFirstClassPrivate, 1 );
 
@@ -207,47 +157,18 @@ first_class_init( PwiFirstClass *klass )
 }
 
 static void
-first_instance_init( GTypeInstance *instance, gpointer klass )
+pwi_first_init( PwiFirst *self, gpointer klass )
 {
-	static const gchar *thisfn = "first_instance_init";
-	PwiFirst *self;
+	static const gchar *thisfn = "pwi_first_init";
 
-	g_debug( "%s: instance=%p, klass=%p", thisfn, ( void * ) instance, ( void * ) klass );
-	g_assert( PWI_IS_FIRST( instance ));
-	self = PWI_FIRST( instance );
+	g_debug( "%s: instance=%p, klass=%p", thisfn, ( void * ) self, ( void * ) klass );
 
 	self->private = g_new0( PwiFirstPrivate, 1 );
 }
 
-static void
-first_instance_dispose( GObject *instance )
-{
-	static const gchar *thisfn = "first_instance_dispose";
-	PwiFirst *self;
-
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
-	g_assert( PWI_IS_FIRST( instance ));
-	self = PWI_FIRST( instance );
-
-	/* chain up to the parent class */
-	G_OBJECT_CLASS( st_first_parent_class )->dispose( instance );
-}
-
-static void
-first_instance_finalize( GObject *instance )
-{
-	static const gchar *thisfn = "first_instance_finalize";
-	PwiFirst *self;
-
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
-	g_assert( PWI_IS_FIRST( instance ));
-	self = PWI_FIRST( instance );
-
-	g_free( self->private );
-
-	/* chain call to parent class */
-	G_OBJECT_CLASS( st_first_parent_class )->finalize( instance );
-}
+void pwi_first_fn_a( PwiFirst *instance );
+void pwi_first_fn_b( PwiFirst *instance );
+void pwi_first_fn_c( PwiFirst *instance );
 
 void
 pwi_first_fn_a( PwiFirst *instance )
@@ -258,14 +179,9 @@ pwi_first_fn_a( PwiFirst *instance )
 	if( PWI_FIRST_GET_CLASS( instance )->fn_a ){
 		PWI_FIRST_GET_CLASS( instance )->fn_a( instance );
 	} else {
+		g_debug( "default to invoke do_first_fn_a()" );
 		do_first_fn_a( instance );
 	}
-}
-
-static void
-do_first_fn_a( PwiFirst *instance )
-{
-	g_debug( "do_first_fn_a: instance=%p", ( void * ) instance );
 }
 
 void
@@ -277,14 +193,9 @@ pwi_first_fn_b( PwiFirst *instance )
 	if( PWI_FIRST_GET_CLASS( instance )->fn_b ){
 		PWI_FIRST_GET_CLASS( instance )->fn_b( instance );
 	} else {
+		g_debug( "default to invoke do_first_fn_b()" );
 		do_first_fn_b( instance );
 	}
-}
-
-static void
-do_first_fn_b( PwiFirst *instance )
-{
-	g_debug( "do_first_fn_b: instance=%p", ( void * ) instance );
 }
 
 void
@@ -296,317 +207,268 @@ pwi_first_fn_c( PwiFirst *instance )
 	if( PWI_FIRST_GET_CLASS( instance )->fn_c ){
 		PWI_FIRST_GET_CLASS( instance )->fn_c( instance );
 	} else {
+		g_debug( "default to invoke do_first_fn_c()" );
 		do_first_fn_c( instance );
 	}
 }
 
-static void
-do_first_fn_c( PwiFirst *instance )
+#define PWI_TYPE_SECOND					( pwi_second_get_type())
+#define PWI_SECOND( object )			( G_TYPE_CHECK_INSTANCE_CAST( object, PWI_TYPE_SECOND, PwiSecond ))
+#define PWI_SECOND_CLASS( klass )		( G_TYPE_CHECK_CLASS_CAST( klass, PWI_TYPE_SECOND, PwiSecondClass ))
+#define PWI_IS_SECOND( object )			( G_TYPE_CHECK_INSTANCE_TYPE( object, PWI_TYPE_SECOND ))
+#define PWI_IS_SECOND_CLASS( klass )	( G_TYPE_CHECK_CLASS_TYPE(( klass ), PWI_TYPE_SECOND ))
+#define PWI_SECOND_GET_CLASS( object )	( G_TYPE_INSTANCE_GET_CLASS(( object ), PWI_TYPE_SECOND, PwiSecondClass ))
+
+typedef struct {
+	void *empty;						/* so that gcc -pedantic is happy */
+}
+	PwiSecondPrivate;
+
+typedef struct {
+	PwiFirst          parent;
+	PwiSecondPrivate *private;
+}
+	PwiSecond;
+
+typedef struct {
+	void *empty;						/* so that gcc -pedantic is happy */
+}
+	PwiSecondClassPrivate;
+
+typedef struct {
+	PwiFirstClass          parent;
+	PwiSecondClassPrivate *private;
+}
+	PwiSecondClass;
+
+static GObjectClass *pwi_second_parent_class = NULL;
+static GType pwi_second_get_type( void );
+static void  pwi_second_class_init( PwiSecondClass *klass );
+static void  pwi_second_init( PwiSecond *instance, gpointer klass );
+
+static GType
+pwi_second_register_type( void )
 {
-	g_debug( "do_first_fn_c: instance=%p", ( void * ) instance );
+	static const gchar *thisfn = "second_register_type";
+
+	static GTypeInfo info = {
+		sizeof( PwiSecondClass ),
+		( GBaseInitFunc ) NULL,
+		( GBaseFinalizeFunc ) NULL,
+		( GClassInitFunc ) pwi_second_class_init,
+		NULL,
+		NULL,
+		sizeof( PwiSecond ),
+		0,
+		( GInstanceInitFunc ) pwi_second_init
+	};
+
+	g_debug( "%s", thisfn );
+	return( g_type_register_static( PWI_TYPE_FIRST, "PwiSecond", &info, 0 ));
 }
 
-struct PwiFirstSecondClassPrivate {
-	void *empty;						/* so that gcc -pedantic is happy */
-};
-
-struct PwiFirstSecondPrivate {
-	void *empty;						/* so that gcc -pedantic is happy */
-};
-
-static PwiFirstClass *st_first_second_parent_class = NULL;
-
-static GType first_second_register_type( void );
-static void  first_second_class_init( PwiFirstSecondClass *klass );
-static void  first_second_instance_init( GTypeInstance *instance, gpointer klass );
-static void  first_second_instance_dispose( GObject *application );
-static void  first_second_instance_finalize( GObject *application );
-
-static void  do_first_second_fn_a( PwiFirst *instance );
-static void  do_first_second_fn_b( PwiFirst *instance );
-
-GType
-pwi_first_second_get_type( void )
+static GType
+pwi_second_get_type( void )
 {
 	static GType type = 0;
 
 	if( !type ){
-		type = first_second_register_type();
+		type = pwi_second_register_type();
 	}
 
 	return( type );
 }
 
-static GType
-first_second_register_type( void )
+static void
+do_second_fn_a( PwiFirst *instance )
 {
-	static const gchar *thisfn = "first_second_register_type";
-
-	static GTypeInfo info = {
-		sizeof( PwiFirstSecondClass ),
-		( GBaseInitFunc ) NULL,
-		( GBaseFinalizeFunc ) NULL,
-		( GClassInitFunc ) first_second_class_init,
-		NULL,
-		NULL,
-		sizeof( PwiFirstSecond ),
-		0,
-		( GInstanceInitFunc ) first_second_instance_init
-	};
-
-	g_debug( "%s", thisfn );
-	return( g_type_register_static( PWI_FIRST_TYPE, "PwiFirstSecond", &info, 0 ));
+	g_debug( "do_second_fn_a: instance=%p", ( void * ) instance );
+	if( PWI_FIRST_CLASS( pwi_second_parent_class )->fn_a ){
+		PWI_FIRST_CLASS( pwi_second_parent_class )->fn_a( instance );
+	}
 }
 
 static void
-first_second_class_init( PwiFirstSecondClass *klass )
+do_second_fn_b( PwiFirst *instance )
 {
-	static const gchar *thisfn = "first_second_class_init";
-	GObjectClass *object_class;
-	PwiFirstClass *first_class;
+	g_debug( "do_second_fn_b: instance=%p", ( void * ) instance );
+	if( PWI_FIRST_CLASS( pwi_second_parent_class )->fn_b ){
+		PWI_FIRST_CLASS( pwi_second_parent_class )->fn_b( instance );
+	}
+}
+
+static void
+pwi_second_class_init( PwiSecondClass *klass )
+{
+	static const gchar *thisfn = "pwi_second_class_init";
+	PwiFirstClass *parent_class;
 
 	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
 
-	st_first_second_parent_class = g_type_class_peek_parent( klass );
+	pwi_second_parent_class = g_type_class_peek_parent( klass );
 
-	object_class = G_OBJECT_CLASS( klass );
-	object_class->dispose = first_second_instance_dispose;
-	object_class->finalize = first_second_instance_finalize;
+	klass->private = g_new0( PwiSecondClassPrivate, 1 );
 
-	klass->private = g_new0( PwiFirstSecondClassPrivate, 1 );
-
-	first_class = PWI_FIRST_CLASS( klass );
-	first_class->fn_a = do_first_second_fn_a;
-	first_class->fn_b = do_first_second_fn_b;
-	first_class->fn_c = NULL;
+	parent_class = PWI_FIRST_CLASS( klass );
+	parent_class->fn_a = do_second_fn_a;
+	parent_class->fn_b = do_second_fn_b;
+	/*parent_class->fn_c = NULL;*/
 }
 
 static void
-first_second_instance_init( GTypeInstance *instance, gpointer klass )
+pwi_second_init( PwiSecond *self, gpointer klass )
 {
-	static const gchar *thisfn = "first_second_instance_init";
-	PwiFirstSecond *self;
+	static const gchar *thisfn = "pwi_second_init";
 
-	g_debug( "%s: instance=%p, klass=%p", thisfn, ( void * ) instance, ( void * ) klass );
-	g_assert( PWI_IS_FIRST_SECOND( instance ));
-	self = PWI_FIRST_SECOND( instance );
+	g_debug( "%s: instance=%p, klass=%p", thisfn, ( void * ) self, ( void * ) klass );
 
-	self->private = g_new0( PwiFirstSecondPrivate, 1 );
+	self->private = g_new0( PwiSecondPrivate, 1 );
 }
 
-static void
-first_second_instance_dispose( GObject *instance )
-{
-	static const gchar *thisfn = "first_second_instance_dispose";
-	PwiFirstSecond *self;
+#define PWI_TYPE_THREE					( pwi_three_get_type())
+#define PWI_THREE( object )				( G_TYPE_CHECK_INSTANCE_CAST( object, PWI_TYPE_THREE, PwiThree ))
+#define PWI_THREE_CLASS( klass )		( G_TYPE_CHECK_CLASS_CAST( klass, PWI_TYPE_THREE, PwiThreeClass ))
+#define PWI_IS_THREE( object )			( G_TYPE_CHECK_INSTANCE_TYPE( object, PWI_TYPE_THREE ))
+#define PWI_IS_THREE_CLASS( klass )		( G_TYPE_CHECK_CLASS_TYPE(( klass ), PWI_TYPE_THREE ))
+#define PWI_THREE_GET_CLASS( object )	( G_TYPE_INSTANCE_GET_CLASS(( object ), PWI_TYPE_THREE, PwiThreeClass ))
 
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
-	g_assert( PWI_IS_FIRST_SECOND( instance ));
-	self = PWI_FIRST_SECOND( instance );
-
-	/* chain up to the parent class */
-	G_OBJECT_CLASS( st_first_second_parent_class )->dispose( instance );
-}
-
-static void
-first_second_instance_finalize( GObject *instance )
-{
-	static const gchar *thisfn = "first_second_instance_finalize";
-	PwiFirstSecond *self;
-
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
-	g_assert( PWI_IS_FIRST_SECOND( instance ));
-	self = PWI_FIRST_SECOND( instance );
-
-	g_free( self->private );
-
-	/* chain call to parent class */
-	G_OBJECT_CLASS( st_first_second_parent_class )->finalize( instance );
-}
-
-static void
-do_first_second_fn_a( PwiFirst *instance )
-{
-	g_debug( "do_first_second_fn_a: instance=%p", ( void * ) instance );
-	if( PWI_FIRST_CLASS( st_first_second_parent_class )->fn_a ){
-		PWI_FIRST_CLASS( st_first_second_parent_class )->fn_a( instance );
-	}
-}
-
-static void
-do_first_second_fn_b( PwiFirst *instance )
-{
-	g_debug( "do_first_second_fn_b: instance=%p", ( void * ) instance );
-	if( PWI_FIRST_CLASS( st_first_second_parent_class )->fn_b ){
-		PWI_FIRST_CLASS( st_first_second_parent_class )->fn_b( instance );
-	}
-}
-
-struct PwiFirstSecondThreeClassPrivate {
+typedef struct {
 	void *empty;						/* so that gcc -pedantic is happy */
-};
+}
+	PwiThreePrivate;
 
-struct PwiFirstSecondThreePrivate {
+typedef struct {
+	PwiSecond        parent;
+	PwiThreePrivate *private;
+}
+	PwiThree;
+
+typedef struct {
 	void *empty;						/* so that gcc -pedantic is happy */
-};
+}
+	PwiThreeClassPrivate;
 
-static PwiFirstSecondClass *st_first_second_three_parent_class = NULL;
+typedef struct {
+	PwiSecondClass        parent;
+	PwiThreeClassPrivate *private;
+}
+	PwiThreeClass;
 
-static GType first_second_three_register_type( void );
-static void  first_second_three_class_init( PwiFirstSecondThreeClass *klass );
-static void  first_second_three_instance_init( GTypeInstance *instance, gpointer klass );
-static void  first_second_three_instance_dispose( GObject *application );
-static void  first_second_three_instance_finalize( GObject *application );
+static GObjectClass *pwi_three_parent_class = NULL;
+static GType pwi_three_get_type( void );
+static void  pwi_three_class_init( PwiThreeClass *klass );
+static void  pwi_three_init( PwiThree *instance, gpointer klass );
 
-static void  do_first_second_three_fn_a( PwiFirst *instance );
-static void  do_first_second_three_fn_c( PwiFirst *instance );
+static GType
+pwi_three_register_type( void )
+{
+	static const gchar *thisfn = "three_register_type";
 
-GType
-pwi_first_second_three_get_type( void )
+	static GTypeInfo info = {
+		sizeof( PwiThreeClass ),
+		( GBaseInitFunc ) NULL,
+		( GBaseFinalizeFunc ) NULL,
+		( GClassInitFunc ) pwi_three_class_init,
+		NULL,
+		NULL,
+		sizeof( PwiThree ),
+		0,
+		( GInstanceInitFunc ) pwi_three_init
+	};
+
+	g_debug( "%s", thisfn );
+	return( g_type_register_static( PWI_TYPE_SECOND, "PwiThree", &info, 0 ));
+}
+
+static GType
+pwi_three_get_type( void )
 {
 	static GType type = 0;
 
 	if( !type ){
-		type = first_second_three_register_type();
+		type = pwi_three_register_type();
 	}
 
 	return( type );
 }
 
-static GType
-first_second_three_register_type( void )
+static void
+do_three_fn_a( PwiFirst *instance )
 {
-	static const gchar *thisfn = "first_second_three_register_type";
-
-	static GTypeInfo info = {
-		sizeof( PwiFirstSecondThreeClass ),
-		( GBaseInitFunc ) NULL,
-		( GBaseFinalizeFunc ) NULL,
-		( GClassInitFunc ) first_second_three_class_init,
-		NULL,
-		NULL,
-		sizeof( PwiFirstSecondThree ),
-		0,
-		( GInstanceInitFunc ) first_second_three_instance_init
-	};
-
-	g_debug( "%s", thisfn );
-	return( g_type_register_static( PWI_FIRST_SECOND_TYPE, "PwiFirstSecondThree", &info, 0 ));
+	g_debug( "do_three_fn_a: instance=%p", ( void * ) instance );
+	if( PWI_FIRST_CLASS( pwi_three_parent_class )->fn_a ){
+		PWI_FIRST_CLASS( pwi_three_parent_class )->fn_a( instance );
+	}
 }
 
 static void
-first_second_three_class_init( PwiFirstSecondThreeClass *klass )
+do_three_fn_c( PwiFirst *instance )
 {
-	static const gchar *thisfn = "first_second_three_class_init";
-	GObjectClass *object_class;
-	PwiFirstClass *first_class;
+	g_debug( "do_three_fn_c: instance=%p", ( void * ) instance );
+	if( PWI_FIRST_CLASS( pwi_three_parent_class )->fn_c ){
+		PWI_FIRST_CLASS( pwi_three_parent_class )->fn_c( instance );
+	}
+}
+
+static void
+pwi_three_class_init( PwiThreeClass *klass )
+{
+	static const gchar *thisfn = "pwi_three_class_init";
+	PwiFirstClass *parent_class;
 
 	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
 
-	st_first_second_three_parent_class = g_type_class_peek_parent( klass );
+	pwi_three_parent_class = g_type_class_peek_parent( klass );
 
-	object_class = G_OBJECT_CLASS( klass );
-	object_class->dispose = first_second_three_instance_dispose;
-	object_class->finalize = first_second_three_instance_finalize;
+	klass->private = g_new0( PwiThreeClassPrivate, 1 );
 
-	klass->private = g_new0( PwiFirstSecondThreeClassPrivate, 1 );
-
-	first_class = PWI_FIRST_CLASS( klass );
-	first_class->fn_a = do_first_second_three_fn_a;
-	first_class->fn_b = NULL;
-	first_class->fn_c = do_first_second_three_fn_c;
+	parent_class = PWI_FIRST_CLASS( klass );
+	parent_class->fn_a = do_three_fn_a;
+	/*parent_class->fn_b = NULL;*/
+	parent_class->fn_c = do_three_fn_c;
 }
 
 static void
-first_second_three_instance_init( GTypeInstance *instance, gpointer klass )
+pwi_three_init( PwiThree *self, gpointer klass )
 {
-	static const gchar *thisfn = "first_second_three_instance_init";
-	PwiFirstSecondThree *self;
+	static const gchar *thisfn = "pwi_three_init";
 
-	g_debug( "%s: instance=%p, klass=%p", thisfn, ( void * ) instance, ( void * ) klass );
-	g_assert( PWI_IS_FIRST_SECOND_THREE( instance ));
-	self = PWI_FIRST_SECOND_THREE( instance );
+	g_debug( "%s: instance=%p, klass=%p", thisfn, ( void * ) self, ( void * ) klass );
 
-	self->private = g_new0( PwiFirstSecondThreePrivate, 1 );
-}
-
-static void
-first_second_three_instance_dispose( GObject *instance )
-{
-	static const gchar *thisfn = "first_second_three_instance_dispose";
-	PwiFirstSecondThree *self;
-
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
-	g_assert( PWI_IS_FIRST_SECOND_THREE( instance ));
-	self = PWI_FIRST_SECOND_THREE( instance );
-
-	/* chain up to the parent class */
-	G_OBJECT_CLASS( st_first_second_three_parent_class )->dispose( instance );
-}
-
-static void
-first_second_three_instance_finalize( GObject *instance )
-{
-	static const gchar *thisfn = "first_second_three_instance_finalize";
-	PwiFirstSecondThree *self;
-
-	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
-	g_assert( PWI_IS_FIRST_SECOND_THREE( instance ));
-	self = PWI_FIRST_SECOND_THREE( instance );
-
-	g_free( self->private );
-
-	/* chain call to parent class */
-	G_OBJECT_CLASS( st_first_second_three_parent_class )->finalize( instance );
-}
-
-static void
-do_first_second_three_fn_a( PwiFirst *instance )
-{
-	g_debug( "do_first_second_three_fn_a: instance=%p", ( void * ) instance );
-	if( PWI_FIRST_CLASS( st_first_second_three_parent_class )->fn_a ){
-		PWI_FIRST_CLASS( st_first_second_three_parent_class )->fn_a( instance );
-	}
-}
-
-static void
-do_first_second_three_fn_c( PwiFirst *instance )
-{
-	g_debug( "do_first_second_three_fn_c: instance=%p", ( void * ) instance );
-	if( PWI_FIRST_CLASS( st_first_second_three_parent_class )->fn_c ){
-		PWI_FIRST_CLASS( st_first_second_three_parent_class )->fn_c( instance );
-	}
+	self->private = g_new0( PwiThreePrivate, 1 );
 }
 
 int
 main( int argc, char **argv )
 {
 	PwiFirst *a;
-	PwiFirstSecond *b;
-	PwiFirstSecondThree *c;
+	PwiSecond *b;
+	PwiThree *c;
 
 	g_type_init();
 
-	a = g_object_new( PWI_FIRST_TYPE, NULL );
-	b = g_object_new( PWI_FIRST_SECOND_TYPE, NULL );
-	c = g_object_new( PWI_FIRST_SECOND_THREE_TYPE, NULL );
+	a = g_object_new( PWI_TYPE_FIRST, NULL );
+	b = g_object_new( PWI_TYPE_SECOND, NULL );
+	c = g_object_new( PWI_TYPE_THREE, NULL );
+
+	g_debug( "%s", "" );
 
 	g_debug( "expected pwi_first_fn_a, do_first_fn_a" );
 	pwi_first_fn_a( PWI_FIRST( a ));
-	g_debug( "expected pwi_first_fn_a, do_first_second_fn_a, do_first_fn_a" );
+	g_debug( "expected pwi_first_fn_a, do_second_fn_a, do_first_fn_a" );
 	pwi_first_fn_a( PWI_FIRST( b ));
-	g_debug( "expected pwi_first_fn_a, do_first_second_three_fn_a, do_first_second_fn_a, do_first_fn_a" );
+	g_debug( "expected pwi_first_fn_a, do_three_fn_a, do_second_fn_a, do_first_fn_a" );
 	pwi_first_fn_a( PWI_FIRST( c ));
 
 	g_debug( "%s", "" );
 
 	g_debug( "expected pwi_first_fn_b, do_first_fn_b" );
 	pwi_first_fn_b( PWI_FIRST( a ));
-	g_debug( "expected pwi_first_fn_b, do_first_second_fn_b, do_first_fn_b" );
+	g_debug( "expected pwi_first_fn_b, do_second_fn_b, do_first_fn_b" );
 	pwi_first_fn_b( PWI_FIRST( b ));
-	g_debug( "expected pwi_first_fn_b, do_first_second_fn_b, do_first_fn_b" );
+	g_debug( "expected pwi_first_fn_b, do_second_fn_b, do_first_fn_b" );
 	/* NOT OK
-	 * result is pwi_first_fn_b, do_first_fn_b */
+	 * result is pwi_first_fn_b, default to do_first_fn_b */
 	pwi_first_fn_b( PWI_FIRST( c ));
 
 	g_debug( "%s", "" );
@@ -615,9 +477,9 @@ main( int argc, char **argv )
 	pwi_first_fn_c( PWI_FIRST( a ));
 	g_debug( "expected pwi_first_fn_c, do_first_fn_c" );
 	pwi_first_fn_c( PWI_FIRST( b ));
-	g_debug( "expected pwi_first_fn_c, do_first_second_three_fn_c, do_first_fn_c" );
+	g_debug( "expected pwi_first_fn_c, do_three_fn_c, do_first_fn_c" );
 	/* NOT OK
-	 * result is pwi_first_fn_c, do_first_second_three_fn_c */
+	 * result is pwi_first_fn_c, do_three_fn_c */
 	pwi_first_fn_c( PWI_FIRST( c ));
 
 	return( 0 );

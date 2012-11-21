@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -34,9 +33,11 @@
 
 #include <api/na-iio-provider.h>
 
+#include "na-io-provider.h"
+
 /* private interface data
  */
-struct NAIIOProviderInterfacePrivate {
+struct _NAIIOProviderInterfacePrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
@@ -47,9 +48,8 @@ enum {
 	LAST_SIGNAL
 };
 
-static gboolean st_initialized            = FALSE;
-static gboolean st_finalized              = FALSE;
-static gint     st_signals[ LAST_SIGNAL ] = { 0 };
+static guint st_initializations = 0;	/* interface initialization count */
+static gint  st_signals[ LAST_SIGNAL ] = { 0 };
 
 static GType    register_type( void );
 static void     interface_base_init( NAIIOProviderInterface *klass );
@@ -112,7 +112,7 @@ interface_base_init( NAIIOProviderInterface *klass )
 {
 	static const gchar *thisfn = "na_iio_provider_interface_base_init";
 
-	if( !st_initialized ){
+	if( !st_initializations ){
 
 		g_debug( "%s: klass%p (%s)", thisfn, ( void * ) klass, G_OBJECT_CLASS_NAME( klass ));
 
@@ -125,26 +125,34 @@ interface_base_init( NAIIOProviderInterface *klass )
 		klass->is_able_to_write = do_is_able_to_write;
 		klass->write_item = NULL;
 		klass->delete_item = NULL;
+		klass->duplicate_data = NULL;
 
-		/* register the signal (without any default handler)
-		 * this signal should be sent by the #NAIIOProvider instance when
-		 * an item has changed in the underlying storage subsystem
-		 * #NAPivot is connected to this signal
+		/**
+		 * NAIIOProvider::io-provider-item-changed:
+		 * @provider: the #NAIIOProvider which has called the
+		 *  na_iio_provider_item_changed() function.
+		 *
+		 * This signal is registered without any default handler.
+		 *
+		 * This signal is not meant to be directly sent by a plugin.
+		 * Instead, the plugin should call the na_iio_provider_item_changed()
+		 * function.
+		 *
+		 * See also na_iio_provider_item_changed().
 		 */
 		st_signals[ ITEM_CHANGED ] = g_signal_new(
-					IIO_PROVIDER_SIGNAL_ITEM_CHANGED,
-					NA_IIO_PROVIDER_TYPE,
-					G_SIGNAL_RUN_LAST,
-					0,
-					NULL,
-					NULL,
-					g_cclosure_marshal_VOID__POINTER,
+					IO_PROVIDER_SIGNAL_ITEM_CHANGED,
+					NA_TYPE_IIO_PROVIDER,
+					G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+					0,									/* class offset */
+					NULL,								/* accumulator */
+					NULL,								/* accumulator data */
+					g_cclosure_marshal_VOID__VOID,
 					G_TYPE_NONE,
-					1,
-					G_TYPE_POINTER );
-
-		st_initialized = TRUE;
+					0 );
 	}
+
+	st_initializations += 1;
 }
 
 static void
@@ -152,11 +160,11 @@ interface_base_finalize( NAIIOProviderInterface *klass )
 {
 	static const gchar *thisfn = "na_iio_provider_interface_base_finalize";
 
-	if( st_initialized && !st_finalized ){
+	st_initializations -= 1;
+
+	if( !st_initializations ){
 
 		g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
-
-		st_finalized = TRUE;
 
 		g_free( klass->private );
 	}
@@ -177,20 +185,34 @@ do_is_able_to_write( const NAIIOProvider *instance )
 /**
  * na_iio_provider_item_changed:
  * @instance: the calling #NAIIOProvider.
- * @id: the id of the modified #NAObjectItem-derived object.
  *
- * Advertises Caja-Actions that this #NAIIOProvider @instance has
- * detected a modification in one of its configurations (menu or action).
+ * Informs &prodname; that this #NAIIOProvider @instance has
+ * detected a modification in (at least) one of its items (menu
+ * or action).
  *
- * This function should be triggered for each and every #NAObjectItem-
- * derived modified objects, but (if possible) only once for each one.
+ * This function may be triggered for each and every
+ * #NAObjectItem -derived modified object, and should, at least, be
+ * triggered once for a coherent set of updates.
+ *
+ * When receiving this signal, the currently running program may just
+ * want to immediately reload the current list of items, menus and actions
+ * (this is for example what &caja; plugin does); it may also choose
+ * to ask the user if he is willing to reload such a current list (and
+ * this is the way &cact; has chosen to deal with this message).
+ *
+ * Note that application NAPivot/NAUpdater pivot is typically the only
+ * object connected to this signal. It acts so as a filtering proxy,
+ * re-emitting its own 'items-changed' signal for a whole set of detected
+ * underlying modifications.
+ *
+ * Since: 2.30
  */
 void
-na_iio_provider_item_changed( const NAIIOProvider *instance, const gchar *id )
+na_iio_provider_item_changed( const NAIIOProvider *instance )
 {
 	static const gchar *thisfn = "na_iio_provider_item_changed";
 
-	g_debug( "%s: instance=%p, id=%s", thisfn, ( void * ) instance, id );
+	g_debug( "%s: instance=%p", thisfn, ( void * ) instance );
 
-	g_signal_emit_by_name(( gpointer ) instance, IIO_PROVIDER_SIGNAL_ITEM_CHANGED, id );
+	g_signal_emit_by_name(( gpointer ) instance, IO_PROVIDER_SIGNAL_ITEM_CHANGED );
 }

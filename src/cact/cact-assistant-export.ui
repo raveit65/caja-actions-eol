@@ -1,170 +1,303 @@
 <?xml version="1.0"?>
 <interface>
-  <!-- interface-requires gtk+ 2.12 -->
+  <requires lib="gtk+" version="2.20"/>
   <!-- interface-naming-policy toplevel-contextual -->
-  <object class="GtkListStore" id="liststore1"/>
   <object class="GtkAssistant" id="ExportAssistant">
-    <property name="events">GDK_KEY_PRESS_MASK | GDK_STRUCTURE_MASK</property>
-    <property name="border_width">12</property>
     <property name="title" translatable="yes">Exporting actions</property>
     <property name="modal">True</property>
     <property name="type_hint">dialog</property>
     <child>
-      <object class="GtkLabel" id="label20">
+      <object class="GtkLabel" id="p0-l1-label1">
         <property name="visible">True</property>
         <property name="label" translatable="yes">This assistant will guide you through the process of exporting actions.</property>
+        <property name="wrap">True</property>
       </object>
       <packing>
         <property name="page_type">intro</property>
       </packing>
     </child>
     <child>
-      <object class="GtkHBox" id="hbox7">
+      <object class="GtkVBox" id="p1-l1-vbox1">
         <property name="visible">True</property>
         <child>
-          <object class="GtkVBox" id="vbox16">
+          <object class="GtkAlignment" id="p1-l2-alignment1">
             <property name="visible">True</property>
-            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="ActionsListLabel">
+              <object class="GtkHPaned" id="p1-HPaned">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="xpad">4</property>
-                <property name="ypad">4</property>
-                <property name="label" translatable="yes">Actions _list :</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow1">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">automatic</property>
-                <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkTreeView" id="ActionsList">
+                  <object class="GtkVBox" id="p1-l4-vbox1">
+                    <property name="visible">True</property>
+                    <property name="spacing">4</property>
+                    <child>
+                      <object class="GtkLabel" id="ActionsListLabel">
+                        <property name="visible">True</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">Actions _list :</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow" id="p1-l5-scrolledwindow1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hscrollbar_policy">automatic</property>
+                        <property name="vscrollbar_policy">automatic</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <object class="GtkTreeView" id="ActionsList">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="headers_visible">False</property>
+                            <property name="rules_hint">True</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkVBox" id="p1-l4-vbox2">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkLabel" id="p1-l5-label2">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Please select one or more actions to be exported.
+
+You may use Ctrl and Shift keys to extend the selection.</property>
+                        <property name="wrap">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="title" translatable="yes">Selecting the exported actions</property>
+        <property name="page_type">content</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkVBox" id="p2-l1-vbox1">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkAlignment" id="p2-l2-alignment1">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkFileChooserWidget" id="p2-ExportFolderChooser">
+                <property name="visible">True</property>
+                <property name="use_preview_label">False</property>
+                <property name="action">select-folder</property>
+                <property name="preview_widget_active">False</property>
+                <property name="local_only">False</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="title" translatable="yes">Selecting the target folder</property>
+        <property name="page_type">content</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkVBox" id="p3-l1-vbox1">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkAlignment" id="p3-l2-alignment1">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkVBox" id="p3-l3-vbox1">
+                <property name="visible">True</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="p3-l4-label1">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Which format should I use when exporting these items ?</property>
+                    <property name="wrap">True</property>
+                    <attributes>
+                      <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkTreeView" id="p3-ExportFormatTreeView">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="headers_visible">False</property>
                     <property name="rules_hint">True</property>
+                    <property name="show_expanders">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="title" translatable="yes">Selecting the export format</property>
+        <property name="page_type">content</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkVBox" id="p4-l1-vbox1">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkAlignment" id="p4-l2-alignment1">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkScrolledWindow" id="p4-l3-scrolledwindow1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">automatic</property>
+                <property name="vscrollbar_policy">automatic</property>
+                <child>
+                  <object class="GtkViewport" id="p4-l4-viewport1">
+                    <property name="visible">True</property>
+                    <property name="shadow_type">GTK_SHADOW_NONE</property>
+                    <child>
+                      <object class="GtkVBox" id="p4-ConfirmVBox">
+                        <property name="visible">True</property>
+                        <property name="spacing">15</property>
+                        <child>
+                          <object class="GtkVBox" id="p4-l6-vbox1">
+                            <property name="visible">True</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel" id="p4-l7-label1">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">About to export selected items:</property>
+                                <attributes>
+                                  <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="p4-ConfirmItemsList">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="xpad">15</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkVBox" id="p4-l5-vbox2">
+                            <property name="visible">True</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel" id="p4-l6-label2">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="wrap">True</property>
+                                <property name="label" translatable="yes">Into the destination folder:</property>
+                                <attributes>
+                                  <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="p4-ConfirmTargetFolder">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="xpad">15</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkVBox" id="p4-l5-vbox3">
+                            <property name="visible">True</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel" id="p4-ConfirmExportFormat">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="wrap">True</property>
+                                <attributes>
+                                  <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="p4-ConfirmExportTooltip">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="xpad">15</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
             </child>
-          </object>
-          <packing>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label2">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">Please select one or more actions
-to be exported.
-
-You may use Ctrl and Shift keys
-to extend a selection.</property>
-          </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="title">Selecting the exported actions</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkHBox" id="hbox2">
-        <property name="visible">True</property>
-        <child>
-          <object class="GtkFileChooserWidget" id="ExportFolderChooser">
-            <property name="visible">True</property>
-            <property name="local_only">False</property>
-            <property name="preview_widget_active">False</property>
-            <property name="action">select-folder</property>
-            <property name="use_preview_label">False</property>
-          </object>
-          <packing>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="title">Selecting the target folder</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkVBox" id="vbox1">
-        <property name="visible">True</property>
-        <property name="border_width">10</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">10</property>
-        <child>
-          <object class="GtkVBox" id="vbox2">
-            <property name="visible">True</property>
-            <property name="orientation">vertical</property>
-            <property name="spacing">10</property>
-            <child>
-              <object class="GtkLabel" id="label1">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="ypad">10</property>
-                <property name="label" translatable="yes">&lt;b&gt;Which format should I use when exporting these items ?&lt;/b&gt;</property>
-                <property name="use_markup">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkVBox" id="AssistantExportFormatVBox">
-                <property name="visible">True</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">10</property>
-              </object>
-              <packing>
-                <property name="position">2</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
-      <packing>
-        <property name="title">Selecting the export format</property>
-      </packing>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <object class="GtkVBox" id="vbox3">
-        <property name="visible">True</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkLabel" id="AssistantExportConfirmLabel">
-            <property name="visible">True</property>
-            <property name="xalign">0</property>
-            <property name="xpad">20</property>
-            <property name="use_markup">True</property>
           </object>
           <packing>
             <property name="position">0</property>
@@ -177,28 +310,50 @@ to extend a selection.</property>
       </packing>
     </child>
     <child>
-      <placeholder/>
-    </child>
-    <child>
-      <object class="GtkVBox" id="vbox4">
+      <object class="GtkVBox" id="p5-l1-vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="AssistantExportSummaryLabel">
+          <object class="GtkAlignment" id="p5-l2-alignment1">
             <property name="visible">True</property>
-            <property name="use_markup">True</property>
-            <property name="xalign">0</property>
-            <property name="xpad">20</property>
+            <child>
+              <object class="GtkScrolledWindow" id="p5-l3-scrolledwindow1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">automatic</property>
+                <property name="vscrollbar_policy">automatic</property>
+                <child>
+                  <object class="GtkViewport" id="p5-l4-viewport1">
+                    <property name="visible">True</property>
+                    <property name="shadow_type">GTK_SHADOW_NONE</property>
+                    <child>
+                      <object class="GtkVBox" id="p5-SummaryVBox">
+                        <property name="visible">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">8</property>
+                        <child>
+                          <object class="GtkLabel" id="p5-l6-label1">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">Selected items have been proceeded:</property>
+                            <attributes>
+                              <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="position">0</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
       <packing>
@@ -214,20 +369,17 @@ to extend a selection.</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
           <object class="GtkVBox" id="vbox37">
             <property name="visible">True</property>
-            <property name="orientation">vertical</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkVBox" id="vbox39">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel" id="ExportAskLabel1">
+                  <object class="GtkLabel" id="ExportAskLabel">
                     <property name="visible">True</property>
                     <property name="xalign">0</property>
                     <property name="xpad">6</property>
@@ -243,6 +395,7 @@ to extend a selection.</property>
                     <property name="xalign">0</property>
                     <property name="xpad">6</property>
                     <property name="label" translatable="yes">Which format should I choose to export it ?</property>
+                    <property name="wrap">True</property>
                   </object>
                   <packing>
                     <property name="position">1</property>
@@ -257,15 +410,11 @@ to extend a selection.</property>
             <child>
               <object class="GtkVBox" id="ExportFormatAskVBox">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="position">1</property>
               </packing>
-            </child>
-            <child>
-              <placeholder/>
             </child>
             <child>
               <object class="GtkHSeparator" id="hseparator1">
@@ -279,7 +428,6 @@ to extend a selection.</property>
             <child>
               <object class="GtkVBox" id="vbox40">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkCheckButton" id="AskKeepChoiceButton">
                     <property name="label" translatable="yes">Re_member my choice in future export operations</property>

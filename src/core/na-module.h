@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu modules.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -31,9 +30,8 @@
 #ifndef __CORE_NA_MODULE_H__
 #define __CORE_NA_MODULE_H__
 
-/**
- * SECTION: na_module
- * @short_description: #NAModule class definition.
+/* @title: NAModule
+ * @short_description: The #NAModule Class Definition
  * @include: core/na-module.h
  *
  * The NAModule class manages Caja-Actions extensions as dynamically
@@ -69,24 +67,26 @@
 
 G_BEGIN_DECLS
 
-#define NA_MODULE_TYPE					( na_module_get_type())
-#define NA_MODULE( object )				( G_TYPE_CHECK_INSTANCE_CAST( object, NA_MODULE_TYPE, NAModule ))
-#define NA_MODULE_CLASS( klass )		( G_TYPE_CHECK_CLASS_CAST( klass, NA_MODULE_TYPE, NAModuleClass ))
-#define NA_IS_MODULE( object )			( G_TYPE_CHECK_INSTANCE_TYPE( object, NA_MODULE_TYPE ))
-#define NA_IS_MODULE_CLASS( klass )		( G_TYPE_CHECK_CLASS_TYPE(( klass ), NA_MODULE_TYPE ))
-#define NA_MODULE_GET_CLASS( object )	( G_TYPE_INSTANCE_GET_CLASS(( object ), NA_MODULE_TYPE, NAModuleClass ))
+#define NA_TYPE_MODULE                ( na_module_get_type())
+#define NA_MODULE( object )           ( G_TYPE_CHECK_INSTANCE_CAST( object, NA_TYPE_MODULE, NAModule ))
+#define NA_MODULE_CLASS( klass )      ( G_TYPE_CHECK_CLASS_CAST( klass, NA_TYPE_MODULE, NAModuleClass ))
+#define NA_IS_MODULE( object )        ( G_TYPE_CHECK_INSTANCE_TYPE( object, NA_TYPE_MODULE ))
+#define NA_IS_MODULE_CLASS( klass )   ( G_TYPE_CHECK_CLASS_TYPE(( klass ), NA_TYPE_MODULE ))
+#define NA_MODULE_GET_CLASS( object ) ( G_TYPE_INSTANCE_GET_CLASS(( object ), NA_TYPE_MODULE, NAModuleClass ))
 
-typedef struct NAModulePrivate      NAModulePrivate;
+typedef struct _NAModulePrivate       NAModulePrivate;
 
 typedef struct {
+	/*< private >*/
 	GTypeModule      parent;
 	NAModulePrivate *private;
 }
 	NAModule;
 
-typedef struct NAModuleClassPrivate NAModuleClassPrivate;
+typedef struct _NAModuleClassPrivate  NAModuleClassPrivate;
 
 typedef struct {
+	/*< private >*/
 	GTypeModuleClass      parent;
 	NAModuleClassPrivate *private;
 }

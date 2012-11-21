@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -36,12 +35,11 @@
 
 /* private interface data
  */
-struct NAIExporterInterfacePrivate {
+struct _NAIExporterInterfacePrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
-gboolean iexporter_initialized = FALSE;
-gboolean iexporter_finalized   = FALSE;
+static guint st_initializations = 0;	/* interface initialization count */
 
 static GType register_type( void );
 static void  interface_base_init( NAIExporterInterface *klass );
@@ -103,7 +101,7 @@ interface_base_init( NAIExporterInterface *klass )
 {
 	static const gchar *thisfn = "na_iexporter_interface_base_init";
 
-	if( !iexporter_initialized ){
+	if( !st_initializations ){
 
 		g_debug( "%s: klass%p (%s)", thisfn, ( void * ) klass, G_OBJECT_CLASS_NAME( klass ));
 
@@ -114,9 +112,9 @@ interface_base_init( NAIExporterInterface *klass )
 		klass->get_formats = NULL;
 		klass->to_file = NULL;
 		klass->to_buffer = NULL;
-
-		iexporter_initialized = TRUE;
 	}
+
+	st_initializations += 1;
 }
 
 static void
@@ -124,11 +122,11 @@ interface_base_finalize( NAIExporterInterface *klass )
 {
 	static const gchar *thisfn = "na_iexporter_interface_base_finalize";
 
-	if( iexporter_initialized && !iexporter_finalized ){
+	st_initializations -= 1;
+
+	if( !st_initializations ){
 
 		g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
-
-		iexporter_finalized = TRUE;
 
 		g_free( klass->private );
 	}

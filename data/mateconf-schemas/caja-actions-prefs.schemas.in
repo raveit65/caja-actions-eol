@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mateconfschemafile>
+  <schemalist>
+
+    <!-- schemas for preferences -->
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/assistant-esc-confirm</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Ask for a confirmation when quitting by Esc</short>
+        <long>If TRUE, a confirmation will be requested when quitting an assistant by hitting the Esc key.</long>
+      </locale>
+      <default>true</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/assistant-esc-quit</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Whether the Esc key should close the assistants</short>
+        <long>If TRUE, assistant may be closed by hitting the Esc key.</long>
+      </locale>
+      <default>true</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/auto-save-on</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Whether the auto-save feature should be activated</short>
+        <long>If TRUE, the pending modifications will be periodically and automatically saved.</long>
+      </locale>
+      <default>false</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/auto-save-period</key>
+      <owner>caja-actions</owner>
+      <type>int</type>
+      <locale name="C">
+        <short>Periodicity of the auto-save</short>
+        <long>Defines the periodicity in minutes of the automatic save.</long>
+      </locale>
+      <default>5</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/export-assistant</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>int</list_type>
+      <locale name="C">
+        <short>Position and size of the export assistant window</short>
+        <long>Position and size of the export assistant window ; default is set by the window manager.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/export-folder-uri</key>
+      <owner>caja-actions</owner>
+      <type>string</type>
+      <locale name="C">
+        <short>Last selected folder</short>
+        <long>Last folder selected when choosing a folder where to export the actions.</long>
+      </locale>
+      <default>/tmp</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/export-format</key>
+      <owner>caja-actions</owner>
+      <type>string</type>
+      <locale name="C">
+        <short>Preferred export format</short>
+        <long>This is the preferred export format, used as a default when exporting items, or dropping them outside of the application.
+Possible values are:
+- "MateConfSchemaV1": this used to be the historical export format. The exported file may later be imported via Import assistant of the Caja-Actions Configuration Tool, or via the mateconftool-2 --import-schema-file command-line tool.
+- "MateConfSchemaV2": a lighter while still compatible schema. The exported file may later be imported via Import assistant of the Caja-Actions Configuration Tool, or via the mateconftool-2 --import-schema-file command-line tool.
+- "MateConfEntry": this should be the preferred format for newly exported actions. The exported file may later be imported via Import assistant of the Caja-Actions Configuration Tool, or via the mateconftool-2 --load command-line tool.
+- "Ask": the user will be asked at runtime for the format he wishes use.</long>
+      </locale>
+      <default>/tmp</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/icommand-command-chooser</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>int</list_type>
+      <locale name="C">
+        <short>Position and size of the command chooser window</short>
+        <long>Position and size of the command chooser window in the Command tab ; default is set by the window manager.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/icommand-folder-uri</key>
+      <owner>caja-actions</owner>
+      <type>string</type>
+      <locale name="C">
+        <short>Last selected folder</short>
+        <long>Last folder selected when browsing for a command in the Command tab.</long>
+      </locale>
+      <default>/bin</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/icommand-legend-dialog</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>int</list_type>
+      <locale name="C">
+        <short>Position and size of the Legend dialog</short>
+        <long>Position and size of the Legend dialog ; default is set by the UI manager.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/ifolders-chooser</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>int</list_type>
+      <locale name="C">
+        <short>Position and size of the URI chooser window</short>
+        <long>Position and size of the URI  chooser window in the Folders tab ; default is set by the window manager.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/ifolders-uri</key>
+      <owner>caja-actions</owner>
+      <type>string</type>
+      <locale name="C">
+        <short>Last selected folder</short>
+        <long>Last folder selected when browsing for an URI in the Folders tab.</long>
+      </locale>
+      <default>/bin</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/import-ask-user</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>int</list_type>
+      <locale name="C">
+        <short>Position and size of the interaction dialog at import time</short>
+        <long>Position and size of the interaction dialog at import time ; default is set by the window manager.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/import-ask-user-last-mode</key>
+      <owner>caja-actions</owner>
+      <type>string</type>
+      <locale name="C">
+        <short>Last import mode chosen by the user</short>
+        <long>Last import mode chosen by the user when he is asked for in import mode. Possible values are:
+- "NoImport": do not import an action whose UUID already exists,
+- "Renumber": allocate a new UUID if the imported UUID already exists,
+- "Override": override the existing action with the imported one.</long>
+      </locale>
+      <default>NoImport</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/import-assistant</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>int</list_type>
+      <locale name="C">
+        <short>Position and size of the import assistant window</short>
+        <long>Position and size of the import assistant window ; default is set by the window manager.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/import-folder-uri</key>
+      <owner>caja-actions</owner>
+      <type>string</type>
+      <locale name="C">
+        <short>Last selected folder</short>
+        <long>Last folder selected when choosing a folder from where import new actions.</long>
+      </locale>
+      <default>/tmp</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/import-keep-choicee</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Keep last chosen import mode</short>
+        <long>Whether the import system should reuse the last chosen import mode.</long>
+      </locale>
+      <default>false</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/import-mode</key>
+      <owner>caja-actions</owner>
+      <type>string</type>
+      <locale name="C">
+        <short>Import mode</short>
+        <long>Last import mode chosen in the Import assistant. Possible values are :
+- "NoImport": do not import an action whose UUID already exists,
+- "Renumber": allocate a new UUID if the imported UUID already exists,
+- "Override": override the existing action with the imported one,
+- "Ask": ask the user each time.</long>
+      </locale>
+      <default>NoImport</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/io-providers-order</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>string</list_type>
+      <locale name="C">
+        <short>I/O providers Write priority</short>
+        <long>The order in which I/O providers are tested when we need to write a new item down to a storage subsystem.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/iprefs-add-about-item</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Add an 'About' item in the Caja context menu</short>
+        <long>If TRUE, and if the user has defined a single root menu for its actions, then an 'About Caja-Actions' will be displayed at end of the first submenu.</long>
+      </locale>
+      <default>true</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/iprefs-alphabetical-order</key>
+      <owner>caja-actions</owner>
+      <type>string</type>
+      <locale name="C">
+        <short>Sort mode</short>
+        <long>This preference indicates the preferred sort mode. Possible values are :
+- "AscendingOrder": the actions are maintained in ascending alphabetical order (historical behavior).
+- "DescendingOrder": the actions are maintained in descending alphabetical order.
+- "ManualOrder": user is free to reorder them via Caja-Actions configuration tool.</long>
+      </locale>
+      <default>0</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/iprefs-create-root-menu</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Define a 'Caja-Actions actions' root menu</short>
+        <long>If TRUE, then a 'Caja-Actions actions' item will be defined in the Caja context menu, and will be the root menu of all available actions.</long>
+      </locale>
+      <default>true</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/iprefs-level-zero</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>string</list_type>
+      <locale name="C">
+        <short>List of items at first level of the hierarchy</short>
+        <long>UUID of the items at the first level of the hierarchy. If this key is not found or empty, then all found items are considered as a flat list.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/iprefs-relabel-actions</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Whether actions should be relabeled when pasted or duplicated</short>
+        <long>Whether actions should be relabeled when pasted or duplicated.</long>
+      </locale>
+      <default>true</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/iprefs-relabel-menus</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Whether menus should be relabeled when pasted or duplicated</short>
+        <long>Whether menus should be relabeled when pasted or duplicated.</long>
+      </locale>
+      <default>true</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/iprefs-relabel-profiles</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Whether profiles should be relabeled when pasted or duplicated</short>
+        <long>Whether profiles should be relabeled when pasted or duplicated.</long>
+      </locale>
+      <default>true</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/main-edit-toolbar</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Display Edit toolbar</short>
+        <long>Whether to display or not the Edit toolbar in the main window.</long>
+      </locale>
+      <default>false</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/main-file-toolbar</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Display File toolbar</short>
+        <long>Whether to display or not the File toolbar in the main window.</long>
+      </locale>
+      <default>true</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/main-help-toolbar</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Display Help toolbar</short>
+        <long>Whether to display or not the Help toolbar in the main window.</long>
+      </locale>
+      <default>false</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/main-paned</key>
+      <owner>caja-actions</owner>
+      <type>int</type>
+      <locale name="C">
+        <short>Main pane position</short>
+        <long>Width of the main window pane ; default is set by the UI manager.</long>
+      </locale>
+      <default>100</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/main-tools-toolbar</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Display Tools toolbar</short>
+        <long>Whether to display or not the Tools toolbar in the main window.</long>
+      </locale>
+      <default>false</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/main-window</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>int</list_type>
+      <locale name="C">
+        <short>Position and size of the main window</short>
+        <long>Position and size of the main window ; default is set by the window manager.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/preferences-editor</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>int</list_type>
+      <locale name="C">
+        <short>Position and size of the preferences dialog</short>
+        <long>Position and size of the preferences dialog ; default is set by the window manager.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/preferences/schemes</key>
+      <owner>caja-actions</owner>
+      <type>list</type>
+      <list_type>string</list_type>
+      <locale name="C">
+        <short>List of default schemes</short>
+        <long>The list of schemes proposed by default on each new profile.
+A default default list is harcoded in caja-actions-config-tool, which may be updated by the user.</long>
+      </locale>
+      <default>[]</default>
+    </schema>
+
+	<!-- sysadmin reserved keys -->
+	<!-- these keys are thought to be set as mandatory keys -->
+	<!-- each I/O provider has its own key, identified by the I/O provider internal id. -->
+
+    <schema>
+      <key>/schemas/apps/caja-actions/mandatory/all/locked</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Whether the whole configuration is locked</short>
+        <long>The whole configuration must be understood here as the global set and order of menus and actions.
+When this configuration is locked, then the user is no more able to modify nor create or delete any menu or action. All items are read-only.
+As the order of items is also locked, the level zero itself cannot be modified, and the user is unable to reorder the items.</long>
+      </locale>
+      <default>false</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/mandatory/na-mateconf/locked</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Whether the MateConf I/O provider is locked</short>
+        <long>When set to true (most probably as a mandatory key), this prevents all items, menus and actions, read from MateConf to being modified in CACT.</long>
+      </locale>
+      <default>false</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/caja-actions/mandatory/na-desktop/locked</key>
+      <owner>caja-actions</owner>
+      <type>bool</type>
+      <locale name="C">
+        <short>Whether the Desktop I/O provider is locked</short>
+        <long>When set to true (most probably as a mandatory key), this prevents all items, menus and actions, read from .desktop files to being modified in CACT.</long>
+      </locale>
+      <default>false</default>
+    </schema>
+
+  </schemalist>
+</mateconfschemafile>

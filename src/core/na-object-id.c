@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -39,13 +38,13 @@
 
 /* private class data
  */
-struct NAObjectIdClassPrivate {
+struct _NAObjectIdClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct NAObjectIdPrivate {
+struct _NAObjectIdPrivate {
 	gboolean   dispose_has_run;
 };
 
@@ -56,8 +55,6 @@ static void     class_init( NAObjectIdClass *klass );
 static void     instance_init( GTypeInstance *instance, gpointer klass );
 static void     instance_dispose( GObject *object );
 static void     instance_finalize( GObject *object );
-
-static gboolean object_is_valid( const NAObject *object );
 
 static gchar   *v_new_id( const NAObjectId *object, const NAObjectId *new_parent );
 
@@ -93,7 +90,7 @@ register_type( void )
 
 	g_debug( "%s", thisfn );
 
-	type = g_type_register_static( NA_OBJECT_TYPE, "NAObjectId", &info, 0 );
+	type = g_type_register_static( NA_TYPE_OBJECT, "NAObjectId", &info, 0 );
 
 	return( type );
 }
@@ -103,7 +100,6 @@ class_init( NAObjectIdClass *klass )
 {
 	static const gchar *thisfn = "na_object_id_class_init";
 	GObjectClass *object_class;
-	NAObjectClass *naobject_class;
 
 	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
 
@@ -113,23 +109,13 @@ class_init( NAObjectIdClass *klass )
 	object_class->dispose = instance_dispose;
 	object_class->finalize = instance_finalize;
 
-	naobject_class = NA_OBJECT_CLASS( klass );
-	naobject_class->dump = NULL;
-	naobject_class->copy = NULL;
-	naobject_class->are_equal = NULL;
-	naobject_class->is_valid = object_is_valid;
-
 	klass->private = g_new0( NAObjectIdClassPrivate, 1 );
 }
 
 static void
 instance_init( GTypeInstance *instance, gpointer klass )
 {
-	static const gchar *thisfn = "na_object_id_instance_init";
 	NAObjectId *self;
-
-	g_debug( "%s: instance=%p (%s), klass=%p",
-			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
 
 	g_return_if_fail( NA_IS_OBJECT_ID( instance ));
 
@@ -147,11 +133,8 @@ instance_init( GTypeInstance *instance, gpointer klass )
 static void
 instance_dispose( GObject *object )
 {
-	static const gchar *thisfn = "na_object_id_instance_dispose";
 	NAObjectId *self;
 	NAObjectItem *parent;
-
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 	g_return_if_fail( NA_IS_OBJECT_ID( object ));
 
@@ -162,11 +145,8 @@ instance_dispose( GObject *object )
 		self->private->dispose_has_run = TRUE;
 
 		parent = na_object_get_parent( object );
-		g_debug( "%s: parent=%p (%s)",
-				thisfn, ( void * ) parent, parent ? G_OBJECT_TYPE_NAME( parent ) : "n/a" );
 		if( parent ){
 			na_object_remove_item( parent, object );
-			na_object_set_parent( object, NULL );
 		}
 
 		self->private->dispose_has_run = TRUE;
@@ -195,26 +175,6 @@ instance_finalize( GObject *object )
 	}
 }
 
-/*
- * a NAObjectId is valid if it has a non-null id
- */
-static gboolean
-object_is_valid( const NAObject *object )
-{
-	gboolean is_valid;
-	gchar *id;
-
-	is_valid = TRUE;
-
-	if( is_valid ){
-		id = na_object_get_id( object );
-		is_valid = ( id != NULL && strlen( id ) > 0 );
-		g_free( id );
-	}
-
-	return( is_valid );
-}
-
 /**
  * na_object_id_sort_alpha_asc:
  * @a: first #NAObjectId.
@@ -223,9 +183,20 @@ object_is_valid( const NAObject *object )
  * Sort the objects in alphabetical ascending order of their label.
  *
  * Returns:
- * -1 if @a must be sorted before @b,
- *  0 if @a and @b are equal from the local point of view,
- *  1 if @a must be sorted after @b.
+ *
+ * <itemizedlist>
+ *   <listitem>
+ *     <para>-1 if @a must be sorted before @b,</para>
+ *   </listitem>
+ *   <listitem>
+ *     <para>0 if @a and @b are equal from the local point of view,</para>
+ *   </listitem>
+ *   <listitem>
+ *     <para>1 if @a must be sorted after @b.</para>
+ *   </listitem>
+ * </itemizedlist>
+ *
+ * Since: 2.30
  */
 gint
 na_object_id_sort_alpha_asc( const NAObjectId *a, const NAObjectId *b )
@@ -252,9 +223,20 @@ na_object_id_sort_alpha_asc( const NAObjectId *a, const NAObjectId *b )
  * Sort the objects in alphabetical descending order of their label.
  *
  * Returns:
- * -1 if @a must be sorted before @b,
- *  0 if @a and @b are equal from the local point of view,
- *  1 if @a must be sorted after @b.
+ *
+ * <itemizedlist>
+ *   <listitem>
+ *     <para>-1 if @a must be sorted before @b,</para>
+ *   </listitem>
+ *   <listitem>
+ *     <para>0 if @a and @b are equal from the local point of view,</para>
+ *   </listitem>
+ *   <listitem>
+ *     <para>1 if @a must be sorted after @b.</para>
+ *   </listitem>
+ * </itemizedlist>
+ *
+ * Since: 2.30
  */
 gint
 na_object_id_sort_alpha_desc( const NAObjectId *a, const NAObjectId *b )
@@ -266,7 +248,7 @@ na_object_id_sort_alpha_desc( const NAObjectId *a, const NAObjectId *b )
  * na_object_id_prepare_for_paste:
  * @object: the #NAObjectId object to be pasted.
  * @relabel: whether this object should be relabeled when pasted.
- * @relabel: whether this item should be renumbered ?
+ * @renumber: whether this item should be renumbered ?
  * @parent: the parent of @object, or %NULL.
  *
  * Prepares @object to be pasted.
@@ -275,11 +257,13 @@ na_object_id_sort_alpha_desc( const NAObjectId *a, const NAObjectId *b )
  * #NAObjectAction @action. The identifier is always renumbered to be
  * suitable with the already existing profiles.
  *
- * If a #NAObjectAction or a #NAObjectMenu, a new UUID is allocated if
- * and only if @relabel is %TRUE.
+ * If a #NAObjectAction or a #NAObjectMenu, a new identifier is allocated
+ * if and only if @relabel is %TRUE.
  *
  * Actual relabeling takes place if @relabel is %TRUE, depending of the
  * user preferences.
+ *
+ * Since: 2.30
  */
 void
 na_object_id_prepare_for_paste( NAObjectId *object, gboolean relabel, gboolean renumber, NAObjectId *parent )
@@ -287,13 +271,13 @@ na_object_id_prepare_for_paste( NAObjectId *object, gboolean relabel, gboolean r
 	static const gchar *thisfn = "na_object_id_prepare_for_paste";
 	GList *subitems, *it;
 
-	g_debug( "%s: object=%p, relabel=%s, renumber=%s, parent=%p",
-			thisfn, ( void * ) object, relabel ? "True":"False", renumber ? "True":"False", ( void * ) parent );
-
 	g_return_if_fail( NA_IS_OBJECT_ID( object ));
 	g_return_if_fail( !parent || NA_IS_OBJECT_ITEM( parent ));
 
 	if( !object->private->dispose_has_run ){
+
+		g_debug( "%s: object=%p, relabel=%s, renumber=%s, parent=%p",
+				thisfn, ( void * ) object, relabel ? "True":"False", renumber ? "True":"False", ( void * ) parent );
 
 		if( NA_IS_OBJECT_PROFILE( object )){
 			na_object_set_parent( object, parent );
@@ -309,6 +293,7 @@ na_object_id_prepare_for_paste( NAObjectId *object, gboolean relabel, gboolean r
 					na_object_set_copy_of_label( object );
 				}
 				na_object_set_provider( object, NULL );
+				na_object_set_provider_data( object, NULL );
 				na_object_set_readonly( object, FALSE );
 			}
 			if( NA_IS_OBJECT_MENU( object )){
@@ -326,6 +311,8 @@ na_object_id_prepare_for_paste( NAObjectId *object, gboolean relabel, gboolean r
  * @object: the #NAObjectId object whose label is to be changed.
  *
  * Sets the 'Copy of' label.
+ *
+ * Since: 2.30
  */
 void
 na_object_id_set_copy_of_label( NAObjectId *object )
@@ -350,24 +337,31 @@ na_object_id_set_copy_of_label( NAObjectId *object )
 
 /**
  * na_object_id_set_new_id:
- * @object: the #NAObjectId object whose internal identifiant is to be
+ * @object: the #NAObjectId object whose internal identifier is to be
  * set.
  * @new_parent: if @object is a #NAObjectProfile, then @new_parent
- * should be set to the #NAObjectActio new parent. Else, it would not
+ * should be set to the #NAObjectAction new parent. Else, it would not
  * be possible to allocate a new profile id compatible with already
  * existing ones.
  *
  * Request a new id to the derived class, and set it.
+ *
+ * Since: 2.30
  */
 void
 na_object_id_set_new_id( NAObjectId *object, const NAObjectId *new_parent )
 {
+	static const gchar *thisfn = "na_object_id_set_new_id";
 	gchar *id;
 
 	g_return_if_fail( NA_IS_OBJECT_ID( object ));
-	g_return_if_fail( !new_parent || NA_IS_OBJECT_ID( new_parent ));
+	g_return_if_fail( !new_parent || NA_IS_OBJECT_ITEM( new_parent ));
 
 	if( !object->private->dispose_has_run ){
+
+		g_debug( "%s: object=%p (%s), new_parent=%p (%s)",
+				thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ),
+				( void * ) new_parent, new_parent ? G_OBJECT_TYPE_NAME( new_parent ) : "n/a" );
 
 		id = v_new_id( object, new_parent );
 
@@ -381,27 +375,11 @@ na_object_id_set_new_id( NAObjectId *object, const NAObjectId *new_parent )
 static gchar *
 v_new_id( const NAObjectId *object, const NAObjectId *new_parent )
 {
-	gchar *new_id;
-	GList *hierarchy, *ih;
-	gboolean found;
+	gchar *new_id = NULL;
 
-	found = FALSE;
-	new_id = NULL;
-	hierarchy = g_list_reverse( na_object_get_hierarchy( NA_OBJECT( object )));
-	/*g_debug( "na_object_id_most_derived_id: object=%p (%s)",
-					( void * ) object, G_OBJECT_TYPE_NAME( object ));*/
-
-	for( ih = hierarchy ; ih && !found ; ih = ih->next ){
-		if( NA_OBJECT_ID_CLASS( ih->data )->new_id ){
-			new_id = NA_OBJECT_ID_CLASS( ih->data )->new_id( object, new_parent );
-			found = TRUE;
-		}
-		if( G_OBJECT_CLASS_TYPE( ih->data ) == NA_OBJECT_ID_TYPE ){
-			break;
-		}
+	if( NA_OBJECT_ID_GET_CLASS( object )->new_id ){
+		new_id = NA_OBJECT_ID_GET_CLASS( object )->new_id( object, new_parent );
 	}
-
-	na_object_free_hierarchy( hierarchy );
 
 	return( new_id );
 }

@@ -1,3 +1,30 @@
+# Caja-Actions
+# A Caja extension which offers configurable context menu actions.
+#
+# Copyright (C) 2005 The MATE Foundation
+# Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+# Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
+#
+# Caja-Actions is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General  Public  License  as
+# published by the Free Software Foundation; either  version  2  of
+# the License, or (at your option) any later version.
+#
+# Caja-Actions is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public  License
+# along with Caja-Actions; see the file  COPYING.  If  not,  see
+# <http://www.gnu.org/licenses/>.
+#
+# Authors:
+#   Frederic Ruaudel <grumz@grumz.net>
+#   Rodrigo Moya <rodrigo@mate-db.org>
+#   Pierre Wieser <pwieser@trychlos.org>
+#   ... and many others (see AUTHORS)
+
 dnl MATE_COMPILE_WARNINGS
 dnl Turn on many useful compiler warnings
 dnl For now, only works on GCC
@@ -154,4 +181,26 @@ AC_DEFUN([MATE_CXX_WARNINGS],[
 
   WARN_CXXFLAGS="$CXXFLAGS $warnCXXFLAGS $complCXXFLAGS"
   AC_SUBST(WARN_CXXFLAGS)
+])
+
+dnl Bug #637797 
+dnl see also http://www.gentoo.org/proj/en/qa/asneeded.xml
+dnl the '-Wl,--as-needed' link option is forced in make distcheck
+
+AC_DEFUN([NA_LINK_AS_NEEDED],[
+	AC_ARG_ENABLE(
+		[as-needed],
+		AC_HELP_STRING(
+			[--enable-as-needed],
+			[Enable '-Wl,--as-needed' link option @<:@no@:>@]
+		),
+		[enable_as_needed=$enableval],
+		[enable_as_needed=no])
+
+	AC_MSG_CHECKING([whether to only link with needed libraries])
+	AC_MSG_RESULT([$enable_as_needed])
+
+	if test "x${enable_as_needed}" = "xyes"; then
+		AC_SUBST([AM_LDFLAGS],["${AM_LDFLAGS} -Wl,--as-needed"])
+	fi
 ])

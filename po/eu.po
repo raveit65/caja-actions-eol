@@ -1,14 +1,14 @@
-# translation of eu.po to Basque
+# translation of eu_to_be_translate.po to Basque
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2009, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: eu\n"
+"Project-Id-Version: eu_to_be_translate\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-19 17:30+0100\n"
-"PO-Revision-Date: 2010-03-20 16:39+0100\n"
+"POT-Creation-Date: 2010-12-01 18:48+0100\n"
+"PO-Revision-Date: 2010-12-02 22:35+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,47 +17,51 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../data/caja-actions-prefs.schemas.in.h:1
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:1
 msgid "Add an 'About' item in the Caja context menu"
 msgstr "Gehitu 'Honi buruz' elementua Caja-en testuinguruko menuari"
 
-#: ../data/caja-actions-prefs.schemas.in.h:2
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:2
 msgid "Ask for a confirmation when quitting by Esc"
 msgstr "Eskatu berrespena Ihes teklarekin irtetzean"
 
-#: ../data/caja-actions-prefs.schemas.in.h:3
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:3
 msgid "Define a 'Caja Actions' root menu"
 msgstr "Definitu 'Caja-eko ekintzak' erroko menua"
 
-#: ../data/caja-actions-prefs.schemas.in.h:4
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:4
+msgid "Defines the periodicity in minutes of the automatic save."
+msgstr "Automatikoki gordetzeko maiztasuna definitzen du minututan."
+
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:5
 msgid "Display Edit toolbar"
 msgstr "Bistaratu 'Editatu' tresna-barra"
 
-#: ../data/caja-actions-prefs.schemas.in.h:5
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:6
 msgid "Display File toolbar"
 msgstr "Bistaratu 'Fitxategia' tresna-barra"
 
-#: ../data/caja-actions-prefs.schemas.in.h:6
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:7
 msgid "Display Help toolbar"
 msgstr "Bistaratu 'Laguntza' tresna-barra"
 
-#: ../data/caja-actions-prefs.schemas.in.h:7
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:8
 msgid "Display Tools toolbar"
 msgstr "Bistaratu 'Tresnak' tresna-barra"
 
-#: ../data/caja-actions-prefs.schemas.in.h:8
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:9
 msgid "I/O providers Write priority"
 msgstr "S/Iko hornitzaileen idazketa-lehentasuna"
 
-#: ../data/caja-actions-prefs.schemas.in.h:9
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:10
 msgid ""
 "If TRUE, a confirmation will be requested when quitting an assistant by "
 "hitting the Esc key."
 msgstr ""
-"TRUE (egia) bada, berrespena eskatuko da Ihes tekla sakatuz laguntzaile batetik "
-"irtetzean."
+"TRUE (egia) bada, berrespena eskatuko da Ihes tekla sakatuz laguntzaile "
+"batetik irtetzean."
 
-#: ../data/caja-actions-prefs.schemas.in.h:10
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:11
 msgid ""
 "If TRUE, and if the user has defined a single root menu for its actions, "
 "then an 'About Caja Actions' will be displayed at end of the first "
@@ -67,44 +71,61 @@ msgstr ""
 "badu bere ekintzentzako, 'Caja Ekintzei Buruz' bat bistaratuko da "
 "aurreneko azpimenuaren amaieran."
 
-#: ../data/caja-actions-prefs.schemas.in.h:11
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:12
 msgid "If TRUE, assistant may be closed by hitting the Esc key."
 msgstr "TRUE (egia) bada, laguntzailea itxi egingo da Ihes tekla sakatzean."
 
-#: ../data/caja-actions-prefs.schemas.in.h:12
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:13
+msgid ""
+"If TRUE, the pending modifications will be periodically and automatically "
+"saved."
+msgstr "TRUE (egia) bada, aldaketak aldiro eta automatikoki gordeko dira,"
+
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:14
 msgid ""
 "If TRUE, then a 'Caja Actions' item will be defined in the Caja "
 "context menu, and will a root menu of all available actions."
 msgstr ""
 "TRUE (egia) bada, 'Caja-eko ekintzak' elementu bat definituko da "
-"Caja-eko testuinguruko menuan, eta erroko menu bat izango da "
-"ekintza erabilgarri guztientzako."
+"Caja-eko testuinguruko menuan, eta erroko menu bat izango da ekintza "
+"erabilgarri guztientzako."
 
-#: ../data/caja-actions-prefs.schemas.in.h:13
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:15
 msgid "Import mode"
 msgstr "Inportatze-modua"
 
-#: ../data/caja-actions-prefs.schemas.in.h:14
-msgid "Last folder selected when browsing for a command in the Command tab."
-msgstr "Hautatutako azken karpeta komando baten bila arakatzean Komandoak fitxan."
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:16
+msgid "Keep last choosen import mode"
+msgstr "Mantendu aukeratutako azken inportatzeko modua"
 
-#: ../data/caja-actions-prefs.schemas.in.h:15
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:17
+msgid "Last folder selected when browsing for a command in the Command tab."
+msgstr ""
+"Hautatutako azken karpeta komando baten bila arakatzean Komandoak fitxan."
+
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:18
 msgid "Last folder selected when browsing for an URI in the Folders tab."
 msgstr "Hautatutako azken karpeta URI baten bila arakatzean Karpetak fitxan."
 
-#: ../data/caja-actions-prefs.schemas.in.h:16
-msgid "Last folder selected when choosing a folder from where import new actions."
-msgstr "Hautatutako azken karpeta ekintza berriak inportatuko diren karpeta bat aukeratzean."
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:19
+msgid ""
+"Last folder selected when choosing a folder from where import new actions."
+msgstr ""
+"Hautatutako azken karpeta ekintza berriak inportatuko diren karpeta bat "
+"aukeratzean."
 
-#: ../data/caja-actions-prefs.schemas.in.h:17
-msgid "Last folder selected when choosing a folder where to export the actions."
-msgstr "Hautatutako azken karpeta ekintzak zein karpetara esportatuko diren aukeratzean."
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:20
+msgid ""
+"Last folder selected when choosing a folder where to export the actions."
+msgstr ""
+"Hautatutako azken karpeta ekintzak zein karpetara esportatuko diren "
+"aukeratzean."
 
-#: ../data/caja-actions-prefs.schemas.in.h:18
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:21
 msgid "Last import mode choosen by the user"
 msgstr "Erabiltzaileak aukeratutako azken inportatze-modua"
 
-#: ../data/caja-actions-prefs.schemas.in.h:19
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:22
 msgid ""
 "Last import mode choosen by the user when he is asked for in import mode. "
 "Possible values are: - \"NoImport\": do not import an action whose UUID "
@@ -113,12 +134,12 @@ msgid ""
 "imported one."
 msgstr ""
 "Erabiltzaileak aukeratutako azken inportatze-modua sarrerako modu bategatik "
-"galdetzen zaionean. Balio erabilgarriak: - \"NoImport\": ez inportatu ekintza bat "
-"bere UUIDa jadanik existitzen bada; - \"Renumber\": esleitu UUID berria inportatutako "
-"UUIDa jadanik existizen bada; - \"Override\": gainidatzi existitzen den "
-"ekintza inportatutakoarekin."
+"galdetzen zaionean. Balio erabilgarriak: - \"NoImport\": ez inportatu "
+"ekintza bat bere UUIDa jadanik existitzen bada; - \"Renumber\": esleitu UUID "
+"berria inportatutako UUIDa jadanik existizen bada; - \"Override\": "
+"gainidatzi existitzen den ekintza inportatutakoarekin."
 
-#: ../data/caja-actions-prefs.schemas.in.h:20
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:23
 msgid ""
 "Last import mode choosen in the Import assistant. Possible values are : - "
 "\"NoImport\": do not import an action whose UUID already exists, - \"Renumber"
@@ -126,111 +147,121 @@ msgid ""
 "override the existing action with the imported one, - \"Ask\": ask the user "
 "each time."
 msgstr ""
-"Inportatzeko laguntzailean aukeratutako azken inportatze-modua . "
-"Balio erabilgarriak: - \"NoImport\": ez inportatu ekintza bat "
-"bere UUIDa jadanik existitzen bada; - \"Renumber\": esleitu UUID berria inportatutako "
-"UUIDa jadanik existizen bada; - \"Override\": gainidatzi existitzen den "
-"ekintza inportatutakoarekin: - \"Ask\": galdetu erabiltzaileari aldi bakoitzean."
+"Inportatzeko laguntzailean aukeratutako azken inportatze-modua . Balio "
+"erabilgarriak: - \"NoImport\": ez inportatu ekintza bat bere UUIDa jadanik "
+"existitzen bada; - \"Renumber\": esleitu UUID berria inportatutako UUIDa "
+"jadanik existizen bada; - \"Override\": gainidatzi existitzen den ekintza "
+"inportatutakoarekin: - \"Ask\": galdetu erabiltzaileari aldi bakoitzean."
 
-#: ../data/caja-actions-prefs.schemas.in.h:21
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:24
 msgid "Last selected folder"
 msgstr "Hautatutako azken karpeta"
 
-#: ../data/caja-actions-prefs.schemas.in.h:22
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:25
 msgid "List of default schemes"
 msgstr "Eskema lehenetsien zerrenda"
 
-#: ../data/caja-actions-prefs.schemas.in.h:23
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:26
 msgid "List of items at first level of the hierarchy"
 msgstr "Hierarkiaren aurreneko mailako elementuen zerrenda"
 
-#: ../data/caja-actions-prefs.schemas.in.h:24
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:27
 msgid "Main pane position"
 msgstr "Panel nagusiaren posizioa"
 
-#: ../data/caja-actions-prefs.schemas.in.h:25
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:28
+msgid "Periodicity of the auto-save"
+msgstr "Automatikoki gordetzeko maiztasuna"
+
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:29
 msgid "Position and size of the Legend dialog"
 msgstr "Legenda elkarrizketa-koadroaren posizioa eta tamaina"
 
-#: ../data/caja-actions-prefs.schemas.in.h:26
-msgid "Position and size of the Legend dialog ; default is set by the UI manager."
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:30
+msgid ""
+"Position and size of the Legend dialog ; default is set by the UI manager."
 msgstr ""
 "Legenda elkarrizketa-koadroaren posizioa eta tamaina. UI kudeatzaileak "
 "ezartzen du lehenetsia."
 
-#: ../data/caja-actions-prefs.schemas.in.h:27
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:31
 msgid "Position and size of the URI chooser window"
 msgstr "URIak aukeratzeko leihoaren posizioa eta tamaina"
 
-#: ../data/caja-actions-prefs.schemas.in.h:28
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:32
 msgid ""
 "Position and size of the URI chooser window in the Folders tab ; default is "
 "set by the window manager."
 msgstr ""
-"URIak aukeratzeko leihoaren posizioa eta tamaina Karpetak fitxan. "
-"Leiho-kudeatzaileak ezartzen du lehenetsia."
+"URIak aukeratzeko leihoaren posizioa eta tamaina Karpetak fitxan. Leiho-"
+"kudeatzaileak ezartzen du lehenetsia."
 
-#: ../data/caja-actions-prefs.schemas.in.h:29
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:33
 msgid "Position and size of the command chooser window"
 msgstr "Komandoak aukeratzeko leihoaren posizioa eta tamaina"
 
-#: ../data/caja-actions-prefs.schemas.in.h:30
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:34
 msgid ""
 "Position and size of the command chooser window in the Command tab ; default "
 "is set by the window manager."
 msgstr ""
-"Komandoak aukeratzeko leihoaren posizioa eta tamaina Komandoak fitxan. "
-"Leiho-kudeatzaileak ezartzen du lehenetsia."
+"Komandoak aukeratzeko leihoaren posizioa eta tamaina Komandoak fitxan. Leiho-"
+"kudeatzaileak ezartzen du lehenetsia."
 
-#: ../data/caja-actions-prefs.schemas.in.h:31
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:35
 msgid "Position and size of the export assistant window"
 msgstr "Esportatzeko morroiaren leihoaren posizioa eta tamaina"
 
-#: ../data/caja-actions-prefs.schemas.in.h:32
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:36
 msgid ""
 "Position and size of the export assistant window ; default is set by the "
 "window manager."
 msgstr ""
-"Esportatzeko laguntzailearen leihoaren posizioa eta tamaina. Leiho-kudeatzaileak "
-"ezartzen du lehenetsia."
+"Esportatzeko laguntzailearen leihoaren posizioa eta tamaina. Leiho-"
+"kudeatzaileak ezartzen du lehenetsia."
 
-#: ../data/caja-actions-prefs.schemas.in.h:33
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:37
 msgid "Position and size of the import assistant window"
 msgstr "Inportatzeko morroiaren leihoaren posizioa eta tamaina"
 
-#: ../data/caja-actions-prefs.schemas.in.h:34
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:38
 msgid ""
 "Position and size of the import assistant window ; default is set by the "
 "window manager."
 msgstr ""
-"Inportatzeko laguntzailearen leihoaren posizioa eta tamaina. Leiho-kudeatzaileak "
-"ezartzen du lehenetsia."
+"Inportatzeko laguntzailearen leihoaren posizioa eta tamaina. Leiho-"
+"kudeatzaileak ezartzen du lehenetsia."
 
-#: ../data/caja-actions-prefs.schemas.in.h:35
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:39
 msgid "Position and size of the interaction dialog at import time"
-msgstr "Elkarreraginaren elkarrizketa-koadroaren posizioa eta tamaina inportatzeko orduan"
+msgstr ""
+"Elkarreraginaren elkarrizketa-koadroaren posizioa eta tamaina inportatzeko "
+"orduan"
 
-#: ../data/caja-actions-prefs.schemas.in.h:36
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:40
 msgid ""
 "Position and size of the interaction dialog at import time ; default is set "
 "by the window manager."
-msgstr "Elkarreraginaren elkarrizketa-koadroaren posizioa eta tamaina inportatzeko orduan. Leiho-kudeatzaileak ezartzen du lehenetsia."
+msgstr ""
+"Elkarreraginaren elkarrizketa-koadroaren posizioa eta tamaina inportatzeko "
+"orduan. Leiho-kudeatzaileak ezartzen du lehenetsia."
 
-#: ../data/caja-actions-prefs.schemas.in.h:37
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:41
 msgid "Position and size of the main window"
 msgstr "Leiho nagusiaren posizioa eta tamaina"
 
-#: ../data/caja-actions-prefs.schemas.in.h:38
-msgid "Position and size of the main window ; default is set by the window manager."
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:42
+msgid ""
+"Position and size of the main window ; default is set by the window manager."
 msgstr ""
 "Leiho nagusiaren posizioa eta tamaina. Leiho-kudeatzaileak ezartzen du "
 "lehenetsia."
 
-#: ../data/caja-actions-prefs.schemas.in.h:39
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:43
 msgid "Position and size of the preferences dialog"
 msgstr "Hobespenak elkarrizketa-koadroaren posizioa eta tamaina"
 
-#: ../data/caja-actions-prefs.schemas.in.h:40
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:44
 msgid ""
 "Position and size of the preferences dialog ; default is set by the window "
 "manager."
@@ -238,33 +269,33 @@ msgstr ""
 "Hobespenak elkarrizketa-koadroaren posizioa eta tamaina. Leiho-kudeatzaileak "
 "ezartzen du lehenetsia."
 
-#: ../data/caja-actions-prefs.schemas.in.h:41
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:45
 msgid "Preferred export format"
 msgstr "Esportatzeko formatu hobetsia"
 
-#: ../data/caja-actions-prefs.schemas.in.h:42
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:46
 msgid "Sort mode"
 msgstr "Ordenatzeko modua"
 
-#: ../data/caja-actions-prefs.schemas.in.h:43
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:47
 msgid ""
 "The list of schemes proposed by default on each new profile. A default "
 "default list is harcoded in caja-actions-config-tool, which may be "
 "updated by the user."
 msgstr ""
 "Profil berri bakoitzean lehenetsi gisa proposatutako eskemen zerrenda. "
-"'caja-actions-config-tool'-en aurrez erregistratuta dago zerrenda lehenetsia, "
-"eta erabiltzaileak egunera dezake."
+"'caja-actions-config-tool'-en aurrez erregistratuta dago zerrenda "
+"lehenetsia, eta erabiltzaileak egunera dezake."
 
-#: ../data/caja-actions-prefs.schemas.in.h:44
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:48
 msgid ""
 "The order in which I/O providers are tested when we need to write a new item "
 "down to a storage subsystem."
 msgstr ""
-"Sarrerako/Irteerako hornitzaileak zein ordenetan probatuko diren "
-"elementu berri bat idatzi behar denean biltegiratze-azpisisteman."
+"Sarrerako/Irteerako hornitzaileak zein ordenetan probatuko diren elementu "
+"berri bat idatzi behar denean biltegiratze-azpisisteman."
 
-#: ../data/caja-actions-prefs.schemas.in.h:45
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:49
 msgid ""
 "The whole configuration must be understood here as the global set and order "
 "of menus and actions. When this configuration is locked, then the user is no "
@@ -272,13 +303,14 @@ msgid ""
 "read-only. As the order of items is also locked, the level zero itself "
 "cannot be modified, and the user is unable to reorder the items."
 msgstr ""
-"Hemen konfigurazio osoa multzo globala, eta menuen eta ekintzen ordena, bezala "
-"ulertu behar da. Konfigurazio hau blokeatzen denean, erabiltzaileak ezin du "
-"menu edo ekintzarik sortu, aldatu edo ezabatu. Elementu guztiak irakurtzeko "
-"soilik dira. Elementuen ordena ere blokeatuta dagoenez, zero maila bera ere "
-"ezin da aldatu, eta erabiltzaileak ez dauka ahalmenik elementuak berriro ordenatzeko."
+"Hemen konfigurazio osoa multzo globala, eta menuen eta ekintzen ordena, "
+"bezala ulertu behar da. Konfigurazio hau blokeatzen denean, erabiltzaileak "
+"ezin du menu edo ekintzarik sortu, aldatu edo ezabatu. Elementu guztiak "
+"irakurtzeko soilik dira. Elementuen ordena ere blokeatuta dagoenez, zero "
+"maila bera ere ezin da aldatu, eta erabiltzaileak ez dauka ahalmenik "
+"elementuak berriro ordenatzeko."
 
-#: ../data/caja-actions-prefs.schemas.in.h:46
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:50
 msgid ""
 "This is the preferred export format, used as a default when exporting items, "
 "or dropping them outside of the application. Possible values are: - "
@@ -295,23 +327,22 @@ msgid ""
 "runtime for the format he wishes use."
 msgstr ""
 "Esportatzeko formatu hobetsia da hau, lehenetsi gisa erabilita elementuak "
-"esportatzean edo hauek aplikaziotik kanpora jaregitean."
-"Balio erabilgarriak: - \"MateConfSchemaV1\": esportatzeko formatu historikoa "
-"izateko erabiltzen da. Esportatutako fitxategia beranduago "
-"'Caja-eko ekintzak'-en konfigurazioko tresnaren Inportatu "
-"laguntzailearen bidez inporta daiteke, edo 'mateconftool-2 --import-schema-file' "
-"komando-lerroa erabiliz. - \"MateConfSchemaV2\": bateragarria den eskema "
-"arinago bat. Esportatutako fitxategia beranduago "
-"'Caja-eko ekintzak'-en konfigurazioko tresnaren Inportatu "
-"laguntzailearen bidez inporta daiteke, edo 'mateconftool-2 --import-schema-file' "
-"komando-lerroa erabiliz. - \"MateConfEntry\": formatu lehenetsia izan beharko luke "
-"berriki esportatutako ekintzentzako. Esportatutako fitxategia beranduago "
-"'Caja-eko ekintzak'-en konfigurazioko tresnaren Inportatu "
-"laguntzailearen bidez inporta daiteke, edo 'mateconftool-2 --load' "
-"komando-lerroa erabiliz. - \"Ask\": exekuzio-denboran erabiltzaileari galdetuko zaio "
-"zein formatu nahi duen erabiltzea."
+"esportatzean edo hauek aplikaziotik kanpora jaregitean.Balio erabilgarriak: "
+"- \"MateConfSchemaV1\": esportatzeko formatu historikoa izateko erabiltzen da. "
+"Esportatutako fitxategia beranduago 'Caja-eko ekintzak'-en "
+"konfigurazioko tresnaren Inportatu laguntzailearen bidez inporta daiteke, "
+"edo 'mateconftool-2 --import-schema-file' komando-lerroa erabiliz. - "
+"\"MateConfSchemaV2\": bateragarria den eskema arinago bat. Esportatutako "
+"fitxategia beranduago 'Caja-eko ekintzak'-en konfigurazioko tresnaren "
+"Inportatu laguntzailearen bidez inporta daiteke, edo 'mateconftool-2 --import-"
+"schema-file' komando-lerroa erabiliz. - \"MateConfEntry\": formatu lehenetsia "
+"izan beharko luke berriki esportatutako ekintzentzako. Esportatutako "
+"fitxategia beranduago 'Caja-eko ekintzak'-en konfigurazioko tresnaren "
+"Inportatu laguntzailearen bidez inporta daiteke, edo 'mateconftool-2 --load' "
+"komando-lerroa erabiliz. - \"Ask\": exekuzio-denboran erabiltzaileari "
+"galdetuko zaio zein formatu nahi duen erabiltzea."
 
-#: ../data/caja-actions-prefs.schemas.in.h:47
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:51
 msgid ""
 "This preference indicates the preferred sort mode. Possible values are : - "
 "\"AscendingOrder\": the actions are maintained in ascending alphabetical "
@@ -322,107 +353,136 @@ msgstr ""
 "Hobespen honek ordenatzeko modu hobetsia adierazten du. Balio erabilgarriak: "
 "\"AscendingOrder\": ekintzak gorantzko ordena alfabetikoan edukitzen dira "
 "(portaera historikoa). - \"DescendingOrder\": ekintzak beherantzko ordena "
-"alfabetikoan edukitzen dira. - \"ManualOrder\": erabiltzaileak Caja-eko ekintzen "
-"konfigurazioko tresnaren bidez ordenatu ditzake berriro."
+"alfabetikoan edukitzen dira. - \"ManualOrder\": erabiltzaileak Caja-eko "
+"ekintzen konfigurazioko tresnaren bidez ordenatu ditzake berriro."
 
-#: ../data/caja-actions-prefs.schemas.in.h:48
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:52
 msgid ""
 "UUID of the items at the first level of the hierarchy. If this key is not "
 "found or empty, then all found items are considered as a flat list."
 msgstr ""
-"Elementuen UUIDa hierarkiako aurreneko mailan. Gako hau ez bada aurkitzen, edo "
-"hutsik badago, aurkitutako elementu guztiak zerrenda lau bat bezala hartuko dira."
+"Elementuen UUIDa hierarkiako aurreneko mailan. Gako hau ez bada aurkitzen, "
+"edo hutsik badago, aurkitutako elementu guztiak zerrenda lau bat bezala "
+"hartuko dira."
 
-#: ../data/caja-actions-prefs.schemas.in.h:49
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:53
 msgid ""
 "When set to true (most probably as a mandatory key), this prevents all "
 "items, menus and actions, readen from .desktop files to being modified in "
-"NACT."
+"CACT."
 msgstr ""
 "TRUE (egia) gisa ezartzen denean (litekeena derrigorrezko gakoa bezala), "
-"elementu, menu eta ekintza guztiak NACTen aldatzeko .desktop fitxategietatik "
+"elementu, menu eta ekintza guztiak CACTen aldatzeko .desktop fitxategietatik "
 "irakurtzea eragozten du honek."
 
-#: ../data/caja-actions-prefs.schemas.in.h:50
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:54
 msgid ""
 "When set to true (most probably as a mandatory key), this prevents all "
-"items, menus and actions, readen from MateConf to being modified in NACT."
+"items, menus and actions, readen from MateConf to being modified in CACT."
 msgstr ""
 "TRUE (egia) gisa ezartzen denean (litekeena derrigorrezko gakoa bezala), "
-"elementu, menu eta ekintza guztiak NACTen aldatzeko .MateConf-etik "
-"irakurtzea eragozten du honek."
+"elementu, menu eta ekintza guztiak CACTen aldatzeko .MateConf-etik irakurtzea "
+"eragozten du honek."
 
-#: ../data/caja-actions-prefs.schemas.in.h:51
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:55
 msgid "Whether actions should be relabeled when pasted or duplicated"
-msgstr "Ekintzak itsastean edo bikoiztean berriro etiketatuko diren ala ez adierazten du"
+msgstr ""
+"Ekintzak itsastean edo bikoiztean berriro etiketatuko diren ala ez "
+"adierazten du"
 
-#: ../data/caja-actions-prefs.schemas.in.h:52
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:56
 msgid "Whether actions should be relabeled when pasted or duplicated."
-msgstr "Ekintzak itsastean edo bikoiztean berriro etiketatuko diren ala ez adierazten du."
+msgstr ""
+"Ekintzak itsastean edo bikoiztean berriro etiketatuko diren ala ez "
+"adierazten du."
 
-#: ../data/caja-actions-prefs.schemas.in.h:53
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:57
 msgid "Whether menus should be relabeled when pasted or duplicated"
-msgstr "Menuak itsastean edo bikoiztean berriro etiketatuko diren ala ez adierazten du"
+msgstr ""
+"Menuak itsastean edo bikoiztean berriro etiketatuko diren ala ez adierazten "
+"du"
 
-#: ../data/caja-actions-prefs.schemas.in.h:54
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:58
 msgid "Whether menus should be relabeled when pasted or duplicated."
-msgstr "Menuak itsastean edo bikoiztean berriro etiketatuko diren ala ez adierazten du."
+msgstr ""
+"Menuak itsastean edo bikoiztean berriro etiketatuko diren ala ez adierazten "
+"du."
 
-#: ../data/caja-actions-prefs.schemas.in.h:55
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:59
 msgid "Whether profiles should be relabeled when pasted or duplicated"
-msgstr "Profilak itsastean edo bikoiztean berriro etiketatuko diren ala ez adierazten du"
+msgstr ""
+"Profilak itsastean edo bikoiztean berriro etiketatuko diren ala ez "
+"adierazten du"
 
-#: ../data/caja-actions-prefs.schemas.in.h:56
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:60
 msgid "Whether profiles should be relabeled when pasted or duplicated."
-msgstr "Profilak itsastean edo bikoiztean berriro etiketatuko diren ala ez adierazten du."
+msgstr ""
+"Profilak itsastean edo bikoiztean berriro etiketatuko diren ala ez "
+"adierazten du."
 
-#: ../data/caja-actions-prefs.schemas.in.h:57
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:61
 msgid "Whether the Desktop I/O provider is locked"
 msgstr "Mahaigaineko S/Iko hornitzailea blokeatuta dagoen ala ez adierazten du"
 
-#: ../data/caja-actions-prefs.schemas.in.h:58
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:62
 msgid "Whether the Esc key should close the assistants"
 msgstr "Ihes teklak laguntzailea itxiko duen ala ez adierazten du"
 
-#: ../data/caja-actions-prefs.schemas.in.h:59
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:63
 msgid "Whether the MateConf I/O provider is locked"
 msgstr "MateConf-eko S/Iko hornitzailea blokeatuta dagoen ala ez adierazten du"
 
-#: ../data/caja-actions-prefs.schemas.in.h:60
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:64
+msgid "Whether the auto-save feature should be activated"
+msgstr "Automatikoki gordetzeko eginbidea aktibatu behar den edo ez"
+
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:65
+msgid "Whether the import system should reuse the last choosen import mode."
+msgstr ""
+"Inportatzeko sistemak aukeratutako azken inportatzeko modua berrerabiliko "
+"duen edo ez."
+
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:66
 msgid "Whether the whole configuration is locked"
 msgstr "Konfigurazio osoa blokeatuta dagoen ala ez adierazten du"
 
-#: ../data/caja-actions-prefs.schemas.in.h:61
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:67
 msgid "Whether to display or not the Edit toolbar in the main window."
-msgstr "Leiho nagusian 'Editatu' tresna-barra bistaratuko den ala ez adierazten du."
+msgstr ""
+"Leiho nagusian 'Editatu' tresna-barra bistaratuko den ala ez adierazten du."
 
-#: ../data/caja-actions-prefs.schemas.in.h:62
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:68
 msgid "Whether to display or not the File toolbar in the main window."
-msgstr "Leiho nagusian 'Fitxategia' tresna-barra bistaratuko den ala ez adierazten du."
+msgstr ""
+"Leiho nagusian 'Fitxategia' tresna-barra bistaratuko den ala ez adierazten "
+"du."
 
-#: ../data/caja-actions-prefs.schemas.in.h:63
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:69
 msgid "Whether to display or not the Help toolbar in the main window."
-msgstr "Leiho nagusian 'Laguntza' tresna-barra bistaratuko den ala ez adierazten du."
+msgstr ""
+"Leiho nagusian 'Laguntza' tresna-barra bistaratuko den ala ez adierazten du."
 
-#: ../data/caja-actions-prefs.schemas.in.h:64
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:70
 msgid "Whether to display or not the Tools toolbar in the main window."
-msgstr "Leiho nagusian 'Tresnak' tresna-barra bistaratuko den ala ez adierazten du."
+msgstr ""
+"Leiho nagusian 'Tresnak' tresna-barra bistaratuko den ala ez adierazten du."
 
-#: ../data/caja-actions-prefs.schemas.in.h:65
+#: ../data/mateconf-schemas/caja-actions-prefs.schemas.in.h:71
 msgid "Width of the main window pane ; default is set by the UI manager."
-msgstr "Leiho nagusiko panelaren zabalera. UI kudeatzaileak ezarten du lehenetsia."
+msgstr ""
+"Leiho nagusiko panelaren zabalera. UI kudeatzaileak ezarten du lehenetsia."
 
-#: ../src/core/na-exporter.c:157
+#: ../src/core/na-exporter.c:159
 #, c-format
 msgid "NAIExporter %s doesn't implement 'to_buffer' interface."
 msgstr "%s NAIExporter-ek ez dauka 'to_buffer' interfazea inplementatuta."
 
-#: ../src/core/na-exporter.c:164 ../src/core/na-exporter.c:237
+#: ../src/core/na-exporter.c:166 ../src/core/na-exporter.c:239
 #, c-format
 msgid "No NAIExporter implementation found for %s format."
 msgstr "Ez da NAIExporter inplementaziorik aurkitu %s formatuarentzako."
 
-#: ../src/core/na-exporter.c:230
+#: ../src/core/na-exporter.c:232
 #, c-format
 msgid "NAIExporter %s doesn't implement 'to_file' interface."
 msgstr "%s NAIExporter-ek ez dauka 'to_file' interfazea inplementatuta."
@@ -473,17 +533,21 @@ msgstr "Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>"
 #: ../src/core/na-iabout.c:253
 #, c-format
 msgid ""
-"Copyright %s 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
-"Copyright %s 2009, 2010 Pierre Wieser <pwieser@trychlos.org>"
+"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
-"Copyright-a %s 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
-"Copyright-a %s 2009, 2010 Pierre Wieser <pwieser@trychlos.org>"
+"Copyright-a %s 2005 The MATE Foundation\n"
+"Copyright-a %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright-a %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 
 #: ../src/core/na-icontext-factory.c:47
 msgid "List of patterns to be matched against the selected file(s)/folder(s)"
 msgstr "Ereduen zerrenda hautatutako fitxategiak/karpetak bat etortzeko"
 
-#: ../src/core/na-icontext-factory.c:48
+#. i18n: wildcard characters '*' and '?' should be considered as literalls,
+#. *  and not be translated
+#: ../src/core/na-icontext-factory.c:50
 msgid ""
 "A list of strings with joker '*' or '?' to be matched against the name(s) of "
 "the selected file(s)/folder(s). Each selected items must match at least one "
@@ -498,27 +562,32 @@ msgstr ""
 "Hautapen bat dagoenean soilik aplikatzen da hau.\n"
 "Lehenetsi gisa '*'."
 
-#: ../src/core/na-icontext-factory.c:65
+#. i18n: wildcard characters '*' and '?' should be considered as literalls,
+#. *  and not be translated
+#: ../src/core/na-icontext-factory.c:71
 msgid ""
 "A pattern to be matched against basenames of selected file(s)/folder(s). May "
 "include wildcards (* or ?). You must set one option for each pattern you need"
 msgstr ""
 "Eredua hautatutako fitxategi/karpeten oinarrizko izenekin bat etortzeko. "
-"Komodinak (? edo *) eduki ditzake. Behar duzun eredu bakoitzeko aukera "
-"bat ezarri behar duzu."
+"Komodinak (? edo *) eduki ditzake. Behar duzun eredu bakoitzeko aukera bat "
+"ezarri behar duzu."
 
-#: ../src/core/na-icontext-factory.c:68
-#: ../src/core/na-icontext-factory.c:119
+#. i18n: the "<EXPR>" is just an abbreviation for "an expression",
+#. *  so is tranlatable
+#. i18n: "<EXPR>" is just an abbreviation for "an expression", so is tranlatable
+#: ../src/core/na-icontext-factory.c:76 ../src/core/na-icontext-factory.c:135
 msgid "<EXPR>"
 msgstr "<ADIERA>"
 
-#: ../src/core/na-icontext-factory.c:74
+#: ../src/core/na-icontext-factory.c:82
 msgid "Whether the specified basenames are case sensitive (default)"
 msgstr ""
-"Zehaztutako oinarrizko izenek maiuskulak eta minuskulak bereizten "
-"dituzten (lehenetsia) ala ez"
+"Zehaztutako oinarrizko izenek maiuskulak eta minuskulak bereizten dituzten "
+"(lehenetsia) ala ez"
 
-#: ../src/core/na-icontext-factory.c:75
+#. i18n: 'true' and 'false' values are taken literally, and should not be translated
+#: ../src/core/na-icontext-factory.c:84
 msgid ""
 "Must be set to 'true' if the filename patterns are case sensitive, to "
 "'false' otherwise. E.g., if you need to match a filename in a case-sensitive "
@@ -534,93 +603,109 @@ msgstr ""
 "Hautapen bat dagoenean soilik aplikatzen da hau.\n"
 "Lehenetsi gisa 'true'."
 
-#: ../src/core/na-icontext-factory.c:99
+#: ../src/core/na-icontext-factory.c:110
 msgid ""
 "List of patterns to be matched against the mimetypes of the selected file(s)/"
 "folder(s)"
-msgstr "Ereduen zerrenda hautatutako fitxategi edo karpeten MIME motak bat etortzeko"
+msgstr ""
+"Ereduen zerrenda hautatutako fitxategi edo karpeten MIME motak bat etortzeko"
 
-#: ../src/core/na-icontext-factory.c:100
+#. i18n: wildcard character '*' is taken literally, and should not be translated
+#: ../src/core/na-icontext-factory.c:112
 msgid ""
 "A list of strings with joker '*' to be matched against the mimetypes of the "
 "selected file(s)/folder(s). Each selected items must match at least one of "
 "the mimetype patterns for the action to appear.\n"
 "This obviously only applies when there is a selection.\n"
-"Defaults to '*'."
+"Defaults to '*/*'."
 msgstr ""
-"Komodina duten (? edo *) kateen zerrenda hautatutako fitxategien MIME "
-"motak bat etortzeko. Hautatutako elementu bakoitzak ekintzaren MIME moten "
-"ereduetariko batekin bat etorri behar du gutxienez agertzeko.\n"
+"'*' komodina duten kateen zerrenda hautatutako fitxategien/karpeten MIME "
+"motekin bat etortzeko. Hautatutako elementu bakoitzak gutxienez ekintzaren "
+"MIME moten ereduetariko batekin bat etorri behar du agertzeko.\n"
 "Hautapen bat dagoenean soilik aplikatzen da hau.\n"
-"Lehenetsi gisa '*'."
+"Lehenetsi gisa '*/*'."
 
-#: ../src/core/na-icontext-factory.c:116
+#. i18n: wildcard character '*' is taken literally, and should not be translated
+#: ../src/core/na-icontext-factory.c:131
 msgid ""
 "A pattern to be matched against mimetypes of selected file(s)/folder(s). May "
-"include wildcards (* or ?). You must set one option for each pattern you need"
+"include the asterisk wildcard '*'. You must set one option for each pattern "
+"you need"
 msgstr ""
-"Eredua hautatutako fitxategi edo karpetak bat etortzeko. Komodinak (? edo *) eduki "
-"ditzake. Behar duzun eredu bakoitzeko aukera bat ezarri behar duzu."
+"Eredua hautatutako fitxategi edo karpetekin bat etortzeko. Izartxoa '*' "
+"komodina eduki dezake. Behar duzun eredu bakoitzeko aukera bat ezarri behar "
+"duzu."
 
-#: ../src/core/na-icontext-factory.c:125
+#: ../src/core/na-icontext-factory.c:170
 msgid "Whether the profile applies to files"
 msgstr "Profilak fitxategiei aplikatuko zaizkien ala ez adierazten du"
 
-#: ../src/core/na-icontext-factory.c:126
+#. i18n: 'true' and 'false' values are taken literally, and should not be translated
+#: ../src/core/na-icontext-factory.c:172
 msgid ""
 "Set to 'true' if the selection can have files, to 'false' otherwise.\n"
 "This setting is tied in with the 'isdir' setting. The valid combinations "
 "are: \n"
-"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
-"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
-"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
-"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"isfile='true' and isdir='false': the selection may hold only files\n"
+"isfile='false' and isdir='true': the selection may hold only folders\n"
+"isfile='true' and isdir='true': the selection may hold both files and "
+"folders\n"
+"isfile='false' and isdir='false': this is an invalid combination (your "
 "configuration will never appear).\n"
 "This obviously only applies when there is a selection.\n"
 "Defaults to 'true'."
 msgstr ""
 "Ezarri 'true' (egia) gisa hautapenak fitxategiak eduki baditzake, bestela "
-"ezarri 'false' gisa.\n"
+"ezarri 'false' (faltsua) gisa.\n"
 "Ezarpen hau 'isdir' ezarpenarekin elkartzen da. Konbinazio erabilgarriak:\n"
-"isfile=TRUE eta isdir=FALSE: hautapenak fitxategiak bakarrik edukiko ditu\n"
-"isfile=FALSE eta isdir=TRUE: hautapenak karpetak bakarrik edukiko ditu\n"
-"isfile=TRUE eta isdir=TRUE': hautapenak bai fitxategiak bai karpetak edukiko ditu\n"
-"isfile=FALSE eta isdir=FALSE: hau baliogabeko konbinazioa da (zure konfigurazioa ez da inoiz agertuko).\n"
+"isfile='true' eta isdir='false': hautapenak fitxategiak bakarrik edukiko "
+"ditu\n"
+"isfile='false' eta isdir='true': hautapenak karpetak bakarrik edukiko ditu\n"
+"isfile='true' eta isdir='true': hautapenak bai fitxategiak bai karpetak "
+"edukiko ditu\n"
+"isfile='false' eta isdir='false': hau baliogabeko konbinazioa da (zure "
+"konfigurazioa ez da inoiz agertuko).\n"
 "Hautapen bat dagoenean soilik aplikatzen da hau.\n"
 "Lehenetsi gisa 'true'."
 
-#: ../src/core/na-icontext-factory.c:153
+#: ../src/core/na-icontext-factory.c:201
 msgid "Whether the profile applies to folders"
 msgstr "Profilak karpetei aplikatuko zaien ala ez adierazten du"
 
-#: ../src/core/na-icontext-factory.c:154
+#. i18n: 'true' and 'false' values are taken literally, and should not be translated
+#: ../src/core/na-icontext-factory.c:203
 msgid ""
 "Set to 'true' if the selection can have folders, to 'false' otherwise.\n"
 "This setting is tied in with the 'isfile' setting. The valid combinations "
 "are: \n"
-"isfile=TRUE and isdir=FALSE: the selection may hold only files\n"
-"isfile=FALSE and isdir=TRUE: the selection may hold only folders\n"
-"isfile=TRUE and isdir=TRUE: the selection may hold both files and folders\n"
-"isfile=FALSE and isdir=FALSE: this is an invalid combination (your "
+"isfile='true' and isdir='false': the selection may hold only files\n"
+"isfile='false' and isdir='true': the selection may hold only folders\n"
+"isfile='true' and isdir='true': the selection may hold both files and "
+"folders\n"
+"isfile='false' and isdir='false': this is an invalid combination (your "
 "configuration will never appear).\n"
 "This obviously only applies when there is a selection.\n"
 "Defaults to 'false'."
 msgstr ""
 "Ezarri 'true' (egia) gisa hautapenak karpetak eduki baditzake, bestela "
-"ezarri 'false' gisa.\n"
+"ezarri 'false' (faltsua) gisa.\n"
 "Ezarpen hau 'isfile' ezarpenarekin elkartzen da. Konbinazio erabilgarriak:\n"
-"isfile=TRUE eta isdir=FALSE: hautapenak fitxategiak bakarrik edukiko ditu\n"
-"isfile=FALSE eta isdir=TRUE: hautapenak karpetak bakarrik edukiko ditu\n"
-"isfile=TRUE eta isdir=TRUE': hautapenak bai fitxategiak bai karpetak edukiko ditu\n"
-"isfile=FALSE eta isdir=FALSE: hau baliogabeko konbinazioa da (zure konfigurazioa ez da inoiz agertuko).\n"
+"isfile='true' eta isdir='false': hautapenak fitxategiak bakarrik edukiko "
+"ditu\n"
+"isfile='false' eta isdir='true': hautapenak karpetak bakarrik edukiko ditu\n"
+"isfile='true' eta isdir='true': hautapenak bai fitxategiak bai karpetak "
+"edukiko ditu\n"
+"isfile='false' eta isdir='false': hau baliogabeko konbinazioa da (zure "
+"konfigurazioa ez da inoiz agertuko).\n"
 "Hautapen bat dagoenean soilik aplikatzen da hau.\n"
 "Lehenetsi gisa 'false'."
 
-#: ../src/core/na-icontext-factory.c:181
+#: ../src/core/na-icontext-factory.c:235
 msgid "Whether the selection may be multiple"
 msgstr "Hautapena anitzkoitza den ala ez adierazten du"
 
-#: ../src/core/na-icontext-factory.c:182
+#. i18n: 'true' and 'false' values are taken literally, and should not be translated
+#: ../src/core/na-icontext-factory.c:237
 msgid ""
 "If you need more than one files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set it to 'false'.\n"
@@ -633,12 +718,15 @@ msgstr ""
 "Hautapen bat dagoenean soilik aplikatzen da hau.\n"
 "Lehenetsi gisa 'false'."
 
-#: ../src/core/na-icontext-factory.c:204
-msgid "List of schemes to be matched against those of selected file(s)/folder(s)"
+#: ../src/core/na-icontext-factory.c:261
+msgid ""
+"List of schemes to be matched against those of selected file(s)/folder(s)"
 msgstr "Eskemen zerrenda hautatutako fitxategiak/karpetak bat etortzeko"
 
 #. too long string for iso c: 510 (max=509)
-#: ../src/core/na-icontext-factory.c:206
+#. i18n: schemes (sftp, ssh, ftp, file, etc.) are standard keywords which define
+#. *  the access protocol to an object, they should not be translated
+#: ../src/core/na-icontext-factory.c:265
 msgid ""
 "Defines the list of valid schemes to be matched against the selected items. "
 "The scheme is the protocol used to access the files. The keyword to use is "
@@ -653,7 +741,8 @@ msgid ""
 "'smb': files accessed via Samba (Windows share)\n"
 "'dav': files accessed via WebDAV.\n"
 "All schemes used by your favorite file manager may be used here.\n"
-"This obviously only applies when there is a selection.\n"
+"This obviously only applies when there is a selection, or when targeting the "
+"special 'x-caja-desktop' scheme.\n"
 "Defaults to 'file'."
 msgstr ""
 "Baliozko eskemen zerrenda definitzen du (hautatutako elementuekin bat "
@@ -663,115 +752,317 @@ msgstr ""
 "URIaren adibideak:\n"
 "- file:///tmp/leloa.txt\n"
 "- sftp:///root@proba.adibidea.net/tmp/leloa.txt\n"
-"\n"
 "Eskema arruntenak:\n"
-"\n"
 "'file': fitxategi lokalak\n"
 "'sftp': SSH bidez atzitutako fitxategiak\n"
 "'ftp': FTP bidez atzitutako fitxategiak\n"
 "'smb':Samba bidez atzitutako fitxategiak (Windows-ek partekatua)\n"
 "'dav': WebDav bidez atzitutako fitxategiak\n"
-"\n"
 "Fitxategi-kudeatzaileak darabilkien eskema guztiak erabil daitezke hemen.\n"
 "Hautapen bat dagoenean soilik aplikatzen da hau.\n"
 "Lehenetsi gisa 'file'."
 
-#: ../src/core/na-icontext-factory.c:232
+#: ../src/core/na-icontext-factory.c:294
 msgid ""
 "A valid GIO scheme where the selected file(s)/folder(s) should be located. "
 "You must set one option for each scheme you need"
 msgstr ""
-"Baliozko GIO eskema bat (hautatutako fitxategiak kokatuta egon beharko luketena). Behar "
-"duzun eskema bakoitzeko ezarri behar duzu"
+"Baliozko GIO eskema bat (hautatutako fitxategiak kokatuta egon beharko "
+"luketena). Behar duzun eskema bakoitzeko ezarri behar duzu"
 
-#: ../src/core/na-icontext-factory.c:234
-#: ../src/core/na-object-action-factory.c:160
-#: ../src/core/na-object-item-factory.c:94
-#: ../src/core/na-object-item-factory.c:116
-#: ../src/core/na-object-profile-factory.c:121
-#: ../src/utils/caja-actions-run.c:60
+#. i18n: "<STRING>" is just an abbreviation for "a string", so is tranlatable
+#: ../src/core/na-icontext-factory.c:297
+#: ../src/core/na-object-action-factory.c:171
+#: ../src/core/na-object-item-factory.c:105
+#: ../src/core/na-object-item-factory.c:129
+#: ../src/core/na-object-profile-factory.c:183
+#: ../src/utils/caja-actions-run.c:61
 msgid "<STRING>"
 msgstr "<KATEA>"
 
-#: ../src/core/na-icontext-factory.c:240
+#: ../src/core/na-icontext-factory.c:303
 msgid "List of folders"
 msgstr "Karpeten zerrenda"
 
-#: ../src/core/na-icontext-factory.c:241
+#: ../src/core/na-icontext-factory.c:304
 msgid ""
 "Defines the list of valid paths to be matched against the current folder.\n"
 " All folders 'under' the specified path are considered valid.\n"
-"This is only used when there is no selection, or the selection only contains "
-"directories.\n"
 "Defaults to '/'."
 msgstr ""
-"Baliozko bide-izenen zerrenda definitzen du uneko karpetarekin bat etortzeko.\n"
+"Baliozko bide-izenen zerrenda definitzen du uneko karpetarekin bat "
+"etortzeko.\n"
 "Zehaztutako bide-izenean dauden karpeta guztiak baliozkotzat hartzen dira.\n"
-"Hautapenik ez dagoenean soilik erabiltzen da, edo hautapenak direktorioak "
-"bakarrik dituenean.\n"
 "Lehenetsia '/' da."
 
-#: ../src/core/na-icontext-factory.c:256
+#: ../src/core/na-icontext-factory.c:320
 msgid ""
 "The path of a (parent) directory for which the item will be displayed. You "
 "must set one option for each folder you need"
 msgstr ""
-"Direktorio (guraso) bate bide-izena, dagokion elementua bistaratzeko. "
-"Aukera bat ezarri behar duzu behar duzun karpeta bakoitzeko"
+"Direktorio (guraso) bate bide-izena, dagokion elementua bistaratzeko. Aukera "
+"bat ezarri behar duzu behar duzun karpeta bakoitzeko"
 
-#: ../src/core/na-icontext-factory.c:258
-#: ../src/core/na-object-profile-factory.c:86
-#: ../src/utils/caja-actions-new.c:130
+#. i18n: "<PATH>" is just an abbreviation for "a folder path", so is tranlatable
+#: ../src/core/na-icontext-factory.c:323
+#: ../src/core/na-object-profile-factory.c:118
+#: ../src/utils/caja-actions-new.c:132
 msgid "<PATH>"
 msgstr "<BIDE-IZENA>"
 
-#: ../src/core/na-importer-ask.c:292
+#: ../src/core/na-icontext-factory.c:329
+msgid "Operator of the selection count relation"
+msgstr "Hautapenaren kopuruaren erlazioaren eragilea"
+
+#: ../src/core/na-icontext-factory.c:330
+msgid ""
+"Whether this profile may be selected depending of the count of the "
+"selection.\n"
+"This is a string of the form \"{'<'|'='|'>'} number\".\n"
+"Examples of valid strings are: \"=0\", \"> 1\", \"< 10\".\n"
+"Defaults to \">0\"."
+msgstr ""
+"Profila hau hautatu daitekeen hautapenaren kopuruaren arabera edo ez.\n"
+" \"{'<'|'='|'>'} zenbakia\" gisako kate bat da.\n"
+"Baliozko kateen adibideak:  \"=0\", \"> 1\", \"< 10\".\n"
+"Lehenetsia \">0\"."
+
+#: ../src/core/na-icontext-factory.c:354
+msgid "Only show in environment"
+msgstr "Erakutsi soilik ingurunean"
+
+#: ../src/core/na-icontext-factory.c:355
+msgid "Defaults to all."
+msgstr "Lehenetsi gisa guztiak."
+
+#: ../src/core/na-icontext-factory.c:376
+msgid "Not show in environment"
+msgstr "Ez erakutsi ingurunean"
+
+#: ../src/core/na-icontext-factory.c:377
+msgid "Defaults to none."
+msgstr "Lehenetsi gisa bat ere ez."
+
+#: ../src/core/na-icontext-factory.c:398
+msgid "Try exec"
+msgstr "Saiatu exekutatzea"
+
+#. i18n: TryExec is a keyword of the specification, it is not translatable
+#: ../src/core/na-icontext-factory.c:400
+msgid ""
+"Note that, when specified, only the presence and the executability status of "
+"the specified file are checked.\n"
+"Parameters may appear in 'TryExec' value, and will be substituted at "
+"runtime.\n"
+"Defaults to successful."
+msgstr ""
+"Jakin ezazu, zehaztutakoan, zehaztutako fitxategien presentzia eta "
+"exekutagarritasuna soilik begiratzen direla.\n"
+"Parametroak 'TryExec' balioan ager daitezke, eta exekuzio-denboran ordeztu "
+"daitezke.\n"
+"Lehenetsiak ongi daude."
+
+#: ../src/core/na-icontext-factory.c:424
+msgid "Show if registered"
+msgstr "Erakutsi erregistratuta dagoen"
+
+#. i18n: ShowIfRegistered is a keyword of the specification, it is not translatable
+#: ../src/core/na-icontext-factory.c:426
+msgid ""
+"The well-known name of a DBus service.\n"
+"The item will be candidate if the named service is registered on session "
+"DBus at runtime.\n"
+"Parameters may appear in 'ShowIfRegistered' value, and will be substituted "
+"at runtime.\n"
+"Defaults to successful."
+msgstr ""
+"DBus-eko zerbitzu baten izena.\n"
+"Elementua hautagaia izango da izendatutako zerbitzua DBUSen saioan "
+"erregistratuta badago exekuzio-denboran.\n"
+"Parametroak 'ShowIfRegistered' balioan ager daitezke, eta exekuzio-denboran "
+"ordeztu daitezke.\n"
+"Lehenetsiak ongi daude."
+
+#: ../src/core/na-icontext-factory.c:450
+msgid "Show if True"
+msgstr "Erakutsi egia bada"
+
+#. i18n: ShowIfTrue is a keyword of the specification, it is not translatable
+#: ../src/core/na-icontext-factory.c:452
+msgid ""
+"A command which, when executed, should output a string on stdout.\n"
+"The item will be candidate if the outputed string is equal to \"true\".\n"
+"Parameters may appear in 'ShowIfTrue' value, and will be substituted at "
+"runtime.\n"
+"Defaults to successful."
+msgstr ""
+"Komando bat exekutatzen denean irteeran kate bat erakutsiko duena.\n"
+"Elementua hautagaia izango da kaleratutako katea \"true\"-ren (egia) berdina "
+"bada.\n"
+"Parametroak 'ShowIfRegistered' balioan ager daitezke, eta exekuzio-denboran "
+"ordeztu daitezke.\n"
+"Lehenetsiak ongi daude."
+
+#: ../src/core/na-icontext-factory.c:476
+msgid "Show if running"
+msgstr "Erakutsi exekutatzen ari bada"
+
+#. i18n: ShowIfRunning is a keyword of the specification, it is not translatable
+#: ../src/core/na-icontext-factory.c:478
+msgid ""
+"The name of a process.\n"
+"The item will be candidate if the process name is found in memory at "
+"runtime.\n"
+"Parameters may appear in 'ShowIfRunning' value, and will be substituted at "
+"runtime.\n"
+"Defaults to successful."
+msgstr ""
+"Prozesu baten izena.\n"
+"Elementua hautagaia izango da prozesuaren izena memorian aurkitzen bada "
+"exekuzio-denboran.\n"
+"Parametroak 'ShowIfRunning' balioan ager daitezke, eta exekuzio-denboran "
+"ordeztu daitezke.\n"
+"Lehenetsiak ongi daude."
+
+#: ../src/core/na-icontext-factory.c:502
+msgid "Capabilities"
+msgstr "Gaitasunak"
+
+#. i18n: 'Owner', 'Readable', 'Writable', 'Executable' and 'Local' are all keywords
+#. *  of the specification, they are not translatable
+#: ../src/core/na-icontext-factory.c:505
+msgid ""
+"A list of capabilities each item of the selection must satisfy in order the "
+"item be candidate.\n"
+"Capabilities may be negated.\n"
+"Capabilities have to be choosen between following predefined ones:\n"
+"- 'Owner': current user is the owner of selected items\n"
+"- 'Readable': selected items are readable by user (probably more usefull "
+"when negated)\n"
+"- 'Writable': selected items are writable by user\n"
+"- 'Executable': selected items are executable by user\n"
+"- 'Local': selected items are local.\n"
+"Defaults to empty list."
+msgstr ""
+"Hautapeneko elementu bakoitzak betebehar dituen gaitasunen zerrenda bat "
+"elementua hautagai ahal izateko.\n"
+"Gaitasunak ezezta daitezke.\n"
+"Gaitasunak honako aurredefinitutakoen artetik aukeratu behar dira:\n"
+"- 'Owner': uneko erabiltzailea da hautatutako elementuen jabea\n"
+"- 'Readable': erabiltzaileak hautatutako elementuak irakur ditzake (baliteke "
+"ahalmen handiagoa edukitzea ezeztatzean)\n"
+"- 'Writable': erabiltzaileak hautatutako elementuak idatz ditzake\n"
+"- 'Executable': erabiltzaileak hautatutako elementuak exekuta ditzake\n"
+"- 'Local': hautatutako elementuak lokalekoak dira.\n"
+"Lehenetsia zerrenda hutsa da."
+
+#: ../src/core/na-iimporter.c:206
+msgid ""
+"Item was renumbered because the caller did not provide any check function."
+msgstr ""
+"Elementua berriro zenbatu da deitzaileak ez duelako egiaztatzeko inolako "
+"funtziorik eman."
+
+#: ../src/core/na-iimporter.c:219
+msgid ""
+"Item was renumbered because the caller did not provide any ask user function."
+msgstr ""
+"Elementua berriro zenbatu da deitzaileak ez duelako erabiltzaileari "
+"galdetzeko inolako funtziorik eman."
+
+#: ../src/core/na-iimporter.c:238
+msgid "Item was renumbered due to user request."
+msgstr "Elementuaren berzenbakitu egin da erabiltzaileak eskatuta."
+
+#: ../src/core/na-iimporter.c:244
+msgid "Existing item was overriden due to user request."
+msgstr "Existitzen den elementua gainidatzi egin da erabiltzaileak eskatuta."
+
+#: ../src/core/na-iimporter.c:251
+#, c-format
+msgid "Item %s already exists."
+msgstr "%s elementua badago lehendik ere."
+
+#: ../src/core/na-iimporter.c:253
+msgid "Import was canceled due to user request."
+msgstr "Inportatzea bertan behera utzi da erabiltzaileak eskatuta."
+
+#. i18n: the action has been renumbered during import operation
+#: ../src/core/na-iimporter.c:276
+msgid "(renumbered)"
+msgstr "(berzenbakitua)"
+
+#: ../src/core/na-importer-ask.c:302
 #, c-format
 msgid ""
 "The action \"%s\" imported from \"%s\" has the same identifiant than the "
 "already existing \"%s\"."
 msgstr ""
-"\"%2$s\"(e)tik inportatutako \"%1$s\" ekintzak jadanik badagoen "
-"\"%3$s\"(r)en identifikatzaile berdina du."
+"\"%2$s\"(e)tik inportatutako \"%1$s\" ekintzak jadanik badagoen \"%3$s\"(r)"
+"en identifikatzaile berdina du."
 
-#: ../src/core/na-importer-ask.c:298
+#: ../src/core/na-importer-ask.c:308
 #, c-format
 msgid ""
 "The menu \"%s\" imported from \"%s\" has the same identifiant than the "
 "already existing \"%s\"."
 msgstr ""
-"\"%2$s\"(e)tik inportatutako \"%1$s\" menuak jadanik badagoen "
-"\"%3$s\"(r)en identifikatzaile berdina du."
+"\"%2$s\"(e)tik inportatutako \"%1$s\" menuak jadanik badagoen \"%3$s\"(r)en "
+"identifikatzaile berdina du."
 
-#: ../src/core/na-io-provider.c:1253
+#: ../src/core/na-importer-ask.ui.h:1
+msgid "Already existing item"
+msgstr "Elementua badago lehendik ere"
+
+#: ../src/core/na-importer-ask.ui.h:2
+msgid "Do _not import the action"
+msgstr "_Ez inportatu ekintza"
+
+#: ../src/core/na-importer-ask.ui.h:3
+msgid "Import the action, _renumbering it"
+msgstr "Inportatu ekintza, hura _birzenbatuz"
+
+#: ../src/core/na-importer-ask.ui.h:4
+msgid "Re_member my choice in future import operations"
+msgstr "_Gogoratu nire aukera etorkizuneko inportatzeko eragiketetan"
+
+#: ../src/core/na-importer-ask.ui.h:5
+msgid "What should I do with this ?"
+msgstr "Zer egin behar dut honekin?"
+
+#: ../src/core/na-importer-ask.ui.h:6
+msgid "_Override the existing action"
+msgstr "_Gainidatzi existitzen den ekintza"
+
+#: ../src/core/na-io-provider.c:1302
 msgid "Item is read-only."
 msgstr "elementua irakurtzeko soilik da."
 
-#: ../src/core/na-io-provider.c:1257
+#: ../src/core/na-io-provider.c:1306
 msgid "I/O provider is not willing to write."
 msgstr "S/Iren hornitzaileak ez du idazteko ahalmenik."
 
-#: ../src/core/na-io-provider.c:1261
+#: ../src/core/na-io-provider.c:1310
 msgid "No writable I/O provider found."
 msgstr "Ez da idazteko ahalmena duen S/Iren hornitzailerik aurkitu."
 
-#: ../src/core/na-io-provider.c:1265
+#: ../src/core/na-io-provider.c:1314
 msgid "I/O provider has been locked down by an administrator."
 msgstr "Administratzaile batek S/Iren hornitzailea blokeatu du."
 
-#: ../src/core/na-io-provider.c:1269
+#: ../src/core/na-io-provider.c:1318
 msgid "I/O provider has been locked down by the user."
 msgstr "Erabiltzaileak S/Iren hornitzailea blokeatu du."
 
-#: ../src/core/na-io-provider.c:1273
+#: ../src/core/na-io-provider.c:1322
 msgid "I/O provider implementation lacks of required API."
 msgstr "S/Iren hornitzailearen inplementazioak derrigorrezko APIa falta du."
 
-#: ../src/core/na-io-provider.c:1277
+#: ../src/core/na-io-provider.c:1326
 msgid "The whole configuration has been locked down by an administrator."
 msgstr "Administratzaile batek konfigurazio osoa blokeatu du."
 
-#: ../src/core/na-io-provider.c:1286
+#: ../src/core/na-io-provider.c:1335
 #, c-format
 msgid ""
 "Item is not writable for an unknown reason (%d).\n"
@@ -781,11 +1072,11 @@ msgstr ""
 "Eskertuko genizuke akatsaren berri emango bazenu honako helbidean:\n"
 "http://bugzilla.gnome.org"
 
-#: ../src/core/na-io-provider.c:1310
+#: ../src/core/na-io-provider.c:1359
 msgid "OK."
 msgstr "Ados"
 
-#: ../src/core/na-io-provider.c:1314
+#: ../src/core/na-io-provider.c:1363
 msgid ""
 "Program flow error.\n"
 "Please, be kind enough to fill out a bug report on http://bugzilla.gnome.org."
@@ -794,23 +1085,23 @@ msgstr ""
 "Eskertuko genizuke akatsaren berri emango bazenu honako helbidean:\n"
 "http://bugzilla.gnome.org"
 
-#: ../src/core/na-io-provider.c:1319
+#: ../src/core/na-io-provider.c:1368
 msgid "The I/O provider is not willing to do that."
 msgstr "S/Iren hornitzaileak ez dauka ahalmenik hori egiteko."
 
-#: ../src/core/na-io-provider.c:1323
+#: ../src/core/na-io-provider.c:1372
 msgid "Write error in I/O provider."
 msgstr "Idazketako errorea S/Iren hornitzailean."
 
-#: ../src/core/na-io-provider.c:1327
+#: ../src/core/na-io-provider.c:1376
 msgid "Unable to delete MateConf schemas."
 msgstr "Ezin dira MateConf-en eskemak ezabatu."
 
-#: ../src/core/na-io-provider.c:1331
+#: ../src/core/na-io-provider.c:1380
 msgid "Unable to delete configuration."
 msgstr "Ezin da konfigurazioa ezabatu."
 
-#: ../src/core/na-io-provider.c:1335
+#: ../src/core/na-io-provider.c:1384
 #, c-format
 msgid ""
 "Unknow return code (%d).\n"
@@ -821,84 +1112,98 @@ msgstr ""
 "http://bugzilla.gnome.org"
 
 #. i18n: default label for a new action
-#: ../src/core/na-object-action.c:58
+#: ../src/core/na-object-action.c:59
 msgid "New Caja action"
 msgstr "Caja-eko ekintza berria"
 
-#: ../src/core/na-object-action.c:428
+#: ../src/core/na-object-action.c:447
 msgid "Profile automatically created from pre-v2 action"
 msgstr "automatikoki sortutako profila v2 bertsioaren aurreko ekintzatik"
 
-#: ../src/core/na-object-action-factory.c:50
-msgid "Version of the format"
-msgstr "Formatuaren bertsioa"
+#: ../src/core/na-object-action-factory.c:76
+msgid "Targets the selection context menu (default)"
+msgstr "Hautapeneko testuinguruko menua jasotzen du (lehenetsia)"
 
-#: ../src/core/na-object-action-factory.c:51
+#: ../src/core/na-object-action-factory.c:77
 msgid ""
-"The version of the configuration format that will be used to manage backward "
-"compatibility."
-msgstr ""
-"Konfigurazio-formatuaren bertsioa (atzerantzko bateragarritasuna kudeatzean "
-"erabiltzeko)."
-
-#: ../src/core/na-object-action-factory.c:71
-msgid "Targets the context menu (default)"
-msgstr "Testuinguruko menuak jasotzen ditu (lehenetsia)"
-
-#: ../src/core/na-object-action-factory.c:72
-msgid ""
-"Whether the action of the menu targets the selection file manager context "
-"menus.\n"
+"Whether the action targets the selection file manager context menus.\n"
 "This used to be the historical behavior.\n"
+"Note that menus are always potential candidate to the display in selection "
+"context menus provided that they contain at least one action.\n"
 "Defaults to TRUE."
 msgstr ""
-"Menuaren ekintzak hautapenaten fitxategi-kudeatzaileko testuinguruko "
-"menua hartzen duen ala ez.\n"
+"Menuaren ekintzak hautapenaren fitxategi-kudeatzaileko testuinguruko menua "
+"hartzen duen ala ez.\n"
 "Portaera historikoa izateko erabiltzen da.\n"
+"Jakin ezazu menuak beti direla hautagaiak emandako hautapeneko testuinguruko "
+"gutxienez ekintza bat duten menuetan bistaratzeko.\n"
 "Lehenetsia 'TRUE' da."
 
-#: ../src/core/na-object-action-factory.c:123
+#: ../src/core/na-object-action-factory.c:102
+msgid "Targets the location context menu"
+msgstr "Kokalekuaren testuinguruko menua jasotzen du"
+
+#: ../src/core/na-object-action-factory.c:103
+msgid ""
+"Whether the action targets the file manager context menus when there is no "
+"selection, thus applying to current location.\n"
+"Note that menus are always potential candidate to the display in selection "
+"context menus provided that they contain at least one action.\n"
+"Defaults to FALSE"
+msgstr ""
+"Ekintzaren helburuak fitxategi-kudeatzailearen testuinguruko menura "
+"bideratzen duen edo ez hautapenik ez dagoenean, horrela uneko kokalekuari "
+"aplikatuz.\n"
+"Jakin ezazu menuak beti edukitzen dutela hautagaiak izateko aukera "
+"hautapenaren testuinguruko gutxienez ekintza bat daukaten menuan "
+"bistaratzeko.\n"
+"Lehenetsia FALSE (faltsua) da."
+
+#: ../src/core/na-object-action-factory.c:128
 msgid "Targets the toolbar"
 msgstr "Tresna-barra jasotzen du"
 
-#: ../src/core/na-object-action-factory.c:124
+#: ../src/core/na-object-action-factory.c:129
 msgid ""
 "Whether the action is candidate to be displayed in file manager toolbar.\n"
-"Note, that as of Caja 2.26, menus cannot be candidate to toolbar display."
+"This only applies to current location.\n"
+"Note that menus are never displayed in the toolbar.\n"
+"Defaults to FALSE."
 msgstr ""
-"Ekintza fitxategi-kudeatzaileko tresna-barran bistaratzeko hautagaia "
-"den ala ez.\n"
-"Jakin ezazu Caja 2.26 bertsioan bezala, menuak ezin direla hautagaiak "
-"izan tresna-barran bistaratzeko."
+"Ekintza fitxategi-kudeatzaileko tresna-barran bistaratzeko hautagaia den ala "
+"ez.\n"
+"Jakin ezazu menuak inoiz ez direla hautagaiak tresna-barran bistaratzeko.\n"
+"Lehenetsi gisa 'FALSE'."
 
-#: ../src/core/na-object-action-factory.c:144
+#: ../src/core/na-object-action-factory.c:153
 msgid "Label of the toolbar item"
 msgstr "Tresna-barrako elementuaren etiketa."
 
-#: ../src/core/na-object-action-factory.c:145
+#: ../src/core/na-object-action-factory.c:154
 msgid ""
 "The label displayed besides of the icon in the file manager toolbar.\n"
 "Note that actual display may depend of your own Desktop Environment "
 "preferences.\n"
 "Defaults to label of the context menu when not set or empty."
 msgstr ""
-"Fitxategi-kudeatzailearen tresna-barrako ikonoaren alboan "
-"bistaratzen den etiketa.\n"
-"Jakin ezazu uneko ikuspegia zure mahaigainaren ingurumeneko "
-"hobespenen mende egon daitekeela.\n"
-"Testuinguruko menuaren etiketa da lehenetsia ez denean ezartzen edo hutsa denean."
+"Fitxategi-kudeatzailearen tresna-barrako ikonoaren alboan bistaratzen den "
+"etiketa.\n"
+"Jakin ezazu uneko ikuspegia zure mahaigainaren ingurumeneko hobespenen mende "
+"egon daitekeela.\n"
+"Testuinguruko menuaren etiketa da lehenetsia ez denean ezartzen edo hutsa "
+"denean."
 
 #. i18n: copied items have a label as 'Copy of original label'
-#: ../src/core/na-object-id.c:340
+#: ../src/core/na-object-id.c:342
 #, c-format
 msgid "Copy of %s"
 msgstr "%s(r)en kopia"
 
-#: ../src/core/na-object-item-factory.c:51
+#: ../src/core/na-object-item-factory.c:58
 msgid "Type of the item"
 msgstr "Elementu mota"
 
-#: ../src/core/na-object-item-factory.c:52
+#: ../src/core/na-object-item-factory.c:59
 msgid ""
 "Defines if the item is an action or a menu. Possible values are :\n"
 "- 'Action',\n"
@@ -910,39 +1215,39 @@ msgstr ""
 "- 'Menu' (menua).\n"
 "Balioak maiuskulak eta minuskulak bereizten ditu eta ezin da lokalizatu."
 
-#: ../src/core/na-object-item-factory.c:78
+#: ../src/core/na-object-item-factory.c:87
 msgid "Label of the context menu item (mandatory)"
 msgstr "Testuinguruko menuko elementuaren etiketa (derrigorra)"
 
-#: ../src/core/na-object-item-factory.c:79
+#: ../src/core/na-object-item-factory.c:88
 msgid ""
 "The label of the menu item that will appear in the file manager context menu "
 "when the selection matches the appearance condition settings.\n"
 "It is also used as a default for the toolbar label of an action."
 msgstr ""
-"Menuko elementuaren etiketa, fitxategi-kudeatzaileko laster-menuan agertuko dena "
-"hautapena bat etortzean itxuraren baldintzaren ezarpenekin.\n"
+"Menuko elementuaren etiketa, fitxategi-kudeatzaileko laster-menuan agertuko "
+"dena hautapena bat etortzean itxuraren baldintzaren ezarpenekin.\n"
 "Lehenetsi gisa ere erabiltzen da ekintza baten tresna-barrako etiketan."
 
-#: ../src/core/na-object-item-factory.c:100
+#: ../src/core/na-object-item-factory.c:111
 msgid "Tooltip of the context menu item"
 msgstr "Testuinguruko menuko elementuaren argibidea"
 
-#: ../src/core/na-object-item-factory.c:101
+#: ../src/core/na-object-item-factory.c:112
 msgid ""
 "The tooltip of the menu item that will appear in the file manager statusbar "
 "when the user points to the file manager context menu item with his/her "
 "mouse."
 msgstr ""
-"Menuko elementuaren argibidea, fitxategi-kudeatzaileko egoera-barran agertuko dena "
-"erabiltzaileak saguaren erakuslea fitxategi-kudeatzaileko laster-menuko elementuaren "
-"gainean jartzean."
+"Menuko elementuaren argibidea, fitxategi-kudeatzaileko egoera-barran "
+"agertuko dena erabiltzaileak saguaren erakuslea fitxategi-kudeatzaileko "
+"laster-menuko elementuaren gainean jartzean."
 
-#: ../src/core/na-object-item-factory.c:122
+#: ../src/core/na-object-item-factory.c:135
 msgid "Icon of the context menu item"
 msgstr "Testuinguruko menuko elementuaren ikonoa"
 
-#: ../src/core/na-object-item-factory.c:123
+#: ../src/core/na-object-item-factory.c:136
 msgid ""
 "The icon of the menu item that will appear next to the label in the file "
 "manager context menu when the selection matches the appearance conditions "
@@ -950,20 +1255,21 @@ msgid ""
 "May be the localized name of a themed icon, or a full path to any "
 "appropriate image."
 msgstr ""
-"Menuko elementuaren ikonoa, fitxategi-kudeatzaileko laster-menuan etiketaren alboan "
-"agertuko dena hautapena bat etortzean itxuraren baldintzaren ezarpenekin.\n"
+"Menuko elementuaren ikonoa, fitxategi-kudeatzaileko laster-menuan etiketaren "
+"alboan agertuko dena hautapena bat etortzean itxuraren baldintzaren "
+"ezarpenekin.\n"
 "Gaia duen ikono baten lokalizatutako izena izan daiteke, edo bide-izen osoa "
 "edozein irudi egokirentzako."
 
-#: ../src/core/na-object-item-factory.c:139
+#: ../src/core/na-object-item-factory.c:154
 msgid "<PATH|NAME>"
 msgstr "<BIDE-IZENA|IZENA>"
 
-#: ../src/core/na-object-item-factory.c:145
+#: ../src/core/na-object-item-factory.c:184
 msgid "Description relative to the item"
 msgstr "Azalpen erlatiboa elementuarentzako"
 
-#: ../src/core/na-object-item-factory.c:146
+#: ../src/core/na-object-item-factory.c:185
 msgid ""
 "Some text which explains the goal of the menu or the action.\n"
 "May be used, e.g. when displaying available items on a web site."
@@ -971,11 +1277,31 @@ msgstr ""
 "Menuaren edo ekintzaren xedea azaltzen duten testu batzuk.\n"
 "Webgune bateko elementu erabilgarriak bistaratzean erabil daiteke, adibidez."
 
-#: ../src/core/na-object-item-factory.c:191
+#: ../src/core/na-object-item-factory.c:207
+msgid "Suggested shortcut"
+msgstr "Iradokitutako laster-tekla"
+
+#: ../src/core/na-object-item-factory.c:208
+msgid ""
+"A shortcut suggested for the action or the menu.\n"
+"Please note that this might be only a suggestion as the shortcut may be "
+"already reserved for another use. Implementation should not override an "
+"already existing shortcut to define this one.\n"
+"The format may look like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+"Defaults to empty."
+msgstr ""
+"Iradokitutako laster-tekla ekintza edo menuarentzako.\n"
+"Jakin ezazu iradokizun bat besterik ez dela, laster-tekla beste erabilpen "
+"baterako gordeta egon baitaiteke. Inplementazioak ez luke jadanik existitzen "
+"den laster-tekla gainidatzi behar bere definitzeko.\n"
+"Formatua honelakoa izan daiteke: \"<Control>a\" edo \"<Shift><Alt>F1\".\n"
+"Lehenetsia hutsa da."
+
+#: ../src/core/na-object-item-factory.c:261
 msgid "List of subitem ids"
 msgstr "Azpielementuen IDen zerrenda"
 
-#: ../src/core/na-object-item-factory.c:192
+#: ../src/core/na-object-item-factory.c:262
 msgid ""
 "Ordered list of the IDs of the subitems. This may be actions or menus if the "
 "item is a menu, or profiles if the item is an action.\n"
@@ -983,23 +1309,36 @@ msgid ""
 "attached in the order of the read operations."
 msgstr ""
 "Azpielementuen IDen ordenatutako zerrenda. Ekintzak edo menuak izan daiteke "
-"elementua menu bat bada, edo profila izan daiteke elementua ekintza bat bada.\n"
-"Zerrenda hau ez bada existitzen, edo ekintza edo menu batentzako hutsik badago, "
-"azpielementuak erantsi egiten dira irakurtzeko eragiketaren ordenari."
+"elementua menu bat bada, edo profila izan daiteke elementua ekintza bat "
+"bada.\n"
+"Zerrenda hau ez bada existitzen, edo ekintza edo menu batentzako hutsik "
+"badago, azpielementuak erantsi egiten dira irakurtzeko eragiketaren ordenari."
 
-#: ../src/core/na-object-item-factory.c:214
+#: ../src/core/na-object-item-factory.c:286
 msgid "Whether the action or the menu is enabled (default)"
 msgstr "Ekintza edo menua gaituta dagoen (lehenetsia) ala ez"
 
-#: ../src/core/na-object-item-factory.c:215
+#: ../src/core/na-object-item-factory.c:287
 msgid ""
 "If the or the menu action is disabled, it will never appear in the file "
 "manager context menu.\n"
 "Defaults to TRUE."
 msgstr ""
-"Menuaren ekintza desgaitzen bada, ez da inoiz agertuko fitxategi-kudeatzailearen testuinguruko "
-"menuan.\n"
+"Menuaren ekintza desgaitzen bada, ez da inoiz agertuko fitxategi-"
+"kudeatzailearen testuinguruko menuan.\n"
 "Lehenetsia 'TRUE' da."
+
+#: ../src/core/na-object-item-factory.c:402
+msgid "Version of the format"
+msgstr "Formatuaren bertsioa"
+
+#: ../src/core/na-object-item-factory.c:403
+msgid ""
+"The version of the configuration format that will be used to manage backward "
+"compatibility."
+msgstr ""
+"Konfigurazio-formatuaren bertsioa (atzerantzko bateragarritasuna kudeatzean "
+"erabiltzeko)."
 
 #. i18n: default label for a new menu
 #: ../src/core/na-object-menu.c:58
@@ -1007,7 +1346,7 @@ msgid "New Caja menu"
 msgstr "Caja-eko menu berria"
 
 #. i18n: label for the default profile
-#: ../src/core/na-object-profile.c:444
+#: ../src/core/na-object-profile.c:729
 msgid "Default profile"
 msgstr "Profila lehenetsia"
 
@@ -1023,157 +1362,324 @@ msgstr ""
 "Profilaren funtzioaren deskripzio gisa erabil daiteke.\n"
 "Ez bada ezartzen, automatikoki sortutako izenera lehenetsiko du."
 
-#: ../src/core/na-object-profile-factory.c:71
+#: ../src/core/na-object-profile-factory.c:101
 msgid "Path of the command"
 msgstr "Komandoaren bide-izena"
 
-#: ../src/core/na-object-profile-factory.c:72
+#: ../src/core/na-object-profile-factory.c:102
 msgid ""
 "The path of the command to be executed when the user select the menu item in "
 "the file manager context menu or in the toolbar."
 msgstr ""
-"Abiaraziko den komandoaren bide-izena (erabiltzaileak fitxategi-kudeatzaileko testuinguruko "
-"menuan edo tresna-barran elementua hautatzean)"
+"Abiaraziko den komandoaren bide-izena (erabiltzaileak fitxategi-"
+"kudeatzaileko testuinguruko menuan edo tresna-barran elementua hautatzean)"
 
-#: ../src/core/na-object-profile-factory.c:92
+#: ../src/core/na-object-profile-factory.c:128
 msgid "Parameters of the command"
 msgstr "Komandoaren parametroak"
 
-#. too long string for iso c: 665 (max=509)
-#: ../src/core/na-object-profile-factory.c:94
+#. too long string for iso c: (max=509)
+#: ../src/core/na-object-profile-factory.c:130
 msgid ""
 "The parameters of the command to be executed when the user selects the menu "
 "item in the file manager context menu or in the toolbar.\n"
 "The parameters may contain some special tokens which are replaced by the "
 "informations provided by the file manager before starting the command:\n"
-"%d: base folder of the selected file(s)\n"
-"%f: the name of the selected file or the first one if several are selected\n"
-"%h: hostname of the URI\n"
-"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
-"%M: space-separated list of the selected file(s)/folder(s), with their full "
-"paths\n"
-"%p: port number of the first URI\n"
-"%R: space-separated list of selected URIs\n"
-"%s: scheme of the URI\n"
-"%u: URI\n"
-"%U: username of the URI\n"
-"%%: a percent sign."
+"- up to version \"2.0\":\n"
+"  %d: base folder of the selected file(s)\n"
+"  %f: the name of the selected file or the first one if several are "
+"selected\n"
+"  %h: hostname of the URI\n"
+"  %m: space-separated list of the basenames of the selected file(s)/folder"
+"(s)\n"
+"  %M: space-separated list of the selected file(s)/folder(s), with their "
+"full paths\n"
+"  %o: no-op operator which forces a singular form of execution\n"
+"  %O: no-op operator which forces a plural form of execution\n"
+"  %p: port number of the first URI\n"
+"  %R: space-separated list of selected URIs\n"
+"  %s: scheme of the URI\n"
+"  %u: URI\n"
+"  %U: username of the URI\n"
+"  %%: a percent sign.- starting from version '3':\n"
+"  %b: (first) basename\n"
+"  %B: space-separated list of the basenames of the selected file(s)/folder"
+"(s)\n"
+"  %c: count the selected file(s)/folder(s)\n"
+"  %d: (first) base directory\n"
+"  %D: space-separated list of base directories of the selected file(s)/folder"
+"(s)\n"
+"  %f: (first) filename\n"
+"  %F: space-separated list of the filenames of the selected file(s)/folder"
+"(s)\n"
+"  %h: hostname of the (first) URI\n"
+"  %m: (first) mimetype\n"
+"  %M: space-separated list of the mimetypes of the selected file(s)/folder"
+"(s)\n"
+"  %n: username of the (first) URI\n"
+"  %p: port number of the (first) URI\n"
+"  %s: scheme of the (first) URI\n"
+"  %u: (first) URI\n"
+"  %U: space-separated list of the URIs of the selected file(s)/folder(s)\n"
+"  %w: (first) basename without the extension\n"
+"  %W: space-separated list of basenames without the extension\n"
+"  %x: (first) extension\n"
+"  %X: space-separated list of the extensions of the selected file(s)/folder"
+"(s)\n"
+"  %%: a percent sign."
 msgstr ""
-"Abiaraziko den komandoaren parametroak (erabiltzaileak fitxategi-kudeatzaileko testuinguruko "
-"menuan edo tresna-barran elementua hautatzean). Parametroek token berezi batzuk "
-"eduki ditzakete, fitxategi-kudeatzailaren informazioak ordeztuko dituenak komandoa hasi "
-"aurretik:\n"
-"%d: hautatutako fitxategien oinarrizko karpeta\n"
-"%f: hautatutako fitxategiaren izena, edo aurrenekoa hainbat hautatuta egonez gero\n"
-"%h: URIaren ostalari-izena\n"
-"%m: hautatutako fitxategien/karpeten oinarrizko izenen zerrenda zuriunez bereiztuta\n"
-"%M: hautatutako fitxategien/karpeten zerrenda (beraien bide-izen osoekin) zuriunez bereiztuta\n"
-"%p: aurreneko URIaren atakaren zenbakia\n"
-"%R: hautatutako URIen zuriunez bereiztutako zerrenda\n"
-"%s: URIaren eskema\n"
-"%u: URIa\n"
-"%U: URIaren erabiltzaile-izena\n"
-"%%: ehunekoaren ikurra."
+"Komandoaren parametroak erabiltzaileak fitxategi-kudeatzaileko testuinguruko "
+"menuko edo tresna-barrako elementua hautatzen duenean exekutatzeko.\n"
+"Parametroek token berezi batzuk har ditzakete, fitxategi-kudeatzaileak "
+"emandako informazioarekin ordeztu daitezke komandoa abiarazi aurretik:\n"
+"- \"2.0\" bertsio arte:\n"
+"  %d: hautatutako fitxategien oinarrizko karpeta\n"
+"  %f: hautatutako fitxategiaren izena edo aurrenekoa hainbat hautatzen "
+"badira\n"
+"  %h: URIaren ostalari-izena\n"
+"  %m: hautatutako fitxategien/karpeten oinarri-izenen zuriunez bereizitako "
+"zerrenda\n"
+"  %M: hautatutako fitxategien/karpeten zuriunez bereizitako zerrenda, "
+"beraien bide-izen osoekin\n"
+"  %o: no-op eragilea exekuzioaren forma singularra lantzera derrigortzen "
+"duelarik\n"
+"  %O: no-op eragilea exekuzioaren forma plurala lantzera derrigortzen "
+"duelarik\n"
+"  %p: aurreneko URIaren ataka-zenbakia\n"
+"  %R: hautatutako URIen zuriunez bereizitako zerrenda\n"
+"  %s: URIaren eskema\n"
+"  %u: URIa\n"
+"  %U: URIaren erabiltzaile-izena\n"
+"  %%: ehunekoaren ikurra, '3' bertsiotik hasita:\n"
+"  %b: (aurrenekoa) oinarrizko izena\n"
+"  %B: hautatutako fitxategien/karpeten oinarrizko izenen zuriunez "
+"bereizitako zerrenda\n"
+"  %c: zenbatu hautatutako fitxategiak/karpetak\n"
+"  %d: (aurreneko) oinarrizko direktorioa\n"
+"  %D: hautatutako fitxategien/karpeten oinarrizko direktorioen zuriunez "
+"bereizitako zerrenda\n"
+"  %f: (aurreneko) fitxategi-izena\n"
+"  %F: hautatutako fitxategien/karpeten fitxategi-izenen zuriunez bereizitako "
+"zerrenda\n"
+"  %h: (aurreneko) URIaren ostalari-izena\n"
+"  %m: (aurreneko) MIME mota\n"
+"  %M: hautatutako fitxategien/karpeten mime moten zuriunez bereizitako "
+"zerrenda\n"
+"  %n: (aurreneko) URIaren erabiltzaile-izena\n"
+"  %p: (aurreneko) URIaren ataka-zenbakia\n"
+"  %s: (aurreneko) URIaren eskema\n"
+"  %u: (aurreneko) URIa\n"
+"  %U: hautatutako fitxategien/karpeten URIen zuriunez bereizitako zerrenda\n"
+"  %w: (aurreneko) oinarrizko izena luzapenik gabe\n"
+"  %W: luzapenik gabeko oinarrizko izenen zuriunez bereizitako zerrenda\n"
+"  %x: (aurreneko) luzapena\n"
+"  %X: hautatutako fitxategien/karpeten luzapenen bereizitako zerrenda\n"
+"  %%: ehunekoaren ikurra"
 
-#: ../src/io-desktop/nadp-desktop-provider.c:220
+#: ../src/core/na-object-profile-factory.c:189
+msgid "Working directory"
+msgstr "Laneko direktorioa"
+
+#: ../src/core/na-object-profile-factory.c:190
+#, c-format
+msgid ""
+"The working directory the command will be started in.\n"
+"Defaults to \"%d\"."
+msgstr ""
+"Laneko direktorioa komandoa hor abiarazteko.\n"
+"Lehenetsia \"%d\" da."
+
+#: ../src/core/na-object-profile-factory.c:212
+msgid "Execution mode"
+msgstr "Exekuzio modua"
+
+#: ../src/core/na-object-profile-factory.c:213
+msgid ""
+"Execution mode of the program.\n"
+"This may be choosen between following values:\n"
+"- Normal: starts as a standard graphical user interface\n"
+"- Terminal: starts the preferred terminal of the graphical environment, and "
+"runs the command in it\n"
+"- Embedded: makes use of a special feature of the file manager which allows "
+"a terminal to be ran inside of it; an acceptable fallback is Terminal\n"
+"- DisplayOutput: the ran terminal may be closed at end of the command, but "
+"standard streams (stdout, stderr) should be collected and displayed; an "
+"acceptable fallback is Terminal.\n"
+"Defaults to \"Normal\"."
+msgstr ""
+"Programaren exekuzio modua.\n"
+"Honako balioen artea aukeratu behar da:\n"
+"- Normal (arrunta): interfaze grafiko arrunt bat abiarazten\n"
+"- Terminal (terminala): ingurune grafikoko terminal hobetsia abiarazten du "
+"eta han komandoa exekutatzen du\n"
+"- Embedded (kapsulatuta): fitxategi-kudeatzailearen eginbide berezi bat "
+"erabiltzen du terminal bat bere barnean exekutatzeko. 'Terminal' aukera "
+"onargarria da\n"
+"- DisplayOutput (bistaratu irteera): exekutatutako terminala itxi egingo da "
+"komandoaren ostean, baina korronte estandarra (stdout, stderr) jaso eta "
+"bistaratu egin beharko litzateke, 'Terminal' aukera onargarria da\n"
+"Lehenetsia \"Normal\" da."
+
+#: ../src/core/na-object-profile-factory.c:244
+msgid "Startup notify"
+msgstr "Abioko jakinarazpena"
+
+#: ../src/core/na-object-profile-factory.c:245
+msgid ""
+"Only relevant when ExecutionMode=Normal.\n"
+"Defaults to FALSE."
+msgstr ""
+"Soilik garrantzia dauka ExecutionMode=Normal kasuan.\n"
+"Lehenetsia FALSE (faltsua) da."
+
+#: ../src/core/na-object-profile-factory.c:267
+msgid "Startup WM Class"
+msgstr "Abioko WM klasea"
+
+#: ../src/core/na-object-profile-factory.c:268
+msgid ""
+"Only relevant when ExecutionMode=Normal.\n"
+"Defaults to empty."
+msgstr ""
+"Soilik garrantzia dauka ExecutionMode=Normal kasuan.\n"
+"Lehenetsia hutsa da."
+
+#: ../src/core/na-object-profile-factory.c:290
+msgid "Execute as user"
+msgstr "Exekutatu erabiltzaile gisa"
+
+#: ../src/core/na-object-profile-factory.c:291
+msgid ""
+"The user the command must be ran as. The user may be identified by its "
+"numeric UID or by its login.\n"
+"The implementation should ignore a profile defining a non-existing UID or "
+"login as a value for the ExecuteAs key.\n"
+"The implementation might require the presence of a well-configured subsystem "
+"(e.g. sudo).\n"
+"Defaults to empty: the command will be executed as the current user."
+msgstr ""
+"Erabiltzailea, komandoa haren izenean exekutatzeko. Erabiltzailea bere UID "
+"zenbakiagatik edo saio-hasieragatik identifikatu behar da.\n"
+"Inplementazioak ezikusi egin beharko lioke ExekuteAs gakoaren balio bat gisa "
+"existitzen ez den UID edo saio-hasiera definitzen duen profil bati .\n"
+"Inplementazioak ongi konfiguratutako azpisistema bat (adib: sudo) eska "
+"dezake.\n"
+"Lehenetsia hutsa da: komandoa uneko erabiltzaile gisa exekutatuko da."
+
+#: ../src/core/na-selected-info.c:682
+#, c-format
+msgid "Error when querying informations for %s URI: %s"
+msgstr "Errorea %s URIaren informazioa kontsultatzean: %s"
+
+#: ../src/core/na-tokens.c:253
+msgid "file:///path/to/file1.mid"
+msgstr "file:///bide-izena/fitxategia1.mid"
+
+#: ../src/core/na-tokens.c:254
+msgid "file:///path/to/file2.jpeg"
+msgstr "file:///bide-izena/fitxategia2.jpeg"
+
+#: ../src/core/na-tokens.c:255
+msgid "audio/x-midi"
+msgstr "audio/x-midi"
+
+#: ../src/core/na-tokens.c:256
+msgid "image/jpeg"
+msgstr "image/jpeg"
+
+#: ../src/core/na-tokens.c:258
+msgid "test.example.net"
+msgstr "proba.adibidea.net"
+
+#: ../src/core/na-tokens.c:259
+msgid "user"
+msgstr "erabiltzailea"
+
+#: ../src/io-desktop/cadp-desktop-provider.c:249
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "'Caja-eko ekintzak'-en mahaigaineko S/Iren hornitzailea"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:228
+#: ../src/io-mateconf/nagp-mateconf-provider.c:225
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "'Caja-eko ekintzak'-en MateConf-eko S/Iren hornitzailea"
 
-#: ../src/io-xml/naxml-reader.c:147
-#, c-format
-msgid "Item ID %s already exists."
-msgstr "Elementuaren %s IDa badago lehendik ere."
-
-#: ../src/io-xml/naxml-reader.c:148
+#: ../src/io-xml/caxml-reader.c:148
 msgid "Item ID not found."
 msgstr "Ez da elementuaren IDa aurkitu."
 
-#: ../src/io-xml/naxml-reader.c:149
+#: ../src/io-xml/caxml-reader.c:149
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr "Espero ez zen %s gakoaren bide-izena menu bat inportatzean."
 
-#: ../src/io-xml/naxml-reader.c:150
+#: ../src/io-xml/caxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
-msgstr "%2$d. lerroko %1$s elementua lehendik ere aurkituta dago. Ezikusi egingo zaio."
+msgstr ""
+"%2$d. lerroko %1$s elementua lehendik ere aurkituta dago. Ezikusi egingo "
+"zaio."
 
-#: ../src/io-xml/naxml-reader.c:151
+#: ../src/io-xml/caxml-reader.c:151
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
-msgstr "Elementuaren IDa baliogabea: '%s' espero zen, '%s' aurkituta %d. lerroan."
+msgstr ""
+"Elementuaren IDa baliogabea: '%s' espero zen, '%s' aurkituta %d. lerroan."
 
-#: ../src/io-xml/naxml-reader.c:152
+#: ../src/io-xml/caxml-reader.c:152
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
-msgstr "'%s' elementu ezezaguna aurkitu da %d. lerroan '%s' espero zen bitartean."
+msgstr ""
+"'%s' elementu ezezaguna aurkitu da %d. lerroan '%s' espero zen bitartean."
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/naxml-reader.c:154
+#: ../src/io-xml/caxml-reader.c:154
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
-msgstr "'%s' mota ezezaguna aurkitu da %d. lerroan Ekintza edo Menua espero zen bitartean."
+msgstr ""
+"'%s' mota ezezaguna aurkitu da %d. lerroan Ekintza edo Menua espero zen "
+"bitartean."
 
-#: ../src/io-xml/naxml-reader.c:155
+#: ../src/io-xml/caxml-reader.c:155
 #, c-format
 msgid "Invalid XML root element %s found at line %d while waiting for %s."
 msgstr ""
 "Baliogabeko XMLren erroko elementua: '%3$s' espero zen, baina '%1$s' "
 "aurkituta %2$d. lerroan."
 
-#: ../src/io-xml/naxml-reader.c:156
+#: ../src/io-xml/caxml-reader.c:156
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr "Ezin da XML fitxategia analizatu: %s."
 
-#: ../src/io-xml/naxml-reader.c:157
+#: ../src/io-xml/caxml-reader.c:157
 #, c-format
 msgid "Node %s at line %d has not been dealt with."
 msgstr "%2$d. lerroko %1$s nodoa ez dago zerrekin kudeatu."
 
-#: ../src/io-xml/naxml-reader.c:1322
-msgid "Item was renumbered due to user request."
-msgstr "Elementuaren berzenbakitu egin da erabiltzaileak eskatuta."
-
-#: ../src/io-xml/naxml-reader.c:1328
-msgid "Existing item was overriden due to user request."
-msgstr "Existitzen den elementua gainidatzi egin da erabiltzaileak eskatuta."
-
-#: ../src/io-xml/naxml-reader.c:1337
-msgid "Import was canceled due to user request."
-msgstr "Inportatzea bertan behera utzi da erabiltzaileak eskatuta."
-
-#. i18n: the action has been renumbered during import operation
-#: ../src/io-xml/naxml-reader.c:1376
-msgid "(renumbered)"
-msgstr "(berzenbakitua)"
-
-#: ../src/io-xml/naxml-formats.c:48
+#: ../src/io-xml/caxml-formats.c:48
 msgid "Export as a _full MateConf schema file"
 msgstr "Esportatu MateConf-eko eskema-fitxategi _oso gisa"
 
-#: ../src/io-xml/naxml-formats.c:49
+#: ../src/io-xml/caxml-formats.c:49
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
 "- Import assistant of the Caja Actions Configuration Tool,\n"
+"- drag-n-drop into the Caja Actions Configuration Tool,\n"
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 "Esportatzeko formatu historikoa izateko erabiliko da.\n"
-"Esportatutako eskema-fitxategia beranduago\n"
-"'Caja-eko ekintzak'-en konfigurazioko tresnaren Inportatu\n"
-"laguntzailearen bidez inporta daiteke, edo \n"
-"'mateconftool-2 --import-schema-file' komando-lerroa erabiliz."
+"Esportatutako eskema-fitxategia beranduago inporta daiteke honen bidez:\n"
+"- 'Caja-eko ekintzak'-en konfigurazioko tresnaren Inportatu\n"
+"laguntzailearen bidez,\n"
+"- arrastatu eta jaregin 'Caja-eko ekintzak'-en konfigurazioko tresnara,\n"
+"- edo 'mateconftool-2 --import-schema-file' komando-lerroa erabiliz."
 
-#: ../src/io-xml/naxml-formats.c:58
+#: ../src/io-xml/caxml-formats.c:59
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr "Esportatu MateConf eskema-fitxategi _arina (2 bertsioa) bezala"
 
-#: ../src/io-xml/naxml-formats.c:59
+#: ../src/io-xml/caxml-formats.c:60
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
@@ -1181,22 +1687,24 @@ msgid ""
 "Configuration Tool versions.\n"
 "The exported schema file may later be imported via :\n"
 "- Import assistant of the Caja Actions Configuration Tool,\n"
+"- drag-n-drop into the Caja Actions Configuration Tool,\n"
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 "Formatu hau 1.11 bertsioan txertatu zen.\n"
 "MateConf-eko komando-lerroko tresnekin bateragarria izaten jarraitzen\n"
-"duen eskema arinena da hau, Caja-eko ekintzen konfigurazioko "
-"tresnen bertsio zaharragoekin atzerantzko bateragarritasuna mantenduz.\n"
-"Esportatutako eskema-fitxategia beranduago\n"
-"'Caja-eko ekintzak'-en konfigurazioko tresnaren Inportatu\n"
-"laguntzailearen bidez inporta daiteke, edo \n"
-"'mateconftool-2 --import-schema-file' komando-lerroa erabiliz."
+"duen eskema arinena da hau, Caja-eko ekintzen konfigurazioko tresnen "
+"bertsio zaharragoekin atzeranzko bateragarritasuna mantenduz.\n"
+"Esportatutako eskema-fitxategia beranduago inporta daiteke:\n"
+"- 'Caja-eko ekintzak'-en konfigurazioko tresnaren Inportatu\n"
+"laguntzailearen bidez,\n"
+"- arrastatu eta jaregin 'Caja-eko ekintzak'-en konfigurazioko tresnara,\n"
+"- edo 'mateconftool-2 --import-schema-file' komando-lerroa erabiliz."
 
-#: ../src/io-xml/naxml-formats.c:71
+#: ../src/io-xml/caxml-formats.c:73
 msgid "Export as a MateConf _dump file"
 msgstr "Esportatu MateConf-en _iraulitako fitxategi gisa"
 
-#: ../src/io-xml/naxml-formats.c:72
+#: ../src/io-xml/caxml-formats.c:74
 msgid ""
 "This format has been introduced in v 1.11 serie, and should be the preferred "
 "format for newly exported items.\n"
@@ -1205,590 +1713,702 @@ msgid ""
 "though it may still be imported via standard MateConf command-line tools.\n"
 "The exported dump file may later be imported via :\n"
 "- Import assistant of a compatible Caja Actions Configuration Tool,\n"
+"- drag-n-drop into the Caja Actions Configuration Tool,\n"
 "- or via the mateconftool-2 --load command-line tool."
 msgstr ""
-"Formatu hau 1.11 bertsioan txertatu zen, eta formatu hobetsia izan "
-"beharko luke.\n azkenaldian esporatutako elementuentzako.\n"
+"Formatu hau 1.11 bertsioan txertatu zen, eta formatu hobetsia izan beharko "
+"luke esportatutako elementu berrientzako.\n"
 "Ez du bateragarritasunik mantentzen Caja-eko ekintzen konfigurazioko "
 "tresnen bertsio zaharragoekin.\n"
 "Hala ere, MateConf-eko komando-lerroko tresna estandarrekin inporta daiteke.\n"
-"Esportatutako eskema-fitxategia beranduago\n"
-"'Caja-eko ekintzak'-en konfigurazioko tresnaren Inportatu\n"
-"laguntzailearen bidez inporta daiteke, edo \n"
-"'mateconftool-2 --load' komando-lerroa erabiliz."
+"Esportatutako eskema-fitxategia beranduago inporta daiteke: - 'Caja-eko "
+"ekintzak'-en konfigurazioko tresnaren Inportatu\n"
+"laguntzailearen bidez,\n"
+"- arrastatu eta jaregin 'Caja-eko ekintzak'-en konfigurazioko tresnara,\n"
+"- edo 'mateconftool-2 --load' komando-lerroa erabiliz."
 
-#: ../src/nact/base-application.c:1292
+#: ../src/cact/base-application.c:1292
 msgid "Unable to initialize the internationalization environment."
 msgstr "Ezin da nazioartekotzeko ingurunea hasieratu."
 
-#: ../src/nact/base-application.c:1301
+#: ../src/cact/base-application.c:1301
 msgid "Unable to initialize the Gtk+ user interface."
 msgstr "Ezin da Gtk+ erabiltzailearen interfazea hasieratu."
 
-#: ../src/nact/base-application.c:1310
+#: ../src/cact/base-application.c:1310
 msgid "Another instance of the application is already running."
 msgstr "Aplikazioaren beste instantzia bat jadanik exekutatzen ari da."
 
-#: ../src/nact/base-application.c:1319
+#: ../src/cact/base-application.c:1319
 msgid "No filename provided for the UI XML definition."
 msgstr "Ez da fitxategi-izenik eman UI XMLaren definiziorako."
 
 #. i18n: Unable to load the XML definition from <filename>
-#: ../src/nact/base-application.c:1329
+#: ../src/cact/base-application.c:1329
 #, c-format
 msgid "Unable to load the XML definition from %s."
 msgstr "Ezin da XML definizioa kargatu %s(e)ndik."
 
-#: ../src/nact/base-application.c:1342
+#: ../src/cact/base-application.c:1342
 msgid "Unable to set the default icon for the application."
 msgstr "Ezin da ikono lehenetsia ezarri aplikazioarentzako."
 
-#: ../src/nact/base-application.c:1351
+#: ../src/cact/base-application.c:1351
 msgid "Unable to get the main window of the application."
 msgstr "Ezin da aplikazioaren leiho nagusia lortu."
 
-#: ../src/nact/base-assistant.c:577
+#: ../src/cact/base-assistant.c:577
 msgid "Are you sure you want to quit this assistant ?"
 msgstr "Ziur zaude morroi honetatik irtetzea nahi duzula?"
 
-#: ../src/nact/base-window.c:1200
+#: ../src/cact/base-window.c:1200
 #, c-format
 msgid "Unable to load %s XML definition."
 msgstr "Ezin da %s XML definizioa kargatu."
 
-#: ../src/nact/base-window.c:1286
+#: ../src/cact/base-window.c:1286
 #, c-format
 msgid "Unable to load %s UI XML definition: %s"
 msgstr "Ezin da %s UIaren XML definizioa kargatu: %s"
 
-#: ../src/nact/egg-desktop-file.c:165
+#: ../src/cact/egg-desktop-file.c:165
 #, c-format
 msgid "File is not a valid .desktop file"
 msgstr "Fitxategia ez da baliozko .desktop fitxategia"
 
-#: ../src/nact/egg-desktop-file.c:188
+#: ../src/cact/egg-desktop-file.c:188
 #, c-format
 msgid "Unrecognized desktop file Version '%s'"
 msgstr "Mahaigaineko fitxategiaren '%s' bertsioa ezezaguna"
 
-#: ../src/nact/egg-desktop-file.c:958
+#: ../src/cact/egg-desktop-file.c:958
 #, c-format
 msgid "Starting %s"
 msgstr "%s hasieratzen"
 
-#: ../src/nact/egg-desktop-file.c:1100
+#: ../src/cact/egg-desktop-file.c:1100
 #, c-format
 msgid "Application does not accept documents on command line"
 msgstr "Aplikazioak ez du dokumenturik onartzen komando-lerroan"
 
-#: ../src/nact/egg-desktop-file.c:1168
+#: ../src/cact/egg-desktop-file.c:1168
 #, c-format
 msgid "Unrecognized launch option: %d"
 msgstr "Abiarazteko aukera ezezaguna: %d"
 
-#: ../src/nact/egg-desktop-file.c:1373
+#: ../src/cact/egg-desktop-file.c:1373
 #, c-format
 msgid "Can't pass document URIs to a 'Type=Link' desktop entry"
-msgstr "Ezin zaizkie dokumentuen URIak mahaigaineko 'Type=Link' sarrerari igaro"
+msgstr ""
+"Ezin zaizkie dokumentuen URIak mahaigaineko 'Type=Link' sarrerari igaro"
 
-#: ../src/nact/egg-desktop-file.c:1394
+#: ../src/cact/egg-desktop-file.c:1394
 #, c-format
 msgid "Not a launchable item"
 msgstr "Ez dago abiaraz daitekeen elementurik"
 
-#: ../src/nact/egg-sm-client.c:239
+#: ../src/cact/egg-sm-client.c:239
 msgid "Disable connection to session manager"
 msgstr "Desgaitu saio-kudeatzailearen konexioa"
 
-#: ../src/nact/egg-sm-client.c:242
+#: ../src/cact/egg-sm-client.c:242
 msgid "Specify file containing saved configuration"
 msgstr "Zehaztu konfigurazioa gordeta duen fitxategia"
 
-#: ../src/nact/egg-sm-client.c:242
+#: ../src/cact/egg-sm-client.c:242
 msgid "FILE"
 msgstr "FITXATEGIA"
 
-#: ../src/nact/egg-sm-client.c:245
+#: ../src/cact/egg-sm-client.c:245
 msgid "Specify session management ID"
 msgstr "Zehaztu saio-kudeatzailearen IDa"
 
-#: ../src/nact/egg-sm-client.c:245
+#: ../src/cact/egg-sm-client.c:245
 msgid "ID"
 msgstr "IDa"
 
-#: ../src/nact/egg-sm-client.c:267
+#: ../src/cact/egg-sm-client.c:267
 msgid "Session management options:"
 msgstr "Saio-kudeatzailearen aukerak:"
 
-#: ../src/nact/egg-sm-client.c:268
+#: ../src/cact/egg-sm-client.c:268
 msgid "Show session management options"
 msgstr "Erakutsi saio-kudeatzailearen aukerak"
 
-#: ../src/nact/nact-application.c:72
+#: ../src/cact/cact-application.c:72
 msgid "Set it to run multiple instances of the program [unique]"
 msgstr "Ezarri hau programaren instantzia anitzkoitza exekutatzeko [unique]"
 
-#: ../src/nact/nact-application.c:74
+#: ../src/cact/cact-application.c:74
 msgid "Output the version number, and exit gracefully [no]"
 msgstr "Erakutsi bertsioaren zenbakia eta irten apaltasunez [no]"
 
-#: ../src/nact/nact-application.c:353
-msgid "Another instance of Caja Actions Configuration Tool is already running."
+#: ../src/cact/cact-application.c:353
+msgid ""
+"Another instance of Caja Actions Configuration Tool is already running."
 msgstr ""
 "Caja-eko ekintzak konfiguratzeko tresnaren beste instantzia bat jadanik "
 "exekutatzen ari da."
 
 #. i18n: another instance is already running: second line of error message
-#: ../src/nact/nact-application.c:355
+#: ../src/cact/cact-application.c:355
 msgid "Please switch back to it."
 msgstr "Itzuli hara."
 
-#. static const gchar *thisfn = "nact_application_appli_get_application_name";
+#. static const gchar *thisfn = "cact_application_appli_get_application_name";
 #. g_debug( "%s: application=%p", thisfn, ( void * ) application );
 #. i18n: this is the application name, used in window title
-#: ../src/nact/nact-application.c:413
+#: ../src/cact/cact-application.c:413
 msgid "Caja Actions Configuration Tool"
 msgstr "Caja-eko ekintzak konfiguratzeko tresna"
 
-#: ../src/nact/nact-assistant-export.c:674
+#: ../src/cact/cact-add-capability-dialog.c:72
+msgid "User is the owner of the item"
+msgstr "Erabiltzailea elementuaren jabea da"
+
+#: ../src/cact/cact-add-capability-dialog.c:73
+msgid "Item is readable by the user"
+msgstr "Elementua erabiltzaileak irakur dezake"
+
+#: ../src/cact/cact-add-capability-dialog.c:74
+msgid "Item is writable by the user"
+msgstr "Erabiltzaileak elementua idatz dezake"
+
+#: ../src/cact/cact-add-capability-dialog.c:75
+msgid "Item is executable by the user"
+msgstr "Erabiltzaileak elementua exekuta dezake"
+
+#: ../src/cact/cact-add-capability-dialog.c:76
+msgid "Item is local"
+msgstr "Elementua lokalekoa da"
+
+#. i18n: add a comment when a capability is already used by current item
+#: ../src/cact/cact-add-capability-dialog.c:531
+#, c-format
+msgid "%s (already inserted)"
+msgstr "%s (jadanik txertatuta)"
+
+#: ../src/cact/cact-add-capability.ui.h:1
+msgid "<b>Managed capabilities</b>"
+msgstr "<b>Kudeatutako gaitasunak</b>"
+
+#: ../src/cact/cact-add-capability.ui.h:2
+msgid "Adding a new capability"
+msgstr "Gaitasun berria gehitzen"
+
+#: ../src/cact/cact-add-scheme.ui.h:1
+msgid "<b>Scheme</b>"
+msgstr "<b>Eskema</b>"
+
+#: ../src/cact/cact-add-scheme.ui.h:2
+msgid "Adding a new scheme"
+msgstr "Eskema berri bat gehitzea"
+
+#: ../src/cact/cact-assistant-export.c:679
 msgid "About to export selected items:"
 msgstr "Hautatutako elementuak esportatzeari buruz:"
 
-#: ../src/nact/nact-assistant-export.c:688
+#: ../src/cact/cact-assistant-export.c:693
 msgid "Into the destination folder:"
 msgstr "Helburuko karpetan:"
 
-#: ../src/nact/nact-assistant-export.c:748
+#: ../src/cact/cact-assistant-export.c:753
 msgid "Export canceled due to user action."
 msgstr "Esportatzea bertan behera utzi du erabiltzaileak."
 
 #. i18n: result of the export assistant
-#: ../src/nact/nact-assistant-export.c:776
+#: ../src/cact/cact-assistant-export.c:785
 msgid "Selected actions have been proceeded :"
 msgstr "Hautatutako ekintzak landu dira:"
 
 #. i18n: action as been successfully exported to <filename>
-#: ../src/nact/nact-assistant-export.c:794
+#: ../src/cact/cact-assistant-export.c:804
 msgid "Successfully exported as"
 msgstr "Ongi esportatuta honela"
 
-#: ../src/nact/nact-assistant-export.c:817
+#: ../src/cact/cact-assistant-export.c:827
 msgid "You may not have write permissions on selected folder."
 msgstr "Baliteke hautatutako karpetan idazteko baimenik ez izatea."
 
+#: ../src/cact/cact-assistant-export.ui.h:1
+msgid "<b>Which format should I use when exporting these items ?</b>"
+msgstr "<b>Zer formatu erabili behar da elementu hauek esportatzean?</b>"
+
+#: ../src/cact/cact-assistant-export.ui.h:2
+msgid "Actions _list :"
+msgstr "Ekintzen _zerrenda:"
+
+#: ../src/cact/cact-assistant-export.ui.h:3
+msgid "Export is done"
+msgstr "Esportatu da"
+
+#: ../src/cact/cact-assistant-export.ui.h:4
+msgid "Exporting actions"
+msgstr "Esportatzeko ekintzak"
+
+#: ../src/cact/cact-assistant-export.ui.h:5
+msgid "Exporting an action"
+msgstr "Ekintza bat esportatzea"
+
+#: ../src/cact/cact-assistant-export.ui.h:6
+msgid ""
+"Please select one or more actions\n"
+"to be exported.\n"
+"\n"
+"You may use Ctrl and Shift keys\n"
+"to extend a selection."
+msgstr ""
+"Hautatu ekintza bat edo gehiago\n"
+"esportatzeko.\n"
+"\n"
+"Ktrl edo Maius teklak erabil ditzakezu\n"
+"hautapena zabaltzeko."
+
+#: ../src/cact/cact-assistant-export.ui.h:11
+msgid "Re_member my choice in future export operations"
+msgstr "_Gogoratu nire aukera etorkizuneko esportatzeko eragiketetan"
+
+#: ../src/cact/cact-assistant-export.ui.h:12
+#: ../src/cact/caja-actions-config-tool.ui.h:147
+msgid "Summary"
+msgstr "Laburpena"
+
+#: ../src/cact/cact-assistant-export.ui.h:13
+msgid "This assistant will guide you through the process of exporting actions."
+msgstr ""
+"Laguntzaile honek ekintzak esportatzeko prozesuan zehar lagunduko dizu."
+
+#: ../src/cact/cact-assistant-export.ui.h:14
+msgid "Which format should I choose to export it ?"
+msgstr "Zer formatu aukeratu hori esportatzeko?"
+
 #. i18n: the title of the confirm page of the import assistant
-#: ../src/nact/nact-assistant-import.c:563
+#: ../src/cact/cact-assistant-import.c:548
 msgid "About to import selected files:"
 msgstr "Hautatutako ekintzak inportatzeari buruz:"
 
 #. i18n: result of the import assistant
-#: ../src/nact/nact-assistant-import.c:788
+#: ../src/cact/cact-assistant-import.c:748
 msgid "Selected files have been proceeded :"
 msgstr "Hautatutako fitxategiak landu dira:"
 
 #. i18n: indicate that the file has been successfully imported
-#: ../src/nact/nact-assistant-import.c:806
+#: ../src/cact/cact-assistant-import.c:767
 msgid "Import OK"
 msgstr "Ongi inportatu da"
 
 #. i18n: this is the globally unique identifier and the label of the newly imported action
-#: ../src/nact/nact-assistant-import.c:812
+#: ../src/cact/cact-assistant-import.c:773
 #, c-format
 msgid "UUID: %s\t%s"
 msgstr "UUID: %s\t%s"
 
-#. i18n: indicate that the file was not iported
-#: ../src/nact/nact-assistant-import.c:823
+#. i18n: indicate that the file was not imported
+#: ../src/cact/cact-assistant-import.c:782
 msgid "Not imported"
 msgstr "Ez da inportatu"
 
-#: ../src/nact/nact.desktop.in.h:1
+#: ../src/cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "Gehitu elementuak Caja-en laster-menuari"
 
-#: ../src/nact/nact.desktop.in.h:2
+#: ../src/cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "Caja-eko ekintzen konfigurazioa"
 
 #. i18n: The action <label> is about to be exported
-#: ../src/nact/nact-export-ask.c:326
+#: ../src/cact/cact-export-ask.c:326
 #, c-format
 msgid "The action \"%s\" is about to be exported."
 msgstr "\"%s\" ekintza esportatzera doa."
 
 #. i18n: The menu <label> is about to be exported
-#: ../src/nact/nact-export-ask.c:329
+#: ../src/cact/cact-export-ask.c:329
 #, c-format
 msgid "The menu \"%s\" is about to be exported."
 msgstr "\"%s\" menua esportatzera doa."
 
-#: ../src/nact/nact-export-format.c:46
+#: ../src/cact/cact-export-format.c:46 ../src/cact/cact-preferences.ui.h:57
+#: ../src/cact/caja-actions-config-tool.ui.h:220
 msgid "_Ask me"
 msgstr "_Galdetu niri"
 
-#: ../src/nact/nact-export-format.c:47
+#: ../src/cact/cact-export-format.c:47
 msgid ""
 "You will be asked for the format to choose each time an item is about to be "
 "exported."
-msgstr "Elementu bat esportatzera doan aldi bakoitzean formatua aukeratzea eskatuko zaizu."
+msgstr ""
+"Elementu bat esportatzera doan aldi bakoitzean formatua aukeratzea eskatuko "
+"zaizu."
 
-#: ../src/nact/nact-iaction-tab.c:498
-msgid "Menu"
-msgstr "Menua"
-
-#: ../src/nact/nact-iaction-tab.c:499
-msgid "<b>Menu properties</b>"
-msgstr "<b>Menuaren propietateak</b>"
-
-#: ../src/nact/nact-iaction-tab.c:501
-msgid "Action"
-msgstr "Ekintza"
-
-#: ../src/nact/nact-iaction-tab.c:502
-msgid "<b>Action properties</b>"
-msgstr "<b>Ekintzaren propietateak</b>"
-
-#: ../src/nact/nact-iaction-tab.c:611
+#: ../src/cact/cact-iaction-tab.c:596
 msgid "Caution: a label is mandatory for the action or the menu."
 msgstr "Kontuz: etiketa bat derrigorrezkoa da ekintza edo menuarentzako."
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../src/nact/nact-iaction-tab.c:828
+#. i18n: label of the push button when there is not yet any shortcut
+#: ../src/cact/cact-iaction-tab.c:819 ../src/cact/cact-iproperties-tab.c:53
+#: ../src/cact/caja-actions-config-tool.ui.h:132
 msgid "None"
 msgstr "Bat ere ez"
 
-#: ../src/nact/nact-iaction-tab.c:886
+#: ../src/cact/cact-iaction-tab.c:876
 msgid "Choosing an icon"
 msgstr "Ikonoa aukeratzea"
 
-#: ../src/nact/nact-icommand-tab.c:413
-msgid "Caution: a label is mandatory for the profile."
-msgstr "Kontuz: etiketa bat derrigorrezkoa da profilarentzako."
+#: ../src/cact/cact-ibasenames-tab.c:166
+msgid "Basename filter"
+msgstr "Oinarri-izenaren iragazkia"
 
-#: ../src/nact/nact-icommand-tab.c:570
+#: ../src/cact/cact-icapabilities-tab.c:158
+msgid "Capability filter"
+msgstr "Gaitasunaren iragazkia"
+
+#: ../src/cact/cact-icommand-tab.c:575
 msgid "Choosing a command"
 msgstr "Komando bat aukeratzea"
 
-#. i18n notes: example strings for the command preview
-#: ../src/nact/nact-icommand-tab.c:649
-msgid "/path/to"
-msgstr "/bide/izena"
+#: ../src/cact/cact-icommand-tab.c:616
+msgid "Choosing a working directory"
+msgstr "Laneko direktorioa aukeratzea"
 
-#: ../src/nact/nact-icommand-tab.c:650
-msgid "file1.txt"
-msgstr "fitxategia1.txt"
-
-#: ../src/nact/nact-icommand-tab.c:650
-msgid "file2.txt"
-msgstr "fitxategia2.txt"
-
-#: ../src/nact/nact-icommand-tab.c:651
-msgid " folder1"
-msgstr " karpeta1"
-
-#: ../src/nact/nact-icommand-tab.c:651
-msgid "folder2"
-msgstr "karpeta2"
-
-#: ../src/nact/nact-icommand-tab.c:652
-msgid " file1.txt"
-msgstr " fitxategia1.txt"
-
-#: ../src/nact/nact-icommand-tab.c:652
-msgid "folder1"
-msgstr "karpeta1"
-
-#: ../src/nact/nact-icommand-tab.c:654
-msgid "test.example.net"
-msgstr "proba.adibidea.net"
-
-#: ../src/nact/nact-icommand-tab.c:655
-msgid "file.txt"
-msgstr "fitxategia.txt"
-
-#: ../src/nact/nact-icommand-tab.c:656
-msgid "folder"
-msgstr "karpeta"
-
-#: ../src/nact/nact-icommand-tab.c:657
-msgid "8080"
-msgstr "8080"
-
-#: ../src/nact/nact-icommand-tab.c:661
-msgid "file:///path/to/file1.text"
-msgstr "file:///bide-izena/fitxategia1.text"
-
-#: ../src/nact/nact-icommand-tab.c:662
-msgid "file:///path/to/file2.text"
-msgstr "file:///bide-izena/fitxategia2.text"
-
-#: ../src/nact/nact-icommand-tab.c:663
-msgid "file:///path/to/a/dir"
-msgstr "file:///bide-izena/direktorio/bat"
-
-#: ../src/nact/nact-icommand-tab.c:664
-msgid "file:///path/to/another/dir"
-msgstr "file:///bide-izena/beste/direktorio/bat"
-
-#: ../src/nact/nact-icommand-tab.c:843
+#: ../src/cact/cact-icommand-tab.c:677
 msgid "e.g.,"
 msgstr "adib. "
+
+#: ../src/cact/cact-ienvironment-tab.c:68
+msgid "(strictly lesser than)"
+msgstr "(derrigorrez hau baino txikiagoa)"
+
+#: ../src/cact/cact-ienvironment-tab.c:69
+msgid "(equal to)"
+msgstr "(honen berdina)"
+
+#: ../src/cact/cact-ienvironment-tab.c:70
+msgid "(strictly greater than)"
+msgstr "(derrigorrez hau baino handiagoa)"
+
+#: ../src/cact/cact-ienvironment-tab.c:90
+msgid "MATE desktop"
+msgstr "MATE mahaigaina"
+
+#: ../src/cact/cact-ienvironment-tab.c:91
+msgid "KDE desktop"
+msgstr "KDE mahaigaina"
+
+#: ../src/cact/cact-ienvironment-tab.c:92
+msgid "ROX desktop"
+msgstr "ROX mahaigaina"
+
+#: ../src/cact/cact-ienvironment-tab.c:93
+msgid "XFCE desktop"
+msgstr "XFCE mahaigaina"
+
+#: ../src/cact/cact-ienvironment-tab.c:94
+msgid "Legacy systems"
+msgstr "Sistema zaharkituak"
+
+#: ../src/cact/cact-ienvironment-tab.c:751
+#: ../src/cact/cact-ienvironment-tab.c:809
+msgid "Choosing an executable"
+msgstr "Exekutagarri bat aukeratzea"
+
+#: ../src/cact/cact-ifolders-tab.c:170
+msgid "Folder filter"
+msgstr "Karpetaren iragazkia"
 
 #. i18n: title of the FileChoose dialog when selecting an URI which
 #. * will be compare to Caja 'current_folder'
 #.
-#: ../src/nact/nact-ifolders-tab.c:566
+#: ../src/cact/cact-ifolders-tab.c:255 ../src/cact/cact-ifolders-tab.c:285
 msgid "Select a folder"
 msgstr "Hautatutako karpeta"
 
-#: ../src/nact/nact-main-menubar.c:134 ../src/nact/nact-main-menubar.c:241
+#: ../src/cact/cact-imimetypes-tab.c:163
+msgid "Mimetype filter"
+msgstr "Mime motaren iragazkia"
+
+#: ../src/cact/cact-iproperties-tab.c:279
+msgid "Me_nu"
+msgstr "_Menua"
+
+#: ../src/cact/cact-iproperties-tab.c:280
+msgid "<b>Menu editable properties</b>"
+msgstr "<b>Menuaren propietate editagarriak</b>"
+
+#: ../src/cact/cact-iproperties-tab.c:282
+#: ../src/cact/caja-actions-config-tool.ui.h:218
+msgid "_Action"
+msgstr "_Ekintza"
+
+#: ../src/cact/cact-iproperties-tab.c:283
+#: ../src/cact/caja-actions-config-tool.ui.h:52
+msgid "<b>Action editable properties</b>"
+msgstr "<b>Ekintzaren propietate editagarriak</b>"
+
+#: ../src/cact/cact-ischemes-tab.c:161
+msgid "Scheme filter"
+msgstr "Eskemaren iragazkia"
+
+#: ../src/cact/cact-main-menubar.c:107 ../src/cact/cact-main-menubar.c:214
 msgid "_File"
 msgstr "_Fitxategia"
 
-#: ../src/nact/nact-main-menubar.c:135 ../src/nact/nact-main-menubar.c:245
+#: ../src/cact/cact-main-menubar.c:108 ../src/cact/cact-main-menubar.c:218
 msgid "_Edit"
 msgstr "_Editatu"
 
-#: ../src/nact/nact-main-menubar.c:136
+#: ../src/cact/cact-main-menubar.c:109
 msgid "_View"
 msgstr "_Ikusi"
 
-#: ../src/nact/nact-main-menubar.c:137
+#: ../src/cact/cact-main-menubar.c:110
 msgid "_Toolbars"
 msgstr "_Tresna-barrak"
 
-#: ../src/nact/nact-main-menubar.c:138 ../src/nact/nact-main-menubar.c:249
+#: ../src/cact/cact-main-menubar.c:111 ../src/cact/cact-main-menubar.c:222
 msgid "_Tools"
 msgstr "_Tresnak"
 
-#: ../src/nact/nact-main-menubar.c:139
+#: ../src/cact/cact-main-menubar.c:112
 msgid "_Maintainer"
 msgstr "_Mantentzailea"
 
-#: ../src/nact/nact-main-menubar.c:140 ../src/nact/nact-main-menubar.c:253
+#: ../src/cact/cact-main-menubar.c:113 ../src/cact/cact-main-menubar.c:226
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: ../src/nact/nact-main-menubar.c:142
+#: ../src/cact/cact-main-menubar.c:115
 msgid "New _menu"
 msgstr "_Menu berria"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New menu' item
-#: ../src/nact/nact-main-menubar.c:144
+#: ../src/cact/cact-main-menubar.c:117
 msgid "Insert a new menu at the current position"
 msgstr "Txertatu menu berria uneko posizioan"
 
-#: ../src/nact/nact-main-menubar.c:146
+#: ../src/cact/cact-main-menubar.c:119
 msgid "_New action"
 msgstr "Ekintza _berria"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New action' item
-#: ../src/nact/nact-main-menubar.c:148
+#: ../src/cact/cact-main-menubar.c:121
 msgid "Define a new action"
 msgstr "Definitu ekintza berria"
 
-#: ../src/nact/nact-main-menubar.c:150
+#: ../src/cact/cact-main-menubar.c:123
 msgid "New _profile"
 msgstr "_Profila berria"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New profile' item
-#: ../src/nact/nact-main-menubar.c:152
+#: ../src/cact/cact-main-menubar.c:125
 msgid "Define a new profile attached to the current action"
 msgstr "Definitu uneko ekintzari erantsitako profila berria"
 
 #. i18n: tooltip displayed in the status bar when selecting 'Save' item
-#: ../src/nact/nact-main-menubar.c:156
-msgid "Record all the modified actions. Invalid actions will be silently ignored"
+#: ../src/cact/cact-main-menubar.c:129
+msgid ""
+"Record all the modified actions. Invalid actions will be silently ignored"
 msgstr ""
 "Erregistratu eraldatutako ekintza guztiak. Ekintza baliogabeei isilean "
 "ezikusi egingo zaie"
 
 #. i18n: tooltip displayed in the status bar when selecting 'Quit' item
-#: ../src/nact/nact-main-menubar.c:160
+#: ../src/cact/cact-main-menubar.c:133
 msgid "Quit the application"
 msgstr "Irte aplikaziotik"
 
 #. i18n: tooltip displayed in the status bar when selecting the Cut item
-#: ../src/nact/nact-main-menubar.c:164
+#: ../src/cact/cact-main-menubar.c:137
 msgid "Cut the selected item(s) to the clipboard"
 msgstr "Ebaki hautatutako elementuak arbelera"
 
 #. i18n: tooltip displayed in the status bar when selecting the Copy item
-#: ../src/nact/nact-main-menubar.c:168
+#: ../src/cact/cact-main-menubar.c:141
 msgid "Copy the selected item(s) to the clipboard"
 msgstr "Kopiatu hautatutako elementuak arbelean"
 
 #. i18n: tooltip displayed in the status bar when selecting the Paste item
-#: ../src/nact/nact-main-menubar.c:172
+#: ../src/cact/cact-main-menubar.c:145
 msgid "Insert the content of the clipboard just before the current position"
 msgstr "Txertatu arbeleko edukia uneko posizioaren azpian"
 
-#: ../src/nact/nact-main-menubar.c:174
+#: ../src/cact/cact-main-menubar.c:147
 msgid "Paste _into"
 msgstr "Itsatsi _hemen"
 
 #. i18n: tooltip displayed in the status bar when selecting the Paste Into item
-#: ../src/nact/nact-main-menubar.c:176
+#: ../src/cact/cact-main-menubar.c:149
 msgid "Insert the content of the clipboard as first child of the current item"
 msgstr "Txertatu arbeleko edukia uneko elementuaren aurreneko ume gisa"
 
-#: ../src/nact/nact-main-menubar.c:178
+#: ../src/cact/cact-main-menubar.c:151
 msgid "D_uplicate"
 msgstr "_Bikoiztu"
 
 #. i18n: tooltip displayed in the status bar when selecting the Duplicate item
-#: ../src/nact/nact-main-menubar.c:180
+#: ../src/cact/cact-main-menubar.c:153
 msgid "Duplicate the selected item(s)"
 msgstr "Bikoiztu hautatutako elementuak"
 
 #. i18n: tooltip displayed in the status bar when selecting the Delete item
-#: ../src/nact/nact-main-menubar.c:184
+#: ../src/cact/cact-main-menubar.c:157
 msgid "Delete the selected item(s)"
 msgstr "Ezabatu hautatutako elementuak"
 
-#: ../src/nact/nact-main-menubar.c:186
+#: ../src/cact/cact-main-menubar.c:159
 msgid "_Reload the items"
 msgstr "_Birkargatu elementuak"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'Reload' item
-#: ../src/nact/nact-main-menubar.c:188
+#: ../src/cact/cact-main-menubar.c:161
 msgid ""
 "Cancel your current modifications and reload the initial list of menus and "
 "actions"
 msgstr ""
-"Bertan behera utzi zure uneko eraldaketak eta birkargatu ekintzen eta menuen hasierako "
-"zerrenda."
+"Bertan behera utzi zure uneko eraldaketak eta birkargatu ekintzen eta menuen "
+"hasierako zerrenda."
 
 #. i18n: tooltip displayed in the status bar when selecting the 'Preferences' item
-#: ../src/nact/nact-main-menubar.c:192
+#: ../src/cact/cact-main-menubar.c:165
 msgid "Edit your preferences"
 msgstr "Editatu zure hobespenak"
 
-#: ../src/nact/nact-main-menubar.c:194
+#: ../src/cact/cact-main-menubar.c:167
 msgid "_Expand all"
 msgstr "_Zabaldu denak"
 
 #. i18n: tooltip displayed in the status bar when selecting the Expand all item
-#: ../src/nact/nact-main-menubar.c:196
+#: ../src/cact/cact-main-menubar.c:169
 msgid "Entirely expand the items hierarchy"
 msgstr "Zabaldu erabat elementuen hierarkia"
 
-#: ../src/nact/nact-main-menubar.c:198
+#: ../src/cact/cact-main-menubar.c:171
 msgid "_Collapse all"
 msgstr "_Tolestu denak"
 
 #. i18n: tooltip displayed in the status bar when selecting the Collapse all item
-#: ../src/nact/nact-main-menubar.c:200
+#: ../src/cact/cact-main-menubar.c:173
 msgid "Entirely collapse the items hierarchy"
 msgstr "Tolestu erabat elementuen hierarkia"
 
-#: ../src/nact/nact-main-menubar.c:203
+#: ../src/cact/cact-main-menubar.c:176
 msgid "_Import assistant..."
 msgstr "_Inportatze-laguntzailea..."
 
 #. i18n: tooltip displayed in the status bar when selecting the Import item
-#: ../src/nact/nact-main-menubar.c:205
-msgid "Import one or more actions from external (XML) files into your configuration"
+#: ../src/cact/cact-main-menubar.c:178
+msgid ""
+"Import one or more actions from external (XML) files into your configuration"
 msgstr ""
 "Inportatu ekintza bat edo gehiago kanpoko (XML) fitxategitikk zure "
 "konfiguraziora"
 
-#: ../src/nact/nact-main-menubar.c:207
+#: ../src/cact/cact-main-menubar.c:180
 msgid "E_xport assistant..."
 msgstr "_Exportatze-laguntzailea..."
 
 #. i18n: tooltip displayed in the status bar when selecting the Export item
-#: ../src/nact/nact-main-menubar.c:209
-msgid "Export one or more actions from your configuration to external XML files"
+#: ../src/cact/cact-main-menubar.c:182
+msgid ""
+"Export one or more actions from your configuration to external XML files"
 msgstr ""
 "Esportatu ekintza bat edo gehiago zure konfiguraziotik kanpoko XML "
 "fitxategietara."
 
-#: ../src/nact/nact-main-menubar.c:212
+#: ../src/cact/cact-main-menubar.c:185
 msgid "_Dump the selection"
 msgstr "_Irauli hautapena"
 
 #. i18n: tooltip displayed in the status bar when selecting the Dump selection item
-#: ../src/nact/nact-main-menubar.c:214
+#: ../src/cact/cact-main-menubar.c:187
 msgid "Recursively dump selected items"
 msgstr "Irauli errekurtsiboki hautatutako elementuak"
 
-#: ../src/nact/nact-main-menubar.c:216
+#: ../src/cact/cact-main-menubar.c:189
 msgid "_Brief tree store dump"
 msgstr "_Irauli laburki zuhaitzaren biltegia"
 
 #. i18n: tooltip displayed in the status bar when selecting the BriefTreeStoreDump item
-#: ../src/nact/nact-main-menubar.c:218
+#: ../src/cact/cact-main-menubar.c:191
 msgid "Briefly dump the tree store"
 msgstr "Irauli laburki zuhaitzaren biltegia"
 
-#: ../src/nact/nact-main-menubar.c:220
+#: ../src/cact/cact-main-menubar.c:193
 msgid "_List modified items"
 msgstr "_Zerrendatu aldatutako elementuak"
 
 #. i18n: tooltip displayed in the status bar when selecting the ListModifiedItems item
-#: ../src/nact/nact-main-menubar.c:222
+#: ../src/cact/cact-main-menubar.c:195
 msgid "List the modified items"
 msgstr "Zerrendatu aldatutako elementuak"
 
-#: ../src/nact/nact-main-menubar.c:224
+#: ../src/cact/cact-main-menubar.c:197
 msgid "_Dump the clipboard"
 msgstr "_Irauli arbela"
 
 #. i18n: tooltip displayed in the status bar when selecting the DumpClipboard item
-#: ../src/nact/nact-main-menubar.c:226
+#: ../src/cact/cact-main-menubar.c:199
 msgid "Dump the content of the clipboard object"
 msgstr "Irauli arbela objektuko edukia"
 
+#: ../src/cact/cact-main-menubar.c:202
+msgid "Contents"
+msgstr "Edukia"
+
 #. i18n: tooltip displayed in the status bar when selecting the Help item
-#: ../src/nact/nact-main-menubar.c:231
+#: ../src/cact/cact-main-menubar.c:204
 msgid "Display help about this program"
 msgstr "Bistaratu programa honi buruzko laguntza"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
-#: ../src/nact/nact-main-menubar.c:235
+#: ../src/cact/cact-main-menubar.c:208
 msgid "Display informations about this program"
 msgstr "Bistaratu programa honi buruzko informazioa"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
-#: ../src/nact/nact-main-menubar.c:243
+#: ../src/cact/cact-main-menubar.c:216
 msgid "Display the File toolbar"
 msgstr "Bistaratu 'Fitxategia' tresna-barra"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View Edit toolbar' item
-#: ../src/nact/nact-main-menubar.c:247
+#: ../src/cact/cact-main-menubar.c:220
 msgid "Display the Edit toolbar"
 msgstr "Bistaratu 'Editatu' tresna-barra"
 
 #. i18n: tooltip displayed in the status bar when selecting 'View Tools toolbar' item
-#: ../src/nact/nact-main-menubar.c:251
+#: ../src/cact/cact-main-menubar.c:224
 msgid "Display the Tools toolbar"
 msgstr "Bistaratu 'Tresnak' tresna-barra"
 
 #. i18n: tooltip displayed in the status bar when selecting 'View Help toolbar' item
-#: ../src/nact/nact-main-menubar.c:255
+#: ../src/cact/cact-main-menubar.c:228
 msgid "Display the Help toolbar"
 msgstr "Bistaratu 'Laguntza' tresna-barra"
 
 #. i18n: note the space at the beginning of the sentence
-#: ../src/nact/nact-main-menubar.c:490
+#: ../src/cact/cact-main-menubar.c:454
 #, c-format
 msgid " %d menu(s), %d action(s), %d profile(s) are currently loaded"
 msgstr " %d menu, %d ekintza, %d profil daude unean kargatuta"
 
-#: ../src/nact/nact-main-menubar.c:858
-msgid "New profile"
-msgstr "Profila berria"
-
-#: ../src/nact/nact-main-menubar.c:1067
+#: ../src/cact/cact-main-menubar-edit.c:242
 msgid "Not all items have been cut as following ones are not modifiable:"
 msgstr "Ez dira elementu guztiak ebaki, honakoak ez baitira aldagarriak:"
 
-#: ../src/nact/nact-main-menubar.c:1297
+#: ../src/cact/cact-main-menubar-edit.c:492
 msgid "Not all items have been deleted as following ones are not modifiable:"
 msgstr "Ez dira elementu guztiak ezabatu, honakoak ez baitira aldagarriak:"
 
-#: ../src/nact/nact-main-window.c:1305
+#: ../src/cact/cact-main-menubar-file.c:205
+msgid "New profile"
+msgstr "Profila berria"
+
+#: ../src/cact/cact-main-menubar-file.c:446
+msgid "Automatically saving pending modifications..."
+msgstr "Aldaketak automatikoki gordetzea..."
+
+#: ../src/cact/cact-main-window.c:1400
 msgid ""
 "Reloading a fresh list of actions requires that you give up with your "
 "current modifications."
@@ -1796,11 +2416,11 @@ msgstr ""
 "Jakin ezazu ekintzen zerrenda fresko bat birkargatzeak zure uneko aldaketak "
 "uztea eskatzen duela."
 
-#: ../src/nact/nact-main-window.c:1308
+#: ../src/cact/cact-main-window.c:1403
 msgid "Do you really want to do this ?"
 msgstr "Ziur zaude hori egitea nahi duzula?"
 
-#: ../src/nact/nact-main-window.c:1331
+#: ../src/cact/cact-main-window.c:1426
 msgid ""
 "One or more actions have been modified in the filesystem.\n"
 "You could keep to work with your current list of actions, or you may want to "
@@ -1810,7 +2430,7 @@ msgstr ""
 "Lanean jarrai dezakezu zure uneko ekintzen zerrendarekin, edo nahiago baduzu "
 "fresko bat birkarga dezakezu."
 
-#: ../src/nact/nact-main-window.c:1338
+#: ../src/cact/cact-main-window.c:1433
 msgid ""
 "Note that reloading a fresh list of actions requires that you give up with "
 "your current modifications."
@@ -1818,120 +2438,1683 @@ msgstr ""
 "Jakin ezazu ekintzen zerrenda fresko bat birkargatzeak zure uneko aldaketak "
 "uztea eskatzen duela."
 
-#: ../src/nact/nact-main-window.c:1344
+#: ../src/cact/cact-main-window.c:1439
 msgid "Do you want to reload a fresh list of actions ?"
 msgstr "Nahi duzu ekintzen zerrenda freskoa birkargatzea?"
 
-#: ../src/nact/nact-providers-list.c:117
+#: ../src/cact/cact-match-list.c:63
+msgid "Must match one of"
+msgstr "Batekin bat etorri"
+
+#: ../src/cact/cact-match-list.c:64
+msgid "Must match all of"
+msgstr "Guztiekin bat etorri"
+
+#. i18n: label of the header of a column which let the user select a negative filter
+#: ../src/cact/cact-match-list.c:169
+msgid "Must not match any of"
+msgstr "Ez bat etorri"
+
+#: ../src/cact/cact-match-list.c:493
+#, c-format
+msgid ""
+"'%s' filter already exists in the list.\n"
+"Please provide another one."
+msgstr ""
+"'%s' iragazkia badago jadanik zerrendan.\n"
+"Eman beste bat."
+
+#. i18n notes : new filter for a new row in a match/no match list
+#: ../src/cact/cact-match-list.c:871
+msgid "new-filter"
+msgstr "iragazki-berria"
+
+#: ../src/cact/cact-preferences.ui.h:1
+msgid "<b>Activation and priority</b>"
+msgstr "<b>Aktibazioa eta lehentasuna</b>"
+
+#: ../src/cact/cact-preferences.ui.h:2
+msgid "<b>Assistants</b>"
+msgstr "<b>Laguntzailea</b>"
+
+#: ../src/cact/cact-preferences.ui.h:3
+msgid "<b>Auto-save</b>"
+msgstr "<b>Automatikoki gordetzea</b>"
+
+#: ../src/cact/cact-preferences.ui.h:4
+msgid "<b>Common schemes</b>"
+msgstr "<b>Eskema arruntak</b>"
+
+#: ../src/cact/cact-preferences.ui.h:5
+msgid "<b>Export format</b>"
+msgstr "<b>Esportatzeko formatua</b>"
+
+#: ../src/cact/cact-preferences.ui.h:6
+msgid "<b>Import mode</b>"
+msgstr "<b>Inportatzeko modua</b>"
+
+#: ../src/cact/cact-preferences.ui.h:7
+msgid "<b>Items ordering</b>"
+msgstr "<b>Elementuak ordenatzea</b>"
+
+#: ../src/cact/cact-preferences.ui.h:8
+msgid "<b>Caja menu layout</b>"
+msgstr "<b>Caja-en menuaren diseinua</b>"
+
+#: ../src/cact/cact-preferences.ui.h:9
+msgid "<b>Relabeling items</b>"
+msgstr "<b>Elementuak berriro etiketatzea</b>"
+
+#: ../src/cact/cact-preferences.ui.h:10
+msgid "Add an 'A_bout Caja Actions' item in the Caja context menus"
+msgstr ""
+"Gehitu 'Caja-en ekintzei _buruz' elementua Caja-en testuinguruko "
+"menuari"
+
+#: ../src/cact/cact-preferences.ui.h:11
+msgid "Ask for a _confirmation when quitting the assistant on Esc key"
+msgstr "Eskatu _berrespena Ihes teklarekin laguntzailetik irtetzean"
+
+#: ../src/cact/cact-preferences.ui.h:12
+msgid "Automatically _saves pending modifications"
+msgstr "Aldaketak _automatikoki gordetzea"
+
+#: ../src/cact/cact-preferences.ui.h:13
+msgid "Click to add a new default scheme."
+msgstr "Egin klik eskema lehenetsi berria gehitzeko."
+
+#: ../src/cact/cact-preferences.ui.h:14
+msgid "Click to remove the selected default scheme."
+msgstr "Egin klik hautatutako eskema lehenetsia kentzeko."
+
+#: ../src/cact/cact-preferences.ui.h:15
+msgid ""
+"Define here, for available I/O providers, if you want them to be read at "
+"startup, to be writable, and the order in which they will be tested when "
+"trying to write a new menu or action."
+msgstr ""
+"Definitu hemen S/I-ko hornitzaile erabilgarrientzako, hauek abioan "
+"irakurtzea, idazgarriak izatea nahi dituzun, eta zer ordenatan probatuko "
+"diren menu edo ekintza berri bat idazten saiatzean."
+
+#: ../src/cact/cact-preferences.ui.h:16
+msgid ""
+"Display order of menus and actions, both in the Caja context menu and in "
+"the CACT user interface, must be manually adjusted."
+msgstr ""
+"Menu eta ekintzen ordenaren bistaraketa, bai Caja-en testuinguruko "
+"menuan bai CACT interfazean, eskuz doitu behar dira."
+
+#: ../src/cact/cact-preferences.ui.h:17
+msgid "Do _not import actions whose UUID already exists"
+msgstr "_Ez inportatu ekintzak euren UUIDa jadanik existitzen badira"
+
+#: ../src/cact/cact-preferences.ui.h:18
+msgid "Esc key _quits the assistant"
+msgstr "Ihes teklak laguntzailea _ixten du"
+
+#: ../src/cact/cact-preferences.ui.h:19
+msgid "I/O _Providers"
+msgstr "S/Iren _hornitzaileak"
+
+#: ../src/cact/cact-preferences.ui.h:20
+msgid ""
+"Menus and actions will be displayed in the ascending alphabetical order of "
+"their label, both in the Caja context menu and in the CACT user "
+"interface."
+msgstr ""
+"Menu eta ekintzak alfabetikoki goranzko ordenan bistaratuko dira euren "
+"etiketen arabera, bai Caja-en testuinguruko menuan bai CACT interfazean."
+
+#: ../src/cact/cact-preferences.ui.h:21
+msgid ""
+"Menus and actions will be displayed in the descending alphabetical order of "
+"their label, both in the Caja context menu and in the CACT user "
+"interface."
+msgstr ""
+"Menu eta ekintzak alfabetikoki beheranzko ordenan bistaratuko dira euren "
+"etiketen arabera, bai Caja-en testuinguruko menuan bai CACT interfazean."
+
+#: ../src/cact/cact-preferences.ui.h:22
+msgid ""
+"Move up the selected I/O provider in the order of priority when trying to "
+"write a new item."
+msgstr ""
+"Eraman gora hautatutako S/Iren hornitzailea lehentasunen ordenan elementu "
+"berri bat idazten saiatzean."
+
+#: ../src/cact/cact-preferences.ui.h:23
+msgid "Caja Actions Preferences"
+msgstr "Caja-eko ekintzen hobespenak"
+
+#: ../src/cact/cact-preferences.ui.h:24
+msgid "Periodicity :"
+msgstr "Maiztasuna:"
+
+#: ../src/cact/cact-preferences.ui.h:25
+msgid "Relabel _actions"
+msgstr "Etiketatu berriro _ekintzak"
+
+#: ../src/cact/cact-preferences.ui.h:26
+msgid "Relabel _menus"
+msgstr "Etiketatu berriro _menuak"
+
+#: ../src/cact/cact-preferences.ui.h:27
+msgid "Relabel _profiles"
+msgstr "Etiketatu berriro _profilak"
+
+#: ../src/cact/cact-preferences.ui.h:28
+msgid ""
+"The action found in the selected file will silently override the current "
+"action which has the same identifiant.\n"
+"Be warned: this mode may be dangerous. You will not be prompted another time."
+msgstr ""
+"Hautatutako fitxategian aurkitutako ekintzak identifikatzaile berdina duen "
+"uneko ekintza gainidatziko du modu isilean.\n"
+"Abisua: modu hau arriskutsua izan daiteke. Ez zaizu gehiago galdetuko."
+
+#: ../src/cact/cact-preferences.ui.h:30
+msgid ""
+"The selected file will be imported with a slightly modified label indicating "
+"the renumbering.\n"
+"The existing action will not be modified."
+msgstr ""
+"Hautatutako fitxategia inportatu egingo da piska bat aldatutako etiketarekin "
+"birzenbaketa adieraziz.\n"
+"Existitzen den ekintza ez da aldatuko."
+
+#: ../src/cact/cact-preferences.ui.h:32
+msgid ""
+"This option is only relevant when the 'Escape' key lets the user quit the "
+"assistant. When checked, a confirmation will be asked to the user in order "
+"to help prevent erroneous hits."
+msgstr ""
+"Aukera hau soilik da egokia 'Ihes' teklak erabiltzaileari laguntzailetik "
+"irtetzea uzten dionean. Aktibatzen bada, berrespena eskatuko zaio "
+"erabiltzaileari ustekabean tekla sakatzetik laguntzeko."
+
+#: ../src/cact/cact-preferences.ui.h:33
+msgid ""
+"This tab acts on some user preferences relatively to the configuration user "
+"interface."
+msgstr ""
+"Fitxa honek erabiltzailearen interfazearen konfigurazioarekin zerikusia duen "
+"erabiltzailearen hobespen batzuetan eragiten du."
+
+#: ../src/cact/cact-preferences.ui.h:34
+msgid ""
+"This tab lets you choose how the actions are ordered in the displayed list "
+"as well as in the Caja context menu. You may also choose here how "
+"actions will be displayed in the Caja context menu."
+msgstr ""
+"Ekintzak nola ordenatuko diren bistaratutako zerrendan, baita Caja-eko "
+"testuinguruko menuan ere, aukeratzea uzten dizu fitxa honek. Gainera, "
+"Caja-eko testuinguruko menuan ekintzak nola bistaratuko diren aukera "
+"dezakezu hemen."
+
+#: ../src/cact/cact-preferences.ui.h:35
+msgid ""
+"This tab lets you decide of some default behaviors on export operations."
+msgstr ""
+"Fitxa honek esportatzeko eragiketetan portaera lehenetsi batzuk erabakitzea "
+"uzten dizu."
+
+#: ../src/cact/cact-preferences.ui.h:36
+msgid ""
+"This tab lets you decide of some default behaviors on import operations."
+msgstr ""
+"Fitxa honek inportatzeko eragiketetan portaera lehenetsi batzuk erabakitzea "
+"uzten dizu."
+
+#: ../src/cact/cact-preferences.ui.h:37
+msgid ""
+"This tab lets you decide whether the I/O providers are enabled or not, and "
+"in which order they will be tried when writing a new item."
+msgstr ""
+"Fitxa honek S/I-ren hornitzaileak gaituta dauden edo ez erabakitzea uzten "
+"dizu, eta zer ordenatan probatuko diren elementu berri bat idazten saiatzean."
+
+#: ../src/cact/cact-preferences.ui.h:38
+msgid ""
+"This tab lets you decide which schemes are proposed by default when editing "
+"advanced conditions for an item."
+msgstr ""
+"Fitxa honek zer eskema proposatzen diren lehenetsi gisa erabakitzea uzten "
+"dizu elementu baten baldintza aurreratuak editatzean."
+
+#: ../src/cact/cact-preferences.ui.h:39
+msgid ""
+"This used to be the historical behavior.\n"
+"The selected file will be marked as \"NOT OK\" in the Summary page.\n"
+"The existing action will not be modified."
+msgstr ""
+"Portaera historikoa izateko erabiltzen da hau.\n"
+"Hautatutako fitxategia \"NOT OK\" (ez ados) gisa markatuko da laburpenaren "
+"orrialdean.\n"
+"Existitzen diren ekintzak ez dira aldatuko."
+
+#: ../src/cact/cact-preferences.ui.h:42
+msgid ""
+"What to do when an action being imported has the same UUID that an already "
+"existing one ?"
+msgstr ""
+"Zer egin behar da inportatzen ari den ekintza baten UUIDa aurrez existitzen "
+"bada?"
+
+#: ../src/cact/cact-preferences.ui.h:43
+msgid "What to do when pasting or duplicating an item in the tree ?"
+msgstr "Zer egin elementu bat itsastean edo bikoiztean zuhaitzean?"
+
+#: ../src/cact/cact-preferences.ui.h:44
+msgid ""
+"When a menu is copied/pasted, or duplicated, the new menu will be relabeled "
+"as 'Copy of ...'."
+msgstr ""
+"Menu bat kopiatu, itsatsi edo bikoiztu denean, menu berria berriro "
+"etiketatuko da '(kopia)' bezala."
+
+#: ../src/cact/cact-preferences.ui.h:45
+msgid ""
+"When a profile is copied/pasted, or duplicated, the new profile will be "
+"relabeled as 'Copy of ...'."
+msgstr ""
+"Profil bat kopiatu, itsatsi edo bikoiztu denean, profil berria berriro "
+"etiketatuko da '(kopia)' bezala."
+
+#: ../src/cact/cact-preferences.ui.h:46
+msgid ""
+"When an action is copied/pasted, or duplicated, the new action will be "
+"relabeled as 'Copy of ...'."
+msgstr ""
+"Ekintza bat kopiatu, itsatsi edo bikoiztu denean, ekintza berria berriro "
+"etiketatuko da '(kopia)' bezala."
+
+#: ../src/cact/cact-preferences.ui.h:47
+msgid ""
+"When this option is checked, an 'About Caja Actions' item will be added "
+"to the root Caja Actions menu in the Caja context menu.\n"
+"Note that this item will be displayed only if a unique menu is defined in "
+"the Caja context menu (e.g. when having checked the root 'Caja "
+"Actions' menu option above)."
+msgstr ""
+"Aukera hau aktibatzen denean, 'Caja-eko ekintzei buruz' elementua "
+"gehituko zaio 'Caja-eko ekintzak' erroko menuari Caja-eko "
+"testuinguruko menuan.\n"
+"Jakin ezazu elementu hau soilik bistaratuko dela menu bakar bat definitu "
+"bada Caja-eko testuinguruko menuan (adib. 'Caja-eko ekintzak' erroko "
+"menuaren goiko aukerak aktibatuta edukiz)."
+
+#: ../src/cact/cact-preferences.ui.h:49
+msgid ""
+"When this option is checked, menus and actions will actually be displayed as "
+"sub-items of a root 'Caja Actions' menu in the Caja context menu."
+msgstr ""
+"Aukera hau aktibatzen bada, menu eta ekintzak 'Caja-eko ekintzak' erroko "
+"menuaren azpi-elementu gisa bistaratuko dira Caja-eko testuinguruko "
+"menuan."
+
+#: ../src/cact/cact-preferences.ui.h:50
+msgid ""
+"When this option is checked, pending modification will be periodically and "
+"automatically saved."
+msgstr ""
+"Aukera hau aktibatzen bada, gordetzeko falta diren aldaketak maiztasunez eta "
+"automatikoki gordeko dira."
+
+#: ../src/cact/cact-preferences.ui.h:51
+msgid ""
+"When this option is checked, the 'Escape' key will let you quit the current "
+"assistant. Else, quitting the assistant is only possible by hitting the "
+"'Cancel' button."
+msgstr ""
+"Aukera hau aktibatzen denean, 'Ihes' tekla sakatuz uneko laguntzailetik "
+"irtetzea uzten dizu. Bestela, 'Utzi' botoian klik egitea da bide bakarra "
+"laguntzailetik irtetzeko."
+
+#: ../src/cact/cact-preferences.ui.h:52
+msgid ""
+"You may define here any number of schemes. They will be proposed as "
+"available schemes when defining conditions for an action.\n"
+"If the list becomes empty, CACT will automatically refill in with a default "
+"list.\n"
+"You can add a new scheme by clicking on the '+' button."
+msgstr ""
+"Hainbat eskema defini ditzakezu hemen. Eskema erabilgarri gisa proposatuko "
+"dira ekintza baten baldintzak definitzean.\n"
+"Zerrenda hutsa bihurtzen bada, CACT berriro beteko da automatikoki zerrenda "
+"lehenetsi batekin.\n"
+"Eskema berri bat gehi dezakezu '+' botoian klik eginez."
+
+#: ../src/cact/cact-preferences.ui.h:55
+msgid "You will be asked each time an imported UUID already exists."
+msgstr ""
+"Aldi bakoitzean inportatutako UUID bat jadanik existitzen den galdetuko "
+"zaizu."
+
+#: ../src/cact/cact-preferences.ui.h:56
+msgid "_Ascending alphabetical order"
+msgstr "_Gorantz ordena alfabetikoan"
+
+#: ../src/cact/cact-preferences.ui.h:58
+msgid "_Create a root 'Caja Actions' menu"
+msgstr "_Sortu 'Caja-eko ekintzak' erroko menua"
+
+#: ../src/cact/cact-preferences.ui.h:59
+msgid "_Descending alphabetical order"
+msgstr "_Beherantz ordena alfabetikoan"
+
+#: ../src/cact/cact-preferences.ui.h:60
+msgid "_Down"
+msgstr "_Behera"
+
+#: ../src/cact/cact-preferences.ui.h:61
+msgid "_Export"
+msgstr "_Esportatu"
+
+#: ../src/cact/cact-preferences.ui.h:62
+msgid "_Import"
+msgstr "_Inportatu"
+
+#: ../src/cact/cact-preferences.ui.h:63
+msgid "_Manual order"
+msgstr "_Eskuzko ordena"
+
+#: ../src/cact/cact-preferences.ui.h:64
+msgid "_Override existing actions when importing with same UUID"
+msgstr "_Gainidatzi existitzen diren ekintzak UUID berdinarekin inportatzean"
+
+#: ../src/cact/cact-preferences.ui.h:65
+msgid "_Renumber imported actions whose UUID already exists"
+msgstr ""
+"_Aldatu inportatutako ekintzen zenbaketa beraien UUIDak jadanik existitzen "
+"badira"
+
+#: ../src/cact/cact-preferences.ui.h:66
+msgid "_Runtime preferences"
+msgstr "_Exekuzio-denboraren hobespenak"
+
+#: ../src/cact/cact-preferences.ui.h:67
+#: ../src/cact/caja-actions-config-tool.ui.h:241
+msgid "_Schemes"
+msgstr "_Eskemak"
+
+#: ../src/cact/cact-preferences.ui.h:68
+msgid "_UI Preferences"
+msgstr "_Interfazearen hobespenak"
+
+#: ../src/cact/cact-preferences.ui.h:69
+msgid "_Up"
+msgstr "_Gora"
+
+#: ../src/cact/cact-preferences.ui.h:70
+msgid "minutes"
+msgstr "minutu"
+
+#: ../src/cact/cact-providers-list.c:117
 msgid "To be read"
 msgstr "Irakurtzeko"
 
-#: ../src/nact/nact-providers-list.c:125
+#: ../src/cact/cact-providers-list.c:125
 msgid "Writable"
 msgstr "Idazgarria"
 
-#: ../src/nact/nact-providers-list.c:133
+#: ../src/cact/cact-providers-list.c:133
 msgid "I/O Provider"
 msgstr "S/Iren hornitzailea"
 
 #. i18n: default name when the I/O providers doesn't provide one
-#: ../src/nact/nact-providers-list.c:210
+#: ../src/cact/cact-providers-list.c:210
 msgid "no name"
 msgstr "izenik ez"
 
 #. i18n: name displayed when the corresponding I/O provider is unavailable at runtime
-#: ../src/nact/nact-providers-list.c:214
+#: ../src/cact/cact-providers-list.c:214
 msgid "unavailable I/O provider"
 msgstr "S/Iren honitzailerik ez dago erabilgarri"
 
 #. i18n notes : description of 'file' scheme
-#: ../src/nact/nact-schemes-list.c:244
+#: ../src/cact/cact-schemes-list.c:261
 msgid "Local files"
 msgstr "Lokaleko fitxategiak"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../src/nact/nact-schemes-list.c:246
+#: ../src/cact/cact-schemes-list.c:263
 msgid "SSH files"
 msgstr "SSH fitxategiak"
 
 #. i18n notes : description of 'smb' scheme
-#: ../src/nact/nact-schemes-list.c:248
+#: ../src/cact/cact-schemes-list.c:265
 msgid "Windows files"
 msgstr "Windows-eko fitxategiak"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../src/nact/nact-schemes-list.c:250
+#: ../src/cact/cact-schemes-list.c:267
 msgid "FTP files"
 msgstr "FTP fitxategiak"
 
 #. i18n notes : description of 'dav' scheme
-#: ../src/nact/nact-schemes-list.c:252
+#: ../src/cact/cact-schemes-list.c:269
 msgid "WebDAV files"
 msgstr "WebDAV fitxategiak"
 
+#. i18n: add a comment when a scheme is already used by current item
+#: ../src/cact/cact-schemes-list.c:367
+#, c-format
+msgid "%s (already used)"
+msgstr "%s (jadanik erabilita)"
+
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../src/nact/nact-schemes-list.c:784
+#: ../src/cact/cact-schemes-list.c:689
 msgid "new-scheme"
 msgstr "eskema-berria"
 
-#: ../src/nact/nact-schemes-list.c:785
+#: ../src/cact/cact-schemes-list.c:690
 msgid "New scheme description"
 msgstr "Eskema berriaren azalpena"
 
-#: ../src/nact/nact-tree-model-dnd.c:120
+#: ../src/cact/cact-tree-model-dnd.c:120
 msgid "Unable to drop a profile here"
 msgstr "Ezin da profila hemen jaregin"
 
-#: ../src/nact/nact-tree-model-dnd.c:121
+#: ../src/cact/cact-tree-model-dnd.c:121
 msgid "Unable to drop an action or a menu here"
 msgstr "Ezin da ekintza edo menu bat hemen jaregin"
 
-#: ../src/nact/nact-tree-model-dnd.c:122
+#: ../src/cact/cact-tree-model-dnd.c:122
 msgid "Unable to drop here as parent is not writable"
 msgstr "Ezin da hemen jaregin gurasoa ez baita idazgarria"
 
-#: ../src/nact/nact-tree-model-dnd.c:123
+#: ../src/cact/cact-tree-model-dnd.c:123
 msgid "Unable to drop here as level zero is not writable"
 msgstr "Ezin da hemen jaregin zero maila ez baita idazgarria"
 
-#: ../src/nact/nact-tree-model-dnd.c:853
+#: ../src/cact/cact-tree-model-dnd.c:873
 msgid "Some messages have occurred during drop operation."
 msgstr "Mezu batzuk gertatu dira jaregitean."
 
-#: ../src/nact/nact-window.c:358
+#: ../src/cact/cact-window.c:358
 msgid "An error has occured when trying to save the item"
 msgstr "Errorea gertatu da elementua gordetzen saiatzean"
 
-#: ../src/nact/nact-window.c:404
+#: ../src/cact/cact-window.c:404
 msgid "An error has occured when trying to delete the item"
 msgstr "Errorea gertatu da elementua ezabatzen saiatzean"
 
-#: ../src/nact/nact-window.c:461
+#: ../src/cact/cact-window.c:461
 #, c-format
 msgid "Some items have been modified."
 msgstr "Elementu batzuk aldatu egin dira."
 
-#: ../src/nact/nact-window.c:462
+#: ../src/cact/cact-window.c:462
 msgid "Are you sure you want to quit without saving them ?"
 msgstr "Ziur zaude haiek gorde gabe irtetzea nahi duzula?"
 
+#: ../src/cact/caja-actions-config-tool.ui.h:1
+msgid "(first) URI."
+msgstr "(aurreneko) URIa."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:2
+msgid "(first) base directory."
+msgstr "(aurreneko) oinarrizko direktorioa."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:3
+msgid "(first) basename without the extension."
+msgstr "(aurreneko) oinarri-izena luzapenik gabe."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:4
+msgid "(first) basename."
+msgstr "(aurreneko) oinarri-izena."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:5
+msgid "(first) extension."
+msgstr "(aurreneko) luzapena."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:6
+msgid "(first) filename."
+msgstr "(aurreneko) fitxategi-izena."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:7
+msgid "(first) mimetype."
+msgstr "(aurreneko) mime mota."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:9
+#, no-c-format
+msgid "<b>%%</b> :"
+msgstr "<b>%%</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:11
+#, no-c-format
+msgid "<b>%B</b> :"
+msgstr "<b>%B</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:13
+#, no-c-format
+msgid "<b>%D</b> :"
+msgstr "<b>%D</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:15
+#, no-c-format
+msgid "<b>%F</b> :"
+msgstr "<b>%F</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:17
+#, no-c-format
+msgid "<b>%M</b> :"
+msgstr "<b>%M</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:19
+#, no-c-format
+msgid "<b>%O</b> :"
+msgstr "<b>%O</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:21
+#, no-c-format
+msgid "<b>%U</b> :"
+msgstr "<b>%U</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:23
+#, no-c-format
+msgid "<b>%W</b> :"
+msgstr "<b>%W</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:25
+#, no-c-format
+msgid "<b>%X</b> :"
+msgstr "<b>%X</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:27
+#, no-c-format
+msgid "<b>%b</b> :"
+msgstr "<b>%b</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:29
+#, no-c-format
+msgid "<b>%c</b> :"
+msgstr "<b>%c</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:31
+#, no-c-format
+msgid "<b>%d</b> :"
+msgstr "<b>%d</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:33
+#, no-c-format
+msgid "<b>%f</b> :"
+msgstr "<b>%f</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:35
+#, no-c-format
+msgid "<b>%h</b> :"
+msgstr "<b>%h</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:37
+#, no-c-format
+msgid "<b>%m</b> :"
+msgstr "<b>%m</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:39
+#, no-c-format
+msgid "<b>%n</b> :"
+msgstr "<b>%n</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:41
+#, no-c-format
+msgid "<b>%o</b> :"
+msgstr "<b>%o</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:43
+#, no-c-format
+msgid "<b>%p</b> :"
+msgstr "<b>%p</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:45
+#, no-c-format
+msgid "<b>%s</b> :"
+msgstr "<b>%s</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:47
+#, no-c-format
+msgid "<b>%u</b> :"
+msgstr "<b>%u</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:49
+#, no-c-format
+msgid "<b>%w</b> :"
+msgstr "<b>%w</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:51
+#, no-c-format
+msgid "<b>%x</b> :"
+msgstr "<b>%x</b>:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:53
+msgid "<b>Appears if selection contains</b>"
+msgstr "<b>Agertu hautapenak hau badu</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:54
+msgid "<b>Basenames conditions</b>"
+msgstr "<b>Oinarri-izenen baldintzak</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:55
+msgid "<b>Capabilities conditions</b>"
+msgstr "<b>Gaitasunen baldintzak</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:56
+msgid "<b>Command</b>"
+msgstr "<b>Komandoa</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:57
+msgid "<b>Desktop environment</b>"
+msgstr "<b>Mahaigaineko ingurunea</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:58
+msgid "<b>Execute as user</b>"
+msgstr "<b>Exekutatu erabiltzaile gisa</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:59
+msgid "<b>Execution environment</b>"
+msgstr "<b>Exekuzioaren ingurunea</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:60
+msgid "<b>Execution mode</b>"
+msgstr "<b>Exekuzioaren modua</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:61
+msgid "<b>Folders conditions</b>"
+msgstr "<b>Karpeten baldintzak</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:62
+msgid "<b>Mimetypes conditions</b>"
+msgstr "<b>Mime moten baldintzak</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:63
+msgid "<b>Caja Item</b>"
+msgstr "<b>Caja-eko elementua</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:64
+msgid "<b>Profile</b>"
+msgstr "<b>Profila</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:65
+msgid "<b>Read-only properties</b>"
+msgstr "<b>Irakurtzeko soilik diren propietateak</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:66
+msgid "<b>Schemes conditions</b>"
+msgstr "<b>Eskemen baldintzak</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:67
+msgid "<b>Startup mode</b>"
+msgstr "<b>Abioaren modua</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:68
+msgid ""
+"<b>What should I do when importing an item whose ID already exists ?</b>"
+msgstr ""
+"<b>Zer egin behar da elementu bat inportatzean bere IDa jadanik existitzen "
+"bada?</b>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:69
+msgid "<span size=\"larger\"><b>Parameter Legend</b></span>"
+msgstr "<span size=\"larger\"><b>Parametroaren legenda</b></span>"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:70
+msgid "A free description of your action or your menu."
+msgstr "Zure ekintza edo menuaren deskripzio aske bat."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:71
+msgid "A shortcut suggested for the action or the menu."
+msgstr "Ekintza edo menuarentzako iradokitutako laster-tekla bat."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:72
+msgid "A_llocate a new identifiant for the imported item"
+msgstr "_Esleitu identifikatzaile berria inportatutako elementuarentzako"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:73
+msgid "Appears if the _binary is running :"
+msgstr "Agertuko da _bitarra exekutatzen ari bada:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:74
+msgid "Appears if the command outputs \"_true\" :"
+msgstr "Agertuko da komandoaren irteera \"_true\" (egia) bada:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:75
+msgid "Appears if the file is e_xecutable :"
+msgstr "Agertuko da fitxategia e_xekutagarria bada:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:76
+msgid "Appears if the name is _registered on D-Bus :"
+msgstr "Agertuko da izena DBus-en e_rregistratuta badago:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:77
+msgid "B_rowse..."
+msgstr "_Arakatu..."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:78
+msgid "Bro_wse..."
+msgstr "A_rakatu..."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:79
+msgid "Brow_se..."
+msgstr "Ara_katu..."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:80
+msgid "C_ommon..."
+msgstr "Arr_unta..."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:81
+msgid "Ca_pabilities"
+msgstr "_Gaitasunak"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:82
+msgid "Click to add a new basename filter."
+msgstr "Egin klik oinarri-izenaren iragazki berri bat gehitzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:83
+msgid "Click to add a new capability filter."
+msgstr "Egin klik gaitasunaren iragazki berri bat gehitzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:84
+msgid "Click to add a new folder filter."
+msgstr "Egin klik karpetaren iragazki berri bat gehitzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:85
+msgid "Click to add a new mimetype filter."
+msgstr "Egin klik mime motaren iragazki berri bat gehitzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:86
+msgid "Click to add a new scheme filter."
+msgstr "Egin klik eskemaren iragazki berri bat gehitzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:87
+msgid "Click to browse for a file in the filesystem."
+msgstr "Egin klik fitxategi baten bila arakatzeko fitxategi-sisteman."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:88
+msgid "Click to browse the filesystem in order to selec a new folder filter."
+msgstr ""
+"Egin klik fitxategi-sisteman arakatzeko karpetaren iragazki berri bat "
+"hautatzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:89
+msgid "Click to choose a command from the file chooser dialog."
+msgstr ""
+"Egin klik komando bat aukeratzeko fitxategi-hautatzailearen elkarrizketa-"
+"koadrotik."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:90
+msgid ""
+"Click to choose a custom icon from a file instead of a predefined icon from "
+"the drop-down list."
+msgstr ""
+"Egin klik ikono pertsonalizatu bat aukeratzeko fitxategi batetik "
+"goitibeherako zerrendatik aurredefinitutako baten ordez."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:91
+msgid "Click to choose a working directory from the folder chooser dialog."
+msgstr ""
+"Egin klik laneko direktorio bat aukeratzeko karpeta-hautatzailearen "
+"elkarrizketa-koadrotik."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:92
+msgid "Click to define the above basename filters as case sensitive."
+msgstr ""
+"Egin klik gaineko oinarri-izenen iragazkiek maiuskulak eta minuskulak bereiz "
+"dezatela definitzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:93
+msgid "Click to remove the current basename filter."
+msgstr "Egin klik uneko oinarri-izenaren iragazkia kentzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:94
+msgid "Click to remove the current capability."
+msgstr "Egin klik uneko gaitasuna kentzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:95
+msgid "Click to remove the current folder filter."
+msgstr "Egin klik uneko karpetaren iragazkia kentzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:96
+msgid "Click to remove the current mimetype filter."
+msgstr "Egin klik uneko mime motearen iragazkia kentzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:97
+msgid "Click to remove the current scheme filter."
+msgstr "Egin klik uneko eskemaren iragazkia kentzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:98
+msgid "Click to search for a file in the filesystem."
+msgstr "Egin klik fitxategi bat bilatzeko fitxategi-sisteman."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:99
+msgid "Click to select a new scheme filter among default schemes."
+msgstr ""
+"Egin klik eskemaren iragazki berria bat hautatzeko eskema lehenetsien artean."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:100
+msgid ""
+"Click to toggle the display of the list of special tokens you can use in the "
+"parameter field."
+msgstr ""
+"Egin klik parametroen eremuan erabil ditzakezun token berezien zerrendaren "
+"bistaraketa txandakatzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:101
+msgid "Display item in _location context menu"
+msgstr "Bistaratu elementua _kokalekuaren testuinguruko menuan"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:102
+msgid "Display item in _selection context menu"
+msgstr "Bistaratu elementua _hautapenaren testuinguruko menuan"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:103
+msgid "Display item in the _toolbar"
+msgstr "Bistaratu elementua _tresna-barran"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:104
+msgid "Do _not import the item whose ID already exists"
+msgstr "_Ez inportatu jadanik existitzen diren IDak dituzten elementuak"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:105
+msgid "Do not sort the list, letting you manually reorder the items."
+msgstr "Ez ordenatu zerrenda, honela elementuak eskuz zerrenda ditzakezu."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:106
+msgid "Does the icon use the same label that the menu ?"
+msgstr "Ikonoak menuaren etiketa berdina erabiltzen al du?"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:107
+msgid "E_nabled"
+msgstr "_Gaituta"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:108
+msgid "E_xecution"
+msgstr "E_xekuzioa"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:109
+msgid "End of session"
+msgstr "Saioaren amaiera"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:110
+msgid "Execute as _user :"
+msgstr "Exekutatu _erabiltzaile gisa:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:111
+msgid "I/O provider :"
+msgstr "S/Iren hornitzailea:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:112
+msgid "Id. :"
+msgstr "IDa.:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:113
+msgid "If set, then the name should correspond to a running process."
+msgstr ""
+"Ezartzen bada, izena exekutatzen ari den prozesu bati egokitu behar zaio."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:114
+msgid ""
+"If set, this must correspond to a command which, when ran, should display "
+"\"true\" on stdout.\n"
+"If the command is not found, or does not display the correct result, your "
+"item will not appear in Caja context menu.\n"
+msgstr ""
+"Ezartzen bada, honek komando bati egokitu behar zaio, zeinek exekutatzean "
+"irteera estandarrean (stdout) \"true\" bistaratuko duen.\n"
+"Komandoa ez bada aurkitzen, edo ez badu emaitza egokia bistaratzen, zure "
+"elementua ez da Caja-eko testuinguruko menuan agertuko.\n"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:117
+msgid ""
+"If set, your item will only appear if the file is executable.\n"
+"If the file is not present or if it is not executable, then your item will "
+"not appear in Caja context menu."
+msgstr ""
+"Ezartzen bada, zure elementua soilik agertuko da fitxategia exekutagarria "
+"bada.\n"
+"Fitxategia ez balego, edo ez bada exekutagarria, zure elementua ez da "
+"Caja-eko testuinguruko menuan agertuko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:119
+msgid ""
+"If set, your item will only appear if the specifiied name is currently "
+"registered on D-Bus.\n"
+msgstr ""
+"Ezartzen bada, zure elementua soilik agertuko da zehaztutako izena unean "
+"DBus-en erregistratuta badago.\n"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:121
+msgid "Import is done"
+msgstr "Inportatzea burutu da"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:122
+msgid "Importing actions"
+msgstr "Inportatzeko ekintzak"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:123
+msgid "In a _terminal"
+msgstr "Terminal _batean"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:124
+msgid "Internal identifiant of the item."
+msgstr "Elementuaren barneko identifikatzailea."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:125
+msgid "Item may appear depending of the desktop environment."
+msgstr "Elementua ager daiteke mahaigaineko ingurunearen arabera."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:126
+msgid "Items _list :"
+msgstr "Elementuen _zerrenda:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:127
+msgid "Label of the icon item in the Caja toolbar."
+msgstr "Ikonoa elementuaren etiketa Caja-eko tresna-barran."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:128
+msgid "Label of the menu item in the Caja popup menu."
+msgstr "Menua elementuaren etiketa Caja-eko laster-menuan."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:129
+msgid "Le_gend"
+msgstr "_Legenda"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:130
+msgid ""
+"Makes use of a special feature of the file manager which allows a terminal "
+"to be ran inside of it; an acceptable fallback is to run in a terminal."
+msgstr ""
+"Fitxategi-kudeatzailearen eginbide berezi bat erabiltzen du terminal bat "
+"bere barnean exekutatzeko. 'Terminal' aukera onargarria da."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:131
+msgid "Match _case"
+msgstr "_Maiuskula/minuskula"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:133
+msgid "P_arameters :"
+msgstr "_Parametroak:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:134
+msgid "P_roperties"
+msgstr "P_ropietateak"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:135
+msgid ""
+"Parameters that will be sent to the program. Click on the 'Legend' button to "
+"see the different replacement tokens."
+msgstr ""
+"Programari bidaliko zaizkion parametroak. Egin klik 'Legenda' botoian "
+"ordezkapeneko token desberdinak ikusteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:136
+msgid "Read-only item"
+msgstr "Irakurtzeko soilik den elementua"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:137
+msgid ""
+"Select the desktop environments in which you want your item only appear (or "
+"not)."
+msgstr ""
+"Hautatu zure elementua mahaigaineko zer ingurunetan agertzea (edo ez) nahi "
+"duzun."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:138
+msgid ""
+"Select the icon which will appear in the Caja menus and in the toolbar."
+msgstr "Hautatu ikonoa Caja-eko menu eta tresna-barran agertzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:139
+msgid ""
+"Select the operator which will be used when comparing your count with those "
+"of the current selection."
+msgstr ""
+"Hautatu zure kopurua uneko hautapenekoarekin konparatzeko erabiliko den "
+"eragilea."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:140
+msgid "Sort the list in ascending alphabetical order."
+msgstr "Ordenatu zerrenda gorantz ordena alfabetikoan."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:141
+msgid "Sort the list in descending alphabetical order."
+msgstr "Ordenatu zerrenda beherantz ordena alfabetikoan."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:142
+msgid "Starts the command as a standard graphical user interface."
+msgstr ""
+"Komandoa erabiltzailearen interfaze grafiko arrunt bezala abiarazten du."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:143
+msgid ""
+"Starts the preferred terminal of the graphical environment, and runs the "
+"command in it."
+msgstr ""
+"Hobetsitako terminala abiarazten du ingurune grafikoan, eta han komandoa "
+"exekutatzen du."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:144
+msgid "Startup Window Manager _class :"
+msgstr "Abiarazi leiho-kudeatzailearen _klasea:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:145
+msgid "Storage provider of the item."
+msgstr "Elementuaren biltegiratzearen hornitzailea."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:146
+msgid "Suggested _shortcut :"
+msgstr "Iradokitutako _laster-tekla:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:148
+msgid "T_oolbar label :"
+msgstr "_Tresna-barraren etiketa:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:149
+msgid ""
+"The command that will be launched by selecting the action in Caja popup "
+"menu."
+msgstr "Komandoa abiaraziko da Caja-eko laster-menuan ekintza hautatuz."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:150
+msgid ""
+"The current item will appear if each element of the selection matches all "
+"capabilities of the 'Must match all of' column, while not matching any "
+"capability of the 'Must not match any of' column."
+msgstr ""
+"Uneko elementua agertuko da hautapeneko elementu bakoitza 'Guztiekin bat "
+"etorri' zutabeko gaitasun guztiekin bat etortzen bada, 'Ez bat etorri' "
+"zutabeko gaitasun bat berarekin ere bat etortzen ez den bitartean."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:151
+msgid ""
+"The current item will appear if the basename of each element of the "
+"selection matches one filter of the 'Must match one of' column, while not "
+"matching any of the filters of the 'Must not match any of' column."
+msgstr ""
+"Uneko elementua agertuko da hautapeneko elementu bakoitzaren oinarri-izena "
+"'Batekin bat etorri' zutabeko iragazki batekin bat etortzen bada, 'Ez bat "
+"etorri' zutabeko iragazki bat berarekin ere bat etortzen ez den bitartean."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:152
+msgid ""
+"The current item will appear if the location of each element of the "
+"selection is one or inside one of the paths of the 'Must match one of' "
+"column, while not being one or inside one of the 'Must not match any of' "
+"column."
+msgstr ""
+"Uneko elementua agertuko da hautapeneko elementu bakoitzaren kokalekua "
+"'Batekin bat etorri' zutabeko bide-izen batekin bat etortzen bada, 'Ez bat "
+"etorri' zutabeko bat berarekin ere bat etortzen ez den bitartean."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:153
+msgid ""
+"The current item will appear if the mimetype of each element of the "
+"selection matches one filter of the 'Must match one of' column, while not "
+"matching any of the filters of the 'Must not match any of' column."
+msgstr ""
+"Uneko elementua agertuko da hautapeneko elementu bakoitzaren mime mota "
+"'Batekin bat etorri' zutabeko iragazki batekin bat etortzen bada, 'Ez bat "
+"etorri' zutabeko iragazki bat berarekin ere bat etortzen ez den bitartean."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:154
+msgid ""
+"The current item will appear if the scheme of each element of the selection "
+"matches one of the 'Must match one of' column, while not matching any of the "
+"'Must not match any of' column."
+msgstr ""
+"Uneko elementua agertuko da hautapeneko elementu bakoitzaren eskema 'Batekin "
+"bat etorri' zutabeko batekin bat etortzen bada, 'Ez bat etorri' zutabeko bat "
+"berarekin ere bat etortzen ez den bitartean."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:155
+msgid ""
+"The item found in the selected file will silently override the current one "
+"which has the same identifiant.\n"
+"Be warned: this mode may be dangerous. You will not be prompted another time."
+msgstr ""
+"Hautatutako fitxategian aurkitutako elementuak identifikatzaile berdina duen "
+"unekoa gainidatziko du modu isilean.\n"
+"Abisua: modu hau arriskutsua izan daiteke. Ez zaizu gehiago galdetuko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:157
+msgid ""
+"The name of the profile. It is only used in Caja Actions Configuration "
+"Tool user interface."
+msgstr ""
+"Profilaren izena. Caja-eko ekintzak konfiguratzeko tresnaren interfazean "
+"soilik erabiltzen da."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:158
+msgid ""
+"The ran terminal may be closed at end of the command, but standard streams "
+"(stdout, stderr) should be collected and displayed; an acceptable fallback "
+"is to run in a terminal."
+msgstr ""
+"Exekutatutako terminala itxi egingo da komandoaren ostean, baina korronte "
+"estandarra (stdout, stderr) jaso eta bistaratu egin beharko litzateke, "
+"terminal batean exekutatzea aukera onargarria da."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:159
+msgid ""
+"The selected file will be imported with a slightly modified label indicating "
+"the renumbering.\n"
+"The existing item will not be modified."
+msgstr ""
+"Hautatutako fitxategia inportatu egingo da piska bat aldatutako etiketarekin "
+"birzenbaketa adieraziz.\n"
+"Existitzen den elementua ez da aldatuko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:161
+msgid ""
+"The user the command must be ran as.\n"
+"This may be a username or a UID."
+msgstr ""
+"Erabiltzailea, komandoa haren izenean exekutatzeko.\n"
+"Hau bere erabiltzaile-izena edo UIDa izan beharko luke."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:164
+#, no-c-format
+msgid ""
+"The working directory the program should be started in.\n"
+"Parameters may appear in Path value, and will be substituted at runtime.\n"
+"Defaults to base directory of the current selection, which happens to be the "
+"value of \"%d\" parameter. \n"
+msgstr ""
+"Programa abiarazi beharko litzatekeen laneko direktorioa.\n"
+"Parametroak Path balioan ager daiteke, eta exekuzio-denbora ordeztu.\n"
+"Uneko hautapenaren oinarrizko direktorioa da lehenetsia, \"%d\" "
+"parametroaren balioa izan ohi dena.\n"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:168
+msgid ""
+"This advanced tab lets you precisely define how your command will be "
+"executed."
+msgstr ""
+"Fitxa aurreratu honek komandoa nola exekutatzea nahi duzun definitzea uzten "
+"dizu."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:169
+msgid ""
+"This assistant will guide you through the process of importing items, "
+"actions or menus."
+msgstr ""
+"Laguntzaile honek elementuak, ekintzak edo menuak inportatzeko prozesuan "
+"zehar gidatuko zaitu."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:170
+msgid ""
+"This list lets you determine where (in which folders) the currently selected "
+"files must be found in order the item be displayed in the Caja context "
+"menu.\n"
+"Folders may use '*' or '?' wildcards.\n"
+"Folder filters may be negated to specify for which folders your item must "
+"not appear."
+msgstr ""
+"Zerrenda honek unean hautatutako fitxategiak non (zer karpetatan) aurkitu "
+"daitezken elementua Caja-eko testuinguruko menuan bistaratzeko.\n"
+"Karpetek '*' edo '?' komodinak erabil ditzakete.\n"
+"Karpetaren iragazkia ezeztatu daiteke elementua zer karpetatan agertu behar "
+"ez duen zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:173
+msgid ""
+"This list lets you determine which capabilities the currently selected files "
+"must satisfy in order the item be displayed in the Caja context menu.\n"
+"Capabilities may be negated to specify for which capabilities your item must "
+"not appear."
+msgstr ""
+"Zerrenda honek unean hautatutako fitxategiek zer gaitasun bete behar "
+"dituzten zehaztea uzten dizu elementua Caja-eko testuinguruko menuan "
+"bistaratzeko.\n"
+"Gaitasunak ezeztatu daiteke elementua zer gaitasunentzako agertu behar ez "
+"duen zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:175
+msgid ""
+"This list lets you determine which schemes the currently selected files must "
+"satisfy in order the item be displayed in the Caja context menu.\n"
+"Filters may be negated to specify for which schemes your item must not "
+"appear."
+msgstr ""
+"Zerrenda honek unean hautatutako fitxategiek zer eskema bete behar dituzten "
+"zehaztea uzten dizu elementua Caja-eko testuinguruko menuan "
+"bistaratzeko.\n"
+"Iragazkiak ezeztatu daiteke elementua zer eskeman agertu behar ez duen "
+"zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:177
+msgid ""
+"This list lets you determines for which basenames the currently selected "
+"item will be displayed in the Caja context menu.\n"
+"Basenames may use '*' and '?' wildcards.\n"
+"Basenames may be negated to specify for which basenames your item must not "
+"appear.\n"
+msgstr ""
+"Zerrenda honek unean hautatutako fitxategiak non (zer oinarri-izenetan) "
+"aurkitu daitezken elementua Caja-eko testuinguruko menuan bistaratzeko.\n"
+"Oinarrizko izenek '*' edo '?' komodinak erabil ditzakete.\n"
+"Oinarrizko izenak ezeztatu daiteke elementua zer oinarrizko izenetan agertu "
+"behar ez duen zehazteko.\n"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:181
+msgid ""
+"This list lets you determines for which mimetypes the currently selected "
+"item will be displayed in the Caja context menu.\n"
+"Mimetypes may be specified as '*', '/*', 'group/*' or 'group/subgroup'.\n"
+"Mimetypes may be negated to specify for which basenames your item must not "
+"appear."
+msgstr ""
+"Zerrenda honek unean hautatutako fitxategiak non (zer mime motetan) aurkitu "
+"daitezken elementua Caja-eko testuinguruko menuan bistaratzeko.\n"
+"Mime motek '*' edo '?' komodinak erabil ditzakete.\n"
+"Mime motak ezeztatu daiteke elementua zer oinarri-izenetan agertu behar ez "
+"duen zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:184
+msgid ""
+"This tab lets you choose the command to be executed, along with its "
+"parameters.\n"
+"Defining several profiles lets you have several commands, each applying with "
+"a different set of conditions."
+msgstr ""
+"Fitxa honek komandoa, bere parametroarekin batera, exekutatzea uzten dizu.\n"
+"Hainbat profila definitzeak hainbat komando edukitzea uzten dizu, bakoitzari "
+"baldintza multzo desberdin batekin aplikatuz."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:186
+msgid ""
+"This tab lets you determine some advanced conditions the currently selected "
+"files must satisfy in order the item be displayed in the Caja context "
+"menu."
+msgstr ""
+"Fitxa honek unean hautatutako fitxategiek bete beharreko zenbait baldintza "
+"aurreratu zehaztea uzten dizu elementua Caja-eko testuinguruko menuan "
+"bistaratzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:187
+msgid ""
+"This tab lets you determine the main characteristics of the currently "
+"selected item."
+msgstr ""
+"Fitxa honek unean hautatutako elementuaren ezaugarri nagusiak zehaztea uzten "
+"dizu."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:188
+msgid ""
+"This tab lets you determine which capabilities the currently selected files "
+"must satisfy in order the item be displayed in the Caja context menu.\n"
+"Filters may be negated to specify for which capabilities your item must not "
+"appear."
+msgstr ""
+"Fitxa honek unean hautatutako fitxategiek zer gaitasun bete behar dituzten "
+"zehaztea uzten dizu elementua Caja-eko testuinguruko menuan "
+"bistaratzeko.\n"
+"Iragazkiak ezeztatu daiteke elementua zer gaitasunetan agertu behar ez duen "
+"zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:190
+msgid ""
+"This tab lets you determine which schemes the currently selected files must "
+"satisfy in order the item be displayed in the Caja context menu.\n"
+"Filters may be negated to specify for which schemes your item must not "
+"appear."
+msgstr ""
+"Fitxa honek unean hautatutako fitxategiek zer eskema bete behar dituzten "
+"zehaztea uzten dizu elementua Caja-eko testuinguruko menuan "
+"bistaratzeko.\n"
+"Iragazkiak ezeztatu daiteke elementua zer eskeman agertu behar ez duen "
+"zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:192
+msgid ""
+"This tab lets you determines for which basenames the currently selected item "
+"will be displayed in the Caja context menu.\n"
+"Basenames may be negated to specify for which basenames your item must not "
+"appear."
+msgstr ""
+"Fitxa honek unean hautatutako fitxategiek zer oinarri-izenak bete behar "
+"dituzten zehaztea uzten dizu elementua Caja-eko testuinguruko menuan "
+"bistaratzeko.\n"
+"Oinarrizko izenak ezeztatu daiteke elementua zer oinarrizko izenetan agertu "
+"behar ez duen zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:194
+msgid ""
+"This tab lets you determines for which type of objects the currently "
+"selected item will be displayed in the Caja context menu.\n"
+"Mimetypes may be negated to specify for which type of objects your item must "
+"not appear."
+msgstr ""
+"Fitxa honek unean hautatutako fitxategiek zer objektu mota bete behar "
+"dituzten zehaztea uzten dizu elementua Caja-eko testuinguruko menuan "
+"bistaratzeko.\n"
+"Mime motak ezeztatu daiteke elementua zer objektu motetan agertu behar ez "
+"duen zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:196
+msgid ""
+"This tab lets you determines where (in which folders) the currently selected "
+"files must be found in order the item be displayed in the Caja context "
+"menu.\n"
+"Folder filters may be negated to specify for which folders your item must "
+"not appear."
+msgstr ""
+"Fitxa honek unean hautatutako fitxategiak non (zer karpetatan) aurkitu "
+"daitezken elementua Caja-eko testuinguruko menuan bistaratzeko.\n"
+"Karpetaren iragazkia ezeztatu daiteke elementua zer karpetatan agertu behar "
+"ez duen zehazteko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:198
+msgid ""
+"This used to be the historical behavior.\n"
+"The selected file will be marked as \"NOT OK\" in the Summary page.\n"
+"The existing item will not be modified."
+msgstr ""
+"Portaera historikoa izateko erabiltzen da hau.\n"
+"Hautatutako fitxategia \"NOT OK\" (ez ados) gisa markatuko da laburpenaren "
+"orrialdean.\n"
+"Existitzen den elementua ez da aldatuko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:201
+msgid "Toolti_p :"
+msgstr "_Argibidea:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:202
+msgid "Tooltip of the menu item that will appear in the Caja statusbar."
+msgstr "Menuko elementuaren argibidea Caja-eko egoera-barran agertzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:203
+msgid "Use s_ame label for icon in the toolbar"
+msgstr "Erabili etiketa _berdina ikonoarentzako tresna-barran"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:204
+msgid ""
+"When checked, the action will be candidate to be displayed in Caja "
+"context menus when there is a selection. It thus applies to selected "
+"objects. The item will also appear in Caja Edit menu.\n"
+"Menus are always candidate if they contain at least one action."
+msgstr ""
+"Aktibatzen denean, ekintza hautagaia izango da Caja-eko testuinguruko "
+"menuan bistaratzeko hautapen bat dagoenean. Horrela, hautatutako objektuei "
+"aplikatzen zaie. Elementua Caja-eko Editatu menuan ere agertuko da.\n"
+"Menuak beti dira hautagaia gutxienez ekintza bat badaukate."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:206
+msgid ""
+"When checked, the action will be candidate to be displayed in Caja "
+"context menus when there is no selection. It thus applies to current "
+"location. The item will also appear in Caja File menu.\n"
+"Menus are always candidate if they contain at least one action."
+msgstr ""
+"Aktibatzen denean, ekintza hautagaia izango da Caja-eko testuinguruko "
+"menuan bistaratzeko hautapenik ez  dagoenean. Horrela, uneko kokalekuari "
+"aplikatzen zaio. Elementua Caja-eko Fitxategia menuan ere agertuko da.\n"
+"Menuak beti dira hautagaia gutxienez ekintza bat badaukate."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:208
+msgid ""
+"When checked, the action will be displayed in Caja toolbar. It applies "
+"to current folder when there is no selection.\n"
+"Menus are never displayed in the toolbar."
+msgstr ""
+"Aktibatzen denean, ekintza Caja-eko tresna-barran bistaratuko da. Uneko "
+"karpetari aplikatzen zaio hautapenik ez dagoenean.\n"
+"Menuak ez dira inoiz tresna-barran bistaratzen."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:210
+msgid ""
+"When checked, this means that the item is read-only and cannot be updated."
+msgstr ""
+"Aktibatzen denean, elementua irakurtzeko soilik dela adierazten du, eta ezin "
+"dela eguneratu."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:211
+msgid ""
+"When clicked, it is known that the ran application will send a \"remove\" "
+"message when started with the DESKTOP_STARTUP_ID environment variable set."
+msgstr ""
+"Klik egitean, exekutatzen ari den aplikazioak \"remove\" mezua bidaliko du "
+"abiatzean ezarritako inguruneko DESKTOP_STARTUP_ID aldagaiarekin."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:212
+msgid ""
+"When enabled, your item will be candidate to be displayed in the Caja "
+"context menu."
+msgstr ""
+"Gaitutakoan, zure elementua hautagaia izango da Caja-eko testuinguruko "
+"menuan bistaratzeko."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:213
+msgid ""
+"When selected, the item will appear regarding of the current desktop "
+"environment."
+msgstr ""
+"Hautatzean, elementua agertu egingo da, berdin izanik uneko mahaigaineko "
+"ingurunea."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:214
+msgid ""
+"When selected, your item will never appear in selected desktop environments."
+msgstr ""
+"Hautatzean, zure elementua ez da inoiz agertuko hautatutako mahaigaineko "
+"inguruneetan."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:215
+msgid ""
+"When selected, your item will only appear in selected desktop environments."
+msgstr ""
+"Hautatzean, zure elementua soilik agertuko da hautatutako mahaigaineko "
+"inguruneetan."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:216
+msgid "You will be asked each time an imported ID already exists."
+msgstr ""
+"Inportatutako ID bat jadanik existitzen den bakoitzean galdetuko zaizu."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:217
+msgid "Your count limit as a positive integer."
+msgstr "Zure kontuaren muga osoko positibo gisa."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:219
+msgid "_Always appears"
+msgstr "_Beti agertzen da"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:221
+msgid "_Basenames"
+msgstr "_Oinarri-izenak"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:222
+msgid "_Browse..."
+msgstr "_Arakatu..."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:223
+msgid "_Command"
+msgstr "_Komandoa"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:224
+msgid "_Context label :"
+msgstr "_Testuinguruko etiketa:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:225
+msgid "_Count :"
+msgstr "_Kontua:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:226
+msgid "_Description :"
+msgstr "_Azalpena:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:227
+msgid "_Display output"
+msgstr "_Bistaratu irteera"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:228
+msgid "_Embedded"
+msgstr "_Kapsulatuta"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:229
+msgid "_Environment"
+msgstr "_Ingurunea"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:230
+msgid "_Folders"
+msgstr "_Karpetak"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:231
+msgid "_Icon :"
+msgstr "_Ikonoa:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:232
+msgid "_Label :"
+msgstr "_Etiketa:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:233
+msgid "_Mimetypes"
+msgstr "_Mime motak"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:234
+msgid "_Never appears in selected environments"
+msgstr "_Inoiz ez da agertzen hautatutako inguruneetan"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:235
+msgid "_Normal"
+msgstr "_Normala"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:236
+msgid "_Only appears in selected environments"
+msgstr "_Soilik hautatutako inguruneetan agertzen da"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:237
+msgid "_Override the existing item"
+msgstr "_Gainidatzi existitzen den elementua"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:238
+msgid "_Path :"
+msgstr "_Bide-izena:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:239
+msgid "_Quit without saving"
+msgstr "_Irten gorde gabe"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:240
+msgid "_Save and quit"
+msgstr "_Gorde eta irten"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:242
+msgid "_Startup notify"
+msgstr "_Abioko jakinarazpena"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:243
+msgid "_Working directory :"
+msgstr "_Laneko direktorioa:"
+
+#: ../src/cact/caja-actions-config-tool.ui.h:244
+msgid "a percent sign."
+msgstr "ehunekoaren ikurra."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:245
+msgid "count of selected item(s)."
+msgstr "hautatutako elementuen kopurua."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:246
+msgid "hostname of the (first) selected URI."
+msgstr "(aurreneko) hautatutako URIaren ostalari-izena."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:247
+msgid ""
+"if specified, it is known that the ran application will map at least one "
+"window with the given string as its WM class or WM name hint.\n"
+"This is only relevant when execution mode is normal."
+msgstr ""
+"Zehazten bada, exekutatzen ari den aplikazioak gutxienez leiho baten mapa "
+"egingo du emandako katearekin bere WMN klasea edo WM izenaren "
+"argibidearekin.\n"
+"Soilik garrantzia dauka exekuzioaren modua normala denean."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:249
+msgid "no-op operator which forces a plural form of execution."
+msgstr ""
+"no-op eragilea exekuzioaren forma plurala lantzera derrigortzen duelarik."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:250
+msgid "no-op operator which forces a singular form of execution."
+msgstr ""
+"no-op eragilea exekuzioaren forma singularra lantzera derrigortzen duelarik."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:251
+msgid "port number of the (first) selected URI."
+msgstr "(aurreneko) hautatutako URIaren ataka-zenbakia."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:252
+msgid "scheme of the (first) selected URI."
+msgstr "(aurreneko) hautatutako URIaren eskema."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:253
+msgid "space-separated list of the URIs of the selected file(s)/folder(s)."
+msgstr ""
+"hautatutako fitxategi edo karpeten URIen zuriunez bereizitako zerrenda."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:254
+msgid ""
+"space-separated list of the base directories of the selected file(s)/folder"
+"(s)."
+msgstr ""
+"hautatutako fitxategi edo karpeten oinarrizko direktorioen zuriunez "
+"bereizitako zerrenda."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:255
+msgid ""
+"space-separated list of the basenames of the selected file(s)/folder(s)."
+msgstr ""
+"hautatutako fitxategi edo karpeten oinarri-izenen zuriunez bereizitako "
+"zerrenda."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:256
+msgid "space-separated list of the basenames without the extension."
+msgstr "luzapenik gabeko oinarri-izenen zuriunez bereizitako zerrenda."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:257
+msgid ""
+"space-separated list of the extensions of the selected file(s)/folder(s)."
+msgstr ""
+"hautatutako fitxategi edo karpeten luzapenen zuriunez bereizitako zerrenda."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:258
+msgid ""
+"space-separated list of the filenames of the selected file(s)/folder(s)."
+msgstr ""
+"hautatutako fitxategi edo karpeten fitxategi-izenen zuriunez bereizitako "
+"zerrenda."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:259
+msgid ""
+"space-separated list of the mimetypes of the selected file(s)/folder(s)."
+msgstr ""
+"hautatutako fitxategi edo karpeten mime moten zuriunez bereizitako zerrenda."
+
+#: ../src/cact/caja-actions-config-tool.ui.h:260
+msgid "username of the (first) selected URI."
+msgstr "(aurreneko) hautatutako URIaren erabiltzaile-izena."
+
 #. i18n: title of the About dialog box, when seen from Caja file manager
 #. i18n: label of an automagic root submenu
-#: ../src/plugin-menu/caja-actions.c:294
-#: ../src/plugin-menu/caja-actions.c:807
+#: ../src/plugin-menu/caja-actions.c:300
+#: ../src/plugin-menu/caja-actions.c:967
 msgid "Caja Actions"
 msgstr "Caja-eko ekintzak"
 
 #. i18n: tooltip of an automagic root submenu
-#: ../src/plugin-menu/caja-actions.c:809
-msgid "A submenu which embeds the currently available Caja Actions extensions"
-msgstr "Unean erabilgarri dauden Caja-eko ekintzen hedapenak kapsulatuta dituen azpimenua"
+#: ../src/plugin-menu/caja-actions.c:969
+msgid ""
+"A submenu which embeds the currently available Caja Actions extensions"
+msgstr ""
+"Unean erabilgarri dauden Caja-eko ekintzen hedapenak kapsulatuta dituen "
+"azpimenua"
 
-#: ../src/plugin-menu/caja-actions.c:856
+#: ../src/plugin-menu/caja-actions.c:1016
 msgid "About Caja Actions"
 msgstr "Caja-eko ekintzei buruz"
 
-#: ../src/plugin-menu/caja-actions.c:857
+#: ../src/plugin-menu/caja-actions.c:1017
 msgid "Display information about Caja Actions"
 msgstr "Bistaratu Caja-eko ekintzei buruzko informazioa"
 
@@ -1939,23 +4122,23 @@ msgstr "Bistaratu Caja-eko ekintzei buruzko informazioa"
 msgid "The URI of the file to be imported"
 msgstr "Fitxategiaren URIa inportatzeko"
 
-#: ../src/test/test-reader.c:49 ../src/utils/caja-actions-run.c:62
+#: ../src/test/test-reader.c:49 ../src/utils/caja-actions-run.c:63
 msgid "<URI>"
 msgstr "<URIa>"
 
-#: ../src/test/test-reader.c:56 ../src/utils/caja-actions-new.c:137
-#: ../src/utils/caja-actions-run.c:69
-#: ../src/utils/caja-actions-schemas.c:91
+#: ../src/test/test-reader.c:56 ../src/utils/caja-actions-new.c:139
+#: ../src/utils/caja-actions-run.c:70
+#: ../src/utils/caja-actions-schemas.c:92
 msgid "Output the version number"
 msgstr "Erakutsi bertsioaren zenbakia"
 
-#: ../src/test/test-reader.c:106
+#: ../src/test/test-reader.c:112
 msgid "Import a file."
 msgstr "Inportatu fitxategi bat."
 
-#: ../src/test/test-reader.c:120 ../src/utils/caja-actions-new.c:331
+#: ../src/test/test-reader.c:126 ../src/utils/caja-actions-new.c:335
 #: ../src/utils/caja-actions-run.c:197
-#: ../src/utils/caja-actions-schemas.c:175
+#: ../src/utils/caja-actions-schemas.c:176
 msgid ""
 "Bug reports are welcomed at http://bugzilla.gnome.org, or you may prefer to "
 "mail to <maintainer@caja-actions.org>.\n"
@@ -1964,52 +4147,54 @@ msgstr ""
 "bugzilla.gnome.org webgunean, edo nahiago baduzu, bidali mezu bat hona: "
 "maintainer@caja-actions.org\n"
 
-#: ../src/test/test-reader.c:128 ../src/utils/caja-actions-new.c:345
+#: ../src/test/test-reader.c:134 ../src/utils/caja-actions-new.c:349
 #: ../src/utils/caja-actions-run.c:205
-#: ../src/utils/caja-actions-schemas.c:183
+#: ../src/utils/caja-actions-schemas.c:184
 msgid "Miscellaneous options"
 msgstr "Hainbat aukera"
 
-#: ../src/test/test-reader.c:149 ../src/utils/caja-actions-new.c:175
+#: ../src/test/test-reader.c:155 ../src/utils/caja-actions-new.c:179
 #: ../src/utils/caja-actions-run.c:111
-#: ../src/utils/caja-actions-schemas.c:124
+#: ../src/utils/caja-actions-schemas.c:125
 #, c-format
 msgid "Syntax error: %s\n"
 msgstr "Sintaxi-errorea: %s\n"
 
-#: ../src/test/test-reader.c:164
+#: ../src/test/test-reader.c:170
 #, c-format
 msgid "Error: uri is mandatory.\n"
 msgstr "Errorea: URIa derrigorrezkoa da.\n"
 
-#: ../src/test/test-reader.c:176 ../src/utils/caja-actions-new.c:551
-#: ../src/utils/caja-actions-run.c:432
-#: ../src/utils/caja-actions-schemas.c:368
+#: ../src/test/test-reader.c:182 ../src/utils/caja-actions-new.c:555
+#: ../src/utils/caja-actions-run.c:426
+#: ../src/utils/caja-actions-schemas.c:369
 #, c-format
 msgid "Try %s --help for usage.\n"
 msgstr "Saiatu '%s --help' erabilera ikasteko.\n"
 
-#: ../src/utils/caja-actions-new.c:115
+#: ../src/utils/caja-actions-new.c:117
 msgid "Set it if the item should be disabled at creation"
 msgstr "Ezarri elementua desgaitu behar bada sorreran"
 
-#: ../src/utils/caja-actions-new.c:117
+#: ../src/utils/caja-actions-new.c:119
 msgid "Set it if the item doesn't target the context menu"
 msgstr "Ezarri elementuak ez badu testuinguruko menua jasotzen"
 
-#: ../src/utils/caja-actions-new.c:119
+#: ../src/utils/caja-actions-new.c:121
 msgid "Set it if the item doesn't target the toolbar"
 msgstr "Ezarri elementuak ez badu tresna-barra jasotzen"
 
-#: ../src/utils/caja-actions-new.c:121
+#: ../src/utils/caja-actions-new.c:123
 msgid "Set it if the basename patterns are case insensitive"
-msgstr "Ezarri ereduen oinarrizko izenak maiuskulak eta minuskulak ez baditu bereizten"
+msgstr ""
+"Ezarri ereduen oinarrizko izenak maiuskulak eta minuskulak ez baditu "
+"bereizten"
 
-#: ../src/utils/caja-actions-new.c:128
+#: ../src/utils/caja-actions-new.c:130
 msgid "Store the newly created action as a MateConf configuration"
 msgstr "Gorde sortu berri den ekintza MateConf konfigurazioan"
 
-#: ../src/utils/caja-actions-new.c:130
+#: ../src/utils/caja-actions-new.c:132
 msgid ""
 "The path of the folder where to write the new action as a MateConf dump output "
 "[default: stdout]"
@@ -2017,108 +4202,101 @@ msgstr ""
 "Ekintza berriak idatziko diren karpeta MateConf-en iraulitako irteera gisa "
 "[lehenetsia: stdout]"
 
-#: ../src/utils/caja-actions-new.c:188
+#: ../src/utils/caja-actions-new.c:143
+#, c-format
+msgid "Error: '%s' and '%s' options cannot both be specified.\n"
+msgstr "Errorea: '%s' eta '%s' aukerak ezin dira aldi berean zehaztu.\n"
+
+#: ../src/utils/caja-actions-new.c:192
 #, c-format
 msgid "Error: an action label is mandatory.\n"
 msgstr "Errorea: ekintzaren etiketa bat derrigorrezkoa da.\n"
 
-#: ../src/utils/caja-actions-new.c:193
-#, c-format
-msgid "Error: '--enabled' and '--disabled' options cannot both be specified.\n"
-msgstr ""
-"Errorea: '--enabled' (gaituta) eta  '--disabled' (desgaituta) aukerak ezin dira aldi berean "
-"zehaztu.\n"
-
-#: ../src/utils/caja-actions-new.c:200
-#, c-format
-msgid "Error: '--context' and '--nocontext' options cannot both be specified.\n"
-msgstr ""
-"Errorea: '--context' (testuingurua) eta '--nocontext' (testuingururik ez) aukerak ezin dira aldi "
-"berean zehaztu.\n"
-
-#: ../src/utils/caja-actions-new.c:207
-#, c-format
-msgid "Error: '--toolbar' and '--notoolbar' options cannot both be specified.\n"
-msgstr ""
-"Errorea: '--toolbar' (tresna-barra)eta '--notoolbar' (tresna-barrarik ez) aukerak ezin dira aldi "
-"berean zehaztu.\n"
-
-#: ../src/utils/caja-actions-new.c:212
-#, c-format
-msgid "Error: '--match-case' and '--nocase' options cannot both be specified.\n"
-msgstr "Errorea: '--match-case' eta '--nocase' aukerak ezin dira aldi berean zehaztu.\n"
-
-#: ../src/utils/caja-actions-new.c:219
+#: ../src/utils/caja-actions-new.c:223
 #, c-format
 msgid "Error: only one output option may be specified.\n"
 msgstr "Errorea: soilik irteerako aukera bat zehaz daiteke.\n"
 
 #. i18n: Action <action_label> written to...
-#: ../src/utils/caja-actions-new.c:232
+#: ../src/utils/caja-actions-new.c:236
 #, c-format
 msgid "Action '%s' succesfully written to MateConf configuration.\n"
 msgstr "'%s' ekintza ongi idatzi da MateConf konfigurazioan.\n"
 
-#: ../src/utils/caja-actions-new.c:312
+#: ../src/utils/caja-actions-new.c:316
 msgid ""
 "Define a new action.\n"
 "\n"
 "  The created action defaults to be written to stdout.\n"
 "  It can also be written to an output folder, in a file later suitable for "
-"an import in NACT.\n"
+"an import in CACT.\n"
 "  Or you may choose to directly write the action into your MateConf "
 "configuration."
 msgstr ""
 "Definitu ekintza berria\n"
 "\n"
 "  Sortutako ekintza lehenetsia irteera estandarrean idazteko.\n"
-"  Irteerako karpeta bateko fitxategian ere idatz daiteke, beranduago   NACT-"
+"  Irteerako karpeta bateko fitxategian ere idatz daiteke, beranduago   CACT-"
 "ek inporta dezan.\n"
 "  Edo ekintza zuzenean zure MateConf konfigurazioan idaztea   aukera dezakezu."
 
-#: ../src/utils/caja-actions-new.c:340
+#: ../src/utils/caja-actions-new.c:344
 msgid "Output of the program"
 msgstr "Programaren irteera"
 
-#: ../src/utils/caja-actions-new.c:340
+#: ../src/utils/caja-actions-new.c:344
 msgid "Choose where the program creates the action"
 msgstr "Aukeratu programak non sortzen duen ekintza"
 
 #. i18n: unable to create <output_dir> dir: <strerror_message>
-#: ../src/utils/caja-actions-new.c:466
+#: ../src/utils/caja-actions-new.c:470
 #, c-format
 msgid "Error: unable to create %s dir: %s"
 msgstr "Errorea: ezin da '%s' direktorioa sortu: %s"
 
 #. i18n: Action <action_label> written to <output_filename>...
-#: ../src/utils/caja-actions-new.c:480
+#: ../src/utils/caja-actions-new.c:484
 #, c-format
-msgid "Action '%s' succesfully written to %s, and ready to be imported in NACT.\n"
-msgstr "'%s' ekintza ongi idatzi da %s(e)n, eta prest dago NACTen inportatzeko.\n"
+msgid ""
+"Action '%s' succesfully written to %s, and ready to be imported in CACT.\n"
+msgstr ""
+"'%s' ekintza ongi idatzi da %s(e)n, eta prest dago CACTen inportatzeko.\n"
 
-#: ../src/utils/caja-actions-new.c:513
+#: ../src/utils/caja-actions-new.c:517
 msgid "Error: unable to find 'na-mateconf' provider."
 msgstr "Errorea: ezin da 'na-mateconf' hornitzailea aurkitu."
 
-#: ../src/utils/caja-actions-run.c:60
+#: ../src/utils/caja-actions-run.c:61
 msgid "The internal identifiant of the action to be launched"
 msgstr "Ekintzaren barneko identifikatzailea abiarazteko"
 
-#: ../src/utils/caja-actions-run.c:62
+#: ../src/utils/caja-actions-run.c:63
 msgid ""
 "A target, file or folder, for the action. More than one options may be "
 "specified"
-msgstr "Ekintzaren helburu, fitxategi edo karpeta. Aukera bat baino gehiago zehaz daiteke"
+msgstr ""
+"Ekintzaren helburu, fitxategi edo karpeta. Aukera bat baino gehiago zehaz "
+"daiteke"
 
 #: ../src/utils/caja-actions-run.c:126
 #, c-format
 msgid "Error: action id is mandatory.\n"
 msgstr "Errorea: ekintzaren IDa derrigorrezkoa da.\n"
 
+#: ../src/utils/caja-actions-run.c:151
+#, c-format
+msgid "No current selection. Nothing to do. Exiting.\n"
+msgstr "Unean ez dago hautapenik. Ez dago ezer egiteko. Irtetzen.\n"
+
 #: ../src/utils/caja-actions-run.c:156
 #, c-format
 msgid "Action %s is not a valid candidate. Exiting.\n"
 msgstr "'%s' ekintza ez da baliozko hautagaia. Irtetzen.\n"
+
+#: ../src/utils/caja-actions-run.c:162
+#, c-format
+msgid "No valid profile is candidate to execution. Exiting.\n"
+msgstr "Ez dago baliozko profilarik exekutatzeko hautagaia denik. Irtetzen.\n"
 
 #: ../src/utils/caja-actions-run.c:183
 msgid "Execute an action on the specified target."
@@ -2139,26 +4317,118 @@ msgstr "Errorea: '%s' ekintza desgaituta dago.\n"
 msgid "Error: action '%s' is not valid.\n"
 msgstr "Errorea: '%s' ekintza ez da baliozkoa.\n"
 
-#: ../src/utils/caja-actions-run.c:276
+#: ../src/utils/caja-actions-run.c:277
 #, c-format
 msgid "Error: unable to get a connection to session DBus: %s"
 msgstr "Errorea: ezin da konexiorik lortu DBus saioarekin: %s"
 
-#: ../src/utils/caja-actions-run.c:287
+#: ../src/utils/caja-actions-run.c:288
 #, c-format
 msgid "Error: unable to get a proxy on %s service"
 msgstr "Errorea: ezin da proxy-rik eskuratu %s zerbitzuan"
 
-#: ../src/utils/caja-actions-run.c:297
+#: ../src/utils/caja-actions-run.c:298
 #, c-format
 msgid "Error on GetSelectedPaths call: %s"
 msgstr "Errorea GetSelectedPaths deian: %s"
 
-#: ../src/utils/caja-actions-schemas.c:86
+#: ../src/utils/caja-actions-schemas.c:87
 msgid "Output the schema on stdout"
 msgstr "Idatzi eskema irteera estandarrean (stdout)"
 
-#: ../src/utils/caja-actions-schemas.c:161
+#: ../src/utils/caja-actions-schemas.c:162
 msgid "Output the Caja Actions MateConf schema on stdout."
 msgstr "Caja Actions-en MateConf eskema irteera estandarrean idatzi."
 
+#~ msgid ""
+#~ "The parameters of the command to be executed when the user selects the "
+#~ "menu item in the file manager context menu or in the toolbar.\n"
+#~ "The parameters may contain some special tokens which are replaced by the "
+#~ "informations provided by the file manager before starting the command:\n"
+#~ "%d: base folder of the selected file(s)\n"
+#~ "%f: the name of the selected file or the first one if several are "
+#~ "selected\n"
+#~ "%h: hostname of the URI\n"
+#~ "%m: space-separated list of the basenames of the selected file(s)/folder"
+#~ "(s)\n"
+#~ "%M: space-separated list of the selected file(s)/folder(s), with their "
+#~ "full paths\n"
+#~ "%p: port number of the first URI\n"
+#~ "%R: space-separated list of selected URIs\n"
+#~ "%s: scheme of the URI\n"
+#~ "%u: URI\n"
+#~ "%U: username of the URI\n"
+#~ "%%: a percent sign."
+#~ msgstr ""
+#~ "Abiaraziko den komandoaren parametroak (erabiltzaileak fitxategi-"
+#~ "kudeatzaileko testuinguruko menuan edo tresna-barran elementua "
+#~ "hautatzean). Parametroek token berezi batzuk eduki ditzakete, fitxategi-"
+#~ "kudeatzailaren informazioak ordeztuko dituenak komandoa hasi aurretik:\n"
+#~ "%d: hautatutako fitxategien oinarrizko karpeta\n"
+#~ "%f: hautatutako fitxategiaren izena, edo aurrenekoa hainbat hautatuta "
+#~ "egonez gero\n"
+#~ "%h: URIaren ostalari-izena\n"
+#~ "%m: hautatutako fitxategien/karpeten oinarrizko izenen zerrenda zuriunez "
+#~ "bereiztuta\n"
+#~ "%M: hautatutako fitxategien/karpeten zerrenda (beraien bide-izen osoekin) "
+#~ "zuriunez bereiztuta\n"
+#~ "%p: aurreneko URIaren atakaren zenbakia\n"
+#~ "%R: hautatutako URIen zuriunez bereiztutako zerrenda\n"
+#~ "%s: URIaren eskema\n"
+#~ "%u: URIa\n"
+#~ "%U: URIaren erabiltzaile-izena\n"
+#~ "%%: ehunekoaren ikurra."
+
+#~ msgid "Caution: a label is mandatory for the profile."
+#~ msgstr "Kontuz: etiketa bat derrigorrezkoa da profilarentzako."
+
+#~ msgid "/path/to"
+#~ msgstr "/bide/izena"
+
+#~ msgid "file1.txt"
+#~ msgstr "fitxategia1.txt"
+
+#~ msgid "file2.txt"
+#~ msgstr "fitxategia2.txt"
+
+#~ msgid " folder1"
+#~ msgstr " karpeta1"
+
+#~ msgid "folder2"
+#~ msgstr "karpeta2"
+
+#~ msgid " file1.txt"
+#~ msgstr " fitxategia1.txt"
+
+#~ msgid "folder1"
+#~ msgstr "karpeta1"
+
+#~ msgid "file.txt"
+#~ msgstr "fitxategia.txt"
+
+#~ msgid "8080"
+#~ msgstr "8080"
+
+#~ msgid "file:///path/to/a/dir"
+#~ msgstr "file:///bide-izena/direktorio/bat"
+
+#~ msgid "file:///path/to/another/dir"
+#~ msgstr "file:///bide-izena/beste/direktorio/bat"
+
+#~ msgid ""
+#~ "Error: '--enabled' and '--disabled' options cannot both be specified.\n"
+#~ msgstr ""
+#~ "Errorea: '--enabled' (gaituta) eta  '--disabled' (desgaituta) aukerak "
+#~ "ezin dira aldi berean zehaztu.\n"
+
+#~ msgid ""
+#~ "Error: '--context' and '--nocontext' options cannot both be specified.\n"
+#~ msgstr ""
+#~ "Errorea: '--context' (testuingurua) eta '--nocontext' (testuingururik ez) "
+#~ "aukerak ezin dira aldi berean zehaztu.\n"
+
+#~ msgid ""
+#~ "Error: '--toolbar' and '--notoolbar' options cannot both be specified.\n"
+#~ msgstr ""
+#~ "Errorea: '--toolbar' (tresna-barra)eta '--notoolbar' (tresna-barrarik ez) "
+#~ "aukerak ezin dira aldi berean zehaztu.\n"

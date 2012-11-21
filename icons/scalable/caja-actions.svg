@@ -232,13 +232,13 @@
             <dc:title>Ulisse Perusin</dc:title>
           </cc:Agent>
         </dc:creator>
-        <dc:title>Caja Actions</dc:title>
+        <dc:title>Caja-Actions</dc:title>
         <dc:subject>
           <rdf:Bag>
             <rdf:li>Caja</rdf:li>
             <rdf:li>file manager</rdf:li>
             <rdf:li>actions</rdf:li>
-            <rdf:li>NACT</rdf:li>
+            <rdf:li>CACT</rdf:li>
           </rdf:Bag>
         </dc:subject>
         <dc:contributor>

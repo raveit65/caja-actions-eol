@@ -1,0 +1,1015 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>API</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch06.html" title="NAObject Hierarchy">
+<link rel="prev" href="NAIContext.html" title="NAIContext">
+<link rel="next" href="ch07.html" title="Miscellaneous API">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="NAIContext.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch06.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="ch07.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#caja-actions-API.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#caja-actions-API.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="caja-actions-API"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="caja-actions-API.top_of_page"></a>API</span></h2>
+<p>API — The Common Public <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> API</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="caja-actions-API.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-object-api.h&gt;
+
+#define             <a class="link" href="caja-actions-API.html#na-object-duplicate" title="na_object_duplicate()">na_object_duplicate</a>                 (obj,
+                                                         mode)
+#define             <a class="link" href="caja-actions-API.html#na-object-check-status" title="na_object_check_status()">na_object_check_status</a>              (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-origin" title="na_object_get_origin()">na_object_get_origin</a>                (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-valid" title="na_object_is_valid()">na_object_is_valid</a>                  (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-modified" title="na_object_is_modified()">na_object_is_modified</a>               (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-origin" title="na_object_set_origin()">na_object_set_origin</a>                (obj,
+                                                         origin)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-modified" title="na_object_set_modified()">na_object_set_modified</a>              (obj,
+                                                         modified)
+#define             <a class="link" href="caja-actions-API.html#na-object-reset-origin" title="na_object_reset_origin()">na_object_reset_origin</a>              (obj,
+                                                         origin)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-writability-status" title="na_object_set_writability_status()">na_object_set_writability_status</a>    (obj,
+                                                         w,
+                                                         r)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-finally-writable" title="na_object_is_finally_writable()">na_object_is_finally_writable</a>       (obj,
+                                                         r)
+#define             <a class="link" href="caja-actions-API.html#na-object-check-mimetypes" title="na_object_check_mimetypes()">na_object_check_mimetypes</a>           (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-dump" title="na_object_dump()">na_object_dump</a>                      (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-dump-norec" title="na_object_dump_norec()">na_object_dump_norec</a>                (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-dump-tree" title="na_object_dump_tree()">na_object_dump_tree</a>                 (tree)
+#define             <a class="link" href="caja-actions-API.html#na-object-ref" title="na_object_ref()">na_object_ref</a>                       (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-unref" title="na_object_unref()">na_object_unref</a>                     (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-debug-invalid" title="na_object_debug_invalid()">na_object_debug_invalid</a>             (obj,
+                                                         reason)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-id" title="na_object_get_id()">na_object_get_id</a>                    (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-label" title="na_object_get_label()">na_object_get_label</a>                 (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-label-noloc" title="na_object_get_label_noloc()">na_object_get_label_noloc</a>           (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-parent" title="na_object_get_parent()">na_object_get_parent</a>                (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-id" title="na_object_set_id()">na_object_set_id</a>                    (obj,
+                                                         id)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-label" title="na_object_set_label()">na_object_set_label</a>                 (obj,
+                                                         label)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-parent" title="na_object_set_parent()">na_object_set_parent</a>                (obj,
+                                                         parent)
+#define             <a class="link" href="caja-actions-API.html#na-object-sort-alpha-asc" title="na_object_sort_alpha_asc()">na_object_sort_alpha_asc</a>            (a,
+                                                         b)
+#define             <a class="link" href="caja-actions-API.html#na-object-sort-alpha-desc" title="na_object_sort_alpha_desc()">na_object_sort_alpha_desc</a>           (a,
+                                                         b)
+#define             <a class="link" href="caja-actions-API.html#na-object-prepare-for-paste" title="na_object_prepare_for_paste()">na_object_prepare_for_paste</a>         (obj,
+                                                         relabel,
+                                                         renumber,
+                                                         parent)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-copy-of-label" title="na_object_set_copy_of_label()">na_object_set_copy_of_label</a>         (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-new-id" title="na_object_set_new_id()">na_object_set_new_id</a>                (obj,
+                                                         parent)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-tooltip" title="na_object_get_tooltip()">na_object_get_tooltip</a>               (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-icon" title="na_object_get_icon()">na_object_get_icon</a>                  (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-icon-noloc" title="na_object_get_icon_noloc()">na_object_get_icon_noloc</a>            (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-description" title="na_object_get_description()">na_object_get_description</a>           (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-items" title="na_object_get_items()">na_object_get_items</a>                 (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-items-slist" title="na_object_get_items_slist()">na_object_get_items_slist</a>           (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-enabled" title="na_object_is_enabled()">na_object_is_enabled</a>                (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-readonly" title="na_object_is_readonly()">na_object_is_readonly</a>               (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-provider" title="na_object_get_provider()">na_object_get_provider</a>              (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-provider-data" title="na_object_get_provider_data()">na_object_get_provider_data</a>         (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-iversion" title="na_object_get_iversion()">na_object_get_iversion</a>              (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-shortcut" title="na_object_get_shortcut()">na_object_get_shortcut</a>              (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-tooltip" title="na_object_set_tooltip()">na_object_set_tooltip</a>               (obj,
+                                                         tooltip)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-icon" title="na_object_set_icon()">na_object_set_icon</a>                  (obj,
+                                                         icon)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-description" title="na_object_set_description()">na_object_set_description</a>           (obj,
+                                                         desc)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-items" title="na_object_set_items()">na_object_set_items</a>                 (obj,
+                                                         list)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-items-slist" title="na_object_set_items_slist()">na_object_set_items_slist</a>           (obj,
+                                                         slist)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-enabled" title="na_object_set_enabled()">na_object_set_enabled</a>               (obj,
+                                                         enabled)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-readonly" title="na_object_set_readonly()">na_object_set_readonly</a>              (obj,
+                                                         readonly)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-provider" title="na_object_set_provider()">na_object_set_provider</a>              (obj,
+                                                         provider)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-provider-data" title="na_object_set_provider_data()">na_object_set_provider_data</a>         (obj,
+                                                         data)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-iversion" title="na_object_set_iversion()">na_object_set_iversion</a>              (obj,
+                                                         version)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-shortcut" title="na_object_set_shortcut()">na_object_set_shortcut</a>              (obj,
+                                                         shortcut)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-item" title="na_object_get_item()">na_object_get_item</a>                  (obj,
+                                                         id)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-position" title="na_object_get_position()">na_object_get_position</a>              (obj,
+                                                         child)
+#define             <a class="link" href="caja-actions-API.html#na-object-append-item" title="na_object_append_item()">na_object_append_item</a>               (obj,
+                                                         child)
+#define             <a class="link" href="caja-actions-API.html#na-object-insert-at" title="na_object_insert_at()">na_object_insert_at</a>                 (obj,
+                                                         child,
+                                                         pos)
+#define             <a class="link" href="caja-actions-API.html#na-object-insert-item" title="na_object_insert_item()">na_object_insert_item</a>               (obj,
+                                                         child,
+                                                         sibling)
+#define             <a class="link" href="caja-actions-API.html#na-object-remove-item" title="na_object_remove_item()">na_object_remove_item</a>               (obj,
+                                                         child)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-items-count" title="na_object_get_items_count()">na_object_get_items_count</a>           (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-count-items" title="na_object_count_items()">na_object_count_items</a>               (list,
+                                                         cm,
+                                                         ca,
+                                                         cp)
+#define             <a class="link" href="caja-actions-API.html#na-object-copyref-items" title="na_object_copyref_items()">na_object_copyref_items</a>             (tree)
+#define             <a class="link" href="caja-actions-API.html#na-object-free-items" title="na_object_free_items()">na_object_free_items</a>                (tree)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-version" title="na_object_get_version()">na_object_get_version</a>               (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-target-selection" title="na_object_is_target_selection()">na_object_is_target_selection</a>       (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-target-location" title="na_object_is_target_location()">na_object_is_target_location</a>        (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-target-toolbar" title="na_object_is_target_toolbar()">na_object_is_target_toolbar</a>         (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-toolbar-label" title="na_object_get_toolbar_label()">na_object_get_toolbar_label</a>         (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-is-toolbar-same-label" title="na_object_is_toolbar_same_label()">na_object_is_toolbar_same_label</a>     (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-last-allocated" title="na_object_get_last_allocated()">na_object_get_last_allocated</a>        (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-version" title="na_object_set_version()">na_object_set_version</a>               (obj,
+                                                         version)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-target-selection" title="na_object_set_target_selection()">na_object_set_target_selection</a>      (obj,
+                                                         target)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-target-location" title="na_object_set_target_location()">na_object_set_target_location</a>       (obj,
+                                                         target)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-target-toolbar" title="na_object_set_target_toolbar()">na_object_set_target_toolbar</a>        (obj,
+                                                         target)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-toolbar-label" title="na_object_set_toolbar_label()">na_object_set_toolbar_label</a>         (obj,
+                                                         label)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-toolbar-same-label" title="na_object_set_toolbar_same_label()">na_object_set_toolbar_same_label</a>    (obj,
+                                                         same)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-last-allocated" title="na_object_set_last_allocated()">na_object_set_last_allocated</a>        (obj,
+                                                         last)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-last-version" title="na_object_set_last_version()">na_object_set_last_version</a>          (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-reset-last-allocated" title="na_object_reset_last_allocated()">na_object_reset_last_allocated</a>      (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-attach-profile" title="na_object_attach_profile()">na_object_attach_profile</a>            (obj,
+                                                         profile)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-path" title="na_object_get_path()">na_object_get_path</a>                  (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-parameters" title="na_object_get_parameters()">na_object_get_parameters</a>            (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-working-dir" title="na_object_get_working_dir()">na_object_get_working_dir</a>           (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-execution-mode" title="na_object_get_execution_mode()">na_object_get_execution_mode</a>        (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-startup-notify" title="na_object_get_startup_notify()">na_object_get_startup_notify</a>        (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-startup-class" title="na_object_get_startup_class()">na_object_get_startup_class</a>         (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-execute-as" title="na_object_get_execute_as()">na_object_get_execute_as</a>            (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-path" title="na_object_set_path()">na_object_set_path</a>                  (obj,
+                                                         path)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-parameters" title="na_object_set_parameters()">na_object_set_parameters</a>            (obj,
+                                                         parms)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-working-dir" title="na_object_set_working_dir()">na_object_set_working_dir</a>           (obj,
+                                                         uri)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-execution-mode" title="na_object_set_execution_mode()">na_object_set_execution_mode</a>        (obj,
+                                                         mode)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-startup-notify" title="na_object_set_startup_notify()">na_object_set_startup_notify</a>        (obj,
+                                                         notify)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-startup-class" title="na_object_set_startup_class()">na_object_set_startup_class</a>         (obj,
+                                                         class)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-execute-as" title="na_object_set_execute_as()">na_object_set_execute_as</a>            (obj,
+                                                         user)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-basenames" title="na_object_get_basenames()">na_object_get_basenames</a>             (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-matchcase" title="na_object_get_matchcase()">na_object_get_matchcase</a>             (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-mimetypes" title="na_object_get_mimetypes()">na_object_get_mimetypes</a>             (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-all-mimetypes" title="na_object_get_all_mimetypes()">na_object_get_all_mimetypes</a>         (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-folders" title="na_object_get_folders()">na_object_get_folders</a>               (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-schemes" title="na_object_get_schemes()">na_object_get_schemes</a>               (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-only-show-in" title="na_object_get_only_show_in()">na_object_get_only_show_in</a>          (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-not-show-in" title="na_object_get_not_show_in()">na_object_get_not_show_in</a>           (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-try-exec" title="na_object_get_try_exec()">na_object_get_try_exec</a>              (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-show-if-registered" title="na_object_get_show_if_registered()">na_object_get_show_if_registered</a>    (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-show-if-true" title="na_object_get_show_if_true()">na_object_get_show_if_true</a>          (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-show-if-running" title="na_object_get_show_if_running()">na_object_get_show_if_running</a>       (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-selection-count" title="na_object_get_selection_count()">na_object_get_selection_count</a>       (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-get-capabilities" title="na_object_get_capabilities()">na_object_get_capabilities</a>          (obj)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-basenames" title="na_object_set_basenames()">na_object_set_basenames</a>             (obj,
+                                                         bnames)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-matchcase" title="na_object_set_matchcase()">na_object_set_matchcase</a>             (obj,
+                                                         match)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-mimetypes" title="na_object_set_mimetypes()">na_object_set_mimetypes</a>             (obj,
+                                                         types)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-all-mimetypes" title="na_object_set_all_mimetypes()">na_object_set_all_mimetypes</a>         (obj,
+                                                         all)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-folders" title="na_object_set_folders()">na_object_set_folders</a>               (obj,
+                                                         folders)
+#define             <a class="link" href="caja-actions-API.html#na-object-replace-folder" title="na_object_replace_folder()">na_object_replace_folder</a>            (obj,
+                                                         old,
+                                                         new)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-scheme" title="na_object_set_scheme()">na_object_set_scheme</a>                (obj,
+                                                         scheme,
+                                                         add)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-schemes" title="na_object_set_schemes()">na_object_set_schemes</a>               (obj,
+                                                         schemes)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-only-show-in" title="na_object_set_only_show_in()">na_object_set_only_show_in</a>          (obj,
+                                                         list)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-only-desktop" title="na_object_set_only_desktop()">na_object_set_only_desktop</a>          (obj,
+                                                         desktop,
+                                                         add)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-not-show-in" title="na_object_set_not_show_in()">na_object_set_not_show_in</a>           (obj,
+                                                         list)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-not-desktop" title="na_object_set_not_desktop()">na_object_set_not_desktop</a>           (obj,
+                                                         desktop,
+                                                         add)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-try-exec" title="na_object_set_try_exec()">na_object_set_try_exec</a>              (obj,
+                                                         exec)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-show-if-registered" title="na_object_set_show_if_registered()">na_object_set_show_if_registered</a>    (obj,
+                                                         name)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-show-if-true" title="na_object_set_show_if_true()">na_object_set_show_if_true</a>          (obj,
+                                                         exec)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-show-if-running" title="na_object_set_show_if_running()">na_object_set_show_if_running</a>       (obj,
+                                                         name)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-selection-count" title="na_object_set_selection_count()">na_object_set_selection_count</a>       (obj,
+                                                         cond)
+#define             <a class="link" href="caja-actions-API.html#na-object-set-capabilities" title="na_object_set_capabilities()">na_object_set_capabilities</a>          (obj,
+                                                         cap)
+</pre>
+</div>
+<div class="refsect1">
+<a name="caja-actions-API.description"></a><h2>Description</h2>
+<p>
+We define here a common API which makes easier to write (and read)
+the code; all object functions are named na_object; all arguments
+are casted directly in the macro.
+</p>
+</div>
+<div class="refsect1">
+<a name="caja-actions-API.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="na-object-duplicate"></a><h3>na_object_duplicate()</h3>
+<pre class="programlisting">#define na_object_duplicate( obj, mode )                na_iduplicable_duplicate( NA_IDUPLICABLE( obj ), mode )
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-check-status"></a><h3>na_object_check_status()</h3>
+<pre class="programlisting">#define na_object_check_status( obj )                   na_object_object_check_status_rec( NA_OBJECT( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-origin"></a><h3>na_object_get_origin()</h3>
+<pre class="programlisting">#define na_object_get_origin( obj )                     na_iduplicable_get_origin( NA_IDUPLICABLE( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-valid"></a><h3>na_object_is_valid()</h3>
+<pre class="programlisting">#define na_object_is_valid( obj )                       na_iduplicable_is_valid( NA_IDUPLICABLE( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-modified"></a><h3>na_object_is_modified()</h3>
+<pre class="programlisting">#define na_object_is_modified( obj )                    na_iduplicable_is_modified( NA_IDUPLICABLE( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-origin"></a><h3>na_object_set_origin()</h3>
+<pre class="programlisting">#define na_object_set_origin( obj, origin )             na_iduplicable_set_origin( NA_IDUPLICABLE( obj ), ( NAIDuplicable * )( origin ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-modified"></a><h3>na_object_set_modified()</h3>
+<pre class="programlisting">#define na_object_set_modified( obj, modified )         na_iduplicable_set_modified( NA_IDUPLICABLE( obj ), ( modified ))
+</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_object_set_modified</code> is deprecated and should not be used in newly-written code.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-reset-origin"></a><h3>na_object_reset_origin()</h3>
+<pre class="programlisting">#define na_object_reset_origin( obj, origin )           na_object_object_reset_origin( NA_OBJECT( obj ), ( NAObject * )( origin ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-writability-status"></a><h3>na_object_set_writability_status()</h3>
+<pre class="programlisting">#define na_object_set_writability_status( obj, w, r ) na_object_item_set_writability_status( NA_OBJECT_ITEM( obj ), ( w ), ( r ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-finally-writable"></a><h3>na_object_is_finally_writable()</h3>
+<pre class="programlisting">#define na_object_is_finally_writable( obj, r )			na_object_item_is_finally_writable( NA_OBJECT_ITEM( obj ), ( r ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-check-mimetypes"></a><h3>na_object_check_mimetypes()</h3>
+<pre class="programlisting">#define na_object_check_mimetypes( obj )                na_icontext_check_mimetypes( NA_ICONTEXT( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-dump"></a><h3>na_object_dump()</h3>
+<pre class="programlisting">#define na_object_dump( obj )                           na_object_object_dump( NA_OBJECT( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-dump-norec"></a><h3>na_object_dump_norec()</h3>
+<pre class="programlisting">#define na_object_dump_norec( obj )                     na_object_object_dump_norec( NA_OBJECT( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-dump-tree"></a><h3>na_object_dump_tree()</h3>
+<pre class="programlisting">#define na_object_dump_tree( tree )                     na_object_object_dump_tree( tree )
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-ref"></a><h3>na_object_ref()</h3>
+<pre class="programlisting">#define na_object_ref( obj )                            na_object_object_ref( NA_OBJECT( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-unref"></a><h3>na_object_unref()</h3>
+<pre class="programlisting">#define na_object_unref( obj )                          na_object_object_unref( NA_OBJECT( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-debug-invalid"></a><h3>na_object_debug_invalid()</h3>
+<pre class="programlisting">#define na_object_debug_invalid( obj, reason )          na_object_object_debug_invalid( NA_OBJECT( obj ), ( const gchar * )( reason ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-id"></a><h3>na_object_get_id()</h3>
+<pre class="programlisting">#define na_object_get_id( obj )                         (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ID ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-label"></a><h3>na_object_get_label()</h3>
+<pre class="programlisting">#define na_object_get_label( obj )                      (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), ( NA_IS_OBJECT_PROFILE( obj ) ? NAFO_DATA_DESCNAME : NAFO_DATA_LABEL )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-label-noloc"></a><h3>na_object_get_label_noloc()</h3>
+<pre class="programlisting">#define na_object_get_label_noloc( obj )                (( gchar * )( NA_IS_OBJECT_PROFILE( obj ) ? na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_DESCNAME_NOLOC ) : NULL ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-parent"></a><h3>na_object_get_parent()</h3>
+<pre class="programlisting">#define na_object_get_parent( obj )                     (( NAObjectItem * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PARENT ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-id"></a><h3>na_object_set_id()</h3>
+<pre class="programlisting">#define na_object_set_id( obj, id )                     na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ID, ( const void * )( id ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-label"></a><h3>na_object_set_label()</h3>
+<pre class="programlisting">#define na_object_set_label( obj, label )               na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), ( NA_IS_OBJECT_PROFILE( obj ) ? NAFO_DATA_DESCNAME : NAFO_DATA_LABEL ), ( const void * )( label ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-parent"></a><h3>na_object_set_parent()</h3>
+<pre class="programlisting">#define na_object_set_parent( obj, parent )             na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PARENT, ( const void * )( parent ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-sort-alpha-asc"></a><h3>na_object_sort_alpha_asc()</h3>
+<pre class="programlisting">#define na_object_sort_alpha_asc( a, b )                na_object_id_sort_alpha_asc( NA_OBJECT_ID( a ), NA_OBJECT_ID( b ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-sort-alpha-desc"></a><h3>na_object_sort_alpha_desc()</h3>
+<pre class="programlisting">#define na_object_sort_alpha_desc( a, b )               na_object_id_sort_alpha_desc( NA_OBJECT_ID( a ), NA_OBJECT_ID( b ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-prepare-for-paste"></a><h3>na_object_prepare_for_paste()</h3>
+<pre class="programlisting">#define             na_object_prepare_for_paste( obj, relabel, renumber, parent )</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-copy-of-label"></a><h3>na_object_set_copy_of_label()</h3>
+<pre class="programlisting">#define na_object_set_copy_of_label( obj )              na_object_id_set_copy_of_label( NA_OBJECT_ID( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-new-id"></a><h3>na_object_set_new_id()</h3>
+<pre class="programlisting">#define na_object_set_new_id( obj, parent )             na_object_id_set_new_id( NA_OBJECT_ID( obj ), ( NAObjectId * )( parent ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-tooltip"></a><h3>na_object_get_tooltip()</h3>
+<pre class="programlisting">#define na_object_get_tooltip( obj )                    (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TOOLTIP ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-icon"></a><h3>na_object_get_icon()</h3>
+<pre class="programlisting">#define na_object_get_icon( obj )                       (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ICON ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-icon-noloc"></a><h3>na_object_get_icon_noloc()</h3>
+<pre class="programlisting">#define na_object_get_icon_noloc( obj )                 (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ICON_NOLOC ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-description"></a><h3>na_object_get_description()</h3>
+<pre class="programlisting">#define na_object_get_description( obj )                (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_DESCRIPTION ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-items"></a><h3>na_object_get_items()</h3>
+<pre class="programlisting">#define na_object_get_items( obj )                      (( GList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SUBITEMS ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-items-slist"></a><h3>na_object_get_items_slist()</h3>
+<pre class="programlisting">#define na_object_get_items_slist( obj )                (( GSList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SUBITEMS_SLIST ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-enabled"></a><h3>na_object_is_enabled()</h3>
+<pre class="programlisting">#define na_object_is_enabled( obj )                     (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ENABLED )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-readonly"></a><h3>na_object_is_readonly()</h3>
+<pre class="programlisting">#define na_object_is_readonly( obj )                    (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_READONLY )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-provider"></a><h3>na_object_get_provider()</h3>
+<pre class="programlisting">#define na_object_get_provider( obj )                   na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PROVIDER )
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-provider-data"></a><h3>na_object_get_provider_data()</h3>
+<pre class="programlisting">#define na_object_get_provider_data( obj )              na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PROVIDER_DATA )
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-iversion"></a><h3>na_object_get_iversion()</h3>
+<pre class="programlisting">#define na_object_get_iversion( obj )                   GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_IVERSION ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-shortcut"></a><h3>na_object_get_shortcut()</h3>
+<pre class="programlisting">#define na_object_get_shortcut( obj )                   (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SHORTCUT ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-tooltip"></a><h3>na_object_set_tooltip()</h3>
+<pre class="programlisting">#define na_object_set_tooltip( obj, tooltip )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TOOLTIP, ( const void * )( tooltip ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-icon"></a><h3>na_object_set_icon()</h3>
+<pre class="programlisting">#define na_object_set_icon( obj, icon )                 na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ICON, ( const void * )( icon ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-description"></a><h3>na_object_set_description()</h3>
+<pre class="programlisting">#define na_object_set_description( obj, desc )          na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_DESCRIPTION, ( const void * )( desc ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-items"></a><h3>na_object_set_items()</h3>
+<pre class="programlisting">#define na_object_set_items( obj, list )                na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SUBITEMS, ( const void * )( list ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-items-slist"></a><h3>na_object_set_items_slist()</h3>
+<pre class="programlisting">#define na_object_set_items_slist( obj, slist )         na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SUBITEMS_SLIST, ( const void * )( slist ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-enabled"></a><h3>na_object_set_enabled()</h3>
+<pre class="programlisting">#define na_object_set_enabled( obj, enabled )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ENABLED, ( const void * ) GUINT_TO_POINTER( enabled ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-readonly"></a><h3>na_object_set_readonly()</h3>
+<pre class="programlisting">#define na_object_set_readonly( obj, readonly )         na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_READONLY, ( const void * ) GUINT_TO_POINTER( readonly ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-provider"></a><h3>na_object_set_provider()</h3>
+<pre class="programlisting">#define na_object_set_provider( obj, provider )         na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PROVIDER, ( const void * )( provider ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-provider-data"></a><h3>na_object_set_provider_data()</h3>
+<pre class="programlisting">#define na_object_set_provider_data( obj, data )        na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PROVIDER_DATA, ( const void * )( data ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-iversion"></a><h3>na_object_set_iversion()</h3>
+<pre class="programlisting">#define na_object_set_iversion( obj, version )          na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_IVERSION, ( const void * ) GUINT_TO_POINTER( version ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-shortcut"></a><h3>na_object_set_shortcut()</h3>
+<pre class="programlisting">#define na_object_set_shortcut( obj, shortcut )         na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SHORTCUT, ( const void * )( shortcut ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-item"></a><h3>na_object_get_item()</h3>
+<pre class="programlisting">#define na_object_get_item( obj, id )                   na_object_item_get_item( NA_OBJECT_ITEM( obj ),( const gchar * )( id ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-position"></a><h3>na_object_get_position()</h3>
+<pre class="programlisting">#define na_object_get_position( obj, child )            na_object_item_get_position( NA_OBJECT_ITEM( obj ), NA_OBJECT_ID( child ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-append-item"></a><h3>na_object_append_item()</h3>
+<pre class="programlisting">#define na_object_append_item( obj, child )             na_object_item_append_item( NA_OBJECT_ITEM( obj ), NA_OBJECT_ID( child ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-insert-at"></a><h3>na_object_insert_at()</h3>
+<pre class="programlisting">#define na_object_insert_at( obj, child, pos )          na_object_item_insert_at( NA_OBJECT_ITEM( obj ), NA_OBJECT_ID( child ), ( pos ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-insert-item"></a><h3>na_object_insert_item()</h3>
+<pre class="programlisting">#define na_object_insert_item( obj, child, sibling )    na_object_item_insert_item( NA_OBJECT_ITEM( obj ), NA_OBJECT_ID( child ), ( NAObjectId * )( sibling ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-remove-item"></a><h3>na_object_remove_item()</h3>
+<pre class="programlisting">#define na_object_remove_item( obj, child )             na_object_item_remove_item( NA_OBJECT_ITEM( obj ), NA_OBJECT_ID( child ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-items-count"></a><h3>na_object_get_items_count()</h3>
+<pre class="programlisting">#define na_object_get_items_count( obj )                na_object_item_get_items_count( NA_OBJECT_ITEM( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-count-items"></a><h3>na_object_count_items()</h3>
+<pre class="programlisting">#define na_object_count_items( list, cm, ca, cp )       na_object_item_count_items( list, ( cm ), ( ca ), ( cp ), TRUE )
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-copyref-items"></a><h3>na_object_copyref_items()</h3>
+<pre class="programlisting">#define na_object_copyref_items( tree )                 na_object_item_copyref_items( tree )
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-free-items"></a><h3>na_object_free_items()</h3>
+<pre class="programlisting">#define na_object_free_items( tree )                    na_object_item_free_items( tree )
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-version"></a><h3>na_object_get_version()</h3>
+<pre class="programlisting">#define na_object_get_version( obj )                    (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_VERSION ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-target-selection"></a><h3>na_object_is_target_selection()</h3>
+<pre class="programlisting">#define na_object_is_target_selection( obj )            (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TARGET_SELECTION )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-target-location"></a><h3>na_object_is_target_location()</h3>
+<pre class="programlisting">#define na_object_is_target_location( obj )             (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TARGET_LOCATION )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-target-toolbar"></a><h3>na_object_is_target_toolbar()</h3>
+<pre class="programlisting">#define na_object_is_target_toolbar( obj )              (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TARGET_TOOLBAR )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-toolbar-label"></a><h3>na_object_get_toolbar_label()</h3>
+<pre class="programlisting">#define na_object_get_toolbar_label( obj )              (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TOOLBAR_LABEL ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-is-toolbar-same-label"></a><h3>na_object_is_toolbar_same_label()</h3>
+<pre class="programlisting">#define na_object_is_toolbar_same_label( obj )          (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TOOLBAR_SAME_LABEL )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-last-allocated"></a><h3>na_object_get_last_allocated()</h3>
+<pre class="programlisting">#define na_object_get_last_allocated( obj )             (( guint ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_LAST_ALLOCATED )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-version"></a><h3>na_object_set_version()</h3>
+<pre class="programlisting">#define na_object_set_version( obj, version )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_VERSION, ( const void * )( version ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-target-selection"></a><h3>na_object_set_target_selection()</h3>
+<pre class="programlisting">#define na_object_set_target_selection( obj, target )   na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TARGET_SELECTION, ( const void * ) GUINT_TO_POINTER( target ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-target-location"></a><h3>na_object_set_target_location()</h3>
+<pre class="programlisting">#define na_object_set_target_location( obj, target )    na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TARGET_LOCATION, ( const void * ) GUINT_TO_POINTER( target ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-target-toolbar"></a><h3>na_object_set_target_toolbar()</h3>
+<pre class="programlisting">#define na_object_set_target_toolbar( obj, target )     na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TARGET_TOOLBAR, ( const void * ) GUINT_TO_POINTER( target ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-toolbar-label"></a><h3>na_object_set_toolbar_label()</h3>
+<pre class="programlisting">#define na_object_set_toolbar_label( obj, label )       na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TOOLBAR_LABEL, ( const void * )( label ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-toolbar-same-label"></a><h3>na_object_set_toolbar_same_label()</h3>
+<pre class="programlisting">#define na_object_set_toolbar_same_label( obj, same )   na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TOOLBAR_SAME_LABEL, ( const void * ) GUINT_TO_POINTER( same ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-last-allocated"></a><h3>na_object_set_last_allocated()</h3>
+<pre class="programlisting">#define na_object_set_last_allocated( obj, last )       na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_LAST_ALLOCATED, ( const void * ) GUINT_TO_POINTER( last ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-last-version"></a><h3>na_object_set_last_version()</h3>
+<pre class="programlisting">#define na_object_set_last_version( obj )               na_object_action_set_last_version( NA_OBJECT_ACTION( obj ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-reset-last-allocated"></a><h3>na_object_reset_last_allocated()</h3>
+<pre class="programlisting">#define na_object_reset_last_allocated( obj )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_LAST_ALLOCATED, ( const void * ) GUINT_TO_POINTER( 0 ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-attach-profile"></a><h3>na_object_attach_profile()</h3>
+<pre class="programlisting">#define na_object_attach_profile( obj, profile )        na_object_action_attach_profile( NA_OBJECT_ACTION( obj ), NA_OBJECT_PROFILE( profile ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-path"></a><h3>na_object_get_path()</h3>
+<pre class="programlisting">#define na_object_get_path( obj )                       (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PATH ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-parameters"></a><h3>na_object_get_parameters()</h3>
+<pre class="programlisting">#define na_object_get_parameters( obj )                 (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PARAMETERS ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-working-dir"></a><h3>na_object_get_working_dir()</h3>
+<pre class="programlisting">#define na_object_get_working_dir( obj )                (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_WORKING_DIR ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-execution-mode"></a><h3>na_object_get_execution_mode()</h3>
+<pre class="programlisting">#define na_object_get_execution_mode( obj )             (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_EXECUTION_MODE ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-startup-notify"></a><h3>na_object_get_startup_notify()</h3>
+<pre class="programlisting">#define na_object_get_startup_notify( obj )             (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_STARTUP_NOTIFY )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-startup-class"></a><h3>na_object_get_startup_class()</h3>
+<pre class="programlisting">#define na_object_get_startup_class( obj )              (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_STARTUP_WMCLASS ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-execute-as"></a><h3>na_object_get_execute_as()</h3>
+<pre class="programlisting">#define na_object_get_execute_as( obj )                 (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_EXECUTE_AS ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-path"></a><h3>na_object_set_path()</h3>
+<pre class="programlisting">#define na_object_set_path( obj, path )                 na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PATH, ( const void * )( path ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-parameters"></a><h3>na_object_set_parameters()</h3>
+<pre class="programlisting">#define na_object_set_parameters( obj, parms )          na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_PARAMETERS, ( const void * )( parms ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-working-dir"></a><h3>na_object_set_working_dir()</h3>
+<pre class="programlisting">#define na_object_set_working_dir( obj, uri )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_WORKING_DIR, ( const void * )( uri ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-execution-mode"></a><h3>na_object_set_execution_mode()</h3>
+<pre class="programlisting">#define na_object_set_execution_mode( obj, mode )       na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_EXECUTION_MODE, ( const void * )( mode ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-startup-notify"></a><h3>na_object_set_startup_notify()</h3>
+<pre class="programlisting">#define na_object_set_startup_notify( obj, notify )     na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_STARTUP_NOTIFY, ( const void * ) GUINT_TO_POINTER( notify ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-startup-class"></a><h3>na_object_set_startup_class()</h3>
+<pre class="programlisting">#define na_object_set_startup_class( obj, class )       na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_STARTUP_WMCLASS, ( const void * )( class ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-execute-as"></a><h3>na_object_set_execute_as()</h3>
+<pre class="programlisting">#define na_object_set_execute_as( obj, user )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_EXECUTE_AS, ( const void * )( user ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-basenames"></a><h3>na_object_get_basenames()</h3>
+<pre class="programlisting">#define na_object_get_basenames( obj )                  (( GSList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_BASENAMES ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-matchcase"></a><h3>na_object_get_matchcase()</h3>
+<pre class="programlisting">#define na_object_get_matchcase( obj )                  (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_MATCHCASE )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-mimetypes"></a><h3>na_object_get_mimetypes()</h3>
+<pre class="programlisting">#define na_object_get_mimetypes( obj )                  (( GSList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_MIMETYPES ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-all-mimetypes"></a><h3>na_object_get_all_mimetypes()</h3>
+<pre class="programlisting">#define na_object_get_all_mimetypes( obj )              (( gboolean ) GPOINTER_TO_UINT( na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_MIMETYPES_IS_ALL )))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-folders"></a><h3>na_object_get_folders()</h3>
+<pre class="programlisting">#define na_object_get_folders( obj )                    (( GSList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_FOLDERS ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-schemes"></a><h3>na_object_get_schemes()</h3>
+<pre class="programlisting">#define na_object_get_schemes( obj )                    (( GSList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SCHEMES ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-only-show-in"></a><h3>na_object_get_only_show_in()</h3>
+<pre class="programlisting">#define na_object_get_only_show_in( obj )               (( GSList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ONLY_SHOW ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-not-show-in"></a><h3>na_object_get_not_show_in()</h3>
+<pre class="programlisting">#define na_object_get_not_show_in( obj )                (( GSList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_NOT_SHOW ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-try-exec"></a><h3>na_object_get_try_exec()</h3>
+<pre class="programlisting">#define na_object_get_try_exec( obj )                   (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TRY_EXEC ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-show-if-registered"></a><h3>na_object_get_show_if_registered()</h3>
+<pre class="programlisting">#define na_object_get_show_if_registered( obj )         (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SHOW_IF_REGISTERED ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-show-if-true"></a><h3>na_object_get_show_if_true()</h3>
+<pre class="programlisting">#define na_object_get_show_if_true( obj )               (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SHOW_IF_TRUE ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-show-if-running"></a><h3>na_object_get_show_if_running()</h3>
+<pre class="programlisting">#define na_object_get_show_if_running( obj )            (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SHOW_IF_RUNNING ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-selection-count"></a><h3>na_object_get_selection_count()</h3>
+<pre class="programlisting">#define na_object_get_selection_count( obj )            (( gchar * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SELECTION_COUNT ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-capabilities"></a><h3>na_object_get_capabilities()</h3>
+<pre class="programlisting">#define na_object_get_capabilities( obj )               (( GSList * ) na_ifactory_object_get_as_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_CAPABILITITES ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-basenames"></a><h3>na_object_set_basenames()</h3>
+<pre class="programlisting">#define na_object_set_basenames( obj, bnames )          na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_BASENAMES, ( const void * )( bnames ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-matchcase"></a><h3>na_object_set_matchcase()</h3>
+<pre class="programlisting">#define na_object_set_matchcase( obj, match )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_MATCHCASE, ( const void * ) GUINT_TO_POINTER( match ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-mimetypes"></a><h3>na_object_set_mimetypes()</h3>
+<pre class="programlisting">#define na_object_set_mimetypes( obj, types )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_MIMETYPES, ( const void * )( types ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-all-mimetypes"></a><h3>na_object_set_all_mimetypes()</h3>
+<pre class="programlisting">#define na_object_set_all_mimetypes( obj, all )         na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_MIMETYPES_IS_ALL, ( const void * ) GUINT_TO_POINTER( all ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-folders"></a><h3>na_object_set_folders()</h3>
+<pre class="programlisting">#define na_object_set_folders( obj, folders )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_FOLDERS, ( const void * )( folders ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-replace-folder"></a><h3>na_object_replace_folder()</h3>
+<pre class="programlisting">#define na_object_replace_folder( obj, old, new )       na_icontext_replace_folder( NA_ICONTEXT( obj ), ( const gchar * )( old ), ( const gchar * )( new ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-scheme"></a><h3>na_object_set_scheme()</h3>
+<pre class="programlisting">#define na_object_set_scheme( obj, scheme, add )        na_icontext_set_scheme( NA_ICONTEXT( obj ), ( const gchar * )( scheme ), ( add ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-schemes"></a><h3>na_object_set_schemes()</h3>
+<pre class="programlisting">#define na_object_set_schemes( obj, schemes )           na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SCHEMES, ( const void * )( schemes ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-only-show-in"></a><h3>na_object_set_only_show_in()</h3>
+<pre class="programlisting">#define na_object_set_only_show_in( obj, list )         na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_ONLY_SHOW, ( const void * )( list ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-only-desktop"></a><h3>na_object_set_only_desktop()</h3>
+<pre class="programlisting">#define na_object_set_only_desktop( obj, desktop, add ) na_icontext_set_only_desktop( NA_ICONTEXT( obj ), ( const gchar * )( desktop ), ( add ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-not-show-in"></a><h3>na_object_set_not_show_in()</h3>
+<pre class="programlisting">#define na_object_set_not_show_in( obj, list )          na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_NOT_SHOW, ( const void * )( list ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-not-desktop"></a><h3>na_object_set_not_desktop()</h3>
+<pre class="programlisting">#define na_object_set_not_desktop( obj, desktop, add )  na_icontext_set_not_desktop( NA_ICONTEXT( obj ), ( const gchar * )( desktop ), ( add ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-try-exec"></a><h3>na_object_set_try_exec()</h3>
+<pre class="programlisting">#define na_object_set_try_exec( obj, exec )             na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_TRY_EXEC, ( const void * )( exec ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-show-if-registered"></a><h3>na_object_set_show_if_registered()</h3>
+<pre class="programlisting">#define na_object_set_show_if_registered( obj, name )   na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SHOW_IF_REGISTERED, ( const void * )( name ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-show-if-true"></a><h3>na_object_set_show_if_true()</h3>
+<pre class="programlisting">#define na_object_set_show_if_true( obj, exec )         na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SHOW_IF_TRUE, ( const void * )( exec ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-show-if-running"></a><h3>na_object_set_show_if_running()</h3>
+<pre class="programlisting">#define na_object_set_show_if_running( obj, name )      na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SHOW_IF_RUNNING, ( const void * )( name ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-selection-count"></a><h3>na_object_set_selection_count()</h3>
+<pre class="programlisting">#define na_object_set_selection_count( obj, cond )      na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_SELECTION_COUNT, ( const void * )( cond ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-set-capabilities"></a><h3>na_object_set_capabilities()</h3>
+<pre class="programlisting">#define na_object_set_capabilities( obj, cap )          na_ifactory_object_set_from_void( NA_IFACTORY_OBJECT( obj ), NAFO_DATA_CAPABILITITES, ( const void * )( cap ))
+</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

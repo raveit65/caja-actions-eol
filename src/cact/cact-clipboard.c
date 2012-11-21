@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -41,14 +40,13 @@
 #include <core/na-export-format.h>
 
 #include "cact-application.h"
-#include "cact-iprefs.h"
 #include "cact-export-ask.h"
 #include "cact-tree-model.h"
 #include "cact-clipboard.h"
 
 /* private class data
  */
-struct CactClipboardClassPrivate {
+struct _CactClipboardClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
@@ -71,7 +69,7 @@ typedef struct {
 }
 	PrimaryData;
 
-struct CactClipboardPrivate {
+struct _CactClipboardPrivate {
 	gboolean      dispose_has_run;
 	BaseWindow   *window;
 	GtkClipboard *dnd;
@@ -114,8 +112,8 @@ static void   instance_finalize( GObject *application );
 static void   get_from_dnd_clipboard_callback( GtkClipboard *clipboard, GtkSelectionData *selection_data, guint info, guchar *data );
 static void   clear_dnd_clipboard_callback( GtkClipboard *clipboard, CactClipboardDndData *data );
 static gchar *export_rows( CactClipboard *clipboard, GList *rows, const gchar *dest_folder );
-static gchar *export_objects( CactClipboard *clipboard, GList *objects, const gchar *dest_folder );
-static gchar *export_row_object( CactClipboard *clipboard, NAObject *object, const gchar *dest_folder, GList **exported );
+static gchar *export_objects( CactClipboard *clipboard, GList *objects );
+static gchar *export_row_object( CactClipboard *clipboard, NAObject *object, const gchar *dest_folder, GList **exported, gboolean first );
 
 static void   get_from_primary_clipboard_callback( GtkClipboard *gtk_clipboard, GtkSelectionData *selection_data, guint info, CactClipboard *clipboard );
 static void   clear_primary_clipboard( CactClipboard *clipboard );
@@ -185,9 +183,11 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	CactClipboard *self;
 	GdkDisplay *display;
 
+	g_return_if_fail( CACT_IS_CLIPBOARD( instance ));
+
 	g_debug( "%s: instance=%p (%s), klass=%p",
 			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-	g_assert( CACT_IS_CLIPBOARD( instance ));
+
 	self = CACT_CLIPBOARD( instance );
 
 	self->private = g_new0( CactClipboardPrivate, 1 );
@@ -206,11 +206,13 @@ instance_dispose( GObject *object )
 	static const gchar *thisfn = "cact_clipboard_instance_dispose";
 	CactClipboard *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
-	g_assert( CACT_IS_CLIPBOARD( object ));
+	g_return_if_fail( CACT_IS_CLIPBOARD( object ));
+
 	self = CACT_CLIPBOARD( object );
 
 	if( !self->private->dispose_has_run ){
+
+		g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 		self->private->dispose_has_run = TRUE;
 
@@ -225,14 +227,16 @@ instance_dispose( GObject *object )
 }
 
 static void
-instance_finalize( GObject *window )
+instance_finalize( GObject *instance )
 {
 	static const gchar *thisfn = "cact_clipboard_instance_finalize";
 	CactClipboard *self;
 
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
-	g_assert( CACT_IS_CLIPBOARD( window ));
-	self = CACT_CLIPBOARD( window );
+	g_return_if_fail( CACT_IS_CLIPBOARD( instance ));
+
+	g_debug( "%s: instance=%p (%s)", thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
+
+	self = CACT_CLIPBOARD( instance );
 
 	if( self->private->primary_data ){
 		clear_primary_clipboard( self );
@@ -243,7 +247,7 @@ instance_finalize( GObject *window )
 
 	/* chain call to parent class */
 	if( G_OBJECT_CLASS( st_parent_class )->finalize ){
-		G_OBJECT_CLASS( st_parent_class )->finalize( window );
+		G_OBJECT_CLASS( st_parent_class )->finalize( instance );
 	}
 }
 
@@ -259,7 +263,7 @@ cact_clipboard_new( BaseWindow *window )
 
 	g_return_val_if_fail( BASE_IS_WINDOW( window ), NULL );
 
-	clipboard = g_object_new( CACT_CLIPBOARD_TYPE, NULL );
+	clipboard = g_object_new( CACT_TYPE_CLIPBOARD, NULL );
 
 	clipboard->private->window = window;
 
@@ -270,7 +274,7 @@ cact_clipboard_new( BaseWindow *window )
  * cact_clipboard_dnd_set:
  * @clipboard: this #CactClipboard instance.
  * @rows: the list of row references of dragged items.
- * @folder: the target folder if any (XDS protocol to outside).
+ * @folder: the URI of the target folder if any (XDS protocol to outside).
  * @copy_data: %TRUE if data is to be copied, %FALSE else
  *  (only relevant when drag and drop occurs inside of the tree view).
  *
@@ -281,7 +285,6 @@ cact_clipboard_dnd_set( CactClipboard *clipboard, guint target, GList *rows, con
 {
 	static const gchar *thisfn = "cact_clipboard_dnd_set";
 	CactClipboardDndData *data;
-	GtkTreeModel *model;
 	GList *it;
 
 	g_return_if_fail( CACT_IS_CLIPBOARD( clipboard ));
@@ -295,8 +298,6 @@ cact_clipboard_dnd_set( CactClipboard *clipboard, guint target, GList *rows, con
 		data->folder = g_strdup( folder );
 		data->rows = NULL;
 		data->copy = copy_data;
-
-		model = gtk_tree_row_reference_get_model(( GtkTreeRowReference * ) rows->data );
 
 		for( it = rows ; it ; it = it->next ){
 			data->rows = g_list_append(
@@ -331,7 +332,6 @@ cact_clipboard_dnd_get_data( CactClipboard *clipboard, gboolean *copy_data )
 	GList *rows = NULL;
 	GtkSelectionData *selection;
 	CactClipboardDndData *data;
-	GtkTreeModel *model;
 	GList *it;
 
 	g_debug( "%s: clipboard=%p", thisfn, ( void * ) clipboard );
@@ -345,12 +345,9 @@ cact_clipboard_dnd_get_data( CactClipboard *clipboard, gboolean *copy_data )
 
 		selection = gtk_clipboard_wait_for_contents( clipboard->private->dnd, CACT_CLIPBOARD_CACT_ATOM );
 		if( selection ){
+			data = ( CactClipboardDndData * ) gtk_selection_data_get_data( selection );
 
-			data = ( CactClipboardDndData * ) selection->data;
 			if( data->target == CACT_XCHANGE_FORMAT_CACT ){
-
-				model = gtk_tree_row_reference_get_model(( GtkTreeRowReference * ) data->rows->data );
-
 				for( it = data->rows ; it ; it = it->next ){
 					rows = g_list_append( rows,
 							gtk_tree_row_reference_copy(( GtkTreeRowReference * ) it->data ));
@@ -413,6 +410,7 @@ cact_clipboard_dnd_drag_end( CactClipboard *clipboard )
 	static const gchar *thisfn = "cact_clipboard_dnd_drag_end";
 	GtkSelectionData *selection;
 	CactClipboardDndData *data;
+	gchar *buffer;
 
 	g_debug( "%s: clipboard=%p", thisfn, ( void * ) clipboard );
 	g_return_if_fail( CACT_IS_CLIPBOARD( clipboard ));
@@ -423,11 +421,13 @@ cact_clipboard_dnd_drag_end( CactClipboard *clipboard )
 		g_debug( "%s: selection=%p", thisfn, ( void * ) selection );
 
 		if( selection ){
-			data = ( CactClipboardDndData * ) selection->data;
+			data = ( CactClipboardDndData * ) gtk_selection_data_get_data( selection );
 			g_debug( "%s: data=%p (CactClipboardDndData)", thisfn, ( void * ) data );
 
 			if( data->target == CACT_XCHANGE_FORMAT_XDS ){
-				export_rows( clipboard, data->rows, data->folder );
+				g_debug( "%s: folder=%s", thisfn, data->folder );
+				buffer = export_rows( clipboard, data->rows, data->folder );
+				g_free( buffer );
 			}
 
 			gtk_selection_data_free( selection );
@@ -455,12 +455,16 @@ static void
 get_from_dnd_clipboard_callback( GtkClipboard *clipboard, GtkSelectionData *selection_data, guint info, guchar *data )
 {
 	static const gchar *thisfn = "cact_clipboard_get_from_dnd_clipboard_callback";
+	GdkAtom selection_data_target;
+
+	selection_data_target = gtk_selection_data_get_target( selection_data );
 
 	g_debug( "%s: clipboard=%p, selection_data=%p, target=%s, info=%d, data=%p",
 			thisfn, ( void * ) clipboard,
-			( void * ) selection_data, gdk_atom_name( selection_data->target ), info, ( void * ) data );
+			( void * ) selection_data, gdk_atom_name( selection_data_target ), info, ( void * ) data );
 
-	gtk_selection_data_set( selection_data, selection_data->target, 8, data, sizeof( CactClipboardDndData ));
+	gtk_selection_data_set( selection_data,
+			selection_data_target, 8, data, sizeof( CactClipboardDndData ));
 }
 
 static void
@@ -476,9 +480,14 @@ clear_dnd_clipboard_callback( GtkClipboard *clipboard, CactClipboardDndData *dat
 	g_free( data );
 }
 
+/*
+ * returns a buffer which contains all exported items if dest_folder is null
+ * else export items as files to target directory, returning an empty string
+ */
 static gchar *
 export_rows( CactClipboard *clipboard, GList *rows, const gchar *dest_folder )
 {
+	static const gchar *thisfn = "cact_clipboard_export_rows";
 	GString *data;
 	GtkTreeModel *model;
 	GList *exported, *irow;
@@ -486,7 +495,12 @@ export_rows( CactClipboard *clipboard, GList *rows, const gchar *dest_folder )
 	GtkTreeIter iter;
 	NAObject *object;
 	gchar *buffer;
+	gboolean first;
 
+	g_debug( "%s: clipboard=%p, rows=%p (count=%d), dest_folder=%s",
+			thisfn, ( void * ) clipboard, ( void * ) rows, g_list_length( rows ), dest_folder );
+
+	first = TRUE;
 	buffer = NULL;
 	exported = NULL;
 	data = g_string_new( "" );
@@ -497,14 +511,15 @@ export_rows( CactClipboard *clipboard, GList *rows, const gchar *dest_folder )
 		if( path ){
 			gtk_tree_model_get_iter( model, &iter, path );
 			gtk_tree_path_free( path );
-			gtk_tree_model_get( model, &iter, IACTIONS_LIST_NAOBJECT_COLUMN, &object, -1 );
-			buffer = export_row_object( clipboard, object, dest_folder, &exported );
+			gtk_tree_model_get( model, &iter, TREE_COLUMN_NAOBJECT, &object, -1 );
+			buffer = export_row_object( clipboard, object, dest_folder, &exported, first );
 			if( buffer && strlen( buffer )){
 				data = g_string_append( data, buffer );
 				g_free( buffer );
 			}
 			g_object_unref( object );
 		}
+		first = FALSE;
 	}
 
 	g_list_free( exported );
@@ -512,26 +527,29 @@ export_rows( CactClipboard *clipboard, GList *rows, const gchar *dest_folder )
 }
 
 static gchar *
-export_objects( CactClipboard *clipboard, GList *objects, const gchar *dest_folder )
+export_objects( CactClipboard *clipboard, GList *objects )
 {
 	gchar *buffer;
 	GString *data;
 	GList *exported;
 	GList *iobj;
 	NAObject *object;
+	gboolean first;
 
+	first = TRUE;
 	buffer = NULL;
 	exported = NULL;
 	data = g_string_new( "" );
 
 	for( iobj = objects ; iobj ; iobj = iobj->next ){
 		object = NA_OBJECT( iobj->data );
-		buffer = export_row_object( clipboard, object, dest_folder, &exported );
+		buffer = export_row_object( clipboard, object, NULL, &exported, first );
 		if( buffer && strlen( buffer )){
 			data = g_string_append( data, buffer );
 			g_free( buffer );
 		}
 		g_object_unref( object );
+		first = FALSE;
 	}
 
 	g_list_free( exported );
@@ -539,70 +557,89 @@ export_objects( CactClipboard *clipboard, GList *objects, const gchar *dest_fold
 }
 
 /*
- * export to a buffer if dest_folder is null
- * else export to a new file in the target directory
+ * export to a buffer if dest_folder is null, and returns this buffer
+ * else export to a new file in the target directory (returning an empty string)
+ *
+ * exported maintains a list of exported items, so that the same item is not
+ * exported twice
  */
 static gchar *
-export_row_object( CactClipboard *clipboard, NAObject *object, const gchar *dest_folder, GList **exported )
+export_row_object( CactClipboard *clipboard, NAObject *object, const gchar *dest_folder, GList **exported, gboolean first )
 {
+	static const gchar *thisfn = "cact_clipboard_export_row_object";
 	GList *subitems, *isub;
 	CactApplication *application;
 	NAUpdater *updater;
-	NAObjectAction *action;
+	NAObjectItem *item;
+	gchar *item_label;
 	gint index;
 	GString *data;
 	gchar *buffer;
-	GQuark format;
+	gchar *format;
 	gchar *fname;
 	GSList *msgs;
 
 	data = g_string_new( "" );
 
+	/* if we have a menu, first export the subitems
+	 */
 	if( NA_IS_OBJECT_MENU( object )){
 		subitems = na_object_get_items( object );
 
 		for( isub = subitems ; isub ; isub = isub->next ){
-			buffer = export_row_object( clipboard, isub->data, dest_folder, exported );
+			buffer = export_row_object( clipboard, isub->data, dest_folder, exported, first );
 			if( buffer && strlen( buffer )){
 				data = g_string_append( data, buffer );
 				g_free( buffer );
 			}
+			first = FALSE;
 		}
 	}
 
+	/* only export NAObjectItem type
+	 * here, object may be a menu, an action or a profile
+	 */
 	msgs = NULL;
-	action = ( NAObjectAction * ) object;
+	item = ( NAObjectItem * ) object;
 	if( NA_IS_OBJECT_PROFILE( object )){
-		action = NA_OBJECT_ACTION( na_object_get_parent( object ));
+		item = NA_OBJECT_ITEM( na_object_get_parent( object ));
 	}
 
 	application = CACT_APPLICATION( base_window_get_application( clipboard->private->window ));
 	updater = cact_application_get_updater( application );
 
-	index = g_list_index( *exported, ( gconstpointer ) action );
+	index = g_list_index( *exported, ( gconstpointer ) item );
 	if( index == -1 ){
 
-		*exported = g_list_prepend( *exported, ( gpointer ) action );
-		format = cact_iprefs_get_export_format( clipboard->private->window, IPREFS_EXPORT_FORMAT );
+		item_label = na_object_get_label( item );
+		g_debug( "%s: exporting %s", thisfn, item_label );
+		g_free( item_label );
 
-		if( format == IPREFS_EXPORT_FORMAT_ASK ){
-			format = cact_export_ask_user( clipboard->private->window, NA_OBJECT_ITEM( action ));
+		*exported = g_list_prepend( *exported, ( gpointer ) item );
+		format = na_settings_get_string( NA_IPREFS_EXPORT_PREFERRED_FORMAT, NULL, NULL );
+		g_return_val_if_fail( format && strlen( format ), NULL );
+
+		if( !strcmp( format, EXPORTER_FORMAT_ASK )){
+			g_free( format );
+			format = cact_export_ask_user( clipboard->private->window, item, first );
+			g_return_val_if_fail( format && strlen( format ), NULL );
 		}
 
-		if( format != IPREFS_EXPORT_NO_EXPORT ){
-
+		if( strcmp( format, EXPORTER_FORMAT_NOEXPORT ) != 0 ){
 			if( dest_folder ){
-				fname = na_exporter_to_file( NA_PIVOT( updater ), NA_OBJECT_ITEM( action), dest_folder, format, &msgs );
+				fname = na_exporter_to_file( NA_PIVOT( updater ), item, dest_folder, format, &msgs );
 				g_free( fname );
 
 			} else {
-				buffer = na_exporter_to_buffer( NA_PIVOT( updater ), NA_OBJECT_ITEM( action ), format, &msgs );
+				buffer = na_exporter_to_buffer( NA_PIVOT( updater ), item, format, &msgs );
 				if( buffer && strlen( buffer )){
 					data = g_string_append( data, buffer );
 					g_free( buffer );
 				}
 			}
 		}
+
+		g_free( format );
 	}
 
 	return( g_string_free( data, FALSE ));
@@ -653,7 +690,7 @@ cact_clipboard_primary_set( CactClipboard *clipboard, GList *items, gint mode )
 			clear_primary_clipboard( clipboard );
 		}
 
-		na_object_count_items( items,
+		na_object_item_count_items( items,
 				( gint * ) &user_data->nb_menus,
 				( gint * ) &user_data->nb_actions,
 				( gint * ) &user_data->nb_profiles,
@@ -661,7 +698,7 @@ cact_clipboard_primary_set( CactClipboard *clipboard, GList *items, gint mode )
 
 		for( it = items ; it ; it = it->next ){
 			user_data->items =
-					g_list_prepend( user_data->items, na_object_duplicate( it->data ));
+					g_list_prepend( user_data->items, na_object_duplicate( it->data, DUPLICATE_REC ));
 		}
 		user_data->items = g_list_reverse( user_data->items );
 
@@ -706,12 +743,12 @@ cact_clipboard_primary_get( CactClipboard *clipboard, gboolean *relabel )
 		selection = gtk_clipboard_wait_for_contents( clipboard->private->primary, CACT_CLIPBOARD_CACT_ATOM );
 
 		if( selection ){
-			user_data = ( PrimaryData * ) selection->data;
+			user_data = ( PrimaryData * ) gtk_selection_data_get_data( selection );
 			g_debug( "%s: retrieving PrimaryData=%p", thisfn, ( void * ) user_data );
 
 			if( user_data ){
 				for( it = user_data->items ; it ; it = it->next ){
-					obj = NA_OBJECT( na_object_duplicate( it->data ));
+					obj = NA_OBJECT( na_object_duplicate( it->data, DUPLICATE_REC ));
 					na_object_set_origin( obj, NULL );
 					items = g_list_prepend( items, obj );
 				}
@@ -766,20 +803,25 @@ get_from_primary_clipboard_callback( GtkClipboard *gtk_clipboard, GtkSelectionDa
 	static const gchar *thisfn = "cact_clipboard_get_from_primary_clipboard_callback";
 	PrimaryData *user_data;
 	gchar *buffer;
+	GdkAtom selection_data_target;
+
+	selection_data_target = gtk_selection_data_get_target( selection_data );
 
 	g_debug( "%s: gtk_clipboard=%p, selection_data=%p, target=%s, info=%d, clipboard=%p",
 			thisfn, ( void * ) gtk_clipboard,
-			( void * ) selection_data, gdk_atom_name( selection_data->target ), info, ( void * ) clipboard );
+			( void * ) selection_data, gdk_atom_name( selection_data_target ), info, ( void * ) clipboard );
 
 	user_data = clipboard->private->primary_data;
 
 	if( info == CACT_CLIPBOARD_FORMAT_TEXT_PLAIN ){
-		buffer = export_objects( clipboard, user_data->items, NULL );
-		gtk_selection_data_set( selection_data, selection_data->target, 8, ( const guchar * ) buffer, strlen( buffer ));
+		buffer = export_objects( clipboard, user_data->items );
+		gtk_selection_data_set( selection_data,
+				selection_data_target, 8, ( const guchar * ) buffer, strlen( buffer ));
 		g_free( buffer );
 
 	} else {
-		gtk_selection_data_set( selection_data, selection_data->target, 8, ( const guchar * ) user_data, sizeof( PrimaryData ));
+		gtk_selection_data_set( selection_data,
+				selection_data_target, 8, ( const guchar * ) user_data, sizeof( PrimaryData ));
 	}
 }
 

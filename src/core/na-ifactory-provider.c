@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -40,12 +39,11 @@
 
 /* private interface data
  */
-struct NAIFactoryProviderInterfacePrivate {
+struct _NAIFactoryProviderInterfacePrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
-gboolean ifactory_provider_initialized = FALSE;
-gboolean ifactory_provider_finalized   = FALSE;
+static guint st_initializations = 0;	/* interface initialization count */
 
 static GType register_type( void );
 static void  interface_base_init( NAIFactoryProviderInterface *klass );
@@ -59,7 +57,11 @@ static guint v_factory_provider_write_start( const NAIFactoryProvider *writer, v
 static guint v_factory_provider_write_done( const NAIFactoryProvider *writer, void *writer_data, NAIFactoryObject *serializable, GSList **messages );
 
 /**
+ * na_ifactory_provider_get_type:
+ *
  * Registers the GType of this interface.
+ *
+ * Returns: the #NAIFactoryProvider #GType.
  */
 GType
 na_ifactory_provider_get_type( void )
@@ -105,7 +107,7 @@ interface_base_init( NAIFactoryProviderInterface *klass )
 {
 	static const gchar *thisfn = "na_ifactory_provider_interface_base_init";
 
-	if( !ifactory_provider_initialized ){
+	if( !st_initializations ){
 
 		g_debug( "%s: klass=%p (%s)", thisfn, ( void * ) klass, G_OBJECT_CLASS_NAME( klass ));
 
@@ -118,9 +120,9 @@ interface_base_init( NAIFactoryProviderInterface *klass )
 		klass->write_start = NULL;
 		klass->write_data = NULL;
 		klass->write_done = NULL;
-
-		ifactory_provider_initialized = TRUE;
 	}
+
+	st_initializations += 1;
 }
 
 static void
@@ -128,11 +130,11 @@ interface_base_finalize( NAIFactoryProviderInterface *klass )
 {
 	static const gchar *thisfn = "na_ifactory_provider_interface_base_finalize";
 
-	if( ifactory_provider_initialized && !ifactory_provider_finalized ){
+	st_initializations -= 1;
+
+	if( !st_initializations ){
 
 		g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
-
-		ifactory_provider_finalized = TRUE;
 
 		g_free( klass->private );
 	}
@@ -147,12 +149,40 @@ ifactory_provider_get_version( const NAIFactoryProvider *instance )
 /**
  * na_ifactory_provider_read_item:
  * @reader: the instance which implements this #NAIFactoryProvider interface.
- * @reader_data: instance data.
+ * @reader_data: instance data which will be provided back to the interface
+ *  methods
  * @object: the #NAIFactoryObject object to be unserialilzed.
  * @messages: a pointer to a #GSList list of strings; the implementation
  *  may append messages to this list, but shouldn't reinitialize it.
  *
- * Returns: a newly instantiated #NAIFactoryObject object just readen from @reader.
+ * This function is to be called by a #NAIIOProvider which would wish read
+ * its items. The function takes care of collecting and structuring data,
+ * while the callback interface methods #NAIFactoryProviderInterface.read_start(),
+ * #NAIFactoryProviderInterface.read_data() and #NAIFactoryProviderInterface.read_done()
+ * just have to fill a given #NADataBoxed with the ad-hoc data type.
+ *
+ * <example>
+ *   <programlisting>
+ *     &lcomment;
+ *      * allocate the object to be read
+ *      &rcomment;
+ *     NAObjectItem *item = NA_OBJECT_ITEM( na_object_action_new());
+ *     &lcomment;
+ *      * some data we may need to have access to in callback methods
+ *      &rcomment;
+ *     void *data;
+ *     &lcomment;
+ *      * now call interface function
+ *      &rcomment;
+ *     na_ifactory_provider_read_item(
+ *         NA_IFACTORY_PROVIDER( provider ),
+ *         data,
+ *         NA_IFACTORY_OBJECT( item ),
+ *         messages );
+ *   </programlisting>
+ * </example>
+ *
+ * Since: 2.30
  */
 void
 na_ifactory_provider_read_item( const NAIFactoryProvider *reader, void *reader_data, NAIFactoryObject *object, GSList **messages )
@@ -160,28 +190,25 @@ na_ifactory_provider_read_item( const NAIFactoryProvider *reader, void *reader_d
 	g_return_if_fail( NA_IS_IFACTORY_PROVIDER( reader ));
 	g_return_if_fail( NA_IS_IFACTORY_OBJECT( object ));
 
-	if( ifactory_provider_initialized && !ifactory_provider_finalized ){
-
-		g_return_if_fail( NA_IS_IFACTORY_PROVIDER( reader ));
-		g_return_if_fail( NA_IS_IFACTORY_OBJECT( object ));
-
-		v_factory_provider_read_start( reader, reader_data, object, messages );
-		na_factory_object_read_item( object, reader, reader_data, messages );
-		v_factory_provider_read_done( reader, reader_data, object, messages );
-	}
+	v_factory_provider_read_start( reader, reader_data, object, messages );
+	na_factory_object_read_item( object, reader, reader_data, messages );
+	v_factory_provider_read_done( reader, reader_data, object, messages );
 }
 
 /**
  * na_ifactory_provider_write_item:
  * @writer: the instance which implements this #NAIFactoryProvider interface.
  * @writer_data: instance data.
- * @serializable: the #NAIFactoryObject-derived object to be serialized.
+ * @object: the #NAIFactoryObject derived object to be serialized.
  * @messages: a pointer to a #GSList list of strings; the implementation
  *  may append messages to this list, but shouldn't reinitialize it.
  *
- * Writes the data down to the FactoryProvider.
+ * This function is to be called by a #NAIIOProvider which would wish write
+ * an item. The function takes care of collecting and writing elementary data.
  *
  * Returns: a NAIIOProvider operation return code.
+ *
+ * Since: 2.30
  */
 guint
 na_ifactory_provider_write_item( const NAIFactoryProvider *writer, void *writer_data, NAIFactoryObject *object, GSList **messages )
@@ -195,19 +222,14 @@ na_ifactory_provider_write_item( const NAIFactoryProvider *writer, void *writer_
 	g_debug( "%s: writer=%p, writer_data=%p, object=%p (%s)",
 			thisfn, ( void * ) writer, ( void * ) writer_data, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
-	code = NA_IIO_PROVIDER_CODE_NOT_WILLING_TO_RUN;
+	code = v_factory_provider_write_start( writer, writer_data, object, messages );
 
-	if( ifactory_provider_initialized && !ifactory_provider_finalized ){
+	if( code == NA_IIO_PROVIDER_CODE_OK ){
+		code = na_factory_object_write_item( object, writer, writer_data, messages );
+	}
 
-		code = v_factory_provider_write_start( writer, writer_data, object, messages );
-
-		if( code == NA_IIO_PROVIDER_CODE_OK ){
-			code = na_factory_object_write_item( object, writer, writer_data, messages );
-		}
-
-		if( code == NA_IIO_PROVIDER_CODE_OK ){
-			code = v_factory_provider_write_done( writer, writer_data, object, messages );
-		}
+	if( code == NA_IIO_PROVIDER_CODE_OK ){
+		code = v_factory_provider_write_done( writer, writer_data, object, messages );
 	}
 
 	return( code );

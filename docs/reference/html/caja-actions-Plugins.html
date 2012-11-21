@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Plugins</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch02.html" title="Extending Caja-Actions™">
+<link rel="prev" href="ch02.html" title="Extending Caja-Actions™">
+<link rel="next" href="ch03.html" title="Public extension interfaces">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch02.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="ch03.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#caja-actions-Plugins.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#caja-actions-Plugins.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="caja-actions-Plugins"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="caja-actions-Plugins.top_of_page"></a>Plugins</span></h2>
+<p>Plugins — The Caja-Actions Extension Interface Definition v 1</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="caja-actions-Plugins.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-extension.h&gt;
+
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="caja-actions-Plugins.html#na-extension-startup" title="na_extension_startup ()">na_extension_startup</a>                (<em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/GTypeModule.html"><span class="type">GTypeModule</span></a> *module</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="caja-actions-Plugins.html#na-extension-get-version" title="na_extension_get_version ()">na_extension_get_version</a>            (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="caja-actions-Plugins.html#na-extension-list-types" title="na_extension_list_types ()">na_extension_list_types</a>             (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> **types</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="caja-actions-Plugins.html#na-extension-shutdown" title="na_extension_shutdown ()">na_extension_shutdown</a>               (<em class="parameter"><code><span class="type">void</span></code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="caja-actions-Plugins.description"></a><h2>Description</h2>
+<p>
+<span class="productname">Caja-Actions</span>™ accepts extensions as dynamically loadable libraries
+(aka plugins).
+</p>
+<p>
+As of today, <span class="productname">Caja-Actions</span>™ may be extended in the following areas:
+ </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p><b>
+         Storing menus and actions in a specific storage subsystem
+       . </b>
+         This extension is provided via the public
+         <a class="link" href="NAIIOProvider.html" title="NAIIOProvider">NAIIOProvider</a>
+         interface; it takes care of reading and writing menus
+         and actions to a specific storage subsystem.
+       </p></li>
+<li class="listitem"><p><b>
+         Exporting menus and actions
+       . </b>
+         This extension is provided via the public
+         <a class="link" href="NAIExporter.html" title="NAIExporter">NAIExporter</a>
+         interface; it takes care of exporting menus and actions
+         to the filesystem from the <span class="productname">Caja-Actions</span>™ Configuration Tool
+         user interface.
+       </p></li>
+<li class="listitem"><p><b>
+         Importing menus and actions
+       . </b>
+         This extension is provided via the public
+         <a class="link" href="NAIImporter.html" title="NAIImporter">NAIImporter</a>
+         interface; it takes care of importing menus and actions
+         from the filesystem into the <span class="productname">Caja-Actions</span>™ Configuration Tool
+         user interface.
+       </p></li>
+</ul></div>
+<p>
+</p>
+<p>
+In order to be recognized as a valid <span class="productname">Caja-Actions</span>™ plugin, the library
+must at least export the functions described in this extension API.
+</p>
+<p>
+</p>
+<div class="refsect2">
+<a name="id417335"></a><h3>Developing a <span class="productname">Caja-Actions</span>™ plugin</h3>
+<div class="refsect3">
+<a name="id391803"></a><h4>Building the dynamically loadable library</h4>
+<p>
+The suggested way of producing a dynamically loadable library is to
+use
+<span class="application"><a class="ulink" href="http://www.gnu.org/software/autoconf/" target="_top">autoconf</a></span>,
+<span class="application"><a class="ulink" href="http://www.gnu.org/software/automake/" target="_top">automake</a></span>
+and
+<span class="application"><a class="ulink" href="http://www.gnu.org/software/libtool/" target="_top">libtool</a></span>
+GNU applications.
+      </p>
+<p>
+In this case, it should be enough to use the <code class="option">-module</code>
+option in your <code class="filename">Makefile.am</code>, as in:
+</p>
+<pre class="programlisting">
+  libna_io_desktop_la_LDFLAGS = -module -no-undefined -avoid-version
+</pre>
+<p>
+      </p>
+</div>
+<div class="refsect3">
+<a name="id402398"></a><h4>Installing the library</h4>
+<p>
+At startup time, <span class="productname">Caja-Actions</span>™ searches for its candidate libraries in
+<code class="filename">PKGLIBDIR</code> directory, which most often happens to
+be <code class="filename">/usr/lib/caja-actions/</code> or
+<code class="filename">/usr/lib64/caja-actions/</code>,
+depending of your system.
+      </p>
+</div>
+</div>
+<p>
+</p>
+<p>
+</p>
+<div class="refsect2">
+<a name="id387642"></a><h3>Versions historic</h3>
+<div class="table">
+<a name="id402568"></a><p class="title"><b>Table 1. Historic of the versions of this extension API</b></p>
+<div class="table-contents"><table summary="Historic of the versions of this extension API" border="1">
+<colgroup>
+<col align="center" class="na-version">
+<col align="center" class="api-version">
+<col align="center" class="current">
+</colgroup>
+<thead><tr>
+<th align="center">
+<span class="productname">Caja-Actions</span>™ version</th>
+<th align="center">extension API version</th>
+<th align="center"> </th>
+</tr></thead>
+<tbody><tr>
+<td align="center">since 2.30</td>
+<td align="center">1</td>
+<td align="center">current version</td>
+</tr></tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="caja-actions-Plugins.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="na-extension-startup"></a><h3>na_extension_startup ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            na_extension_startup                (<em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/GTypeModule.html"><span class="type">GTypeModule</span></a> *module</code></em>);</pre>
+<p>
+This function is called by the Caja-Actions plugin manager when
+the plugin library is first loaded in memory. The library may so take
+advantage of this call by initializing itself, registering its
+internal <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> types, etc.
+</p>
+<p>
+A Caja-Actions extension must implement this function in order
+to be considered as a valid candidate to dynamic load.
+</p>
+<p>
+</p>
+<div class="example">
+<a name="id409213"></a><p class="title"><b>Example 1. </b></p>
+<div class="example-contents">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="keyword">static</span><span class="normal"> </span><span class="usertype">GType</span><span class="normal"> st_module_type </span><span class="symbol">=</span><span class="normal"> </span><span class="number">0</span><span class="symbol">;</span>
+
+<span class="normal"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean">gboolean</a></span>
+<span class="function"><a href="caja-actions-Plugins.html#na-extension-startup">na_extension_startup</a></span><span class="symbol">(</span><span class="normal"> </span><span class="usertype">GTypeModule</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">plugin </span><span class="symbol">)</span>
+<span class="cbracket">{</span>
+<span class="normal">    </span><span class="keyword">static</span><span class="normal"> </span><span class="usertype">GTypeInfo</span><span class="normal"> info </span><span class="symbol">=</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">        </span><span class="keyword">sizeof</span><span class="symbol">(</span><span class="normal"> CappDesktopProviderClass </span><span class="symbol">),</span>
+<span class="normal">        <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">,</span>
+<span class="normal">        <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">,</span>
+<span class="normal">        </span><span class="symbol">(</span><span class="normal"> <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GClassInitFunc">GClassInitFunc</a> </span><span class="symbol">)</span><span class="normal"> class_init</span><span class="symbol">,</span>
+<span class="normal">        <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">,</span>
+<span class="normal">        <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">,</span>
+<span class="normal">        </span><span class="keyword">sizeof</span><span class="symbol">(</span><span class="normal"> CappDesktopProvider </span><span class="symbol">),</span>
+<span class="normal">        </span><span class="number">0</span><span class="symbol">,</span>
+<span class="normal">        </span><span class="symbol">(</span><span class="normal"> <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GInstanceInitFunc">GInstanceInitFunc</a> </span><span class="symbol">)</span><span class="normal"> instance_init</span>
+<span class="normal">    </span><span class="cbracket">}</span><span class="symbol">;</span>
+
+<span class="normal">    </span><span class="keyword">static</span><span class="normal"> </span><span class="keyword">const</span><span class="normal"> </span><span class="usertype">GInterfaceInfo</span><span class="normal"> iio_provider_iface_info </span><span class="symbol">=</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">        </span><span class="symbol">(</span><span class="normal"> <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GInterfaceInitFunc">GInterfaceInitFunc</a> </span><span class="symbol">)</span><span class="normal"> iio_provider_iface_init</span><span class="symbol">,</span>
+<span class="normal">        <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">,</span>
+<span class="normal">        <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span>
+<span class="normal">    </span><span class="cbracket">}</span><span class="symbol">;</span>
+
+<span class="normal">    st_module_type </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="http://library.gnome.org/devel/gobject/unstable/GTypeModule.html#g-type-module-register-type">g_type_module_register_type</a></span><span class="symbol">(</span><span class="normal"> plugin</span><span class="symbol">,</span><span class="normal"> <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#G-TYPE-OBJECT:CAPS">G_TYPE_OBJECT</a></span><span class="symbol">,</span><span class="normal"> </span><span class="string">"CappDesktopProvider"</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">&amp;</span><span class="normal">info</span><span class="symbol">,</span><span class="normal"> </span><span class="number">0</span><span class="normal"> </span><span class="symbol">);</span>
+
+<span class="normal">    </span><span class="function"><a href="http://library.gnome.org/devel/gobject/unstable/GTypeModule.html#g-type-module-add-interface">g_type_module_add_interface</a></span><span class="symbol">(</span><span class="normal"> plugin</span><span class="symbol">,</span><span class="normal"> st_module_type</span><span class="symbol">,</span><span class="normal"> <a href="NAIIOProvider.html#NA-TYPE-IIO-PROVIDER:CAPS">NA_TYPE_IIO_PROVIDER</a></span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">&amp;</span><span class="normal">iio_provider_iface_info </span><span class="symbol">);</span>
+
+<span class="normal">    </span><span class="keyword">return</span><span class="symbol">(</span><span class="normal"> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> </span><span class="symbol">);</span>
+<span class="cbracket">}</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+<p><br class="example-break">
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>module</code></em> :</span></p></td>
+<td>the <a href="http://library.gnome.org/devel/gobject/unstable/GTypeModule.html"><span class="type">GTypeModule</span></a> of the plugin library being loaded.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the initialization is successful, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> else.
+In this later case, the library is unloaded and no more considered.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-extension-get-version"></a><h3>na_extension_get_version ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               na_extension_get_version            (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+This function is called by the <span class="productname">Caja-Actions</span>™ program each time
+it needs to know which version of this API the plugin
+implements.
+</p>
+<p>
+If this function is not exported by the library,
+the plugin manager considers that the library only implements the
+version 1 of this extension API.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the version of this API supported by the module.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-extension-list-types"></a><h3>na_extension_list_types ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               na_extension_list_types             (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> **types</code></em>);</pre>
+<p>
+Returned <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> types must already have been registered in the
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> system (e.g. at #<a class="link" href="caja-actions-Plugins.html#na-extension-startup" title="na_extension_startup ()"><code class="function">na_extension_startup()</code></a> time), and the objects
+they describe may implement one or more of the interfaces defined in
+this Caja-Actions public API.
+</p>
+<p>
+The Caja-Actions plugin manager will instantiate one <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GTypeInstance"><span class="type">GTypeInstance</span></a>-
+derived object for each returned <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type, and associate these objects
+to this library.
+</p>
+<p>
+A Caja-Actions extension must implement this function in order
+to be considered as a valid candidate to dynamic load.
+</p>
+<p>
+</p>
+<div class="example">
+<a name="id390506"></a><p class="title"><b>Example 2. </b></p>
+<div class="example-contents">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="comment">/* the count of GType types provided by this extension</span>
+<span class="comment"> * each new GType type must</span>
+<span class="comment"> * - be registered in na_extension_startup()</span>
+<span class="comment"> * - be addressed in na_extension_list_types().</span>
+<span class="comment"> */</span>
+<span class="preproc">#define</span><span class="normal"> CADP_TYPES_COUNT    </span><span class="number">1</span>
+
+<span class="normal"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint">guint</a></span>
+<span class="function"><a href="caja-actions-Plugins.html#na-extension-list-types">na_extension_list_types</a></span><span class="symbol">(</span><span class="normal"> </span><span class="keyword">const</span><span class="normal"> </span><span class="usertype">GType</span><span class="normal"> </span><span class="symbol">**</span><span class="normal">types </span><span class="symbol">)</span>
+<span class="cbracket">{</span>
+<span class="normal">     </span><span class="keyword">static</span><span class="normal"> </span><span class="usertype">GType</span><span class="normal"> types_list </span><span class="symbol">[</span><span class="number">1</span><span class="symbol">+</span><span class="normal">CADP_TYPES_COUNT</span><span class="symbol">];</span>
+
+<span class="normal">     </span><span class="comment">/* CADP_TYPE_DESKTOP_PROVIDER has been previously</span>
+<span class="comment">      * registered in na_extension_startup function</span>
+<span class="comment">      */</span>
+<span class="normal">     types_list</span><span class="symbol">[</span><span class="number">0</span><span class="symbol">]</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> CADP_TYPE_DESKTOP_PROVIDER</span><span class="symbol">;</span>
+
+<span class="normal">     types_list</span><span class="symbol">[</span><span class="normal">CADP_TYPES_COUNT</span><span class="symbol">]</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> </span><span class="number">0</span><span class="symbol">;</span>
+<span class="normal">     </span><span class="symbol">*</span><span class="normal">types </span><span class="symbol">=</span><span class="normal"> types_list</span><span class="symbol">;</span>
+
+<span class="normal">     </span><span class="keyword">return</span><span class="symbol">(</span><span class="normal"> CADP_TYPES_COUNT </span><span class="symbol">);</span>
+<span class="cbracket">}</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+<p><br class="example-break">
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>types</code></em> :</span></p></td>
+<td>the address where to store the zero-terminated array of
+instantiable <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> types this library implements.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the number of <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> types returned in the <em class="parameter"><code>types</code></em> array, not
+counting the terminating zero item.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-extension-shutdown"></a><h3>na_extension_shutdown ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_extension_shutdown               (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+This function is called by Caja-Actions when it is about to
+shutdown itself.
+</p>
+<p>
+The dynamically loaded library may take advantage of this call to
+release any resource, handle, and so on, it may have previously
+allocated.
+</p>
+<p>
+A Caja-Actions extension must implement this function in order
+to be considered as a valid candidate to dynamic load.
+</p>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

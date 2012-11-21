@@ -1,0 +1,16 @@
+na_boxed_get_type
+na_data_boxed_get_type
+na_mateconf_monitor_get_type
+na_icontext_get_type
+na_iduplicable_get_type
+na_iexporter_get_type
+na_ifactory_object_get_type
+na_ifactory_provider_get_type
+na_iimporter_get_type
+na_iio_provider_get_type
+na_object_action_get_type
+na_object_id_get_type
+na_object_item_get_type
+na_object_menu_get_type
+na_object_object_get_type
+na_object_profile_get_type

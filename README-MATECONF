@@ -1,0 +1,147 @@
+Deprecating MateConf
+=================
+
+ Mate is deprecating MateConf in favour of GSettings. This is the short story.
+ We so have to migrate several pool of datas.
+ 
+ Starting with 3.1.0, Caja-Actions is distributed with the needed migration
+ tools, whether the migration may occur automatically (for users items and
+ preferences), or the system admin must run a script (for mandatory items).
+ 
+ Note that this does not break backward compatibility. The 3.1.x serie of
+ Caja-Actions may still be run on a "old" platform. The oldest supported
+ as of January 2011 is Ubuntu 8 LTS.
+
+ 1. Items, menus and actions, stored in MateConf backend
+ ----------------------------------------------------
+ Historically, actions, then menus, were stored in MateConf. These are user items.
+
+ A system admin was free to define mandatory menus and actions, and to store
+ them in the Mandatory pool of MateConf. Such defined items are so available to
+ all users, though as read-only items.
+
+   1a. Migrating user items
+   ------------------------
+   The good news is:
+   user items are automatically migrated from MateConf to .desktop files.
+
+   The migration happens when the user runs the Caja-Actions Configuration
+   Tool user interface, or when the Caja-Actions menu plugin is loaded
+   by the Caja file-manager, or when the user runs one of the command-line
+   tools caja-actions-new or caja-actions-run.
+
+   The caja-actions-print command-line tool, along with na-delete-xmltree,
+   and na-print-schemas installed in PKGLIBEXECDIR, have no effect on the
+   migration process.
+
+   The new .desktop files are stored in HOME/.local/file-manager/actions.
+
+   When the migration of its items has occurred, the MateConf I/O Provider is
+   disabled, both for reading and writing.
+
+   1b. Migrating mandatory items
+   -----------------------------
+   The bad news is:
+   the system admin has to manually run PKGLIBEXECDIR/na-mateconf2key.sh script
+   as root in order to migrate existing mandatory items to .desktop files.
+
+   The new .desktop files default to be stored in /usr/share/file-manager/actions.
+
+   It is enough to run this script once, e.g. when installing for the first time
+   a recent enough version (>= 3.1.0) of Caja-Actions.
+   
+   Command-line example:
+   # /usr/libexec/caja-actions/na-mateconf2key.sh -delete -nodummy
+
+ 2. User preferences stored in MateConf
+ -----------------------------------
+ Mandatory and user preferences follow the same migration rules that items:
+
+ - user preferences are automatically migrated,
+ - mandatory preferences have to be manually migrated by the system admin.
+ 
+ Preferences are renamed and reorganized:
+
+ MateConf                                      Group      Key
+ -----------------------------------------  ------     --------------------------------------
+ add-capability-dialog = [720,263,384,246]  [nact]     capability-add-capability-wsp
+ add-scheme-dialog = [720,263,352,271]      [nact]     scheme-add-scheme-wsp
+ assistant-esc-confirm = true               [nact]     assistant-esc-confirm
+ assistant-esc-quit = true                  [nact]     assistant-esc-quit
+ auto-save-on = false                       [nact]     main-save-auto
+ auto-save-period = 5                       [nact]     main-save-period
+ export-assistant = [377,33,699,675]        [nact]     export-assistant-wsp
+ export-ask-user = [377,33,699,675]         [nact]     export-ask-user-wsp
+ export-ask-user-last-format = MateConfEntry   [nact]     export-ask-user-last-format
+                                            [nact]     export-ask-user-keep-last-choice
+ export-folder-uri = file:///home/pierre..  [nact]     export-assistant-lfu
+ export-format = Ask                        [nact]     export-preferred-format
+ icommand-command-chooser                   [nact]     command-command-chooser-wsp
+ icommand-folder-uri                        [nact]     command-command-chooser-lfu
+ icommand-legend-dialog = [673,94,474,480]  [nact]     command-legend-wsp
+ icommand-working-dir-dialog                [nact]     command-working-dir-chooser-wsp
+ icommand-working-dir-uri = file:///home..  [nact]     command-working-dir-chooser-lfu
+ icons-chooser = [425,124,839,539]          [nact]     item-icon-chooser-wsp
+ icons-path = file:///usr/share/icons/hi..  [nact]     item-icon-chooser-last-file-uri
+ ienvironment-show-if-running-dialog = [..  [nact]     environment-show-if-running-wsp
+ ienvironment-show-if-running-uri = file..  [nact]     environment-show-if-running-lfu
+ ienvironment-try-exec-dialog = [327,70,..  [nact]     environment-try-exec-wsp
+ ienvironment-try-exec-uri = file:///bin    [nact]     environment-try-exec-lfu
+ ifolders-chooser = [418,86,632,573]        [nact]     folder-chooser-wsp
+ ifolders-path = /home/pierre/data/Pictures [nact]     folder-chooser-lfu
+ import-ask-user                            [nact]     import-ask-user-wsp
+ import-ask-user-last-mode                  [nact]     import-ask-user-last-mode
+ import-assistant                           [nact]     import-assistant-wsp
+ import-folder-uri                          [nact]     import-assistant-lfu
+ import-keep-choice                         [nact]     import-ask-user-keep-last-choice
+ import-mode = NoImport                     [nact]     import-preferred-mode
+ io-providers-order = [..]                  [nact]     io-providers-write-order
+ iprefs-add-about-item = true               [runtime]  items-add-about-item
+ iprefs-alphabetical-order = ManualOrder    [runtime]  items-list-order-mode
+ iprefs-create-root-menu = false            [runtime]  items-create-root-menu
+ iprefs-level-zero = [my-first-na-menu,a1-mandatory2-action3,a-mateconf-action]
+                                            [runtime]  items-level-zero-order
+ iprefs-relabel-actions = false             [nact]     relabel-when-duplicate-action
+ iprefs-relabel-menus = false               [nact]     relabel-when-duplicate-menu
+ iprefs-relabel-profiles = false            [nact]     relabel-when-duplicate-profile
+ main-edit-toolbar = true                   [nact]     main-toolbar-edit-display
+ main-file-toolbar = true                   [nact]     main-toolbar-file-display
+ main-help-toolbar = true                   [nact]     main-toolbar-help-display
+ main-paned = 211                           [nact]     main-paned-width
+ main-window = [319,95,901,533]             [nact]     main-window-size
+ preferences-editor = [548,218,497,392]     [nact]     preferences-wsp
+ schemes = [dav|WebDAV files,file|Local files,ftp|FTP files,sftp|SSH files,smb|Windows files]
+                                            [nact]     scheme-default-list
+
+ User preferences for I/O providers were stored as /apps/caja-actions/io-providers/<provider_id>
+ keys. They are moved to [io-provider <provider_id>] group.
+
+ MateConf                                                 Key
+ -----------------------------------------             --------------------------------------
+ read-at-startup                                       readable
+ writable                                              writable
+
+ 3. Sysadmin reserved mandatory keys
+ -----------------------------------
+ These were
+   /apps/caja-actions/mandatory/
+     all/locked
+     na-desktop/locked
+     na-mateconf/locked
+
+ These keys are just ignored if they are not in the mandatory MateConf pool, i.e.
+ if they happens to be eventually editable by the user.
+
+ If these keys are actually in the system mandatory MateConf pool, they are renamed
+ in the following way:
+
+ MateConf                                      Group      Key
+ -----------------------------------------  ------     --------------------------------------
+ /apps/caja-actions/mandatory/all/locked
+                                            [nact]     preferences-locked
+                                            [runtime]  io-providers-locked
+
+ /apps/caja-actions/mandatory/na-desktop/locked    <removed>
+ /apps/caja-actions/mandatory/na-mateconf/locked      <removed>
+
+P. Wieser - Jan. 2011

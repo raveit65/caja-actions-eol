@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+
+  <!-- name and version of the application -->
+  <!ENTITY prodname "<productname>Caja-Actions</productname>">
+  <!ENTITY appnamex "Caja-Actions Configuration Tool">
+  <!ENTITY appname "<application>&appnamex;</application>">
+  <!ENTITY appversion "3.2">
+
+  <!-- revision number and release date of this manual -->
+  <!ENTITY manrevision "3.2">
+  <!ENTITY mandate "January 2012">
+
+  <!-- product name used -->
+  <!ENTITY caja "<productname>Caja</productname>">
+  <!ENTITY windows  "<productname>Windows</productname>">
+  <!ENTITY matedialog   "<productname>MateDialog</productname>">
+
+  <!-- some user-defined internal entities
+       merely because it appears that xsltproc may sometimes loose
+       its path to the DocBook DTD -->
+  <!ENTITY laquosp "&#171;&#160;">
+  <!ENTITY spraquo "&#160;&#187;">
+
+  <!-- other entities -->
+  <!ENTITY desema "<ulink url='http://www.caja-actions.org/?q=node/377' type='http'>DES-EMA specification</ulink>">
+  <!ENTITY asterisk       "&laquosp;<literal>*</literal>&spraquo;">
+  <!ENTITY question_mark  "&laquosp;<literal>?</literal>&spraquo;">
+  <!ENTITY must_match     "&laquosp;must match one of&spraquo;">
+  <!ENTITY must_not_match "&laquosp;must not match any of&spraquo;">
+
+  <!-- the synopsys of the document -->
+  <!ENTITY articleinfo SYSTEM "articleinfo.xml">
+  <!ENTITY legalnotice SYSTEM "legalnotice.xml">
+  <!ENTITY starting    SYSTEM "cact-starting.xml">
+  <!ENTITY conditions  SYSTEM "cact-conditions.xml">
+  <!ENTITY where       SYSTEM "cact-where.xml">
+  <!ENTITY execution   SYSTEM "cact-execution.xml">
+  <!ENTITY profiles    SYSTEM "cact-profiles.xml">
+  <!ENTITY menus       SYSTEM "cact-menus.xml">
+  <!ENTITY sorting     SYSTEM "cact-sorting.xml">
+  <!ENTITY edit        SYSTEM "cact-edit.xml">
+  <!ENTITY save        SYSTEM "cact-save.xml">
+  <!ENTITY export      SYSTEM "cact-export.xml">
+  <!ENTITY import      SYSTEM "cact-import.xml">
+  <!ENTITY preferences SYSTEM "cact-prefs.xml">
+  <!ENTITY properties  SYSTEM "cact-properties.xml">
+  <!ENTITY misc-infos  SYSTEM "cact-misc.xml">
+  <!ENTITY bugs        SYSTEM "cact-bugs.xml">
+  <!ENTITY gnu-fdl     SYSTEM "appendix-gnu-fdl-1.3.xml">
+]>
+
+<!-- ========================= Document Header ======================== -->
+<!-- Please do not change the id!
+     For translations, change lang to appropriate code -->
+
+<article id="index" lang="en">
+
+  &articleinfo;
+
+  <indexterm zone="index">
+    <primary>&caja;</primary>
+  </indexterm>
+  <indexterm zone="index">
+    <primary>&prodname;</primary>
+  </indexterm>
+
+<!-- =========================== Document Body ======================== -->
+<!-- =========================== Introduction ========================= -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+
+  <sect1 id="introduction">
+    <title>Introduction</title>
+    <para>
+      &prodname; is a &caja; extension whose principal function
+      is to allow the user to add arbitrary actions to the file manager
+      context menus. These actions may be organized in menus and submenus,
+      exported and shared with other desktop environments.
+    </para>
+    <para>
+      The &appname; application is the user interface which lets you precisely
+      configure how, where and when your actions should appear in &caja;
+      context menus, and how they will be executed.
+    </para>
+    <para>
+      &appname; provides the following features:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>Define and configure actions from scratch.</para>
+      </listitem>
+      <listitem>
+        <para>Organize actions into menus, submenus and so on.</para>
+      </listitem>
+      <listitem>
+        <para>Import and export actions and menus from and to outside world.</para>
+      </listitem>
+    </itemizedlist>
+    <note>
+      <para>
+        &prodname; also comes with additional features such as:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            A &caja; plugin which exports in real time to D-Bus the currently
+            selected files.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            A command-line program which is able to run any action.
+          </para>
+          <para>
+            Associated with the D-Bus interface, this program lets the user
+            run any action from a keyboard shortcut, applying this action
+            to the item(s) currently selected in the file manager.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            A command-line program which is able to create a new action.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        All these features are more thoroughly described in the global
+        &prodname; documentation.
+      </para>
+    </note>
+  </sect1>
+
+<!-- ========================= Getting Started ======================== -->
+<!-- Use the Getting Started section to describe the steps required
+     to start the application and to describe the user interface components
+     of the application. If there is other information that it is important
+     for readers to know before they start using the application, you should
+     also include this information here.
+     If the information about how to get started is very short, you can
+     include it in the Introduction and omit this section. -->
+
+  <sect1 id="getting-started">
+    <title>Getting Started</title>
+    &starting;
+  </sect1>
+
+<!-- ============================== Usage ============================= -->
+<!-- Use this section to describe how to use the application to perform the
+     tasks for which the application is designed. -->
+
+  <sect1 id="usage">
+    <title>Using &appname;</title>
+    &conditions;
+    &where;
+    &execution;
+    &profiles;
+    &menus;
+    &sorting;
+    &edit;
+    &save;
+    &export;
+    &import;
+    &preferences;
+  </sect1>
+
+<!-- ============================ Misc ================================ -->
+<!-- informations I do not know where to put -->
+
+  <sect1 id="misc">
+    <title>Miscellaneous informations</title>
+    &misc-infos;
+  </sect1>
+
+<!-- ============================ Bugs ================================ -->
+<!-- This section is optional and is commented out by default.
+     You can use it to describe known bugs and limitations of the
+     program if there are any - please be frank and list all
+     problems you know of. -->
+
+  <sect1 id="bugs">
+    <title>Known Bugs and Limitations</title>
+    &bugs;
+  </sect1>
+
+<!-- =========================== About ================================ -->
+<!-- This section contains info about the program (not docs), such as
+      author's name(s), web page, license, feedback address. This
+      section is optional: primary place for this info is "About.." box of
+      the program. However, if you do wish to include this info in the
+      manual, this is the place to put it.
+      Alternatively, you can put this information in the title page.
+  -->
+
+  <sect1 id="about">
+    <title>About &appname;</title>
+    <para>
+      The first version of &prodname; was initially written by
+      Frederic Ruaudel (<email>grumz@grumz.net</email>) and
+      Rodrigo Moya (<email>rodrigo@mate-db.org</email>).
+      It has been thoroughly improved and is currently maintained by
+      Pierre Wieser (<email>pwieser@trychlos.org</email>).
+    </para>
+    <para>
+      Artwork is due to courtesy of
+      Ulisse Perusin (<email>uli.peru@gmail.com</email>) and
+      DragonArtz
+      (<ulink url="http://www.dragonartz.net/" type="http">http://www.dragonartz.net</ulink>).
+    </para>
+    <para>
+      To find more information about &prodname;, please visit the
+      <ulink url="http://www.caja-actions.org/" type="http"></ulink>
+      &prodname; website.
+    </para>
+    <para>
+      To report a bug or make a suggestion regarding &prodname;,
+      the &appname; or this manual, follow the directions in the
+      <ulink url="ghelp:user-guide#feedback" type="help">MATE Feedback Page</ulink>,
+      or you may prefer, at your convenience, directly open a bug
+      or a request for enhancement in
+      <ulink
+       url="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions"
+       type="http">Bugzilla website</ulink>.
+    </para>
+  </sect1>
+
+  &gnu-fdl;
+
+</article>

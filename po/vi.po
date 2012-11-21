@@ -16,25 +16,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: LocFactoryEditor 1.6fc1\n"
 
-#: ../nact/nact.desktop.in.h:1
+#: ../cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "Thêm mục vào trình đơn bật lên Caja"
 
-#: ../nact/nact.desktop.in.h:2
+#: ../cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "Cấu hình hành động Caja"
 
-#: ../nact/caja-actions-config.glade.h:1
+#: ../cact/caja-actions-config.glade.h:1
 #, fuzzy
 msgid "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>"
 msgstr "Tác quyền © năm 2005 của Frederic Ruaudel <grumz@grumz.net>"
 
-#: ../nact/caja-actions-config.glade.h:3
+#: ../cact/caja-actions-config.glade.h:3
 #, no-c-format
 msgid "<b>%%</b>: a percent sign"
 msgstr "<b>%%</b>: dấu phần trăm"
 
-#: ../nact/caja-actions-config.glade.h:5
+#: ../cact/caja-actions-config.glade.h:5
 #, no-c-format
 msgid ""
 "<b>%M</b>: space-separated list of the selected file(s)/folder(s) with their "
@@ -43,17 +43,17 @@ msgstr ""
 "<b>%M</b> : danh sách những tập tin/thư mục đã chọn với toàn đường dẫn, định "
 "giới bằng dấu cách."
 
-#: ../nact/caja-actions-config.glade.h:7
+#: ../cact/caja-actions-config.glade.h:7
 #, fuzzy, no-c-format
 msgid "<b>%U</b>: username of the MateVFS URI"
 msgstr "<b>%U</b> : tên người dùng của URI mate-vfs"
 
-#: ../nact/caja-actions-config.glade.h:9
+#: ../cact/caja-actions-config.glade.h:9
 #, no-c-format
 msgid "<b>%d</b>: base folder of the selected file(s)"
 msgstr "<b>%d</b> : thư mục cơ bản của những tập tin đã chọn"
 
-#: ../nact/caja-actions-config.glade.h:11
+#: ../cact/caja-actions-config.glade.h:11
 #, no-c-format
 msgid ""
 "<b>%f</b>: the name of the selected file or the 1st one if many are selected"
@@ -61,12 +61,12 @@ msgstr ""
 "<b>%f</b> : tên của tập tin đã chọn (hay tên của tập tin thứ nhất nếu có "
 "nhiều tập tin đã chọn)"
 
-#: ../nact/caja-actions-config.glade.h:13
+#: ../cact/caja-actions-config.glade.h:13
 #, fuzzy, no-c-format
 msgid "<b>%h</b>: hostname of the MateVFS URI"
 msgstr "<b>%h</b> : tên máy của URI mate-vfs"
 
-#: ../nact/caja-actions-config.glade.h:15
+#: ../cact/caja-actions-config.glade.h:15
 #, no-c-format
 msgid ""
 "<b>%m</b>: space-separated list of the basenames of the selected\n"
@@ -75,50 +75,50 @@ msgstr ""
 "<b>%m</b> : danh sách tên cơ bản của những tập tin/thư mục đã chọn, định "
 "giới bằng dấu cách."
 
-#: ../nact/caja-actions-config.glade.h:18
+#: ../cact/caja-actions-config.glade.h:18
 #, fuzzy, no-c-format
 msgid "<b>%s</b>: scheme of the MateVFS URI"
 msgstr "<b>%s</b> : lược đồ của URI mate-vfs"
 
-#: ../nact/caja-actions-config.glade.h:20
+#: ../cact/caja-actions-config.glade.h:20
 #, fuzzy, no-c-format
 msgid "<b>%u</b>: MateVFS URI"
 msgstr "<b>%u</b> : URI mate-vfs"
 
-#: ../nact/caja-actions-config.glade.h:21
+#: ../cact/caja-actions-config.glade.h:21
 msgid "<b>Action</b>"
 msgstr "<b>Hành động</b>"
 
-#: ../nact/caja-actions-config.glade.h:22
+#: ../cact/caja-actions-config.glade.h:22
 msgid "<b>Appears if file matches</b>"
 msgstr "<b>Xuất hiện nếu tập tin khớp được</b>"
 
-#: ../nact/caja-actions-config.glade.h:23
+#: ../cact/caja-actions-config.glade.h:23
 msgid "<b>Appears if scheme is in this list</b>"
 msgstr "<b>Xuất hiện nếu lược đồ nằm trong danh sách này</b>"
 
-#: ../nact/caja-actions-config.glade.h:24
+#: ../cact/caja-actions-config.glade.h:24
 msgid "<b>Appears if selection contains</b>"
 msgstr "<b>Xuất hiện nếu vùng chọn chứa</b>"
 
-#: ../nact/caja-actions-config.glade.h:25
+#: ../cact/caja-actions-config.glade.h:25
 msgid "<b>Caja Menu Item</b>"
 msgstr "<b>Mục trình đơn Caja</b>"
 
-#: ../nact/caja-actions-config.glade.h:26
+#: ../cact/caja-actions-config.glade.h:26
 msgid "<b>Profiles</b>"
 msgstr ""
 
-#: ../nact/caja-actions-config.glade.h:28
+#: ../cact/caja-actions-config.glade.h:28
 #, no-c-format
 msgid "<i><b><span size=\"small\">e.g., %s</span></b></i>"
 msgstr "<i><b><span size=\"small\">v.d., %s</span></b></i>"
 
-#: ../nact/caja-actions-config.glade.h:29
+#: ../cact/caja-actions-config.glade.h:29
 msgid "<span size=\"larger\"><b>Parameter Legend</b></span>"
 msgstr "<span size=\"larger\"><b>Chú giải tham số</b></span>"
 
-#: ../nact/caja-actions-config.glade.h:30
+#: ../cact/caja-actions-config.glade.h:30
 msgid ""
 "<span weight=\"bold\" size=\"larger\">place primary text here</span>\n"
 "\n"
@@ -128,7 +128,7 @@ msgstr ""
 "\n"
 "để đoạn phụ vào đây"
 
-#: ../nact/caja-actions-config.glade.h:33
+#: ../cact/caja-actions-config.glade.h:33
 msgid ""
 "A string with wildcards (? or *) that will be used to match the filenames. "
 "You can set several filename patterns by separating them with a semi-colon "
@@ -137,7 +137,7 @@ msgstr ""
 "Chuỗi có ký tự đặc biệt (« ? » hay « * ») sẽ được dùng để khớp những tập tin. "
 "Bạn có khả năng khớp nhiều mẫu tên tập tin định giới bằng dấu chấm phẩy « ; »."
 
-#: ../nact/caja-actions-config.glade.h:34
+#: ../cact/caja-actions-config.glade.h:34
 msgid ""
 "A string with wildcards (? or *) that will be used to match the mimetypes of "
 "files. You can set several mimetype patterns by separating them with a semi-"
@@ -147,32 +147,32 @@ msgstr ""
 "những tin. Bạn có khả năng khớp nhiều mẫu kiểu MIME định giới bằng dấu chấm "
 "phẩy « ; »."
 
-#: ../nact/caja-actions-config.glade.h:35
+#: ../cact/caja-actions-config.glade.h:35
 #, fuzzy
 msgid "Action"
 msgstr "<b>Hành động</b>"
 
-#: ../nact/caja-actions-config.glade.h:36
+#: ../cact/caja-actions-config.glade.h:36
 msgid "Advanced Conditions"
 msgstr "Điều kiện cấp cao"
 
-#: ../nact/caja-actions-config.glade.h:37
+#: ../cact/caja-actions-config.glade.h:37
 msgid "Appears if selection has multiple files or folders"
 msgstr "Xuất hiện nếu vùng chọn có nhiều tập tin hay thư mục"
 
-#: ../nact/caja-actions-config.glade.h:38
+#: ../cact/caja-actions-config.glade.h:38
 msgid "Both"
 msgstr "Cả hai"
 
-#: ../nact/caja-actions-config.glade.h:39
+#: ../cact/caja-actions-config.glade.h:39
 msgid "Click to add a new scheme."
 msgstr "Nhấn để thêm một lược đồ mới."
 
-#: ../nact/caja-actions-config.glade.h:40
+#: ../cact/caja-actions-config.glade.h:40
 msgid "Click to choose a command from the file chooser dialog."
 msgstr "Nhấn để chọn một lệnh từ hộp thoại chọn tập tin."
 
-#: ../nact/caja-actions-config.glade.h:41
+#: ../cact/caja-actions-config.glade.h:41
 msgid ""
 "Click to choose a custom icon from a file instead of a predefined icon from "
 "the drop-down list."
@@ -180,11 +180,11 @@ msgstr ""
 "Nhấn để chọn một biểu tượng riêng từ tập tin thay cho một biểu tượng định "
 "sẵn từ danh sách thả xuống."
 
-#: ../nact/caja-actions-config.glade.h:42
+#: ../cact/caja-actions-config.glade.h:42
 msgid "Click to remove the selected scheme."
 msgstr "Nhấn để gỡ bỏ lược đồ đã chọn."
 
-#: ../nact/caja-actions-config.glade.h:43
+#: ../cact/caja-actions-config.glade.h:43
 #, fuzzy
 msgid ""
 "Click to toggle the display of the list of special tokens you can use in the "
@@ -192,40 +192,40 @@ msgid ""
 msgstr ""
 "Nhấn để xem danh sách các hiệu bài đặc biệt có thể gõ vào trường tham số."
 
-#: ../nact/caja-actions-config.glade.h:44
+#: ../cact/caja-actions-config.glade.h:44
 msgid "Conditions"
 msgstr "Điều kiện"
 
-#: ../nact/caja-actions-config.glade.h:45
+#: ../cact/caja-actions-config.glade.h:45
 msgid "Create a copy of the selected action."
 msgstr "Tạo một bản sao của hành động đã chọn."
 
-#: ../nact/caja-actions-config.glade.h:46
+#: ../cact/caja-actions-config.glade.h:46
 msgid ""
 "Delete the action without any confirmation nor the possibility to restore it."
 msgstr "Xóa bỏ hành động, không cần xác nhận, cũng không thể phục hồi nó."
 
-#: ../nact/caja-actions-config.glade.h:47
+#: ../cact/caja-actions-config.glade.h:47
 msgid "Duplicate"
 msgstr ""
 
-#: ../nact/caja-actions-config.glade.h:48
+#: ../cact/caja-actions-config.glade.h:48
 msgid "Export existing configs"
 msgstr "Xuất cấu hình đã có"
 
-#: ../nact/caja-actions-config.glade.h:49
+#: ../cact/caja-actions-config.glade.h:49
 msgid "File to Import:"
 msgstr "Tập tin cần nhập:"
 
-#: ../nact/caja-actions-config.glade.h:50
+#: ../cact/caja-actions-config.glade.h:50
 msgid "Filenames:"
 msgstr "Tên tập tin:"
 
-#: ../nact/caja-actions-config.glade.h:51
+#: ../cact/caja-actions-config.glade.h:51
 msgid "Icon:"
 msgstr "Hình:"
 
-#: ../nact/caja-actions-config.glade.h:52
+#: ../cact/caja-actions-config.glade.h:52
 msgid ""
 "If selected, the filename patterns will be matched case sensitive (eg, *.jpg "
 "will not match photo.JPG)"
@@ -233,30 +233,30 @@ msgstr ""
 "Nếu chọn, việc khớp mẫu tên tập tin sẽ phân biệt chữ hoa/thường (v.d. « *.jpg "
 "» sẽ không khớp được với « ảnh_chụp.JPG »."
 
-#: ../nact/caja-actions-config.glade.h:53
+#: ../cact/caja-actions-config.glade.h:53
 msgid "Import new configurations"
 msgstr "Nhập cấu hình mới"
 
-#: ../nact/caja-actions-config.glade.h:54
+#: ../cact/caja-actions-config.glade.h:54
 msgid "Import/Export"
 msgstr "Nhập/Xuất"
 
-#: ../nact/caja-actions-config.glade.h:55
+#: ../cact/caja-actions-config.glade.h:55
 msgid "Import/Export Settings"
 msgstr "Thiết lập Nhập/Xuất"
 
-#: ../nact/caja-actions-config.glade.h:56
+#: ../cact/caja-actions-config.glade.h:56
 msgid "Label of the menu item in the Caja popup menu."
 msgstr "Nhãn của mục trình đơn nằm trong trình đơn bật lên Caja."
 
 # Type: text
 # Description
 # label of file system
-#: ../nact/caja-actions-config.glade.h:57
+#: ../cact/caja-actions-config.glade.h:57
 msgid "Label:"
 msgstr "Nhãn:"
 
-#: ../nact/caja-actions-config.glade.h:58
+#: ../cact/caja-actions-config.glade.h:58
 msgid ""
 "Manage importation of external action configurations and exportation of "
 "existing actions."
@@ -264,28 +264,28 @@ msgstr ""
 "Quản lý việc nhập các cấu hình hành động bên ngoài và việc xuất các hành "
 "động tồn tại."
 
-#: ../nact/caja-actions-config.glade.h:59
+#: ../cact/caja-actions-config.glade.h:59
 msgid "Match case"
 msgstr "Phân biệt hoa/thường"
 
-#: ../nact/caja-actions-config.glade.h:60
+#: ../cact/caja-actions-config.glade.h:60
 msgid "Mimetypes:"
 msgstr "Kiểu MIME:"
 
-#: ../nact/caja-actions-config.glade.h:61
+#: ../cact/caja-actions-config.glade.h:61
 msgid "Caja Action Editor"
 msgstr "Bộ sửa hành động Caja"
 
-#: ../nact/caja-actions-config.glade.h:62
+#: ../cact/caja-actions-config.glade.h:62
 #, fuzzy
 msgid "Caja Action Profile Editor"
 msgstr "Bộ sửa hành động Caja"
 
-#: ../nact/caja-actions-config.glade.h:63
+#: ../cact/caja-actions-config.glade.h:63
 msgid "Caja Actions"
 msgstr "Hành động Caja"
 
-#: ../nact/caja-actions-config.glade.h:64
+#: ../cact/caja-actions-config.glade.h:64
 #, fuzzy
 msgid ""
 "Caja Actions Configuration Tool\n"
@@ -294,15 +294,15 @@ msgstr ""
 "Công cụ cấu hình hành động Caja\n"
 "Ứng dụng cần cấu hình phần mở rộng hành động Caja"
 
-#: ../nact/caja-actions-config.glade.h:66
+#: ../cact/caja-actions-config.glade.h:66
 msgid "Only files"
 msgstr "Chỉ tập tin"
 
-#: ../nact/caja-actions-config.glade.h:67
+#: ../cact/caja-actions-config.glade.h:67
 msgid "Only folders"
 msgstr "Chỉ thư mục"
 
-#: ../nact/caja-actions-config.glade.h:68
+#: ../cact/caja-actions-config.glade.h:68
 msgid ""
 "Parameters that will be sent to the program. Click on the 'Legend' button to "
 "see the different replacement tokens."
@@ -310,23 +310,23 @@ msgstr ""
 "Các tham số sẽ được gởi cho chương trình. Hãy nhấn vào cái nút « Chú giải » "
 "để xem những hiệu bài thay thế khác nhau."
 
-#: ../nact/caja-actions-config.glade.h:69
+#: ../cact/caja-actions-config.glade.h:69
 msgid "Parameters:"
 msgstr "Tham số :"
 
-#: ../nact/caja-actions-config.glade.h:70
+#: ../cact/caja-actions-config.glade.h:70
 msgid "Path:"
 msgstr "Đường dẫn:"
 
-#: ../nact/caja-actions-config.glade.h:71
+#: ../cact/caja-actions-config.glade.h:71
 msgid "Project Website"
 msgstr "Nơi Mạng của Dự án"
 
-#: ../nact/caja-actions-config.glade.h:72
+#: ../cact/caja-actions-config.glade.h:72
 msgid "Save in Folder:"
 msgstr "Lưu vào thư mục:"
 
-#: ../nact/caja-actions-config.glade.h:73
+#: ../cact/caja-actions-config.glade.h:73
 msgid ""
 "Select the configurations you want to export. Use Shift or Ctrl key to "
 "select more than one."
@@ -334,22 +334,22 @@ msgstr ""
 "Hãy chọn những cấu hình cần xuất. Dùng phím Shift hay Ctrl để chọn nhiều "
 "điều."
 
-#: ../nact/caja-actions-config.glade.h:74
+#: ../cact/caja-actions-config.glade.h:74
 msgid "Select the configurations you want to export:"
 msgstr "Chọn những cấu hình cần xuất:"
 
-#: ../nact/caja-actions-config.glade.h:75
+#: ../cact/caja-actions-config.glade.h:75
 msgid "Select the file you want to import."
 msgstr "Chọn tập tin cần nhập."
 
-#: ../nact/caja-actions-config.glade.h:76
+#: ../cact/caja-actions-config.glade.h:76
 msgid ""
 "Select the folder you want your config to be saved in. This folder must "
 "exist."
 msgstr ""
 "Hãy chọn thư mục vào đó bạn muốn lưu cấu hình. Thư mục này phải tồn tại."
 
-#: ../nact/caja-actions-config.glade.h:77
+#: ../cact/caja-actions-config.glade.h:77
 msgid ""
 "Select the kind of files where you want your action to appear. If you don't "
 "know what to choose, try selecting just 'file' which is the most common "
@@ -360,202 +360,202 @@ msgstr ""
 "đồ mới bằng cách nhấn vào cái nút dấu cộng « + »."
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../nact/caja-actions-config.glade.h:79
+#: ../cact/caja-actions-config.glade.h:79
 msgid "The MATE Translation Project <mate-i18n@gnome.org>"
 msgstr ""
 
-#: ../nact/caja-actions-config.glade.h:80
+#: ../cact/caja-actions-config.glade.h:80
 msgid ""
 "The command that will be launched by selecting the action in Caja popup "
 "menu."
 msgstr ""
 "Lệnh sẽ được khởi chạy khi chọn hành động trong trình đơn bật lên Caja."
 
-#: ../nact/caja-actions-config.glade.h:81
+#: ../cact/caja-actions-config.glade.h:81
 msgid "This software is licensed under the GNU Genaral Public License (GPL)"
 msgstr "Phần mềm này được cấp dưới Giấy Phép Công Cộng Gnu (GPL)."
 
-#: ../nact/caja-actions-config.glade.h:82
+#: ../cact/caja-actions-config.glade.h:82
 msgid "Tooltip of the menu item that will appear in the Caja statusbar."
 msgstr ""
 "Mẹo công cụ của mục trình đơn sẽ xuất hiện trên thanh trạng thái Caja."
 
-#: ../nact/caja-actions-config.glade.h:83
+#: ../cact/caja-actions-config.glade.h:83
 msgid "Tooltip:"
 msgstr "Mẹo công cụ :"
 
-#: ../nact/caja-actions-config.glade.h:84
+#: ../cact/caja-actions-config.glade.h:84
 msgid "_Browse"
 msgstr "_Duyệt"
 
-#: ../nact/caja-actions-config.glade.h:85
+#: ../cact/caja-actions-config.glade.h:85
 msgid "_Legend"
 msgstr ""
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact.c:163
+#: ../cact/cact.c:163
 #, fuzzy, c-format
 msgid "Can't duplicate action '%s'!"
 msgstr "Không thể nhân đôi hành động « %s » !"
 
 #. create columns on the tree view
-#: ../nact/nact.c:277 ../nact/nact-import-export.c:162
+#: ../cact/cact.c:277 ../cact/cact-import-export.c:162
 msgid "Icon"
 msgstr "Hình"
 
-#: ../nact/nact.c:282 ../nact/nact-import-export.c:167
+#: ../cact/cact.c:282 ../cact/cact-import-export.c:167
 msgid "Label"
 msgstr "Nhãn"
 
-#: ../nact/nact.c:303 ../nact/nact-editor.c:628
-#: ../nact/nact-import-export.c:312 ../nact/nact-profile-editor.c:495
+#: ../cact/cact.c:303 ../cact/cact-editor.c:628
+#: ../cact/cact-import-export.c:312 ../cact/cact-profile-editor.c:495
 msgid "Could not load interface for Caja Actions Config Tool"
 msgstr "Không thể tải giao diện cho Công Cụ Cấu Hình Hành Động Caja"
 
 #. i18n notes: example strings for the command preview
-#: ../nact/nact-utils.c:185
+#: ../cact/cact-utils.c:185
 msgid "/path/to"
 msgstr "/đường_dẫn/đến"
 
-#: ../nact/nact-utils.c:186 ../nact/nact-utils.c:188
+#: ../cact/cact-utils.c:186 ../cact/cact-utils.c:188
 msgid "file1.txt"
 msgstr "tập_tin1.txt"
 
-#: ../nact/nact-utils.c:186
+#: ../cact/cact-utils.c:186
 msgid "file2.txt"
 msgstr "tập_tin2.txt"
 
-#: ../nact/nact-utils.c:187 ../nact/nact-utils.c:188
+#: ../cact/cact-utils.c:187 ../cact/cact-utils.c:188
 msgid "folder1"
 msgstr "thư_mục1"
 
-#: ../nact/nact-utils.c:187
+#: ../cact/cact-utils.c:187
 msgid "folder2"
 msgstr "thư_mục2"
 
-#: ../nact/nact-utils.c:190
+#: ../cact/cact-utils.c:190
 msgid "test.example.net"
 msgstr "thử.ví_dụ.net"
 
-#: ../nact/nact-utils.c:191
+#: ../cact/cact-utils.c:191
 msgid "file.txt"
 msgstr "tập_tin.txt"
 
-#: ../nact/nact-utils.c:192
+#: ../cact/cact-utils.c:192
 msgid "folder"
 msgstr "thư mục"
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../nact/nact-editor.c:168
+#: ../cact/cact-editor.c:168
 msgid "None"
 msgstr "Không có"
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:449
+#: ../cact/cact-editor.c:449
 #, fuzzy, c-format
 msgid "Can't copy action's profile '%s'!"
 msgstr "Không thể phân tách tập tin « %s » !"
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:474
+#: ../cact/cact-editor.c:474
 #, fuzzy, c-format
 msgid "Can't paste action's profile '%s'!"
 msgstr "Không thể phân tách tập tin « %s » !"
 
 #. i18n notes: this is the default name of a copied profile
-#: ../nact/nact-editor.c:479
+#: ../cact/cact-editor.c:479
 #, c-format
 msgid "%s Copy"
 msgstr ""
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:539
+#: ../cact/cact-editor.c:539
 #, fuzzy, c-format
 msgid "Can't delete action's profile '%s'!"
 msgstr "Không thể nhân đôi hành động « %s » !"
 
-#: ../nact/nact-editor.c:591
+#: ../cact/cact-editor.c:591
 msgid "Profile Name"
 msgstr ""
 
-#: ../nact/nact-editor.c:644
+#: ../cact/cact-editor.c:644
 msgid "Icon of the menu item in the Caja popup menu"
 msgstr "Biểu tượng của mục trình đơn nằm trong trình đơn bật lên Caja"
 
-#: ../nact/nact-editor.c:666
+#: ../cact/cact-editor.c:666
 msgid "Add a New Action"
 msgstr "Thêm hành động mới"
 
-#: ../nact/nact-editor.c:670
+#: ../cact/cact-editor.c:670
 #, c-format
 msgid "Edit Action \"%s\""
 msgstr "Sửa hành động « %s »"
 
-#: ../nact/nact-import-export.c:205
+#: ../cact/cact-import-export.c:205
 #, fuzzy, c-format
 msgid "Can't parse file '%s' as MateConf schema description file!"
 msgstr "Không thể phân tách tập tin « %s » dạng tập tin mô tả giải đồ MateConf !"
 
 #. i18n notes: %s is the label of the action (eg, 'Mount ISO')
-#: ../nact/nact-import-export.c:226
+#: ../cact/cact-import-export.c:226
 #, fuzzy, c-format
 msgid "Action '%s' importation failed!"
 msgstr "Lỗi nhập hành động « %s » !"
 
 #. initialize the default schemes
 #. i18n notes : description of 'file' scheme
-#: ../nact/nact-prefs.c:164
+#: ../cact/cact-prefs.c:164
 #, c-format
 msgid "%sLocal Files"
 msgstr "%sTập tin cục bộ"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../nact/nact-prefs.c:166
+#: ../cact/cact-prefs.c:166
 #, c-format
 msgid "%sSSH Files"
 msgstr "%sTập tin SSH"
 
 #. i18n notes : description of 'smb' scheme
-#: ../nact/nact-prefs.c:168
+#: ../cact/cact-prefs.c:168
 #, c-format
 msgid "%sWindows Files"
 msgstr "%sTập tin Windows"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../nact/nact-prefs.c:170
+#: ../cact/cact-prefs.c:170
 #, c-format
 msgid "%sFTP Files"
 msgstr "%sTập tin FTP"
 
 #. i18n notes : description of 'dav' scheme
-#: ../nact/nact-prefs.c:172
+#: ../cact/cact-prefs.c:172
 #, c-format
 msgid "%sWebdav Files"
 msgstr "%sTập tin Webdav"
 
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../nact/nact-profile-editor.c:243
+#: ../cact/cact-profile-editor.c:243
 msgid "new-scheme"
 msgstr "lược-đồ-mới"
 
-#: ../nact/nact-profile-editor.c:244
+#: ../cact/cact-profile-editor.c:244
 msgid "New Scheme Description"
 msgstr "Mô tả lược đồ mới"
 
-#: ../nact/nact-profile-editor.c:329
+#: ../cact/cact-profile-editor.c:329
 msgid "Scheme"
 msgstr "Lược đồ"
 
-#: ../nact/nact-profile-editor.c:341
+#: ../cact/cact-profile-editor.c:341
 msgid "Description"
 msgstr "Mô tả"
 
-#: ../nact/nact-profile-editor.c:532
+#: ../cact/cact-profile-editor.c:532
 #, fuzzy
 msgid "Add a New Profile"
 msgstr "Thêm hành động mới"
 
-#: ../nact/nact-profile-editor.c:536
+#: ../cact/cact-profile-editor.c:536
 #, fuzzy, c-format
 msgid "Edit Profile \"%s\""
 msgstr "Sửa hành động « %s »"
@@ -737,7 +737,7 @@ msgstr ""
 #: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
-"the Nact interface. If not set there will be a default auto generated string "
+"the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr ""
 

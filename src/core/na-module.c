@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -40,13 +39,13 @@
 
 /* private class data
  */
-struct NAModuleClassPrivate {
+struct _NAModuleClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct NAModulePrivate {
+struct _NAModulePrivate {
 	gboolean  dispose_has_run;
 	gchar    *path;						/* full pathname of the plugin */
 	gchar    *name;						/* basename without the extension */
@@ -70,14 +69,14 @@ static void      instance_dispose( GObject *object );
 static void      instance_finalize( GObject *object );
 
 static NAModule *module_new( const gchar *filename );
-static gboolean  module_load( GTypeModule *gmodule );
+static gboolean  on_module_load( GTypeModule *gmodule );
 static gboolean  is_a_na_plugin( NAModule *module );
 static gboolean  plugin_check( NAModule *module, const gchar *symbol, gpointer *pfn );
 static void      register_module_types( NAModule *module );
 static void      add_module_type( NAModule *module, GType type );
 static void      object_weak_notify( NAModule *module, GObject *object );
 
-static void      module_unload( GTypeModule *gmodule );
+static void      on_module_unload( GTypeModule *gmodule );
 
 GType
 na_module_get_type( void )
@@ -132,8 +131,8 @@ class_init( NAModuleClass *klass )
 	object_class->finalize = instance_finalize;
 
 	module_class = G_TYPE_MODULE_CLASS( klass );
-	module_class->load = module_load;
-	module_class->unload = module_unload;
+	module_class->load = on_module_load;
+	module_class->unload = on_module_unload;
 
 	klass->private = g_new0( NAModuleClassPrivate, 1 );
 }
@@ -144,9 +143,11 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	static const gchar *thisfn = "na_module_instance_init";
 	NAModule *self;
 
+	g_return_if_fail( NA_IS_MODULE( instance ));
+
 	g_debug( "%s: instance=%p (%s), klass=%p",
 			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-	g_return_if_fail( NA_IS_MODULE( instance ));
+
 	self = NA_MODULE( instance );
 
 	self->private = g_new0( NAModulePrivate, 1 );
@@ -160,11 +161,13 @@ instance_dispose( GObject *object )
 	static const gchar *thisfn = "na_module_instance_dispose";
 	NAModule *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 	g_return_if_fail( NA_IS_MODULE( object ));
+
 	self = NA_MODULE( object );
 
 	if( !self->private->dispose_has_run ){
+
+		g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 		self->private->dispose_has_run = TRUE;
 
@@ -180,8 +183,10 @@ instance_finalize( GObject *object )
 	static const gchar *thisfn = "na_module_instance_finalize";
 	NAModule *self;
 
-	g_debug( "%s: object=%p", thisfn, ( void * ) object );
 	g_return_if_fail( NA_IS_MODULE( object ));
+
+	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
+
 	self = NA_MODULE( object );
 
 	g_free( self->private->path );
@@ -195,7 +200,7 @@ instance_finalize( GObject *object )
 	}
 }
 
-/**
+/*
  * na_module_dump:
  * @module: this #NAModule instance.
  *
@@ -216,13 +221,14 @@ na_module_dump( const NAModule *module )
 	}
 }
 
-/**
+/*
  * na_module_load_modules:
  *
  * Load availables dynamically loadable extension libraries (plugins).
  *
  * Returns: a #GList of #NAModule, each object representing a dynamically
- * loaded library.
+ * loaded library. The list should be na_module_release_modules() by the
+ * caller after use.
  */
 GList *
 na_module_load_modules( void )
@@ -262,7 +268,6 @@ na_module_load_modules( void )
 			}
 		}
 		g_dir_close( api_dir );
-		modules = g_list_reverse( modules );
 	}
 
 	return( modules );
@@ -276,11 +281,10 @@ module_new( const gchar *fname )
 {
 	NAModule *module;
 
-	module = g_object_new( NA_MODULE_TYPE, NULL );
+	module = g_object_new( NA_TYPE_MODULE, NULL );
 	module->private->path = g_strdup( fname );
 
 	if( !g_type_module_use( G_TYPE_MODULE( module )) || !is_a_na_plugin( module )){
-
 		g_object_unref( module );
 		return( NULL );
 	}
@@ -297,22 +301,25 @@ module_new( const gchar *fname )
  * returns: %TRUE if the module is successfully loaded
  */
 static gboolean
-module_load( GTypeModule *gmodule )
+on_module_load( GTypeModule *gmodule )
 {
-	static const gchar *thisfn = "na_module_module_load";
+	static const gchar *thisfn = "na_module_on_module_load";
 	NAModule *module;
 	gboolean loaded;
 
-	g_debug( "%s: gmodule=%p", thisfn, ( void * ) gmodule );
 	g_return_val_if_fail( G_IS_TYPE_MODULE( gmodule ), FALSE );
+
+	g_debug( "%s: gmodule=%p", thisfn, ( void * ) gmodule );
 
 	loaded = FALSE;
 	module = NA_MODULE( gmodule );
 
-	module->private->library = g_module_open( module->private->path, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL );
+	module->private->library = g_module_open(
+			module->private->path, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL );
 
 	if( !module->private->library ){
 		g_warning( "%s: g_module_open: path=%s, error=%s", thisfn, module->private->path, g_module_error());
+
 	} else {
 		loaded = TRUE;
 	}
@@ -324,6 +331,11 @@ module_load( GTypeModule *gmodule )
  * the module has been successfully loaded
  * is it a Caja-Action plugin ?
  * if ok, we ask the plugin to initialize itself
+ *
+ * As of API v 1:
+ * - na_extension_startup, na_extension_list_types and na_extension_shutdown
+ *   are mandatory, and MUST be implemented by the plugin
+ * - na_extension_get_version is optional, and defaults to 1.
  */
 static gboolean
 is_a_na_plugin( NAModule *module )
@@ -334,6 +346,7 @@ is_a_na_plugin( NAModule *module )
 	ok =
 		plugin_check( module, "na_extension_startup"    , ( gpointer * ) &module->private->startup) &&
 		plugin_check( module, "na_extension_list_types" , ( gpointer * ) &module->private->list_types ) &&
+		plugin_check( module, "na_extension_shutdown"   , ( gpointer * ) &module->private->shutdown ) &&
 		module->private->startup( G_TYPE_MODULE( module ));
 
 	if( ok ){
@@ -351,7 +364,7 @@ plugin_check( NAModule *module, const gchar *symbol, gpointer *pfn )
 
 	ok = g_module_symbol( module->private->library, symbol, pfn );
 
-	if( !ok ){
+	if( !ok || !pfn ){
 		g_debug("%s: %s: %s: symbol not found", thisfn, module->private->path, symbol );
 	}
 
@@ -359,12 +372,12 @@ plugin_check( NAModule *module, const gchar *symbol, gpointer *pfn )
 }
 
 /*
- * the 'na_extension_startup' function of the plugin has been already
+ * The 'na_extension_startup' function of the plugin has been already
  * called ; the GType types the plugin provides have so already been
  * registered in the GType system
  *
- * we ask here the plugin to give us a list of these GTypes
- * for each GType, we allocate a new object of the given class
+ * We ask here the plugin to give us a list of these GTypes.
+ * For each GType, we allocate a new object of the given class
  * and keep this object in the module's list
  */
 static void
@@ -381,8 +394,6 @@ register_module_types( NAModule *module )
 			add_module_type( module, types[i] );
 		}
 	}
-
-	module->private->objects = g_list_reverse( module->private->objects );
 }
 
 static void
@@ -414,13 +425,14 @@ object_weak_notify( NAModule *module, GObject *object )
  * which is itself called in na_module::instance_dispose
  */
 static void
-module_unload( GTypeModule *gmodule )
+on_module_unload( GTypeModule *gmodule )
 {
-	static const gchar *thisfn = "na_module_module_unload";
+	static const gchar *thisfn = "na_module_on_module_unload";
 	NAModule *module;
 
-	g_debug( "%s: gmodule=%p", thisfn, ( void * ) gmodule );
 	g_return_if_fail( G_IS_TYPE_MODULE( gmodule ));
+
+	g_debug( "%s: gmodule=%p", thisfn, ( void * ) gmodule );
 
 	module = NA_MODULE( gmodule );
 
@@ -438,11 +450,13 @@ module_unload( GTypeModule *gmodule )
 	module->private->shutdown = NULL;
 }
 
-/**
+/*
  * na_module_get_extensions_for_type:
  * @type: the serched GType.
  *
  * Returns: a list of loaded modules willing to deal with requested @type.
+ *
+ * The returned list should be na_module_free_extensions_list() by the caller.
  */
 GList *
 na_module_get_extensions_for_type( GList *modules, GType type )
@@ -461,10 +475,10 @@ na_module_get_extensions_for_type( GList *modules, GType type )
 		}
 	}
 
-	return( g_list_reverse( willing_to ));
+	return( willing_to );
 }
 
-/**
+/*
  * na_module_free_extensions_list:
  * @extensions: a #GList as returned by #na_module_get_extensions_for_type().
  *
@@ -477,7 +491,7 @@ na_module_free_extensions_list( GList *extensions )
 	g_list_free( extensions );
 }
 
-/**
+/*
  * na_module_has_id:
  * @module: this #NAModule object.
  * @id: the searched id.
@@ -499,7 +513,7 @@ na_module_has_id( NAModule *module, const gchar *id )
 	return( id_ok );
 }
 
-/**
+/*
  * na_module_release_modules:
  * @modules: the list of loaded modules.
  *
@@ -508,14 +522,21 @@ na_module_has_id( NAModule *module, const gchar *id )
 void
 na_module_release_modules( GList *modules )
 {
+	static const gchar *thisfn = "na_modules_release_modules";
+	NAModule *module;
 	GList *imod;
 	GList *iobj;
 
-	for( imod = modules ; imod ; imod = imod->next ){
+	g_debug( "%s: modules=%p (count=%d)", thisfn, ( void * ) modules, g_list_length( modules ));
 
-		for( iobj = NA_MODULE( imod->data )->private->objects ; iobj ; iobj = iobj->next ){
+	for( imod = modules ; imod ; imod = imod->next ){
+		module = NA_MODULE( imod->data );
+
+		for( iobj = module->private->objects ; iobj ; iobj = iobj->next ){
 			g_object_unref( iobj->data );
 		}
+
+		g_type_module_unuse( G_TYPE_MODULE( module ));
 	}
 
 	g_list_free( modules );

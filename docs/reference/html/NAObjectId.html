@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NAObjectId</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch06.html" title="NAObject Hierarchy">
+<link rel="prev" href="NAObject.html" title="NAObject">
+<link rel="next" href="NAObjectItem.html" title="NAObjectItem">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="NAObject.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch06.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="NAObjectItem.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#NAObjectId.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#NAObjectId.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#NAObjectId.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#NAObjectId.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="NAObjectId"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="NAObjectId.top_of_page"></a>NAObjectId</span></h2>
+<p>NAObjectId — The Identified Object Base Class Definition</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="NAObjectId.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-object-id.h&gt;
+
+#define             <a class="link" href="NAObjectId.html#NA-TYPE-OBJECT-ID:CAPS" title="NA_TYPE_OBJECT_ID">NA_TYPE_OBJECT_ID</a>
+#define             <a class="link" href="NAObjectId.html#NA-OBJECT-ID:CAPS" title="NA_OBJECT_ID()">NA_OBJECT_ID</a>                        (object)
+#define             <a class="link" href="NAObjectId.html#NA-IS-OBJECT-ID:CAPS" title="NA_IS_OBJECT_ID()">NA_IS_OBJECT_ID</a>                     (object)
+                    <a class="link" href="NAObjectId.html#NAObjectId-struct" title="NAObjectId">NAObjectId</a>;
+                    <a class="link" href="NAObjectId.html#NAObjectIdClass" title="NAObjectIdClass">NAObjectIdClass</a>;
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="NAObjectId.html#na-object-id-sort-alpha-asc" title="na_object_id_sort_alpha_asc ()">na_object_id_sort_alpha_asc</a>         (<em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *a</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *b</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="NAObjectId.html#na-object-id-sort-alpha-desc" title="na_object_id_sort_alpha_desc ()">na_object_id_sort_alpha_desc</a>        (<em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *a</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *b</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObjectId.html#na-object-id-prepare-for-paste" title="na_object_id_prepare_for_paste ()">na_object_id_prepare_for_paste</a>      (<em class="parameter"><code><a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> relabel</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> renumber</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *parent</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObjectId.html#na-object-id-set-copy-of-label" title="na_object_id_set_copy_of_label ()">na_object_id_set_copy_of_label</a>      (<em class="parameter"><code><a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *object</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObjectId.html#na-object-id-set-new-id" title="na_object_id_set_new_id ()">na_object_id_set_new_id</a>             (<em class="parameter"><code><a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *new_parent</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAObjectId.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a class="link" href="NAObject.html" title="NAObject">NAObject</a>
+         +----NAObjectId
+               +----<a class="link" href="NAObjectItem.html" title="NAObjectItem">NAObjectItem</a>
+               +----<a class="link" href="NAObjectProfile.html" title="NAObjectProfile">NAObjectProfile</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAObjectId.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+NAObjectId implements
+ <a class="link" href="NAIDuplicable.html" title="NAIDuplicable">NAIDuplicable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="NAObjectId.description"></a><h2>Description</h2>
+<p>
+This is a pure virtual class, i.e. not an instantiatable one.
+It serves as the base class for <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object which have
+a unique Id, i.e. for <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> and <a class="link" href="NAObjectProfile.html" title="NAObjectProfile"><span class="type">NAObjectProfile</span></a>.
+</p>
+</div>
+<div class="refsect1">
+<a name="NAObjectId.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NA-TYPE-OBJECT-ID:CAPS"></a><h3>NA_TYPE_OBJECT_ID</h3>
+<pre class="programlisting">#define NA_TYPE_OBJECT_ID                ( na_object_id_get_type())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-OBJECT-ID:CAPS"></a><h3>NA_OBJECT_ID()</h3>
+<pre class="programlisting">#define NA_OBJECT_ID( object )           ( G_TYPE_CHECK_INSTANCE_CAST( object, NA_TYPE_OBJECT_ID, NAObjectId ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IS-OBJECT-ID:CAPS"></a><h3>NA_IS_OBJECT_ID()</h3>
+<pre class="programlisting">#define NA_IS_OBJECT_ID( object )        ( G_TYPE_CHECK_INSTANCE_TYPE( object, NA_TYPE_OBJECT_ID ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectId-struct"></a><h3>NAObjectId</h3>
+<pre class="programlisting">typedef struct _NAObjectId NAObjectId;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectIdClass"></a><h3>NAObjectIdClass</h3>
+<pre class="programlisting">typedef struct {
+	/**
+	 * new_id:
+	 * @object: a NAObjectId object.
+	 * @new_parent: possibly the new NAObjectId parent, or NULL.
+	 * If not NULL, this should actually be a NAObjectItem.
+	 *
+	 * If @object is a NAObjectProfile, then @new_parent must be a
+	 * not null NAObjectAction. This function ensures that the new
+	 * profile name does not already exist in the given @new_parent.
+	 *
+	 * This is a pure virtual function which should be implemented by
+	 * the actual class. Actually, we asks for the most-derived class
+	 * which implements this function.
+	 *
+	 * Returns: a new id suitable for this @object.
+	 *
+	 * Since: 2.30
+	 */
+	gchar * ( *new_id )( const NAObjectId *object, const NAObjectId *new_parent );
+} NAObjectIdClass;
+</pre>
+<p>
+The <a class="link" href="NAObjectId.html#NAObjectIdClass" title="NAObjectIdClass"><span class="type">NAObjectIdClass</span></a> defines some methods available to derived classes.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAObjectIdClass.new-id"></a>new_id</code></em> ()</span></p></td>
+<td>Allocate a new id to an existing NAObjectId.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-id-sort-alpha-asc"></a><h3>na_object_id_sort_alpha_asc ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                na_object_id_sort_alpha_asc         (<em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *a</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *b</code></em>);</pre>
+<p>
+Sort the objects in alphabetical ascending order of their label.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>a</code></em> :</span></p></td>
+<td>first <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>b</code></em> :</span></p></td>
+<td>second <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>-1 if <em class="parameter"><code>a</code></em> must be sorted before <em class="parameter"><code>b</code></em>,</p></li>
+<li class="listitem"><p>0 if <em class="parameter"><code>a</code></em> and <em class="parameter"><code>b</code></em> are equal from the local point of view,</p></li>
+<li class="listitem"><p>1 if <em class="parameter"><code>a</code></em> must be sorted after <em class="parameter"><code>b</code></em>.</p></li>
+</ul></div></td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-id-sort-alpha-desc"></a><h3>na_object_id_sort_alpha_desc ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                na_object_id_sort_alpha_desc        (<em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *a</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *b</code></em>);</pre>
+<p>
+Sort the objects in alphabetical descending order of their label.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>a</code></em> :</span></p></td>
+<td>first <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>b</code></em> :</span></p></td>
+<td>second <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>-1 if <em class="parameter"><code>a</code></em> must be sorted before <em class="parameter"><code>b</code></em>,</p></li>
+<li class="listitem"><p>0 if <em class="parameter"><code>a</code></em> and <em class="parameter"><code>b</code></em> are equal from the local point of view,</p></li>
+<li class="listitem"><p>1 if <em class="parameter"><code>a</code></em> must be sorted after <em class="parameter"><code>b</code></em>.</p></li>
+</ul></div></td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-id-prepare-for-paste"></a><h3>na_object_id_prepare_for_paste ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_id_prepare_for_paste      (<em class="parameter"><code><a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> relabel</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> renumber</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *parent</code></em>);</pre>
+<p>
+Prepares <em class="parameter"><code>object</code></em> to be pasted.
+</p>
+<p>
+If a <a class="link" href="NAObjectProfile.html" title="NAObjectProfile"><span class="type">NAObjectProfile</span></a>, then <em class="parameter"><code>object</code></em> is attached to the specified
+<a class="link" href="NAObjectAction.html" title="NAObjectAction"><span class="type">NAObjectAction</span></a> <em class="parameter"><code>action</code></em>. The identifier is always renumbered to be
+suitable with the already existing profiles.
+</p>
+<p>
+If a <a class="link" href="NAObjectAction.html" title="NAObjectAction"><span class="type">NAObjectAction</span></a> or a <a class="link" href="NAObjectMenu.html" title="NAObjectMenu"><span class="type">NAObjectMenu</span></a>, a new identifier is allocated
+if and only if <em class="parameter"><code>relabel</code></em> is <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a>.
+</p>
+<p>
+Actual relabeling takes place if <em class="parameter"><code>relabel</code></em> is <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a>, depending of the
+user preferences.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> object to be pasted.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>relabel</code></em> :</span></p></td>
+<td>whether this object should be relabeled when pasted.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>renumber</code></em> :</span></p></td>
+<td>whether this item should be renumbered ?</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>parent</code></em> :</span></p></td>
+<td>the parent of <em class="parameter"><code>object</code></em>, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-id-set-copy-of-label"></a><h3>na_object_id_set_copy_of_label ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_id_set_copy_of_label      (<em class="parameter"><code><a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *object</code></em>);</pre>
+<p>
+Sets the 'Copy of' label.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> object whose label is to be changed.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-id-set-new-id"></a><h3>na_object_id_set_new_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_id_set_new_id             (<em class="parameter"><code><a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> *new_parent</code></em>);</pre>
+<p>
+Request a new id to the derived class, and set it.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAObjectId.html" title="NAObjectId"><span class="type">NAObjectId</span></a> object whose internal identifier is to be
+set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>new_parent</code></em> :</span></p></td>
+<td>if <em class="parameter"><code>object</code></em> is a <a class="link" href="NAObjectProfile.html" title="NAObjectProfile"><span class="type">NAObjectProfile</span></a>, then <em class="parameter"><code>new_parent</code></em>
+should be set to the <a class="link" href="NAObjectAction.html" title="NAObjectAction"><span class="type">NAObjectAction</span></a> new parent. Else, it would not
+be possible to allocate a new profile id compatible with already
+existing ones.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<node>
+  <!--
+    org.caja_actions.DBus.Tracker.Properties1:
+    @short_description: Tracker properties
+    @since: 3.2
+    
+    This interface tracks the items currently selected in the Caja
+    file manager user interface. and is able to retrieve them through
+    DBus.
+  -->
+  <interface name="org.caja_actions.DBus.Tracker.Properties1">
+  
+    <!--
+      GetSelectedPaths:
+      @since: 3.2
+
+      This method is used to retrieve through DBus the list of the currently
+      selected items in the Caja file manager user interface.
+    -->
+    <method name="GetSelectedPaths">
+      <arg type="as" name="paths" direction="out" />
+    </method>
+
+  </interface>
+</node>

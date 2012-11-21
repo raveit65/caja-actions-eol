@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -44,13 +43,13 @@
 
 /* private class data
  */
-struct NAObjectMenuClassPrivate {
+struct _NAObjectMenuClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct NAObjectMenuPrivate {
+struct _NAObjectMenuPrivate {
 	gboolean dispose_has_run;
 };
 
@@ -69,21 +68,17 @@ static void         instance_set_property( GObject *object, guint property_id, c
 static void         instance_dispose( GObject *object );
 static void         instance_finalize( GObject *object );
 
-static void         object_copy( NAObject *target, const NAObject *source, gboolean recursive );
-static gboolean     object_is_valid( const NAObject *object );
+static void         object_dump( const NAObject *object );
 
-static void         ifactory_object_iface_init( NAIFactoryObjectInterface *iface );
+static void         ifactory_object_iface_init( NAIFactoryObjectInterface *iface, void *user_data );
 static guint        ifactory_object_get_version( const NAIFactoryObject *instance );
 static NADataGroup *ifactory_object_get_groups( const NAIFactoryObject *instance );
-static gboolean     ifactory_object_are_equal( const NAIFactoryObject *a, const NAIFactoryObject *b );
-static gboolean     ifactory_object_is_valid( const NAIFactoryObject *object );
-static void         ifactory_object_read_start( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages );
 static void         ifactory_object_read_done( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages );
 static guint        ifactory_object_write_start( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages );
 static guint        ifactory_object_write_done( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages );
 
-static gboolean     menu_is_valid( const NAObjectMenu *menu );
-static gboolean     is_valid_label( const NAObjectMenu *menu );
+static void         icontext_iface_init( NAIContextInterface *iface, void *user_data );
+static gboolean     icontext_is_candidate( NAIContext *object, guint target, GList *selection );
 
 GType
 na_object_menu_get_type( void )
@@ -116,6 +111,12 @@ register_type( void )
 		( GInstanceInitFunc ) instance_init
 	};
 
+	static const GInterfaceInfo icontext_iface_info = {
+		( GInterfaceInitFunc ) icontext_iface_init,
+		NULL,
+		NULL
+	};
+
 	static const GInterfaceInfo ifactory_object_iface_info = {
 		( GInterfaceInitFunc ) ifactory_object_iface_init,
 		NULL,
@@ -124,9 +125,11 @@ register_type( void )
 
 	g_debug( "%s", thisfn );
 
-	type = g_type_register_static( NA_OBJECT_ITEM_TYPE, "NAObjectMenu", &info, 0 );
+	type = g_type_register_static( NA_TYPE_OBJECT_ITEM, "NAObjectMenu", &info, 0 );
 
-	g_type_add_interface_static( type, NA_IFACTORY_OBJECT_TYPE, &ifactory_object_iface_info );
+	g_type_add_interface_static( type, NA_TYPE_ICONTEXT, &icontext_iface_info );
+
+	g_type_add_interface_static( type, NA_TYPE_IFACTORY_OBJECT, &ifactory_object_iface_info );
 
 	return( type );
 }
@@ -149,10 +152,7 @@ class_init( NAObjectMenuClass *klass )
 	object_class->finalize = instance_finalize;
 
 	naobject_class = NA_OBJECT_CLASS( klass );
-	naobject_class->dump = NULL;
-	naobject_class->copy = object_copy;
-	naobject_class->are_equal = NULL;
-	naobject_class->is_valid = object_is_valid;
+	naobject_class->dump = object_dump;
 
 	klass->private = g_new0( NAObjectMenuClassPrivate, 1 );
 
@@ -165,12 +165,12 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	static const gchar *thisfn = "na_object_menu_instance_init";
 	NAObjectMenu *self;
 
-	g_debug( "%s: instance=%p (%s), klass=%p",
-			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-
 	g_return_if_fail( NA_IS_OBJECT_MENU( instance ));
 
 	self = NA_OBJECT_MENU( instance );
+
+	g_debug( "%s: instance=%p (%s), klass=%p",
+			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
 
 	self->private = g_new0( NAObjectMenuPrivate, 1 );
 }
@@ -205,13 +205,13 @@ instance_dispose( GObject *object )
 	static const gchar *thisfn = "na_object_menu_instance_dispose";
 	NAObjectMenu *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
-
 	g_return_if_fail( NA_IS_OBJECT_MENU( object ));
 
 	self = NA_OBJECT_MENU( object );
 
 	if( !self->private->dispose_has_run ){
+
+		g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 		self->private->dispose_has_run = TRUE;
 
@@ -228,11 +228,11 @@ instance_finalize( GObject *object )
 	static const gchar *thisfn = "na_object_menu_instance_finalize";
 	NAObjectMenu *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
-
 	g_return_if_fail( NA_IS_OBJECT_MENU( object ));
 
 	self = NA_OBJECT_MENU( object );
+
+	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 	g_free( self->private );
 
@@ -243,39 +243,37 @@ instance_finalize( GObject *object )
 }
 
 static void
-object_copy( NAObject *target, const NAObject *source, gboolean recursive )
+object_dump( const NAObject *object )
 {
-	g_return_if_fail( NA_IS_OBJECT_MENU( target ));
-	g_return_if_fail( NA_IS_OBJECT_MENU( source ));
+	static const char *thisfn = "na_object_menu_object_dump";
+	NAObjectMenu *self;
 
-	if( !NA_OBJECT_MENU( target )->private->dispose_has_run &&
-		!NA_OBJECT_MENU( source )->private->dispose_has_run ){
+	g_return_if_fail( NA_IS_OBJECT_MENU( object ));
 
-		na_factory_object_copy( NA_IFACTORY_OBJECT( target ), NA_IFACTORY_OBJECT( source ));
+	self = NA_OBJECT_MENU( object );
+
+	if( !self->private->dispose_has_run ){
+		g_debug( "%s: object=%p (%s, ref_count=%d)", thisfn,
+				( void * ) object, G_OBJECT_TYPE_NAME( object ), G_OBJECT( object )->ref_count );
+
+		/* chain up to the parent class */
+		if( NA_OBJECT_CLASS( st_parent_class )->dump ){
+			NA_OBJECT_CLASS( st_parent_class )->dump( object );
+		}
+
+		g_debug( "+- end of dump" );
 	}
 }
 
-static gboolean
-object_is_valid( const NAObject *object )
-{
-	g_return_val_if_fail( NA_IS_OBJECT_MENU( object ), FALSE );
-
-	return( menu_is_valid( NA_OBJECT_MENU( object )));
-}
-
 static void
-ifactory_object_iface_init( NAIFactoryObjectInterface *iface )
+ifactory_object_iface_init( NAIFactoryObjectInterface *iface, void *user_data )
 {
 	static const gchar *thisfn = "na_object_menu_ifactory_object_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 
 	iface->get_version = ifactory_object_get_version;
 	iface->get_groups = ifactory_object_get_groups;
-	iface->copy = NULL;
-	iface->are_equal = ifactory_object_are_equal;
-	iface->is_valid = ifactory_object_is_valid;
-	iface->read_start = ifactory_object_read_start;
 	iface->read_done = ifactory_object_read_done;
 	iface->write_start = ifactory_object_write_start;
 	iface->write_done = ifactory_object_write_done;
@@ -293,35 +291,26 @@ ifactory_object_get_groups( const NAIFactoryObject *instance )
 	return( menu_data_groups );
 }
 
-static gboolean
-ifactory_object_are_equal( const NAIFactoryObject *a, const NAIFactoryObject *b )
-{
-	return( na_object_item_are_equal( NA_OBJECT_ITEM( a ), NA_OBJECT_ITEM( b )));
-}
-
-static gboolean
-ifactory_object_is_valid( const NAIFactoryObject *object )
-{
-	g_return_val_if_fail( NA_IS_OBJECT_MENU( object ), FALSE );
-
-	return( menu_is_valid( NA_OBJECT_MENU( object )));
-}
-
-static void
-ifactory_object_read_start( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages )
-{
-}
-
 static void
 ifactory_object_read_done( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages )
 {
+	g_debug( "na_object_menu_ifactory_object_read_done: instance=%p", ( void * ) instance );
+
+	na_object_item_deals_with_version( NA_OBJECT_ITEM( instance ));
+
+	/* prepare the context after the reading
+	 */
+	na_icontext_read_done( NA_ICONTEXT( instance ));
+
+	/* last, set menu defaults
+	 */
 	na_factory_object_set_defaults( instance );
 }
 
 static guint
 ifactory_object_write_start( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages )
 {
-	na_object_item_factory_write_start( NA_OBJECT_ITEM( instance ));
+	na_object_item_rebuild_children_slist( NA_OBJECT_ITEM( instance ));
 
 	return( NA_IIO_PROVIDER_CODE_OK );
 }
@@ -332,56 +321,20 @@ ifactory_object_write_done( NAIFactoryObject *instance, const NAIFactoryProvider
 	return( NA_IIO_PROVIDER_CODE_OK );
 }
 
-static gboolean
-menu_is_valid( const NAObjectMenu *menu )
+static void
+icontext_iface_init( NAIContextInterface *iface, void *user_data )
 {
-	gboolean is_valid;
-	gint valid_subitems;
-	GList *subitems, *ip;
+	static const gchar *thisfn = "na_object_menu_icontext_iface_init";
 
-	is_valid = FALSE;
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 
-	if( !menu->private->dispose_has_run ){
-
-		is_valid = TRUE;
-
-		if( is_valid ){
-			is_valid = is_valid_label( menu );
-		}
-
-		if( is_valid ){
-			valid_subitems = 0;
-			subitems = na_object_get_items( menu );
-			for( ip = subitems ; ip && !valid_subitems ; ip = ip->next ){
-				if( na_object_is_valid( ip->data )){
-					valid_subitems += 1;
-				}
-			}
-			is_valid = ( valid_subitems > 0 );
-			if( !is_valid ){
-				na_object_debug_invalid( menu, "no valid subitem" );
-			}
-		}
-	}
-
-	return( is_valid );
+	iface->is_candidate = icontext_is_candidate;
 }
 
 static gboolean
-is_valid_label( const NAObjectMenu *menu )
+icontext_is_candidate( NAIContext *object, guint target, GList *selection )
 {
-	gboolean is_valid;
-	gchar *label;
-
-	label = na_object_get_label( menu );
-	is_valid = ( label && g_utf8_strlen( label, -1 ) > 0 );
-	g_free( label );
-
-	if( !is_valid ){
-		na_object_debug_invalid( menu, "label" );
-	}
-
-	return( is_valid );
+	return( TRUE );
 }
 
 /**
@@ -390,13 +343,15 @@ is_valid_label( const NAObjectMenu *menu )
  * Allocates a new #NAObjectMenu object.
  *
  * Returns: the newly allocated #NAObjectMenu object.
+ *
+ * Since: 2.30
  */
 NAObjectMenu *
 na_object_menu_new( void )
 {
 	NAObjectMenu *menu;
 
-	menu = g_object_new( NA_OBJECT_MENU_TYPE, NULL );
+	menu = g_object_new( NA_TYPE_OBJECT_MENU, NULL );
 
 	return( menu );
 }
@@ -407,13 +362,15 @@ na_object_menu_new( void )
  * Allocates a new #NAObjectMenu object, and setup default values.
  *
  * Returns: the newly allocated #NAObjectMenu object.
+ *
+ * Since: 2.30
  */
 NAObjectMenu *
 na_object_menu_new_with_defaults( void )
 {
 	NAObjectMenu *menu = na_object_menu_new();
 	na_object_set_new_id( menu, NULL );
-	na_object_set_label( menu, NEW_CAJA_MENU );
+	na_object_set_label( menu, gettext( NEW_CAJA_MENU ));
 	na_factory_object_set_defaults( NA_IFACTORY_OBJECT( menu ));
 
 	return( menu );

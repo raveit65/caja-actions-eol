@@ -1,0 +1,4072 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!-- name and version of the application --><!ENTITY prodname "<productname>Caja-Actions</productname>">
+<!ENTITY appnamex "Caja-Actions Configuration Tool">
+<!ENTITY appname "<application>&appnamex;</application>">
+<!ENTITY appversion "3.2">
+<!-- revision number and release date of this manual --><!ENTITY manrevision "3.2">
+<!ENTITY mandate "January 2012">
+<!-- product name used --><!ENTITY caja "<productname>Caja</productname>">
+<!ENTITY windows "<productname>Windows</productname>">
+<!ENTITY matedialog "<productname>MateDialog</productname>">
+<!-- some user-defined internal entities
+       merely because it appears that xsltproc may sometimes loose
+       its path to the DocBook DTD --><!ENTITY laquosp "&#171;&#160;">
+<!ENTITY spraquo "&#160;&#187;">
+<!-- other entities --><!ENTITY desema "<ulink url='http://www.caja-actions.org/?q=node/377' type='http'>DES-EMA specification</ulink>">
+<!ENTITY asterisk "&laquosp;<literal>*</literal>&spraquo;">
+<!ENTITY question_mark "&laquosp;<literal>?</literal>&spraquo;">
+<!ENTITY must_match "&laquosp;must match one of&spraquo;">
+<!ENTITY must_not_match "&laquosp;must not match any of&spraquo;">
+<!-- the synopsys of the document --><!ENTITY articleinfo SYSTEM "articleinfo.xml">
+<!ENTITY legalnotice SYSTEM "legalnotice.xml">
+<!ENTITY starting SYSTEM "cact-starting.xml">
+<!ENTITY conditions SYSTEM "cact-conditions.xml">
+<!ENTITY where SYSTEM "cact-where.xml">
+<!ENTITY execution SYSTEM "cact-execution.xml">
+<!ENTITY profiles SYSTEM "cact-profiles.xml">
+<!ENTITY menus SYSTEM "cact-menus.xml">
+<!ENTITY sorting SYSTEM "cact-sorting.xml">
+<!ENTITY edit SYSTEM "cact-edit.xml">
+<!ENTITY save SYSTEM "cact-save.xml">
+<!ENTITY export SYSTEM "cact-export.xml">
+<!ENTITY import SYSTEM "cact-import.xml">
+<!ENTITY preferences SYSTEM "cact-prefs.xml">
+<!ENTITY properties SYSTEM "cact-properties.xml">
+<!ENTITY misc-infos SYSTEM "cact-misc.xml">
+<!ENTITY bugs SYSTEM "cact-bugs.xml">
+<!ENTITY gnu-fdl SYSTEM "appendix-gnu-fdl-1.3.xml">
+]>
+<!-- ========================= Document Header ======================== -->
+<!-- Please do not change the id!
+     For translations, change lang to appropriate code -->
+<article id="index" lang="sl">
+
+  <articleinfo>
+  <title><application>Caja-Actions Configuration Tool</application> User's Manual</title>
+
+  <copyright>
+    <year>2010</year>
+    <year>2011</year>
+    <year>2012</year>
+    <holder>Pierre Wieser</holder>
+  </copyright>
+
+  <abstract role="description">
+    <para>
+      <productname>Caja-Actions</productname> is a <productname>Caja</productname> extension whose principal function
+      is to allow the user to add arbitrary actions to the file manager
+      context menus. These actions may be organized in menus and submenus,
+      exported and shared with other desktop environments.
+    </para>
+    <para>
+      This manual describes the <application>Caja-Actions Configuration Tool</application> user interface, and explains how
+      you may configure your menus and actions, making them be displayed
+      and applied depending on specific conditions.
+    </para>
+  </abstract>
+
+  <releaseinfo revision="3.2" role="stub">
+    This manual describes version 3.2 of Caja-Actions Configuration Tool.
+  </releaseinfo>
+
+  <publisher>
+    <publishername>Projekt dokumentacije MATE</publishername>
+  </publisher>
+
+  <authorgroup>
+    <author role="maintainer">
+      <firstname>Pierre</firstname>
+      <surname>Wieser</surname>
+      <email>pwieser@trychlos.org</email>
+    </author>
+
+<!-- This is appropriate place for other contributors: translators, maintainers, etc.
+     Commented out by default.
+
+    <othercredit role="translator">
+      <firstname>Latin</firstname>
+      <surname>Translator 1</surname>
+      <affiliation>
+        <orgname>Latin Translation Team</orgname>
+        <address> <email>translator@gnome.org</email> </address>
+      </affiliation>
+      <contrib>Latin translation</contrib>
+    </othercredit>
+
+  -->
+  </authorgroup>
+
+<!-- According to GNU FDL, revision history is mandatory if you are
+     modifying/reusing someone else's document. If not, you can omit it.
+     Remember to remove the &manrevision; entity from the revision entries other
+     than the current revision.
+     The revision numbering system for MATE manuals is as follows:
+     * the revision number consists of two components
+     * the first component of the revision number reflects the release version
+       of the MATE desktop.
+     * the second component of the revision number is a decimal unit that is
+       incremented with each revision of the manual.
+     For example, if the MATE desktop release is V2.x, the first version of the
+     manual that is written in that desktop timeframe is V2.0, the second version
+     of the manual is V2.1, etc.
+     When the desktop release version changes to V3.x, the revision number of the
+     manual changes to V3.0, and so on.
+  -->
+
+  <revhistory>
+    <revision>
+      <revnumber>Caja-Actions Configuration Tool User's Manual v 3.1</revnumber>
+      <date>May 2011</date>
+      <revdescription>
+        <para role="author">
+          Pierre Wieser
+          <email>pwieser@trychlos.org</email>
+        </para>
+      </revdescription>
+    </revision>
+    <revision>
+      <revnumber>Caja-Actions Configuration Tool User's Manual v 3.2</revnumber>
+      <date>January 2012</date>
+      <revdescription>
+        <para role="author">
+          Pierre Wieser
+          <email>pwieser@trychlos.org</email>
+        </para>
+      </revdescription>
+    </revision>
+  </revhistory>
+
+  <!-- This file  contains link to license for the documentation (GNU FDL), 
+     and other legal stuff such as "NO WARRANTY" statement. 
+     Please do not change any of this. 
+  -->
+
+<legalnotice id="legalnotice">
+  <para>
+    Permission is granted to copy, distribute and/or modify this
+    document under the terms of the GNU Free Documentation
+    License (GFDL), Version 1.3 or any later version published
+    by the Free Software Foundation with no Invariant Sections,
+    no Front-Cover Texts, and no Back-Cover Texts.  You can find
+    a copy of the GFDL at this <ulink type="help" url="ghelp:fdl">link</ulink> or in the file COPYING-DOCS
+    distributed with this manual.
+  </para>
+  <para>
+    This manual is part of a collection of MATE manuals
+    distributed under the GFDL.  If you want to distribute this
+    manual separately from the collection, you can do so by
+    adding a copy of the license to the manual, as described in
+    section 6 of the license.
+  </para>
+  <para>
+    Many of the names used by companies to distinguish their
+    products and services are claimed as trademarks. Where those
+    names appear in any MATE documentation, and the members of
+    the MATE Documentation Project are made aware of those
+    trademarks, then the names are in capital letters or initial
+    capital letters.
+  </para>
+  <para>
+    DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED
+    UNDER  THE TERMS OF THE GNU FREE DOCUMENTATION LICENSE
+    WITH THE FURTHER UNDERSTANDING THAT:
+    <orderedlist>
+      <listitem>
+        <para>
+          DOCUMENT IS PROVIDED ON AN "AS IS" BASIS,
+          WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+          IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES
+          THAT THE DOCUMENT OR MODIFIED VERSION OF THE
+          DOCUMENT IS FREE OF DEFECTS MERCHANTABLE, FIT FOR
+          A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE
+          RISK AS TO THE QUALITY, ACCURACY, AND PERFORMANCE
+          OF THE DOCUMENT OR MODIFIED VERSION OF THE
+          DOCUMENT IS WITH YOU. SHOULD ANY DOCUMENT OR
+          MODIFIED VERSION PROVE DEFECTIVE IN ANY RESPECT,
+          YOU (NOT THE INITIAL WRITER, AUTHOR OR ANY
+          CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY
+          SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER
+          OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS
+          LICENSE. NO USE OF ANY DOCUMENT OR MODIFIED
+          VERSION OF THE DOCUMENT IS AUTHORIZED HEREUNDER
+          EXCEPT UNDER THIS DISCLAIMER; AND
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL
+          THEORY, WHETHER IN TORT (INCLUDING NEGLIGENCE),
+          CONTRACT, OR OTHERWISE, SHALL THE AUTHOR,
+          INITIAL WRITER, ANY CONTRIBUTOR, OR ANY
+          DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION
+          OF THE DOCUMENT, OR ANY SUPPLIER OF ANY OF SUCH
+          PARTIES, BE LIABLE TO ANY PERSON FOR ANY
+          DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR
+          CONSEQUENTIAL DAMAGES OF ANY CHARACTER
+          INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS
+          OF GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR
+          MALFUNCTION, OR ANY AND ALL OTHER DAMAGES OR
+          LOSSES ARISING OUT OF OR RELATING TO USE OF THE
+          DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT,
+          EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF
+          THE POSSIBILITY OF SUCH DAMAGES.
+        </para>
+      </listitem>
+    </orderedlist>
+  </para>
+</legalnotice>
+
+
+</articleinfo>
+
+
+  <indexterm zone="index">
+    <primary><productname>Caja</productname></primary>
+  </indexterm>
+  <indexterm zone="index">
+    <primary><productname>Caja-Actions</productname></primary>
+  </indexterm>
+
+<!-- =========================== Document Body ======================== -->
+<!-- =========================== Introduction ========================= -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+
+  <sect1 id="introduction">
+    <title>Introduction</title>
+    <para>
+      <productname>Caja-Actions</productname> is a <productname>Caja</productname> extension whose principal function
+      is to allow the user to add arbitrary actions to the file manager
+      context menus. These actions may be organized in menus and submenus,
+      exported and shared with other desktop environments.
+    </para>
+    <para>
+      The <application>Caja-Actions Configuration Tool</application> application is the user interface which lets you precisely
+      configure how, where and when your actions should appear in <productname>Caja</productname>
+      context menus, and how they will be executed.
+    </para>
+    <para>
+      <application>Caja-Actions Configuration Tool</application> provides the following features:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>Define and configure actions from scratch.</para>
+      </listitem>
+      <listitem>
+        <para>Organize actions into menus, submenus and so on.</para>
+      </listitem>
+      <listitem>
+        <para>Import and export actions and menus from and to outside world.</para>
+      </listitem>
+    </itemizedlist>
+    <note>
+      <para>
+        <productname>Caja-Actions</productname> also comes with additional features such as:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            A <productname>Caja</productname> plugin which exports in real time to D-Bus the currently
+            selected files.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            A command-line program which is able to run any action.
+          </para>
+          <para>
+            Associated with the D-Bus interface, this program lets the user
+            run any action from a keyboard shortcut, applying this action
+            to the item(s) currently selected in the file manager.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            A command-line program which is able to create a new action.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        All these features are more thoroughly described in the global
+        <productname>Caja-Actions</productname> documentation.
+      </para>
+    </note>
+  </sect1>
+
+<!-- ========================= Getting Started ======================== -->
+<!-- Use the Getting Started section to describe the steps required
+     to start the application and to describe the user interface components
+     of the application. If there is other information that it is important
+     for readers to know before they start using the application, you should
+     also include this information here.
+     If the information about how to get started is very short, you can
+     include it in the Introduction and omit this section. -->
+
+  <sect1 id="getting-started">
+    <title>Getting Started</title>
+        <sect2 id="getting-started-starting">
+      <title>Starting <application>Caja-Actions Configuration Tool</application></title>
+      <para>
+        You can start <application>Caja-Actions Configuration Tool</application> in the following ways:
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term><guimenu>System</guimenu> menu</term>
+          <listitem>
+            <para>
+              Choose
+              <menuchoice>
+                <guisubmenu>Preferences</guisubmenu>
+                <guisubmenu>Look and Feel</guisubmenu>
+                <guimenuitem>Caja-Actions Configuration Tool</guimenuitem>
+              </menuchoice>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Command line</term>
+          <listitem>
+            <para>
+              To start <application>Caja-Actions Configuration Tool</application> from a command line, type the following command:
+            </para>
+            <para>
+              <command><filename>caja-actions-config-tool</filename></command>
+            </para>
+            <para>
+              then press <keycap>Return</keycap>.
+            </para>
+            <tip>
+              <para>
+                To view available command line options, type:
+              </para>
+              <para>
+                <command>
+                  <filename>caja-actions-config-tool</filename>
+                  <option>--help-all</option>
+                </command>
+              </para>
+              <para>
+                then press <keycap>Return</keycap>.
+              </para>
+            </tip>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="getting-started-first-run">
+      <title>The first run</title>
+      <para>
+        When you start <application>Caja-Actions Configuration Tool</application>, the following window is displayed.
+      </para>
+      <figure id="cact-FIG-main-empty">
+        <title><application>Caja-Actions Configuration Tool</application> Start Up Window</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-main-empty.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows <application>Caja-Actions Configuration Tool</application> main window.
+                Contains menubar, toolbar, display area,
+                an empty items list in the left, several disabled properties tabs,
+                and statusbar.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>The empty <application>Caja-Actions Configuration Tool</application> main window</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <!-- Include any descriptions of the GUI immediately after the screenshot
+           of the main UI, for example, the items on the menubar and on the toolbar.
+           This section is optional. -->
+
+      <para>
+        The <application>Caja-Actions Configuration Tool</application> main window contains the following elements:
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term>Menubar.</term>
+          <listitem>
+            <para>
+              The menus on the menubar contain all of the commands
+              you need to use in <application>Caja-Actions Configuration Tool</application>.
+            </para>
+            <para>
+              Shortcuts are available for some commands:
+            </para>
+            <variablelist>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>N</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Create a new action.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>S</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Save modified actions and menus.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>Q</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Quit the application.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>X</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Cut the current selection, keeping it in the clipboard.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>C</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Copy the current selection to the clipboard.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>V</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Insert the content of the clipboard before the current item.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Shift</keycap>
+                      <keycap>Ctrl</keycap>
+                      <keycap>V</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Insert the content of the clipboard as subitem(s) of the current item.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Delete</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Delete the current selection.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>F5</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Reload the actions and menus.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>F1</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Display the help.
+                  </para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Toolbar.</term>
+          <listitem>
+            <para>
+              Several toolbars may be displayed below the menubar, depending of
+              your choices in the
+              <menuchoice>
+                <guimenu>View</guimenu>
+                <guimenuitem>Toolbars</guimenuitem>
+              </menuchoice> submenu.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Items list.</term>
+          <listitem>
+            <para>
+              The list on the left of the main window contains all items,
+              whether they are actions or menus, currently available for edition in
+              <application>Caja-Actions Configuration Tool</application>.
+            </para>
+            <para>
+              Items may be sorted in ascending or descending alphabetical order, or
+              not sorted at all, being directly organized and managed by the user.
+            </para>
+            <para>
+              Invalid items are displayed in red color.
+            </para>
+            <para>
+              Modified items are displayed in italic characters.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Sort buttons</term>
+          <listitem>
+            <para>
+              Three buttons allow you to toggle between sort modes.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Properties tabs.</term>
+          <listitem>
+            <para>
+              The right part of the main window displays all is needed to define
+              how, when and where actions and menus should be displayed.
+            </para>
+            <variablelist>
+              <varlistentry>
+                <term>
+                  Action/Menu
+                </term>
+                <listitem>
+                  <para>
+                    Define in which <productname>Caja</productname> menus the item should appear, and
+                    how it will be displayed.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Command
+                </term>
+                <listitem>
+                  <para>
+                    Specify which command to execute, and which parameters
+                    pass to it.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Execution
+                </term>
+                <listitem>
+                  <para>
+                    Specify how the command should be executed.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Basenames
+                </term>
+                <listitem>
+                  <para>
+                    Define the basename filters the <productname>Caja</productname> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Mimetypes
+                </term>
+                <listitem>
+                  <para>
+                    Define the mimetype filters the <productname>Caja</productname> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Folders
+                </term>
+                <listitem>
+                  <para>
+                    Define the folder filters the <productname>Caja</productname> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Schemes
+                </term>
+                <listitem>
+                  <para>
+                    Define the scheme filters the <productname>Caja</productname> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Capabilities
+                </term>
+                <listitem>
+                  <para>
+                    Define the capability filters the <productname>Caja</productname> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Environment
+                </term>
+                <listitem>
+                  <para>
+                    Define some environment conditions the <productname>Caja</productname> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Properties
+                </term>
+                <listitem>
+                  <para>
+                    Display item properties.
+                  </para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Statusbar.</term>
+          <listitem>
+            <para>
+              The statusbar displays some status informations about the
+              currently selected row in the items list.
+            </para>
+            <para>
+              When no relevant information is to be displayed, the statusbar
+              displays the count of loaded menus, actions and profiles.
+            </para>
+            <para>
+              The « read-only » icon 
+              <inlinegraphic fileref="figures/read-only.png"/>
+              is displayed in
+              the right of the statusbar when appropriate.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="getting-started-first-action">
+      <title>Creating your first action</title>
+      <para>
+        In this example, we are going to create an action which displays some
+        pretty informations about the current selection.
+      </para>
+      <formalpara>
+        <title>Checking for prerequisites</title>
+        <para>
+          This action will require <productname>MateDialog</productname>.
+        </para>
+      </formalpara>
+      <para>
+        <productname>MateDialog</productname> is a program which will allow you to create a graphical
+        user interface from a command-line.
+      </para>
+      <para>
+        You should check that this program
+        is installed on your system, by example by typing the following command
+        in a terminal:
+      </para>
+      <para>
+        <command>
+          <filename>matedialog</filename>
+        </command>
+      </para>
+      <para>
+        then press <keycap>Return</keycap>.
+      </para>
+      <formalpara>
+        <title>Creating the action</title>
+        <para>
+          To create a new action, choose
+          <menuchoice>
+            <shortcut>
+              <keycombo>
+                <keycap>Ctrl</keycap>
+                <keycap>N</keycap>
+              </keycombo>
+            </shortcut>
+            <guimenu>File</guimenu>
+            <guisubmenu>New action</guisubmenu>
+          </menuchoice>.
+        </para>
+      </formalpara>
+      <para>
+        A new action is inserted in the items list,
+        and its properties are displayed in the tabs on the right pane.
+      </para>
+      <para>
+        The label of the currently edited action (this one) is added
+        to the application name in the title bar.
+      </para>
+      <figure id="cact-FIG-tab-action">
+        <title>Default properties of a new action</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-action-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the default properties of a newly created action.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>Default properties of a new action</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        In the <guilabel>Items list</guilabel>, the new action is displayed in italic characters.
+      </para>
+      <para>
+        Italics are used as a reminder that the item has not yet been saved.
+      </para>
+      <para>
+        As another reminder that there is some pending modifications,
+        an asterisk (« <literal>*</literal> »)
+        comes to prefix the application name in the title bar. 
+      </para>
+      <formalpara>
+        <title>Qualifying your new action</title>
+        <para>
+          It merely consists of choosing how your action will be displayed
+          in the file manager context menu.
+        </para>
+      </formalpara>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Enter <userinput>My first action</userinput>
+            in the <guilabel>Context label</guilabel> entry box.
+          </para>
+          <para>
+            The <guilabel>Context label</guilabel> entry box contains the label
+            of the action as you want it to be displayed in the file manager
+            context menu.
+          </para>
+         <para>
+            The label is a mandatory property of your action. If it happens
+            to be empty, then your action will be considered as invalid by
+            <productname>Caja-Actions</productname>: it will be displayed in red in <guilabel>Items list</guilabel>
+            and will never be candidate to be displayed in the
+            file manager context menus.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Enter <userinput>This will execute an action with some parameters</userinput>
+            in the <guilabel>Tooltip</guilabel> entry box.
+          </para>
+          <para>
+            The <guilabel>Tooltip</guilabel> entry box contains the text
+            you want to be displayed as a short help to your action.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Select <inlinegraphic fileref="figures/stock-icon-about.png"/> 
+            in the <guilabel>Icon</guilabel> drop-down list.
+          </para>
+          <para>
+            The <guilabel>Icon</guilabel> selection defines the icon which will
+            be associated with your action in file manager context menus and in
+            the toolbar.
+          </para>
+          <para>
+            You have two ways of choosing the icon associated to your action:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Click on the <guilabel>Icon</guilabel> drop-down list to select an icon.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Click on <guibutton>Browse</guibutton> to search 
+                for an image in the filesystem.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <formalpara>
+        <title>Specifying the command to be executed</title>
+        <para>
+          When you will select your action in the file manager
+          context menu, this command will be executed, with
+          arguments of your choice.
+        </para>
+      </formalpara>
+      <para>
+        Click on the <guilabel>Command</guilabel> tab to show the page
+        which will permit you to enter the command.
+      </para>
+      <figure id="cact-FIG-tab-command">
+        <title>Command page</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-command-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the Command tab.
+                This tab contains the name of the profile, the command to
+                be executed along with its parameters, and the configuration
+                of the starting working directory.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>Command page</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Enter <userinput>matedialog</userinput> in the <guilabel>Path</guilabel>
+            entry box.
+          </para>
+          <para>
+            The <guilabel>Path</guilabel> entry box defines the command which
+            will be executed when you will select your action in the file manager
+            context menu.
+          </para>
+          <para>
+            You have two ways of defining the command to be executed:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Enter it in the <guilabel>Path</guilabel> entry box.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Click on <guibutton>Browse</guibutton> to select
+                the executable file on the filesystem.
+              </para>
+            </listitem>
+          </itemizedlist>
+          <para>
+            If the command you enter does not have an absolute path,
+            then it will be searched for in the <envar>PATH</envar>
+            variable at execution time.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Enter <userinput>--info --text='%c selected item(s): %U'</userinput>
+            in the <guilabel>Parameters</guilabel>
+            entry box.
+          </para>
+          <para>
+            The <guilabel>Parameters</guilabel> contains the arguments which will
+            be passed to your command when it will be executed. These arguments may
+            embed parameters which will be expanded at runtime.
+          </para>
+          <para>
+            If both <guilabel>Path</guilabel> and <guilabel>Parameters</guilabel>
+            are empty, then this action will be considered as invalid: it will be
+            displayed in red in <guilabel>Items list</guilabel> and will be
+            never be candidate to be displayed in the
+            file manager context menus.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <formalpara>
+        <title>Saving</title>
+        <para>
+          To save all pending modifications, choose
+          <menuchoice>
+            <shortcut>
+              <keycombo>
+                <keycap>Ctrl</keycap>
+                <keycap>S</keycap>
+              </keycombo>
+            </shortcut>
+            <guimenu>File</guimenu>
+            <guisubmenu>Save</guisubmenu>
+          </menuchoice>.
+        </para>
+      </formalpara>
+      <para>
+        <productname>Caja</productname> automatically takes into account your new action,
+        and displays it in its context menu.
+      </para>
+      <figure id="cact-FIG-start-caja-context">
+        <title>Your first action in the <productname>Caja</productname> context menu</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/start-context-menu-caja.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Shows the first action in the <productname>Caja</productname> context menu.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>Your first action in the <productname>Caja</productname> context menu</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        Cliking of the item in the <productname>Caja</productname> context menu activates it,
+        and executes the corresponding command.
+      </para>
+      <figure id="cact-FIG-start-matedialog">
+        <title>The result of the execution of your first action</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/start-matedialog-result.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the result of the execution of your first action.
+                This is <productname>MateDialog</productname> dialog box, displaying the URI of the selected item.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>The result of the execution of your first action</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </sect2>
+
+  </sect1>
+
+<!-- ============================== Usage ============================= -->
+<!-- Use this section to describe how to use the application to perform the
+     tasks for which the application is designed. -->
+
+  <sect1 id="usage">
+    <title>Using <application>Caja-Actions Configuration Tool</application></title>
+    <sect2 id="usage-conditions">
+  <title>Defining the conditions</title>
+  <para>
+    Whether your action will eventually be displayed in <productname>Caja</productname> file manager
+    context menus or in its toolbar depends on the conditions you will have
+    defined for it.
+  </para>
+  <para>
+    Conditions may be put against the location the file manager currently
+    points to, or against the currently selected items in this location.
+  </para>
+  <para>
+    Each time the selection or the location change in the file manager,
+    <productname>Caja-Actions</productname> checks all your actions, comparing the defined conditions
+    against the new location and selection: all defined conditions must
+    be satisfied in order your action be actually displayed. 
+  </para>
+
+  <sect3 id="usage-conditions-basenames">
+    <title>Basename-based conditions</title>
+    <para>
+      You may decide that your action will appear depending on the basenames
+      of the items currently selected in the file-manager: you may define that each
+      item of the selection must meet some sort of basename, and you may simultaneously
+      decide that none of the selected item(s) can have some other sort of basename.
+    </para>
+    <para>
+      Click on the <guilabel>Basenames</guilabel> tab to show the page
+      which will permit you to configure your basename-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-basenames">
+      <title>Basename-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-basenames-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define basename-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The basename-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, basename-based conditions are built as a list of
+      « must match one of » and « must not match any of »
+      patterns. In order for your action to be a candidate regarding these basename-based
+      conditions, each element of the selection must be valid for all the listed
+      conditions: the basename of each element must match at least one of the defined
+      « must match one of » patterns, and must not match any of
+      the defined « must not match any of » patterns.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your basename-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your basename-based conditions will
+      be checked against the basename of the current location.
+    </para>
+    <para>
+      Defining a new basename-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> or click on 
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              button to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the basename you want match.
+            </para>
+            <tip>
+              <para>
+                A basename-based condition may use « <literal>*</literal> » or
+                « <literal>?</literal> » wildcard characters.
+              </para>
+            </tip>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a « must match one of »
+          or a « must not match any of » condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match one of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button in the same
+          row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Depending of your target operating system, make sure that the
+      <guilabel>Match case</guilabel> checkbox is activated (or not). 
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          When activated, all filters are considered as case sensitive,
+          which means that <filename>/my/file</filename> filename is
+          considered distinct from <filename>/My/File</filename> one.
+        </para>
+        <para>
+          This is the default behavior on Unix-like systems.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          When deactivated, filters are considered as case insensitive,
+          which means that <filename>/my/file</filename> and
+          <filename>/My/File</filename> filenames are considered the same
+          name.
+        </para>
+        <para>
+          This is most probably what you want if you target some sort of
+          <productname>Windows</productname> system.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Removing a defined basename-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the basename-based condition is just one
+      « <literal>must match one of *</literal> » condition.
+      As all basenames always match the « <literal>*</literal> »
+      condition, this just means that basename-based conditions are not
+      considered as relevant for the action.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-mimetypes">
+    <title>Mimetype-based conditions</title>
+    <para>
+      You may decide that your action will appear depending on the mimetypes
+      of the items currently selected in the file-manager: you may define that each
+      item of the selection must meet some sort of mimetype; and you may simultaneously
+      decide that none of the selected item(s) can have some other sort of mimetype.
+    </para>
+    <para>
+      Click on the <guilabel>Mimetypes</guilabel> tab to show the page
+      which will permit you to configure your mimetype-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-mimetypes">
+      <title>Mimetype-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-mimetypes-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define mimetype-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The mimetype-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, mimetype-based conditions are built as a list of
+      « must match one of » and « must not match any of » patterns.
+      In order for your action to be a candidate regarding these mimetype-based
+      conditions, each element of the selection must be valid for all the listed
+      conditions: the mimetype of each element must match at least one of the defined
+      « must match one of » patterns, and must not match any of
+      the defined « must not match any of » patterns.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your mimetype-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your mimetype-based conditions will
+      be checked against the mimetype of the current location, which happens to
+      be the well known « inode/directory » mimetype.
+    </para>
+    <para>
+      Defining a new mimetype-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> or click on 
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              button to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the mimetype you want match.
+            </para>
+            <para>
+              A mimetype must be defined as a <literal>group/subgroup</literal>
+              expression.
+            </para>
+            <tip>
+              <para>
+                The « <literal>*</literal> » wildcard is supported only in some situations:
+              </para>
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    The « <literal>*/*</literal> » expression
+                    matches all mimetypes. As a convenient shortcut, the
+                    « <literal>*</literal> » literal is also accepted for this same purpose.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    A <literal>group/*</literal> string
+                    matches all subgroups of <literal>group</literal> mimetype.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The <literal>*/subgroup</literal> string
+                    is not accepted as a valid wildcard.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </tip>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a « must match one of » or a « must not match any of » condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match one of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button in the same
+          row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Removing a defined mimetype-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the mimetype-based condition is just one
+      « <literal>must match one of */*</literal> » condition.
+      As all mimetypes always match the « <literal>*/*</literal> »,
+      this just means that mimetypes are not considered as relevant 
+      for the action.
+    </para>
+    <example>
+      <title>Example of usual mimetypes</title>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <literal>all/all</literal>
+          </term>
+          <listitem>
+            <para>
+              Matches all items.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <literal>all/allfiles</literal>
+          </term>
+          <listitem>
+            <para>
+              Matches all regular files.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <literal>inode/directory</literal>
+          </term>
+          <listitem>
+            <para>
+              Matches only directories.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </example>
+  </sect3>
+
+  <sect3 id="usage-conditions-folders">
+    <title>Folder-based conditions</title>
+    <para>
+      You may decide that your action will appear depending on the directory
+      the items currently selected in the file-manager are located in:
+      you may define that each item of the selection must be located in one
+      hierarchy or in another; and you may simultaneously
+      decide that none of the selected item(s) can be located in some other
+      hierarchy.
+    </para>
+    <para>
+      A folder-based condition must be understood as the specification
+      of the hierarchy in which the currently examined item should (or
+      should not) stay: this is a pattern on the dirname of the element.
+    </para>
+    <para>
+      Click on the <guilabel>Folders</guilabel> tab to show the page
+      which will permit you to configure your folder-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-folders">
+      <title>Folder-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-folders-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define folder-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The folder-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, folder-based conditions are built as a list of
+      « must match one of » and « must not match any of » patterns.
+      In order for your action to be a candidate regarding these folder-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: each element must be located in one of the defined
+      « must match one of » folders, and must not match any of the defined
+      « must not match any of » folders.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the
+      defined conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your folder-based
+      conditions will be checked against the dirname of each currently
+      selected items.
+      When targeting the location context menu or the toolbar,
+      your folder-based conditions will be checked against the current
+      location.
+    </para>
+    <para>
+      Defining a new folder-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> or click on 
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              button to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the folder you want match.
+            </para>
+            <tip>
+              <para>
+                The « <literal>*</literal> » and « <literal>?</literal> » characters
+                are accepted as wildcards at any level of the defined
+                folder filter.
+              </para>
+            </tip>
+          </listitem>
+          <listitem>
+            <para>
+              Or click on
+              <guibutton>Browse</guibutton> to select a folder on the file system.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a « must match one of » or a « must not match any of »
+          condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match one of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button in the same
+          row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Removing a defined folder-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the folder-based condition is just one
+      « <literal>must match one of /</literal> » condition.
+      As <literal>/</literal> is always the top of an Unix-like file system,
+      then all selected items always match this condition.
+    </para>
+    <note>
+      <para>
+        If you target a <productname>Windows</productname> system, then this default value may
+        not be what you actually want.
+      </para>
+    </note>
+  </sect3>
+
+  <sect3 id="usage-conditions-schemes">
+    <title>Scheme-base-conditions</title>
+    <para>
+      You may decide that your action will appear depending on the schemes
+      of the URIs of the items currently selected in the file-manager:
+      you may define that each item of the selection must have some scheme;
+      and you may simultaneously
+      decide that none of the selected item(s) may have some other scheme.
+    </para>
+    <para>
+      Click on the <guilabel>Schemes</guilabel> tab to show the page
+      which will permit you to configure your scheme-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-schemes">
+      <title>Scheme-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-schemes-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define scheme-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The scheme-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, scheme-based conditions are built as a list of
+      « must match one of » and « must not match any of » patterns.
+      In order for your action to be a candidate regarding these scheme-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: the scheme of each element must match at least one
+      of the defined « must match one of » patterns, and must not match any of
+      the defined « must not match any of » patterns.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your scheme-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your scheme-based conditions will
+      be checked against the scheme of the current location.
+    </para>
+    <para>
+      Defining a new scheme-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> or click on 
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              button to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the scheme you want match.
+            </para>
+            <tip>
+              <para>
+                Scheme-based conditions only accept « <literal>*</literal> » wildcard,
+                which stands for « any scheme ».
+              </para>
+            </tip>
+          </listitem>
+          <listitem>
+            <para>
+              Or click on
+              <guibutton>Common</guibutton> to select a scheme among those
+              predefined in 
+              <menuchoice>
+                <guimenu>Edit</guimenu>
+                <guimenuitem>Preferences</guimenuitem>
+              </menuchoice>.
+            </para>
+            <figure id="cact-FIG-add-scheme">
+              <title>Selecting a scheme among predefined defaults</title>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="figures/cact-new-scheme.png" format="PNG"/>
+                  </imageobject>
+                  <textobject>
+                    <phrase>Show the list of predefined schemes.</phrase>
+                  </textobject>
+                  <caption>
+                    <para>Selecting a scheme among predefined defaults</para>
+                  </caption>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            <para>
+              A new scheme may only be selected here if it is not already
+              defined as a scheme filter.
+            </para>
+            <para>
+              To select a new scheme, click <guibutton>OK</guibutton>, or
+              double-click on the desired row.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a « must match one of » or a « must not match any of » condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match one of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button
+          in the same row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Removing a defined scheme-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the scheme-based condition is just one
+      « <literal>must match one of *</literal> » condition,
+      which means that schemes are not relevant for this action.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-capabilities">
+    <title>Capability-based conditions</title>
+    <para>
+      Capabilities are some properties that a file may exhibit to the user.
+    </para>
+    <para>
+      But except for the <literal>Local</literal> capability, all others
+      depend on the user who executes the command.
+    </para>
+    <para>
+      You may so decide that your action will appear, or not, depending
+      on the capabilities of the selected item(s) <abbrev>vs.</abbrev>
+      the current user.
+    </para>
+    <para>
+      Click on the <guilabel>Capabilities</guilabel> tab to show the page
+      which will permit you to configure your capability-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-capabilities">
+      <title>Capability-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-capabilities-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define capability-based conditions.</phrase>
+          </textobject>
+          <caption>
+            <para>The capability-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      In fact, capability-based conditions are built as a list of
+      « must match all of » and « must not match any of » patterns.
+      In order for your action to be a candidate regarding these capability-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: the capability of each element must match each
+      of the defined « must match all of » capabilities,
+      and must not match any of the defined « must not match any of » ones.
+    </para>
+    <para>
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </para>
+    <para>
+      When targeting the selection context menu, your capability-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your capability-based conditions will
+      be checked against those of of the current location.
+    </para>
+    <para>
+      Defining a new capability-based condition involves two steps.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Define the new condition filter.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Press <keycap>Insert</keycap> to insert a new condition filter
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Edit the newly inserted condition filter to the capability you want match.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Or click on
+              <guibutton><inlinegraphic fileref="figures/add.png"/></guibutton>
+              to open the <guilabel>Adding a new capability</guilabel> dialog
+              box.
+            </para>
+            <figure id="cact-FIG-add-capability">
+              <title>Managed capabilities</title>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="figures/cact-new-capability.png" format="PNG"/>
+                  </imageobject>
+                  <textobject>
+                    <phrase>Shows the list of managed capabilities.</phrase>
+                  </textobject>
+                  <caption>
+                    <para>The list of managed capabilities</para>
+                  </caption>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            <para>
+              A new capability may only be selected here if it is not already
+              defined as a capability filter.
+            </para>
+            <para>
+              To select a new capability, click <guibutton>OK</guibutton>, or
+              double-click on the desired row.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Indicates whether this a « must match all of »
+          or a « must not match any of » condition.
+        </para>
+        <para>
+          Click on the <guilabel>Must match all of</guilabel> or
+          <guilabel>Must not match any of</guilabel> radio button in the same
+          row to set the corresponding condition.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      Removing a defined capability-based condition is as simple as selecting
+      it, and pressing <keycap>Del</keycap> (or clicking on 
+      <guibutton><inlinegraphic fileref="figures/remove.png"/></guibutton>
+      button).
+    </para>
+    <para>
+      By default, the capability-based condition list is empty. This means
+      that capabilities are not relevant for this action.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-count">
+    <title>Selection count condition</title>
+    <para>
+      You may define that your action will only appear if the current
+      selection in the file manager has some precise count, or some
+      precise relation with a given count.
+    </para>
+    <example>
+      <title>A selection count use case</title>
+      <para>
+        If your action consists in displaying the differences between
+        two files, you may define here
+        « <literal>Count = (equal to) 2</literal> ».
+      </para>
+    </example>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </para>
+    <figure id="cact-FIG-tab-environment">
+      <title>Environment-based conditions</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-environment-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>
+              Shows the tab which lets you define environment-based conditions.
+              This includes the selection count configuration, the desktop
+              selection, along with the runtime filters.
+            </phrase>
+          </textobject>
+          <caption>
+            <para>The environment-based conditions tab</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      The selection count condition is defined in the
+      <guilabel>Appears if selection contains</guilabel> frame.
+    </para>
+    <figure id="cact-FIG-frame-count">
+      <title>Selection count condition frame</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-selection-count-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>
+              Focus on the <guilabel>Appears if selection contains</guilabel> frame.
+            </phrase>
+          </textobject>
+          <caption>
+            <para>Selection count condition frame</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      When targeting the selection context menu, the count condition
+      defined here will be checked against the count of currently
+      selected items. When targeting the location context menu or
+      the toolbar, the count condition will be checked against zero
+      because there is no selected item in this case.
+    </para>
+    <para>
+      To define a selection count condition:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Select in the <guilabel>Count</guilabel> drop-down list
+          the operator you want apply to the selection count:
+        </para>
+        <simplelist type="vert">
+          <member><literal>&lt;</literal> <termdef>(strictly less than)</termdef></member>
+          <member><literal>=</literal> <termdef>(equal to)</termdef></member>
+          <member><literal>&gt;</literal> <termdef>(strictly greater than)</termdef></member>
+        </simplelist>
+      </listitem>
+      <listitem>
+        <para>
+          Enter the reference count you wish.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      The selection count defaults to
+      « <literal>Count &gt; (strictly greater than) 0</literal> »,
+      which means that the action will be a candidate to be displayed
+      as soon as at least one item is selected in the file manager.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-desktop">
+    <title>Desktop selection</title>
+    <para>
+      You may define that your action:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          will always appear,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          or will only appear in some given desktop environments,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          or will not appear in some given desktop environments.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Only one choice between these three items is possible.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </para>
+    <para>
+      The desktop selection is defined in the
+      <guilabel>Desktop environment</guilabel> frame.
+    </para>
+    <figure id="cact-FIG-frame-desktop">
+      <title>Desktop selection frame</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-desktop-environment-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>
+              Focus on the <guilabel>Desktop environment</guilabel> frame.
+            </phrase>
+          </textobject>
+          <caption>
+            <para>Desktop selection frame</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      To define the desktop environment condition:
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          First select the type of filter:
+        </para>
+        <simplelist type="vert">
+          <member>should your action always appear, regardless of
+           the desktop environment ?</member>
+          <member>should your action only appear in some desktop
+           environment(s) ?</member>
+          <member>should your action never appear in some
+           desktop environment(s) ?</member>
+        </simplelist>
+      </listitem>
+      <listitem>
+        <para>
+          If your action should not always appear, then
+          select the relevant desktop environment(s) in the listbox
+          in the right side.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      The targeted desktop environment condition defaults to
+      « <literal>Always appear</literal> »,
+      which means that the action will be a candidate to be displayed
+      regardless of the current desktop environment.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-conditions-executable">
+    <title>Executable found condition</title>
+    <para>
+      You may define that your action will only appear if some
+      prerequisite package is installed on your system. This is
+      checked here by specifying that a specific file, known or
+      at least supposed to be provided by the package, must be
+      present on the file system, and executable.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </para>
+    <para>
+      The executable found condition is defined in the
+      <guilabel>Execution environment</guilabel> frame.
+    </para>
+    <figure id="cact-FIG-frame-execution-environment">
+      <title>Execution environment frame</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-execution-environment-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>
+              Focus on the <guilabel>Execution environment</guilabel> frame.
+            </phrase>
+          </textobject>
+          <caption>
+            <para>Execution environment frame</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      To define the relevant file, enter its full filename in the
+      <guilabel>Appears if the file is executable</guilabel> entry
+      box, or click on <guibutton>Browse</guibutton> to select a file
+      on the file system.
+    </para>
+    <para>
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </para>
+    <tip>
+      <para>
+        You may embed some parameters in the searched filename.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+  </sect3>
+
+  <sect3 id="usage-conditions-dbus">
+    <title>D-Bus registration condition</title>
+    <para>
+      You may define that your action will only appear if some given
+      name is registered on the D-Bus system at runtime.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <guilabel>Execution environment</guilabel> frame.
+    </para>
+    <para>
+      To define the relevant name, enter it in the
+      <guilabel>Appears if the name is registered on D-Bus</guilabel>
+      entry box.
+    </para>
+    <para>
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </para>
+    <tip>
+      <para>
+        You may embed some parameters in the searched name.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+  </sect3>
+
+  <sect3 id="usage-conditions-true">
+    <title>Customized condition</title>
+    <para>
+      You may define that your action will only appear if some given
+      command outputs a <literal>true</literal> string on its standard
+      output.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <guilabel>Execution environment</guilabel> frame.
+    </para>
+    <para>
+      This lets you define your own customized condition filter,
+      by writing a small script which outputs, or not, the
+      <literal>true</literal> string on stdout when it is ran.
+    </para>
+    <para>
+      To define the command, enter it in the
+      <guilabel>Appears if the command outputs "true"</guilabel>
+      entry box.
+    </para>
+    <para>
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </para>
+    <tip>
+      <para>
+        You may embed some parameters in the executed filename or its options.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+  </sect3>
+
+  <sect3 id="usage-conditions-run">
+    <title>Running process condition</title>
+    <para>
+      You may define that your action will only appear if some given
+      binary is currently running.
+    </para>
+    <para>
+      Click on the <guilabel>Environment</guilabel> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <guilabel>Execution environment</guilabel> frame.
+    </para>
+    <para>
+      To define the binary, enter its name in the
+      <guilabel>Appears if the binary is running</guilabel>
+      entry box, or click on <guibutton>Browse</guibutton> to select
+      a file on the file system.
+    </para>
+    <note>
+      <para>
+        Even if you enter here the full filename of a binary, only
+        its basename will be searched for in the processes list
+        at runtime.
+      </para>
+    </note>
+    <para>
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </para>
+    <tip>
+      <para>
+        You may embed some parameters in the searched name.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+  </sect3>
+</sect2>
+
+    <sect2 id="usage-where">
+  <title>Locating the action</title>
+    <figure id="cact-FIG-target-location-where">
+      <title>Target configuration</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-target-location.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the three fields which let you configure the target of your action.</phrase>
+          </textobject>
+          <caption>
+            <para>Target configuration</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  <para>
+    <productname>Caja</productname> file manager may display your action in different places,
+    depending on what you will request here, and if some item is currently
+    selected (or not).
+  </para>
+  <para>
+    Click on the <guilabel>Action</guilabel> tab to show the page
+    which will permit you to configure the locations your action
+    targets.
+  </para>
+
+  <sect3 id="usage-where-selection">
+    <title>Targeting the selection context menu</title>
+    <para>
+      When <guilabel>Display item in selection context menu</guilabel>
+      is checked, then your action will be a candidate to be displayed in 
+      <productname>Caja</productname>' context menu as soon as at least one item is selected in 
+      the file manager. Your action will so deal with currently selected
+      item(s).In order to be
+      actually displayed, all the conditions defined in
+      your candidate action must be met by each item currently selected
+      in the <productname>Caja</productname> file manager. 
+    </para>
+    <tip>
+      <para>
+        When an action targets the selection context menu, and is actually 
+        displayed in <productname>Caja</productname>' context menu, then it is also displayed
+        in <productname>Caja</productname>' <guimenu>Edit</guimenu> menu.
+      </para>
+    </tip>
+    <para>
+      This target is checked by default.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-where-location">
+    <title>Targeting the location context menu</title>
+    <para>
+      When <guilabel>Display item in location context menu</guilabel> checkbox
+      is activated, then your action will be a candidate to be displayed in 
+      <productname>Caja</productname>' context menu when the file manager selection is empty.
+      Your action will so deal with currently displayed location.
+      In order to be
+      actually displayed, all the conditions defined in
+      your candidate action must be met by the location currently displayed
+      in the <productname>Caja</productname> file manager. 
+    </para>
+    <tip>
+      <para>
+        When an action targets the location context menu, and is actually 
+        displayed in <productname>Caja</productname>' context menu, then it is also displayed
+        in <productname>Caja</productname>' <guimenu>File</guimenu> menu.
+      </para>
+    </tip>
+  </sect3>
+
+  <sect3 id="usage-where-toolbar">
+    <title>Targeting the toolbar</title>
+    <para>
+      When <guilabel>Display item in the toolbar</guilabel> checkbox
+      is activated, then your action will be a candidate to be displayed in 
+      <productname>Caja</productname>' toolbar.
+    </para>
+    <para>
+      Actions displayed in the toolbar only deal with the location which
+      is currently displayed in the file-manager, not with the items which
+      may be currently selected (or not). In order to be displayed, all the
+      conditions defined in your candidate action must so be met by the
+      current location. 
+    </para>
+  </sect3>
+
+  <sect3 id="usage-where-notes">
+    <title>Notes</title>
+
+    <formalpara>
+      <title>If your action is to be displayed in a context menu</title>
+      <para>
+        Whether it is the selection context menu or the location
+        context menu, and both in <productname>Caja</productname>' context menus and in 
+        <guimenu>File</guimenu> or <guimenu>Edit</guimenu> menus, it
+        will be displayed as
+      </para>
+    </formalpara>
+    <itemizedlist>
+      <listitem>
+        <para>
+          the <guilabel>Context label</guilabel> as a label,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          the <guilabel>Icon</guilabel>,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          these two properties being associated with the
+          <guilabel>Tooltip</guilabel>.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <note>
+      <para>
+        Depending of the exact configuration of your desktop environment,
+        the icon may or may not be displayed in front of the label in
+        the menu.
+      </para>
+    </note>
+    <tip>
+      <para>
+        You may embed some parameters in the label, the icon name or the tooltip.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+
+    <formalpara>
+      <title>If your action is to be displayed in the toolbar</title>
+      <para>
+        It will be displayed as
+      </para>
+    </formalpara>
+    <itemizedlist>
+      <listitem>
+        <para>
+          the <guilabel>Toolbar label</guilabel> as a label,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          the <guilabel>Icon</guilabel>,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          these two properties being associated with the
+          <guilabel>Tooltip</guilabel>.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <note>
+      <para>
+        Depending of the exact configuration of your desktop environment,
+        the toolbar label may or may not be displayed in front of the icon
+        in the toolbar.
+      </para>
+    </note>
+    <tip>
+      <para>
+        The toolbar label defaults to the same label as
+        those used in menus. By unchecking the
+        <guilabel>Use same label for icon in the toolbar</guilabel>
+        checkbox you can define a label specific to the
+        toolbar, which is usually shorter that those defined for the menus.
+      </para>
+    </tip>
+    <tip>
+      <para>
+        You may embed some parameters in the toolbar label, the icon name or the tooltip.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </para>
+    </tip>
+
+    <formalpara>
+      <title>Defining several targets</title>
+      <para>
+        An action may target the selection context menu, the location context
+        menu and the toolbar, or one or more of these.
+      </para>
+    </formalpara>
+
+    <formalpara>
+      <title>Defining no target at all</title>
+      <para>
+        If no target is defined,
+        <abbrev>i.e.</abbrev> if the three checkboxes are unchecked, then your action
+        will never be displayed.
+      </para>
+    </formalpara>
+  </sect3>
+</sect2>
+
+    <sect2 id="usage-execution">
+  <title>What action should be executed ?</title>
+  <para>
+    You most probably want that your action eventually ends up in
+    executing something. And, as a matter of fact, having something
+    to execute is one of the few conditions which are required
+    for an action to be considered as valid.
+  </para>
+  <para>
+    As we have already seen, the command to be executed is configured
+    in the <guilabel>Command</guilabel> page.
+  </para>
+  <para>
+    This command may take arguments, which themselves may embed
+    parameters. These parameters will be expanded at runtime,
+    with values which will depend on currently selected item(s).
+  </para>
+
+  <sect3 id="usage-execution-parameters">
+    <title>Available parameters</title>
+    <para>
+      In the <guilabel>Command</guilabel> page, click on <guilabel>Legend</guilabel>
+      button to see the list of available parameters.
+    </para>
+    <figure id="cact-FIG-legend">
+      <title>List of available parameters</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-legend.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the list of available parameters.</phrase>
+          </textobject>
+          <caption>
+            <para>The available parameters</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <tip>
+      <para>
+        The <guibutton>Legend</guibutton> button has a toggling action:
+        click once to display the <guilabel>Parameter Legend</guilabel>
+        dialog box; click a second time to hide it.
+      </para>
+    </tip>
+    <note>
+      <para>
+        The word « <guilabel>first</guilabel> » may be misleading
+        as it only refers to the list of selected items internally provided by
+        the file manager to the <productname>Caja-Actions</productname> plugin.
+      </para>
+      <para>
+        In particular, it has <emphasis>nothing to do</emphasis> with the
+        visual selection you may
+        have done in the file manager window. And, in fact, which is the
+        « <guilabel>first</guilabel> » selected item in a
+        multiple selection is absolutely undefined and rather unpredictable.
+      </para>
+    </note>
+  </sect3>
+
+  <sect3 id="usage-execution-work">
+    <title>Where the action should it be executed ?</title>
+    <para>
+      Your action may be executed in a particular working directory.
+    </para>
+    <para>
+      You may specify it in the <guilabel>Command</guilabel> tab, in the
+      <guilabel>Working directory</guilabel> entry box, or by clicking
+      on <guibutton>Browse</guibutton> to select a folder on the 
+      filesystem.
+    </para>
+    <figure id="cact-FIG-work-dir-frame">
+      <title>Working directory frame</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-working-directory-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Focus on the working directory selection frame.</phrase>
+          </textobject>
+          <caption>
+            <para>Working directory frame</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      The working directory defaults to <literal>%d</literal>, which runs
+      the command in the base directory of the (first) selected item.
+    </para>
+    <para>
+      In the particular case of the <literal>%d</literal> parameter,
+      the « <guilabel>first</guilabel> » selected item
+      is not very important because it is very likely that all selected items
+      are located in the same base directory.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-execution-how">
+    <title>How should the action be executed ?</title>
+    <para>
+      Apart from configuring the conditions, the selection must be met in
+      order your action be displayed in file manager menus, <productname>Caja-Actions</productname>
+      allows you to configure how exactly your command will be
+      executed.
+    </para>
+    <para>
+      Click on the <guilabel>Execution</guilabel> tab to show the page
+      which configures the execution of your command.
+    </para>
+    <figure id="cact-FIG-execution">
+      <title>Configuration of the execution modes</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-execution-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows how to configure the execution modes of a command.</phrase>
+          </textobject>
+          <caption>
+            <para>Configuration of the execution modes</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <sect4 id="usage-execution-how-mode">
+      <title>Execution mode</title>
+      <figure id="cact-FIG-execution-mode">
+        <title>Configuration of the execution mode</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-exec-mode-frame.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Focus on the execution mode frame.</phrase>
+            </textobject>
+            <caption>
+              <para>Configuration of the execution mode</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        The execution mode of your command may be chosen between following 
+        values:
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term>
+            Normal
+          </term>
+          <listitem>
+            <para>
+              Starts the command as a standard graphical user interface.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            Terminal
+          </term>
+          <listitem>
+            <para>
+              Starts the preferred terminal of the desktop environment,
+              and runs the command in it.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            Embedded
+          </term>
+          <listitem>
+            <para>
+              Makes use of a special feature of the file manager which may allow
+              a terminal to be ran in it.
+            </para>
+            <para>
+              As <productname>Caja</productname> does not have this feature, this option is strictly
+              equivalent to <literal>Terminal</literal> option.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            Display output
+          </term>
+          <listitem>
+            <para>
+              Starts the preferred terminal of the desktop environment, and
+              runs the command in it. At end, standard streams (stdout, stderr) 
+              are collected and displayed.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <para>
+        The execution mode of a command defaults to <literal>Normal</literal>.
+        That is, the command is executed without any particular pre- or
+        post-work.
+      </para>
+    </sect4>
+
+    <sect4 id="usage-execution-how-notify">
+      <title>Startup notification</title>
+      <figure id="cact-FIG-startup-mode">
+        <title>Configuration of the startup modes</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-startup-mode-frame.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Focus on the Startup mode frame.</phrase>
+            </textobject>
+            <caption>
+              <para>Configuration of the startup modes</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        If the execution mode of the command is <literal>Normal</literal>,
+        and if you know that the application will send a <literal>remove</literal>
+        message with the <envar>DESKTOP_STARTUP_ID</envar> environment variable set,
+        then check the <guilabel>Startup notify</guilabel> checkbox.
+      </para>
+      <para>
+        See the
+        <ulink url="http://www.freedesktop.org/Standards/startup-notification-spec" type="http">
+        <citetitle>Startup Notification Protocol Specification</citetitle></ulink>
+        for more details.
+      </para>
+    </sect4>
+
+    <sect4 id="usage-execution-how-class">
+      <title>Window class</title>
+      <para>
+        If the execution mode of the command is <literal>Normal</literal>,
+        and if you know that the application will map at least one window with a
+        given class name,
+        then enter that name into the <guilabel>Startup Window Manager class</guilabel>
+        entry box.
+      </para>
+      <para>
+        See the
+        <ulink url="http://www.freedesktop.org/Standards/startup-notification-spec" type="http">
+        <citetitle>Startup Notification Protocol Specification</citetitle></ulink>
+        for more details.
+      </para>
+    </sect4>
+
+    <sect4 id="usage-execution-how-user">
+      <title>Owner of the execution</title>
+      <figure id="cact-FIG-execute-as">
+        <title>Configuration of the owner of the run</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-execute-as-frame.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Focus on the <guilabel>Execute as</guilabel> frame.</phrase>
+            </textobject>
+            <caption>
+              <para>Configuration of the owner of the run</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        Enter in the <guilabel>Execute as user</guilabel> entry box the username
+        or the <acronym>UID</acronym> of the user your command will be run as.
+      </para>
+      <para>
+        If you do not enter anything in this field, then the command will be
+        executed as the current user.
+      </para>
+    </sect4>
+
+    <sect4 id="usage-execution-how-singular">
+      <title>Multiple executions</title>
+      <para>
+        You may want your command to be executed once, providing it the list of
+        selected items as argument.
+      </para>
+      <para>
+        Or you may prefer your command to be repeated for each selected item,
+        providing a different item as argument for each execution.
+      </para>
+      <para>
+        Actually, <productname>Caja-Actions</productname> automatically handles these two behaviors,
+        depending of the form and the order of the parameters in the command
+        arguments.
+      </para>
+      <para>
+        Though some parameters are not depending on the count of the
+        selection (<abbrev>e.g.</abbrev> « <literal>%c</literal> »,
+        the selection count itself), most have two declensions:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            a « singular » one, <abbrev>e.g.</abbrev>
+            « <literal>%b</literal> »,
+            the basename of the selected item;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            a « plural » one, <abbrev>e.g.</abbrev>
+            « <literal>%B</literal> »,
+            the space-separated list of the basenames of selected items.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        When the selection is empty or contains only one element,
+        and from this topic point of view, these two forms are exactly equivalent.
+      </para>
+      <para>
+        When the selection contains more than one item:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            if the first relevant parameter is of a singular form,
+            then <productname>Caja-Actions</productname> will consider that the command is only able to deal
+            with one item at a time, and thus that it has to be ran one time for
+            each selected item;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            contrarily, if the first relevant parameter found is of the plural form,
+            then <productname>Caja-Actions</productname> will consider that the command is able to deal with a
+            list of items, and thus the command will be executed only once;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            if all found parameters are irrelevant, then <productname>Caja-Actions</productname> defaults
+            to consider that the command should be executed only once.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <table id="cact-TAB-multiple-execution" frame="all" tocentry="1">
+        <title>Characterization of the parameters <abbrev>vs.</abbrev> multiple execution</title>
+        <tgroup cols="5">
+          <colspec align="center" colwidth="*"/>
+          <colspec align="left" colwidth="5*"/>
+          <colspec align="center" colwidth="*" colname="c3"/>
+          <colspec align="center" colwidth="*"/>
+          <colspec align="center" colwidth="*" colname="c5"/>
+          <thead>
+            <row>
+              <entry>Parameter</entry>
+              <entry>Description</entry>
+              <entry namest="c3" nameend="c5">Repetition</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><literal>%b</literal></entry>
+              <entry>(first) basename</entry>
+              <entry>singular</entry>
+              <entry/>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%B</literal></entry>
+              <entry>space-separated list of basenames</entry>
+              <entry/>
+              <entry/>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%c</literal></entry>
+              <entry>count of selected items</entry>
+              <entry/>
+              <entry>irrelevant</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%d</literal></entry>
+              <entry>(first) base directory</entry>
+              <entry>singular</entry>
+              <entry/>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%D</literal></entry>
+              <entry>space-separated list of base directory of each selected items</entry>
+              <entry/>
+              <entry/>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%f</literal></entry>
+              <entry>(first) filename</entry>
+              <entry>singular</entry>
+              <entry/>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%F</literal></entry>
+              <entry>space-separated list of selected filenames</entry>
+              <entry/>
+              <entry/>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%h</literal></entry>
+              <entry>hostname of the (first) URI</entry>
+              <entry/>
+              <entry>irrelevant</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%m</literal></entry>
+              <entry>mimetype of the (first) selected item</entry>
+              <entry>singular</entry>
+              <entry/>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%M</literal></entry>
+              <entry>space-separated list of the mimetypes of the selected items</entry>
+              <entry/>
+              <entry/>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%n</literal></entry>
+              <entry>username of the (first) URI</entry>
+              <entry/>
+              <entry>irrelevant</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%o</literal></entry>
+              <entry>no-op operator which forces a singular form of execution</entry>
+              <entry>singular</entry>
+              <entry/>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%O</literal></entry>
+              <entry>no-op operator which forces a plural form of execution</entry>
+              <entry/>
+              <entry/>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%p</literal></entry>
+              <entry>port number of the (first) URI</entry>
+              <entry/>
+              <entry>irrelevant</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%s</literal></entry>
+              <entry>scheme of the (first) URI</entry>
+              <entry/>
+              <entry>irrelevant</entry>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%u</literal></entry>
+              <entry>(first) URI</entry>
+              <entry>singular</entry>
+              <entry/>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%U</literal></entry>
+              <entry>space-separated list of selected URIs</entry>
+              <entry/>
+              <entry/>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%w</literal></entry>
+              <entry>(first) basename without the extension</entry>
+              <entry>singular</entry>
+              <entry/>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%W</literal></entry>
+              <entry>space-separated list of basenames without their extension</entry>
+              <entry/>
+              <entry/>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%x</literal></entry>
+              <entry>(first) extension</entry>
+              <entry>singular</entry>
+              <entry/>
+              <entry/>
+            </row>
+            <row>
+              <entry><literal>%X</literal></entry>
+              <entry>space-separated list of extensions</entry>
+              <entry/>
+              <entry/>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%%</literal></entry>
+              <entry>the « <literal>%</literal> » character</entry>
+              <entry/>
+              <entry>irrelevant</entry>
+              <entry/>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <example>
+        <title>Usage of singular <abbrev>vs.</abbrev> plural forms</title>
+        <para>
+          Say the current folder is <filename>/data</filename>,
+          and the current selection contains the three files
+          <filename>pierre</filename>, <filename>paul</filename>
+          and <filename>jacques</filename>.
+        </para>
+        <formalpara>
+          <title>
+            If we have requested <command>echo %b</command>,
+          </title>
+          <para>
+            then the following commands will be successively run:
+          </para>
+        </formalpara>
+        <simplelist>
+          <member><command>echo pierre</command></member>
+          <member><command>echo paul</command></member>
+          <member><command>echo jacques</command></member>
+        </simplelist>
+        <para>
+          This is because <literal>%b</literal> marks a <emphasis>singular</emphasis>
+          parameter. The command is then run once for each of the selected items.
+        </para>
+        <formalpara>
+          <title>
+            Contrarily, if we have requested <command>echo %B</command>,
+          </title>
+          <para>
+            then the following command will be run:
+          </para>
+        </formalpara>
+        <simplelist>
+          <member><command>echo pierre paul jacques</command></member>
+        </simplelist>
+        <para>
+          This is because <literal>%B</literal> marks a <emphasis>plural</emphasis>
+          parameter. The command is then run only once, with the list of selected
+          items as arguments.
+        </para>
+        <formalpara>
+          <title>
+            If we have requested <command>echo %b %B</command>,
+          </title>
+          <para>
+            then the following commands will be successively run:
+          </para>
+        </formalpara>
+        <simplelist>
+          <member><command>echo pierre pierre paul jacques</command></member>
+          <member><command>echo paul pierre paul jacques</command></member>
+          <member><command>echo jacques pierre paul jacques</command></member>
+        </simplelist>
+        <para>
+          This is because the first <emphasis>relevant</emphasis> parameter
+          is <literal>%b</literal>, and so the command is run once for each
+          selected item, replacing at each occurrence the <literal>%b</literal>
+          parameter with the corresponding item. The second parameter is
+          computed and added as arguments to the executed command.
+        </para>
+        <formalpara>
+          <title>
+            And if we have requested <literal>echo %B %b</literal>,
+          </title>
+          <para>
+            then the following commands will be run:
+          </para>
+        </formalpara>
+        <simplelist>
+          <member><command>echo pierre paul jacques pierre</command></member>
+        </simplelist>
+        <para>
+          This is because the first <emphasis>relevant</emphasis> parameter here
+          is <literal>%B</literal>. The command is then run only once, replacing
+          <literal>%B</literal> with the space-separated list of basenames. As
+          the command is only run once, the <literal>%b</literal> is substituted
+          only once with the (first) basename. 
+        </para>
+      </example>
+   </sect4>
+  </sect3>
+
+</sect2>
+
+    <sect2 id="usage-profile">
+  <title>Using profiles to extend your action</title>
+  <para>
+    There are some situations where you will want a given action behave
+    slightly differently depending on the currently selected items or
+    the current runtime environment.
+  </para>
+  <example>
+    <title>Open a terminal here</title>
+    <para>
+      Say you have an action which opens a terminal in the current location.
+    </para>
+    <para>
+      You have configured it to open your preferred terminal in the
+      location your file manager currently points to.
+    </para>
+    <para>
+      But what if you want to select a directory in your file manager,
+      and directly open your terminal in this directory ? If you
+      keep based on the current file manager location, your
+      terminal will open in the parent of the targeted directory.
+    </para>
+    <para>
+      One solution is to define a new profile to your action,
+      configuring this profile to open the terminal in the
+      targeted directory.
+    </para>
+    <para>
+      At runtime, <productname>Caja-Actions</productname> will successively examine each profile
+      attached to your action. If the first profile targets a file
+      while you have selected a directory, then <productname>Caja-Actions</productname> will just
+      try with your second profile.
+    </para>
+  </example>
+  <para>
+    To create a new profile, first select the action in the items list,
+    then choose
+    <menuchoice>
+      <guisubmenu>File</guisubmenu>
+      <guimenuitem>New profile</guimenuitem>
+    </menuchoice>.
+  </para>
+  <para>
+    A new profile is created in your action.
+  </para>
+  <para>
+    You can now define the conditions which must be met in order
+    this profile be selected, and the command which will be executed.
+  </para>
+  
+  <sect3 id="usage-profile-order">
+    <title>Ordering the profiles inside an action</title>
+    <para>
+      At runtime, <productname>Caja-Actions</productname> will begin with examining the conditions
+      set on your action.
+    </para>
+    <para>
+      If these conditions (the action-conditions) are met, then <productname>Caja-Actions</productname>
+      will examine in order each profile.
+    </para>
+    <para>
+      If the conditions defined in a profile are met, then this profile
+      will be validated, and the review of other profiles will stop.
+    </para>
+    <para>
+      If no profile is found valid at runtime, then the action will be
+      itself considered invalid, and will not be displayed in the file
+      manager context menu.
+    </para>
+    <para>
+      Profiles of an action are ordered, and they are examined in that order
+      at runtime. The first profile whose conditions are met will be validated,
+      and made selectable in the <productname>Caja</productname> context menu.
+    </para>
+    <para>
+      So, ordering of the profiles may be important for your action: the
+      first valid profile found is the only one selected.
+    </para>
+    <para>
+      You may order your profiles inside an action in two ways.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Cut the profile to be moved, select the profile before which
+          you want your cut profile to be inserted, and paste it.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Click on the profile to be moved, and drag it to its right place.
+        </para>
+      </listitem>
+    </orderedlist>
+  </sect3>
+</sect2>
+
+    <sect2 id="usage-menus">
+  <title>Organizing actions in menus</title>
+  <para>
+    As your list of actions will grow, you most probably will want to organize
+    them into menus, submenus, and so on.
+  </para>
+  <para>
+    In order to create a new menu, choose
+    <menuchoice>
+      <guimenu>File</guimenu>
+      <guimenuitem>New menu</guimenuitem>
+    </menuchoice>.
+  </para>
+  <para>
+    A menu may be created anywhere in the list of your actions, but inside
+    of an action (<abbrev>i.e.</abbrev> not between two profiles of an action).
+  </para>
+  <para>
+    As an action, the exact place where a new menu will be inserted
+    depends on the current sort order:
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>
+        Manual order:
+      </term>
+      <listitem>
+        <para>
+          The new menu is inserted just before the current action or menu.
+        </para>
+        <para>
+          This place will not change when you later modify the label of the menu.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        Ascending (resp. descending) alphabetical order:
+      </term>
+      <listitem>
+        <para>
+          The new menu is inserted at the correct place, regarding the default
+          « <literal>New Caja menu</literal> » label.
+        </para>
+        <para>
+          This place will be automatically changed, each time you modify the
+          label of the menu.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <para>
+    As an action, too, a menu requires a label, and may have an icon and a
+    tooltip. Also, you may define some conditions in order your menu be
+    candidate to be displayed in <productname>Caja</productname> context menu. If the defined
+    conditions are not met at runtime, then your whole menu, including
+    its submenus, its actions and so on, will not be displayed.
+  </para>
+</sect2>
+
+    <sect2 id="usage-sorting">
+  <title>Sorting the items list</title>
+  <para>
+    Your actions and menus will be displayed in file manager context menus
+    in the same order that they are listed in the <guilabel>Items list</guilabel>,
+    on the left pane of the main <application>Caja-Actions Configuration Tool</application> window.
+  </para>
+  <para>
+    You may decide to:
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+        sort your actions and menus in ascending or descending alphabetical
+        order of their label,
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        or do not sort, and manually organize your actions and menus
+        in your own order.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <sect3 id="usage-sorting-alpha">
+    <title>Alphabetically sorting your actions and menus</title>
+    <para>
+      In these modes, actions and menus are sorted depending of their label,
+      inside of their parent. 
+    </para>
+    <figure id="cact-FIG-sort-buttons">
+      <title>Sort buttons in the main window</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/sort-buttons-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the three sort buttons in the main window.</phrase>
+          </textobject>
+          <caption>
+            <para>Sort buttons in the main window</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      You may sort your actions by:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Click on
+          <guibutton><inlinegraphic fileref="figures/sort-asc.png"/></guibutton>
+          (<abbrev>resp.</abbrev>
+          <guibutton><inlinegraphic fileref="figures/sort-desc.png"/></guibutton>)
+          button to sort your actions in ascending (<abbrev>resp.</abbrev> descending)
+          order.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Or edit the corresponding preference.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect3>
+
+  <sect3 id="usage-sorting-manual">
+    <title>Manually organizing your actions and menus</title>
+    <para>
+      When items are manually sorted in the list, new items are usually
+      inserted just at the current position.
+    </para>
+    <para>
+      There is nonetheless the case where an action is
+      selected, and not expanded (or has currently only one profile).
+      Inserting a new profile will not insert it before the action,
+      but inside of the action. 
+    </para>
+    <para>
+      To choose this mode:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Click on
+          <guibutton><inlinegraphic fileref="figures/sort-manual.png"/></guibutton>
+          button.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Or edit the corresponding preference.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect3>
+</sect2>
+
+    <sect2 id="usage-edit">
+  <title>Editing</title>
+  <para>
+    With <application>Caja-Actions Configuration Tool</application>, you may safely cut, copy, paste to and from the clipboard.
+  </para>
+
+  <sect3 id="usage-edit-cut">
+    <title>Cut/Delete</title>
+    <para>
+      Deletion applies to current selection.
+    </para>
+    <para>
+      Be warned that selecting and deleting all profiles of an action
+      leaves it without any profile, so in an invalid state.
+      The name of the action will be written in red (because it is
+      invalid) italic (because it has been modified) characters.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-edit-multiple">
+    <title>Multiple selection</title>
+    <para>
+      Multiple selection is possible in <application>Caja-Actions Configuration Tool</application>.
+      You can extend the current selection
+      by pressing <keycap>Ctrl</keycap> or <keycap>Shift</keycap>
+      while selecting an item to add to the selection.
+    </para>
+    <para>
+      <application>Caja-Actions Configuration Tool</application> only accepts homogeneous multiple selections. That is, you may
+      select one or more profiles, or one or more actions or menus. A multiple
+      selection containing both profiles and actions or menus is not allowed.
+      This is because <application>Caja-Actions Configuration Tool</application> would not know where to paste such a selection.
+    </para>
+    <para>
+      Note that selecting any row means also selecting children of this row.
+      These children are said « implicitely selected »:
+      they will be part of next edition operations, but are not considered
+      when verifying if selection is homogeneous.
+      Also, they cannot be explicitely selected (nor unselected).
+    </para>
+  </sect3>
+</sect2>
+
+    <sect2 id="usage-save">
+  <title>Saving your modifications</title>
+  <para>
+    To save your modifications, choose
+    <menuchoice>
+      <shortcut>
+        <keycombo>
+          <keycap>Ctrl</keycap>
+          <keycap>S</keycap>
+        </keycombo>
+      </shortcut>
+      <guimenu>File</guimenu>
+      <guisubmenu>Save</guisubmenu>
+    </menuchoice>.
+  </para>
+  <para>
+    All your pending modifications will be saved.
+    New items will be created by the first available writable I/O provider.
+  </para>
+  <para>
+    <productname>Caja-Actions</productname> also has an Auto-save feature which is configurable in 
+    <guimenuitem>Preferences</guimenuitem> dialog box.
+  </para>
+</sect2>
+
+    <sect2 id="usage-export">
+  <title>Exporting your actions</title>
+  <para>
+  </para>
+</sect2>
+
+    <sect2 id="usage-import">
+  <title>Importing actions</title>
+  <para>
+  </para>
+</sect2>
+
+    <sect2 id="usage-prefs">
+  <title>Setting your own preferences</title>
+    <para>
+      Choose
+      <menuchoice>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Preferences</guimenuitem>
+      </menuchoice>
+      to access to the configuration of your preferences.
+    </para>
+
+  <sect3 id="usage-prefs-runtime">
+    <title>Runtime preferences</title>
+    <figure id="cact-FIG-prefs-runtime">
+      <title>Runtime preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-runtime.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define runtime preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Runtime preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect3>
+
+  <sect3 id="usage-prefs-execution">
+    <title>Runtime execution preferences</title>
+    <figure id="cact-FIG-prefs-execution">
+      <title>Runtime execution preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-execution.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define runtime execution preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Runtime execution preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <figure id="cact-FIG-prefs-desktop">
+      <title>Desktop selection</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-desktop.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Let the user explicitely configure the current desktop.</phrase>
+          </textobject>
+          <caption>
+            <para>Desktop selection</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect3>
+
+  <sect3 id="usage-prefs-ui">
+    <title>User interface preferences</title>
+    <figure id="cact-FIG-prefs-ui">
+      <title>UI preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-ui.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define UI preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>UI preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect3>
+
+  <sect3 id="usage-prefs-import">
+    <title>Import preferences</title>
+    <figure id="cact-FIG-prefs-import">
+      <title>Import preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-import.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define import preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Import preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+    </para>
+  </sect3>
+
+  <sect3 id="usage-prefs-export">
+    <title>Export preferences</title>
+    <figure id="cact-FIG-prefs-export">
+      <title>Export preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-export.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define export preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Export preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+    </para>
+  </sect3>
+
+  <sect3 id="usage-prefs-schemes">
+    <title>Schemes preferences</title>
+    <figure id="cact-FIG-prefs-schemes">
+      <title>Schemes preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-schemes.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define schemes preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>Schemes preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+    </para>
+  </sect3>
+
+  <sect3 id="usage-prefs-providers">
+    <title>I/O providers preferences</title>
+    <figure id="cact-FIG-prefs-io-providers">
+      <title>I/O providers preferences</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-preferences-io-providers.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the tab which lets you define I/O providers preferences.</phrase>
+          </textobject>
+          <caption>
+            <para>I/O providers preferences</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+    </para>
+  </sect3>
+
+</sect2>
+
+  </sect1>
+
+<!-- ============================ Misc ================================ -->
+<!-- informations I do not know where to put -->
+
+  <sect1 id="misc">
+    <title>Miscellaneous informations</title>
+            <para>
+          The new action is also displayed in red color in the items list.
+          Red color is used as an indicator that the item
+          is invalid, that is that the item cannot be candidate to be displayed in a
+          <productname>Caja</productname> context menu because some of its informations are missing or erroneous.
+          Here, and though this newly inserted action has some suitable defaults, it lacks a 
+          command to be executed to be considered valid by <application>Caja-Actions Configuration Tool</application>
+        </para>
+
+  </sect1>
+
+<!-- ============================ Bugs ================================ -->
+<!-- This section is optional and is commented out by default.
+     You can use it to describe known bugs and limitations of the
+     program if there are any - please be frank and list all
+     problems you know of. -->
+
+  <sect1 id="bugs">
+    <title>Known Bugs and Limitations</title>
+    <sect2 id="bugs-bugs">
+  <title>Known bugs</title>
+  <para>
+    Known bugs are available on
+    <ulink url="https://bugzilla.gnome.org/buglist.cgi?product=caja-actions&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED" type="http">Bugzilla summary page</ulink>.
+  </para>
+  <para>
+    If you find some new bug in <productname>Caja-Actions</productname>, you are welcome to open it by pointing
+    your favorite browser to
+    <ulink url="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" type="http">Bugzilla web site</ulink>.
+  </para>
+  
+  <formalpara>
+    <title><ulink url="https://bugzilla.gnome.org/show_bug.cgi?id=616532" type="http">#616532</ulink> Directory selection</title>
+    <para>
+      When you're browsing the folder you want to export to in the <application>Caja-Actions Configuration Tool</application>'s
+      export assistant you can't select it as the directory to export to.
+      Instead you have to go to the directory a level up and select the directory
+      you want to export to there.
+    </para>
+  </formalpara>
+</sect2>
+
+<sect2 id="bugs-limits">
+  <title>Known limitations</title>
+
+  <formalpara>
+    <title>Execution mode</title>
+    <para>
+      As of version 3.0, execution mode may be configured in <application>Caja-Actions Configuration Tool</application> but is
+      not yet honored by <productname>Caja</productname> plugin.
+    </para>
+  </formalpara>
+  <para>
+    This concern working directory, execution mode, startup notification and
+    execution's owner parameters.
+  </para>
+
+  <formalpara>
+    <title>Suggested shortcut</title>
+    <para>
+      As of version 3.0, suggested shortcut, as described in <ulink url="http://www.caja-actions.org/?q=node/377" type="http">DES-EMA specification</ulink> cannot be
+      configured in <application>Caja-Actions Configuration Tool</application>, and is not honored by <productname>Caja</productname> plugin.
+    </para>
+  </formalpara>
+
+  <formalpara>
+    <title>Menu separator</title>
+    <para>
+      As of version 3.0, menu separators cannot be
+      configured in <application>Caja-Actions Configuration Tool</application>, and are not honored by <productname>Caja</productname> plugin.
+    </para>
+  </formalpara>
+  <para>
+    One has to note that, for now, <productname>Caja</productname> file manager does not
+    allow its plugins to define separators in the context menu.
+  </para>
+</sect2>
+  </sect1>
+
+<!-- =========================== About ================================ -->
+<!-- This section contains info about the program (not docs), such as
+      author's name(s), web page, license, feedback address. This
+      section is optional: primary place for this info is "About.." box of
+      the program. However, if you do wish to include this info in the
+      manual, this is the place to put it.
+      Alternatively, you can put this information in the title page.
+  -->
+
+  <sect1 id="about">
+    <title>About <application>Caja-Actions Configuration Tool</application></title>
+    <para>
+      The first version of <productname>Caja-Actions</productname> was initially written by
+      Frederic Ruaudel (<email>grumz@grumz.net</email>) and
+      Rodrigo Moya (<email>rodrigo@mate-db.org</email>).
+      It has been thoroughly improved and is currently maintained by
+      Pierre Wieser (<email>pwieser@trychlos.org</email>).
+    </para>
+    <para>
+      Artwork is due to courtesy of
+      Ulisse Perusin (<email>uli.peru@gmail.com</email>) and
+      DragonArtz
+      (<ulink url="http://www.dragonartz.net/" type="http">http://www.dragonartz.net</ulink>).
+    </para>
+    <para>
+      To find more information about <productname>Caja-Actions</productname>, please visit the
+      <ulink url="http://www.caja-actions.org/" type="http"/>
+      <productname>Caja-Actions</productname> website.
+    </para>
+    <para>
+      To report a bug or make a suggestion regarding <productname>Caja-Actions</productname>,
+      the <application>Caja-Actions Configuration Tool</application> or this manual, follow the directions in the
+      <ulink url="ghelp:user-guide#feedback" type="help">MATE Feedback Page</ulink>,
+      or you may prefer, at your convenience, directly open a bug
+      or a request for enhancement in
+      <ulink url="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" type="http">Bugzilla website</ulink>.
+    </para>
+  </sect1>
+
+  <appendix id="appendix-gnu-fdl">
+  <title>GNU Free Documentation License</title>
+  <simpara>Version 1.3, 3 November 2008</simpara>
+  <simpara>
+    Copyright © 2000, 2001, 2002, 2007, 2008
+    <ulink url="http://www.fsf.org/">Free Software Foundation, Inc.</ulink>
+  </simpara>
+  <simpara>
+    Everyone is permitted to copy and distribute verbatim copies of this
+    license document, but changing it is not allowed.
+  </simpara>
+  <bridgehead id="section0" renderas="sect2">
+    0. PREAMBLE
+  </bridgehead>
+  <simpara>
+    The purpose of this License is to make a manual, textbook, or other
+    functional and useful document “free” in the sense of freedom:
+    to assure everyone the effective freedom to copy and redistribute it, with
+    or without modifying it, either commercially or
+    noncommercially. Secondarily, this License preserves for the author and
+    publisher a way to get credit for their work, while not being considered
+    responsible for modifications made by others.
+  </simpara>
+  <simpara>
+    This License is a kind of “copyleft”, which means that
+    derivative works of the document must themselves be free in the same
+    sense. It complements the GNU General Public License, which is a copyleft
+    license designed for free software.
+  </simpara>
+  <simpara>
+    We have designed this License in order to use it for manuals for free
+    software, because free software needs free documentation: a free program
+    should come with manuals providing the same freedoms that the software
+    does. But this License is not limited to software manuals; it can be used
+    for any textual work, regardless of subject matter or whether it is
+    published as a printed book. We recommend this License principally for
+    works whose purpose is instruction or reference.
+  </simpara>
+  <bridgehead id="section1" renderas="sect2">
+    1. APPLICABILITY AND DEFINITIONS
+  </bridgehead>
+  <simpara>
+    This License applies to any manual or other work, in any medium, that
+    contains a notice placed by the copyright holder saying it can be
+    distributed under the terms of this License. Such a notice grants a
+    world-wide, royalty-free license, unlimited in duration, to use that work
+    under the conditions stated herein. The “Document”, below,
+    refers to any such manual or work. Any member of the public is a licensee,
+    and is addressed as “you”. You accept the license if you copy,
+    modify or distribute the work in a way requiring permission under
+    copyright law.
+  </simpara>
+  <simpara>
+    A “Modified Version” of the Document means any work containing
+    the Document or a portion of it, either copied verbatim, or with
+    modifications and/or translated into another language.
+  </simpara>
+  <simpara>
+    A “Secondary Section” is a named appendix or a front-matter
+    section of the Document that deals exclusively with the relationship of
+    the publishers or authors of the Document to the Document’s overall
+    subject (or to related matters) and contains nothing that could fall
+    directly within that overall subject. (Thus, if the Document is in part a
+    textbook of mathematics, a Secondary Section may not explain any
+    mathematics.) The relationship could be a matter of historical connection
+    with the subject or with related matters, or of legal, commercial,
+    philosophical, ethical or political position regarding them.
+  </simpara>
+  <simpara>
+    The “Invariant Sections” are certain Secondary Sections whose
+    titles are designated, as being those of Invariant Sections, in the notice
+    that says that the Document is released under this License. If a section
+    does not fit the above definition of Secondary then it is not allowed to
+    be designated as Invariant. The Document may contain zero Invariant
+    Sections. If the Document does not identify any Invariant Sections then
+    there are none.
+  </simpara>
+  <simpara>
+    The “Cover Texts” are certain short passages of text that are
+    listed, as Front-Cover Texts or Back-Cover Texts, in the notice that says
+    that the Document is released under this License. A Front-Cover Text may
+    be at most 5 words, and a Back-Cover Text may be at most 25 words.
+  </simpara>
+  <simpara>
+    A “Transparent” copy of the Document means a machine-readable
+    copy, represented in a format whose specification is available to the
+    general public, that is suitable for revising the document
+    straightforwardly with generic text editors or (for images composed of
+    pixels) generic paint programs or (for drawings) some widely available
+    drawing editor, and that is suitable for input to text formatters or for
+    automatic translation to a variety of formats suitable for input to text
+    formatters. A copy made in an otherwise Transparent file format whose
+    markup, or absence of markup, has been arranged to thwart or discourage
+    subsequent modification by readers is not Transparent. An image format is
+    not Transparent if used for any substantial amount of text. A copy that is
+    not “Transparent” is called “Opaque”.
+  </simpara>
+  <simpara>
+    Examples of suitable formats for Transparent copies include plain ASCII
+    without markup, Texinfo input format, LaTeX input format, SGML or XML
+    using a publicly available DTD, and standard-conforming simple HTML,
+    PostScript or PDF designed for human modification. Examples of transparent
+    image formats include PNG, XCF and JPG. Opaque formats include proprietary
+    formats that can be read and edited only by proprietary word processors,
+    SGML or XML for which the DTD and/or processing tools are not generally
+    available, and the machine-generated HTML, PostScript or PDF produced by
+    some word processors for output purposes only.
+  </simpara>
+  <simpara>
+    The “Title Page” means, for a printed book, the title page
+    itself, plus such following pages as are needed to hold, legibly, the
+    material this License requires to appear in the title page. For works in
+    formats which do not have any title page as such, “Title Page”
+    means the text near the most prominent appearance of the work’s
+    title, preceding the beginning of the body of the text.
+  </simpara>
+  <simpara>
+    The “publisher” means any person or entity that distributes
+    copies of the Document to the public.
+  </simpara>
+  <simpara>
+    A section “Entitled XYZ” means a named subunit of the Document
+    whose title either is precisely XYZ or contains XYZ in parentheses
+    following text that translates XYZ in another language. (Here XYZ stands
+    for a specific section name mentioned below, such as
+    “Acknowledgements”, “Dedications”,
+    “Endorsements”, or “History”.) To “Preserve
+    the Title” of such a section when you modify the Document means that
+    it remains a section “Entitled XYZ” according to this
+    definition.
+  </simpara>
+  <simpara>
+    The Document may include Warranty Disclaimers next to the notice which
+    states that this License applies to the Document. These Warranty
+    Disclaimers are considered to be included by reference in this License,
+    but only as regards disclaiming warranties: any other implication that
+    these Warranty Disclaimers may have is void and has no effect on the
+    meaning of this License.
+  </simpara>
+  <bridgehead id="section2" renderas="sect2">
+    2. VERBATIM COPYING
+  </bridgehead>
+  <simpara>
+    You may copy and distribute the Document in any medium, either
+    commercially or noncommercially, provided that this License, the copyright
+    notices, and the license notice saying this License applies to the
+    Document are reproduced in all copies, and that you add no other
+    conditions whatsoever to those of this License. You may not use technical
+    measures to obstruct or control the reading or further copying of the
+    copies you make or distribute. However, you may accept compensation in
+    exchange for copies. If you distribute a large enough number of copies you
+    must also follow the conditions in section 3.
+  </simpara>
+  <simpara>
+    You may also lend copies, under the same conditions stated above, and you
+    may publicly display copies.
+  </simpara>
+  <bridgehead id="section3" renderas="sect2">
+    3. COPYING IN QUANTITY
+  </bridgehead>
+  <simpara>
+    If you publish printed copies (or copies in media that commonly have
+    printed covers) of the Document, numbering more than 100, and the
+    Document’s license notice requires Cover Texts, you must enclose
+    the copies in covers that carry, clearly and legibly, all these Cover
+    Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on the
+    back cover. Both covers must also clearly and legibly identify you as the
+    publisher of these copies. The front cover must present the full title
+    with all words of the title equally prominent and visible. You may add
+    other material on the covers in addition. Copying with changes limited to
+    the covers, as long as they preserve the title of the Document and satisfy
+    these conditions, can be treated as verbatim copying in other respects.
+  </simpara>
+  <simpara>
+    If the required texts for either cover are too voluminous to fit legibly,
+    you should put the first ones listed (as many as fit reasonably) on the
+    actual cover, and continue the rest onto adjacent pages.
+  </simpara>
+  <simpara>
+    If you publish or distribute Opaque copies of the Document numbering more
+    than 100, you must either include a machine-readable Transparent copy
+    along with each Opaque copy, or state in or with each Opaque copy a
+    computer-network location from which the general network-using public has
+    access to download using public-standard network protocols a complete
+    Transparent copy of the Document, free of added material. If you use the
+    latter option, you must take reasonably prudent steps, when you begin
+    distribution of Opaque copies in quantity, to ensure that this Transparent
+    copy will remain thus accessible at the stated location until at least one
+    year after the last time you distribute an Opaque copy (directly or
+    through your agents or retailers) of that edition to the public.
+  </simpara>
+  <simpara>
+    It is requested, but not required, that you contact the authors of the
+    Document well before redistributing any large number of copies, to give
+    them a chance to provide you with an updated version of the Document.
+  </simpara>
+  <bridgehead id="section4" renderas="sect2">
+    4. MODIFICATIONS
+  </bridgehead>
+  <simpara>
+    You may copy and distribute a Modified Version of the Document under the
+    conditions of sections 2 and 3 above, provided that you release the
+    Modified Version under precisely this License, with the Modified Version
+    filling the role of the Document, thus licensing distribution and
+    modification of the Modified Version to whoever possesses a copy of it. In
+    addition, you must do these things in the Modified Version:
+  </simpara>
+  <orderedlist numeration="upperalpha">
+    <listitem>
+      <simpara>
+        Use in the Title Page (and on the covers, if any) a title distinct
+        from that of the Document, and from those of previous versions (which
+        should, if there were any, be listed in the History section of the
+        Document). You may use the same title as a previous version if the
+        original publisher of that version gives permission.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        List on the Title Page, as authors, one or more persons or entities
+        responsible for authorship of the modifications in the Modified
+        Version, together with at least five of the principal authors of the
+        Document (all of its principal authors, if it has fewer than five),
+        unless they release you from this requirement.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        State on the Title page the name of the publisher of the Modified
+        Version, as the publisher.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Preserve all the copyright notices of the Document.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Add an appropriate copyright notice for your modifications adjacent to
+        the other copyright notices.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Include, immediately after the copyright notices, a license notice
+        giving the public permission to use the Modified Version under the
+        terms of this License, in the form shown in the Addendum below.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Preserve in that license notice the full lists of Invariant Sections
+        and required Cover Texts given in the Document’s license
+        notice.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Include an unaltered copy of this License.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Preserve the section Entitled “History”, Preserve its
+        Title, and add to it an item stating at least the title, year, new
+        authors, and publisher of the Modified Version as given on the Title
+        Page. If there is no section Entitled “History” in the
+        Document, create one stating the title, year, authors, and publisher
+        of the Document as given on its Title Page, then add an item
+        describing the Modified Version as stated in the previous sentence.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Preserve the network location, if any, given in the Document for
+        public access to a Transparent copy of the Document, and likewise the
+        network locations given in the Document for previous versions it was
+        based on.  These may be placed in the “History”
+        section. You may omit a network location for a work that was published
+        at least four years before the Document itself, or if the original
+        publisher of the version it refers to gives permission.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        For any section Entitled “Acknowledgements” or
+        “Dedications”, Preserve the Title of the section, and
+        preserve in the section all the substance and tone of each of the
+        contributor acknowledgements and/or dedications given therein.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Preserve all the Invariant Sections of the Document, unaltered in
+        their text and in their titles. Section numbers or the equivalent are
+        not considered part of the section titles.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Delete any section Entitled “Endorsements”. Such a section
+        may not be included in the Modified Version.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Do not retitle any existing section to be Entitled
+        “Endorsements” or to conflict in title with any Invariant
+        Section.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Preserve any Warranty Disclaimers.
+      </simpara>
+    </listitem>
+  </orderedlist>
+  <simpara>
+    If the Modified Version includes new front-matter sections or appendices
+    that qualify as Secondary Sections and contain no material copied from the
+    Document, you may at your option designate some or all of these sections
+    as invariant. To do this, add their titles to the list of Invariant
+    Sections in the Modified Version’s license notice. These titles
+    must be distinct from any other section titles.
+  </simpara>
+  <simpara>
+    You may add a section Entitled “Endorsements”, provided it
+    contains nothing but endorsements of your Modified Version by various
+    parties — for example, statements of peer review or that the text
+    has been approved by an organization as the authoritative definition of a
+    standard.
+  </simpara>
+  <simpara>
+    You may add a passage of up to five words as a Front-Cover Text, and a
+    passage of up to 25 words as a Back-Cover Text, to the end of the list of
+    Cover Texts in the Modified Version. Only one passage of Front-Cover Text
+    and one of Back-Cover Text may be added by (or through arrangements made
+    by) any one entity. If the Document already includes a cover text for the
+    same cover, previously added by you or by arrangement made by the same
+    entity you are acting on behalf of, you may not add another; but you may
+    replace the old one, on explicit permission from the previous publisher
+    that added the old one.
+  </simpara>
+  <simpara>
+    The author(s) and publisher(s) of the Document do not by this License give
+    permission to use their names for publicity for or to assert or imply
+    endorsement of any Modified Version.
+  </simpara>
+  <bridgehead id="section5" renderas="sect2">
+    5. COMBINING DOCUMENTS
+  </bridgehead>
+  <simpara>
+    You may combine the Document with other documents released under this
+    License, under the terms defined in section 4 above for modified versions,
+    provided that you include in the combination all of the Invariant Sections
+    of all of the original documents, unmodified, and list them all as
+    Invariant Sections of your combined work in its license notice, and that
+    you preserve all their Warranty Disclaimers.
+  </simpara>
+  <simpara>
+    The combined work need only contain one copy of this License, and multiple
+    identical Invariant Sections may be replaced with a single copy. If there
+    are multiple Invariant Sections with the same name but different contents,
+    make the title of each such section unique by adding at the end of it, in
+    parentheses, the name of the original author or publisher of that section
+    if known, or else a unique number. Make the same adjustment to the section
+    titles in the list of Invariant Sections in the license notice of the
+    combined work.
+  </simpara>
+  <simpara>
+    In the combination, you must combine any sections Entitled
+    “History” in the various original documents, forming one
+    section Entitled “History”; likewise combine any sections
+    Entitled “Acknowledgements”, and any sections Entitled
+    “Dedications”. You must delete all sections Entitled
+    “Endorsements”.
+  </simpara>
+  <bridgehead id="section6" renderas="sect2">
+    6. COLLECTIONS OF DOCUMENTS
+  </bridgehead>
+  <simpara>
+    You may make a collection consisting of the Document and other documents
+    released under this License, and replace the individual copies of this
+    License in the various documents with a single copy that is included in
+    the collection, provided that you follow the rules of this License for
+    verbatim copying of each of the documents in all other respects.
+  </simpara>
+  <simpara>
+    You may extract a single document from such a collection, and distribute
+    it individually under this License, provided you insert a copy of this
+    License into the extracted document, and follow this License in all other
+    respects regarding verbatim copying of that document.
+  </simpara>
+  <bridgehead id="section7" renderas="sect2">
+    7. AGGREGATION WITH INDEPENDENT WORKS
+  </bridgehead>
+  <simpara>
+    A compilation of the Document or its derivatives with other separate and
+    independent documents or works, in or on a volume of a storage or
+    distribution medium, is called an “aggregate” if the copyright
+    resulting from the compilation is not used to limit the legal rights of
+    the compilation’s users beyond what the individual works
+    permit. When the Document is included in an aggregate, this License does
+    not apply to the other works in the aggregate which are not themselves
+    derivative works of the Document.
+  </simpara>
+  <simpara>
+    If the Cover Text requirement of section 3 is applicable to these copies
+    of the Document, then if the Document is less than one half of the entire
+    aggregate, the Document’s Cover Texts may be placed on covers that
+    bracket the Document within the aggregate, or the electronic equivalent of
+    covers if the Document is in electronic form. Otherwise they must appear
+    on printed covers that bracket the whole aggregate.
+  </simpara>
+  <bridgehead id="section8" renderas="sect2">
+    8. TRANSLATION
+  </bridgehead>
+  <simpara>
+    Translation is considered a kind of modification, so you may distribute
+    translations of the Document under the terms of section 4. Replacing
+    Invariant Sections with translations requires special permission from
+    their copyright holders, but you may include translations of some or all
+    Invariant Sections in addition to the original versions of these Invariant
+    Sections. You may include a translation of this License, and all the
+    license notices in the Document, and any Warranty Disclaimers, provided
+    that you also include the original English version of this License and the
+    original versions of those notices and disclaimers. In case of a
+    disagreement between the translation and the original version of this
+    License or a notice or disclaimer, the original version will prevail.
+  </simpara>
+  <simpara>
+    If a section in the Document is Entitled “Acknowledgements”,
+    “Dedications”, or “History”, the requirement
+    (section 4) to Preserve its Title (section 1) will typically require
+    changing the actual title.
+  </simpara>
+  <bridgehead id="section9" renderas="sect2">
+    9. TERMINATION
+  </bridgehead>
+  <simpara>
+    You may not copy, modify, sublicense, or distribute the Document except as
+    expressly provided under this License. Any attempt otherwise to copy,
+    modify, sublicense, or distribute it is void, and will automatically
+    terminate your rights under this License.
+  </simpara>
+  <simpara>
+    However, if you cease all violation of this License, then your license
+    from a particular copyright holder is reinstated (a) provisionally, unless
+    and until the copyright holder explicitly and finally terminates your
+    license, and (b) permanently, if the copyright holder fails to notify you
+    of the violation by some reasonable means prior to 60 days after the
+    cessation.
+  </simpara>
+  <simpara>
+    Moreover, your license from a particular copyright holder is reinstated
+    permanently if the copyright holder notifies you of the violation by some
+    reasonable means, this is the first time you have received notice of
+    violation of this License (for any work) from that copyright holder, and
+    you cure the violation prior to 30 days after your receipt of the notice.
+  </simpara>
+  <simpara>
+    Termination of your rights under this section does not terminate the
+    licenses of parties who have received copies or rights from you under this
+    License. If your rights have been terminated and not permanently
+    reinstated, receipt of a copy of some or all of the same material does not
+    give you any rights to use it.
+  </simpara>
+  <bridgehead id="section10" renderas="sect2">
+    10. FUTURE REVISIONS OF THIS LICENSE
+  </bridgehead>
+  <simpara>
+    The Free Software Foundation may publish new, revised versions of the GNU
+    Free Documentation License from time to time. Such new versions will be
+    similar in spirit to the present version, but may differ in detail to
+    address new problems or concerns. See
+    <ulink url="http://www.gnu.org/copyleft/">Copyleft</ulink>.
+  </simpara>
+  <simpara>
+    Each version of the License is given a distinguishing version number. If
+    the Document specifies that a particular numbered version of this License
+    “or any later version” applies to it, you have the option of
+    following the terms and conditions either of that specified version or of
+    any later version that has been published (not as a draft) by the Free
+    Software Foundation. If the Document does not specify a version number of
+    this License, you may choose any version ever published (not as a draft)
+    by the Free Software Foundation. If the Document specifies that a proxy
+    can decide which future versions of this License can be used, that
+    proxy’s public statement of acceptance of a version permanently
+    authorizes you to choose that version for the Document.
+  </simpara>
+  <bridgehead id="section11" renderas="sect2">
+    11. RELICENSING
+  </bridgehead>
+  <simpara>
+    “Massive Multiauthor Collaboration Site” (or “MMC
+    Site”) means any World Wide Web server that publishes copyrightable
+    works and also provides prominent facilities for anybody to edit those
+    works. A public wiki that anybody can edit is an example of such a
+    server. A “Massive Multiauthor Collaboration” (or
+    “MMC”) contained in the site means any set of copyrightable
+    works thus published on the MMC site.
+  </simpara>
+  <simpara>
+    “CC-BY-SA” means the Creative Commons Attribution-Share Alike
+    3.0 license published by Creative Commons Corporation, a not-for-profit
+    corporation with a principal place of business in San Francisco,
+    California, as well as future copyleft versions of that license published
+    by that same organization.
+  </simpara>
+  <simpara>
+    “Incorporate” means to publish or republish a Document, in
+    whole or in part, as part of another Document.
+  </simpara>
+  <simpara>
+    An MMC is “eligible for relicensing” if it is licensed under
+    this License, and if all works that were first published under this
+    License somewhere other than this MMC, and subsequently incorporated in
+    whole or in part into the MMC, (1) had no cover texts or invariant
+    sections, and (2) were thus incorporated prior to November 1, 2008.
+  </simpara>
+  <simpara>
+    The operator of an MMC Site may republish an MMC contained in the site
+    under CC-BY-SA on the same site at any time before August 1, 2009,
+    provided the MMC is eligible for relicensing.
+  </simpara>
+  <bridgehead id="addendum" renderas="sect2">
+    ADDENDUM: How to use this License for your documents
+  </bridgehead>
+  <simpara>
+    To use this License in a document you have written, include a copy of the
+    License in the document and put the following copyright and license
+    notices just after the title page:
+  </simpara>
+  <screen>Copyright © YEAR YOUR NAME
+
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.3 or any later version
+published by the Free Software Foundation; with no Invariant Sections, no
+Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in
+the section entitled “GNU Free Documentation License”.</screen>
+  <simpara>
+    If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+    replace the “with… Texts.” line with this:
+  </simpara>
+  <screen>with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover Texts
+being LIST, and with the Back-Cover Texts being LIST.</screen>
+  <simpara>
+    If you have Invariant Sections without Cover Texts, or some other
+    combination of the three, merge those two alternatives to suit the
+    situation.
+  </simpara>
+  <simpara>
+    If your document contains nontrivial examples of program code, we
+    recommend releasing these examples in parallel under your choice of free
+    software license, such as the GNU General Public License, to permit their
+    use in free software.
+  </simpara>
+</appendix>
+
+
+</article>

@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -34,6 +33,7 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
+#include <locale.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -41,11 +41,10 @@
 #include <api/na-object-api.h>
 #include <api/na-dbus.h>
 
+#include <core/na-mateconf-migration.h>
 #include <core/na-pivot.h>
 #include <core/na-selected-info.h>
-
-#include <plugin-tracker/na-tracker.h>
-#include <plugin-tracker/na-tracker-dbus.h>
+#include <core/na-tokens.h>
 
 #include "console-utils.h"
 #include "caja-actions-run-bindings.h"
@@ -57,7 +56,7 @@ static gboolean   version          = FALSE;
 static GOptionEntry entries[] = {
 
 	{ "id"                   , 'i', 0, G_OPTION_ARG_STRING        , &id,
-			N_( "The internal identifiant of the action to be launched" ), N_( "<STRING>" ) },
+			N_( "The internal identifier of the action to be launched" ), N_( "<STRING>" ) },
 	{ "target"               , 't', 0, G_OPTION_ARG_FILENAME_ARRAY, &targets_array,
 			N_( "A target, file or folder, for the action. More than one options may be specified" ), N_( "<URI>" ) },
 	{ NULL }
@@ -78,7 +77,6 @@ static GList           *get_selection_from_strv( const gchar **strv, gboolean ha
 static NAObjectProfile *get_profile_for_targets( NAObjectAction *action, GList *targets );
 static void             execute_action( NAObjectAction *action, NAObjectProfile *profile, GList *targets );
 static void             dump_targets( GList *targets );
-static void             free_targets( GList *targets );
 static void             exit_with_usage( void );
 
 int
@@ -95,7 +93,14 @@ main( int argc, char** argv )
 	GList *targets;
 
 	g_type_init();
+	setlocale( LC_ALL, "" );
 	console_init_log_handler();
+
+	/* pwi 2011-01-05
+	 * run MateConf migration tools before doing anything else
+	 * above all before allocating a new NAPivot
+	 */
+	na_mateconf_migration_run();
 
 	context = init_options();
 
@@ -152,7 +157,7 @@ main( int argc, char** argv )
 		exit( status );
 	}
 
-	if( !na_object_action_is_candidate( action, ITEM_TARGET_SELECTION, targets )){
+	if( !na_icontext_is_candidate( NA_ICONTEXT( action ), ITEM_TARGET_ANY, targets )){
 		g_printerr( _( "Action %s is not a valid candidate. Exiting.\n" ), id );
 		exit( status );
 	}
@@ -166,7 +171,7 @@ main( int argc, char** argv )
 
 	execute_action( action, profile, targets );
 
-	free_targets( targets );
+	na_selected_info_free_list( targets );
 	exit( status );
 }
 
@@ -181,6 +186,7 @@ init_options( void )
 	GOptionGroup *misc_group;
 
 	context = g_option_context_new( _( "Execute an action on the specified target." ));
+	g_option_context_set_translation_domain( context, GETTEXT_PACKAGE );
 
 #ifdef ENABLE_NLS
 	bindtextdomain( GETTEXT_PACKAGE, MATELOCALEDIR );
@@ -193,17 +199,14 @@ init_options( void )
 	g_option_context_add_main_entries( context, entries, NULL );
 #endif
 
-	description = g_strdup_printf( "%s.\n%s", PACKAGE_STRING,
-			_( "Bug reports are welcomed at http://bugzilla.gnome.org,"
-				" or you may prefer to mail to <maintainer@caja-actions.org>.\n" ));
-
+	description = console_cmdline_get_description();
 	g_option_context_set_description( context, description );
-
 	g_free( description );
 
 	misc_group = g_option_group_new(
 			"misc", _( "Miscellaneous options" ), _( "Miscellaneous options" ), NULL, NULL );
 	g_option_group_add_entries( misc_group, misc_entries );
+	g_option_group_set_translation_domain( misc_group, GETTEXT_PACKAGE );
 	g_option_context_add_group( context, misc_group );
 
 	return( context );
@@ -215,8 +218,8 @@ init_options( void )
 static NAObjectAction *
 get_action( const gchar *id )
 {
-	NAObjectAction *action;
 	NAPivot *pivot;
+	NAObjectAction *action;
 
 	action = NULL;
 
@@ -228,17 +231,13 @@ get_action( const gchar *id )
 
 	if( !action ){
 		g_printerr( _( "Error: action '%s' doesn't exist.\n" ), id );
-	}
 
-	if( action ){
+	} else {
 		if( !na_object_is_enabled( action )){
 			g_printerr( _( "Error: action '%s' is disabled.\n" ), id );
 			g_object_unref( action );
 			action = NULL;
 		}
-	}
-
-	if( action ){
 		if( !na_object_is_valid( action )){
 			g_printerr( _( "Error: action '%s' is not valid.\n" ), id );
 			g_object_unref( action );
@@ -250,7 +249,7 @@ get_action( const gchar *id )
 }
 
 /*
- * the DBus.Tracker.Status interface returns a list of strings
+ * the DBus.Tracker.Properties1 interface returns a list of strings
  * where each selected item brings up both its URI and its Caja
  * mime type.
  *
@@ -261,17 +260,69 @@ targets_from_selection( void )
 {
 	static const gchar *thisfn = "caja_actions_run_targets_from_selection";
 	GList *selection;
-	DBusGConnection *connection;
-	DBusGProxy *proxy;
 	GError *error;
 	gchar **paths;
 
+	g_debug( "%s", thisfn );
+
+	selection = NULL;
 	error = NULL;
-	proxy = NULL;
 	paths = NULL;
 
-	connection = dbus_g_bus_get( DBUS_BUS_SESSION, &error );
+#ifdef HAVE_GDBUS
+	GDBusObjectManager *manager;
+	gchar *name_owner;
+	GDBusObject *object;
+	GDBusInterface *iface;
 
+	manager = na_tracker_object_manager_client_new_for_bus_sync(
+			G_BUS_TYPE_SESSION,
+			G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE,
+			CAJA_ACTIONS_DBUS_SERVICE,
+			CAJA_ACTIONS_DBUS_TRACKER_PATH,
+			NULL,
+			&error );
+
+	if( !manager ){
+		g_printerr( "%s: unable to allocate an ObjectManagerClient: %s\n", thisfn, error->message );
+		g_error_free( error );
+		return( NULL );
+	}
+
+	name_owner = g_dbus_object_manager_client_get_name_owner( G_DBUS_OBJECT_MANAGER_CLIENT( manager ));
+	g_debug( "%s: name_owner=%s", thisfn, name_owner );
+	g_free( name_owner );
+
+	object = g_dbus_object_manager_get_object( manager, CAJA_ACTIONS_DBUS_TRACKER_PATH "/0" );
+	if( !object ){
+		g_printerr( "%s: unable to get object at %s path\n", thisfn, CAJA_ACTIONS_DBUS_TRACKER_PATH "/0" );
+		g_object_unref( manager );
+		return( NULL );
+	}
+
+	iface = g_dbus_object_get_interface( object, CAJA_ACTIONS_DBUS_TRACKER_IFACE );
+	if( !iface ){
+		g_printerr( "%s: unable to get %s interface\n", thisfn, CAJA_ACTIONS_DBUS_TRACKER_IFACE );
+		g_object_unref( object );
+		g_object_unref( manager );
+		return( NULL );
+	}
+
+	/* note that @iface is really a GDBusProxy instance
+	 * and additionally also a NATrackerProperties1 instance
+	 */
+	na_tracker_properties1_call_get_selected_paths_sync(
+			NA_TRACKER_PROPERTIES1( iface ),
+			&paths,
+			NULL,
+			&error );
+
+#else
+# ifdef HAVE_DBUS_GLIB
+	DBusGConnection *connection;
+	DBusGProxy *proxy = NULL;
+
+	connection = dbus_g_bus_get( DBUS_BUS_SESSION, &error );
 	if( !connection ){
 		if( error ){
 			g_printerr( _( "Error: unable to get a connection to session DBus: %s" ), error->message );
@@ -282,7 +333,9 @@ targets_from_selection( void )
 	g_debug( "%s: connection is ok", thisfn );
 
 	proxy = dbus_g_proxy_new_for_name( connection,
-			CAJA_ACTIONS_DBUS_SERVICE, NA_TRACKER_DBUS_TRACKER_PATH, NA_TRACKER_DBUS_TRACKER_INTERFACE );
+			CAJA_ACTIONS_DBUS_SERVICE,
+			CAJA_ACTIONS_DBUS_TRACKER_PATH "/0",
+			CAJA_ACTIONS_DBUS_TRACKER_IFACE );
 
 	if( !proxy ){
 		g_printerr( _( "Error: unable to get a proxy on %s service" ), CAJA_ACTIONS_DBUS_SERVICE );
@@ -303,12 +356,14 @@ targets_from_selection( void )
 	}
 	g_debug( "%s: function call is ok", thisfn );
 
+	/* TODO: unref proxy */
+	dbus_g_connection_unref( connection );
+# endif
+#endif
+
 	selection = get_selection_from_strv(( const gchar ** ) paths, TRUE );
 
 	g_strfreev( paths );
-
-	/* TODO: unref proxy */
-	dbus_g_connection_unref( connection );
 
 	return( selection );
 }
@@ -336,6 +391,7 @@ get_selection_from_strv( const gchar **strv, gboolean has_mimetype )
 {
 	GList *list;
 	gchar **iter;
+	gchar *errmsg;
 
 	list = NULL;
 	iter = ( gchar ** ) strv;
@@ -347,8 +403,18 @@ get_selection_from_strv( const gchar **strv, gboolean has_mimetype )
 			iter++;
 			mimetype = ( const gchar * ) *iter;
 		}
-		NASelectedInfo *nsi = na_selected_info_create_for_uri( uri, mimetype );
-		list = g_list_prepend( list, nsi );
+
+		errmsg = NULL;
+		NASelectedInfo *nsi = na_selected_info_create_for_uri( uri, mimetype, &errmsg );
+
+		if( errmsg ){
+			g_printerr( "%s\n", errmsg );
+			g_free( errmsg );
+		}
+
+		if( nsi ){
+			list = g_list_prepend( list, nsi );
+		}
 		iter++;
 	}
 
@@ -367,9 +433,9 @@ get_profile_for_targets( NAObjectAction *action, GList *targets )
 
 	candidate = NULL;
 	profiles = na_object_get_items( action );
-	for( ip = profiles ; ip && !candidate ; ip = ip->next ){
 
-		if( na_icontext_is_candidate( NA_ICONTEXT( ip->data ), ITEM_TARGET_SELECTION, targets )){
+	for( ip = profiles ; ip && !candidate ; ip = ip->next ){
+		if( na_icontext_is_candidate( NA_ICONTEXT( ip->data ), ITEM_TARGET_ANY, targets )){
 			candidate = NA_OBJECT_PROFILE( ip->data );
 		}
 	}
@@ -380,25 +446,11 @@ get_profile_for_targets( NAObjectAction *action, GList *targets )
 static void
 execute_action( NAObjectAction *action, NAObjectProfile *profile, GList *targets )
 {
-	static const gchar *thisfn = "caja_action_run_execute_action";
-	GString *cmd;
-	gchar *param, *path;
+	/*static const gchar *thisfn = "caja_action_run_execute_action";*/
+	NATokens *tokens;
 
-	path = na_object_get_path( profile );
-	cmd = g_string_new( path );
-
-	param = na_object_profile_parse_parameters( profile, ITEM_TARGET_SELECTION, targets );
-
-	if( param != NULL ){
-		g_string_append_printf( cmd, " %s", param );
-		g_free( param );
-	}
-
-	g_debug( "%s: executing '%s'", thisfn, cmd->str );
-	g_spawn_command_line_async( cmd->str, NULL );
-
-	g_string_free (cmd, TRUE);
-	g_free( path );
+	tokens = na_tokens_new_from_selection( targets );
+	na_tokens_execute_action( tokens, profile );
 }
 
 /*
@@ -418,16 +470,6 @@ dump_targets( GList *targets )
 		g_free( mimetype );
 		g_free( uri );
 	}
-}
-
-/*
- *
- */
-static void
-free_targets( GList *targets )
-{
-	g_list_foreach( targets, ( GFunc ) g_object_unref, NULL );
-	g_list_free( targets );
 }
 
 /*

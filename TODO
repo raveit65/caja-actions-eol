@@ -1,28 +1,159 @@
+N-A BUGS
+========
+- 2011-11-15: an action with one profile - if the action has a property set to empty
+  'folders=' and the profile does not have the property set, then set_defaults on the
+  profile set the default property (here, 'folders=/') instead of taking the action
+  value. On the UI, updating an action's property means updating the current profile.
+  This is ok as long as the action is also set  (...) there is one profile and the
+  action's property was not the default
 
-- (Grumz) implement the Help button in nact (or hide it meanwhile)
+- 2011-11-28 import assistant: intro label should be wrappable
 
-- (Grumz) i18n doen't works in the command line tool and for some part
-  of NACT like the scheme list, it seems..?
+- 2011-11-28 import assistant: importer ask format; long descriptions
+  should be a long wrappable line
 
-- Note about the schemas in Caja Actions:
-  a) actions are identified by uuid
-  b) so, all MateConf keys have a path with the uuid of the action
-  c) I'm not willing to write a schema for each and every uuid
-  d) so, as of 1.11.2, the provided schema is general and should apply
-     to all actions
-  e) but there is not yet an API to set a MateConfMetaInfo for a key
-     note that mateconftool-2 --dump is able to export for each entry a
-     <schema_key> which includes the path to the general schema key
-     but we cannot set it programatically (bad !)
+- 2011-11-28 have a padding (6) on top of gtkfilechooser (import & export assistants)
+  not gtk3 : gtk2 only
 
+- 2011-11-28 already existing item when importing should keep the same size
+  between invocations
+  2011-11-30 this is ok on f14 f16 ubu10 and almost on ubu11
+  (ubu11): z-order is ok the first time, but comes back to the previous
+  behavior starting with the second time (maybe a theme problem ?)
+
+- 2011-12-06: after unsuccessfully tried to import via dnd:
+   Gtk-CRITICAL **: gtk_tree_view_scroll_to_cell: assertion `tree_view->priv->tree != NULL' failed
+
+Plan de test: NACT should be able to import all types of actions and menus,
+kindly fixing small errors.
+- for each and every released version, have an example of each available export format
+  with lists of items and at least two profiles if feature is available
+
+TODO
+====
+- 2011-02-21: implement startup mode
+
+- 2011-02-21: implement execute as user
+
+- 2010-06-17: implement shortcut button in NactIPropertiesTab page
+
+- 2010-08-09: in v1.x until ??, %f used to be the basename!!
+
+- 2010-12-30: gtk-doc 1.15
+  "Use of uninitialized value within %DeclarationTypes in lc at /usr/bin/gtkdoc-mkdb line 929"
+  when building XML
+
+- 2011-02-07: is_level_zero_writable: should be monitored
+  for now, is only evaluated when NAUpdater is instanciated
+
+- 2011-02-07: are_preferences_locked: should be monitored
+  for now, is only evaluated when NAUpdater is instanciated
+
+- 2011-02-12: should we have a NAKeyFile shared between i/o-desktop and settings ?
+
+- 2011-02-23: implement item separator
+
+- 2011-02-23: desktop environment
+  accept a default at compile time
+  accept as a runtime user preference (may be mandatory)
+
+- 2011-06-08: when getting an elementary data, we should get the default value if it is not set
+  to determine if a value is set, have a na_object_is_data_set (see na_object_item_deals_with_version)
+  this should let us get ride of na_factory_object_set_defaults() function
+
+- 2011-06-08: get ride of NADataBoxed ?
+
+- 2011-11-29: exporter ask: add an option: do not import
+
+- 2011-11-29: exporter ask and importer ask, add a button cancel all
+
+- 2011-11-29: in IActionsList, be able to extend the selection just by dragging the mouse
+  as in GtkFileChooser when selecting several files
+
+- 2011-12-04: support pkgconfig
+
+- 2011-12-04: support GObject introspection
+
+N-A ENHANCEMENTS
+================
 - allow users to upload/download actions directly from a web repository
   (REST services ?)
 
-- changing conditions in IConditionsTab should trigger an update of the
-  example label
+- 2010-08-10: non-notification delay after save should be a preference
 
+- 2010-08-09: na-pivot:st_burst_timeout should be a preference
+
+- 2010-08-09: plugins should be able to provide a preference page
+
+- 2010-09-30: export format and d&d format should be separated preferences
+
+- 2010-06-17: ui enhancement
+  all edition (entry, buttons, etc.) fields should have a small emblem when read-only.
+
+- add a 'why this item is invalid'
+
+- enhancement.ui: review toolbars layout
+  so that detacheable toolbars do not take so such big extra space
+
+- enhancement.management: we should be able to fully export a configuration
+  this implies exporting menus and full tree
+  + restore hierarchy on import (see bug 626337)
+
+- enhancement.ui: rows implicitely selected should have a special display
+  (as a sort of 'transparent' selection)
+
+- enhancement.ui: review statusbar layout
+  do not add extra height to statusbar
+  better encapsulate statusbar, lock indicator, possibly other indicators
+
+- enhancement.config: na_pivot_is_level_zero_writable:
+  the provider which hosts the level-zero list of items should be a configuration option
+  (current is MateConf)
+
+- DBus service: list current I/O providers
+
+- DBus service: import/export an action or a menu
+
+- nact: new action assistant
+
+- export: add a overwrite page: what to do if file already exists ?
+
+- IActionTab: check_label has became useless since validity is global
+  to the action - remove, or extend to each field which can led to
+  unvalidity
+
+- for each toolbar, let the user choose which buttons are displayed
+
+- have a preference for modified and invalid fonts
+
+- undo manager (at least Ctrl-Z)
+
+- 2010-08-20: add an item in the context menu to explain why other actions
+  are not displayed
+
+- export-ask: the keep last choice check box should be as editable that export format
+
+- 2011-05-20: should have an option to run in debug mode and dump whole configuration
+  so that a user can click on a button, and then send a zipped log to the maintainer
+
+- 2011-12-05: convert NAObject to GNode ?
+
+OTHER ENHANCEMENTS
+==================
 - GOptions request enhancement so that the help for an option could be
   multiline (by defining an optional maximum width)
+
+- MateConf Editor request enhancement: one should be able to refresh the hierarchy
+  (F5 ?)
+
+- Caja: implement menu separator for plugins
+
+OTHER BUGS
+==========
+- 2011-02-21: caja: calls menu_provider_get_file_items() api each time we are
+  activating a menu; as the call is made without any indication about the currently
+  activated item, we have no other option than just recreate the menu; this is
+  very expensive in computation time
 
 - GLib bug for g_utf8_collate_key_for_filename()
   (see the 26 exported actions, and the screenshot of Caja view)
@@ -36,101 +167,44 @@
   function nact-tree-model.c::add_parent
   recreate a small code which reproduces this bug and open in bugzilla
 
-- MateConf Editor request enhancement: one should be able to refresh the hierarchy
-  (F5 ?)
-
-- for each toolbar, let the user choose which buttons are displayed
-
-- when a unique app is found, use libwnck (?) to activate it
-
-- have a preference for modified and invalid fonts
-
-- undo manager (at least Ctrl-Z)
-
-- IActionTab: check_label has became useless since validity is global
-  to the action - remove, or extend to each field which can led to
-  unvalidity
-
-- export: add a overwrite page: what to do if file already exists ?
-
-- caja-actions-new:
-  give same defaults that when creating an action in NACT
-  choose the target I/O provider
-
 - Caja bug when dnd to caja on other screen
   see https://bugzilla.gnome.org/show_bug.cgi?id=593453
 
-- nact: new action assistant
+- intltool: should implement standard targets for users
+  (cf. 14.6 make.html GNU Make manual).
+  As of 0.41.1, the absence of these standard targets prevents users
+  (which are actually package developers) to provide any html, pdf, ...
+  targets
 
-- DBus service: list current I/O providers
+- 2010-12-13: --enable-gtk-doc-pdf does not generate a pdf, but should
 
-- DBus service: import/export an action or a menu
+- 2011-02-23: it seems that Caja 2.30.1 calls get_file_items even when are 
+  opening a submenu ?
 
-- optim: what about between base_builder_instance_init and
-  base_application_v_initialize_default_icon ?
+- 2011-02-23: also it seems that Caja 2.30.1 free our menus (probably because 
+  it is an item of its own menu), but not recursively the items of this menu.
 
-- enhancement.config: na_pivot_is_level_zero_writable:
-  the provider which hosts the level-zero list of items should be a configuration option
-
-- enhancement.ui: review statusbar layout
-  do not add extra height to statusbar
-  better encapsulate statusbar, lock indicator, possibly other indicators
-
-- enhancement.ui: review toolbars layout
-  so that detacheable toolbars do not take so such big extra space
-
-- enhancement.management: we should be able to fully export a configuration
-  this implies exporting menus and full tree
-  + restore hierarchy on import
-
-- enhancement.ui: rows implicitely selected should have a special display
-  (as a sort of 'transparent' selection)
-
-- nact-iactions-list.c: display_label
-  the 'editable' cell property should be set only once, instead of at each redraw
-  and more because we also compute this on selection change
-  what we should do: compute once, and monitor to only change when needed
-
-- Implement:
-	Description
-	SuggestedShortcut (see mate-keybinding-properties)
-	Path
-	ExecutionMode
-	StartupNotify
-	StartupWMClass
-	ExecuteAs
-	OnlyShowIn
-	NotShowIn
-	Hidden
-	TryExec
-	ShowIfRegistered
-	ShowIfTrue
-	ShowIfRunning
-	SelectionCount
-	Capabilities
-
-- profile path and parameters should be set together as only one variable ?
-
-- icon: is defined as localestring in desktop entry spec
-  but path is defined as string in this same spec
-  and icon may be a path -> so what to do with this ?
-
-- in MateConf, for v3, have conditions in a subfolder
-  configurations/
-    id/
-       properties/
-       conditions/
-       profiles/
-          profile-un/
-            properties/
-            conditions/
-            command/
+NOTES
+=====
+- Note about the schemas in Caja Actions:
+  a) actions are identified by uuid
+  b) so, all MateConf keys have a path with the uuid of the action
+  c) I'm not willing to write a schema for each and every uuid
+  d) so, as of 1.11.2, the provided schema is general and should apply
+     to all actions
+  e) but there is not yet an API to set a MateConfMetaInfo for a key
+     note that mateconftool-2 --dump is able to export for each entry a
+     <schema_key> which includes the path to the general schema key
+     but we cannot set it programatically (bad !)
 
 - 20100408: mateconf_concat_dir_and_key: have seen this as deprecated, but do not
   find again the reference :(
   not even in unstable library on the web
   http://library.gnome.org/devel/mateconf/unstable/mateconf-mateconf.html#mateconf-concat-dir-and-key
 
-- "x-caja-desktop:///" is rather a scheme than a folder
+- "x-caja-desktop:///" is rather a scheme than a folder => actually is an URI
 
-- enhancement.ui: add a 'why this item is invalid' 
+- default has changed for schemes (was coded as 'file' instead of '*')
+  when version is recorded (as 1.4.1 or 2.0) then schemes is reliable
+  when version is not recorded, it is a 2.30 serie, and scheme is not recorded when default (i.e. file)
+  do not try to force anything than that, but this will have to be documented

@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Compiling the Caja-Actions package</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch01.html" title="Caja-Actions™ Overview">
+<link rel="prev" href="na-dist-content.html" title="Distribution content">
+<link rel="next" href="na-about.html" title="About this document">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle">
+<td><a accesskey="p" href="na-dist-content.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="na-about.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="na-compiling"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle">Compiling the Caja-Actions package</span></h2>
+<p>Compiling the Caja-Actions Package — 
+      How to compile Caja-Actions
+    </p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="building"></a><h2>Building <span class="productname">Caja-Actions</span>™ on UNIX</h2>
+<p>
+      On UNIX, <span class="productname">Caja-Actions</span>™ uses the standard GNU build system,
+      using <a class="ulink" href="http://www.gnu.org/software/autoconf/" target="_top">
+      <span class="application">autoconf</span></a> for package
+      configuration and resolving portability issues,
+      <a class="ulink" href="http://www.gnu.org/software/automake/" target="_top">
+      <span class="application">automake</span></a> for building makefiles
+      that comply with the GNU Coding Standards, and
+      <a class="ulink" href="http://www.gnu.org/software/libtool/" target="_top">
+      <span class="application">libtool</span></a> for building shared
+      libraries on multiple platforms. The normal sequence for
+      compiling and installing the <span class="productname">Caja-Actions</span>™ package is thus:
+
+      </p>
+<div class="literallayout"><p><br>
+        <strong class="userinput"><code>./configure</code></strong><br>
+        <strong class="userinput"><code>make</code></strong><br>
+        <strong class="userinput"><code>make install</code></strong><br>
+      </p></div>
+<p>
+    </p>
+<p>
+      The standard options provided by <span class="application">GNU
+      autoconf</span> may be passed to the
+      <span class="command"><strong>configure</strong></span> script.  Please see the
+      <a class="ulink" href="http://www.gnu.org/software/autoconf/manual/index.html" target="_top">
+      <span class="application">autoconf</span> documentation</a> or run
+      <span class="command"><strong>./configure --help</strong></span> for information about
+      the standard options.
+    </p>
+</div>
+<div class="refsect1">
+<a name="dependencies"></a><h2>Dependencies</h2>
+<p>
+      Before you can compile the <span class="productname">Caja-Actions</span>™ package, you need to have
+      various other tools and libraries installed on your
+      system. The two main tools needed during the build process (as
+      differentiated from the tools used in when creating <span class="productname">Caja-Actions</span>™
+      mentioned above such as <span class="application">autoconf</span>)
+      are <span class="command"><strong>pkg-config</strong></span> and GNU make.
+    </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>
+          <a class="ulink" href="http://www.freedesktop.org/software/pkgconfig/" target="_top">pkg-config</a>
+          is a tool for tracking the compilation flags needed for
+          libraries that are used by the <span class="productname">Caja-Actions</span>™ package.
+          (For each library, a small <code class="literal">.pc</code> text file is
+          installed in a standard location that contains the compilation
+          flags needed for that library along with version number
+          information.)
+        </p></li>
+<li class="listitem"><p>
+          The <span class="productname">Caja-Actions</span>™ makefiles will mostly work with different versions
+          of <span class="command"><strong>make</strong></span>. However, there tends to be
+          a few incompatibilities, so the <span class="productname">Caja-Actions</span>™ team recommends
+          installing <a class="ulink" href="http://www.gnu.org/software/make" target="_top">GNU
+          make</a> if you don't already have it on your system
+          and using it. (It may be called <span class="command"><strong>gmake</strong></span>
+          rather than <span class="command"><strong>make</strong></span>.)
+        </p></li>
+</ul></div>
+<p>
+      <span class="productname">Caja-Actions</span>™ depends on a number of other libraries.
+    </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>
+          <a class="ulink" href="http://library.gnome.org/devel/glib/stable/" target="_top">GLib</a>
+          and <a class="ulink" href="http://www.gtk.org/" target="_top">Gtk+</a> are fondamental
+          libraries, both for user interface and for portability and
+          internationalization management.
+        </p></li>
+<li class="listitem"><p>
+          <a class="ulink" href="http://xmlsoft.org/" target="_top">libxml2</a> is used to
+          manage XML imports and exports.
+        </p></li>
+<li class="listitem"><p>
+          <a class="ulink" href="http://library.gnome.org/devel/libgtop/stable/" target="_top">libgtop2</a>
+          is used to detect and identify running processes as part of the validation
+          process of a candidate context.
+        </p></li>
+<li class="listitem"><p>
+          <a class="ulink" href="http://www.x.org/" target="_top">libSM</a> and
+          <a class="ulink" href="http://www.x.org/" target="_top">libICE</a>
+          are used as a session management libraries, in order to be sure the session
+          will not terminate without at least proposing the user to save his
+          modifications.
+        </p></li>
+<li class="listitem"><p>
+          <a class="ulink" href="ftp://ftp.kernel.org/pub/linux/utils/util-linux-ng" target="_top">libUUID</a>
+          is the universally unique ID library used to automatically generate a
+          unique identifiant at item creation.
+        </p></li>
+<li class="listitem"><p>
+          <a class="ulink" href="http://www.gnome.org/~ebassi/source/" target="_top">libunique</a>
+          is required so that the Caja-Actions Configuration Tool only
+          executes one instance.
+        </p></li>
+<li class="listitem"><p>
+          And, of course,
+          <a class="ulink" href="http://projects.gnome.org/caja/" target="_top"><span class="productname">Caja</span>™ extension</a>
+          is required because <span class="productname">Caja-Actions</span>™ is first a <span class="productname">Caja</span>™ extension.
+        </p></li>
+</ul></div>
+</div>
+<div class="refsect1">
+<a name="extra-configuration-options"></a><h2>Extra Configuration Options</h2>
+<p>
+      In addition to the normal options, the
+      <span class="command"><strong>configure</strong></span> script in the <span class="productname">Caja-Actions</span>™ package
+      supports these additional arguments:
+
+      </p>
+<div class="cmdsynopsis"><p><code class="command">configure</code>  [[--with-caja-extdir=DIR]] [[--with-default-io-provider=na-mateconf|na-desktop]] [[--enable-html-manuals[=gdt|db2html]]] [[--enable-pdf-manuals[=dblatex]]]</p></div>
+<p>
+    </p>
+<p><b><code class="systemitem">--with-caja-extdir=DIR</code>. </b>
+        With this option, one may define an alternate directory where
+        our <span class="productname">Caja</span>™ extensions will be stored.
+      
+        This is most commonly useful:
+      </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>
+            In development mode, we only have to install symlinks
+            from <span class="productname">Caja</span>™ standard location to our development
+            tree once. Then, each new version of our libraries
+            will be automatically considered by <span class="productname">Caja</span>™.
+          </p></li>
+<li class="listitem"><p>
+            When running <span class="command"><strong>make distcheck</strong></span>, so that
+            compiled libraries do not interfere with installed ones.
+          </p></li>
+<li class="listitem"><p>
+            When <span class="productname">Caja</span>™ is not installed itself in a standard
+            location.
+          </p></li>
+</ul></div>
+<p><b><code class="systemitem">--with-default-io-provider=na-mateconf|na-desktop</code>. </b>
+        As of version 3.0, <span class="productname">Caja-Actions</span>™ may store menus and actions
+        both in MateConf, which is the historical behavior, or as
+        <code class="filename">.desktop</code> files.
+      
+        This option lets the packager define which will be the
+        default destination when a new menu or action will be
+        created.
+      
+        This defaults to "na-desktop" which is the internal
+        identifiant of the I/O provider which manages
+        <code class="filename">.desktop</code> files.
+      </p>
+<p><b><code class="systemitem">--enable-html-manuals[=gdt|db2html]</code>. </b>
+        This option lets the packager regenerate user's manuals
+        from the DocBook sources as HTML documents.
+      
+        All available translations are generated.
+      
+        Building HTML documents from DocBook source can be
+        realized through <span class="application">mate-doc-tool</span>
+        or <span class="application">db2html</span>.
+        <span class="productname">Caja-Actions</span>™ defaults to use <span class="application">mate-doc-tool</span>
+        as the output format better sticks with those of
+        <span class="application">Yelp</span>.
+      
+        As this option is always set when running
+        <span class="command"><strong>make distcheck</strong></span>, the packager can be
+        mostly sure that the distributed manuals are up to date,
+        and may safely ignore this option.
+      </p>
+<p><b><code class="systemitem">--enable-pdf-manuals[=dblatex]</code>. </b>
+        This option lets the packager regenerate user's manuals
+        from the DocBook sources as PDF documents.
+      
+        All available translations are generated.
+      
+        As this option is always set when running
+        <span class="command"><strong>make distcheck</strong></span>, the packager can be
+        mostly sure that the distributed manuals are up to date,
+        and may safely ignore this option.
+      </p>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

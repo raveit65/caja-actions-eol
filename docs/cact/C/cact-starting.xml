@@ -1,0 +1,702 @@
+    <sect2 id="getting-started-starting">
+      <title>Starting &appname;</title>
+      <para>
+        You can start &appname; in the following ways:
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term><guimenu>System</guimenu> menu</term>
+          <listitem>
+            <para>
+              Choose
+              <menuchoice>
+                <guisubmenu>Preferences</guisubmenu>
+                <guisubmenu>Look and Feel</guisubmenu>
+                <guimenuitem>Caja-Actions Configuration Tool</guimenuitem>
+              </menuchoice>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Command line</term>
+          <listitem>
+            <para>
+              To start &appname; from a command line, type the following command:
+            </para>
+            <para>
+              <command><filename>caja-actions-config-tool</filename></command>
+            </para>
+            <para>
+              then press <keycap>Return</keycap>.
+            </para>
+            <tip>
+              <para>
+                To view available command line options, type:
+              </para>
+              <para>
+                <command>
+                  <filename>caja-actions-config-tool</filename>
+                  <option>--help-all</option>
+                </command>
+              </para>
+              <para>
+                then press <keycap>Return</keycap>.
+              </para>
+            </tip>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="getting-started-first-run">
+      <title>The first run</title>
+      <para>
+        When you start &appname;, the following window is displayed.
+      </para>
+      <figure id="cact-FIG-main-empty">
+        <title>&appname; Start Up Window</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-main-empty.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows &appname; main window.
+                Contains menubar, toolbar, display area,
+                an empty items list in the left, several disabled properties tabs,
+                and statusbar.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>The empty &appname; main window</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <!-- Include any descriptions of the GUI immediately after the screenshot
+           of the main UI, for example, the items on the menubar and on the toolbar.
+           This section is optional. -->
+
+      <para>
+        The &appname; main window contains the following elements:
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term>Menubar.</term>
+          <listitem>
+            <para>
+              The menus on the menubar contain all of the commands
+              you need to use in &appname;.
+            </para>
+            <para>
+              Shortcuts are available for some commands:
+            </para>
+            <variablelist>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>N</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Create a new action.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>S</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Save modified actions and menus.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>Q</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Quit the application.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>X</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Cut the current selection, keeping it in the clipboard.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>C</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Copy the current selection to the clipboard.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Ctrl</keycap>
+                      <keycap>V</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Insert the content of the clipboard before the current item.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Shift</keycap>
+                      <keycap>Ctrl</keycap>
+                      <keycap>V</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Insert the content of the clipboard as subitem(s) of the current item.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>Delete</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Delete the current selection.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>F5</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Reload the actions and menus.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                    <keycombo>
+                      <keycap>F1</keycap>
+                    </keycombo>
+                </term>
+                <listitem>
+                  <para>
+                    Display the help.
+                  </para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Toolbar.</term>
+          <listitem>
+            <para>
+              Several toolbars may be displayed below the menubar, depending of
+              your choices in the
+              <menuchoice>
+                <guimenu>View</guimenu>
+                <guimenuitem>Toolbars</guimenuitem>
+              </menuchoice> submenu.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Items list.</term>
+          <listitem>
+            <para>
+              The list on the left of the main window contains all items,
+              whether they are actions or menus, currently available for edition in
+              &appname;.
+            </para>
+            <para>
+              Items may be sorted in ascending or descending alphabetical order, or
+              not sorted at all, being directly organized and managed by the user.
+            </para>
+            <para>
+              Invalid items are displayed in red color.
+            </para>
+            <para>
+              Modified items are displayed in italic characters.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Sort buttons</term>
+          <listitem>
+            <para>
+              Three buttons allow you to toggle between sort modes.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Properties tabs.</term>
+          <listitem>
+            <para>
+              The right part of the main window displays all is needed to define
+              how, when and where actions and menus should be displayed.
+            </para>
+            <variablelist>
+              <varlistentry>
+                <term>
+                  Action/Menu
+                </term>
+                <listitem>
+                  <para>
+                    Define in which &caja; menus the item should appear, and
+                    how it will be displayed.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Command
+                </term>
+                <listitem>
+                  <para>
+                    Specify which command to execute, and which parameters
+                    pass to it.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Execution
+                </term>
+                <listitem>
+                  <para>
+                    Specify how the command should be executed.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Basenames
+                </term>
+                <listitem>
+                  <para>
+                    Define the basename filters the &caja; selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Mimetypes
+                </term>
+                <listitem>
+                  <para>
+                    Define the mimetype filters the &caja; selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Folders
+                </term>
+                <listitem>
+                  <para>
+                    Define the folder filters the &caja; selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Schemes
+                </term>
+                <listitem>
+                  <para>
+                    Define the scheme filters the &caja; selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Capabilities
+                </term>
+                <listitem>
+                  <para>
+                    Define the capability filters the &caja; selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Environment
+                </term>
+                <listitem>
+                  <para>
+                    Define some environment conditions the &caja; selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  Properties
+                </term>
+                <listitem>
+                  <para>
+                    Display item properties.
+                  </para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Statusbar.</term>
+          <listitem>
+            <para>
+              The statusbar displays some status informations about the
+              currently selected row in the items list.
+            </para>
+            <para>
+              When no relevant information is to be displayed, the statusbar
+              displays the count of loaded menus, actions and profiles.
+            </para>
+            <para>
+              The &laquosp;read-only&spraquo; icon 
+              <inlinegraphic fileref="figures/read-only.png" />
+              is displayed in
+              the right of the statusbar when appropriate.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="getting-started-first-action">
+      <title>Creating your first action</title>
+      <para>
+        In this example, we are going to create an action which displays some
+        pretty informations about the current selection.
+      </para>
+      <formalpara>
+        <title>Checking for prerequisites</title>
+        <para>
+          This action will require &matedialog;.
+        </para>
+      </formalpara>
+      <para>
+        &matedialog; is a program which will allow you to create a graphical
+        user interface from a command-line.
+      </para>
+      <para>
+        You should check that this program
+        is installed on your system, by example by typing the following command
+        in a terminal:
+      </para>
+      <para>
+        <command>
+          <filename>matedialog</filename>
+        </command>
+      </para>
+      <para>
+        then press <keycap>Return</keycap>.
+      </para>
+      <formalpara>
+        <title>Creating the action</title>
+        <para>
+          To create a new action, choose
+          <menuchoice>
+            <shortcut>
+              <keycombo>
+                <keycap>Ctrl</keycap>
+                <keycap>N</keycap>
+              </keycombo>
+            </shortcut>
+            <guimenu>File</guimenu>
+            <guisubmenu>New action</guisubmenu>
+          </menuchoice>.
+        </para>
+      </formalpara>
+      <para>
+        A new action is inserted in the items list,
+        and its properties are displayed in the tabs on the right pane.
+      </para>
+      <para>
+        The label of the currently edited action (this one) is added
+        to the application name in the title bar.
+      </para>
+      <figure id="cact-FIG-tab-action">
+        <title>Default properties of a new action</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-action-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the default properties of a newly created action.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>Default properties of a new action</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        In the <guilabel>Items list</guilabel>, the new action is displayed in italic characters.
+      </para>
+      <para>
+        Italics are used as a reminder that the item has not yet been saved.
+      </para>
+      <para>
+        As another reminder that there is some pending modifications,
+        an asterisk (&laquosp;<literal>*</literal>&spraquo;)
+        comes to prefix the application name in the title bar. 
+      </para>
+      <formalpara>
+        <title>Qualifying your new action</title>
+        <para>
+          It merely consists of choosing how your action will be displayed
+          in the file manager context menu.
+        </para>
+      </formalpara>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Enter <userinput>My first action</userinput>
+            in the <guilabel>Context label</guilabel> entry box.
+          </para>
+          <para>
+            The <guilabel>Context label</guilabel> entry box contains the label
+            of the action as you want it to be displayed in the file manager
+            context menu.
+          </para>
+         <para>
+            The label is a mandatory property of your action. If it happens
+            to be empty, then your action will be considered as invalid by
+            &prodname;: it will be displayed in red in <guilabel>Items list</guilabel>
+            and will never be candidate to be displayed in the
+            file manager context menus.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Enter <userinput>This will execute an action with some parameters</userinput>
+            in the <guilabel>Tooltip</guilabel> entry box.
+          </para>
+          <para>
+            The <guilabel>Tooltip</guilabel> entry box contains the text
+            you want to be displayed as a short help to your action.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Select <inlinegraphic fileref="figures/stock-icon-about.png" /> 
+            in the <guilabel>Icon</guilabel> drop-down list.
+          </para>
+          <para>
+            The <guilabel>Icon</guilabel> selection defines the icon which will
+            be associated with your action in file manager context menus and in
+            the toolbar.
+          </para>
+          <para>
+            You have two ways of choosing the icon associated to your action:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Click on the <guilabel>Icon</guilabel> drop-down list to select an icon.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Click on <guibutton>Browse</guibutton> to search 
+                for an image in the filesystem.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <formalpara>
+        <title>Specifying the command to be executed</title>
+        <para>
+          When you will select your action in the file manager
+          context menu, this command will be executed, with
+          arguments of your choice.
+        </para>
+      </formalpara>
+      <para>
+        Click on the <guilabel>Command</guilabel> tab to show the page
+        which will permit you to enter the command.
+      </para>
+      <figure id="cact-FIG-tab-command">
+        <title>Command page</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-command-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the Command tab.
+                This tab contains the name of the profile, the command to
+                be executed along with its parameters, and the configuration
+                of the starting working directory.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>Command page</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Enter <userinput>matedialog</userinput> in the <guilabel>Path</guilabel>
+            entry box.
+          </para>
+          <para>
+            The <guilabel>Path</guilabel> entry box defines the command which
+            will be executed when you will select your action in the file manager
+            context menu.
+          </para>
+          <para>
+            You have two ways of defining the command to be executed:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Enter it in the <guilabel>Path</guilabel> entry box.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Click on <guibutton>Browse</guibutton> to select
+                the executable file on the filesystem.
+              </para>
+            </listitem>
+          </itemizedlist>
+          <para>
+            If the command you enter does not have an absolute path,
+            then it will be searched for in the <envar>PATH</envar>
+            variable at execution time.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Enter <userinput>--info --text='%c selected item(s): %U'</userinput>
+            in the <guilabel>Parameters</guilabel>
+            entry box.
+          </para>
+          <para>
+            The <guilabel>Parameters</guilabel> contains the arguments which will
+            be passed to your command when it will be executed. These arguments may
+            embed parameters which will be expanded at runtime.
+          </para>
+          <para>
+            If both <guilabel>Path</guilabel> and <guilabel>Parameters</guilabel>
+            are empty, then this action will be considered as invalid: it will be
+            displayed in red in <guilabel>Items list</guilabel> and will be
+            never be candidate to be displayed in the
+            file manager context menus.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <formalpara>
+        <title>Saving</title>
+        <para>
+          To save all pending modifications, choose
+          <menuchoice>
+            <shortcut>
+              <keycombo>
+                <keycap>Ctrl</keycap>
+                <keycap>S</keycap>
+              </keycombo>
+            </shortcut>
+            <guimenu>File</guimenu>
+            <guisubmenu>Save</guisubmenu>
+          </menuchoice>.
+        </para>
+      </formalpara>
+      <para>
+        &caja; automatically takes into account your new action,
+        and displays it in its context menu.
+      </para>
+      <figure id="cact-FIG-start-caja-context">
+        <title>Your first action in the &caja; context menu</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/start-context-menu-caja.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Shows the first action in the &caja; context menu.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>Your first action in the &caja; context menu</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        Cliking of the item in the &caja; context menu activates it,
+        and executes the corresponding command.
+      </para>
+      <figure id="cact-FIG-start-matedialog">
+        <title>The result of the execution of your first action</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/start-matedialog-result.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the result of the execution of your first action.
+                This is &matedialog; dialog box, displaying the URI of the selected item.
+              </phrase>
+            </textobject>
+            <caption>
+              <para>The result of the execution of your first action</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </sect2>

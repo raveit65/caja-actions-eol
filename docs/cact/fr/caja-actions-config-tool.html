@@ -1,0 +1,2356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Manuel utilisateur de l'outil de configuration de Caja-Actions</title>
+<style type="text/css">
+
+html { height: 100%; }
+body {
+  margin: 0px; padding: 12px;
+  background-color: #f9f9f6;
+  min-height: 100%;
+  direction: ltr;
+}
+div, p, pre, blockquote { margin: 0; padding: 0; }
+p img { vertical-align: middle; }
+sub { font-size: 0.83em; }
+sub sub { font-size: 1em; }
+sup { font-size: 0.83em; }
+sup sup { font-size: 1em; }
+table { border-collapse: collapse; }
+table.table-pgwide { width: 100%; }
+td { vertical-align: top; }
+td { padding: 0.2em 0.83em 0.2em 0.83em; }
+th { padding: 0 0.83em 0 0.83em; }
+tr.tr-shade {
+  background-color: #f9f9f6;
+}
+td.td-colsep { border-right: solid 1px; }
+td.td-rowsep { border-bottom: solid 1px; }
+thead { border-top: solid 2px; border-bottom: solid 2px; }
+tfoot { border-top: solid 2px; border-bottom: solid 2px; }
+div.body {
+  padding: 1em;
+  max-width: 60em;
+  background-color: #ffffff;
+  border: solid 1px #e0e0df;
+}
+div.body-sidebar {
+  margin-right: 13em;
+}
+div.division div.division { margin-top: 1.72em; }
+div.division div.division div.division { margin-top: 1.44em; }
+div.header {
+  margin: 0;
+  color: #3f3f3f;
+  border-bottom: solid 1px #e0e0df;
+}
+h1, h2, h3, h4, h5, h6, h7 {
+  margin: 0; padding: 0;
+  color: #3f3f3f;
+}
+h1.title { font-size: 1.72em; }
+h2.title { font-size: 1.44em; }
+h3.title { font-size: 1.2em; }
+h4.title, h5.title, h6.title, h7.title { font-size: 1em; }
+.block { margin-top: 1em; }
+.block .block-first { margin-top: 0; }
+.block-indent {
+  margin-left left: 1.72em;
+  margin-: 1em;
+}
+.block-indent .block-indent { margin-left: 0em; margin-right: 0em; }
+td .block-indent  { margin-left: 0em; margin-right: 0em; }
+dd .block-indent  { margin-left: 0em; margin-right: 0em; }
+.block-verbatim { white-space: pre; }
+div.title {
+  margin-bottom: 0.2em;
+  font-weight: bold;
+  color: #3f3f3f;
+}
+div.title-formal { padding-left: 0.2em; padding-right: 0.2em; }
+div.title-formal .label { font-weight: normal; }
+a {
+  color: #1f609f;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+a:visited { color: #9f1f6f; }
+ul, ol, dl { margin: 0; padding: 0; }
+li {
+  margin-top: 1em;
+  margin-left: 2.4em;
+  padding: 0;
+}
+li.li-first { margin-top: 0; }
+dt { margin: 1em 0 0 0; }
+dt.dt-first { margin: 0; }
+dd {
+  margin-left: 1.72em;
+  margin-top: 0.5em;
+}
+dl.dl-compact dt { margin-top: 0; }
+dl.dl-compact dd { margin-top: 0; margin-bottom: 0; }
+
+
+ul.linktrail {
+  display: block;
+  margin: 0.2em 0 0 0;
+  text-align: right;
+}
+li.linktrail { display: inline; margin: 0; padding: 0; }
+
+li.linktrail::before {
+  content: '  /  ';
+  color: #3f3f3f;
+}
+
+li.linktrail-first::before, li.linktrail-only::before { content: ''; }
+
+
+div.navbar {
+  padding: 0.5em 1em 0.5em 1em;
+  max-width: 60em;
+  background-color: #ffffff;
+  border: solid 1px #e0e0df;
+}
+div.navbar-top { margin-bottom: 1em; }
+div.navbar-bottom { margin-top: 1em; clear: both; }
+div.navbar img { border: 0; vertical-align: -0.4em; }
+table.navbar { width: 100%; margin: 0; border: none; }
+table.navbar td { padding: 0; border: none; }
+td.navbar-next {
+  text-align: right;
+}
+a.navbar-prev::before {
+  
+  content: '◀  ';
+  color: #3f3f3f;
+}
+a.navbar-next::after {
+  
+  content: '  ▶';
+  color: #3f3f3f;
+}
+
+
+div.sidebar {
+  float: right;
+  padding: 0; margin: 0; width: 12em;
+}
+div.sidenav {
+  padding: 0.5em 1em 0 1em;
+  background-color: #ffffff;
+  border: solid 1px #e0e0df;
+}
+div.sidenav div.autotoc {
+  background-color: #ffffff;
+  border: none; padding: 0; margin: 0;
+}
+div.sidenav div.autotoc div.autotoc { margin-top: 0.5em; }
+div.sidenav div.autotoc li { margin-bottom: 0.5em; }
+div.sidenav div.autotoc div.autotoc div.autotoc {
+  margin-left: 1em;
+  margin-top: 0;
+}
+div.sidenav div.autotoc div.autotoc div.autotoc li { margin-bottom: 0; }
+
+
+div.autotoc {
+  
+  display: table;
+  margin-top: 1em;
+  margin-left: 1.72em;
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: #f0f9ff;
+  border: solid 1px #c0c9ff;
+}
+div.autotoc ul { margin: 0; padding: 0; }
+div.autotoc li { list-style-type: none; margin: 0; }
+div.autotoc div.autotoc-title { margin-bottom: 0.5em; }
+div.autotoc div.autotoc { border: none; padding: 0; margin-top: 0; margin-bottom: 0.5em; }
+div.autotoc div.autotoc div.autotoc { margin-bottom: 0; }
+
+
+span.bibliolabel {
+  color: #3f3f3f;
+}
+
+
+div.admonition {
+  padding: 0.5em 6px 0.5em 6px;
+  border: solid 1px #e0e0df;
+  background-color: #fffff0;
+}
+div.caution-inner, div.important-inner, div.note-inner, div.tip-inner, div.warning-inner {
+  padding-left: 60px;
+  background-position: left top;
+  background-repeat: no-repeat;
+  min-height: 48px;
+}
+div.caution-inner { background-image: url("admon/admon-caution.png"); }
+div.important-inner { background-image: url("admon/admon-important.png"); }
+div.note-inner { background-image: url("admon/admon-note.png"); }
+div.note-bug div.note-inner { background-image: url("admon/admon-bug.png"); }
+div.tip-inner { background-image: url("admon/admon-tip.png"); }
+div.warning-inner { background-image: url("admon/admon-warning.png"); }
+div.blockquote {
+  
+  background-image: url('watermark-blockquote-201C.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  padding: 0.5em;
+  padding-left: 4em;
+}
+div.attribution {
+  margin-top: 0.5em;
+  color: #3f3f3f;
+}
+div.attribution::before {
+  
+  content: '― ';
+}
+div.epigraph {
+  text-align: right;
+  margin-left: 20%;
+  margin-right: 0;
+  color: #3f3f3f;
+}
+div.figure, div.informalfigure {
+  
+  display: table;
+  padding: 0.5em;
+  background-color: #f9f9f6;
+  border: solid 1px #e0e0df;
+}
+div.figure-inner, div.informalfigure-inner {
+  padding: 0.5em;
+  background-color: #ffffff;
+  border: solid 1px #e0e0df;
+}
+div.caption { margin-top: 0.5em; }
+div.programlisting {
+  padding: 0.5em;
+  
+  background-color: #f9f9f6;
+  border: solid 1px #e0e0df;
+}
+div.screen {
+  padding: 0.5em;
+  
+  background-color: #f9f9f6;
+  border: solid 1px #e0e0df;
+}
+div.screen .prompt {
+  color: #3f3f3f;
+}
+div.screen .userinput {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+div.programlisting .userinput {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+pre.linenumbering {
+  color: #3f3f3f;
+  margin: 0;
+  padding-right: 1em;
+  float: left;
+  text-align: right;
+}
+
+
+
+dl.index dt { margin-top: 0; }
+dl.index dd { margin-top: 0; margin-bottom: 0; }
+dl.indexdiv dt { margin-top: 0; }
+dl.indexdiv dd { margin-top: 0; margin-bottom: 0; }
+dl.setindex dt { margin-top: 0; }
+dl.setindex dd { margin-top: 0; margin-bottom: 0; }
+div.list div.title-formal span.title {
+  border-bottom: solid 1px #e0e0df;
+}
+div.simplelist {
+  margin-left: 1.72em;
+}
+div.simplelist table { margin-left: 0; border: none; }
+div.simplelist td {
+  padding: 0.5em;
+  border-left: solid 1px #e0e0df;
+}
+div.simplelist td.td-first {
+  padding-left: 0;
+  border-left: 0;
+}
+div.synopsis {
+  padding: 0.5em;
+  
+  background-color: #f9f9f6;
+  border-top: solid 2px #c0c9ff;
+  border-bottom: solid 2px #c0c9ff;
+}
+div.synopsis div.synopsis {
+  padding: 0;
+  border: none;
+}
+div.synopsis div.block { margin-top: 0.2em; }
+div.synopsis div.block-first { margin-top: 0; }
+div.cmdsynopsis { font-family: monospace; }
+
+span.accel { text-decoration: underline; }
+span.acronym { font-family: sans-serif; }
+span.application { font-style: italic; }
+span.classname, span.exceptionname, span.interfacename { font-family: monospace; }
+span.code {
+  font-family: monospace;
+  border: solid 1px #e0e0df;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+pre span.code { border: none; padding: 0; }
+span.command {
+  font-family: monospace;
+  border: solid 1px #e0e0df;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+pre span.command { border: none; padding: 0; }
+span.computeroutput { font-family: monospace; }
+
+span.constant { font-family: monospace; }
+span.database { font-family: monospace; }
+span.email { font-family: monospace; }
+span.emphasis { font-style: italic; }
+span.emphasis-bold { font-style: normal; font-weight: bold; }
+span.envar { font-family: monospace; }
+
+span.filename { font-family: monospace; }
+span.firstterm { font-style: italic; }
+span.foreignphrase { font-style: italic; }
+span.function { font-family: monospace; }
+
+dt.glossterm span.glossterm { font-style: normal; }
+
+
+span.glossterm { font-style: italic; }
+
+span.guibutton, span.guilabel, span.guimenu, span.guimenuitem, span.guisubmenu, span.interface {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+span.keycap {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+span.lineannotation { font-style: italic; }
+span.literal { font-family: monospace; }
+span.markup  { font-family: monospace; }
+span.medialabel { font-style: italic; }
+span.methodname { font-family: monospace; }
+span.ooclass, span.ooexception, span.oointerface { font-family: monospace; }
+span.option { font-family: monospace; }
+span.package { font-family: monospace; }
+span.parameter { font-family: monospace; }
+span.paramdef span.parameter { font-style: italic; }
+span.prompt { font-family: monospace; }
+span.property { font-family: monospace; }
+span.replaceable  { font-style: italic; }
+span.returnvalue { font-family: monospace; }
+span.sgmltag { font-family: monospace; }
+span.structfield, span.structname { font-family: monospace; }
+span.symbol { font-family: monospace; }
+span.systemitem { font-family: monospace; }
+span.token { font-family: monospace; }
+span.type { font-family: monospace; }
+span.uri { font-family: monospace; }
+span.userinput { font-family: monospace; }
+span.varname { font-family: monospace; }
+span.wordasword { font-style: italic; }
+
+
+
+div.footnotes { font-style: italic; font-size: 0.8em; }
+div.footnote { margin-top: 1.44em; }
+span.footnote-number { display: inline; padding-right: 0.83em; }
+span.footnote-number + p { display: inline; }
+a.footnote { text-decoration: none; font-size: 0.8em; }
+a.footnote-ref { text-decoration: none; }
+
+span.co {
+  margin-left: 0.2em; margin-right: 0.2em;
+  padding-left: 0.4em; padding-right: 0.4em;
+  border: solid 1px #000000;
+  -moz-border-radius: 8px;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: 8px;
+}
+span.co:hover {
+  border-color: #333333;
+  background-color: #333333;
+  color: #FFFFFF;
+}
+span.co a { text-decoration: none; }
+span.co a:hover { text-decoration: none; }
+
+dt.question { margin-left: 0em; }
+dt.question div.label { float: left; }
+dd + dt.question { margin-top: 1em; }
+dd.answer {
+  margin-top: 1em;
+  margin-left: 2em;
+  margin-right: 1em;
+}
+dd.answer div.label { float: left; }
+</style>
+</head>
+<body>
+<div class="navbar navbar-top"><table class="navbar"><tr>
+<td class="navbar-prev"></td>
+<td class="navbar-next"></td>
+</tr></table></div>
+<div class="sidebar"><div class="sidenav"><div class="autotoc"><ul><li>Manuel utilisateur de l'<span class="application">outil de configuration de Caja-Actions</span>
+</li></ul></div></div></div>
+<div class="body body-sidebar"><div class="division article" dir="ltr">
+<a name="index"></a><div class="header"><h1 class="article title"><span class="title">Manuel utilisateur de l'<span class="application">outil de configuration de Caja-Actions</span></span></h1></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">I. </span><a class="xref" href="caja-actions-config-tool.html#introduction" title="Introduction">Introduction</a>
+</li>
+<li>
+<span class="label">II. </span><a class="xref" href="caja-actions-config-tool.html#getting-started" title="Premiers pas">Premiers pas</a>
+</li>
+<li>
+<span class="label">III. </span><a class="xref" href="caja-actions-config-tool.html#usage" title="Utilisation de l'outil de configuration de Caja-Actions">Utilisation de l'<span class="application">outil de configuration de Caja-Actions</span></a>
+</li>
+<li>
+<span class="label">IV. </span><a class="xref" href="caja-actions-config-tool.html#misc" title="Informations diverses">Informations diverses</a>
+</li>
+<li>
+<span class="label">V. </span><a class="xref" href="caja-actions-config-tool.html#bugs" title="Anomalies connues et limitations">Anomalies connues et limitations</a>
+</li>
+<li>
+<span class="label">VI. </span><a class="xref" href="caja-actions-config-tool.html#about" title="À propos de l'outil de configuration de Caja-Actions">À propos de l'<span class="application">outil de configuration de Caja-Actions</span></a>
+</li>
+<li>
+<span class="label">A. </span><a class="xref" href="caja-actions-config-tool.html#appendix-gnu-fdl" title="GNU Free Documentation License">GNU Free Documentation License</a>
+</li>
+</ul></div>
+<div class="division sect1">
+<a name="introduction"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">I. </span>Introduction</span></h2></div>
+<p class="para block block-first"><span class="productname">Caja-Actions™</span> est une extension de <span class="productname">Caja™</span> dont la principale fonctionnalité consiste à permettre à l'utilisateur d'ajouter des actions de toute nature dans les menus contextuels du gestionnaire de fichiers. Ces actions peuvent être organisées en menus et sous-menus, exportées et partagées avec d'autres environnements bureau.</p>
+<p class="para block">L'<span class="application">outil de configuration de Caja-Actions</span> est l'interface utilisateur permettant de configurer avec précision comment, où et quand les actions apparaissent dans les menus contextuels de <span class="productname">Caja™</span> et comment elles sont exécutées.</p>
+<p class="para block">L'<span class="application">outil de configuration de Caja-Actions</span> offre les fonctionnalités suivantes :</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">définir et configurer les actions de a à z,</span>
+      </li>
+<li>
+        <span class="para">organiser les actions en menus, sous-menus et ainsi de suite,</span>
+      </li>
+<li>
+        <span class="para">importer et exporter des actions et des menus à partir d'un environnement extérieur.</span>
+      </li>
+</ul></div>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first"><span class="productname">Caja-Actions™</span> est également pourvu de fonctionnalités additionnelles telles que :</p>
+      <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <p class="para block block-first">un greffon <span class="productname">Caja™</span> pour exporter en temps réel sur D-Bus la sélection actuelle de fichiers.</p>
+        </li>
+<li>
+          <p class="para block block-first">un programme de ligne de commande susceptible de lancer n'importe quelle action.</p>
+          <p class="para block">Associé à l'interface D-Bus, ce programme permet à l'utilisateur de lancer n'importe quelle action à l'aide d'un raccourci clavier ; cette action s'applique aux éléments présentement sélectionnés dans le gestionnaire de fichiers.</p>
+        </li>
+<li>
+          <p class="para block block-first">un programme de ligne de commande capable de créer une nouvelle action.</p>
+        </li>
+</ul></div>
+      <p class="para block">Toutes ces fonctionnalités sont plus précisément décrites dans la documentation générale de <span class="productname">Caja-Actions™</span>.</p>
+    </div></div>
+</div>
+<div class="division sect1">
+<a name="getting-started"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">II. </span>Premiers pas</span></h2></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">II.I. </span><a class="xref" href="caja-actions-config-tool.html#getting-started-starting" title="Lancement de l'outil de configuration de Caja-Actions">Lancement de l'<span class="application">outil de configuration de Caja-Actions</span></a>
+</li>
+<li>
+<span class="label">II.II. </span><a class="xref" href="caja-actions-config-tool.html#getting-started-first-run" title="Le premier lancement">Le premier lancement</a>
+</li>
+<li>
+<span class="label">II.III. </span><a class="xref" href="caja-actions-config-tool.html#getting-started-first-action" title="Création de votre première action">Création de votre première action</a>
+</li>
+</ul></div>
+<div class="division sect2">
+<a name="getting-started-starting"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">II.I. </span>Lancement de l'<span class="application">outil de configuration de Caja-Actions</span></span></h3></div>
+<p class="para block block-first">Vous pouvez lancer l'<span class="application">outil de configuration de Caja-Actions</span> de plusieurs manières :</p>
+<div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">Menu <span class="guimenu">Système</span>
+</dt>
+<dd>
+            <p class="para block block-first">Sélectionnez <span class="menuchoice"><span class="guisubmenu">Préférences</span> ▸ <span class="guisubmenu">Apparence</span> ▸ <span class="guimenuitem">Outils de configuration de Caja-Actions</span></span>.</p>
+          </dd>
+<dt class="term">Ligne de commande</dt>
+<dd>
+            <p class="para block block-first">Pour lancer l'<span class="application">outil de configuration de Caja-Actions</span> à partir de la ligne de commande, saisissez :</p>
+            <p class="para block">
+              <span class="command" dir="ltr"><span class="filename" dir="ltr">caja-actions-config-tool</span></span>
+            </p>
+            <p class="para block">ensuite pressez <span class="keycap">Entrée</span>.</p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">Pour afficher toutes les options disponibles en ligne de commande, saisissez :</p>
+              <p class="para block">
+                <span class="command" dir="ltr">
+                  <span class="filename" dir="ltr">caja-actions-config-tool</span>
+                  <span class="option" dir="ltr">--help-all</span>
+                </span>
+              </p>
+              <p class="para block">ensuite pressez <span class="keycap">Entrée</span>.</p>
+            </div></div>
+          </dd>
+</dl></div>
+</div>
+<div class="division sect2">
+<a name="getting-started-first-run"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">II.II. </span>Le premier lancement</span></h3></div>
+<p class="para block block-first">Quand vous lancez l'<span class="application">outil de configuration de Caja-Actions</span>, la fenêtre suivante s'affiche.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-main-empty"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 1 </span>Fenêtre de démarrage de l'<span class="application">outil de configuration de Caja-Actions</span></span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-main-empty.png"><div class=" block caption">
+              <p class="para block block-first">La fenêtre principale vide de l'<span class="application">outil de configuration de Caja-Actions</span></p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">La fenêtre principale de l'<span class="application">outil de configuration de Caja-Actions</span> comporte :</p>
+<div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">Une barre de menus.</dt>
+<dd>
+            <p class="para block block-first">Les menus de la barre des menus comportent toutes les commandes nécessaires à l'utilisation de l'<span class="application">outil de configuration de Caja-Actions</span>.</p>
+            <p class="para block">Des raccourcis clavier sont disponibles pour certaines commandes :</p>
+            <div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">N</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Créer une nouvelle action.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">S</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Enregistrer les actions et les menus modifiés.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">Q</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Quitter l'application.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">X</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Couper la sélection en cours tout en la gardant dans le presse-papier.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">C</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Copier la sélection en cours dans le presse-papier.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">V</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Insérer le contenu du presse-papier devant l'élément sélectionné.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Maj</span>+<span class="keycap">Ctrl</span>+<span class="keycap">V</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Insérer le contenu du presse-papier en tant que sous-élement de l'élément sélectionné.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Suppr.</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Supprimer la sélection actuelle.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">F5</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Recharger les actions et les menus.</p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">F1</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">Afficher l'aide.</p>
+                </dd>
+</dl></div>
+          </dd>
+<dt class="term">Une barre d'outils.</dt>
+<dd>
+            <p class="para block block-first">Plusieurs barres d'outils peuvent être affichées sous la barre des menus, selon les choix effectués dans le sous-menu <span class="menuchoice"><span class="guimenu">Affichage</span> ▸ <span class="guimenuitem">Barre d'outils</span></span>.</p>
+          </dd>
+<dt class="term">Une liste d'éléments.</dt>
+<dd>
+            <p class="para block block-first">La liste sur la gauche de la fenêtre principale comporte tous les éléments, soit actions, soit menus, actuellement accessibles pour modification dans l'<span class="application">outil de configuration de Caja-Actions</span>.</p>
+            <p class="para block">Les éléments peuvent être triés dans l'ordre alphabétique naturel ou inverse. Ils peuvent également être gérés et organisés par l'utilisateur sans tri particulier.</p>
+            <p class="para block">Les éléments non-valides sont affichés en rouge.</p>
+            <p class="para block">Les éléments modifiés sont affichés en italiques.</p>
+          </dd>
+<dt class="term">Des boutons de tri.</dt>
+<dd>
+            <p class="para block block-first">Trois boutons permettent de choisir le mode de tri.</p>
+          </dd>
+<dt class="term">Des onglets de propriétés.</dt>
+<dd>
+            <p class="para block block-first">La partie droite de la fenêtre principale affiche tout ce qui est nécessaire pour définir comment, quand et où actions et menus sont affichés.</p>
+            <div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">Action/Menu</dt>
+<dd>
+                  <p class="para block block-first">Définit dans quels menus de <span class="productname">Caja™</span> l'élément apparaît et comment il est affiché.</p>
+                </dd>
+<dt class="term">Commande</dt>
+<dd>
+                  <p class="para block block-first">Définit la commande à exécuter et quels paramètres lui transmettre.</p>
+                </dd>
+<dt class="term">Exécution</dt>
+<dd>
+                  <p class="para block block-first">Définit comment votre commande est exécutée.</p>
+                </dd>
+<dt class="term">Noms de base</dt>
+<dd>
+                  <p class="para block block-first">Définit les filtres de noms de base que la sélection de <span class="productname">Caja™</span> doit satisfaire pour que l'action ou le menu soit candidat à l'affichage.</p>
+                </dd>
+<dt class="term">Types MIME</dt>
+<dd>
+                  <p class="para block block-first">Définit les filtres des types MIME que la sélection de <span class="productname">Caja™</span> doit satisfaire pour que l'action ou le menu soit candidat à l'affichage.</p>
+                </dd>
+<dt class="term">Dossiers</dt>
+<dd>
+                  <p class="para block block-first">Définit les filtres de dossiers que la sélection de <span class="productname">Caja™</span> doit satisfaire pour que l'action ou le menu soit candidat à l'affichage.</p>
+                </dd>
+<dt class="term">Protocoles</dt>
+<dd>
+                  <p class="para block block-first">Définit les filtres de protocoles que la sélection de <span class="productname">Caja™</span> doit satisfaire pour que l'action ou le menu soit candidat à l'affichage.</p>
+                </dd>
+<dt class="term">Attributs</dt>
+<dd>
+                  <p class="para block block-first">Définit les filtres d'attributs que la sélection de <span class="productname">Caja™</span> doit posséder pour que l'action ou le menu soit candidat à l'affichage.</p>
+                </dd>
+<dt class="term">Environnement</dt>
+<dd>
+                  <p class="para block block-first">Définit certaines conditions d'environnement que la sélection de <span class="productname">Caja™</span> doit satisfaire pour que l'action ou le menu soit candidat à l'affichage.</p>
+                </dd>
+<dt class="term">Propriétés</dt>
+<dd>
+                  <p class="para block block-first">Affiche les propriétés des éléments.</p>
+                </dd>
+</dl></div>
+          </dd>
+<dt class="term">Une barre d'état.</dt>
+<dd>
+            <p class="para block block-first">Cette barre affiche des informations d'état à propos de l'élément sur la ligne actuellement sélectionnée dans la liste des éléments.</p>
+            <p class="para block">Quand il n'y a aucune information pertinente à afficher, la barre d'état affiche le décompte des menus, actions ou profils chargés.</p>
+            <p class="para block">L'icône « lecture seule » <span class="inlinegraphic"><img src="figures/read-only.png"></span> est affichée dans la partie droite de la barre d'état si opportun.</p>
+          </dd>
+</dl></div>
+</div>
+<div class="division sect2">
+<a name="getting-started-first-action"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">II.III. </span>Création de votre première action</span></h3></div>
+<p class="para block block-first">Dans cet exemple, nous allons créer une action qui affiche des informations intéressantes à propos de la sélection actuelle.</p>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Vérification des prérequis</span></div>
+        <p class="para block block-first">Cette action requiert <span class="productname">MateDialog™</span>.</p>
+      </div>
+<p class="para block"><span class="productname">MateDialog™</span> est un programme qui permet de créer une interface utilisateur graphique à partir de la ligne de commande.</p>
+<p class="para block">Il faut vérifier que ce programme est installé sur le système ; par exemple, saisissez dans un terminal la commande suivante :</p>
+<p class="para block">
+        <span class="command" dir="ltr">
+          <span class="filename" dir="ltr">matedialog</span>
+        </span>
+      </p>
+<p class="para block">ensuite pressez <span class="keycap">Entrée</span>.</p>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Création de l'action</span></div>
+        <p class="para block block-first">Pour créer une nouvelle action, sélectionnez <span class="menuchoice"><span class="guimenu">Fichier</span> ▸ <span class="guisubmenu">Nouvelle action</span> <span class="shortcut">(<span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">N</span></span>)</span></span>.</p>
+      </div>
+<p class="para block">Une nouvelle action s'insère dans la liste des éléments et ses propriétés sont affichées dans les onglets du panneau de droite.</p>
+<p class="para block">L'étiquette de l'action en cours de création ou de modification (uniquement celle-ci) est apposée au nom de l'application sur la barre titre.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-action"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 2 </span>Propriétés par défaut d'une nouvelle action</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-action-tab.png"><div class=" block caption">
+              <p class="para block block-first">Propriétés par défaut d'une nouvelle action</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">Dans la <span class="guilabel">Liste d'éléments</span>, la nouvelle action est affichée en italique.</p>
+<p class="para block">La graphie italique est utilisée pour rappeler que l'élément n'a pas été enregistré.</p>
+<p class="para block">Comme autre rappel des modifications en attente, un astérisque (« <span class="literal" dir="ltr">*</span> ») préfixe le nom de l'application dans la barre titre.</p>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Qualification de la nouvelle action</span></div>
+        <p class="para block block-first">Cela consiste essentiellement à choisir quel sera l'intitulé de l'action dans le menu contextuel du gestionnaire de fichiers.</p>
+      </div>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <p class="para block block-first">Saisissez « <span class="userinput" dir="ltr">Ma première action</span> » dans le champ de saisie <span class="guilabel">Étiquette du contexte</span>.</p>
+          <p class="para block">Le contrôle de saisie <span class="guilabel">Étiquette du contexte</span> contient l'étiquette de l'action telle que vous souhaitez la voir apparaître dans le menu contextuel du gestionnaire de fichiers.</p>
+         <p class="para block">Cet intitulé est une propriété obligatoire de l'action. Si le champ reste vide, l'action est alors considérée comme non-valide par <span class="productname">Caja-Actions™</span> : elle est affichée en rouge dans la <span class="guilabel">Liste d'éléments</span> et n'est jamais candidate à l'affichage dans les menus contextuels du gestionnaire de fichiers.</p>
+        </li>
+<li>
+          <p class="para block block-first">Saisissez « <span class="userinput" dir="ltr">Ceci effectue une action avec certains paramètres</span> » dans le contrôle de saisie <span class="guilabel">Informations</span>.</p>
+          <p class="para block">Le contrôle de saisie <span class="guilabel">Informations</span> contient le texte que vous souhaitez voir affiché en tant que courte aide pour l'action.</p>
+        </li>
+<li>
+          <p class="para block block-first">Sélectionnez <span class="inlinegraphic"><img src="figures/stock-icon-about.png"></span> dans la liste déroulante <span class="guilabel">Icône</span>.</p>
+          <p class="para block">Le choix dans l'élément <span class="guilabel">Icône</span> définit l'icône associée à l'action dans les menus contextuels du gestionnaire de fichiers et dans la barre d'outils.</p>
+          <p class="para block">Il y a deux manières de choisir l'icône associée à l'action :</p>
+          <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+              <span class="para">cliquer dans la liste déroulante <span class="guilabel">Icônes</span> pour choisir une icône.</span>
+            </li>
+<li>
+              <span class="para">cliquer sur <span class="guibutton">Parcourir</span> pour rechercher une image dans le système de fichiers.</span>
+            </li>
+</ul></div>
+        </li>
+</ul></div>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Définition de la commande à exécuter</span></div>
+        <p class="para block block-first">Quand vous sélectionnez l'action dans le menu contextuel du gestionnaire de fichiers, cette commande est exécutée avec les paramètres de votre choix.</p>
+      </div>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Commande</span> pour afficher le volet qui vous permet de saisir la commande.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-command"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 3 </span>Onglet Commande</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-command-tab.png"><div class=" block caption">
+              <p class="para block block-first">Onglet Commande</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <p class="para block block-first">Saisissez <span class="userinput" dir="ltr">matedialog</span> dans le contrôle <span class="guilabel">Chemin</span>.</p>
+          <p class="para block">Le contrôle de saisie <span class="guilabel">Chemin</span> définit la commande qui est exécutée quand vous sélectionnez l'action dans le menu contextuel du gestionnaire de fichiers.</p>
+          <p class="para block">Il y a deux façons de définir la commande à exécuter :</p>
+          <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+              <span class="para">la saisir dans le contrôle <span class="guilabel">Chemin</span>.</span>
+            </li>
+<li>
+              <span class="para">cliquer sur le bouton <span class="guibutton">Parcourir</span> pour sélectionner un fichier exécutable dans le système de fichiers.</span>
+            </li>
+</ul></div>
+          <p class="para block">Si la commande saisie ne possède pas un chemin absolu alors elle est recherchée à l'exécution dans les répertoires définis par la variable d'environnement <span class="envar" dir="ltr">PATH</span>.</p>
+        </li>
+<li>
+          <p class="para block block-first">Saisissez <span class="userinput" dir="ltr">--info --text='%c élément(s) sélectionné(s) : %U'</span> dans le champ <span class="guilabel">Paramètres</span>.</p>
+          <p class="para block"><span class="guilabel">Paramètres</span> contient les arguments passés à la commande lors de son exécution. Ils peuvent intégrer des paramètres qui sont développés au moment de l'exécution.</p>
+          <p class="para block">Si les champs <span class="guilabel">Chemin</span> et <span class="guilabel">Paramètres</span> sont tous deux vides, l'action est alors considérée comme non-valide : elle est affichée en rouge dans la <span class="guilabel">Liste d'éléments</span> ; elle ne sera jamais candidate à l'affichage dans les menus contextuels du gestionnaire de fichiers.</p>
+        </li>
+</ul></div>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Enregistrement</span></div>
+        <p class="para block block-first">Pour enregistrer toutes les modifications en attente, sélectionnez <span class="menuchoice"><span class="guimenu">Fichier</span> ▸ <span class="guisubmenu">Enregistrer</span> <span class="shortcut">(<span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">S</span></span>)</span></span>.</p>
+      </div>
+<p class="para block"><span class="productname">Caja™</span> prend en compte automatiquement la nouvelle action et l'affiche dans son menu contextuel.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-start-caja-context"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 4 </span>« Ma première action » dans le menu contextuel de <span class="productname">Caja™</span></span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/start-context-menu-caja.png"><div class=" block caption">
+              <p class="para block block-first">« Ma première action » dans le menu contextuel de <span class="productname">Caja™</span></p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">Le fait de cliquer sur l'élément dans le menu contextuel de <span class="productname">Caja™</span> l'active et exécute la commande correspondante.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-start-matedialog"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 5 </span>Le résultat de l'exécution de « Ma première action »</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/start-matedialog-result.png"><div class=" block caption">
+              <p class="para block block-first">Le résultat de l'exécution de « Ma première action »</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+</div>
+</div>
+<div class="division sect1">
+<a name="usage"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">III. </span>Utilisation de l'<span class="application">outil de configuration de Caja-Actions</span></span></h2></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">III.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions" title="Définition des conditions">Définition des conditions</a>
+</li>
+<li>
+<span class="label">III.II. </span><a class="xref" href="caja-actions-config-tool.html#usage-where" title="Emplacement de l'action">Emplacement de l'action</a>
+</li>
+<li>
+<span class="label">III.III. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution" title="Action à exécuter">Action à exécuter</a>
+</li>
+<li>
+<span class="label">III.IV. </span><a class="xref" href="caja-actions-config-tool.html#usage-profile" title="Utilisation de profils pour étendre vos actions">Utilisation de profils pour étendre vos actions</a>
+</li>
+<li>
+<span class="label">III.V. </span><a class="xref" href="caja-actions-config-tool.html#usage-menus" title="Organisation des actions dans les menus">Organisation des actions dans les menus</a>
+</li>
+<li>
+<span class="label">III.VI. </span><a class="xref" href="caja-actions-config-tool.html#usage-sorting" title="Tri de la liste des éléments">Tri de la liste des éléments</a>
+</li>
+<li>
+<span class="label">III.VII. </span><a class="xref" href="caja-actions-config-tool.html#usage-edit" title="Édition">Édition</a>
+</li>
+<li>
+<span class="label">III.VIII. </span><a class="xref" href="caja-actions-config-tool.html#usage-save" title="Enregistrement des modifications">Enregistrement des modifications</a>
+</li>
+<li>
+<span class="label">III.IX. </span><a class="xref" href="caja-actions-config-tool.html#usage-export" title="Exportation d'actions">Exportation d'actions</a>
+</li>
+<li>
+<span class="label">III.X. </span><a class="xref" href="caja-actions-config-tool.html#usage-import" title="Importation d'actions">Importation d'actions</a>
+</li>
+<li>
+<span class="label">III.XI. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs" title="Réglage de vos préférences personnelles">Réglage de vos préférences personnelles</a>
+</li>
+</ul></div>
+<div class="division sect2">
+<a name="usage-conditions"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.I. </span>Définition des conditions</span></h3></div>
+<p class="para block block-first">Une action apparaît éventuellement, soit dans les menus contextuels du gestionnaire de fichiers <span class="productname">Caja™</span>, soit dans la barre d'outils, suivant les conditions que vous définissez pour elle.</p>
+<p class="para block">Il est possible d'imposer des conditions relativement à l'emplacement sur lequel le gestionnaire de fichiers pointe actuellement ou bien relativement aux éléments actuellement sélectionnés dans cet emplacement.</p>
+<p class="para block">Chaque fois que, dans le gestionnaire de fichiers, la sélection ou l'emplacement change, <span class="productname">Caja-Actions™</span> vérifie l'ensemble des actions en comparant les conditions spécifiées par rapport au nouvel emplacement ou à la nouvelle sélection : toutes les conditions définies doivent être satisfaites pour que l'action soit réellement affichée.</p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">III.I.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-basenames" title="Conditions relatives aux noms de base">Conditions relatives aux noms de base</a>
+</li>
+<li>
+<span class="label">III.I.II. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-mimetypes" title="Conditions relatives au type MIME">Conditions relatives au type MIME</a>
+</li>
+<li>
+<span class="label">III.I.III. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-folders" title="Conditions relatives aux dossiers">Conditions relatives aux dossiers</a>
+</li>
+<li>
+<span class="label">III.I.IV. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-schemes" title="Conditions relatives au protocole">Conditions relatives au protocole</a>
+</li>
+<li>
+<span class="label">III.I.V. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-capabilities" title="Conditions relatives aux attributs">Conditions relatives aux attributs</a>
+</li>
+<li>
+<span class="label">III.I.VI. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-count" title="Condition relative au nombre de sélections">Condition relative au nombre de sélections</a>
+</li>
+<li>
+<span class="label">III.I.VII. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-desktop" title="Sélection du bureau">Sélection du bureau</a>
+</li>
+<li>
+<span class="label">III.I.VIII. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-executable" title="Condition relative à la présence d'un exécutable">Condition relative à la présence d'un exécutable</a>
+</li>
+<li>
+<span class="label">III.I.IX. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-dbus" title="Condition d'enregistrement D-Bus">Condition d'enregistrement D-Bus</a>
+</li>
+<li>
+<span class="label">III.I.X. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-true" title="Condition personnalisée">Condition personnalisée</a>
+</li>
+<li>
+<span class="label">III.I.XI. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-run" title="Condition relative à un processus en cours d'exécution">Condition relative à un processus en cours d'exécution</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-conditions-basenames"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.I. </span>Conditions relatives aux noms de base</span></h4></div>
+<p class="para block block-first">Vous pouvez décider que l'action apparaît en fonction du nom de base des éléments actuellement sélectionnés dans le gestionnaire de fichiers : vous pouvez définir que chaque élément de la sélection doit entrer dans une certaine typologie de nom de base en vérifiant simultanément qu'aucun élément parmi ceux sélectionnés n'ait un autre type de nom de base.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Noms de base</span> pour afficher la page vous permettant de configurer les conditions relatives aux noms de base.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-basenames"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 6 </span>Conditions relatives aux noms de base</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-basenames-tab.png"><div class=" block caption">
+            <p class="para block block-first">L'onglet des conditions relatives aux noms de base</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">En pratique, les conditions relatives aux noms de base se fondent sur une liste de motifs « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des ». Pour que l'action soit candidate compte tenu des conditions relatives aux noms de base, chaque élément de la sélection doit remplir toutes les conditions de la liste : le nom de base de chaque élément doit se conformer à au moins un des motifs « Doit correspondre à l'un des » tout en ne répondant à aucun des motifs « Ne doit correspondre à aucun des ».</p>
+<p class="para block">Si un seul élément de la sélection ne remplit pas toutes les conditions définies, l'action ne sera pas affichée.</p>
+<p class="para block">Si l'action cible le menu contextuel de la sélection, les conditions relatives aux noms de base seront vérifiées pour chacun des éléments sélectionnés. Si elle cible le menu contextuel de l'emplacement ou la barre d'outils, les conditions relatives aux noms de base seront vérifiées par rapport au nom de base de l'emplacement actif.</p>
+<p class="para block">La définition d'une nouvelle condition relative aux noms de base s'effectue en deux étapes.</p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">Définir le filtre de la nouvelle condition.</p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">Appuyez sur la touche <span class="keycap">Inser</span> ou cliquez sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span> pour ajouter un nouveau filtre de condition</p>
+          </li>
+<li>
+            <p class="para block block-first">Modifiez le filtre de la condition nouvellement ajoutée au nom de base auquel vous souhaitez qu'il se rapporte.</p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">Une condition relative au nom de base peut utiliser les caractères joker « <span class="literal" dir="ltr">*</span> » ou « <span class="literal" dir="ltr">?</span> ».</p>
+            </div></div>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">Indiquer s'il s'agit d'une condition « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des ».</p>
+        <p class="para block">Sur la même ligne, cliquez le bouton radio « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des » pour définir le type de condition.</p>
+      </li>
+</ol></div>
+<p class="para block">Selon le système d'exploitation de la cible, assurez-vous que la case à cocher <span class="guilabel">Respecter la casse</span> est activée (ou non).</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <p class="para block block-first">Si activée, tous les filtres sont considérés comme étant sensibles à la casse, ce qui signifie qu'un nom de fichier <span class="filename" dir="ltr">/mon/fichier</span> est considéré différent de <span class="filename" dir="ltr">/Mon/Fichier</span>.</p>
+        <p class="para block">C'est le comportement par défaut des systèmes de type Unix.</p>
+      </li>
+<li>
+        <p class="para block block-first">Si désactivée, les filtres sont considérés comme étant insensibles à la casse, ce qui signifie que <span class="filename" dir="ltr">/mon/fichier</span> et <span class="filename" dir="ltr">/Mon/Fichier</span> sont considérés identiques.</p>
+        <p class="para block">C'est probablement ce que vous souhaitez si vous ciblez un système du genre <span class="productname">Windows™</span>.</p>
+      </li>
+</ul></div>
+<p class="para block">Pour supprimer une condition définie sur le nom de base, il suffit de la sélectionner et d'appuyer sur la touche <span class="keycap">Suppr</span> (ou de cliquer sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>).</p>
+<p class="para block">Par défaut, la condition relative au nom de base est uniquement « Doit correspondre à l'un des * ». Comme « <span class="literal" dir="ltr">*</span> » correspond à tous les noms de base, ceci signifie que les conditions relatives aux noms de base ne sont pas considérées comme pertinentes pour l'action.</p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-mimetypes"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.II. </span>Conditions relatives au type MIME</span></h4></div>
+<p class="para block block-first">Vous pouvez décider que votre action apparaît selon les types MIME des éléments de la sélection en cours dans le gestionnaire de fichiers : vous pouvez indiquer que chaque élément de la sélection doit être d'un type MIME donné tout en décidant simultanément qu'aucun élément sélectionné ne doit appartenir à tel ou tel autre type MIME.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Type MIME</span> pour afficher la page qui vous permet de configurer les conditions relatives aux types MIME.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-mimetypes"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 7 </span>Conditions relatives au type MIME</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-mimetypes-tab.png"><div class=" block caption">
+            <p class="para block block-first">L'onglet relatif aux conditions liées aux types MIME</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">En pratique, les conditions relatives aux types MIME sont fondées sur une liste de motifs « Doit correspondre à l'un des » et « Ne doit correspondre à aucun des ». Pour que votre action soit candidate en regard des conditions relatives aux types MIME, tout élément de la sélection doit respecter toutes les conditions définies : le type MIME de chaque élément doit correspondre à au moins un des motifs « Doit correspondre à l'un des » tout en ne coïncidant avec aucun des motifs de la colonne « Ne doit correspondre à aucun des ».</p>
+<p class="para block">Si un seul élément de la sélection ne remplit pas toutes les conditions définies, l'action ne sera pas affichée.</p>
+<p class="para block">Lors de l'ouverture du menu contextuel de la sélection, les conditions relatives aux types MIME sont vérifiées pour chacun des éléments choisis. Lors de l'ouverture du menu contextuel de l'emplacement ou de la barre d'outils, les conditions relatives au type MIME sont contrôlées vis à vis du type MIME de l'emplacement actuel, qui se trouve être le type MIME bien connu « inode/directory ».</p>
+<p class="para block">La définition d'une nouvelle condition fondée sur le type MIME s'effectue en deux étapes.</p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">Définir le filtre de la nouvelle condition.</p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">Appuyez sur la touche <span class="keycap">Inser</span> ou cliquez sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span> pour ajouter un nouveau filtre de condition</p>
+          </li>
+<li>
+            <p class="para block block-first">Définissez le filtre de la condition nouvellement introduite pour le type MIME que vous voulez comparer.</p>
+            <p class="para block">Un type MIME doit être défini sous forme d'une expression <span class="literal" dir="ltr">groupe/sous-groupe</span>.</p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">Le joker « <span class="literal" dir="ltr">*</span> » n'est pris en charge que dans certains cas :</p>
+              <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+                  <span class="para">L'expression « <span class="literal" dir="ltr">*/*</span> » correspond à la totalité des types MIME. En tant qu'abréviation pratique, l'expression « <span class="literal" dir="ltr">*</span> » est également acceptée dans le même but.</span>
+                </li>
+<li>
+                  <span class="para">Une chaîne <span class="literal" dir="ltr">groupe/*</span> correspond à tous les sous-groupes du type MIME <span class="literal" dir="ltr">groupe</span>.</span>
+                </li>
+<li>
+                  <span class="para">La chaîne <span class="literal" dir="ltr">*/sous-groupe</span> n'est pas acceptée ; ce joker n'est pas valide.</span>
+                </li>
+</ul></div>
+            </div></div>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">Indiquer s'il s'agit d'une condition « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des ».</p>
+        <p class="para block">Sur la même ligne, cliquez le bouton radio « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des » pour définir le type de condition.</p>
+      </li>
+</ol></div>
+<p class="para block">Pour supprimer une condition définie sur le type MIME, il suffit de la sélectionner et d'appuyer sur la touche <span class="keycap">Suppr</span> (ou de cliquer sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>).</p>
+<p class="para block">Par défaut, la condition relative au type MIME est une condition « <span class="literal" dir="ltr">Doit correspondre à l'un des */*</span> ». Comme « <span class="literal" dir="ltr">*/*</span> » recouvre tous les types MIME, cela signifie qu'aucun type MIME n'est pertinent vis à vis de l'action.</p>
+<div class=" block example block-indent">
+<div class="block block-first title title-formal"><span class="title"><span class="label">Exemple 1 </span>Exemple de types MIME usuels</span></div>
+<div class="example-inner">
+      
+      <div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">
+            <span class="literal" dir="ltr">all/all</span>
+          </dt>
+<dd>
+            <p class="para block block-first">Correspond à tous les éléments.</p>
+          </dd>
+<dt class="term">
+            <span class="literal" dir="ltr">all/allfiles</span>
+          </dt>
+<dd>
+            <p class="para block block-first">Correspond à tous les fichiers réguliers.</p>
+          </dd>
+<dt class="term">
+            <span class="literal" dir="ltr">inode/directory</span>
+          </dt>
+<dd>
+            <p class="para block block-first">Correspond uniquement aux répertoires.</p>
+          </dd>
+</dl></div>
+    </div>
+</div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-folders"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.III. </span>Conditions relatives aux dossiers</span></h4></div>
+<p class="para block block-first">Vous pouvez décider que l'action s'affiche selon le répertoire dans lequel sont contenus les éléments actuellement sélectionnés dans le gestionnaire de fichiers : vous pouvez définir que chaque élément de la sélection doit se situer dans telle ou telle partie de l'arborescence des fichiers et, simultanément, ne pas situer dans une autre.</p>
+<p class="para block">Une condition relative aux dossiers doit se comprendre comme étant la définition de l'arborescence des fichiers dans laquelle l'élément en cours d'examen doit (ou ne doit pas) être situé : c'est un motif de noms de répertoires pour l'élément.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Dossiers</span> pour ouvrir la page qui vous permet de configurer les conditions relatives aux dossiers.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-folders"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 8 </span>Conditions relatives aux dossiers</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-folders-tab.png"><div class=" block caption">
+            <p class="para block block-first">L'onglet des conditions relatives aux dossiers</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">En pratique, les conditions relatives aux dossiers se fondent sur une liste de motifs « Doit correspondre à l'un des » et « Ne doit pas correspondre à un des ». Pour que l'action soit candidate compte tenu des conditions relatives aux dossiers, chaque élément de la sélection doit être valide pour toutes les conditions fixées : chaque élément doit être situé dans un des dossiers définis dans « Doit correspondre à l'un des » sans appartenir à aucun de ceux définis dans « Ne doit correspondre à aucun des ».</p>
+<p class="para block">Si un seul élément de la sélection ne remplit pas toutes les conditions définies, l'action ne sera pas affichée.</p>
+<p class="para block">Quand l'action a pour cible le menu contextuel d'une sélection, les conditions relatives aux dossiers sont vérifiées en examinant le nom du répertoire de chaque élément sélectionné. Quand est ciblé le menu contextuel de l'emplacement ou la barre d'outils, ces mêmes conditions sont contrôlées par rapport à l'emplacement en cours.</p>
+<p class="para block">La définition d'une nouvelle condition se rapportant à un dossier s'effectue en deux étapes.</p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">Définir le filtre de la nouvelle condition.</p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">Appuyez sur la touche <span class="keycap">Inser</span> ou cliquez sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span> pour ajouter un nouveau filtre de condition</p>
+          </li>
+<li>
+            <p class="para block block-first">Définir le filtre de la condition nouvellement introduite au dossier que vous voulez comparer.</p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">Les caractères « <span class="literal" dir="ltr">*</span> » et « <span class="literal" dir="ltr">?</span> » sont acceptés en tant que jokers à tout niveau de définition du filtre des dossiers.</p>
+            </div></div>
+          </li>
+<li>
+            <p class="para block block-first">Ou bien cliquez sur le bouton <span class="guibutton">Parcourir</span> pour sélectionner un dossier dans le système de fichiers.</p>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">Indiquer s'il s'agit d'une condition « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des ».</p>
+        <p class="para block">Sur la même ligne, cliquez le bouton radio « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des » pour définir le type de condition.</p>
+      </li>
+</ol></div>
+<p class="para block">Pour supprimer une condition définie sur le dossier, il suffit de la sélectionner et d'appuyer sur la touche <span class="keycap">Suppr</span> (ou de cliquer sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>).</p>
+<p class="para block">Par défaut, la condition relative aux dossiers est une condition « <span class="literal" dir="ltr">Doit correspondre à l'un des /</span> ». Étant donné que <span class="literal" dir="ltr">/</span> est toujours situé à la racine des systèmes de fichiers de type Unix, tout élément sélectionné répond à cette condition.</p>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">Si vous travaillez dans un système <span class="productname">Windows™</span>, cette valeur par défaut risque en fait de ne pas convenir.</p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-schemes"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.IV. </span>Conditions relatives au protocole</span></h4></div>
+<p class="para block block-first">Vous pouvez décider que l'action est affichée selon les protocoles des URI des éléments actuellement sélectionnés dans le gestionnaire de fichiers : vous pouvez décider que chaque élément de la sélection doit respecter tel ou tel protocole et, simultanément, de pas relever d'un autre.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Protocoles</span> pour afficher la page qui permet de configurer les conditions relatives aux protocoles.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-schemes"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 9 </span>Conditions relatives aux protocoles</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-schemes-tab.png"><div class=" block caption">
+            <p class="para block block-first">L'onglet des conditions relatives aux protocoles</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">En pratique, les conditions relatives aux protocoles sont bâties sur une liste de motifs « Doit correspondre à l'un des » et « Ne doit correspondre à aucun des ». Pour que l'action soit candidate selon les conditions relatives aux protocoles, chaque élément de la sélection doit répondre à l'ensemble des conditions précisées : le protocole de chaque élément doit répondre à une au moins des conditions définies dans les motifs « Doit correspondre à l'un des » tout en ne répondant à aucune des conditions « Ne doit correspondre à aucun des ».</p>
+<p class="para block">Si un seul élément de la sélection ne remplit pas toutes les conditions définies, l'action ne sera pas affichée.</p>
+<p class="para block">Quand l'action cible le menu contextuel d'une sélection, les conditions relatives aux protocoles sont vérifiées par rapport aux éléments de la sélection actuelle. Quand est ciblé le menu contextuel d'un emplacement ou une barre d'outils, les conditions relatives aux protocoles sont contrôlées relativement au protocole de l'emplacement actuel.</p>
+<p class="para block">La définition d'une nouvelle condition relative aux protocoles s'effectue en deux étapes.</p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">Définir le filtre de la nouvelle condition.</p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">Appuyez sur la touche <span class="keycap">Inser</span> ou cliquez sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span> pour ajouter un nouveau filtre de condition</p>
+          </li>
+<li>
+            <p class="para block block-first">Établir le filtre de la condition nouvellement introduite au protocole à vérifier.</p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">Les conditions relatives aux protocoles n'acceptent que le joker « <span class="literal" dir="ltr">*</span> » qui signifie « tous protocoles ».</p>
+            </div></div>
+          </li>
+<li>
+            <p class="para block block-first">Ou bien cliquez sur <span class="guibutton">Basique</span> pour sélectionner un protocole parmi ceux prédéfinis dans <span class="menuchoice"><span class="guimenu">Édition</span> ▸ <span class="guimenuitem">Préférences</span></span>.</p>
+            <div class=" block figure block-indent">
+<a name="cact-FIG-add-scheme"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 10 </span>Choix d'un protocole parmi ceux prédéfinis par défaut</span></div>
+<div class="figure-inner">
+              
+              <div class=" block screenshot block-first">
+                <div class="mediaobject">
+<img src="figures/cact-new-scheme.png"><div class=" block caption">
+                    <p class="para block block-first">Choix d'un protocole parmi ceux prédéfinis par défaut</p>
+                  </div>
+</div>
+              </div>
+            </div>
+</div>
+            <p class="para block">Un nouveau protocole ne peut être sélectionné ici que s'il n'a pas déjà été utilisé dans un autre filtre de protocole.</p>
+            <p class="para block">Pour sélectionner un nouveau protocole, cliquez sur <span class="guibutton">Valider</span>, ou bien faites un double-clic sur la ligne voulue.</p>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">Indiquer s'il s'agit d'une condition « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des ».</p>
+        <p class="para block">Sur la même ligne, cliquez le bouton radio « Doit correspondre à l'un des » ou « Ne doit correspondre à aucun des » pour définir le type de condition.</p>
+      </li>
+</ol></div>
+<p class="para block">Pour supprimer une condition définie sur le schéma, il suffit de la sélectionner et d'appuyer sur la touche <span class="keycap">Suppr</span> (ou de cliquer sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>).</p>
+<p class="para block">Par défaut, la condition relative au protocole est une condition « <span class="literal" dir="ltr">Doit correspondre à l'un des *</span> », ce qui signifie que les protocoles n'ont pas de pertinence pour cette action.</p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-capabilities"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.V. </span>Conditions relatives aux attributs</span></h4></div>
+<p class="para block block-first">Les attributs sont des propriétés qu'un fichier peut exposer vis à vis de l'utilisateur.</p>
+<p class="para block">Tous les attributs dépendent de l'utilisateur qui exécute la commande, excepté l'attribut <span class="literal" dir="ltr">Local</span>.</p>
+<p class="para block">Ainsi vous pouvez décider que l'action apparaît, ou pas, selon les attributs du ou des éléments choisis vis à vis de l'utilisateur actuel.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Attributs</span> pour afficher la page qui permet de configurer les conditions relatives aux attributs.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-capabilities"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 11 </span>Conditions relatives aux attributs</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-capabilities-tab.png"><div class=" block caption">
+            <p class="para block block-first">L'onglet des conditions relatives aux attributs</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">En pratique, les conditions relatives aux attributs sont bâties sur une liste de motifs « Doit correspondre à tous les » et « Ne doit correspondre à aucun des ». Pour que l'action soit candidate selon les conditions relatives aux attributs, chaque élément de la sélection doit répondre à toutes les conditions définies : l'attribut de chaque élément doit répondre à chacun des attributs précisés dans les motifs « Doit correspondre à tous les » tout en ne répondant à aucun des attributs « Ne doit correspondre à aucun des ».</p>
+<p class="para block">Si un seul élément de la sélection ne remplit pas toutes les conditions définies, l'action ne sera pas affichée.</p>
+<p class="para block">Si la cible est le menu contextuel des sélections, les conditions relatives aux attributs sont vérifiées par rapport aux éléments de la sélection actuelle. Si c'est le menu contextuel de l'emplacement ou la barre d'outils, les conditions relatives aux attributs sont vérifiées par rapport à celles de l'emplacement actuel.</p>
+<p class="para block">La définition d'une nouvelle condition relative aux attributs s'effectue en deux étapes.</p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">Définir le filtre de la nouvelle condition.</p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">Pressez la touche <span class="keycap">Inser</span> pour insérer un filtre relatif à une nouvelle condition,</p>
+          </li>
+<li>
+            <p class="para block block-first">établissez le filtre de la condition nouvellement introduite à l'attribut à vérifier,</p>
+          </li>
+<li>
+            <p class="para block block-first">ou bien cliquez sur <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span> pour ouvrir la boîte de dialogue <span class="guilabel">Ajout d'un nouvelattribut</span>.</p>
+            <div class=" block figure block-indent">
+<a name="cact-FIG-add-capability"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 12 </span>Attributs pris en charge</span></div>
+<div class="figure-inner">
+              
+              <div class=" block screenshot block-first">
+                <div class="mediaobject">
+<img src="figures/cact-new-capability.png"><div class=" block caption">
+                    <p class="para block block-first">La liste des attributs pris en charge</p>
+                  </div>
+</div>
+              </div>
+            </div>
+</div>
+            <p class="para block">Un nouvel attribut ne peut être choisi dans cette liste que s'il n'a pas déjà été utilisé dans un autre filtre d'attribut.</p>
+            <p class="para block">Pour sélectionner un nouvel attribut, cliquez sur <span class="guibutton">Valider</span> ou double-cliquez sur la ligne correspondante.</p>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">Indiquer s'il s'agit d'une condition « Doit correspondre à tous les » ou « Ne doit correspondre à aucun des ».</p>
+        <p class="para block">Sur la même ligne, cliquez sur le bouton radio <span class="guilabel">Doit correspondre à tous les</span> ou <span class="guilabel">Ne doit correspondre à aucun des</span> pour définir la condition correspondante.</p>
+      </li>
+</ol></div>
+<p class="para block">Pour supprimer une condition définie sur les attributs, il suffit de la sélectionner et d'appuyer sur la touche <span class="keycap">Suppr</span> (ou de cliquer sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>).</p>
+<p class="para block">Par défaut, la liste des conditions relatives aux attributs est vide. Cela signifie qu'aucun attribut n'est pertinent pour l'action.</p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-count"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.VI. </span>Condition relative au nombre de sélections</span></h4></div>
+<p class="para block block-first">Vous pouvez indiquer que l'action ne s'affiche que si le nombre de fichiers de la sélection actuelle dans le gestionnaire de fichiers possède une valeur ou une relation précise avec le nombre d'éléments donné.</p>
+<div class=" block example block-indent">
+<div class="block block-first title title-formal"><span class="title"><span class="label">Exemple 2 </span>Exemple d'utilisation d'un décompte de sélection</span></div>
+<div class="example-inner">
+      
+      <p class="para block block-first">Si l'action consiste à afficher les différences entre deux fichiers, vous pouvez définir ici « <span class="literal" dir="ltr">Nombre d'éléments = (égal à) 2</span> ».</p>
+    </div>
+</div>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Environnement</span> pour afficher la page qui permet de configurer les conditions relatives à l'environnement.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-environment"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 13 </span>Conditions relatives à l'environnement</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-environment-tab.png"><div class=" block caption">
+            <p class="para block block-first">L'onglet des conditions relatives à l'environnement</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">La condition relative au nombre de sélections se définit dans l'encadré <span class="guilabel">Apparaît si la sélection contient</span>.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-frame-count"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 14 </span>Encadré de la condition sur le nombre d'éléments sélectionnés</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-selection-count-frame.png"><div class=" block caption">
+            <p class="para block block-first">Encadré de la condition sur le nombre d'éléments sélectionnés</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">Si la cible est le menu contextuel des sélections, les conditions relatives au nombre d'éléments seront vérifiées par rapport au nombre d'éléments de la sélection en cours. Si est ciblé le menu contextuel de l'emplacement ou la barre d'outils, la condition relative au nombre d'éléments sera vérifiée par rapport à zéro étant donné qu'il n'y a pas d'élément sélectionné dans ce cas.</p>
+<p class="para block">Pour définir une condition sur le nombre d'éléments sélectionnés :</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <p class="para block block-first">Sélectionnez dans la liste déroulante <span class="guilabel">Nombre d'éléments</span> l'opérateur à appliquer au nombre d'éléments :</p>
+        <div class="block list simplelist"><table class="simplelist">
+<tr><td class="td-first"><span class="member"><span class="literal" dir="ltr">&lt;</span> (strictement plus petit que)</span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="literal" dir="ltr">=</span> (égal à)</span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="literal" dir="ltr">&gt;</span> (strictement plus grand que)</span></td></tr>
+</table></div>
+      </li>
+<li>
+        <p class="para block block-first">Saisissez la valeur souhaitée comme référence de décompte.</p>
+      </li>
+</ul></div>
+<p class="para block">Par défaut, la condition est « <span class="literal" dir="ltr">Nombre d'éléments &gt; (strictement plus grand que) 0</span> », ce qui signifie que l'action est candidate à l'affichage dès qu'il y a au moins un élément sélectionné dans le gestionnaire de fichiers.</p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-desktop"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.VII. </span>Sélection du bureau</span></h4></div>
+<p class="para block block-first">Vous pouvez définir que l'action :</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">apparaît dans tous les cas,</span>
+      </li>
+<li>
+        <span class="para">ou n'apparaît que dans des environnement bureau donnés,</span>
+      </li>
+<li>
+        <span class="para">ou n'apparaît pas dans des environnements de bureau donnés.</span>
+      </li>
+</ul></div>
+<p class="para block">Il n'y a qu'un seul choix possible entre ces trois éléments.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Environnement</span> pour afficher la page qui permet de configurer les conditions relatives à l'environnement.</p>
+<p class="para block">La sélection du bureau se définit dans l'encadré <span class="guilabel">Environnement de bureau</span>.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-frame-desktop"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 15 </span>Encadré de sélection du bureau</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-desktop-environment-frame.png"><div class=" block caption">
+            <p class="para block block-first">Encadré de sélection du bureau</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">Pour définir la condition d'environnement de bureau :</p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">D'abord sélectionnez le type de filtre :</p>
+        <div class="block list simplelist"><table class="simplelist">
+<tr><td class="td-first"><span class="member">votre action doit-elle toujours apparaître quel que soit l'environnement de bureau ?</span></td></tr>
+<tr><td class="td-first"><span class="member">votre action doit-elle uniquement apparaître dans certains environnements de bureau ?</span></td></tr>
+<tr><td class="td-first"><span class="member">votre action ne doit-elle jamais apparaître dans certains environnements de bureau ?</span></td></tr>
+</table></div>
+      </li>
+<li>
+        <p class="para block block-first">Si l'action ne doit jamais apparaître, sélectionnez ensuite les environnements de bureau concernés dans la liste sur le côté droit.</p>
+      </li>
+</ol></div>
+<p class="para block">La condition relative à l'environnement bureau est, par défaut, « <span class="literal" dir="ltr">Apparaît toujours</span> », ce qui signifie que l'action sera candidate à l'affichage quel que soit l'environnement de bureau actuel.</p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-executable"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.VIII. </span>Condition relative à la présence d'un exécutable</span></h4></div>
+<p class="para block block-first">Vous pouvez décider que l'action n'apparaît que si un paquet requis est installé sur le système. Dans ce cas, cette vérification s'effectue en recherchant qu'un fichier donné, connu ou supposé connu comme fourni par le paquet, est bien présent dans le système de fichiers et est exécutable.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Environnement</span> pour afficher la page qui permet de configurer les conditions relatives à l'environnement.</p>
+<p class="para block">La condition relative à la présence d'exécutable se définit dans l'encadré <span class="guilabel">Environnement d'exécution</span>.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-frame-execution-environment"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 16 </span>Encadré de l'environnement d'exécution</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-execution-environment-frame.png"><div class=" block caption">
+            <p class="para block block-first">Encadré de l'environnement d'exécution</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">Pour définir le fichier concerné, saisissez son nom complet dans le contrôle de saisie <span class="guilabel">Apparaît si le fichier suivant est exécutable</span> ou bien cliquez sur le bouton <span class="guibutton">Parcourir</span> pour sélectionner un fichier dans le système de fichiers.</p>
+<p class="para block">Laissez ce champ vide si la condition n'est pas pertinente pour l'action.</p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Vous pouvez intégrer certains paramètres relatifs au fichier recherché. Les valeurs, qui dépendent des éléments de la sélection en cours, seront substituées dynamiquement à ces paramètres lors de l'exécution.</p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-dbus"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.IX. </span>Condition d'enregistrement D-Bus</span></h4></div>
+<p class="para block block-first">Vous pouvez définir que l'action n'apparaît que si un nom donné est enregistré sur le système D-Bus lors de l'exécution.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Environnement</span> pour afficher la page vous permettant de configurer les conditions relatives à l'environnement et allez dans l'encadré <span class="guilabel">Environnement d'exécution</span>.</p>
+<p class="para block">Pour définir le nom concerné, saisissez-le dans le contrôle de saisie <span class="guilabel">Apparaît si le nom suivant est enregistré sur D-Bus</span>.</p>
+<p class="para block">Laissez ce champ vide si la condition n'est pas pertinente pour l'action.</p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Vous pouvez incorporer des paramètres dans le nom à rechercher. Les valeurs, qui dépendent des éléments de la sélection en cours, seront substituées dynamiquement à ces paramètres lors de l'exécution.</p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-true"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.X. </span>Condition personnalisée</span></h4></div>
+<p class="para block block-first">Vous pouvez définir que l'action n'apparaît que si une commande donnée renvoie la chaîne <span class="literal" dir="ltr">true</span> sur la sortie standard.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Environnement</span> pour afficher la page vous permettant de configurer les conditions relatives à l'environnement et allez dans l'encadré <span class="guilabel">Environnement d'exécution</span>.</p>
+<p class="para block">Ceci permet de définir un filtre personnalisé en écrivant un petit script qui émet, ou n'émet pas, la chaîne <span class="literal" dir="ltr">true</span> sur la sortie standard quand il est lancé.</p>
+<p class="para block">La commande définie est saisie dans le contrôle <span class="guilabel">Apparaît si la commande suivante renvoie « true » </span>.</p>
+<p class="para block">Laissez ce champ vide si la condition n'est pas pertinente pour l'action.</p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Vous pouvez incorporer des paramètres dans le nom du fichier à exécuter ou dans ses options. Les valeurs, qui dépendent des éléments de la sélection en cours, seront substituées dynamiquement à ces paramètres lors de l'exécution.</p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-run"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.I.XI. </span>Condition relative à un processus en cours d'exécution</span></h4></div>
+<p class="para block block-first">Vous pouvez définir que l'action n'apparaît que si un binaire donné est en cours d'exécution.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Environnement</span> pour afficher la page vous permettant de configurer les conditions relatives à l'environnement et allez dans l'encadré <span class="guilabel">Environnement d'exécution</span>.</p>
+<p class="para block">Pour définir le binaire, saisissez son nom dans le contrôle de saisie <span class="guilabel">Apparaît si le binaire suivant est en cours d'exécution</span> ou bien cliquez sur le bouton <span class="guibutton">Parcourir</span> pour choisir un fichier dans le système de fichiers.</p>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">Même si vous saisissez ici le nom et le chemin du binaire, seul son nom de base sera recherché dans la liste des processus en cours d'exécution.</p>
+    </div></div>
+<p class="para block">Laissez ce champ vide si la condition n'est pas pertinente pour l'action.</p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Vous pouvez incorporer des paramètres dans le nom à rechercher. Les valeurs, qui dépendent des éléments de la sélection en cours, seront substituées dynamiquement à ces paramètres lors de l'exécution.</p>
+    </div></div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-where"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.II. </span>Emplacement de l'action</span></h3></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-target-location-where"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 17 </span>Configuration de la cible</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-target-location.png"><div class=" block caption">
+            <p class="para block block-first">Configuration de la cible</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">Le gestionnaire de fichiers <span class="productname">Caja™</span> peut afficher l'action à divers emplacements, selon ce que vous précisez ici, et selon la sélection (ou non) de tel ou tel élément.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Action</span> pour afficher la page qui vous permettra de cibler les emplacements des actions.</p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">III.II.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-where-selection" title="Ciblage du menu contextuel de la sélection">Ciblage du menu contextuel de la sélection</a>
+</li>
+<li>
+<span class="label">III.II.II. </span><a class="xref" href="caja-actions-config-tool.html#usage-where-location" title="Ciblage du menu contextuel des emplacements">Ciblage du menu contextuel des emplacements</a>
+</li>
+<li>
+<span class="label">III.II.III. </span><a class="xref" href="caja-actions-config-tool.html#usage-where-toolbar" title="Ciblage de la barre d'outils">Ciblage de la barre d'outils</a>
+</li>
+<li>
+<span class="label">III.II.IV. </span><a class="xref" href="caja-actions-config-tool.html#usage-where-notes" title="Notes">Notes</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-where-selection"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.II.I. </span>Ciblage du menu contextuel de la sélection</span></h4></div>
+<p class="para block block-first">Quand <span class="guilabel">Afficher l'élément dans le menu contextuel de la sélection</span> est coché, votre action est candidate à l'affichage dans le menu contextuel de <span class="productname">Caja™</span> pour autant qu'il y ait au moins un élément sélectionné dans le gestionnaire de fichiers. L'action doit également s'accorder avec les éléments présentement sélectionnés. Pour être effectivement affichée, toutes les conditions définies pour l'action candidate doivent être respectées pour chacun des éléments de la sélection en cours dans le gestionnaire de fichiers <span class="productname">Caja™</span>.</p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Quand une action cible le menu contextuel de la sélection et est effectivement affichée dans le menu contextuel de <span class="productname">Caja™</span>, elle est également affichée dans le menu <span class="guimenu">Édition</span> de <span class="productname">Caja™</span>.</p>
+    </div></div>
+<p class="para block">Cette cible est cochée par défaut.</p>
+</div>
+<div class="division sect3">
+<a name="usage-where-location"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.II.II. </span>Ciblage du menu contextuel des emplacements</span></h4></div>
+<p class="para block block-first">Quand <span class="guilabel">Afficher l'élément dans le menu contextuel de l'emplacement</span> est coché, votre action est candidate à l'affichage dans le menu contextuel de <span class="productname">Caja™</span> quand il n'y a aucune sélection dans le gestionnaire de fichiers. L'action doit également s'accorder avec l'emplacement affiché. Pour être effectivement affichée, toutes les conditions définies pour l'action candidate doivent être respectées pour l'emplacement présentement affiché dans le gestionnaire de fichiers <span class="productname">Caja™</span>.</p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Quand une action cible le menu contextuel de l'emplacement et est effectivement affichée dans le menu contextuel de <span class="productname">Caja™</span>, elle est également affichée dans le menu <span class="guimenu">Fichier</span> de <span class="productname">Caja™</span>.</p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-where-toolbar"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.II.III. </span>Ciblage de la barre d'outils</span></h4></div>
+<p class="para block block-first">Quand <span class="guilabel">Afficher l'élément dans la barre d'outils</span> est coché, votre action est candidate à l'affichage dans la barre d'outils de <span class="productname">Caja™</span>.</p>
+<p class="para block">Les actions affichées dans la barre d'outils ne s'accordent qu'avec l'emplacement présentement affiché dans le gestionnaire de fichiers et non avec les éléments qui pourraient être sélectionnés (ou pas). Pour être affichées, toutes les conditions relatives à l'action candidate doivent être respectées pour l'emplacement en cours.</p>
+</div>
+<div class="division sect3">
+<a name="usage-where-notes"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.II.IV. </span>Notes</span></h4></div>
+<div class=" block formalpara block-first">
+      <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Si l'action est à afficher dans un menu contextuel,</span></div>
+      <p class="para block block-first">que ce soit le menu contextuel de la sélection ou de l'emplacement, elle est affichée à la fois dans les menus contextuels de <span class="productname">Caja™</span> et dans les menus <span class="guimenu">Fichier</span> ou <span class="guimenu">Édition</span> :</p>
+    </div>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">avec <span class="guilabel">Étiquette du contexte</span> comme étiquette,</span>
+      </li>
+<li>
+        <span class="para">avec l'<span class="guilabel">Icône</span> choisie,</span>
+      </li>
+<li>
+        <span class="para">ces deux propriétés apparaissant avec les <span class="guilabel">Informations</span>.</span>
+      </li>
+</ul></div>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">Selon la configuration exacte de votre environnement bureau, l'icône est ou n'est pas affichée devant l'étiquette dans les menus.</p>
+    </div></div>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Vous pouvez incorporer des paramètres dans l'étiquette, le nom de l'icône ou dans le texte d'information. Les valeurs qui dépendent des éléments de la sélection en cours seront substituées dynamiquement à ces paramètres lors de l'exécution.</p>
+    </div></div>
+<div class=" block formalpara">
+      <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Si l'action est à afficher dans la barre d'outils,</span></div>
+      <p class="para block block-first">elle est affichée</p>
+    </div>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">avec <span class="guilabel">Étiquette de la barre d'outils</span> comme étiquette,</span>
+      </li>
+<li>
+        <span class="para">avec l'<span class="guilabel">Icône</span> choisie,</span>
+      </li>
+<li>
+        <span class="para">ces deux propriétés apparaissant avec les <span class="guilabel">Informations</span>.</span>
+      </li>
+</ul></div>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">Selon l'exacte configuration de votre environnement bureau, l'étiquette de la barre d'outils peut être ou ne pas être affichée avec l'icône dans la barre d'outils.</p>
+    </div></div>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Par défaut, l'étiquette de la barre d'outils est la même que celle utilisée dans les menus. En décochant la case <span class="guilabel">Utiliser le même intitulé pour l'icône dans la barre d'outils</span>, vous pouvez définir une étiquette propre à la barre d'outils, généralement plus succincte que celle définie pour les menus.</p>
+    </div></div>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Vous pouvez incorporer des paramètres dans l'étiquette de la barre d'outils, le nom de l'icône ou dans le texte d'information de l'infobulle. Les valeurs qui dépendent des éléments de la sélection en cours seront substituées dynamiquement à ces paramètres lors de l'exécution.</p>
+    </div></div>
+<div class=" block formalpara">
+      <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Définition de plusieurs cibles</span></div>
+      <p class="para block block-first">Une action peut cibler à la fois le menu contextuel de la sélection, le menu contextuel de l'emplacement et la barre d'outils ou bien un ou plus parmi ceux-ci.</p>
+    </div>
+<div class=" block formalpara">
+      <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Définition d'aucune cible</span></div>
+      <p class="para block block-first">Si aucune cible n'est définie, <span class="abbrev">c-à-d.</span> si aucune des trois cases à cocher n'est cochée, l'action n'est jamais affichée.</p>
+    </div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-execution"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.III. </span>Action à exécuter</span></h3></div>
+<p class="para block block-first">Vous souhaitez selon toute vraisemblance que votre action soit clôturée par l'exécution de quelque chose. Et bien, pragmatiquement, avoir quelque chose à exécuter est une des quelques conditions requises pour qu'une action soit considérée comme valide.</p>
+<p class="para block">Comme nous l'avons déjà vu, la commande à exécuter est configurée dans l'onglet <span class="guilabel">Commande</span>.</p>
+<p class="para block">Cette commande peut prendre des paramètres, qui eux-mêmes peuvent incorporer d'autres paramètres. Ces paramètres sont développés lors de l'exécution avec les valeurs dépendantes des éléments actuellement sélectionnés.</p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">III.III.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-parameters" title="Paramètres disponibles">Paramètres disponibles</a>
+</li>
+<li>
+<span class="label">III.III.II. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-work" title="Emplacement où l'action est exécutée">Emplacement où l'action est exécutée</a>
+</li>
+<li>
+<span class="label">III.III.III. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how" title="Mode d'exécution de l'action">Mode d'exécution de l'action</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-execution-parameters"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.III.I. </span>Paramètres disponibles</span></h4></div>
+<p class="para block block-first">Dans l'onglet <span class="guilabel">Commande</span>, cliquez sur le bouton <span class="guilabel">Légende</span> pour afficher la liste des paramètres disponibles.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-legend"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 18 </span>Liste des paramètres disponibles</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-legend.png"><div class=" block caption">
+            <p class="para block block-first">Les paramètres disponibles</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">Le bouton <span class="guibutton">Légende</span> est un bouton bascule : cliquez une première fois pour afficher la boîte de dialogue <span class="guilabel">Légende des paramètres</span> ; cliquez une deuxième fois pour la faire disparaître.</p>
+    </div></div>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">Le mot « <span class="guilabel">premier</span> » peut se révéler trompeur étant donné qu'il se réfère à une liste interne d'éléments fournis par le gestionnaire de fichiers au greffon <span class="productname">Caja-Actions™</span>.</p>
+      <p class="para block">En particulier, cette liste <span class="emphasis">n'a rien à voir</span> avec l'affichage de la sélection que vous pourriez avoir faite dans la fenêtre du gestionnaire de fichiers. En fait, le « <span class="guilabel">premier</span> » élément choisi dans une sélection multiple n'est absolument pas défini et, en pratique, assez imprévisible.</p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-execution-work"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.III.II. </span>Emplacement où l'action est exécutée</span></h4></div>
+<p class="para block block-first">Votre action peut être exécutée dans un répertoire de travail donné.</p>
+<p class="para block">Vous pouvez le préciser dans l'onglet <span class="guilabel">Commande</span>, dans le contrôle de saisie <span class="guilabel">Répertoire de travail</span> ou en cliquant sur <span class="guibutton">Parcourir</span> pour choisir un dossier dans le système de fichiers.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-work-dir-frame"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 19 </span>Encadré Répertoire de travail</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-working-directory-frame.png"><div class=" block caption">
+            <p class="para block block-first">Encadré Répertoire de travail</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">Par défaut, le répertoire de travail est <span class="literal" dir="ltr">%d</span>. La commande est donc lancée dans le répertoire de base du (premier) élément sélectionné.</p>
+<p class="para block">Dans le cas particulier du paramètre <span class="literal" dir="ltr">%d</span>, « <span class="guilabel">premier</span> » élément choisi, n'est pas critique parce qu'il est quasiment sûr que tous les éléments sélectionnés sont situés dans la même répertoire de base.</p>
+</div>
+<div class="division sect3">
+<a name="usage-execution-how"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.III.III. </span>Mode d'exécution de l'action</span></h4></div>
+<p class="para block block-first">Mises à part les conditions que la sélection doit respecter pour que l'action soit affichée dans les menus du gestionnaire de fichiers, <span class="productname">Caja-Actions™</span> vous permet de définir précisément comment la commande est exécutée.</p>
+<p class="para block">Cliquez sur l'onglet <span class="guilabel">Exécution</span> pour afficher la page qui configure l'exécution de la commande.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-execution"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 20 </span>Configuration des modes d'exécution</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-execution-tab.png"><div class=" block caption">
+            <p class="para block block-first">Configuration des modes d'exécution</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">III.III.III.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-mode" title="Mode d'exécution">Mode d'exécution</a>
+</li>
+<li>
+<span class="label">III.III.III.II. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-notify" title="Notification de lancement">Notification de lancement</a>
+</li>
+<li>
+<span class="label">III.III.III.III. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-class" title="Classe de la fenêtre">Classe de la fenêtre</a>
+</li>
+<li>
+<span class="label">III.III.III.IV. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-user" title="Propriétaire de l'exécution">Propriétaire de l'exécution</a>
+</li>
+<li>
+<span class="label">III.III.III.V. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-singular" title="Exécutions multiples">Exécutions multiples</a>
+</li>
+</ul></div>
+<div class="division sect4">
+<a name="usage-execution-how-mode"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">III.III.III.I. </span>Mode d'exécution</span></h5></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-execution-mode"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 21 </span>Configuration du mode d'exécution</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-exec-mode-frame.png"><div class=" block caption">
+              <p class="para block block-first">Configuration du mode d'exécution</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">Le mode d'exécution de la commande peut être choisi parmi les valeurs suivantes :</p>
+<div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">Normal</dt>
+<dd>
+            <p class="para block block-first">Lance la commande dans l'interface utilisateur graphique standard.</p>
+          </dd>
+<dt class="term">Dans un terminal</dt>
+<dd>
+            <p class="para block block-first">Ouvre le terminal préféré de l'environnement bureau et y lance la commande.</p>
+          </dd>
+<dt class="term">Incorporé</dt>
+<dd>
+            <p class="para block block-first">Utilise une fonctionnalité spéciale du gestionnaire de fichiers qui peut autoriser l'ouverture d'un terminal dans sa fenêtre.</p>
+            <p class="para block">Étant donné que <span class="productname">Caja™</span> ne dispose pas de cette fonctionnalité, cette option est strictement équivalente à l'option <span class="literal" dir="ltr">Terminal</span>.</p>
+          </dd>
+<dt class="term">Affichage des sorties</dt>
+<dd>
+            <p class="para block block-first">Ouvre le terminal préféré de l'environnement bureau et y lance la commande. À la fin, les flux standard (stdout, stderr) sont rassemblés et affichés.</p>
+          </dd>
+</dl></div>
+<p class="para block">Par défaut, le mode d'exécution d'une commande est <span class="literal" dir="ltr">Normal</span>. Cela signifie que la commande sera exécutée sans aucune procédure particulière avant ou après son lancement.</p>
+</div>
+<div class="division sect4">
+<a name="usage-execution-how-notify"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">III.III.III.II. </span>Notification de lancement</span></h5></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-startup-mode"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 22 </span>Configuration des modes de lancement</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-startup-mode-frame.png"><div class=" block caption">
+              <p class="para block block-first">Configuration des modes de lancement</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">Si le mode d'exécution de la commande est <span class="literal" dir="ltr">Normal</span>, et si vous savez que l'application envoie un message <span class="literal" dir="ltr">remove</span> avec la variable d'environnement <span class="envar" dir="ltr">DESKTOP_STARTUP_ID</span> définie, alors cochez la case <span class="guilabel">Notifier le démarrage</span>.</p>
+<p class="para block">Consultez <a class="ulink" href="http://www.freedesktop.org/Standards/startup-notification-spec" title="http://www.freedesktop.org/Standards/startup-notification-spec"><span class="citetitle"><span style="font-style: italic; ">Définition des protocoles de notification de démarrage (Startup Notification Protocol Specification)</span></span></a> pour plus de détails.</p>
+</div>
+<div class="division sect4">
+<a name="usage-execution-how-class"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">III.III.III.III. </span>Classe de la fenêtre</span></h5></div>
+<p class="para block block-first">Si le mode d'exécution de la commande est <span class="literal" dir="ltr">Normal</span> et si vous savez que l'application correspond à au moins une fenêtre avec un nom de classe donné, alors saisissez ce nom dans le contrôle <span class="guilabel">Classe de lancement du Window Manager</span>.</p>
+<p class="para block">Consultez <a class="ulink" href="http://www.freedesktop.org/Standards/startup-notification-spec" title="http://www.freedesktop.org/Standards/startup-notification-spec"><span class="citetitle"><span style="font-style: italic; ">Définition des protocoles de notification de démarrage (Startup Notification Protocol Specification)</span></span></a> pour plus de détails.</p>
+</div>
+<div class="division sect4">
+<a name="usage-execution-how-user"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">III.III.III.IV. </span>Propriétaire de l'exécution</span></h5></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-execute-as"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 23 </span>Configuration du propriétaire du lancement</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-execute-as-frame.png"><div class=" block caption">
+              <p class="para block block-first">Configuration du propriétaire du lancement</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">Saisissez dans le contrôle <span class="guilabel">Exécuter en tant qu'utilisateur</span>, le nom ou l'<span class="acronym">UID</span> de l'utilisateur au nom de qui la commande sera lancée.</p>
+<p class="para block">Si vous ne saisissez rien dans ce champ, la commande est alors exécutée au nom de l'utilisateur en cours.</p>
+</div>
+<div class="division sect4">
+<a name="usage-execution-how-singular"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">III.III.III.V. </span>Exécutions multiples</span></h5></div>
+<p class="para block block-first">Vous pouvez souhaiter que la commande soit exécutée une fois, en lui donnant la liste des éléments sélectionnés comme argument.</p>
+<p class="para block">Vous pouvez aussi préférer que votre commande soit répétée pour chaque élément sélectionné, en donnant pour chaque exécution un élément différent comme argument.</p>
+<p class="para block">En fait, <span class="productname">Caja-Actions™</span> gère automatiquement ces deux comportements selon la forme et l'ordre des paramètres dans les arguments de la commande.</p>
+<p class="para block">Bien que certains paramètres ne dépendent pas du nombre d'élément sélectionnés (<span class="abbrev">par ex.</span> « <span class="literal" dir="ltr">%c</span> », le nombre de sélections lui-même), la plupart ont deux déclinaisons :</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <span class="para">une au « singulier », <span class="abbrev">par ex.</span> « <span class="literal" dir="ltr">%b</span> », le nom de base de l'élément sélectionné ;</span>
+        </li>
+<li>
+          <span class="para">une au « pluriel », <span class="abbrev">par ex.</span> « <span class="literal" dir="ltr">%B</span> », la liste séparée par des espaces des noms de base des éléments sélectionnés.</span>
+        </li>
+</ul></div>
+<p class="para block">Quand la sélection est vide ou ne comporte qu'un seul élément, ces deux formes sont rigoureusement équivalentes pour ce qui concerne ce paragraphe.</p>
+<p class="para block">Quand la sélection comporte plus d'un élément :</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <span class="para">si le premier paramètre pertinent est au « singulier », alors <span class="productname">Caja-Actions™</span> considère que la commande n'est susceptible de traiter qu'un seul élément à la fois, et donc doit être lancée une fois pour chaque élément sélectionné ;</span>
+        </li>
+<li>
+          <span class="para">au contraire, si le premier paramètre pertinent trouvé est au « pluriel », alors <span class="productname">Caja-Actions™</span> considère que la commande est capable de traiter la liste d'éléments, et donc la commande n'est exécutée qu'une seule fois ;</span>
+        </li>
+<li>
+          <span class="para">si tous les paramètres trouvés ne sont pas pertinents, alors <span class="productname">Caja-Actions™</span> considère par défaut que la commande ne doit être exécutée qu'une seule fois.</span>
+        </li>
+</ul></div>
+<div class="table block block-indent">
+<a name="cact-TAB-multiple-execution"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Tableau 1 </span>Caractérisation des paramètres <span class="abbrev">vs.</span> leur exécution multiple</span></div>
+<table summary="Caractérisation des paramètres vs. leur exécution multiple" style="border: solid 1px;">
+<thead><tr>
+<th style="text-align: center;" class="td-colsep">Paramètre</th>
+<th style="text-align: left;" class="td-colsep">Description</th>
+<th style="text-align: center;" colspan="3">Répétition</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%b</span></td>
+<td style="text-align: left;" class="td-colsep">(premier) nom de base</td>
+<td style="text-align: center;" class="td-colsep">au singulier</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%B</span></td>
+<td style="text-align: left;" class="td-colsep">liste des noms de base séparés par des espaces</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">au pluriel</td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%c</span></td>
+<td style="text-align: left;" class="td-colsep">nombre d'éléments sélectionnés</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">non pertinent</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%d</span></td>
+<td style="text-align: left;" class="td-colsep">(premier) répertoire de base</td>
+<td style="text-align: center;" class="td-colsep">au singulier</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%D</span></td>
+<td style="text-align: left;" class="td-colsep">liste des répertoires de base de chaque élément sélectionné séparés par des espaces</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">au pluriel</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%f</span></td>
+<td style="text-align: left;" class="td-colsep">(premier) nom de fichier</td>
+<td style="text-align: center;" class="td-colsep">au singulier</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%F</span></td>
+<td style="text-align: left;" class="td-colsep">liste des noms des fichiers sélectionnés séparés par des espaces</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">au pluriel</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%h</span></td>
+<td style="text-align: left;" class="td-colsep">nom d'hôte du (premier) URI</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">non pertinent</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%m</span></td>
+<td style="text-align: left;" class="td-colsep">type MIME du (premier) élément sélectionné</td>
+<td style="text-align: center;" class="td-colsep">au singulier</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%M</span></td>
+<td style="text-align: left;" class="td-colsep">liste des types MIME des éléments sélectionnés séparés par des espaces</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">au pluriel</td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%n</span></td>
+<td style="text-align: left;" class="td-colsep">nom d'utilisateur du (premier) URI</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">non pertinent</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%o</span></td>
+<td style="text-align: left;" class="td-colsep">opérateur qui force l'exécution de l'action fichier par fichier</td>
+<td style="text-align: center;" class="td-colsep">au singulier</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%O</span></td>
+<td style="text-align: left;" class="td-colsep">opérateur qui force l'exécution de l'action simultanément sur plusieurs fichiers</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">au pluriel</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%p</span></td>
+<td style="text-align: left;" class="td-colsep">numéro de port du (premier) URI</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">non pertinent</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%s</span></td>
+<td style="text-align: left;" class="td-colsep">protocole du (premier) URI</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">non pertinent</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%u</span></td>
+<td style="text-align: left;" class="td-colsep">(premier) URI</td>
+<td style="text-align: center;" class="td-colsep">au singulier</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%U</span></td>
+<td style="text-align: left;" class="td-colsep">liste des URI sélectionnés séparés par des espaces</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">au pluriel</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%w</span></td>
+<td style="text-align: left;" class="td-colsep">(premier) nom de base sans extension</td>
+<td style="text-align: center;" class="td-colsep">au singulier</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%W</span></td>
+<td style="text-align: left;" class="td-colsep">liste des noms de base sans extension séparés par des espaces</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">au pluriel</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%x</span></td>
+<td style="text-align: left;" class="td-colsep">(première) extension</td>
+<td style="text-align: center;" class="td-colsep">au singulier</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%X</span></td>
+<td style="text-align: left;" class="td-colsep">liste des extensions séparées par des espaces</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">au pluriel</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%%</span></td>
+<td style="text-align: left;" class="td-colsep">le caractère « <span class="literal" dir="ltr">%</span> »</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">non pertinent</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=" block example block-indent">
+<div class="block block-first title title-formal"><span class="title"><span class="label">Exemple 3 </span>Utilisation des formes au singulier <span class="abbrev">vs.</span> pluriel</span></div>
+<div class="example-inner">
+        
+        <p class="para block block-first">Supposons que le dossier actuel est <span class="filename" dir="ltr">/data</span> et que la sélection comporte trois fichiers <span class="filename" dir="ltr">pierre</span>, <span class="filename" dir="ltr">paul</span> et <span class="filename" dir="ltr">jacques</span>.</p>
+        <div class=" block formalpara">
+          <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Si nous avons programmé <span class="command" dir="ltr">echo %b</span>,</span></div>
+          <p class="para block block-first">alors les trois commandes suivantes sont successivement exécutées :</p>
+        </div>
+        <div class="block list simplelist"><table class="simplelist">
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo pierre</span></span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo paul</span></span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo jacques</span></span></td></tr>
+</table></div>
+        <p class="para block">Ceci parce que <span class="literal" dir="ltr">%b</span> marque un paramètre au <span class="emphasis">singulier</span>. La commande est lancée une fois pour chaque élément sélectionné.</p>
+        <div class=" block formalpara">
+          <div class="block block-first title title-formal"><span class="title"><span class="label"></span>A contrario, si nous avons programmé <span class="command" dir="ltr">echo %B</span>,</span></div>
+          <p class="para block block-first">alors la commande suivante est lancée :</p>
+        </div>
+        <div class="block list simplelist"><table class="simplelist"><tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo pierre paul jacques</span></span></td></tr></table></div>
+        <p class="para block">Ceci parce que <span class="literal" dir="ltr">%B</span> marque un paramètre au <span class="emphasis">pluriel</span>. La commande est alors exécutée une seule fois avec la liste des éléments sélectionnés en tant que paramètre.</p>
+        <div class=" block formalpara">
+          <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Si nous avons programmé <span class="command" dir="ltr">echo %b %B</span>,</span></div>
+          <p class="para block block-first">alors les trois commandes suivantes sont successivement exécutées :</p>
+        </div>
+        <div class="block list simplelist"><table class="simplelist">
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo pierre pierre paul jacques</span></span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo paul pierre paul jacques</span></span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo jacques pierre paul jacques</span></span></td></tr>
+</table></div>
+        <p class="para block">Ceci parce que le premier paramètre <span class="emphasis">pertinent</span> est <span class="literal" dir="ltr">%b</span> et donc la commande est lancée une fois pour chaque élément sélectionné en remplaçant chaque fois le paramètre <span class="literal" dir="ltr">%b</span> par l'élément correspondant. Le deuxième paramètre est décodé et ajouté en tant qu'argument de la commande exécutée.</p>
+        <div class=" block formalpara">
+          <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Et si nous avions programmé <span class="literal" dir="ltr">echo %B %b</span>,</span></div>
+          <p class="para block block-first">alors la commande ci-après serait lancée :</p>
+        </div>
+        <div class="block list simplelist"><table class="simplelist"><tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo pierre paul jacques pierre</span></span></td></tr></table></div>
+        <p class="para block">Ceci parce que le premier paramètre <span class="emphasis">pertinent</span> est ici <span class="literal" dir="ltr">%B</span>. La commande est alors lancée une seule fois en remplaçant <span class="literal" dir="ltr">%B</span> par la liste des noms de base séparés par des espaces. Et comme la commande n'est exécutée qu'une seule fois, <span class="literal" dir="ltr">%b</span> ne sera remplacé qu'une seule fois par le (premier) nom de base.</p>
+      </div>
+</div>
+</div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-profile"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.IV. </span>Utilisation de profils pour étendre vos actions</span></h3></div>
+<p class="para block block-first">Dans certains cas, vous souhaiterez qu'une action donnée se comporte légèrement différemment selon les éléments actuellement sélectionnés ou selon l'environnement d'exécution actuel.</p>
+<div class=" block example block-indent">
+<div class="block block-first title title-formal"><span class="title"><span class="label">Exemple 4 </span>Ouvrir un terminal ici</span></div>
+<div class="example-inner">
+    
+    <p class="para block block-first">Disons que nous avons une action qui ouvre un terminal dans l'emplacement en cours.</p>
+    <p class="para block">Vous l'avez configurée pour que votre terminal préféré s'ouvre à l'emplacement actuellement pointé par le gestionnaire de fichiers.</p>
+    <p class="para block">Mais que faire si vous voulez choisir un répertoire dans votre gestionnaire de fichiers et ouvrir directement le terminal dans ce répertoire ? Si vous restez dans l'emplacement présent du gestionnaire de fichiers, le terminal s'ouvre dans le répertoire parent du répertoire ciblé.</p>
+    <p class="para block">Une solution consiste à définir un nouveau profil pour l'action et de configurer ce profil pour ouvrir le terminal dans le répertoire ciblé.</p>
+    <p class="para block">À l'exécution, <span class="productname">Caja-Actions™</span> examine successivement chaque profil associé à l'action. Si le premier profil cible un fichier alors que vous avez sélectionné un répertoire, alors <span class="productname">Caja-Actions™</span> essaie uniquement avec le second profil.</p>
+  </div>
+</div>
+<p class="para block">Pour créer un nouveau profil, sélectionnez d'abord l'action dans la liste d'éléments, puis choisissez <span class="menuchoice"><span class="guisubmenu">Fichier</span> ▸ <span class="guimenuitem">Nouveau profil</span></span>.</p>
+<p class="para block">Un nouveau profil est créé pour votre action.</p>
+<p class="para block">Vous pouvez maintenant définir les conditions à respecter pour que ce profil soit sélectionné et la commande à exécuter.</p>
+<div class="autotoc"><ul><li>
+<span class="label">III.IV.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-profile-order" title="Ordonnancement des profils à l'intérieur d'une action">Ordonnancement des profils à l'intérieur d'une action</a>
+</li></ul></div>
+<div class="division sect3">
+<a name="usage-profile-order"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.IV.I. </span>Ordonnancement des profils à l'intérieur d'une action</span></h4></div>
+<p class="para block block-first">Lors de l'exécution, <span class="productname">Caja-Actions™</span> commence par examiner les conditions définies pour l'action.</p>
+<p class="para block">Si ces conditions (les conditions de l'action) sont satisfaites, alors <span class="productname">Caja-Actions™</span> examine dans l'ordre chaque profil.</p>
+<p class="para block">Si les conditions définies dans le profil sont satisfaites, alors ce profil est validé et l'examen des autres profils n'est pas effectué.</p>
+<p class="para block">Si aucun profil n'est considéré comme valide à l'exécution, l'action est elle-même considérée comme non valide et n'est pas affichée dans le menu contextuel du gestionnaire de fichiers.</p>
+<p class="para block">Les profils d'une action sont classés et ils sont examinés dans cet ordre au moment de l'exécution. Le premier profil dont les conditions sont remplies sera validé et rendu sélectionnable dans le menu contextuel de <span class="productname">Caja™</span>.</p>
+<p class="para block">Donc, l'ordre des profils peut se révéler important pour l'action : le premier profil valide trouvé sera le seul profil sélectionné.</p>
+<p class="para block">Vous pouvez classer les profils dans une action de deux manières.</p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <span class="para">Coupez le profil à déplacer, sélectionnez le profil avant lequel vous souhaitez placer le profil que vous venez de couper et collez-le.</span>
+      </li>
+<li>
+        <span class="para">Cliquez sur le profil à déplacer et faites-le glisser à la bonne place.</span>
+      </li>
+</ol></div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-menus"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.V. </span>Organisation des actions dans les menus</span></h3></div>
+<p class="para block block-first">Au fur et à mesure que la liste d'actions s'agrandit, vous souhaiterez probablement l'organiser en menus, sous-menus et ainsi de suite.</p>
+<p class="para block">Pour créer un nouveau menu, sélectionnez <span class="menuchoice"><span class="guimenu">Fichier</span> ▸ <span class="guimenuitem">Nouveau menu</span></span>.</p>
+<p class="para block">Il est possible de créer un menu n'importe où dans la liste des actions, mais pas à l'intérieur d'une action (<span class="abbrev">c.-à-d.</span> pas entre deux profils d'une action).</p>
+<p class="para block">Comme pour les actions, l'endroit exact où un nouveau menu est inséré dépend de l'ordre de tri actuel :</p>
+<div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">Ordre manuel :</dt>
+<dd>
+        <p class="para block block-first">Le nouveau menu est inséré juste avant l'action ou le menu actuellement sélectionné.</p>
+        <p class="para block">Ce positionnement n'est pas modifié quand vous modifiez ultérieurement l'étiquette du menu.</p>
+      </dd>
+<dt class="term">Ordre alphabétique naturel (resp. inverse) :</dt>
+<dd>
+        <p class="para block block-first">Le nouveau menu est inséré à l'emplacement voulu compte tenu de son étiquette par défaut « <span class="literal" dir="ltr">Nouveau menu Caja</span> ».</p>
+        <p class="para block">Son emplacement est automatiquement modifié chaque fois que vous modifiez l'étiquette du menu.</p>
+      </dd>
+</dl></div>
+<p class="para block">Comme pour les actions, un menu requiert également une étiquette et peut avoir une icône et des informations. Vous pouvez également définir certaines conditions pour que le menu soit candidat à l'affichage dans le menu contextuel de <span class="productname">Caja™</span>. Si les conditions définies ne sont pas réunies à l'exécution, alors la totalité du menu, y compris ses sous-menus, ses actions, etc. n'est pas affichée.</p>
+</div>
+<div class="division sect2">
+<a name="usage-sorting"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.VI. </span>Tri de la liste des éléments</span></h3></div>
+<p class="para block block-first">Les actions et menus sont affichés dans les menus contextuels du gestionnaire de fichiers dans l'ordre où ils sont disposés dans la <span class="guilabel">Liste d'éléments</span>, dans le panneau de gauche de la fenêtre principale de l'<span class="application">outil de configuration de Caja-Actions</span>.</p>
+<p class="para block">Vous pouvez décider de :</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+      <span class="para">trier les actions et les menus dans l'ordre alphabétique naturel ou inverse de leurs étiquettes,</span>
+    </li>
+<li>
+      <span class="para">ou de ne pas trier et de ranger les actions et les menus manuellement dans l'ordre qui vous plaît.</span>
+    </li>
+</ul></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">III.VI.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-sorting-alpha" title="Tri alphabétique des actions et menus">Tri alphabétique des actions et menus</a>
+</li>
+<li>
+<span class="label">III.VI.II. </span><a class="xref" href="caja-actions-config-tool.html#usage-sorting-manual" title="Organisation manuelle des actions et menus">Organisation manuelle des actions et menus</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-sorting-alpha"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.VI.I. </span>Tri alphabétique des actions et menus</span></h4></div>
+<p class="para block block-first">Dans ces modes, actions et menus sont triés selon leur étiquette dans chacun de leur parent.</p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-sort-buttons"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 24 </span>Boutons de tri dans la fenêtre principale</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/sort-buttons-frame.png"><div class=" block caption">
+            <p class="para block block-first">Boutons de tri dans la fenêtre principale</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">Vous pouvez trier les actions par :</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">Cliquez sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/sort-asc.png"></span></span> (<span class="abbrev">resp.</span><span class="guibutton"><span class="inlinegraphic"><img src="figures/sort-desc.png"></span></span>) pour trier les actions dans l'ordre alphabétique naturel (<span class="abbrev">resp.</span> inverse),</span>
+      </li>
+<li>
+        <span class="para">ou modifiez la préférence correspondante.</span>
+      </li>
+</ul></div>
+</div>
+<div class="division sect3">
+<a name="usage-sorting-manual"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.VI.II. </span>Organisation manuelle des actions et menus</span></h4></div>
+<p class="para block block-first">Lorsque des éléments sont triés manuellement dans la liste, les nouveaux éléments sont normalement insérés juste à la position actuelle.</p>
+<p class="para block">Il existe néanmoins le cas où une action est sélectionnée et non développée (ou ne possède actuellement qu'un seul profil). L'insertion d'un nouveau profil ne se fera pas devant l'action mais à l'intérieur de l'action.</p>
+<p class="para block">Pour sélectionner ce mode :</p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">Cliquez sur le bouton <span class="guibutton"><span class="inlinegraphic"><img src="figures/sort-manual.png"></span></span>,</span>
+      </li>
+<li>
+        <span class="para">ou modifiez la préférence correspondante.</span>
+      </li>
+</ul></div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-edit"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.VII. </span>Édition</span></h3></div>
+<p class="para block block-first">Avec l'<span class="application">outil de configuration de Caja-Actions</span>, vous pouvez en toute sécurité couper, copier vers et coller à partir du presse-papier.</p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">III.VII.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-edit-cut" title="Action de couper/suppression">Action de couper/suppression</a>
+</li>
+<li>
+<span class="label">III.VII.II. </span><a class="xref" href="caja-actions-config-tool.html#usage-edit-multiple" title="Sélection multiple">Sélection multiple</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-edit-cut"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.VII.I. </span>Action de couper/suppression</span></h4></div>
+<p class="para block block-first">La suppression s'applique à la sélection actuelle.</p>
+<p class="para block">Faites attention car la sélection et suppression de tous les profils d'une action la laisse sans profil, donc dans un état non valide. Le nom de l'action est écrit en lettres italiques (car modifiée) rouges (car non valide).</p>
+</div>
+<div class="division sect3">
+<a name="usage-edit-multiple"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.VII.II. </span>Sélection multiple</span></h4></div>
+<p class="para block block-first">La sélection multiple est possible dans l'<span class="application">outil de configuration deCaja-Actions</span>. Vous pouvez étendre la sélection en pressant la touche <span class="keycap">Ctrl</span> ou <span class="keycap">Maj</span> tout en sélectionnant un élément à ajouter.</p>
+<p class="para block">L'<span class="application">outil de configuration de Caja-Actions</span> n'accepte que des sélections multiples homogènes. C'est-à-dire que vous pouvez sélectionner un ou plusieurs profils, un ou plusieurs menus ou actions. Une sélection multiple contenant à la fois des profils et des actions ou menus n'est pas autorisée parce que l'<span class="application">outil de configuration de Caja-Actions</span> ne saurait pas où coller une telle sélection.</p>
+<p class="para block">Notez que le fait de sélectionner n'importe quelle ligne sélectionne également les enfants de cette ligne. Ces enfants sont « implicitement sélectionnés » : ils font partie des opérations de modifications suivantes, mais ne sont pas pris en considération pour la vérification d'homogénéité de la sélection. En outre, ils ne peuvent pas être explicitement sélectionnés (ou désélectionnés).</p>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-save"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.VIII. </span>Enregistrement des modifications</span></h3></div>
+<p class="para block block-first">Pour enregistrer vos modifications, choisissez <span class="menuchoice"><span class="guimenu">Fichier</span> ▸ <span class="guisubmenu">Enregistrer</span> <span class="shortcut">(<span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">S</span></span>)</span></span>.</p>
+<p class="para block">Toutes les modifications en instance sont enregistrées. Les nouveaux éléments sont créés par le premier fournisseur d'E/S disponible capable d'enregistrer.</p>
+<p class="para block"><span class="productname">Caja-Actions™</span> dispose également d'une fonctionnalité d'enregistrement automatique configurable dans la boîte de dialogue des <span class="guimenuitem">Préférences</span>.</p>
+</div>
+<div class="division sect2">
+<a name="usage-export"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.IX. </span>Exportation d'actions</span></h3></div>
+<p class="para block block-first">
+  </p>
+</div>
+<div class="division sect2">
+<a name="usage-import"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.X. </span>Importation d'actions</span></h3></div>
+<p class="para block block-first">
+  </p>
+</div>
+<div class="division sect2">
+<a name="usage-prefs"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">III.XI. </span>Réglage de vos préférences personnelles</span></h3></div>
+<p class="para block block-first">Choisissez <span class="menuchoice"><span class="guimenu">Édition</span> ▸ <span class="guimenuitem">Préférences</span></span> pour avoir accès à la configuration des préférences.</p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">III.XI.I. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-runtime" title="Préférences d'exécution">Préférences d'exécution</a>
+</li>
+<li>
+<span class="label">III.XI.II. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-execution" title="Préférences d'exécution">Préférences d'exécution</a>
+</li>
+<li>
+<span class="label">III.XI.III. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-ui" title="Préférences pour l'interface utilisateur (UI)">Préférences pour l'interface utilisateur (UI)</a>
+</li>
+<li>
+<span class="label">III.XI.IV. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-import" title="Préférences pour l'importation">Préférences pour l'importation</a>
+</li>
+<li>
+<span class="label">III.XI.V. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-export" title="Préférences pour l'exportation">Préférences pour l'exportation</a>
+</li>
+<li>
+<span class="label">III.XI.VI. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-schemes" title="Préférences pour les protocoles">Préférences pour les protocoles</a>
+</li>
+<li>
+<span class="label">III.XI.VII. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-providers" title="Préférences pour les fournisseurs d'E/S">Préférences pour les fournisseurs d'E/S</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-prefs-runtime"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.XI.I. </span>Préférences d'exécution</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-runtime"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 25 </span>Préférences d'exécution</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-runtime.png"><div class=" block caption">
+            <p class="para block block-first">Préférences d'exécution</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-execution"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.XI.II. </span>Préférences d'exécution</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-execution"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 26 </span>Préférences d'exécution</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-execution.png"><div class=" block caption">
+            <p class="para block block-first">Préférences d'exécution</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<div class=" block figure block-indent">
+<a name="cact-FIG-prefs-desktop"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 27 </span>Sélection du bureau</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-desktop.png"><div class=" block caption">
+            <p class="para block block-first">Sélection du bureau</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-ui"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.XI.III. </span>Préférences pour l'interface utilisateur (UI)</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-ui"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 28 </span>Préférences pour l'UI</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-ui.png"><div class=" block caption">
+            <p class="para block block-first">Préférences pour l'UI</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-import"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.XI.IV. </span>Préférences pour l'importation</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-import"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 29 </span>Préférences pour l'importation</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-import.png"><div class=" block caption">
+            <p class="para block block-first">Préférences pour l'importation</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-export"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.XI.V. </span>Préférences pour l'exportation</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-export"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 30 </span>Préférences pour l'exportation</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-export.png"><div class=" block caption">
+            <p class="para block block-first">Préférences pour l'exportation</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-schemes"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.XI.VI. </span>Préférences pour les protocoles</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-schemes"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 31 </span>Préférences pour les protocoles</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-schemes.png"><div class=" block caption">
+            <p class="para block block-first">Préférences pour les protocoles</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-providers"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">III.XI.VII. </span>Préférences pour les fournisseurs d'E/S</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-io-providers"></a><div class="block block-first title title-formal"><span class="title"><span class="label">Figure 32 </span>Préférences pour les fournisseurs d'E/S</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-io-providers.png"><div class=" block caption">
+            <p class="para block block-first">Préférences pour les fournisseurs d'E/S</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    </p>
+</div>
+</div>
+</div>
+<div class="division sect1">
+<a name="misc"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">IV. </span>Informations diverses</span></h2></div>
+<p class="para block block-first">Une nouvelle action est affichée avec la couleur rouge dans la liste d'éléments. La couleur rouge est un indicateur de non-validité de l'élément, c'est-à-dire que l'élément ne peut pas être candidat à l'affichage dans le menu contextuel de <span class="productname">Caja™</span> parce que certaines informations sont soit manquantes, soit erronées. Dans ce cas, et même si l'action nouvellement insérée dispose de certains réglages par défaut, il manque la commande à exécuter pour que l'<span class="application">outil de configuration de Caja-Actions</span> la considère comme valide.</p>
+</div>
+<div class="division sect1">
+<a name="bugs"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">V. </span>Anomalies connues et limitations</span></h2></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">V.I. </span><a class="xref" href="caja-actions-config-tool.html#bugs-bugs" title="Anomalies connues">Anomalies connues</a>
+</li>
+<li>
+<span class="label">V.II. </span><a class="xref" href="caja-actions-config-tool.html#bugs-limits" title="Limitations connues">Limitations connues</a>
+</li>
+</ul></div>
+<div class="division sect2">
+<a name="bugs-bugs"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">V.I. </span>Anomalies connues</span></h3></div>
+<p class="para block block-first">Les anomalies connues sont disponibles sur <a class="ulink" href="https://bugzilla.gnome.org/buglist.cgi?product=caja-actions&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED" title="https://bugzilla.gnome.org/buglist.cgi?product=caja-actions&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED">Bugzilla</a>.</p>
+<p class="para block">Si vous détectez une nouvelle anomalie dans <span class="productname">Caja-Actions™</span>, nous vous serons reconnaissant d'ouvrir un rapport d'anomalie en vous connectant sur <a class="ulink" href="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" title="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions">le site Web Bugzilla</a>.</p>
+<div class=" block formalpara">
+    <div class="block block-first title title-formal"><span class="title"><span class="label"></span><a class="ulink" href="https://bugzilla.gnome.org/show_bug.cgi?id=616532" title="https://bugzilla.gnome.org/show_bug.cgi?id=616532">#616532</a> Sélection de répertoire</span></div>
+    <p class="para block block-first">Quand vous recherchez le dossier vers lequel vous souhaitez exporter dans l'assistant d'exportation de l'<span class="application">outil de configuration de Caja-Actions</span>, il n'est pas possible de le sélectionner directement en tant que répertoire d'exportation. Au lieu de cela, allez dans le répertoire situé un niveau au-dessus et sélectionnez le répertoire vers lequel vous souhaitez faire une exportation.</p>
+  </div>
+</div>
+<div class="division sect2">
+<a name="bugs-limits"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">V.II. </span>Limitations connues</span></h3></div>
+<div class=" block formalpara block-first">
+    <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Mode d'exécution</span></div>
+    <p class="para block block-first">Depuis la version 3.0, le mode d'exécution peut être configuré dans l'<span class="application">outil de configuration de Caja-Actions</span> mais cette fonctionnalité n'est pas encore reconnue par le greffon <span class="productname">Caja™</span>.</p>
+  </div>
+<p class="para block">Ceci concerne le répertoire de travail, le mode d'exécution, la notification de démarrage et les paramètres propres à l'exécution.</p>
+<div class=" block formalpara">
+    <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Raccourci suggéré</span></div>
+    <p class="para block block-first">Depuis la version 3.0, la suggestion de raccourci, telle que décrite dans la <a class="ulink" href="http://www.caja-actions.org/?q=node/377" title="http://www.caja-actions.org/?q=node/377">spécification DES-EMA</a> ne peut pas être configurée dans l'<span class="application">outil de configuration de Caja-Actions</span> et n'est pas reconnue par le greffon <span class="productname">Caja™</span>.</p>
+  </div>
+<div class=" block formalpara">
+    <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Séparateur de menu</span></div>
+    <p class="para block block-first">Depuis la version 3.0, les séparateurs de menu ne peuvent pas être configurés dans l'<span class="application">outil de configuration de Caja-Actions</span> et ne sont pas reconnus par le greffon <span class="productname">Caja™</span>.</p>
+  </div>
+<p class="para block">Vous noterez donc, que pour le moment, le gestionnaire de fichiers <span class="productname">Caja™</span> n'autorise pas que ses greffons définissent des séparateurs de menu dans le menu contextuel.</p>
+</div>
+</div>
+<div class="division sect1">
+<a name="about"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">VI. </span>À propos de l'<span class="application">outil de configuration de Caja-Actions</span></span></h2></div>
+<p class="para block block-first">La première version de <span class="productname">Caja-Actions™</span> a été écrite par Frederic Ruaudel (<span class="email" dir="ltr">&lt;<a href="mailto:grumz@grumz.net" title="Envoyer un courrier électronique à « grumz@grumz.net ».">grumz@grumz.net</a>&gt;</span>) et Rodrigo Moya (<span class="email" dir="ltr">&lt;<a href="mailto:rodrigo@mate-db.org" title="Envoyer un courrier électronique à « rodrigo@mate-db.org ».">rodrigo@mate-db.org</a>&gt;</span>). Elle a été globalement améliorée et est actuellement maintenue par Pierre Wieser (<span class="email" dir="ltr">&lt;<a href="mailto:pwieser@trychlos.org" title="Envoyer un courrier électronique à « pwieser@trychlos.org ».">pwieser@trychlos.org</a>&gt;</span>).</p>
+<p class="para block">Les créations artistiques ont été gracieusement réalisées par Ulisse Perusin (<span class="email" dir="ltr">&lt;<a href="mailto:uli.peru@gmail.com" title="Envoyer un courrier électronique à « uli.peru@gmail.com ».">uli.peru@gmail.com</a>&gt;</span>) et DragonArtz (<a class="ulink" href="http://www.dragonartz.net/" title="http://www.dragonartz.net/">http://www.dragonartz.net</a>).</p>
+<p class="para block">Pour obtenir plus d'informations à propos de <span class="productname">Caja-Actions™</span>, veuillez visiter le <a class="ulink" href="http://www.caja-actions.org/" title="http://www.caja-actions.org/">site Web de <span class="productname">Caja-Actions™</span>.</a></p>
+<p class="para block">Pour rapporter une anomalie ou faire une suggestion à propos de <span class="productname">Caja-Actions™</span>, de l'<span class="application">Outil de configuration Caja-Actions</span> ou de ce manuel, suivez les indications de la <a class="ulink" href="ghelp:user-guide#feedback" title="ghelp:user-guide#feedback">page des retours d'informations de MATE</a> ou, si vous préférez, ouvrez une anomalie ou une demande d'amélioration sur <a class="ulink" href="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" title="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions">le site Web Bugzilla</a>.</p>
+</div>
+<div class="division appendix">
+<a name="appendix-gnu-fdl"></a><div class="header"><h2 class="appendix title"><span class="title"><span class="label">A. </span>GNU Free Documentation License</span></h2></div>
+<p class="simpara block block-first">Version 1.3, 3 Novembre 2008</p>
+<p class="simpara block">Copyright © 2000, 2001, 2002, 2007, 2008 <a class="ulink" href="http://www.fsf.org/" title="http://www.fsf.org/">Free Software Foundation, Inc.</a></p>
+<p class="simpara block">Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.</p>
+<p class="simpara block">The purpose of this License is to make a manual, textbook, or other functional and useful document “free” in the sense of freedom: to assure everyone the effective freedom to copy and redistribute it, with or without modifying it, either commercially or noncommercially. Secondarily, this License preserves for the author and publisher a way to get credit for their work, while not being considered responsible for modifications made by others.</p>
+<p class="simpara block">This License is a kind of “copyleft”, which means that derivative works of the document must themselves be free in the same sense. It complements the GNU General Public License, which is a copyleft license designed for free software.</p>
+<p class="simpara block">We have designed this License in order to use it for manuals for free software, because free software needs free documentation: a free program should come with manuals providing the same freedoms that the software does. But this License is not limited to software manuals; it can be used for any textual work, regardless of subject matter or whether it is published as a printed book. We recommend this License principally for works whose purpose is instruction or reference.</p>
+<p class="simpara block">This License applies to any manual or other work, in any medium, that contains a notice placed by the copyright holder saying it can be distributed under the terms of this License. Such a notice grants a world-wide, royalty-free license, unlimited in duration, to use that work under the conditions stated herein. The “Document”, below, refers to any such manual or work. Any member of the public is a licensee, and is addressed as “you”. You accept the license if you copy, modify or distribute the work in a way requiring permission under copyright law.</p>
+<p class="simpara block">A “Modified Version” of the Document means any work containing the Document or a portion of it, either copied verbatim, or with modifications and/or translated into another language.</p>
+<p class="simpara block">A “Secondary Section” is a named appendix or a front-matter section of the Document that deals exclusively with the relationship of the publishers or authors of the Document to the Document’s overall subject (or to related matters) and contains nothing that could fall directly within that overall subject. (Thus, if the Document is in part a textbook of mathematics, a Secondary Section may not explain any mathematics.) The relationship could be a matter of historical connection with the subject or with related matters, or of legal, commercial, philosophical, ethical or political position regarding them.</p>
+<p class="simpara block">The “Invariant Sections” are certain Secondary Sections whose titles are designated, as being those of Invariant Sections, in the notice that says that the Document is released under this License. If a section does not fit the above definition of Secondary then it is not allowed to be designated as Invariant. The Document may contain zero Invariant Sections. If the Document does not identify any Invariant Sections then there are none.</p>
+<p class="simpara block">The “Cover Texts” are certain short passages of text that are listed, as Front-Cover Texts or Back-Cover Texts, in the notice that says that the Document is released under this License. A Front-Cover Text may be at most 5 words, and a Back-Cover Text may be at most 25 words.</p>
+<p class="simpara block">A “Transparent” copy of the Document means a machine-readable copy, represented in a format whose specification is available to the general public, that is suitable for revising the document straightforwardly with generic text editors or (for images composed of pixels) generic paint programs or (for drawings) some widely available drawing editor, and that is suitable for input to text formatters or for automatic translation to a variety of formats suitable for input to text formatters. A copy made in an otherwise Transparent file format whose markup, or absence of markup, has been arranged to thwart or discourage subsequent modification by readers is not Transparent. An image format is not Transparent if used for any substantial amount of text. A copy that is not “Transparent” is called “Opaque”.</p>
+<p class="simpara block">Examples of suitable formats for Transparent copies include plain ASCII without markup, Texinfo input format, LaTeX input format, SGML or XML using a publicly available DTD, and standard-conforming simple HTML, PostScript or PDF designed for human modification. Examples of transparent image formats include PNG, XCF and JPG. Opaque formats include proprietary formats that can be read and edited only by proprietary word processors, SGML or XML for which the DTD and/or processing tools are not generally available, and the machine-generated HTML, PostScript or PDF produced by some word processors for output purposes only.</p>
+<p class="simpara block">The “Title Page” means, for a printed book, the title page itself, plus such following pages as are needed to hold, legibly, the material this License requires to appear in the title page. For works in formats which do not have any title page as such, “Title Page” means the text near the most prominent appearance of the work’s title, preceding the beginning of the body of the text.</p>
+<p class="simpara block">The “publisher” means any person or entity that distributes copies of the Document to the public.</p>
+<p class="simpara block">A section “Entitled XYZ” means a named subunit of the Document whose title either is precisely XYZ or contains XYZ in parentheses following text that translates XYZ in another language. (Here XYZ stands for a specific section name mentioned below, such as “Acknowledgements”, “Dedications”, “Endorsements”, or “History”.) To “Preserve the Title” of such a section when you modify the Document means that it remains a section “Entitled XYZ” according to this definition.</p>
+<p class="simpara block">The Document may include Warranty Disclaimers next to the notice which states that this License applies to the Document. These Warranty Disclaimers are considered to be included by reference in this License, but only as regards disclaiming warranties: any other implication that these Warranty Disclaimers may have is void and has no effect on the meaning of this License.</p>
+<p class="simpara block">You may copy and distribute the Document in any medium, either commercially or noncommercially, provided that this License, the copyright notices, and the license notice saying this License applies to the Document are reproduced in all copies, and that you add no other conditions whatsoever to those of this License. You may not use technical measures to obstruct or control the reading or further copying of the copies you make or distribute. However, you may accept compensation in exchange for copies. If you distribute a large enough number of copies you must also follow the conditions in section 3.</p>
+<p class="simpara block">You may also lend copies, under the same conditions stated above, and you may publicly display copies.</p>
+<p class="simpara block">If you publish printed copies (or copies in media that commonly have printed covers) of the Document, numbering more than 100, and the Document’s license notice requires Cover Texts, you must enclose the copies in covers that carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on the back cover. Both covers must also clearly and legibly identify you as the publisher of these copies. The front cover must present the full title with all words of the title equally prominent and visible. You may add other material on the covers in addition. Copying with changes limited to the covers, as long as they preserve the title of the Document and satisfy these conditions, can be treated as verbatim copying in other respects.</p>
+<p class="simpara block">If the required texts for either cover are too voluminous to fit legibly, you should put the first ones listed (as many as fit reasonably) on the actual cover, and continue the rest onto adjacent pages.</p>
+<p class="simpara block">If you publish or distribute Opaque copies of the Document numbering more than 100, you must either include a machine-readable Transparent copy along with each Opaque copy, or state in or with each Opaque copy a computer-network location from which the general network-using public has access to download using public-standard network protocols a complete Transparent copy of the Document, free of added material. If you use the latter option, you must take reasonably prudent steps, when you begin distribution of Opaque copies in quantity, to ensure that this Transparent copy will remain thus accessible at the stated location until at least one year after the last time you distribute an Opaque copy (directly or through your agents or retailers) of that edition to the public.</p>
+<p class="simpara block">It is requested, but not required, that you contact the authors of the Document well before redistributing any large number of copies, to give them a chance to provide you with an updated version of the Document.</p>
+<p class="simpara block">You may copy and distribute a Modified Version of the Document under the conditions of sections 2 and 3 above, provided that you release the Modified Version under precisely this License, with the Modified Version filling the role of the Document, thus licensing distribution and modification of the Modified Version to whoever possesses a copy of it. In addition, you must do these things in the Modified Version:</p>
+<div class="block list orderedlist"><ol class="orderedlist" type="A">
+<li class="li-first">
+      <p class="simpara block block-first">Use in the Title Page (and on the covers, if any) a title distinct from that of the Document, and from those of previous versions (which should, if there were any, be listed in the History section of the Document). You may use the same title as a previous version if the original publisher of that version gives permission.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">List on the Title Page, as authors, one or more persons or entities responsible for authorship of the modifications in the Modified Version, together with at least five of the principal authors of the Document (all of its principal authors, if it has fewer than five), unless they release you from this requirement.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">State on the Title page the name of the publisher of the Modified Version, as the publisher.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Preserve all the copyright notices of the Document.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Add an appropriate copyright notice for your modifications adjacent to the other copyright notices.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Include, immediately after the copyright notices, a license notice giving the public permission to use the Modified Version under the terms of this License, in the form shown in the Addendum below.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Preserve in that license notice the full lists of Invariant Sections and required Cover Texts given in the Document’s license notice.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Include an unaltered copy of this License.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Preserve the section Entitled “History”, Preserve its Title, and add to it an item stating at least the title, year, new authors, and publisher of the Modified Version as given on the Title Page. If there is no section Entitled “History” in the Document, create one stating the title, year, authors, and publisher of the Document as given on its Title Page, then add an item describing the Modified Version as stated in the previous sentence.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Preserve the network location, if any, given in the Document for public access to a Transparent copy of the Document, and likewise the network locations given in the Document for previous versions it was based on. These may be placed in the “History” section. You may omit a network location for a work that was published at least four years before the Document itself, or if the original publisher of the version it refers to gives permission.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">For any section Entitled “Acknowledgements” or “Dedications”, Preserve the Title of the section, and preserve in the section all the substance and tone of each of the contributor acknowledgements and/or dedications given therein.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Preserve all the Invariant Sections of the Document, unaltered in their text and in their titles. Section numbers or the equivalent are not considered part of the section titles.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Delete any section Entitled “Endorsements”. Such a section may not be included in the Modified Version.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Do not retitle any existing section to be Entitled “Endorsements” or to conflict in title with any Invariant Section.</p>
+    </li>
+<li>
+      <p class="simpara block block-first">Preserve any Warranty Disclaimers.</p>
+    </li>
+</ol></div>
+<p class="simpara block">If the Modified Version includes new front-matter sections or appendices that qualify as Secondary Sections and contain no material copied from the Document, you may at your option designate some or all of these sections as invariant. To do this, add their titles to the list of Invariant Sections in the Modified Version’s license notice. These titles must be distinct from any other section titles.</p>
+<p class="simpara block">You may add a section Entitled “Endorsements”, provided it contains nothing but endorsements of your Modified Version by various parties — for example, statements of peer review or that the text has been approved by an organization as the authoritative definition of a standard.</p>
+<p class="simpara block">You may add a passage of up to five words as a Front-Cover Text, and a passage of up to 25 words as a Back-Cover Text, to the end of the list of Cover Texts in the Modified Version. Only one passage of Front-Cover Text and one of Back-Cover Text may be added by (or through arrangements made by) any one entity. If the Document already includes a cover text for the same cover, previously added by you or by arrangement made by the same entity you are acting on behalf of, you may not add another; but you may replace the old one, on explicit permission from the previous publisher that added the old one.</p>
+<p class="simpara block">The author(s) and publisher(s) of the Document do not by this License give permission to use their names for publicity for or to assert or imply endorsement of any Modified Version.</p>
+<p class="simpara block">You may combine the Document with other documents released under this License, under the terms defined in section 4 above for modified versions, provided that you include in the combination all of the Invariant Sections of all of the original documents, unmodified, and list them all as Invariant Sections of your combined work in its license notice, and that you preserve all their Warranty Disclaimers.</p>
+<p class="simpara block">The combined work need only contain one copy of this License, and multiple identical Invariant Sections may be replaced with a single copy. If there are multiple Invariant Sections with the same name but different contents, make the title of each such section unique by adding at the end of it, in parentheses, the name of the original author or publisher of that section if known, or else a unique number. Make the same adjustment to the section titles in the list of Invariant Sections in the license notice of the combined work.</p>
+<p class="simpara block">In the combination, you must combine any sections Entitled “History” in the various original documents, forming one section Entitled “History”; likewise combine any sections Entitled “Acknowledgements”, and any sections Entitled “Dedications”. You must delete all sections Entitled “Endorsements”.</p>
+<p class="simpara block">You may make a collection consisting of the Document and other documents released under this License, and replace the individual copies of this License in the various documents with a single copy that is included in the collection, provided that you follow the rules of this License for verbatim copying of each of the documents in all other respects.</p>
+<p class="simpara block">You may extract a single document from such a collection, and distribute it individually under this License, provided you insert a copy of this License into the extracted document, and follow this License in all other respects regarding verbatim copying of that document.</p>
+<p class="simpara block">A compilation of the Document or its derivatives with other separate and independent documents or works, in or on a volume of a storage or distribution medium, is called an “aggregate” if the copyright resulting from the compilation is not used to limit the legal rights of the compilation’s users beyond what the individual works permit. When the Document is included in an aggregate, this License does not apply to the other works in the aggregate which are not themselves derivative works of the Document.</p>
+<p class="simpara block">If the Cover Text requirement of section 3 is applicable to these copies of the Document, then if the Document is less than one half of the entire aggregate, the Document’s Cover Texts may be placed on covers that bracket the Document within the aggregate, or the electronic equivalent of covers if the Document is in electronic form. Otherwise they must appear on printed covers that bracket the whole aggregate.</p>
+<p class="simpara block">Translation is considered a kind of modification, so you may distribute translations of the Document under the terms of section 4. Replacing Invariant Sections with translations requires special permission from their copyright holders, but you may include translations of some or all Invariant Sections in addition to the original versions of these Invariant Sections. You may include a translation of this License, and all the license notices in the Document, and any Warranty Disclaimers, provided that you also include the original English version of this License and the original versions of those notices and disclaimers. In case of a disagreement between the translation and the original version of this License or a notice or disclaimer, the original version will prevail.</p>
+<p class="simpara block">If a section in the Document is Entitled “Acknowledgements”, “Dedications”, or “History”, the requirement (section 4) to Preserve its Title (section 1) will typically require changing the actual title.</p>
+<p class="simpara block">You may not copy, modify, sublicense, or distribute the Document except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense, or distribute it is void, and will automatically terminate your rights under this License.</p>
+<p class="simpara block">However, if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation.</p>
+<p class="simpara block">Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice.</p>
+<p class="simpara block">Termination of your rights under this section does not terminate the licenses of parties who have received copies or rights from you under this License. If your rights have been terminated and not permanently reinstated, receipt of a copy of some or all of the same material does not give you any rights to use it.</p>
+<p class="simpara block">The Free Software Foundation may publish new, revised versions of the GNU Free Documentation License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns. See <a class="ulink" href="http://www.gnu.org/copyleft/" title="http://www.gnu.org/copyleft/">Copyleft</a>.</p>
+<p class="simpara block">Each version of the License is given a distinguishing version number. If the Document specifies that a particular numbered version of this License “or any later version” applies to it, you have the option of following the terms and conditions either of that specified version or of any later version that has been published (not as a draft) by the Free Software Foundation. If the Document does not specify a version number of this License, you may choose any version ever published (not as a draft) by the Free Software Foundation. If the Document specifies that a proxy can decide which future versions of this License can be used, that proxy’s public statement of acceptance of a version permanently authorizes you to choose that version for the Document.</p>
+<p class="simpara block">“Massive Multiauthor Collaboration Site” (or “MMC Site”) means any World Wide Web server that publishes copyrightable works and also provides prominent facilities for anybody to edit those works. A public wiki that anybody can edit is an example of such a server. A “Massive Multiauthor Collaboration” (or “MMC”) contained in the site means any set of copyrightable works thus published on the MMC site.</p>
+<p class="simpara block">“CC-BY-SA” means the Creative Commons Attribution-Share Alike 3.0 license published by Creative Commons Corporation, a not-for-profit corporation with a principal place of business in San Francisco, California, as well as future copyleft versions of that license published by that same organization.</p>
+<p class="simpara block">“Incorporate” means to publish or republish a Document, in whole or in part, as part of another Document.</p>
+<p class="simpara block">An MMC is “eligible for relicensing” if it is licensed under this License, and if all works that were first published under this License somewhere other than this MMC, and subsequently incorporated in whole or in part into the MMC, (1) had no cover texts or invariant sections, and (2) were thus incorporated prior to November 1, 2008.</p>
+<p class="simpara block">The operator of an MMC Site may republish an MMC contained in the site under CC-BY-SA on the same site at any time before August 1, 2009, provided the MMC is eligible for relicensing.</p>
+<p class="simpara block">To use this License in a document you have written, include a copy of the License in the document and put the following copyright and license notices just after the title page:</p>
+<div dir="ltr" class=" block screen block-indent"><pre class="screen">Copyright © YEAR YOUR NAME
+
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.3 or any later version
+published by the Free Software Foundation; with no Invariant Sections, no
+Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in
+the section entitled “GNU Free Documentation License”.</pre></div>
+<p class="simpara block">If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts, replace the “with… Texts.” line with this:</p>
+<div dir="ltr" class=" block screen block-indent"><pre class="screen">with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover Texts
+being LIST, and with the Back-Cover Texts being LIST.</pre></div>
+<p class="simpara block">If you have Invariant Sections without Cover Texts, or some other combination of the three, merge those two alternatives to suit the situation.</p>
+<p class="simpara block">If your document contains nontrivial examples of program code, we recommend releasing these examples in parallel under your choice of free software license, such as the GNU General Public License, to permit their use in free software.</p>
+</div>
+</div></div>
+<div class="navbar navbar-bottom"><table class="navbar"><tr>
+<td class="navbar-prev"></td>
+<td class="navbar-next"></td>
+</tr></table></div>
+</body>
+</html>

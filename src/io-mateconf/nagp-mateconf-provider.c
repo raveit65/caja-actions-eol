@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -46,14 +45,16 @@
 
 /* private class data
  */
-struct NagpMateConfProviderClassPrivate {
+struct _NagpMateConfProviderClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 static GType         st_module_type = 0;
 static GObjectClass *st_parent_class = NULL;
-static gint          st_timeout_msec = 100;
-static gint          st_timeout_usec = 100000;
+
+#ifdef NA_ENABLE_DEPRECATED
+static gint          st_burst_timeout = 100;		/* burst timeout in msec */
+#endif
 
 static void     class_init( NagpMateConfProviderClass *klass );
 static void     instance_init( GTypeInstance *instance, gpointer klass );
@@ -68,13 +69,12 @@ static guint    iio_provider_get_version( const NAIIOProvider *provider );
 static void     ifactory_provider_iface_init( NAIFactoryProviderInterface *iface );
 static guint    ifactory_provider_get_version( const NAIFactoryProvider *provider );
 
+#ifdef NA_ENABLE_DEPRECATED
 static GList   *install_monitors( NagpMateConfProvider *provider );
 static void     config_path_changed_cb( MateConfClient *client, guint cnxn_id, MateConfEntry *entry, NagpMateConfProvider *provider );
-static void     config_path_changed_reset_timeout( NagpMateConfProvider *provider );
-static void     config_path_changed_set_timeout( NagpMateConfProvider *provider, const gchar *uuid );
 static gboolean config_path_changed_trigger_interface( NagpMateConfProvider *provider );
 static gulong   time_val_diff( const GTimeVal *recent, const GTimeVal *old );
-static gchar   *entry2uuid( MateConfEntry *entry );
+#endif
 
 GType
 nagp_mateconf_provider_get_type( void )
@@ -115,9 +115,9 @@ nagp_mateconf_provider_register_type( GTypeModule *module )
 
 	st_module_type = g_type_module_register_type( module, G_TYPE_OBJECT, "NagpMateConfProvider", &info, 0 );
 
-	g_type_module_add_interface( module, st_module_type, NA_IIO_PROVIDER_TYPE, &iio_provider_iface_info );
+	g_type_module_add_interface( module, st_module_type, NA_TYPE_IIO_PROVIDER, &iio_provider_iface_info );
 
-	g_type_module_add_interface( module, st_module_type, NA_IFACTORY_PROVIDER_TYPE, &ifactory_provider_iface_info );
+	g_type_module_add_interface( module, st_module_type, NA_TYPE_IFACTORY_PROVIDER, &ifactory_provider_iface_info );
 }
 
 static void
@@ -143,9 +143,11 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	static const gchar *thisfn = "nagp_mateconf_provider_instance_init";
 	NagpMateConfProvider *self;
 
+	g_return_if_fail( NAGP_IS_MATECONF_PROVIDER( instance ));
+
 	g_debug( "%s: instance=%p (%s), klass=%p",
 			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-	g_return_if_fail( NAGP_IS_MATECONF_PROVIDER( instance ));
+
 	self = NAGP_MATECONF_PROVIDER( instance );
 
 	self->private = g_new0( NagpMateConfProviderPrivate, 1 );
@@ -153,7 +155,10 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	self->private->dispose_has_run = FALSE;
 
 	self->private->mateconf = mateconf_client_get_default();
+
+#ifdef NA_ENABLE_DEPRECATED
 	self->private->monitors = install_monitors( self );
+#endif
 }
 
 static void
@@ -162,16 +167,20 @@ instance_dispose( GObject *object )
 	static const gchar *thisfn = "nagp_mateconf_provider_instance_dispose";
 	NagpMateConfProvider *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 	g_return_if_fail( NAGP_IS_MATECONF_PROVIDER( object ));
+
 	self = NAGP_MATECONF_PROVIDER( object );
 
 	if( !self->private->dispose_has_run ){
 
+		g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
+
 		self->private->dispose_has_run = TRUE;
 
+#ifdef NA_ENABLE_DEPRECATED
 		/* release the MateConf monitoring */
 		na_mateconf_monitor_release_monitors( self->private->monitors );
+#endif
 
 		/* release the MateConf connexion */
 		g_object_unref( self->private->mateconf );
@@ -186,9 +195,13 @@ instance_dispose( GObject *object )
 static void
 instance_finalize( GObject *object )
 {
+	static const gchar *thisfn =" nagp_mateconf_provider_instance_finalize";
 	NagpMateConfProvider *self;
 
-	g_assert( NAGP_IS_MATECONF_PROVIDER( object ));
+	g_return_if_fail( NAGP_IS_MATECONF_PROVIDER( object ));
+
+	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
+
 	self = NAGP_MATECONF_PROVIDER( object );
 
 	g_free( self->private );
@@ -212,8 +225,14 @@ iio_provider_iface_init( NAIIOProviderInterface *iface )
 	iface->read_items = nagp_iio_provider_read_items;
 	iface->is_willing_to_write = nagp_iio_provider_is_willing_to_write;
 	iface->is_able_to_write = nagp_iio_provider_is_able_to_write;
+#ifdef NA_ENABLE_DEPRECATED
 	iface->write_item = nagp_iio_provider_write_item;
 	iface->delete_item = nagp_iio_provider_delete_item;
+#else
+	iface->write_item = NULL;
+	iface->delete_item = NULL;
+#endif
+	iface->duplicate_data = NULL;
 }
 
 static gchar *
@@ -242,12 +261,18 @@ ifactory_provider_iface_init( NAIFactoryProviderInterface *iface )
 	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
 
 	iface->get_version = ifactory_provider_get_version;
-	iface->read_start = NULL;
+	iface->read_start = nagp_reader_read_start;
 	iface->read_data = nagp_reader_read_data;
 	iface->read_done = nagp_reader_read_done;
+#ifdef NA_ENABLE_DEPRECATED
 	iface->write_start = nagp_writer_write_start;
 	iface->write_data = nagp_writer_write_data;
 	iface->write_done = nagp_writer_write_done;
+#else
+	iface->write_start = NULL;
+	iface->write_data = NULL;
+	iface->write_done = NULL;
+#endif
 }
 
 static guint
@@ -256,6 +281,7 @@ ifactory_provider_get_version( const NAIFactoryProvider *provider )
 	return( 1 );
 }
 
+#ifdef NA_ENABLE_DEPRECATED
 static GList *
 install_monitors( NagpMateConfProvider *provider )
 {
@@ -310,101 +336,68 @@ install_monitors( NagpMateConfProvider *provider )
  * - first, MateConf underlying subsystem advertises us, through the watch
  *   mechanism, of each and every modification ; this leads us to be
  *   triggered for each new/modified/deleted _entry_
- * - as we would trigger the NAIIOProvider interface only once for each
- *   modified _object_, we install a timer in order to wait for all
- *   entries have been modified, or another object is concerned
- * - as soon as one of the two previous conditions is met, we trigger
- *   the NAIIOProvider interface with the corresponding object id
+ * - as we want trigger the NAIIOProvider interface only once for each
+ *   update operation (i.e. once for each flow of individual notifications),
+ *   then we install a timer in order to wait for all
+ *   entries have been modified
+ * - when a [burst_timeout] reasonable delay has elapsed without having
+ *   received any new individual notification, then we can assume that
+ *   we have reached the end of the flow and that we can now trigger
+ *   the NAIIOProvider interface
+ *
+ * Note that we used to try to send one notification per modified object.
+ * This cannot work as we are not sure at all that we will received
+ * individual notifications themselves grouped by object.
  */
 static void
 config_path_changed_cb( MateConfClient *client, guint cnxn_id, MateConfEntry *entry, NagpMateConfProvider *provider )
 {
-	/*static const gchar *thisfn = "nagp_mateconf_provider_config_path_changed_cb";*/
-	gchar *uuid;
-
-	/*g_debug( "%s: client=%p, cnxnid=%u, entry=%p, provider=%p",
-			thisfn, ( void * ) client, cnxn_id, ( void * ) entry, ( void * ) provider );*/
-
 	g_return_if_fail( NAGP_IS_MATECONF_PROVIDER( provider ));
 	g_return_if_fail( NA_IS_IIO_PROVIDER( provider ));
 
 	if( !provider->private->dispose_has_run ){
 
-		uuid = entry2uuid( entry );
-		/*g_debug( "%s: uuid=%s", thisfn, uuid );*/
+		g_get_current_time( &provider->private->last_event );
 
-		if( provider->private->event_source_id ){
-			if( g_ascii_strcasecmp( uuid, provider->private->last_triggered_id )){
-
-				/* there already has a timeout, but on another object
-				 * so trigger the interface for the previous object
-				 * and set the timeout for the new object
-				 */
-				config_path_changed_trigger_interface( provider );
-				config_path_changed_set_timeout( provider, uuid );
-			}
-
-			/* there already has a timeout for this same object
-			 * do nothing
-			 */
-
-		} else {
-			/* there was not yet any timeout: set it
-			 */
-			config_path_changed_set_timeout( provider, uuid );
+		if( !provider->private->event_source_id ){
+			provider->private->event_source_id =
+				g_timeout_add(
+						st_burst_timeout,
+						( GSourceFunc ) config_path_changed_trigger_interface,
+						provider );
 		}
-
-		g_free( uuid );
 	}
-}
-
-static void
-config_path_changed_reset_timeout( NagpMateConfProvider *provider )
-{
-	g_free( provider->private->last_triggered_id );
-	provider->private->last_triggered_id = NULL;
-	/*provider->private->last_event = ( GTimeVal ) 0;*/
-	provider->private->event_source_id = 0;
-}
-
-static void
-config_path_changed_set_timeout( NagpMateConfProvider *provider, const gchar *uuid )
-{
-	config_path_changed_reset_timeout( provider );
-	provider->private->last_triggered_id = g_strdup( uuid );
-	g_get_current_time( &provider->private->last_event );
-	provider->private->event_source_id =
-		g_timeout_add(
-				st_timeout_msec,
-				( GSourceFunc ) config_path_changed_trigger_interface,
-				provider );
 }
 
 /*
  * this timer is set when we receive the first event of a serie
- * we continue to loop until last event is at least one half of a
- * second old
+ * we continue to loop until last event is older that the st_burst_timeout
+ * delay (in msec)
  * there is no race condition here as we are not multithreaded
  * or .. is there ?
  */
 static gboolean
 config_path_changed_trigger_interface( NagpMateConfProvider *provider )
 {
-	/*static const gchar *thisfn = "nagp_mateconf_provider_config_path_changed_trigger_interface";*/
+	static const gchar *thisfn = "nagp_mateconf_provider_config_path_changed_trigger_interface";
 	GTimeVal now;
 	gulong diff;
-
-	/*g_debug( "%s: provider=%p", thisfn, ( void * ) provider );*/
+	gulong timeout_usec = 1000*st_burst_timeout;
 
 	g_get_current_time( &now );
 	diff = time_val_diff( &now, &provider->private->last_event );
-	if( diff < st_timeout_usec ){
+	if( diff < timeout_usec ){
 		return( TRUE );
 	}
 
-	na_iio_provider_item_changed( NA_IIO_PROVIDER( provider ), provider->private->last_triggered_id );
+	/* last individual notification is older that the st_burst_timeout
+	 * so triggers the NAIIOProvider interface and destroys this timeout
+	 */
+	g_debug( "%s: triggering NAIIOProvider interface for provider=%p (%s)",
+			thisfn, ( void * ) provider, G_OBJECT_TYPE_NAME( provider ));
 
-	config_path_changed_reset_timeout( provider );
+	na_iio_provider_item_changed( NA_IIO_PROVIDER( provider ));
+	provider->private->event_source_id = 0;
 	return( FALSE );
 }
 
@@ -418,26 +411,4 @@ time_val_diff( const GTimeVal *recent, const GTimeVal *old )
 	microsec += recent->tv_usec  - old->tv_usec;
 	return( microsec );
 }
-
-/*
- * gets the uuid from an entry
- */
-static gchar *
-entry2uuid( MateConfEntry *entry )
-{
-	const gchar *path;
-	const gchar *subpath;
-	gchar **split;
-	gchar *uuid;
-
-	g_return_val_if_fail( entry, NULL );
-
-	path = mateconf_entry_get_key( entry );
-	subpath = path + strlen( NAGP_CONFIGURATIONS_PATH ) + 1;
-	split = g_strsplit( subpath, "/", -1 );
-	/*g_debug( "%s: [0]=%s, [1]=%s", thisfn, split[0], split[1] );*/
-	uuid = g_strdup( split[0] );
-	g_strfreev( split );
-
-	return( uuid );
-}
+#endif /* NA_ENABLE_DEPRECATED */

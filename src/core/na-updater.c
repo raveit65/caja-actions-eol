@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,22 +31,26 @@
 #include <config.h>
 #endif
 
+#include <api/na-core-utils.h>
 #include <api/na-mateconf-utils.h>
 #include <api/na-object-api.h>
 
 #include "na-io-provider.h"
+#include "na-settings.h"
 #include "na-updater.h"
 
 /* private class data
  */
-struct NAUpdaterClassPrivate {
+struct _NAUpdaterClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct NAUpdaterPrivate {
-	gboolean           dispose_has_run;
+struct _NAUpdaterPrivate {
+	gboolean dispose_has_run;
+	gboolean are_preferences_locked;
+	gboolean is_level_zero_writable;
 };
 
 static NAPivotClass *st_parent_class = NULL;
@@ -57,6 +60,10 @@ static void     class_init( NAUpdaterClass *klass );
 static void     instance_init( GTypeInstance *instance, gpointer klass );
 static void     instance_dispose( GObject *object );
 static void     instance_finalize( GObject *object );
+
+static gboolean are_preferences_locked( const NAUpdater *updater );
+static gboolean is_level_zero_writable( const NAUpdater *updater );
+static void     set_writability_status( NAObjectItem *item, const NAUpdater *updater );
 
 GType
 na_updater_get_type( void )
@@ -90,7 +97,7 @@ register_type( void )
 
 	g_debug( "%s", thisfn );
 
-	type = g_type_register_static( NA_PIVOT_TYPE, "NAUpdater", &info, 0 );
+	type = g_type_register_static( NA_TYPE_PIVOT, "NAUpdater", &info, 0 );
 
 	return( type );
 }
@@ -118,9 +125,11 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	static const gchar *thisfn = "na_updater_instance_init";
 	NAUpdater *self;
 
+	g_return_if_fail( NA_IS_UPDATER( instance ));
+
 	g_debug( "%s: instance=%p (%s), klass=%p",
 			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-	g_return_if_fail( NA_IS_UPDATER( instance ));
+
 	self = NA_UPDATER( instance );
 
 	self->private = g_new0( NAUpdaterPrivate, 1 );
@@ -134,11 +143,13 @@ instance_dispose( GObject *object )
 	static const gchar *thisfn = "na_updater_instance_dispose";
 	NAUpdater *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 	g_return_if_fail( NA_IS_UPDATER( object ));
+
 	self = NA_UPDATER( object );
 
 	if( !self->private->dispose_has_run ){
+
+		g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 		self->private->dispose_has_run = TRUE;
 
@@ -155,8 +166,10 @@ instance_finalize( GObject *object )
 	static const gchar *thisfn = "na_updater_instance_finalize";
 	NAUpdater *self;
 
-	g_debug( "%s: object=%p", thisfn, ( void * ) object );
 	g_return_if_fail( NA_IS_UPDATER( object ));
+
+	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
+
 	self = NA_UPDATER( object );
 
 	g_free( self->private );
@@ -167,7 +180,7 @@ instance_finalize( GObject *object )
 	}
 }
 
-/**
+/*
  * na_updater_new:
  *
  * Returns: a newly allocated #NAUpdater object.
@@ -180,12 +193,178 @@ na_updater_new( void )
 
 	g_debug( "%s", thisfn );
 
-	updater = g_object_new( NA_UPDATER_TYPE, NULL );
+	updater = g_object_new( NA_TYPE_UPDATER, NULL );
+
+	updater->private->are_preferences_locked = are_preferences_locked( updater );
+	updater->private->is_level_zero_writable = is_level_zero_writable( updater );
 
 	return( updater );
 }
 
-/**
+static gboolean
+are_preferences_locked( const NAUpdater *updater )
+{
+	gboolean are_locked;
+	gboolean mandatory;
+
+	are_locked = na_settings_get_boolean( NA_IPREFS_ADMIN_PREFERENCES_LOCKED, NULL, &mandatory );
+
+	return( are_locked && mandatory );
+}
+
+static gboolean
+is_level_zero_writable( const NAUpdater *updater )
+{
+	GSList *level_zero;
+	gboolean mandatory;
+
+	level_zero = na_settings_get_string_list( NA_IPREFS_ITEMS_LEVEL_ZERO_ORDER, NULL, &mandatory );
+
+	na_core_utils_slist_free( level_zero );
+
+	return( !mandatory );
+}
+
+/*
+ * na_updater_check_item_writability_status:
+ * @updater: this #NAUpdater object.
+ * @item: the #NAObjectItem to be written.
+ *
+ * Compute and set the writability status of the @item.
+ *
+ * For an item be actually writable:
+ * - the item must not be itself in a read-only store, which has been
+ *   checked when first reading it
+ * - the provider must be willing (resp. able) to write
+ * - the provider must not has been locked by the admin, nor by the user
+ *
+ * If the item does not have a parent, then the level zero must be writable.
+ */
+void
+na_updater_check_item_writability_status( const NAUpdater *updater, const NAObjectItem *item )
+{
+	gboolean writable;
+	NAIOProvider *provider;
+	NAObjectItem *parent;
+	guint reason;
+
+	g_return_if_fail( NA_IS_UPDATER( updater ));
+	g_return_if_fail( NA_IS_OBJECT_ITEM( item ));
+
+	writable = FALSE;
+	reason = NA_IIO_PROVIDER_STATUS_UNDETERMINED;
+
+	if( !updater->private->dispose_has_run ){
+
+		writable = TRUE;
+		reason = NA_IIO_PROVIDER_STATUS_WRITABLE;
+
+		/* Writability status of the item has been determined at load time
+		 * (cf. e.g. io-desktop/cadp-reader.c:read_done_item_is_writable()).
+		 * Though I'm plenty conscious that this status is subject to many
+		 * changes during the life of the item (e.g. by modifying permissions
+		 * on the underlying store), it is just more efficient to not reevaluate
+		 * this status each time we need it, and enough for our needs..
+		 */
+		if( writable ){
+			if( na_object_is_readonly( item )){
+				writable = FALSE;
+				reason = NA_IIO_PROVIDER_STATUS_ITEM_READONLY;
+			}
+		}
+
+		if( writable ){
+			provider = na_object_get_provider( item );
+			if( provider ){
+				writable = na_io_provider_is_finally_writable( provider, &reason );
+
+			/* the get_writable_provider() api already takes care of above checks
+			 */
+			} else {
+				provider = na_io_provider_find_writable_io_provider( NA_PIVOT( updater ));
+				if( !provider ){
+					writable = FALSE;
+					reason = NA_IIO_PROVIDER_STATUS_NO_PROVIDER_FOUND;
+				}
+			}
+		}
+
+		/* if needed, the level zero must be writable
+		 */
+		if( writable ){
+			parent = ( NAObjectItem * ) na_object_get_parent( item );
+			if( !parent ){
+				if( updater->private->is_level_zero_writable ){
+					reason = NA_IIO_PROVIDER_STATUS_LEVEL_ZERO;
+				}
+			}
+		}
+	}
+
+	na_object_set_writability_status( item, writable, reason );
+}
+
+/*
+ * na_updater_are_preferences_locked:
+ * @updater: the #NAUpdater application object.
+ *
+ * Returns: %TRUE if preferences have been globally locked down by an
+ * admin, %FALSE else.
+ */
+gboolean
+na_updater_are_preferences_locked( const NAUpdater *updater )
+{
+	gboolean are_locked;
+
+	g_return_val_if_fail( NA_IS_UPDATER( updater ), TRUE );
+
+	are_locked = TRUE;
+
+	if( !updater->private->dispose_has_run ){
+
+		are_locked = updater->private->are_preferences_locked;
+	}
+
+	return( are_locked );
+}
+
+/*
+ * na_updater_is_level_zero_writable:
+ * @updater: the #NAUpdater application object.
+ *
+ * As of 3.1.0, level-zero is written as a user preference.
+ *
+ * This function considers that the level_zero is writable if it is not
+ * a mandatory preference.
+ * Whether preferences themselves are or not globally locked is not
+ * considered here (as imho, level zero is not really and semantically
+ * part of user preferences).
+ *
+ * This function only considers the case of the level zero itself.
+ * It does not take into account whether the i/o provider (if any)
+ * is writable, or if the item iself is not read only.
+ *
+ * Returns: %TRUE if we are able to update the level-zero list of items,
+ * %FALSE else.
+ */
+gboolean
+na_updater_is_level_zero_writable( const NAUpdater *updater )
+{
+	gboolean is_writable;
+
+	g_return_val_if_fail( NA_IS_UPDATER( updater ), FALSE );
+
+	is_writable = FALSE;
+
+	if( !updater->private->dispose_has_run ){
+
+		is_writable = updater->private->is_level_zero_writable;
+	}
+
+	return( is_writable );
+}
+
+/*
  * na_updater_append_item:
  * @updater: this #NAUpdater object.
  * @item: a #NAObjectItem-derived object to be appended to the tree.
@@ -202,13 +381,13 @@ na_updater_append_item( NAUpdater *updater, NAObjectItem *item )
 
 	if( !updater->private->dispose_has_run ){
 
-		g_object_get( G_OBJECT( updater ), NAPIVOT_PROP_TREE, &tree, NULL );
+		g_object_get( G_OBJECT( updater ), PIVOT_PROP_TREE, &tree, NULL );
 		tree = g_list_append( tree, item );
-		g_object_set( G_OBJECT( updater ), NAPIVOT_PROP_TREE, tree, NULL );
+		g_object_set( G_OBJECT( updater ), PIVOT_PROP_TREE, tree, NULL );
 	}
 }
 
-/**
+/*
  * na_updater_insert_item:
  * @updater: this #NAUpdater object.
  * @item: a #NAObjectItem-derived object to be inserted in the tree.
@@ -229,7 +408,7 @@ na_updater_insert_item( NAUpdater *updater, NAObjectItem *item, const gchar *par
 	if( !updater->private->dispose_has_run ){
 
 		parent = NULL;
-		g_object_get( G_OBJECT( updater ), NAPIVOT_PROP_TREE, &tree, NULL );
+		g_object_get( G_OBJECT( updater ), PIVOT_PROP_TREE, &tree, NULL );
 
 		if( parent_id ){
 			parent = na_pivot_get_item( NA_PIVOT( updater ), parent_id );
@@ -240,141 +419,123 @@ na_updater_insert_item( NAUpdater *updater, NAObjectItem *item, const gchar *par
 
 		} else {
 			tree = g_list_append( tree, item );
-			g_object_set( G_OBJECT( updater ), NAPIVOT_PROP_TREE, tree, NULL );
+			g_object_set( G_OBJECT( updater ), PIVOT_PROP_TREE, tree, NULL );
 		}
 	}
 }
 
-/**
+/*
  * na_updater_remove_item:
  * @updater: this #NAPivot instance.
  * @item: the #NAObjectItem to be removed from the list.
  *
- * Removes a #NAObjectItem from the hierarchical tree.
- *
- * Note that #NAUpdater also g_object_unref() the removed #NAObjectItem.
- *
- * Last, note that the @item may have been already deleted, when its
- * parents has itself been removed from @updater.
+ * Removes a #NAObjectItem from the hierarchical tree. Does not delete it.
  */
 void
 na_updater_remove_item( NAUpdater *updater, NAObject *item )
 {
 	GList *tree;
-
-	g_debug( "na_updater_remove_item: updater=%p, item=%p (%s)",
-			( void * ) updater,
-			( void * ) item, G_IS_OBJECT( item ) ? G_OBJECT_TYPE_NAME( item ) : "(null)" );
+	NAObjectItem *parent;
 
 	g_return_if_fail( NA_IS_PIVOT( updater ));
 
 	if( !updater->private->dispose_has_run ){
 
-		if( !na_object_get_parent( item )){
-			g_object_get( G_OBJECT( updater ), NAPIVOT_PROP_TREE, &tree, NULL );
-			tree = g_list_remove( tree, ( gconstpointer ) item );
-			g_object_set( G_OBJECT( updater ), NAPIVOT_PROP_TREE, tree, NULL );
-		}
+		g_debug( "na_updater_remove_item: updater=%p, item=%p (%s)",
+				( void * ) updater,
+				( void * ) item, G_IS_OBJECT( item ) ? G_OBJECT_TYPE_NAME( item ) : "(null)" );
 
-		g_object_unref( item );
+		parent = na_object_get_parent( item );
+		if( parent ){
+			tree = na_object_get_items( parent );
+			tree = g_list_remove( tree, ( gconstpointer ) item );
+			na_object_set_items( parent, tree );
+
+		} else {
+			g_object_get( G_OBJECT( updater ), PIVOT_PROP_TREE, &tree, NULL );
+			tree = g_list_remove( tree, ( gconstpointer ) item );
+			g_object_set( G_OBJECT( updater ), PIVOT_PROP_TREE, tree, NULL );
+		}
 	}
 }
 
 /**
- * na_updater_is_item_writable:
- * @updater: this #NAUpdater object.
- * @item: the #NAObjectItem to be written.
- * @reason: the reason for why @item may not be writable.
+ * na_updater_should_pasted_be_relabeled:
+ * @updater: this #NAUpdater instance.
+ * @object: the considered #NAObject-derived object.
  *
- * Returns: %TRUE: if @item is actually writable, given the current
- * status of its provider, %FALSE else.
+ * Whether the specified object should be relabeled when pasted ?
  *
- * For an item be actually writable:
- * - the item must not be itself in a read-only store, which has been
- *   checked when first reading it
- * - the provider must be willing (resp. able) to write
- * - the provider must not has been locked by the admin
- * - the writability of the provider must not have been removed by the user
- * - the whole configuration must not have been locked by the admin.
+ * Returns: %TRUE if the object should be relabeled, %FALSE else.
  */
 gboolean
-na_updater_is_item_writable( const NAUpdater *updater, const NAObjectItem *item, gint *reason )
+na_updater_should_pasted_be_relabeled( const NAUpdater *updater, const NAObject *item )
 {
-	gboolean writable;
-	NAIOProvider *provider;
+	static const gchar *thisfn = "na_updater_should_pasted_be_relabeled";
+	gboolean relabel;
 
-	g_return_val_if_fail( NA_IS_UPDATER( updater ), FALSE );
-	g_return_val_if_fail( NA_IS_OBJECT_ITEM( item ), FALSE );
+	if( NA_IS_OBJECT_MENU( item )){
+		relabel = na_settings_get_boolean( NA_IPREFS_RELABEL_DUPLICATE_MENU, NULL, NULL );
 
-	writable = FALSE;
-	if( reason ){
-		*reason = NA_IIO_PROVIDER_STATUS_UNDETERMINED;
+	} else if( NA_IS_OBJECT_ACTION( item )){
+		relabel = na_settings_get_boolean( NA_IPREFS_RELABEL_DUPLICATE_ACTION, NULL, NULL );
+
+	} else if( NA_IS_OBJECT_PROFILE( item )){
+		relabel = na_settings_get_boolean( NA_IPREFS_RELABEL_DUPLICATE_PROFILE, NULL, NULL );
+
+	} else {
+		g_warning( "%s: unknown item type at %p", thisfn, ( void * ) item );
+		g_return_val_if_reached( FALSE );
 	}
 
-	if( !updater->private->dispose_has_run ){
-
-		writable = TRUE;
-		if( reason ){
-			*reason = NA_IIO_PROVIDER_STATUS_WRITABLE;
-		}
-
-		if( writable ){
-			if( na_object_is_readonly( item )){
-				writable = FALSE;
-				if( reason ){
-					*reason = NA_IIO_PROVIDER_STATUS_ITEM_READONLY;
-				}
-			}
-		}
-
-		if( writable ){
-			provider = na_object_get_provider( item );
-			if( provider ){
-				if( !na_io_provider_is_willing_to_write( provider )){
-					writable = FALSE;
-					if( reason ){
-						*reason = NA_IIO_PROVIDER_STATUS_PROVIDER_NOT_WILLING_TO;
-					}
-				} else if( na_io_provider_is_locked_by_admin( provider, NA_IPREFS( updater ))){
-					writable = FALSE;
-					if( reason ){
-						*reason = NA_IIO_PROVIDER_STATUS_PROVIDER_LOCKED_BY_ADMIN;
-					}
-				} else if( !na_io_provider_is_user_writable( provider, NA_IPREFS( updater ))){
-					writable = FALSE;
-					if( reason ){
-						*reason = NA_IIO_PROVIDER_STATUS_PROVIDER_LOCKED_BY_USER;
-					}
-				} else if( na_pivot_is_configuration_locked_by_admin( NA_PIVOT( updater ))){
-					writable = FALSE;
-					if( reason ){
-						*reason = NA_IIO_PROVIDER_STATUS_CONFIGURATION_LOCKED_BY_ADMIN;
-					}
-				} else if( !na_io_provider_has_write_api( provider )){
-					writable = FALSE;
-					if( reason ){
-						*reason = NA_IIO_PROVIDER_STATUS_NO_API;
-					}
-				}
-
-			/* the get_writable_provider() api already takes above checks
-			 */
-			} else {
-				provider = na_io_provider_get_writable_provider( NA_PIVOT( updater ));
-				if( !provider ){
-					writable = FALSE;
-					if( reason ){
-						*reason = NA_IIO_PROVIDER_STATUS_NO_PROVIDER_FOUND;
-					}
-				}
-			}
-		}
-	}
-
-	return( writable );
+	return( relabel );
 }
 
-/**
+/*
+ * na_updater_load_items:
+ * @updater: this #NAUpdater instance.
+ *
+ * Loads the items, updating simultaneously their writability status.
+ *
+ * Returns: a pointer (not a ref) on the loaded tree.
+ *
+ * Since: 3.1
+ */
+GList *
+na_updater_load_items( NAUpdater *updater )
+{
+	static const gchar *thisfn = "na_updater_load_items";
+	GList *tree;
+
+	g_return_val_if_fail( NA_IS_UPDATER( updater ), NULL );
+
+	tree = NULL;
+
+	if( !updater->private->dispose_has_run ){
+		g_debug( "%s: updater=%p (%s)", thisfn, ( void * ) updater, G_OBJECT_TYPE_NAME( updater ));
+
+		na_pivot_load_items( NA_PIVOT( updater ));
+		tree = na_pivot_get_items( NA_PIVOT( updater ));
+		g_list_foreach( tree, ( GFunc ) set_writability_status, ( gpointer ) updater );
+	}
+
+	return( tree );
+}
+
+static void
+set_writability_status( NAObjectItem *item, const NAUpdater *updater )
+{
+	GList *children;
+
+	na_updater_check_item_writability_status( updater, item );
+
+	if( NA_IS_OBJECT_MENU( item )){
+		children = na_object_get_items( item );
+		g_list_foreach( children, ( GFunc ) set_writability_status, ( gpointer ) updater );
+	}
+}
+
+/*
  * na_updater_write_item:
  * @updater: this #NAUpdater instance.
  * @item: a #NAObjectItem to be written down to the storage subsystem.
@@ -389,7 +550,6 @@ guint
 na_updater_write_item( const NAUpdater *updater, NAObjectItem *item, GSList **messages )
 {
 	guint ret;
-	gint reason;
 
 	ret = NA_IIO_PROVIDER_CODE_PROGRAM_ERROR;
 
@@ -400,31 +560,21 @@ na_updater_write_item( const NAUpdater *updater, NAObjectItem *item, GSList **me
 	if( !updater->private->dispose_has_run ){
 
 		NAIOProvider *provider = na_object_get_provider( item );
+
 		if( !provider ){
-			provider = na_io_provider_get_writable_provider( NA_PIVOT( updater ));
-
-			if( !provider ){
-				ret = NA_IIO_PROVIDER_STATUS_NO_PROVIDER_FOUND;
-
-			} else {
-				na_object_set_provider( item, provider );
-			}
+			provider = na_io_provider_find_writable_io_provider( NA_PIVOT( updater ));
+			g_return_val_if_fail( provider, NA_IIO_PROVIDER_STATUS_NO_PROVIDER_FOUND );
 		}
 
 		if( provider ){
-			if( !na_updater_is_item_writable( updater, item, &reason )){
-				ret = ( guint ) reason;
-
-			} else {
-				ret = na_io_provider_write_item( provider, item, messages );
-			}
+			ret = na_io_provider_write_item( provider, item, messages );
 		}
 	}
 
 	return( ret );
 }
 
-/**
+/*
  * na_updater_delete_item:
  * @updater: this #NAUpdater instance.
  * @item: the #NAObjectItem to be deleted from the storage subsystem.
@@ -442,28 +592,24 @@ guint
 na_updater_delete_item( const NAUpdater *updater, const NAObjectItem *item, GSList **messages )
 {
 	guint ret;
-	gint reason;
+	NAIOProvider *provider;
 
-	ret = NA_IIO_PROVIDER_CODE_PROGRAM_ERROR;
+	g_return_val_if_fail( NA_IS_UPDATER( updater ), NA_IIO_PROVIDER_CODE_PROGRAM_ERROR );
+	g_return_val_if_fail( NA_IS_OBJECT_ITEM( item ), NA_IIO_PROVIDER_CODE_PROGRAM_ERROR );
+	g_return_val_if_fail( messages, NA_IIO_PROVIDER_CODE_PROGRAM_ERROR );
 
-	g_return_val_if_fail( NA_IS_UPDATER( updater ), ret );
-	g_return_val_if_fail( NA_IS_OBJECT_ITEM( item ), ret );
-	g_return_val_if_fail( messages, ret );
+	ret = NA_IIO_PROVIDER_CODE_OK;
 
 	if( !updater->private->dispose_has_run ){
 
-		NAIOProvider *provider = na_object_get_provider( item );
+		provider = na_object_get_provider( item );
+
+		/* provider may be NULL if the item has been deleted from the UI
+		 * without having been ever saved
+		 */
 		if( provider ){
-
-			if( !na_updater_is_item_writable( updater, item, &reason )){
-				ret = ( guint ) reason;
-
-			} else {
-				ret = na_io_provider_delete_item( provider, item, messages );
-			}
-
-		} else {
-			ret = NA_IIO_PROVIDER_CODE_OK;
+			g_return_val_if_fail( NA_IS_IO_PROVIDER( provider ), NA_IIO_PROVIDER_CODE_PROGRAM_ERROR );
+			ret = na_io_provider_delete_item( provider, item, messages );
 		}
 	}
 

@@ -391,7 +391,7 @@ msgstr "இலக்குகளின் கருவிப்பட்டி"
 #: ../data/caja-actions.schemas.in.h:60 ../src/common/na-xml-names.h:121
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
-"the NACT interface. If not set there will be a default auto generated string "
+"the CACT interface. If not set there will be a default auto generated string "
 "set."
 msgstr ""
 "நாக்ட் இடைமுகத்தில் உருவரைக்கு ஒரு பெயர் கொடுக்க இந்த புலம் இருக்கிறது. "
@@ -833,122 +833,122 @@ msgstr ""
 " This is only used when targeting background or toolbar. All folders 'under' "
 "the specified URI are considered valid."
 
-#: ../src/nact/base-application.c:1132
+#: ../src/cact/base-application.c:1132
 msgid "Unable to initialize the internationalization environment."
 msgstr "Unable to initialize the internationalization environment."
 
-#: ../src/nact/base-application.c:1141
+#: ../src/cact/base-application.c:1141
 msgid "Unable to initialize the Gtk+ user interface."
 msgstr "Gtk+ பயனர் இடைமுகத்தை துவக்க முடியவில்லை."
 
-#: ../src/nact/base-application.c:1150
+#: ../src/cact/base-application.c:1150
 msgid "Another instance of the application is already running."
 msgstr "நாடுலஸ் செயல்கள் அமைப்பு கருவி ஒன்றூ ஏற்கெனெவே இயங்குகிறது."
 
-#: ../src/nact/base-application.c:1159
+#: ../src/cact/base-application.c:1159
 msgid "No filename provided for the UI XML definition."
 msgstr "UI XML வரையறைக்கு கோப்பு பெயர் தரப்படவில்லை."
 
 #. i18n: Unable to load the XML definition from <filename>
-#: ../src/nact/base-application.c:1169
+#: ../src/cact/base-application.c:1169
 #, c-format
 msgid "Unable to load the XML definition from %s."
 msgstr "XML வரையறையை %sலிருந்து ஏற்ற முடியவில்லை."
 
-#: ../src/nact/base-application.c:1182
+#: ../src/cact/base-application.c:1182
 msgid "Unable to set the default icon for the application."
 msgstr "பயன்பாட்டிற்கான முன்னிருப்பு சின்னத்தை அமைக்க முடியவில்லை."
 
-#: ../src/nact/base-application.c:1191
+#: ../src/cact/base-application.c:1191
 msgid "Unable to get the main window of the application."
 msgstr "பயன்பாட்டிற்கான முக்கிய விண்டோவைப் பெற முடியவில்லை."
 
-#: ../src/nact/base-assistant.c:576
+#: ../src/cact/base-assistant.c:576
 msgid "Are you sure you want to quit this assistant ?"
 msgstr "Are you sure you want to quit this assistant ?"
 
-#: ../src/nact/base-window.c:1137
+#: ../src/cact/base-window.c:1137
 #, c-format
 msgid "Unable to load %s XML definition."
 msgstr "%s XML வரையறையை ஏற்ற முடியவில்லை."
 
-#: ../src/nact/nact-application.c:314
+#: ../src/cact/cact-application.c:314
 msgid "Another instance of Caja Actions Configuration Tool is already running."
 msgstr "நாடுலஸ் செயல்கள் அமைப்பு கருவி ஒன்றூ ஏற்கெனெவே இயங்குகிறது."
 
 #. i18n: another instance is already running: second line of error message
-#: ../src/nact/nact-application.c:316
+#: ../src/cact/cact-application.c:316
 msgid "Please switch back to it."
 msgstr "தயவு செய்து அதற்கே மாறுங்கள் "
 
-#. static const gchar *thisfn = "nact_application_appli_get_application_name";
+#. static const gchar *thisfn = "cact_application_appli_get_application_name";
 #. g_debug( "%s: application=%p", thisfn, ( void * ) application );
 #. i18n: this is the application name, used in window title
-#: ../src/nact/nact-application.c:376
+#: ../src/cact/cact-application.c:376
 msgid "Caja Actions Configuration Tool"
 msgstr "நாடுலஸ் செயல்கள் அமைப்பு கருவி"
 
 #. i18n: this is the title of the confirm page of the export assistant
-#: ../src/nact/nact-assistant-export.c:717
+#: ../src/cact/cact-assistant-export.c:717
 msgid "About to export selected actions:"
 msgstr "தேர்ந்தெடுக்கப்பட்ட செயலின் ஒரு நகலை உருவாக்கு"
 
 #. i18n: all exported actions go to one destination folder
-#: ../src/nact/nact-assistant-export.c:735
+#: ../src/cact/cact-assistant-export.c:735
 msgid "Into the destination folder:"
 msgstr "இலக்கு கோப்புறையில்:"
 
-#: ../src/nact/nact-assistant-export.c:821
+#: ../src/cact/cact-assistant-export.c:821
 msgid "Export canceled due to user action."
 msgstr "Export canceled due to user action."
 
 #. i18n: result of the export assistant
-#: ../src/nact/nact-assistant-export.c:848
+#: ../src/cact/cact-assistant-export.c:848
 msgid "Selected actions have been proceeded :"
 msgstr "Selected actions have been proceeded :"
 
 #. i18n: action as been successfully exported to <filename>
-#: ../src/nact/nact-assistant-export.c:866
+#: ../src/cact/cact-assistant-export.c:866
 msgid "Successfully exported as"
 msgstr "Successfully exported as"
 
-#: ../src/nact/nact-assistant-export.c:889
+#: ../src/cact/cact-assistant-export.c:889
 msgid "You may not have write permissions on selected folder."
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்புறையில் நீங்கள் அனுமதியை எழுத முடியாது."
 
 #. i18n: The action <action_label> is about to be exported
-#: ../src/nact/nact-assistant-export-ask.c:312
+#: ../src/cact/cact-assistant-export-ask.c:312
 #, c-format
 msgid "The action \"%s\" is about to be exported."
 msgstr "இந்த செயலானது \"%s\" ஏற்றுமதி செய்யப்படலாம்."
 
 #. i18n: the title of the confirm page of the import assistant
-#: ../src/nact/nact-assistant-import.c:558
+#: ../src/cact/cact-assistant-import.c:558
 msgid "About to import selected files:"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்புகளை இறக்குமதி செய்யலாம்:"
 
 #. i18n: result of the import assistant
-#: ../src/nact/nact-assistant-import.c:737
+#: ../src/cact/cact-assistant-import.c:737
 msgid "Selected files have been proceeded :"
 msgstr "Selected files have been proceeded :"
 
 #. i18n: indicate that the file has been successfully imported
-#: ../src/nact/nact-assistant-import.c:755
+#: ../src/cact/cact-assistant-import.c:755
 msgid "Import OK"
 msgstr "OKவை இறக்குமதி செய்யவும்"
 
 #. i18n: this is the globally unique identifier and the label of the newly imported action
-#: ../src/nact/nact-assistant-import.c:761
+#: ../src/cact/cact-assistant-import.c:761
 #, c-format
 msgid "UUID: %s\t%s"
 msgstr "UUID: %s\t%s"
 
 #. i18n: indicate that the file was not iported
-#: ../src/nact/nact-assistant-import.c:772
+#: ../src/cact/cact-assistant-import.c:772
 msgid "Not imported"
 msgstr "இறக்குமதி செய்யப்படவில்லை"
 
-#: ../src/nact/nact-assistant-import-ask.c:306
+#: ../src/cact/cact-assistant-import-ask.c:306
 #, c-format
 msgid ""
 "The action \"%s\" imported from \"%s\" has the same identifiant than the "
@@ -957,364 +957,364 @@ msgstr ""
 "The action \"%s\" imported from \"%s\" has the same identifiant than the "
 "already existing \"%s\"."
 
-#: ../src/nact/nact.desktop.in.h:1
+#: ../src/cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "நாடுலஸ் துள்ளு  பட்டியலுக்கு உருப்படிகளை சேர்"
 
-#: ../src/nact/nact.desktop.in.h:2
+#: ../src/cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "நாடுலஸ் செயல்கள் வடிவமைப்பு"
 
 #. i18n: header of the 'label' column in the treeview
-#: ../src/nact/nact-iactions-list.c:463
+#: ../src/cact/cact-iactions-list.c:463
 msgid "Label"
 msgstr "விளக்கச்சீட்டு"
 
-#: ../src/nact/nact-iaction-tab.c:444
+#: ../src/cact/cact-iaction-tab.c:444
 msgid "<b>Menu properties</b>"
 msgstr "<b>மெனு தன்மைகள்</b>"
 
-#: ../src/nact/nact-iaction-tab.c:446
+#: ../src/cact/cact-iaction-tab.c:446
 msgid "<b>Action properties</b>"
 msgstr "<b>செயல்பாட்டு தன்மைகள்</b>"
 
-#: ../src/nact/nact-iaction-tab.c:537
+#: ../src/cact/cact-iaction-tab.c:537
 msgid "Caution: a label is mandatory for the action or the menu."
 msgstr "Caution: a label is mandatory for the action or the menu."
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../src/nact/nact-iaction-tab.c:713
+#: ../src/cact/cact-iaction-tab.c:713
 msgid "None"
 msgstr "ஒன்றுமில்லை"
 
-#: ../src/nact/nact-iaction-tab.c:786
+#: ../src/cact/cact-iaction-tab.c:786
 msgid "Choosing an icon"
 msgstr "ஒரு சின்னத்தை தேர்ந்தெடுக்கிறது"
 
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../src/nact/nact-iadvanced-tab.c:568
+#: ../src/cact/cact-iadvanced-tab.c:568
 msgid "new-scheme"
 msgstr "புதிய-திட்டம் "
 
-#: ../src/nact/nact-iadvanced-tab.c:569
+#: ../src/cact/cact-iadvanced-tab.c:569
 msgid "New scheme description"
 msgstr "புதிய திட்ட விளக்கம்"
 
 #. i18n notes : description of 'file' scheme
-#: ../src/nact/nact-iadvanced-tab.c:685
+#: ../src/cact/cact-iadvanced-tab.c:685
 msgid "Local files"
 msgstr "உள்ளமை கோப்புகள்"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../src/nact/nact-iadvanced-tab.c:687
+#: ../src/cact/cact-iadvanced-tab.c:687
 msgid "SSH files"
 msgstr "SSH கோப்புகள்"
 
 #. i18n notes : description of 'smb' scheme
-#: ../src/nact/nact-iadvanced-tab.c:689
+#: ../src/cact/cact-iadvanced-tab.c:689
 msgid "Windows files"
 msgstr "Windows கோப்புகள்"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../src/nact/nact-iadvanced-tab.c:691
+#: ../src/cact/cact-iadvanced-tab.c:691
 msgid "FTP files"
 msgstr "FTP கோப்புகள்"
 
 #. i18n notes : description of 'dav' scheme
-#: ../src/nact/nact-iadvanced-tab.c:693
+#: ../src/cact/cact-iadvanced-tab.c:693
 msgid "WebDAV files"
 msgstr "Webdav கோப்புகள்"
 
 #. i18n: title of the FileChoose dialog when selecting an URI which
 #. * will be comparent to Caja 'current_folder'
 #.
-#: ../src/nact/nact-ibackground-tab.c:529
+#: ../src/cact/cact-ibackground-tab.c:529
 msgid "Select a folder"
 msgstr "ஒரு கோப்புறையைத் தேர்ந்தெடு"
 
-#: ../src/nact/nact-icommand-tab.c:391
+#: ../src/cact/cact-icommand-tab.c:391
 msgid "Caution: a label is mandatory for the profile."
 msgstr "Caution: a label is mandatory for the profile."
 
-#: ../src/nact/nact-icommand-tab.c:543
+#: ../src/cact/cact-icommand-tab.c:543
 msgid "Choosing a command"
 msgstr "ஒரு கட்டளையை தேர்ந்தெடுக்கின்றது"
 
 #. i18n notes: example strings for the command preview
-#: ../src/nact/nact-icommand-tab.c:619
+#: ../src/cact/cact-icommand-tab.c:619
 msgid "/path/to"
 msgstr "/path/to"
 
-#: ../src/nact/nact-icommand-tab.c:620
+#: ../src/cact/cact-icommand-tab.c:620
 msgid "file1.txt"
 msgstr "file1.txt"
 
-#: ../src/nact/nact-icommand-tab.c:620
+#: ../src/cact/cact-icommand-tab.c:620
 msgid "file2.txt"
 msgstr "file2.txt"
 
-#: ../src/nact/nact-icommand-tab.c:621
+#: ../src/cact/cact-icommand-tab.c:621
 msgid " folder1"
 msgstr "கோப்புறை1"
 
-#: ../src/nact/nact-icommand-tab.c:621
+#: ../src/cact/cact-icommand-tab.c:621
 msgid "folder2"
 msgstr "கோப்புறை2"
 
-#: ../src/nact/nact-icommand-tab.c:622
+#: ../src/cact/cact-icommand-tab.c:622
 msgid " file1.txt"
 msgstr "கோப்பு1.txt"
 
-#: ../src/nact/nact-icommand-tab.c:622
+#: ../src/cact/cact-icommand-tab.c:622
 msgid "folder1"
 msgstr "folder1"
 
-#: ../src/nact/nact-icommand-tab.c:624
+#: ../src/cact/cact-icommand-tab.c:624
 msgid "test.example.net"
 msgstr "test.example.net"
 
-#: ../src/nact/nact-icommand-tab.c:625
+#: ../src/cact/cact-icommand-tab.c:625
 msgid "file.txt"
 msgstr "கோப்பு.txt"
 
-#: ../src/nact/nact-icommand-tab.c:626
+#: ../src/cact/cact-icommand-tab.c:626
 msgid "folder"
 msgstr "கோப்புறை"
 
-#: ../src/nact/nact-icommand-tab.c:627
+#: ../src/cact/cact-icommand-tab.c:627
 msgid "8080"
 msgstr "8080"
 
-#: ../src/nact/nact-icommand-tab.c:631
+#: ../src/cact/cact-icommand-tab.c:631
 msgid "file:///path/to/file1.text"
 msgstr "file:///path/to/file1.text"
 
-#: ../src/nact/nact-icommand-tab.c:632
+#: ../src/cact/cact-icommand-tab.c:632
 msgid "file:///path/to/file2.text"
 msgstr "file:///path/to/file2.text"
 
-#: ../src/nact/nact-icommand-tab.c:633
+#: ../src/cact/cact-icommand-tab.c:633
 msgid "file:///path/to/a/dir"
 msgstr "file:///path/to/a/dir"
 
-#: ../src/nact/nact-icommand-tab.c:634
+#: ../src/cact/cact-icommand-tab.c:634
 msgid "file:///path/to/another/dir"
 msgstr "file:///path/to/another/dir"
 
-#: ../src/nact/nact-icommand-tab.c:806
+#: ../src/cact/cact-icommand-tab.c:806
 msgid "e.g.,"
 msgstr "e.g.,"
 
-#: ../src/nact/nact-main-menubar.c:154 ../src/nact/nact-main-menubar.c:250
+#: ../src/cact/cact-main-menubar.c:154 ../src/cact/cact-main-menubar.c:250
 msgid "_File"
 msgstr "கோப்பு (_F)"
 
-#: ../src/nact/nact-main-menubar.c:155 ../src/nact/nact-main-menubar.c:254
+#: ../src/cact/cact-main-menubar.c:155 ../src/cact/cact-main-menubar.c:254
 msgid "_Edit"
 msgstr "திருத்து (_E)"
 
-#: ../src/nact/nact-main-menubar.c:156
+#: ../src/cact/cact-main-menubar.c:156
 msgid "_View"
 msgstr "பார்வை (_V)"
 
-#: ../src/nact/nact-main-menubar.c:157
+#: ../src/cact/cact-main-menubar.c:157
 msgid "_Toolbars"
 msgstr "கருவிப்பட்டிகள் (_T)"
 
-#: ../src/nact/nact-main-menubar.c:158 ../src/nact/nact-main-menubar.c:258
+#: ../src/cact/cact-main-menubar.c:158 ../src/cact/cact-main-menubar.c:258
 msgid "_Tools"
 msgstr "கருவிகள் (_T)"
 
-#: ../src/nact/nact-main-menubar.c:159
+#: ../src/cact/cact-main-menubar.c:159
 msgid "_Maintainer"
 msgstr "நிர்வகிப்பவர் (_M)"
 
-#: ../src/nact/nact-main-menubar.c:160 ../src/nact/nact-main-menubar.c:262
+#: ../src/cact/cact-main-menubar.c:160 ../src/cact/cact-main-menubar.c:262
 msgid "_Help"
 msgstr "உதவி (_H)"
 
-#: ../src/nact/nact-main-menubar.c:162
+#: ../src/cact/cact-main-menubar.c:162
 msgid "New _menu"
 msgstr "புதிய மெனு (_m)"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New menu' item
-#: ../src/nact/nact-main-menubar.c:164
+#: ../src/cact/cact-main-menubar.c:164
 msgid "Insert a new menu at the current position"
 msgstr "நடப்பு இடத்திற்கு ஒரு புதிய மெனுவை உள்ளிடவும்"
 
-#: ../src/nact/nact-main-menubar.c:166
+#: ../src/cact/cact-main-menubar.c:166
 msgid "_New action"
 msgstr "புதிய செயல் (_N)"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New action' item
-#: ../src/nact/nact-main-menubar.c:168
+#: ../src/cact/cact-main-menubar.c:168
 msgid "Define a new action"
 msgstr "ஒரு புதிய செயலை வரையறு"
 
-#: ../src/nact/nact-main-menubar.c:170
+#: ../src/cact/cact-main-menubar.c:170
 msgid "New _profile"
 msgstr "புதிய விவரக்குற்றிபு (_p)"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New profile' item
-#: ../src/nact/nact-main-menubar.c:172
+#: ../src/cact/cact-main-menubar.c:172
 msgid "Define a new profile attached to the current action"
 msgstr "நடப்பு செயலுடன் ஒரு புதிய விவரக்குறிப்பை சேர்ப்பதை வரையறைக்கவும்"
 
 #. i18n: tooltip displayed in the status bar when selecting 'Save' item
-#: ../src/nact/nact-main-menubar.c:176
+#: ../src/cact/cact-main-menubar.c:176
 msgid "Record all the modified actions. Invalid actions will be silently ignored"
 msgstr ""
 "மாற்றியமைக்கப்பட்ட செயல்கள் அனைத்தையும் பதிவுசெய்யவும். தவறான செயல்கள் அமைதியாக "
 "புறக்கணிக்கப்படும்"
 
 #. i18n: tooltip displayed in the status bar when selecting 'Quit' item
-#: ../src/nact/nact-main-menubar.c:180
+#: ../src/cact/cact-main-menubar.c:180
 msgid "Quit the application"
 msgstr "பயன்பாட்டை நிறுத்து"
 
 #. i18n: tooltip displayed in the status bar when selecting the Cut item
-#: ../src/nact/nact-main-menubar.c:184
+#: ../src/cact/cact-main-menubar.c:184
 msgid "Cut the selected item(s) to the clipboard"
 msgstr "Cut the selected item(s) to the clipboard"
 
 #. i18n: tooltip displayed in the status bar when selecting the Copy item
-#: ../src/nact/nact-main-menubar.c:188
+#: ../src/cact/cact-main-menubar.c:188
 msgid "Copy the selected item(s) to the clipboard"
 msgstr "Copy the selected item(s) to the clipboard"
 
 #. i18n: tooltip displayed in the status bar when selecting the Paste item
-#: ../src/nact/nact-main-menubar.c:192
+#: ../src/cact/cact-main-menubar.c:192
 msgid "Insert the content of the clipboard just before the current position"
 msgstr "Insert the content of the clipboard just before the current position"
 
-#: ../src/nact/nact-main-menubar.c:194
+#: ../src/cact/cact-main-menubar.c:194
 msgid "Paste _into"
 msgstr "இதனுள் ஒட்டு (_i)"
 
 #. i18n: tooltip displayed in the status bar when selecting the Paste Into item
-#: ../src/nact/nact-main-menubar.c:196
+#: ../src/cact/cact-main-menubar.c:196
 msgid "Insert the content of the clipboard as first child of the current item"
 msgstr "Insert the content of the clipboard as first child of the current item"
 
-#: ../src/nact/nact-main-menubar.c:198
+#: ../src/cact/cact-main-menubar.c:198
 msgid "D_uplicate"
 msgstr "போலியான (_u)"
 
 #. i18n: tooltip displayed in the status bar when selecting the Duplicate item
-#: ../src/nact/nact-main-menubar.c:200
+#: ../src/cact/cact-main-menubar.c:200
 msgid "Duplicate the selected item(s)"
 msgstr "தேர்ந்தெடுக்கப்பட்ட திட்டத்தை நீக்க சொடுக்கு"
 
 #. i18n: tooltip displayed in the status bar when selecting the Delete item
-#: ../src/nact/nact-main-menubar.c:204
+#: ../src/cact/cact-main-menubar.c:204
 msgid "Delete the selected item(s)"
 msgstr "தேர்ந்தெடுக்கப்பட்ட உருப்படிக(ளை) அழ்ழிக்கவும்"
 
-#: ../src/nact/nact-main-menubar.c:206
+#: ../src/cact/cact-main-menubar.c:206
 msgid "_Reload the list of actions"
 msgstr "செயல்களின் பட்டியலை மீளேற்றவும் (_R)"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'Reload' item
-#: ../src/nact/nact-main-menubar.c:208
+#: ../src/cact/cact-main-menubar.c:208
 msgid "Cancel your current modifications and reload the list of actions"
 msgstr "நடப்பு மாற்றங்களை ரத்துசெய்யவும் மற்றும் செயல்களின் பட்டியலை மீளேற்றவும்"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'Preferences' item
-#: ../src/nact/nact-main-menubar.c:212
+#: ../src/cact/cact-main-menubar.c:212
 msgid "Edit your preferences"
 msgstr "உங்களது முன்னுரிமைகளை திருத்தவும்"
 
-#: ../src/nact/nact-main-menubar.c:214
+#: ../src/cact/cact-main-menubar.c:214
 msgid "_Expand all"
 msgstr "அனைத்தையும் விரிக்கவும் (_E)"
 
 #. i18n: tooltip displayed in the status bar when selecting the Expand all item
-#: ../src/nact/nact-main-menubar.c:216
+#: ../src/cact/cact-main-menubar.c:216
 msgid "Entirely expand the items hierarchy"
 msgstr "hierarchy உருப்படிகள் முழுவதையும் விரிக்கவும்"
 
-#: ../src/nact/nact-main-menubar.c:218
+#: ../src/cact/cact-main-menubar.c:218
 msgid "_Collapse all"
 msgstr "அனைத்தையும் பாழாக்கவும் (_C)"
 
 #. i18n: tooltip displayed in the status bar when selecting the Collapse all item
-#: ../src/nact/nact-main-menubar.c:220
+#: ../src/cact/cact-main-menubar.c:220
 msgid "Entirely collapse the items hierarchy"
 msgstr "Entirely collapse the items hierarchy"
 
-#: ../src/nact/nact-main-menubar.c:222
+#: ../src/cact/cact-main-menubar.c:222
 msgid "_Import assistant..."
 msgstr "உதவியாளரை இறக்கு (_I)..."
 
 #. i18n: tooltip displayed in the status bar when selecting the Import item
-#: ../src/nact/nact-main-menubar.c:224
+#: ../src/cact/cact-main-menubar.c:224
 msgid "Import one or more actions from external (XML) files into your configuration"
 msgstr "Import one or more actions from external (XML) files into your configuration"
 
-#: ../src/nact/nact-main-menubar.c:226
+#: ../src/cact/cact-main-menubar.c:226
 msgid "E_xport assistant..."
 msgstr "உதவியாளரை ஏற்று (_x)..."
 
 #. i18n: tooltip displayed in the status bar when selecting the Export item
-#: ../src/nact/nact-main-menubar.c:228
+#: ../src/cact/cact-main-menubar.c:228
 msgid "Export one or more actions from your configuration to external XML files"
 msgstr "Export one or more actions from your configuration to external XML files"
 
-#: ../src/nact/nact-main-menubar.c:230
+#: ../src/cact/cact-main-menubar.c:230
 msgid "_Dump the selection"
 msgstr "_Dump the selection"
 
 #. i18n: tooltip displayed in the status bar when selecting the Dump selection item
-#: ../src/nact/nact-main-menubar.c:232
+#: ../src/cact/cact-main-menubar.c:232
 msgid "Recursively dump selected items"
 msgstr "Recursively dump selected items"
 
-#: ../src/nact/nact-main-menubar.c:234
+#: ../src/cact/cact-main-menubar.c:234
 msgid "_Brief tree store dump"
 msgstr "_Brief tree store dump"
 
 #. i18n: tooltip displayed in the status bar when selecting the BriefTreeStoreDump item
-#: ../src/nact/nact-main-menubar.c:236
+#: ../src/cact/cact-main-menubar.c:236
 msgid "Briefly dump the tree store"
 msgstr "Briefly dump the tree store"
 
 #. i18n: tooltip displayed in the status bar when selecting the Help item
-#: ../src/nact/nact-main-menubar.c:240
+#: ../src/cact/cact-main-menubar.c:240
 msgid "Display help about this program"
 msgstr "இந்த நிரலைப் பற்றிய உதவியைக் காட்டு"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
-#: ../src/nact/nact-main-menubar.c:244
+#: ../src/cact/cact-main-menubar.c:244
 msgid "Display informations about this program"
 msgstr "இந்த நிரலைப் பற்றிய தகவலைக் காட்டு"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
-#: ../src/nact/nact-main-menubar.c:252
+#: ../src/cact/cact-main-menubar.c:252
 msgid "Display the File toolbar"
 msgstr "கோப்பு கருவிப்பட்டியைக் காட்டு"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View Edit toolbar' item
-#: ../src/nact/nact-main-menubar.c:256
+#: ../src/cact/cact-main-menubar.c:256
 msgid "Display the Edit toolbar"
 msgstr "கருவிப்பட்டியைத் திருத்திக் காட்டு"
 
 #. i18n: tooltip displayed in the status bar when selecting 'View Tools toolbar' item
-#: ../src/nact/nact-main-menubar.c:260
+#: ../src/cact/cact-main-menubar.c:260
 msgid "Display the Tools toolbar"
 msgstr "கருவிகளின் கருவிப்பட்டியைக் காட்டு"
 
 #. i18n: tooltip displayed in the status bar when selecting 'View Help toolbar' item
-#: ../src/nact/nact-main-menubar.c:264
+#: ../src/cact/cact-main-menubar.c:264
 msgid "Display the Help toolbar"
 msgstr "உதவி கருவிப்பட்டியைக் காட்டு"
 
 #. i18n: note the space at the beginning of the sentence
-#: ../src/nact/nact-main-menubar.c:475
+#: ../src/cact/cact-main-menubar.c:475
 #, c-format
 msgid " %d menus, %d actions, %d profiles are currently displayed"
 msgstr " %d மெனுக்கள், %d செயல்கள், %d விவரக்குறிப்புகள் நடப்பில் காட்டப்படும்"
 
-#: ../src/nact/nact-main-window.c:1212
+#: ../src/cact/cact-main-window.c:1212
 msgid ""
 "Reloading a fresh list of actions requires that you give up with your "
 "current modifications."
@@ -1322,11 +1322,11 @@ msgstr ""
 "Reloading a fresh list of actions requires that you give up with your "
 "current modifications."
 
-#: ../src/nact/nact-main-window.c:1215
+#: ../src/cact/cact-main-window.c:1215
 msgid "Do you really want to do this ?"
 msgstr "நீங்கள் இதை செய்ய விரும்புகிறீர்களா ?"
 
-#: ../src/nact/nact-main-window.c:1238
+#: ../src/cact/cact-main-window.c:1238
 msgid ""
 "One or more actions have been modified in the filesystem.\n"
 "You could keep to work with your current list of actions, or you may want to "
@@ -1336,7 +1336,7 @@ msgstr ""
 "You could keep to work with your current list of actions, or you may want to "
 "reload a fresh one."
 
-#: ../src/nact/nact-main-window.c:1245
+#: ../src/cact/cact-main-window.c:1245
 msgid ""
 "Note that reloading a fresh list of actions requires that you give up with "
 "your current modifications."
@@ -1344,130 +1344,130 @@ msgstr ""
 "Note that reloading a fresh list of actions requires that you give up with "
 "your current modifications."
 
-#: ../src/nact/nact-main-window.c:1251
+#: ../src/cact/cact-main-window.c:1251
 msgid "Do you want to reload a fresh list of actions ?"
 msgstr "ஒரு புதிய செயல்களின் பட்டியலை மீளேற்ற நீங்கள் விரும்புகிறீர்களா ?"
 
-#: ../src/nact/nact-tree-model.c:1530
+#: ../src/cact/cact-tree-model.c:1530
 msgid "Unable to drop a profile here"
 msgstr "இங்கே ஒரு விவரக்குறிப்பை இட முடியவில்லை"
 
-#: ../src/nact/nact-tree-model.c:1531
+#: ../src/cact/cact-tree-model.c:1531
 msgid "Unable to drop an action or a menu here"
 msgstr "ஓரு செயலை அல்லது ஒரு மெனுவை இட முடியவில்லை"
 
-#: ../src/nact/nact-window.c:237
+#: ../src/cact/cact-window.c:237
 msgid "An error has occured when trying to save the item"
 msgstr "உருப்படியை சேமிக்க முயற்சிக்கும் போது ஒரு பிழை ஏற்பட்டது"
 
-#: ../src/nact/nact-window.c:280
+#: ../src/cact/cact-window.c:280
 msgid "An error has occured when trying to delete the item"
 msgstr "உருப்படியை அழிக்க முயற்சிக்கும் போது ஒரு பிழை ஏற்பட்டது"
 
-#: ../src/nact/nact-window.c:336
+#: ../src/cact/cact-window.c:336
 #, c-format
 msgid "Some items have been modified."
 msgstr "சில உருப்படிகள் மாற்றியமைக்கப்படுள்ளன."
 
-#: ../src/nact/nact-window.c:337
+#: ../src/cact/cact-window.c:337
 msgid "Are you sure you want to quit without saving them ?"
 msgstr "அவற்றை சேமிக்காமலே நீங்கள் நிறுத்த விரும்புகிறீர்களா ?"
 
-#: ../src/nact/nact-xml-reader.c:122
+#: ../src/cact/cact-xml-reader.c:122
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr "XML கோட்டை இடைநிறுத்த முடியவில்லை: %s."
 
-#: ../src/nact/nact-xml-reader.c:123
+#: ../src/cact/cact-xml-reader.c:123
 #, c-format
 msgid "Invalid XML root element: waited for '%s' or '%s', found '%s' at line %d."
 msgstr ""
 "தவறான XML ரூட் எழுத்துரு: '%s' அல்லது '%s'காக காத்திருக்கிறது, '%s'ஆனது %d கோட்டில் "
 "காணப்படும்."
 
-#: ../src/nact/nact-xml-reader.c:124
+#: ../src/cact/cact-xml-reader.c:124
 #, c-format
 msgid "Waited for '%s' node, found (ignored) '%s' at line %d."
 msgstr ""
 "'%s' குறிப்பிற்காக காத்திருக்கிறது,(புறக்கணிக்கப்பட்ட) '%s' ஆனது %dகோட்டில் "
 "காணப்படுகிறது."
 
-#: ../src/nact/nact-xml-reader.c:125
+#: ../src/cact/cact-xml-reader.c:125
 #, c-format
 msgid "Unexpected (ignored) '%s' node found at line %d."
 msgstr "எதிர்பாராத (புறக்கணிக்கப்பட்ட) '%s' குறிப்பு %d கோட்டில் காணப்படும்."
 
-#: ../src/nact/nact-xml-reader.c:126
+#: ../src/cact/cact-xml-reader.c:126
 #, c-format
 msgid "Schema is ignored at line %d."
 msgstr "திட்டம் %d கோட்டில் புறக்கணிக்கப்பட்டது."
 
-#: ../src/nact/nact-xml-reader.c:127
+#: ../src/cact/cact-xml-reader.c:127
 #, c-format
 msgid "Unexpected '%s' node found at line %d."
 msgstr "எதிர்பாராத '%s' குறிப்பு %d கோட்டில் காணப்பட்டது."
 
-#: ../src/nact/nact-xml-reader.c:128
+#: ../src/cact/cact-xml-reader.c:128
 #, c-format
 msgid "Unexpected '%s' entry found at line %d."
 msgstr "எதிர்பாராத '%s' உள்ளீடு %d கோட்டில் காணப்பட்டது."
 
-#: ../src/nact/nact-xml-reader.c:129
+#: ../src/cact/cact-xml-reader.c:129
 #, c-format
 msgid "Mandatory node '%s' not found."
 msgstr "அவசியமான குறிப்பு '%s' காணக்கடவில்லை."
 
-#: ../src/nact/nact-xml-reader.c:130
+#: ../src/cact/cact-xml-reader.c:130
 msgid "No value found."
 msgstr "மதிப்பு காணப்படவில்லை."
 
-#: ../src/nact/nact-xml-reader.c:131
+#: ../src/cact/cact-xml-reader.c:131
 #, c-format
 msgid "Invalid UUID: waited for %s, found %s at line %d."
 msgstr "தவறான UUID: %sகாக காத்திருக்கிறது, %sஆனது %d கோட்டில் காணப்படும்."
 
-#: ../src/nact/nact-xml-reader.c:132
+#: ../src/cact/cact-xml-reader.c:132
 #, c-format
 msgid "Invalid content: waited for %s prefix, found %s at line %d."
 msgstr "தவறான உள்ளடக்கம்: %s ப்ரீபிக்ஸ்ஸிக்காக காத்திருக்கிறது, %sஆனது %dகோட்டில் காணப்படும்."
 
-#: ../src/nact/nact-xml-reader.c:133
+#: ../src/cact/cact-xml-reader.c:133
 #, c-format
 msgid "Invalid UUID %s found at line %d."
 msgstr "தவறான UUID %s ஆனது %dகோட்டில் காணப்படும்."
 
-#: ../src/nact/nact-xml-reader.c:134
+#: ../src/cact/cact-xml-reader.c:134
 #, c-format
 msgid "Already existing action (UUID: %s)."
 msgstr "ஏற்கனவே உள்ளிருக்கும் செயல்பாடு (UUID: %s)."
 
-#: ../src/nact/nact-xml-reader.c:135
+#: ../src/cact/cact-xml-reader.c:135
 #, c-format
 msgid "Value '%s' already set: new value ignored at line %d."
 msgstr "மதிப்பு '%s' ஏற்கனவே அமைக்கப்பட்டுள்ளது: புதிய மதிப்பு %dகோட்டில் புறக்கணிக்கப்படும்."
 
-#: ../src/nact/nact-xml-reader.c:136
+#: ../src/cact/cact-xml-reader.c:136
 msgid "UUID not found."
 msgstr "UUID காணப்படவில்லை."
 
-#: ../src/nact/nact-xml-reader.c:137
+#: ../src/cact/cact-xml-reader.c:137
 msgid "Action label not found."
 msgstr "செயல்பாட்டு லேபில் காணப்படவில்லை."
 
-#: ../src/nact/nact-xml-reader.c:1342
+#: ../src/cact/cact-xml-reader.c:1342
 msgid "Action was renumbered due to user request."
 msgstr "Action was renumbered due to user request."
 
-#: ../src/nact/nact-xml-reader.c:1349
+#: ../src/cact/cact-xml-reader.c:1349
 msgid "Existing action was overriden due to user request."
 msgstr "Existing action was overriden due to user request."
 
-#: ../src/nact/nact-xml-reader.c:1358
+#: ../src/cact/cact-xml-reader.c:1358
 msgid "Import was canceled due to user request."
 msgstr "இறக்குமதி பயனரின் கோரிக்கையால் ரத்து செய்யப்பட்டது."
 
 #. i18n: the action has been renumbered during import operation
-#: ../src/nact/nact-xml-reader.c:1396
+#: ../src/cact/cact-xml-reader.c:1396
 msgid "(renumbered)"
 msgstr "(மீண்டும் எண்ணப்பட்ட)"
 
@@ -1765,8 +1765,8 @@ msgstr "செயல் '%s' தானாகவே MateConf கட்டமை�
 #. i18n: Action <action_label> written to <output_filename>...
 #: ../src/utils/caja-actions-new.c:208
 #, c-format
-msgid "Action '%s' succesfully written to %s, and ready to be imported in NACT.\n"
-msgstr "செயல் '%s' தானாகவே %sக்கு எழுதுகிறது, NACTல் இறக்குமதியில் செய்ய தயாராகுகிறது.\n"
+msgid "Action '%s' succesfully written to %s, and ready to be imported in CACT.\n"
+msgstr "செயல் '%s' தானாகவே %sக்கு எழுதுகிறது, CACTல் இறக்குமதியில் செய்ய தயாராகுகிறது.\n"
 
 #: ../src/utils/caja-actions-new.c:238
 msgid ""
@@ -1774,7 +1774,7 @@ msgid ""
 "\n"
 "  The created action defaults to be written to stdout.\n"
 "  It can also be written to an output folder, in a file later suitable for "
-"an import in NACT.\n"
+"an import in CACT.\n"
 "  Or you may choose to directly write the action into your MateConf "
 "configuration."
 msgstr ""
@@ -1782,7 +1782,7 @@ msgstr ""
 "\n"
 "  The created action defaults to be written to stdout.\n"
 "  It can also be written to an output folder, in a file later suitable for "
-"an import in NACT.\n"
+"an import in CACT.\n"
 "  Or you may choose to directly write the action into your MateConf "
 "configuration."
 

@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -34,15 +33,18 @@
 
 #include <api/na-mateconf-monitor.h>
 
+#ifdef HAVE_MATECONF
+#ifdef NA_ENABLE_DEPRECATED
+
 /* private class data
  */
-struct NAMateConfMonitorClassPrivate {
+struct _NAMateConfMonitorClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct NAMateConfMonitorPrivate {
+struct _NAMateConfMonitorPrivate {
 	gboolean              dispose_has_run;
 	MateConfClient          *mateconf;
 	gchar                *path;
@@ -123,9 +125,10 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	static const gchar *thisfn = "na_mateconf_monitor_instance_init";
 	NAMateConfMonitor *self;
 
+	g_return_if_fail( NA_IS_MATECONF_MONITOR( instance ));
+
 	g_debug( "%s: instance=%p (%s), klass=%p",
 			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-	g_return_if_fail( NA_IS_MATECONF_MONITOR( instance ));
 	self = NA_MATECONF_MONITOR( instance );
 
 	self->private = g_new0( NAMateConfMonitorPrivate, 1 );
@@ -141,11 +144,13 @@ instance_dispose( GObject *object )
 	static const gchar *thisfn = "na_mateconf_monitor_instance_dispose";
 	NAMateConfMonitor *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 	g_return_if_fail( NA_IS_MATECONF_MONITOR( object ));
+
 	self = NA_MATECONF_MONITOR( object );
 
 	if( !self->private->dispose_has_run ){
+
+		g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 		/* release the installed monitor before setting dispose_has_run */
 		release_monitor( self );
@@ -164,9 +169,13 @@ instance_dispose( GObject *object )
 static void
 instance_finalize( GObject *object )
 {
+	static const gchar *thisfn = "na_mateconf_monitor_instance_finalize";
 	NAMateConfMonitor *self;
 
 	g_return_if_fail( NA_IS_MATECONF_MONITOR( object ));
+
+	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
+
 	self = NA_MATECONF_MONITOR( object );
 
 	g_free( self->private->path );
@@ -180,13 +189,20 @@ instance_finalize( GObject *object )
 
 /**
  * na_mateconf_monitor_new:
- * @client: a #MateConfClient object already initialized by the caller.
  * @path: the absolute path to monitor.
- * @preload: a #MateConfClientPreloadType for this monitoring.
  * @handler: the function to be triggered by the monitor.
  * @user_data: data to pass to the @handler.
  *
  * Initializes the monitoring of a MateConf path.
+ *
+ * This monitoring will only be stopped when object is released, via
+ * g_object_unref().
+ *
+ * Returns: a new #NAMateConfMonitor object, which will monitor the given path,
+ * triggeering the @handler in case of modifications.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 NAMateConfMonitor *
 na_mateconf_monitor_new( const gchar *path, MateConfClientNotifyFunc handler, gpointer user_data )
@@ -252,6 +268,9 @@ install_monitor( NAMateConfMonitor *monitor )
  * @monitors: a list of #NAMateConfMonitors.
  *
  * Release allocated monitors.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 void
 na_mateconf_monitor_release_monitors( GList *monitors )
@@ -269,10 +288,11 @@ release_monitor( NAMateConfMonitor *monitor )
 	static const gchar *thisfn = "na_mateconf_monitor_release_monitor";
 	GError *error = NULL;
 
-	g_debug( "%s: monitor=%p", thisfn, ( void * ) monitor );
 	g_return_if_fail( NA_IS_MATECONF_MONITOR( monitor ));
 
 	if( !monitor->private->dispose_has_run ){
+
+		g_debug( "%s: monitor=%p", thisfn, ( void * ) monitor );
 
 		if( monitor->private->monitor_id ){
 			mateconf_client_notify_remove( monitor->private->mateconf, monitor->private->monitor_id );
@@ -286,3 +306,6 @@ release_monitor( NAMateConfMonitor *monitor )
 		}
 	}
 }
+
+#endif /* NA_ENABLE_DEPRECATED */
+#endif /* HAVE_MATECONF */

@@ -1,0 +1,8 @@
+        <para>
+          The new action is also displayed in red color in the items list.
+          Red color is used as an indicator that the item
+          is invalid, that is that the item cannot be candidate to be displayed in a
+          &caja; context menu because some of its informations are missing or erroneous.
+          Here, and though this newly inserted action has some suitable defaults, it lacks a 
+          command to be executed to be considered valid by &appname;
+        </para>

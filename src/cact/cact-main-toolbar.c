@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,10 +31,7 @@
 #include <config.h>
 #endif
 
-#include <core/na-iprefs.h>
-
 #include "cact-application.h"
-#include "cact-iprefs.h"
 #include "cact-main-toolbar.h"
 
 typedef struct {
@@ -48,10 +44,10 @@ typedef struct {
 	ToolbarProps;
 
 static ToolbarProps toolbar_props[] = {
-		{ MAIN_TOOLBAR_FILE_ID , "main-file-toolbar" ,  TRUE, "ViewFileToolbarItem" , "/ui/FileToolbar" },
-		{ MAIN_TOOLBAR_EDIT_ID , "main-edit-toolbar" , FALSE, "ViewEditToolbarItem" , "/ui/EditToolbar" },
-		{ MAIN_TOOLBAR_TOOLS_ID, "main-tools-toolbar", FALSE, "ViewToolsToolbarItem", "/ui/ToolsToolbar" },
-		{ MAIN_TOOLBAR_HELP_ID , "main-help-toolbar" ,  TRUE, "ViewHelpToolbarItem" , "/ui/HelpToolbar" }
+		{ MAIN_TOOLBAR_FILE_ID , NA_IPREFS_MAIN_TOOLBAR_FILE_DISPLAY,   TRUE, "ViewFileToolbarItem" , "/ui/FileToolbar" },
+		{ MAIN_TOOLBAR_EDIT_ID , NA_IPREFS_MAIN_TOOLBAR_EDIT_DISPLAY,  FALSE, "ViewEditToolbarItem" , "/ui/EditToolbar" },
+		{ MAIN_TOOLBAR_TOOLS_ID, NA_IPREFS_MAIN_TOOLBAR_TOOLS_DISPLAY, FALSE, "ViewToolsToolbarItem", "/ui/ToolsToolbar" },
+		{ MAIN_TOOLBAR_HELP_ID , NA_IPREFS_MAIN_TOOLBAR_HELP_DISPLAY,   TRUE, "ViewHelpToolbarItem" , "/ui/HelpToolbar" }
 };
 
 /* defines the relative position of the main toolbars
@@ -64,8 +60,8 @@ static int toolbar_pos[] = {
 		MAIN_TOOLBAR_HELP_ID
 };
 
-static void          init_toolbar( CactMainWindow *window, GtkActionGroup *group, int toolbar_id );
-static void          reorder_toolbars( GtkHBox *hbox, int toolbar_id, GtkWidget *handle );
+static void          init_toolbar( BaseWindow *window, GtkActionGroup *group, int toolbar_id );
+static void          reorder_toolbars( GtkWidget *hbox, int toolbar_id, GtkWidget *handle );
 static void          on_handle_finalize( gpointer data, GObject *handle );
 static void          on_attach_toolbar( GtkHandleBox *handle, GtkToolbar *toolbar, CactMainWindow *window );
 static void          on_detach_toolbar( GtkHandleBox *handle, GtkToolbar *toolbar, CactMainWindow *window );
@@ -83,7 +79,7 @@ static ToolbarProps *get_toolbar_properties( int toolbar_id );
  * toolbar.
  */
 void
-cact_main_toolbar_init( CactMainWindow *window, GtkActionGroup *group )
+cact_main_toolbar_init( BaseWindow *window, GtkActionGroup *group )
 {
 	static const gchar *thisfn = "cact_main_toolbar_init";
 	int i;
@@ -96,19 +92,15 @@ cact_main_toolbar_init( CactMainWindow *window, GtkActionGroup *group )
 }
 
 static void
-init_toolbar( CactMainWindow *window, GtkActionGroup *group, int toolbar_id )
+init_toolbar( BaseWindow *window, GtkActionGroup *group, int toolbar_id )
 {
-	CactApplication *application;
-	NAUpdater *updater;
 	ToolbarProps *props;
 	gboolean is_active;
 	GtkToggleAction *action;
 
-	application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-	updater = cact_application_get_updater( application );
 	props = get_toolbar_properties( toolbar_id );
 	if( props ){
-		is_active = na_iprefs_read_bool( NA_IPREFS( updater ), props->prefs_key, props->displayed_per_default );
+		is_active = na_settings_get_boolean( props->prefs_key, NULL, NULL );
 		if( is_active ){
 			action = GTK_TOGGLE_ACTION( gtk_action_group_get_action( group, props->ui_item ));
 			gtk_toggle_action_set_active( action, TRUE );
@@ -139,7 +131,7 @@ cact_main_toolbar_activate( CactMainWindow *window, int toolbar_id, GtkUIManager
 	}
 
 	toolbar = gtk_ui_manager_get_widget( ui_manager, props->ui_path );
-	g_debug( "%s: toolbar=%p, path=%s, ref=%d", thisfn, ( void * ) toolbar, props->ui_path, G_OBJECT( toolbar )->ref_count );
+	g_debug( "%s: toolbar=%p, path=%s, ref_count=%d", thisfn, ( void * ) toolbar, props->ui_path, G_OBJECT( toolbar )->ref_count );
 	hbox = base_window_get_widget( BASE_WINDOW( window ), "ToolbarHBox" );
 
 	if( is_active ){
@@ -153,9 +145,8 @@ cact_main_toolbar_activate( CactMainWindow *window, int toolbar_id, GtkUIManager
 		g_object_weak_ref( G_OBJECT( handle ), ( GWeakNotify ) on_handle_finalize, NULL );
 		gtk_container_add( GTK_CONTAINER( handle ), toolbar );
 		gtk_container_add( GTK_CONTAINER( hbox ), handle );
-		reorder_toolbars( GTK_HBOX( hbox ), toolbar_id, handle );
+		reorder_toolbars( hbox, toolbar_id, handle );
 		gtk_widget_show_all( handle );
-		g_debug( "%s: ref=%d", thisfn, G_OBJECT( toolbar )->ref_count );
 
 	} else {
 		handle = ( GtkWidget * ) g_object_get_data( G_OBJECT( toolbar ), "cact-main-toolbar-handle" );
@@ -165,10 +156,9 @@ cact_main_toolbar_activate( CactMainWindow *window, int toolbar_id, GtkUIManager
 		g_signal_handler_disconnect( handle, attach_id );
 		gtk_container_remove( GTK_CONTAINER( handle ), toolbar );
 		gtk_container_remove( GTK_CONTAINER( hbox ), handle );
-		g_debug( "%s: ref=%d", thisfn, G_OBJECT( toolbar )->ref_count );
 	}
 
-	cact_iprefs_write_bool( BASE_WINDOW( window ), props->prefs_key, is_active );
+	na_settings_set_boolean( props->prefs_key, is_active );
 }
 
 /*
@@ -176,7 +166,7 @@ cact_main_toolbar_activate( CactMainWindow *window, int toolbar_id, GtkUIManager
  * so that the relative positions of toolbars are respected in hbox
  */
 static void
-reorder_toolbars( GtkHBox *hbox, int toolbar_id, GtkWidget *handle )
+reorder_toolbars( GtkWidget *hbox, int toolbar_id, GtkWidget *handle )
 {
 	int this_canonic_rel_pos;
 	int i;

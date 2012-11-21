@@ -1,0 +1,13 @@
+data/actions
+------------
+This directory contains some .desktop files as examples of actions or menus.
+Actions cited in the Caja-Actions Configuration Tool user's manual are
+in particular here.
+There is some rather common actions which could be used as starting examples
+by the user.
+
+All actions in this directory are marked as 'disabled'. The packager is so
+free to install them in XDG_DATA_DIRS/file-manager/actions without cluttering
+the file manager itself.
+
+P. Wieser, Aug. 2010.

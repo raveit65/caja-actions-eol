@@ -1,0 +1,96 @@
+<sect2 id="usage-profile">
+  <title>Using profiles to extend your action</title>
+  <para>
+    There are some situations where you will want a given action behave
+    slightly differently depending on the currently selected items or
+    the current runtime environment.
+  </para>
+  <example>
+    <title>Open a terminal here</title>
+    <para>
+      Say you have an action which opens a terminal in the current location.
+    </para>
+    <para>
+      You have configured it to open your preferred terminal in the
+      location your file manager currently points to.
+    </para>
+    <para>
+      But what if you want to select a directory in your file manager,
+      and directly open your terminal in this directory ? If you
+      keep based on the current file manager location, your
+      terminal will open in the parent of the targeted directory.
+    </para>
+    <para>
+      One solution is to define a new profile to your action,
+      configuring this profile to open the terminal in the
+      targeted directory.
+    </para>
+    <para>
+      At runtime, &prodname; will successively examine each profile
+      attached to your action. If the first profile targets a file
+      while you have selected a directory, then &prodname; will just
+      try with your second profile.
+    </para>
+  </example>
+  <para>
+    To create a new profile, first select the action in the items list,
+    then choose
+    <menuchoice>
+      <guisubmenu>File</guisubmenu>
+      <guimenuitem>New profile</guimenuitem>
+    </menuchoice>.
+  </para>
+  <para>
+    A new profile is created in your action.
+  </para>
+  <para>
+    You can now define the conditions which must be met in order
+    this profile be selected, and the command which will be executed.
+  </para>
+  
+  <sect3 id="usage-profile-order">
+    <title>Ordering the profiles inside an action</title>
+    <para>
+      At runtime, &prodname; will begin with examining the conditions
+      set on your action.
+    </para>
+    <para>
+      If these conditions (the action-conditions) are met, then &prodname;
+      will examine in order each profile.
+    </para>
+    <para>
+      If the conditions defined in a profile are met, then this profile
+      will be validated, and the review of other profiles will stop.
+    </para>
+    <para>
+      If no profile is found valid at runtime, then the action will be
+      itself considered invalid, and will not be displayed in the file
+      manager context menu.
+    </para>
+    <para>
+      Profiles of an action are ordered, and they are examined in that order
+      at runtime. The first profile whose conditions are met will be validated,
+      and made selectable in the &caja; context menu.
+    </para>
+    <para>
+      So, ordering of the profiles may be important for your action: the
+      first valid profile found is the only one selected.
+    </para>
+    <para>
+      You may order your profiles inside an action in two ways.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Cut the profile to be moved, select the profile before which
+          you want your cut profile to be inserted, and paste it.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Click on the profile to be moved, and drag it to its right place.
+        </para>
+      </listitem>
+    </orderedlist>
+  </sect3>
+</sect2>

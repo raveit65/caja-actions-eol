@@ -19,24 +19,24 @@ msgstr ""
 "X-Poedit-Country: Bhutan\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../nact/nact.desktop.in.h:1
+#: ../cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "ནའུ་ཊི་ལཱསི་པོཔ་ཨཔ་དཀར་ཆག་ལུ་རྣམ་གྲངས་ཁ་སྐོང་རྐྱབ།"
 
-#: ../nact/nact.desktop.in.h:2
+#: ../cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "ནའུ་ཊི་ལཱསི་གི་བྱ་བ་རིམ་སྒྲིག་འབད།"
 
-#: ../nact/caja-actions-config.glade.h:1
+#: ../cact/caja-actions-config.glade.h:1
 msgid "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>"
 msgstr "(C) ༢༠༠༥-༢༠༠༧ ཕེར་ཌི་རིཀ་ རའུ་ཌེལ<grumz@grumz.net>"
 
-#: ../nact/caja-actions-config.glade.h:3
+#: ../cact/caja-actions-config.glade.h:3
 #, no-c-format
 msgid "<b>%%</b>: a percent sign"
 msgstr "<b>%%</b>:བརྒྱ་ཆའི་མིང་རྟགས།"
 
-#: ../nact/caja-actions-config.glade.h:5
+#: ../cact/caja-actions-config.glade.h:5
 #, no-c-format
 msgid ""
 "<b>%M</b>: space-separated list of the selected file(s)/folder(s) with their "
@@ -45,29 +45,29 @@ msgstr ""
 "<b>%M</b>:ཡིག་སྣོད་(s)/སྣོད་འཛིན་སེལ་འཐུ་འབད་ཡོད་མི་ འགྲུལ་ལམ་ཆ་ཚང་ཚུ་དང་བཅས་ཡོད་མི་གི་  བར་"
 "སྟོང་ སོ་སོ་འཕྱལ་འཕྱལཝ་ཚུ།"
 
-#: ../nact/caja-actions-config.glade.h:7
+#: ../cact/caja-actions-config.glade.h:7
 #, fuzzy, no-c-format
 msgid "<b>%U</b>: username of the MateVFS URI"
 msgstr "<b>%U</b>: ཇི་ནོམ་-ཝི་ཨེཕ་ཨེསི་ ཡུ་ཨར་ཨའི་གི་ལག་ལེན་པའི་མིང་།"
 
-#: ../nact/caja-actions-config.glade.h:9
+#: ../cact/caja-actions-config.glade.h:9
 #, no-c-format
 msgid "<b>%d</b>: base folder of the selected file(s)"
 msgstr "<b>%d</b>:ཡིག་སྣོད་སེལ་འཐུ་འབད་ཡོད་མི་ཚུ་གི་ སྣོད་འཛིན་གཞི་རྟེན།(s)"
 
-#: ../nact/caja-actions-config.glade.h:11
+#: ../cact/caja-actions-config.glade.h:11
 #, no-c-format
 msgid ""
 "<b>%f</b>: the name of the selected file or the 1st one if many are selected"
 msgstr ""
 "<b>%f</b>: ལེ་ཤ་སེལ་འཐུ་འབད་ཡོད་པ་ཅིན་ སེལ་འཐུ་འབད་བའི་ཡིག་སྣོད་འབད་རུང་ཡང་ཅིན་ དང་པ་འདི།"
 
-#: ../nact/caja-actions-config.glade.h:13
+#: ../cact/caja-actions-config.glade.h:13
 #, fuzzy, no-c-format
 msgid "<b>%h</b>: hostname of the MateVFS URI"
 msgstr "<b>%h</b>: ཇི་ནོམ་ཝི་ཨེཕ་ཨེསི་ ཡུ་ཨར་ཨའི་ ཧོསཊི་གི་མིང་།"
 
-#: ../nact/caja-actions-config.glade.h:15
+#: ../cact/caja-actions-config.glade.h:15
 #, no-c-format
 msgid ""
 "<b>%m</b>: space-separated list of the basenames of the selected\n"
@@ -76,50 +76,50 @@ msgstr ""
 "<b>%m</b>:སེལ་འཐུ་འབད་ཡོད་མི་ཡིག་སྣོད་(s)/སྣོད་འཛིན་(s)\n"
 " གི་བར་སྟོང་ཁ་སོ་སོ་འཕྱལ་འཕྱལཝ་ཚུ།"
 
-#: ../nact/caja-actions-config.glade.h:18
+#: ../cact/caja-actions-config.glade.h:18
 #, fuzzy, no-c-format
 msgid "<b>%s</b>: scheme of the MateVFS URI"
 msgstr "<b>%s</b>: ཇི་ནོམ་-ཝི་ཨེཕ་ཨེསི་ ཡུ་ཨར་ཨའི་གི་འཆར་ལས།"
 
-#: ../nact/caja-actions-config.glade.h:20
+#: ../cact/caja-actions-config.glade.h:20
 #, fuzzy, no-c-format
 msgid "<b>%u</b>: MateVFS URI"
 msgstr "<b>%u</b>: ཇི་ནོམ་-ཝི་ཨེཕ་ཨེསི་ ཡུ་ཨར་ཨའི།"
 
-#: ../nact/caja-actions-config.glade.h:21
+#: ../cact/caja-actions-config.glade.h:21
 msgid "<b>Action</b>"
 msgstr "<b>བྱ་བ</b>"
 
-#: ../nact/caja-actions-config.glade.h:22
+#: ../cact/caja-actions-config.glade.h:22
 msgid "<b>Appears if file matches</b>"
 msgstr "<b>ཡིག་སྣོད་མཐུན་པ་ཅིན་འབྱུངམ་ཨིན</b>"
 
-#: ../nact/caja-actions-config.glade.h:23
+#: ../cact/caja-actions-config.glade.h:23
 msgid "<b>Appears if scheme is in this list</b>"
 msgstr "<b>ཡིག་སྣོད་འདི་གི་ནང་ལུ་འཆར་ལས་ཡོད་པ་ཅིན་འབྱུངམ་ཨིན</b>"
 
-#: ../nact/caja-actions-config.glade.h:24
+#: ../cact/caja-actions-config.glade.h:24
 msgid "<b>Appears if selection contains</b>"
 msgstr "<b>སེལ་འཐུ་ཡོད་པ་ཅིན་འབྱུངམ་ཨིན</b>"
 
-#: ../nact/caja-actions-config.glade.h:25
+#: ../cact/caja-actions-config.glade.h:25
 msgid "<b>Caja Menu Item</b>"
 msgstr "<b>ནའུ་ཊི་ལཱསི་གི་དཀར་ཆག་རྣམ་གྲངས</b>"
 
-#: ../nact/caja-actions-config.glade.h:26
+#: ../cact/caja-actions-config.glade.h:26
 msgid "<b>Profiles</b>"
 msgstr "<b>གསལ་སྡུད་ཚུ་</b>"
 
-#: ../nact/caja-actions-config.glade.h:28
+#: ../cact/caja-actions-config.glade.h:28
 #, no-c-format
 msgid "<i><b><span size=\"small\">e.g., %s</span></b></i>"
 msgstr "<i><b><span size=\"small\">དཔེ་འབད་བ་ཅིན་%s</span></b></i>"
 
-#: ../nact/caja-actions-config.glade.h:29
+#: ../cact/caja-actions-config.glade.h:29
 msgid "<span size=\"larger\"><b>Parameter Legend</b></span>"
 msgstr "<span size=\"larger\"><b>ཚད་བཟུང་གི་གཏམ་རྒྱུད་</b></span>"
 
-#: ../nact/caja-actions-config.glade.h:30
+#: ../cact/caja-actions-config.glade.h:30
 msgid ""
 "<span weight=\"bold\" size=\"larger\">place primary text here</span>\n"
 "\n"
@@ -129,7 +129,7 @@ msgstr ""
 "\n"
 "གལ་གནད་ཆུང་བའི་ཚིག་ཡིག་བཞག"
 
-#: ../nact/caja-actions-config.glade.h:33
+#: ../cact/caja-actions-config.glade.h:33
 msgid ""
 "A string with wildcards (? or *) that will be used to match the filenames. "
 "You can set several filename patterns by separating them with a semi-colon "
@@ -139,7 +139,7 @@ msgstr ""
 "། སེ་མི་ཀོ་ལཱོན་ (;)གི་འབད་དེ་ཚུ་ སོ་སོ་འཕྱལ་བཞིནམ་ལས་ ཁྱོད་རང་ཡིག་སྣོད་ཀྱི་དཔེ་གཞི་ལེ་ཤ་ཅིག་ཆ་ཚན་"
 "འབད་ཚུགས།"
 
-#: ../nact/caja-actions-config.glade.h:34
+#: ../cact/caja-actions-config.glade.h:34
 msgid ""
 "A string with wildcards (? or *) that will be used to match the mimetypes of "
 "files. You can set several mimetype patterns by separating them with a semi-"
@@ -149,31 +149,31 @@ msgstr ""
 "ཡོད་མི།དེ་ཚུ་ སེ་མི་ཀོ་ལཱོན་ (;)གི་ཐོག་ལས་འབད་ སོ་སོ་འཕྱལ་བཞིན་ན་ཁྱོད་རང་  མ་ཡམ་དབྱེ་བའི་དཔེ་གཞི་ལེ་"
 "ཤ་ཅིག་ཆ་ཚན་འབད་ཚུགས།"
 
-#: ../nact/caja-actions-config.glade.h:35
+#: ../cact/caja-actions-config.glade.h:35
 msgid "Action"
 msgstr "བྱ་བ་"
 
-#: ../nact/caja-actions-config.glade.h:36
+#: ../cact/caja-actions-config.glade.h:36
 msgid "Advanced Conditions"
 msgstr "མཐོ་རིམ་གནས་སྟངས་ཚུ།"
 
-#: ../nact/caja-actions-config.glade.h:37
+#: ../cact/caja-actions-config.glade.h:37
 msgid "Appears if selection has multiple files or folders"
 msgstr "སེལ་འཐུ་འདི་ལུ་ཡིག་སྣོད་སྣ་མང་ཡོད་མི་ ཡང་ཅིན་སྣོད་འཛིན་ཡོད་པ་ཅིན་རྐྱངམ་ཅིག་འབྱུངམ་ཨིན།"
 
-#: ../nact/caja-actions-config.glade.h:38
+#: ../cact/caja-actions-config.glade.h:38
 msgid "Both"
 msgstr "གཉིས་ཆ་རང་།"
 
-#: ../nact/caja-actions-config.glade.h:39
+#: ../cact/caja-actions-config.glade.h:39
 msgid "Click to add a new scheme."
 msgstr "འཆར་ལས་གསརཔ་ཁ་སྐོང་རྐྱབས་ནའི་དོན་ལུ་ ཨེབ་གཏང་།"
 
-#: ../nact/caja-actions-config.glade.h:40
+#: ../cact/caja-actions-config.glade.h:40
 msgid "Click to choose a command from the file chooser dialog."
 msgstr "ཡིག་སྣོད་འདེམས་བྱེད་ཌའི་ལོག་འདི་ལས་ བརྡ་བཀོད་གདམ་ཁ་འབད་ནའི་དོན་ལུ་ཨེབ་གཏང་།"
 
-#: ../nact/caja-actions-config.glade.h:41
+#: ../cact/caja-actions-config.glade.h:41
 msgid ""
 "Click to choose a custom icon from a file instead of a predefined icon from "
 "the drop-down list."
@@ -181,11 +181,11 @@ msgstr ""
 "སར-་འཇོག་ཐོ་བཀོད་ལས་སྔ་གོང་ངེས་འཛིན་འབད་ཡོད་པའི་ངོས་དཔར་གྱི་ཚབ་ལུ་ ཡིག་སྣོད་ལས་སྲོལ་སྒྲིག་ངོས་དཔར་"
 "གདམ་ཁ་འབད་ནི་ལུ་ཨེབ་གཏང་།"
 
-#: ../nact/caja-actions-config.glade.h:42
+#: ../cact/caja-actions-config.glade.h:42
 msgid "Click to remove the selected scheme."
 msgstr "འཆར་ལས་སེལ་འཐུ་འབད་ཡོད་མི་འདི་རྩ་བསྐྲད་གཏང་ནའི་དོན་ལུ་ཨེབ་གཏང་།"
 
-#: ../nact/caja-actions-config.glade.h:43
+#: ../cact/caja-actions-config.glade.h:43
 msgid ""
 "Click to toggle the display of the list of special tokens you can use in the "
 "parameter field."
@@ -193,41 +193,41 @@ msgstr ""
 "ཚད་བཟུང་ས་སྒོ་ནང་ལུ་ ལག་ལེན་འཐབ་བཏུབ་པའི་་དམིགས་བསལ་ངོ་རྟགསཚུ་གི་ཡིག་ཐོ་བསྐྲམ་སྟོན་འདི་སོར་སྟོན་"
 "འབད་ནའི་དོན་ལུ་ཨེབ་གཏང་འབད།"
 
-#: ../nact/caja-actions-config.glade.h:44
+#: ../cact/caja-actions-config.glade.h:44
 msgid "Conditions"
 msgstr "གནས་སྟངས་ཚུ།"
 
-#: ../nact/caja-actions-config.glade.h:45
+#: ../cact/caja-actions-config.glade.h:45
 msgid "Create a copy of the selected action."
 msgstr "བྱ་བ་སེལ་འཐུ་གི་འདྲ་བཤུས་ཅིག་གསར་བསྐྲུན་འབད།"
 
-#: ../nact/caja-actions-config.glade.h:46
+#: ../cact/caja-actions-config.glade.h:46
 msgid ""
 "Delete the action without any confirmation nor the possibility to restore it."
 msgstr ""
 "བྱ་བ་འདི་ ངེས་དཔྱད་ག་ནི་ཡང་མེད་པ་དང་ དེ་མེན་པ་ཅིན་ སོར་ཆུད་འབད་ཚུགས་མི་ཅིག་གིས་ བཏོན་གཏང་།"
 
-#: ../nact/caja-actions-config.glade.h:47
+#: ../cact/caja-actions-config.glade.h:47
 msgid "Duplicate"
 msgstr ""
 
-#: ../nact/caja-actions-config.glade.h:48
+#: ../cact/caja-actions-config.glade.h:48
 msgid "Export existing configs"
 msgstr " ཡོད་བཞིན་པའི་རིམ་སྒྲིག་ཕྱིར་འདྲེན་འབད།"
 
-#: ../nact/caja-actions-config.glade.h:49
+#: ../cact/caja-actions-config.glade.h:49
 msgid "File to Import:"
 msgstr "ནང་འདྲན་འབད་ནའི་ཡིག་སྣོད:"
 
-#: ../nact/caja-actions-config.glade.h:50
+#: ../cact/caja-actions-config.glade.h:50
 msgid "Filenames:"
 msgstr "ཡིག་སྣོད་ཀྱི་མིང་ཚུ་ :"
 
-#: ../nact/caja-actions-config.glade.h:51
+#: ../cact/caja-actions-config.glade.h:51
 msgid "Icon:"
 msgstr "ངོས་དཔར:"
 
-#: ../nact/caja-actions-config.glade.h:52
+#: ../cact/caja-actions-config.glade.h:52
 msgid ""
 "If selected, the filename patterns will be matched case sensitive (eg, *.jpg "
 "will not match photo.JPG)"
@@ -235,27 +235,27 @@ msgstr ""
 "སེལ་འཐུ་འབད་ཡོད་པ་ཅིན་ ཡིག་སྣོད་དཔེ་གཞི་ཚུ་ གནད་དོན་ཚོར་ཅན་མཐུན་སྒྲིག་འབད་འོང་།(དཔེ་འབད་བ་ཅིན་, "
 "*.ཇེ་པི་ཇི་ གིས་དཔར་དང་མཐུན་པ་མི་འོང་.ཇེ་པི་ཇི)"
 
-#: ../nact/caja-actions-config.glade.h:53
+#: ../cact/caja-actions-config.glade.h:53
 msgid "Import new configurations"
 msgstr "རིམ་སྒྲིག་གསརཔ་ཚུ་ནང་འདྲན་འབད།"
 
-#: ../nact/caja-actions-config.glade.h:54
+#: ../cact/caja-actions-config.glade.h:54
 msgid "Import/Export"
 msgstr "ནང་འདྲན/ཕྱིར་འདརན།"
 
-#: ../nact/caja-actions-config.glade.h:55
+#: ../cact/caja-actions-config.glade.h:55
 msgid "Import/Export Settings"
 msgstr "ནང་འདྲན/ཕྱིར་འདྲན་གྱི་གཞི་སྒྲིག་ཚུ།"
 
-#: ../nact/caja-actions-config.glade.h:56
+#: ../cact/caja-actions-config.glade.h:56
 msgid "Label of the menu item in the Caja popup menu."
 msgstr "ནའུ་ཊི་ལཱསི་པོཔ་ཨཔ་དཀར་ཆག་གི་ནང་ལུ་ཡོད་མི་  དཀར་ཆག་རྣམ་གྲངས་ཀྱི་ཁ་ཡིག"
 
-#: ../nact/caja-actions-config.glade.h:57
+#: ../cact/caja-actions-config.glade.h:57
 msgid "Label:"
 msgstr "ཁ་ཡིག:"
 
-#: ../nact/caja-actions-config.glade.h:58
+#: ../cact/caja-actions-config.glade.h:58
 msgid ""
 "Manage importation of external action configurations and exportation of "
 "existing actions."
@@ -263,27 +263,27 @@ msgstr ""
 "ཕྱིའི་བྱ་བའི་རིམ་སྒྲིག་ཚུ་ ནང་འདྲན་འབད་ནི་དང་ ཡོད་བཞིན་པའི་བྱ་བ་ཚུ་གི་ཕྱིར་འདྲན་འབད་ནུ་འདི་ འཛིན་སྐྱོང་"
 "འབད་ད།"
 
-#: ../nact/caja-actions-config.glade.h:59
+#: ../cact/caja-actions-config.glade.h:59
 msgid "Match case"
 msgstr "མཐུན་སྒྲིག་གི་གནད་དོན།"
 
-#: ../nact/caja-actions-config.glade.h:60
+#: ../cact/caja-actions-config.glade.h:60
 msgid "Mimetypes:"
 msgstr "མ་ཡམ་དབྱེ་བ:"
 
-#: ../nact/caja-actions-config.glade.h:61
+#: ../cact/caja-actions-config.glade.h:61
 msgid "Caja Action Editor"
 msgstr "ནའུ་ཊི་ལཱསི་བྱ་བའི་ཞུན་དག་པ།"
 
-#: ../nact/caja-actions-config.glade.h:62
+#: ../cact/caja-actions-config.glade.h:62
 msgid "Caja Action Profile Editor"
 msgstr "ནའུ་ཊི་ལཱསི་བྱ་བའི་གསལ་སྡུད་ཞུན་དག་པ་"
 
-#: ../nact/caja-actions-config.glade.h:63
+#: ../cact/caja-actions-config.glade.h:63
 msgid "Caja Actions"
 msgstr "ནའུ་ཊི་ལཱསི་གི་བྱ་བ་ཚུ།"
 
-#: ../nact/caja-actions-config.glade.h:64
+#: ../cact/caja-actions-config.glade.h:64
 msgid ""
 "Caja Actions Configuration Tool\n"
 "Application to configure Caja Action extension"
@@ -291,15 +291,15 @@ msgstr ""
 "ནའུ་ཊི་ལཱསི་བྱ་བའི་རིམ་སྒྲིག་གི་ལག་ཆས་\n"
 "ནའུ་ཊི་ལཱསི་བྱ་བ་ རྒྱ་བསྐྱེད་རིམ་སྒྲིག་ལུ་ འཇུག་སྤྱོད་"
 
-#: ../nact/caja-actions-config.glade.h:66
+#: ../cact/caja-actions-config.glade.h:66
 msgid "Only files"
 msgstr "ཡིག་སྣོད་ཚུ་རྐྱམ་ཅིག"
 
-#: ../nact/caja-actions-config.glade.h:67
+#: ../cact/caja-actions-config.glade.h:67
 msgid "Only folders"
 msgstr "སྣོད་འཛིན་ཚུ་རྐྱངམ་ཅིག"
 
-#: ../nact/caja-actions-config.glade.h:68
+#: ../cact/caja-actions-config.glade.h:68
 msgid ""
 "Parameters that will be sent to the program. Click on the 'Legend' button to "
 "see the different replacement tokens."
@@ -307,23 +307,23 @@ msgstr ""
 "ལས་རིམ་ལུ་བཏང་ནའི་ཚད་བཟུང་། ངོ་རྟགས་ཚབ་མ་སོ་སོ་ཚུ་ལྟ་ནའི་དོན་ལུ་'གཏམ་རྒྱུད'ཟེར་མི་ ཨེབ་རྟ་གུ་ཨེབ་"
 "གཏང་།"
 
-#: ../nact/caja-actions-config.glade.h:69
+#: ../cact/caja-actions-config.glade.h:69
 msgid "Parameters:"
 msgstr "ཚད་བཟུང་ :"
 
-#: ../nact/caja-actions-config.glade.h:70
+#: ../cact/caja-actions-config.glade.h:70
 msgid "Path:"
 msgstr "འགྲུལ་ལམ:"
 
-#: ../nact/caja-actions-config.glade.h:71
+#: ../cact/caja-actions-config.glade.h:71
 msgid "Project Website"
 msgstr "ཝེབ་ས་ཁོངས་ཀྱི་ལས་འགུལ།"
 
-#: ../nact/caja-actions-config.glade.h:72
+#: ../cact/caja-actions-config.glade.h:72
 msgid "Save in Folder:"
 msgstr "སྣོད་འཛིན་ནང་སྲུངས་བཞག :"
 
-#: ../nact/caja-actions-config.glade.h:73
+#: ../cact/caja-actions-config.glade.h:73
 msgid ""
 "Select the configurations you want to export. Use Shift or Ctrl key to "
 "select more than one."
@@ -331,22 +331,22 @@ msgstr ""
 "ཁྱོད་རང་ ཕྱིར་འདྲན་འབད་དགོ་པའི་རིམ་སྒྲིག་ཚུ་སེལ་འཐུ་འབད། གཅིག་ལས་ལྷག་འདི་སེལ་འཐུ་འབད་དགོ་པ་ཅིན་ "
 "བཤུད་ཡང་ཅིན་ཚད་འཛིན་གྱི་གཙོ་བོ་འདི་ལག་ལེན་འཐབ།"
 
-#: ../nact/caja-actions-config.glade.h:74
+#: ../cact/caja-actions-config.glade.h:74
 msgid "Select the configurations you want to export:"
 msgstr "ཁྱོད་རང་ཕྱིར་འདྲན་འབད་དགོ་པའི་རིམ་སྒྲིག་སེལ་འཐུ་འབད :"
 
-#: ../nact/caja-actions-config.glade.h:75
+#: ../cact/caja-actions-config.glade.h:75
 msgid "Select the file you want to import."
 msgstr "ཁྱོད་རང་ ནང་འདྲན་འབད་དགོ་པའི་ཡིག་སྣོད་སེལ་འཐུ་འབད།"
 
-#: ../nact/caja-actions-config.glade.h:76
+#: ../cact/caja-actions-config.glade.h:76
 msgid ""
 "Select the folder you want your config to be saved in. This folder must "
 "exist."
 msgstr ""
 "ཁྱོད་རང་གི་རིམ་སྒྲིག་སྲུང་ནིའི་དོན་ལུ་སྣོད་འཛིན་སེལ་འཐུ་འབད། འ་ནི་སྣོད་འཛིན་འདི་ཡོདཔ་འབད་འོང་དགོ།"
 
-#: ../nact/caja-actions-config.glade.h:77
+#: ../cact/caja-actions-config.glade.h:77
 msgid ""
 "Select the kind of files where you want your action to appear. If you don't "
 "know what to choose, try selecting just 'file' which is the most common "
@@ -357,202 +357,202 @@ msgstr ""
 "གུ་ཨེབ་གཏང་བཞིན་ན་ འཆར་ལས་གསརཔ་ཁ་སྐོང་རྐྱབ།"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../nact/caja-actions-config.glade.h:79
+#: ../cact/caja-actions-config.glade.h:79
 #, fuzzy
 msgid "The MATE Translation Project <mate-i18n@gnome.org>"
 msgstr "ཇི་ནོམ་འདི་གི་སྐད་སྒྱུར་ལས་འགུལ་ <mate-i18n@gnome.org>mate-i18n@gnome.org"
 
-#: ../nact/caja-actions-config.glade.h:80
+#: ../cact/caja-actions-config.glade.h:80
 msgid ""
 "The command that will be launched by selecting the action in Caja popup "
 "menu."
 msgstr ""
 "ནའུ་ཊི་ལཱསི་པོཔ་ཨཔ་དཀར་ཆག་ནང་གི་བྱ་བ་འདི་སེལ་འཐུ་འབད་བཞིནམ་ལས་གསར་བཙུགས་འབད་ནི་གི་བརྡ་བཀོད།"
 
-#: ../nact/caja-actions-config.glade.h:81
+#: ../cact/caja-actions-config.glade.h:81
 msgid "This software is licensed under the GNU Genaral Public License (GPL)"
 msgstr "འ་ནི་མཉེན་ཆས་འདི་ ཇི་ཨེན་ཡུ་ཡོངས་ཁྱབ་མི་མང་ཆོག་ཐམ་ལུ་སྤྲོད་ཡོད།(ཇི་པི་ཨེལ་)"
 
-#: ../nact/caja-actions-config.glade.h:82
+#: ../cact/caja-actions-config.glade.h:82
 msgid "Tooltip of the menu item that will appear in the Caja statusbar."
 msgstr "ནའུ་ཊི་ལཱསི་གནས་ཚད་ཕྲ་རིང་ནང་ལུ་འབྱུང་མི་ དཀར་ཆག་རྣམ་གྲངས་ཀྱི་ལག་ཆས་ཕན་བསླབ།"
 
-#: ../nact/caja-actions-config.glade.h:83
+#: ../cact/caja-actions-config.glade.h:83
 msgid "Tooltip:"
 msgstr "ལག་ཆས་ཕན་བསླབ :"
 
-#: ../nact/caja-actions-config.glade.h:84
+#: ../cact/caja-actions-config.glade.h:84
 msgid "_Browse"
 msgstr "བརྡ་འཚོལ།(_B)"
 
-#: ../nact/caja-actions-config.glade.h:85
+#: ../cact/caja-actions-config.glade.h:85
 msgid "_Legend"
 msgstr "གཏམ་རྒྱུད་(_L)"
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact.c:163
+#: ../cact/cact.c:163
 #, fuzzy, c-format
 msgid "Can't duplicate action '%s'!"
 msgstr "བྱ་བ་རྫུན་མ་མི་བཏུབ '%s' !"
 
 #. create columns on the tree view
-#: ../nact/nact.c:277 ../nact/nact-import-export.c:162
+#: ../cact/cact.c:277 ../cact/cact-import-export.c:162
 msgid "Icon"
 msgstr "ངོས་དཔར།"
 
-#: ../nact/nact.c:282 ../nact/nact-import-export.c:167
+#: ../cact/cact.c:282 ../cact/cact-import-export.c:167
 msgid "Label"
 msgstr "ཁ་ཡིག"
 
-#: ../nact/nact.c:303 ../nact/nact-editor.c:628
-#: ../nact/nact-import-export.c:312 ../nact/nact-profile-editor.c:495
+#: ../cact/cact.c:303 ../cact/cact-editor.c:628
+#: ../cact/cact-import-export.c:312 ../cact/cact-profile-editor.c:495
 msgid "Could not load interface for Caja Actions Config Tool"
 msgstr "ནའུ་ཊི་ལཱསི་བྱ་བའི་རིམ་སྒྲིག་ལག་ཆས་ཀྱི་དོན་ལུ་ ངོས་འདྲ་བ་འདི་མངོན་གསལ་འབད་མ་ཚུགས།"
 
 #. i18n notes: example strings for the command preview
-#: ../nact/nact-utils.c:185
+#: ../cact/cact-utils.c:185
 msgid "/path/to"
 msgstr "/འགྲུལ་ལམ/ལུ"
 
-#: ../nact/nact-utils.c:186 ../nact/nact-utils.c:188
+#: ../cact/cact-utils.c:186 ../cact/cact-utils.c:188
 msgid "file1.txt"
 msgstr "ཡིག་སྣོད་1ཊི་ཨེགསི་ཊི།"
 
-#: ../nact/nact-utils.c:186
+#: ../cact/cact-utils.c:186
 msgid "file2.txt"
 msgstr "ཡིག་སྣོད་2.ཊི་ཨེགསི་ཊི"
 
-#: ../nact/nact-utils.c:187 ../nact/nact-utils.c:188
+#: ../cact/cact-utils.c:187 ../cact/cact-utils.c:188
 msgid "folder1"
 msgstr "སྣོད་འཛིན་1"
 
-#: ../nact/nact-utils.c:187
+#: ../cact/cact-utils.c:187
 msgid "folder2"
 msgstr "སྣོད་འཛིན་2"
 
-#: ../nact/nact-utils.c:190
+#: ../cact/cact-utils.c:190
 msgid "test.example.net"
 msgstr "བརྟག་ཞིབ། དཔེ་འབད་བ་ཅིན། ནེ་ཊི།"
 
-#: ../nact/nact-utils.c:191
+#: ../cact/cact-utils.c:191
 msgid "file.txt"
 msgstr "ཡིག་སྣོད། ཊི་ཨེགསི་ཊི།"
 
-#: ../nact/nact-utils.c:192
+#: ../cact/cact-utils.c:192
 msgid "folder"
 msgstr "སྣོད་འཛིན།"
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../nact/nact-editor.c:168
+#: ../cact/cact-editor.c:168
 msgid "None"
 msgstr "ཅི་ཡང་མེད།"
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:449
+#: ../cact/cact-editor.c:449
 #, fuzzy, c-format
 msgid "Can't copy action's profile '%s'!"
 msgstr "བྱ་བའི་གསལ་སྡུད་འདྲ་བཤུས་རྐྱབ་མི་བཏུབ'%s' !"
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:474
+#: ../cact/cact-editor.c:474
 #, fuzzy, c-format
 msgid "Can't paste action's profile '%s'!"
 msgstr "བྱ་བའི་གསལ་སྡུད་སྦྱར་མི་བཏུབ'%s' !"
 
 #. i18n notes: this is the default name of a copied profile
-#: ../nact/nact-editor.c:479
+#: ../cact/cact-editor.c:479
 #, c-format
 msgid "%s Copy"
 msgstr "%s འདྲ་བཤུས་"
 
 #. i18n notes: will be displayed in a dialog
-#: ../nact/nact-editor.c:539
+#: ../cact/cact-editor.c:539
 #, fuzzy, c-format
 msgid "Can't delete action's profile '%s'!"
 msgstr "བྱ་བའི་གསལ་སྡུད་བཏོན་གཏང་མི་བཏུབ '%s' !"
 
-#: ../nact/nact-editor.c:591
+#: ../cact/cact-editor.c:591
 msgid "Profile Name"
 msgstr "གསལ་སྡུད་ཀྱི་མིང་"
 
-#: ../nact/nact-editor.c:644
+#: ../cact/cact-editor.c:644
 msgid "Icon of the menu item in the Caja popup menu"
 msgstr "ནའུ་ཊི་ལཱསི་པོཔ་ཨཔ་དཀར་ཆག་ནང་ལུ་ཡོད་མི་ དཀར་ཆག་རྣམ་གྲངས་ཀྱི་ངོས་དཔར།"
 
-#: ../nact/nact-editor.c:666
+#: ../cact/cact-editor.c:666
 msgid "Add a New Action"
 msgstr "བྱ་བ་གསརཔ་ཁ་སྐོང་རྐྱབ།"
 
-#: ../nact/nact-editor.c:670
+#: ../cact/cact-editor.c:670
 #, c-format
 msgid "Edit Action \"%s\""
 msgstr "བྱ་བ་འདི་ཞུན་དག་འབད།\"%s\""
 
-#: ../nact/nact-import-export.c:205
+#: ../cact/cact-import-export.c:205
 #, fuzzy, c-format
 msgid "Can't parse file '%s' as MateConf schema description file!"
 msgstr "མིང་དཔྱད་འབད་ནི་ཡིག་སྣོད་ '%s' ཇི་རིམ་སྒྲིག་ལས་འཆར་འགྲེལ་བཤད་ཡིག་སྣོད་སྦེ་མི་བཏུབ !"
 
 #. i18n notes: %s is the label of the action (eg, 'Mount ISO')
-#: ../nact/nact-import-export.c:226
+#: ../cact/cact-import-export.c:226
 #, fuzzy, c-format
 msgid "Action '%s' importation failed!"
 msgstr "བྱ་བ་ '%s' ནང་འདྲེན་འབད་ནི་འཐུས་ཤོར་འབྱུང་ཡོདཔ !"
 
 #. initialize the default schemes
 #. i18n notes : description of 'file' scheme
-#: ../nact/nact-prefs.c:164
+#: ../cact/cact-prefs.c:164
 #, c-format
 msgid "%sLocal Files"
 msgstr "%sཉེ་གནས་ཀྱི་ཡིག་སྣོད་ཚུ།"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../nact/nact-prefs.c:166
+#: ../cact/cact-prefs.c:166
 #, c-format
 msgid "%sSSH Files"
 msgstr "%sཨེསི་ཨེསི་གི་ཡིག་སྣོད་ཚུ།"
 
 #. i18n notes : description of 'smb' scheme
-#: ../nact/nact-prefs.c:168
+#: ../cact/cact-prefs.c:168
 #, c-format
 msgid "%sWindows Files"
 msgstr "%sཝིན་ཌོས་ཀྱི་ཡིག་སྣོད་ཚུ།"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../nact/nact-prefs.c:170
+#: ../cact/cact-prefs.c:170
 #, c-format
 msgid "%sFTP Files"
 msgstr "%sཨེཕ་ཊི་པི་གི་ཡིག་སྣོད་ཚུ།"
 
 #. i18n notes : description of 'dav' scheme
-#: ../nact/nact-prefs.c:172
+#: ../cact/cact-prefs.c:172
 #, c-format
 msgid "%sWebdav Files"
 msgstr "%sཝེབ་ཌེབ་ཀྱི་ཡིག་སྣོད་ཚུ།"
 
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../nact/nact-profile-editor.c:243
+#: ../cact/cact-profile-editor.c:243
 msgid "new-scheme"
 msgstr "འཆར་ལས་-གསརཔ།"
 
-#: ../nact/nact-profile-editor.c:244
+#: ../cact/cact-profile-editor.c:244
 msgid "New Scheme Description"
 msgstr "འཆར་ལས་གསརཔ་གི་འགྲེལ་བཤད།"
 
-#: ../nact/nact-profile-editor.c:329
+#: ../cact/cact-profile-editor.c:329
 msgid "Scheme"
 msgstr "འཆར་ལས།"
 
-#: ../nact/nact-profile-editor.c:341
+#: ../cact/cact-profile-editor.c:341
 msgid "Description"
 msgstr "འགྲེལ་བཤད།"
 
-#: ../nact/nact-profile-editor.c:532
+#: ../cact/cact-profile-editor.c:532
 #, fuzzy
 msgid "Add a New Profile"
 msgstr "བྱ་བ་གསརཔ་ཁ་སྐོང་རྐྱབ།"
 
-#: ../nact/nact-profile-editor.c:536
+#: ../cact/cact-profile-editor.c:536
 #, fuzzy, c-format
 msgid "Edit Profile \"%s\""
 msgstr "བྱ་བ་འདི་ཞུན་དག་འབད།\"%s\""
@@ -734,7 +734,7 @@ msgstr "གསལ་སྡུད་འདི་གི་འགྲེལ་བཤ
 #: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
-"the Nact interface. If not set there will be a default auto generated string "
+"the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr ""
 "ནེཀཊི་ངོས་འདྲ་བ་ནང་སྦེ་གསལ་སྡུད་ཀྱི་་དོན་ལུ་ འགྲོ་བ་མི་གི་ལྷག་བཏུབ་པའི་མིང་ཅིག་ ལག་ལེན་པ་ལུ་བྱིན་ནིའི་"

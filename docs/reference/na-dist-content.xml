@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY prodname "<productname>Caja-Actions</productname>">
+  <!ENTITY caja "<productname>Caja</productname>">
+]>
+
+<refentry id="na-dist-content" revision="8 Dec 2010">
+
+  <refmeta>
+    <refentrytitle>Distribution content</refentrytitle>
+    <manvolnum>3</manvolnum>
+    <refmiscinfo>Caja-Actions</refmiscinfo>
+  </refmeta>
+
+  <refnamediv>
+    <refname>Distribution content</refname>
+    <refpurpose>
+      What is distributed ?
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1 id="dist-content">
+    <title>What does content the distribution ?</title>
+    <para>
+      &prodname; distribution contains the following components:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Program sources
+        </para>
+        <itemizedlist>
+          <listitem>
+            a &caja; plugin, said <emphasis>menu</emphasis>,
+            responsible for managing displayed menus and actions
+            through &caja; extension system;
+          </listitem>
+          <listitem>
+            a &caja; plugin, said <emphasis>tracker</emphasis>,
+            which manages DBus services;
+          </listitem>
+          <listitem>
+            <application>Caja-Actions Configuration Tool</application>
+            is the user interface application which lets the user edit,
+            create, delete and organize his collection of menus and actions;
+          </listitem>
+          <listitem>
+            <application>caja-actions-new</application> is a
+            command-line utility for defining a new action;
+          </listitem>
+          <listitem>
+            <application>caja-actions-run</application> is a
+            command-line utility for running an existing action,
+            taking into account the current &caja; selection;
+          </listitem>
+          <listitem>
+            <application>caja-actions-schemas</application>
+            is a command-line utility which outputs
+            to stdout the MateConf schemas of the
+            <application>Caja-Actions Configuration Tool</application>;
+            it rather targets packagers.
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Documentation
+        </para>
+        <itemizedlist>
+          <listitem>
+            the &prodname; Reference Manual (this document) rather
+            targets developers and packagers;
+          </listitem>
+          <listitem>
+            the &prodname; Configuration Tool User's Manual is the user's
+            manual of the
+            <application>Caja-Actions Configuration Tool</application>
+            management user interface. The distribution contains all
+            available translations, both as HTML and PDF documents.
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Samples
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The sample menus and actions described in the
+              &prodname; Configuration Tool User's Manual
+              are included in the standard distribution.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+</refentry>

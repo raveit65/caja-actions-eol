@@ -1,0 +1,42 @@
+<sect2 id="usage-edit">
+  <title>Editing</title>
+  <para>
+    With &appname;, you may safely cut, copy, paste to and from the clipboard.
+  </para>
+
+  <sect3 id="usage-edit-cut">
+    <title>Cut/Delete</title>
+    <para>
+      Deletion applies to current selection.
+    </para>
+    <para>
+      Be warned that selecting and deleting all profiles of an action
+      leaves it without any profile, so in an invalid state.
+      The name of the action will be written in red (because it is
+      invalid) italic (because it has been modified) characters.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-edit-multiple">
+    <title>Multiple selection</title>
+    <para>
+      Multiple selection is possible in &appname;.
+      You can extend the current selection
+      by pressing <keycap>Ctrl</keycap> or <keycap>Shift</keycap>
+      while selecting an item to add to the selection.
+    </para>
+    <para>
+      &appname; only accepts homogeneous multiple selections. That is, you may
+      select one or more profiles, or one or more actions or menus. A multiple
+      selection containing both profiles and actions or menus is not allowed.
+      This is because &appname; would not know where to paste such a selection.
+    </para>
+    <para>
+      Note that selecting any row means also selecting children of this row.
+      These children are said &laquosp;implicitely selected&spraquo;:
+      they will be part of next edition operations, but are not considered
+      when verifying if selection is homogeneous.
+      Also, they cannot be explicitely selected (nor unselected).
+    </para>
+  </sect3>
+</sect2>

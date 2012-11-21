@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,65 +31,64 @@
 #include <config.h>
 #endif
 
-#include <gdk/gdkkeysyms.h>
 #include <glib.h>
 #include <glib/gi18n.h>
 
 #include "base-application.h"
 #include "base-assistant.h"
+#include "base-keysyms.h"
 
 /* private class data
  */
-struct BaseAssistantClassPrivate {
+struct _BaseAssistantClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct BaseAssistantPrivate {
-	gboolean    dispose_has_run;
-	gboolean    cancel_on_escape;
-	gboolean    warn_on_escape;
-	gboolean    warn_on_cancel;
-	gboolean    apply_has_run;
-	gboolean    escape_key_pressed;
+struct _BaseAssistantPrivate {
+	gboolean dispose_has_run;
+
+	/* properties
+	 */
+	gboolean quit_on_escape;
+	gboolean warn_on_escape;
+
+	/* internals
+	 */
+	gboolean escape_key_pressed;
 };
 
 /* instance properties
  */
 enum {
-	BASE_ASSISTANT_PROP_CANCEL_ON_ESCAPE_ID = 1,
-	BASE_ASSISTANT_PROP_WARN_ON_ESCAPE_ID,
-	BASE_ASSISTANT_PROP_WARN_ON_CANCEL_ID
+	BASE_PROP_0,
+
+	BASE_PROP_QUIT_ON_ESCAPE_ID,
+	BASE_PROP_WARN_ON_ESCAPE_ID,
+
+	BASE_PROP_N_PROPERTIES
 };
 
 static BaseWindowClass *st_parent_class = NULL;
 
-static GType      register_type( void );
-static void       class_init( BaseAssistantClass *klass );
-static void       instance_init( GTypeInstance *instance, gpointer klass );
-static void       instance_get_property( GObject *object, guint property_id, GValue *value, GParamSpec *spec );
-static void       instance_set_property( GObject *object, guint property_id, const GValue *value, GParamSpec *spec );
-static void       instance_dispose( GObject *application );
-static void       instance_finalize( GObject *application );
+static GType    register_type( void );
+static void     class_init( BaseAssistantClass *klass );
+static void     instance_init( GTypeInstance *instance, gpointer klass );
+static void     instance_get_property( GObject *object, guint property_id, GValue *value, GParamSpec *spec );
+static void     instance_set_property( GObject *object, guint property_id, const GValue *value, GParamSpec *spec );
+static void     instance_constructed( GObject *window );
+static void     instance_dispose( GObject *window );
+static void     instance_finalize( GObject *window );
 
-static void       v_assistant_apply( GtkAssistant *assistant, BaseAssistant *window );
-static void       v_assistant_cancel( GtkAssistant *assistant, BaseAssistant *window );
-static void       v_assistant_close( GtkAssistant *assistant, BaseAssistant *window );
-static void       v_assistant_prepare( GtkAssistant *assistant, GtkWidget *page, BaseAssistant *window );
-
-static void       on_apply_message( GtkAssistant *assistant, BaseAssistant *window );
-static void       on_cancel_message( GtkAssistant *assistant, BaseAssistant *window );
-static void       on_close_message( GtkAssistant *assistant, BaseAssistant *window );
-static void       on_prepare_message( GtkAssistant *assistant, GtkWidget *page, BaseAssistant *window );
-
-static void       on_initial_load( BaseAssistant *window, gpointer user_data );
-static void       on_runtime_init( BaseAssistant *window, gpointer user_data );
-static gboolean   on_key_pressed_event( GtkWidget *widget, GdkEventKey *event, BaseAssistant *assistant );
-static void       assistant_do_apply( BaseAssistant *window, GtkAssistant *assistant );
-static void       assistant_do_cancel( BaseAssistant *window, GtkAssistant *assistant );
-static void       assistant_do_close( BaseAssistant *window, GtkAssistant *assistant );
-static void       assistant_do_prepare( BaseAssistant *window, GtkAssistant *assistant, GtkWidget *page );
+static void     on_initialize_base_window( BaseAssistant *window );
+static int      do_run( BaseWindow *window );
+static gboolean on_key_pressed_event( GtkWidget *widget, GdkEventKey *event, BaseAssistant *assistant );
+static void     on_apply( GtkAssistant *assistant, BaseAssistant *window );
+static void     on_prepare( GtkAssistant *assistant, GtkWidget *page, BaseAssistant *window );
+static void     on_cancel( GtkAssistant *assistant, BaseAssistant *window );
+static void     on_close( GtkAssistant *assistant, BaseAssistant *window );
+static void     do_close( BaseAssistant *window, GtkAssistant *assistant );
 
 GType
 base_assistant_get_type( void )
@@ -124,7 +122,7 @@ register_type( void )
 
 	g_debug( "%s", thisfn );
 
-	type = g_type_register_static( BASE_WINDOW_TYPE, "BaseAssistant", &info, 0 );
+	type = g_type_register_static( BASE_TYPE_WINDOW, "BaseAssistant", &info, 0 );
 
 	return( type );
 }
@@ -134,45 +132,41 @@ class_init( BaseAssistantClass *klass )
 {
 	static const gchar *thisfn = "base_assistant_class_init";
 	GObjectClass *object_class;
-	GParamSpec *spec;
+	BaseWindowClass *base_class;
 
 	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
 
 	st_parent_class = g_type_class_peek_parent( klass );
 
 	object_class = G_OBJECT_CLASS( klass );
-	object_class->dispose = instance_dispose;
-	object_class->finalize = instance_finalize;
+	object_class->constructed = instance_constructed;
 	object_class->get_property = instance_get_property;
 	object_class->set_property = instance_set_property;
+	object_class->dispose = instance_dispose;
+	object_class->finalize = instance_finalize;
 
-	spec = g_param_spec_boolean(
-			BASE_ASSISTANT_PROP_CANCEL_ON_ESCAPE,
-			"Cancel on Escape",
-			"Does the assistant should 'Cancel' when the user hits Escape ?", FALSE,
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, BASE_ASSISTANT_PROP_CANCEL_ON_ESCAPE_ID, spec );
+	g_object_class_install_property( object_class, BASE_PROP_QUIT_ON_ESCAPE_ID,
+			g_param_spec_boolean(
+					BASE_PROP_QUIT_ON_ESCAPE,
+					_( "Quit on Escape" ),
+					_( "Should the assistant 'Quit' when the user hits Escape ?" ),
+					FALSE,
+					G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE ));
 
-	spec = g_param_spec_boolean(
-			BASE_ASSISTANT_PROP_WARN_ON_ESCAPE,
-			"Warn on Escape",
-			"Does the user should confirm when exiting the assistant via Escape ?", FALSE,
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, BASE_ASSISTANT_PROP_WARN_ON_ESCAPE_ID, spec );
+	g_object_class_install_property( object_class, BASE_PROP_WARN_ON_ESCAPE_ID,
+			g_param_spec_boolean(
+					BASE_PROP_WARN_ON_ESCAPE,
+					_( "Warn on Escape" ),
+					_( "Should the user be asked to confirm when exiting the assistant via Escape ?" ),
+					FALSE,
+					G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE ));
 
-	spec = g_param_spec_boolean(
-			BASE_ASSISTANT_PROP_WARN_ON_CANCEL,
-			"Warn on cancel",
-			"Does the user should confirm when exiting the assistant via Cancel ?", FALSE,
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, BASE_ASSISTANT_PROP_WARN_ON_CANCEL_ID, spec );
+	base_class = BASE_WINDOW_CLASS( klass );
+	base_class->run = do_run;
 
 	klass->private = g_new0( BaseAssistantClassPrivate, 1 );
-
-	klass->apply = assistant_do_apply;
-	klass->cancel = assistant_do_cancel;
-	klass->close = assistant_do_close;
-	klass->prepare = assistant_do_prepare;
+	klass->apply = NULL;
+	klass->prepare = NULL;
 }
 
 static void
@@ -181,32 +175,19 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	static const gchar *thisfn = "base_assistant_instance_init";
 	BaseAssistant *self;
 
+	g_return_if_fail( BASE_IS_ASSISTANT( instance ));
+
 	g_debug( "%s: instance=%p (%s), klass=%p",
 			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
 
-	g_return_if_fail( BASE_IS_ASSISTANT( instance ));
 	self = BASE_ASSISTANT( instance );
 
 	self->private = g_new0( BaseAssistantPrivate, 1 );
 
 	self->private->dispose_has_run = FALSE;
-	self->private->cancel_on_escape = FALSE;
+	self->private->quit_on_escape = FALSE;
 	self->private->warn_on_escape = FALSE;
-	self->private->warn_on_cancel = FALSE;
-	self->private->apply_has_run = FALSE;
 	self->private->escape_key_pressed = FALSE;
-
-	base_window_signal_connect(
-			BASE_WINDOW( instance ),
-			G_OBJECT( instance ),
-			BASE_WINDOW_SIGNAL_INITIAL_LOAD,
-			G_CALLBACK( on_initial_load ));
-
-	base_window_signal_connect(
-			BASE_WINDOW( instance ),
-			G_OBJECT( instance ),
-			BASE_WINDOW_SIGNAL_RUNTIME_INIT,
-			G_CALLBACK( on_runtime_init ));
 }
 
 static void
@@ -215,21 +196,18 @@ instance_get_property( GObject *object, guint property_id, GValue *value, GParam
 	BaseAssistant *self;
 
 	g_return_if_fail( BASE_IS_ASSISTANT( object ));
+
 	self = BASE_ASSISTANT( object );
 
 	if( !self->private->dispose_has_run ){
 
 		switch( property_id ){
-			case BASE_ASSISTANT_PROP_CANCEL_ON_ESCAPE_ID:
-				g_value_set_boolean( value, self->private->cancel_on_escape );
+			case BASE_PROP_QUIT_ON_ESCAPE_ID:
+				g_value_set_boolean( value, self->private->quit_on_escape );
 				break;
 
-			case BASE_ASSISTANT_PROP_WARN_ON_ESCAPE_ID:
+			case BASE_PROP_WARN_ON_ESCAPE_ID:
 				g_value_set_boolean( value, self->private->warn_on_escape );
-				break;
-
-			case BASE_ASSISTANT_PROP_WARN_ON_CANCEL_ID:
-				g_value_set_boolean( value, self->private->warn_on_cancel );
 				break;
 
 			default:
@@ -244,22 +222,19 @@ instance_set_property( GObject *object, guint property_id, const GValue *value, 
 {
 	BaseAssistant *self;
 
-	g_assert( BASE_IS_ASSISTANT( object ));
+	g_return_if_fail( BASE_IS_ASSISTANT( object ));
+
 	self = BASE_ASSISTANT( object );
 
 	if( !self->private->dispose_has_run ){
 
 		switch( property_id ){
-			case BASE_ASSISTANT_PROP_CANCEL_ON_ESCAPE_ID:
-				self->private->cancel_on_escape = g_value_get_boolean( value );
+			case BASE_PROP_QUIT_ON_ESCAPE_ID:
+				self->private->quit_on_escape = g_value_get_boolean( value );
 				break;
 
-			case BASE_ASSISTANT_PROP_WARN_ON_ESCAPE_ID:
+			case BASE_PROP_WARN_ON_ESCAPE_ID:
 				self->private->warn_on_escape = g_value_get_boolean( value );
-				break;
-
-			case BASE_ASSISTANT_PROP_WARN_ON_CANCEL_ID:
-				self->private->warn_on_cancel = g_value_get_boolean( value );
 				break;
 
 			default:
@@ -270,18 +245,48 @@ instance_set_property( GObject *object, guint property_id, const GValue *value, 
 }
 
 static void
+instance_constructed( GObject *window )
+{
+	static const gchar *thisfn = "base_assistant_instance_constructed";
+	BaseAssistantPrivate *priv;
+
+	g_return_if_fail( BASE_IS_ASSISTANT( window ));
+
+	priv = BASE_ASSISTANT( window )->private;
+
+	if( !priv->dispose_has_run ){
+
+		/* chain up to the parent class */
+		if( G_OBJECT_CLASS( st_parent_class )->constructed ){
+			G_OBJECT_CLASS( st_parent_class )->constructed( window );
+		}
+
+		g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
+
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( window ),
+				BASE_SIGNAL_INITIALIZE_WINDOW,
+				G_CALLBACK( on_initialize_base_window ));
+	}
+}
+
+static void
 instance_dispose( GObject *window )
 {
 	static const gchar *thisfn = "base_assistant_instance_dispose";
-	BaseAssistant *self;
+	BaseAssistantPrivate *priv;
 
-	g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window  ));
 	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-	self = BASE_ASSISTANT( window );
 
-	if( !self->private->dispose_has_run ){
+	priv = BASE_ASSISTANT( window )->private;
 
-		self->private->dispose_has_run = TRUE;
+	if( !priv->dispose_has_run ){
+		g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window  ));
+
+		priv->dispose_has_run = TRUE;
+
+		gtk_main_quit();
 
 		/* chain up to the parent class */
 		if( G_OBJECT_CLASS( st_parent_class )->dispose ){
@@ -294,13 +299,15 @@ static void
 instance_finalize( GObject *window )
 {
 	static const gchar *thisfn = "base_assistant_instance_finalize";
-	BaseAssistant *self;
+	BaseAssistantPrivate *priv;
 
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
 	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-	self = BASE_ASSISTANT( window );
 
-	g_free( self->private );
+	g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window  ));
+
+	priv = BASE_ASSISTANT( window )->private;
+
+	g_free( priv );
 
 	/* chain call to parent class */
 	if( G_OBJECT_CLASS( st_parent_class )->finalize ){
@@ -308,229 +315,90 @@ instance_finalize( GObject *window )
 	}
 }
 
-/**
- * base_assistant_set_cancel_on_esc:
- * @window: this #BaseAssistant instance.
- * @cancel: whether hitting 'Escape' key triggers the 'Cancel' action.
- *
- * Set 'cancel on escape' property.
- */
-void
-base_assistant_set_cancel_on_esc( BaseAssistant *window, gboolean cancel )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	g_object_set( G_OBJECT( window ), BASE_ASSISTANT_PROP_CANCEL_ON_ESCAPE, cancel, NULL );
-}
-
-/**
- * base_assistant_set_warn_on_esc:
- * @window: this #BaseAssistant instance.
- * @warn: whether the 'Cancel' action, when triggered by 'Escape' key,
- * should emit a warning.
- *
- * Set 'warn on escape' property.
- */
-void
-base_assistant_set_warn_on_esc( BaseAssistant *window, gboolean warn )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	g_object_set( G_OBJECT( window ), BASE_ASSISTANT_PROP_WARN_ON_ESCAPE, warn, NULL );
-}
-
-/**
- * base_assistant_set_warn_on_cancel:
- * @window: this #BaseAssistant instance.
- * @warn: whether the 'Cancel' action should emit a warning.
- *
- * Set 'warn on close' property.
- */
-void
-base_assistant_set_warn_on_cancel( BaseAssistant *window, gboolean warn )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	g_object_set( G_OBJECT( window ), BASE_ASSISTANT_PROP_WARN_ON_CANCEL, warn, NULL );
-}
-
 static void
-v_assistant_apply( GtkAssistant *assistant, BaseAssistant *window )
+on_initialize_base_window( BaseAssistant *window )
 {
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	if( BASE_ASSISTANT_GET_CLASS( window )->apply ){
-		BASE_ASSISTANT_GET_CLASS( window )->apply( window, assistant );
-
-	} else {
-		assistant_do_apply( window, assistant );
-	}
-
-	window->private->apply_has_run = TRUE;
-}
-
-static void
-v_assistant_cancel( GtkAssistant *assistant, BaseAssistant *window )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	if( BASE_ASSISTANT_GET_CLASS( window )->cancel ){
-		BASE_ASSISTANT_GET_CLASS( window )->cancel( window, assistant );
-
-	} else {
-		assistant_do_cancel( window, assistant );
-	}
-}
-
-static void
-v_assistant_close( GtkAssistant *assistant, BaseAssistant *window )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	if( BASE_ASSISTANT_GET_CLASS( window )->close ){
-		BASE_ASSISTANT_GET_CLASS( window )->close( window, assistant );
-
-	} else {
-		assistant_do_close( window, assistant );
-	}
-}
-
-static void
-v_assistant_prepare( GtkAssistant *assistant, GtkWidget *page, BaseAssistant *window )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	if( BASE_ASSISTANT_GET_CLASS( window )->prepare ){
-		BASE_ASSISTANT_GET_CLASS( window )->prepare( window, assistant, page );
-
-	} else {
-		assistant_do_prepare( window, assistant, page );
-	}
-}
-
-/*
- * starting with Gtk+ 2.18, this work-around will become useless
- * so message handlers could safely be the v_xxx functions
- */
-static void
-on_apply_message( GtkAssistant *assistant, BaseAssistant *window )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	if( !window->private->apply_has_run ){
-		v_assistant_apply( assistant, window );
-	}
-}
-
-static void
-on_cancel_message( GtkAssistant *assistant, BaseAssistant *window )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	v_assistant_cancel( assistant, window );
-}
-
-static void
-on_close_message( GtkAssistant *assistant, BaseAssistant *window )
-{
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	v_assistant_close( assistant, window );
-}
-
-static void
-on_prepare_message( GtkAssistant *assistant, GtkWidget *page, BaseAssistant *window )
-{
-	static const gchar *thisfn = "base_assistant_on_prepare_message";
-	GtkAssistantPageType type;
-
-	g_debug( "%s: assistant=%p, page=%p, window=%p",
-			thisfn, ( void * ) assistant, ( void * ) page, ( void * ) window );
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	type = gtk_assistant_get_page_type( assistant, page );
-
-	switch( type ){
-		case GTK_ASSISTANT_PAGE_SUMMARY:
-			if( !window->private->apply_has_run ){
-				v_assistant_apply( assistant, window );
-			}
-			break;
-
-		default:
-			break;
-	}
-
-	v_assistant_prepare( assistant, page, window );
-}
-
-static void
-on_initial_load( BaseAssistant *window, gpointer user_data )
-{
-	static const gchar *thisfn = "base_assistant_on_initial_load";
-
-	g_debug( "%s: window=%p, user_data=%p", thisfn, ( void * ) window, ( void * ) user_data );
-	g_return_if_fail( BASE_IS_ASSISTANT( window ));
-
-	if( !window->private->dispose_has_run ){
-
-		base_assistant_set_cancel_on_esc( window, FALSE );
-		base_assistant_set_warn_on_esc( window, FALSE );
-		base_assistant_set_warn_on_cancel( window, FALSE );
-	}
-}
-
-static void
-on_runtime_init( BaseAssistant *window, gpointer user_data )
-{
-	static const gchar *thisfn = "base_assistant_on_runtime_init";
+	static const gchar *thisfn = "base_assistant_on_initialize_base_window";
 	GtkWindow *toplevel;
 
-	g_debug( "%s: window=%p, user_data=%p", thisfn, ( void * ) window, ( void * ) user_data );
 	g_return_if_fail( BASE_IS_ASSISTANT( window ));
+
+	g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
 
 	if( !window->private->dispose_has_run ){
 
-		toplevel = base_window_get_toplevel( BASE_WINDOW( window ));
-		g_assert( GTK_IS_ASSISTANT( toplevel ));
+		toplevel = base_window_get_gtk_toplevel( BASE_WINDOW( window ));
+		g_return_if_fail( GTK_IS_ASSISTANT( toplevel ));
 
+		/* deals with 'Esc' key
+		 */
 		base_window_signal_connect(
 				BASE_WINDOW( window ),
 				G_OBJECT( toplevel ),
 				"key-press-event",
 				G_CALLBACK( on_key_pressed_event ));
 
+		/* transforms 'prepare' and 'apply' messages into virtual methods
+		 */
 		base_window_signal_connect(
 				BASE_WINDOW( window ),
 				G_OBJECT( toplevel ),
-				"apply",
-				G_CALLBACK( on_apply_message ));
+				"prepare",
+				G_CALLBACK( on_prepare ));
 
 		base_window_signal_connect(
 				BASE_WINDOW( window ),
 				G_OBJECT( toplevel ),
+				"apply",
+				G_CALLBACK( on_apply ));
+
+		/* close the assistant
+		 */
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( toplevel ),
 				"cancel",
-				G_CALLBACK( on_cancel_message ));
+				G_CALLBACK( on_cancel ));
 
 		base_window_signal_connect(
 				BASE_WINDOW( window ),
 				G_OBJECT( toplevel ),
 				"close",
-				G_CALLBACK( on_close_message ));
-
-		base_window_signal_connect(
-				BASE_WINDOW( window ),
-				G_OBJECT( toplevel ),
-				"prepare",
-				G_CALLBACK( on_prepare_message ));
+				G_CALLBACK( on_close ));
 	}
+}
+
+/*
+ * run the assistant in a main event loop, which will be quitted
+ * at dispose time
+ */
+static int
+do_run( BaseWindow *window )
+{
+	static const gchar *thisfn = "base_assistant_do_run";
+	int code;
+
+	g_return_val_if_fail( BASE_IS_ASSISTANT( window ), BASE_EXIT_CODE_PROGRAM );
+
+	code = BASE_EXIT_CODE_INIT_WINDOW;
+
+	if( !BASE_ASSISTANT( window )->private->dispose_has_run ){
+
+		g_debug( "%s: window=%p (%s), starting gtk_main",
+				thisfn,
+				( void * ) window, G_OBJECT_TYPE_NAME( window ));
+
+		gtk_main();
+
+		code = BASE_EXIT_CODE_OK;
+	}
+
+	return( code );
 }
 
 static gboolean
 on_key_pressed_event( GtkWidget *widget, GdkEventKey *event, BaseAssistant *assistant )
 {
-	/*static const gchar *thisfn = "base_assistant_on_key_pressed_event";
-	g_debug( "%s: widget=%p, event=%p, user_data=%p", thisfn, widget, event, user_data );*/
 	gboolean stop = FALSE;
 	GtkWindow *toplevel;
 
@@ -538,11 +406,10 @@ on_key_pressed_event( GtkWidget *widget, GdkEventKey *event, BaseAssistant *assi
 
 	if( !assistant->private->dispose_has_run ){
 
-		if( event->keyval == GDK_Escape &&
-			assistant->private->cancel_on_escape ){
+		if( event->keyval == CACT_KEY_Escape && assistant->private->quit_on_escape ){
 
 				assistant->private->escape_key_pressed = TRUE;
-				toplevel = base_window_get_toplevel( BASE_WINDOW( assistant ));
+				toplevel = base_window_get_gtk_toplevel( BASE_WINDOW( assistant ));
 				g_signal_emit_by_name( toplevel, "cancel", toplevel );
 				stop = TRUE;
 		}
@@ -552,55 +419,70 @@ on_key_pressed_event( GtkWidget *widget, GdkEventKey *event, BaseAssistant *assi
 }
 
 static void
-assistant_do_apply( BaseAssistant *window, GtkAssistant *assistant )
+on_prepare( GtkAssistant *assistant, GtkWidget *page, BaseAssistant *window )
 {
-	static const gchar *thisfn = "base_assistant_assistant_do_apply";
+	g_return_if_fail( BASE_IS_ASSISTANT( window ));
 
-	g_debug( "%s: window=%p, assistant=%p", thisfn, ( void * ) window, ( void * ) assistant );
+	if( BASE_ASSISTANT_GET_CLASS( window )->prepare ){
+		BASE_ASSISTANT_GET_CLASS( window )->prepare( window, assistant, page );
+	}
+}
+
+static void
+on_apply( GtkAssistant *assistant, BaseAssistant *window )
+{
+	g_return_if_fail( BASE_IS_ASSISTANT( window ));
+
+	if( BASE_ASSISTANT_GET_CLASS( window )->apply ){
+		BASE_ASSISTANT_GET_CLASS( window )->apply( window, assistant );
+	}
 }
 
 /*
- * the 'Cancel' button is clicked
+ * either the 'Cancel' button has been clicked
+ * or the 'cancel' message has been emitted on the toplevel GtkAssistant
+ * due to the 'Escape' key being pressed and 'quit-on-cancel' property
+ * is true
  */
 static void
-assistant_do_cancel( BaseAssistant *window, GtkAssistant *assistant )
+on_cancel( GtkAssistant *assistant, BaseAssistant *window )
 {
-	static const gchar *thisfn = "base_assistant_assistant_do_cancel";
+	static const gchar *thisfn = "base_assistant_on_cancel";
 	gboolean ok = TRUE;
-	gchar *first;
+	gchar *msg;
+
+	g_return_if_fail( BASE_IS_ASSISTANT( window ));
 
 	g_debug( "%s: window=%p, assistant=%p", thisfn, ( void * ) window, ( void * ) assistant );
 
-	if( window->private->warn_on_cancel ||
-		( window->private->warn_on_escape && window->private->escape_key_pressed )){
+	if( window->private->warn_on_escape && window->private->escape_key_pressed ){
 
-			first = g_strdup( _( "Are you sure you want to quit this assistant ?" ));
-			ok = base_window_yesno_dlg( BASE_WINDOW( window ), GTK_MESSAGE_QUESTION, first, NULL );
-			g_free( first );
+		msg = g_strdup( _( "Are you sure you want to quit this assistant ?" ));
+		ok = base_window_display_yesno_dlg( BASE_WINDOW( window ), msg, NULL );
+		g_free( msg );
 	}
 
 	window->private->escape_key_pressed = FALSE;
 
 	if( ok ){
-		assistant_do_close( window, assistant );
+		do_close( window, assistant );
 	}
 }
 
 static void
-assistant_do_close( BaseAssistant *window, GtkAssistant *assistant )
+on_close( GtkAssistant *assistant, BaseAssistant *window )
 {
-	static const gchar *thisfn = "base_assistant_assistant_do_close";
+	g_return_if_fail( BASE_IS_ASSISTANT( window ));
+
+	do_close( window, assistant );
+}
+
+static void
+do_close( BaseAssistant *window, GtkAssistant *assistant )
+{
+	static const gchar *thisfn = "base_assistant_do_close";
 
 	g_debug( "%s: window=%p, assistant=%p", thisfn, ( void * ) window, ( void * ) assistant );
 
 	g_object_unref( window );
-}
-
-static void
-assistant_do_prepare( BaseAssistant *window, GtkAssistant *assistant, GtkWidget *page )
-{
-	static const gchar *thisfn = "base_assistant_assistant_do_prepare";
-
-	g_debug( "%s: window=%p, assistant=%p, page=%p",
-			thisfn, ( void * ) window, ( void * ) assistant, ( void * ) page );
 }

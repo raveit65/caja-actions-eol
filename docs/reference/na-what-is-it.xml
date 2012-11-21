@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY prodname "<productname>Caja-Actions</productname>">
+  <!ENTITY caja "<productname>Caja</productname>">
+]>
+
+<refentry id="na-what-is-it" revision="6 Dec 2010">
+
+  <refmeta>
+    <refentrytitle>What is it ?</refentrytitle>
+    <refmiscinfo>Caja-Actions</refmiscinfo>
+  </refmeta>
+
+  <refnamediv>
+    <refname>What is it ?</refname>
+    <refpurpose>
+      What is Caja-Actions ?
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1 id="what-is-it">
+    <title>What is Caja-Actions ?</title>
+    <para>
+      &prodname; is a &caja; extension whose principal function
+      is to allow the user to add arbitrary actions to the file manager
+      context menus. These actions may be organized in menus and submenus,
+      exported and shared with other desktop environments.
+    </para>
+	<para>
+	  &prodname; is compliant with 
+      <ulink role="online-location" url="http://www.caja-actions.org/?q=node/377/">DES-EMA</ulink>
+	  specification. This means that actions and menus defined in &prodname;
+	  will be shareable with the compliant desktop environments.
+	</para>
+  </refsect1>
+
+</refentry>

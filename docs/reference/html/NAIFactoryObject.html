@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NAIFactoryObject</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch05.html" title="Data Factory Management System">
+<link rel="prev" href="NAIFactoryProvider.html" title="NAIFactoryProvider">
+<link rel="next" href="NABoxed.html" title="NABoxed">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="NAIFactoryProvider.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="NABoxed.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#NAIFactoryObject.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#NAIFactoryObject.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#NAIFactoryObject.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#NAIFactoryObject.prerequisites" class="shortcut">Prerequisites</a>
+                   | 
+                  <a href="#NAIFactoryObject.implementations" class="shortcut">Known Implementations</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="NAIFactoryObject"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="NAIFactoryObject.top_of_page"></a>NAIFactoryObject</span></h2>
+<p>NAIFactoryObject — The <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> Interface v 1</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="NAIFactoryObject.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-ifactory_object.h&gt;
+
+#define             <a class="link" href="NAIFactoryObject.html#NA-TYPE-IFACTORY-OBJECT:CAPS" title="NA_TYPE_IFACTORY_OBJECT">NA_TYPE_IFACTORY_OBJECT</a>
+#define             <a class="link" href="NAIFactoryObject.html#NA-IFACTORY-OBJECT:CAPS" title="NA_IFACTORY_OBJECT()">NA_IFACTORY_OBJECT</a>                  (instance)
+#define             <a class="link" href="NAIFactoryObject.html#NA-IS-IFACTORY-OBJECT:CAPS" title="NA_IS_IFACTORY_OBJECT()">NA_IS_IFACTORY_OBJECT</a>               (instance)
+#define             <a class="link" href="NAIFactoryObject.html#NA-IFACTORY-OBJECT-GET-INTERFACE:CAPS" title="NA_IFACTORY_OBJECT_GET_INTERFACE()">NA_IFACTORY_OBJECT_GET_INTERFACE</a>    (instance)
+                    <a class="link" href="NAIFactoryObject.html#NAIFactoryObject-struct" title="NAIFactoryObject">NAIFactoryObject</a>;
+                    <a class="link" href="NAIFactoryObject.html#NAIFactoryObjectInterface" title="NAIFactoryObjectInterface">NAIFactoryObjectInterface</a>;
+<a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="returnvalue">NADataBoxed</span></a> *       <a class="link" href="NAIFactoryObject.html#na-ifactory-object-get-data-boxed" title="na_ifactory_object_get_data_boxed ()">na_ifactory_object_get_data_boxed</a>   (<em class="parameter"><code>const <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup"><span class="returnvalue">NADataGroup</span></a> *       <a class="link" href="NAIFactoryObject.html#na-ifactory-object-get-data-groups" title="na_ifactory_object_get_data_groups ()">na_ifactory_object_get_data_groups</a>  (<em class="parameter"><code>const <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>);
+<span class="returnvalue">void</span> *              <a class="link" href="NAIFactoryObject.html#na-ifactory-object-get-as-void" title="na_ifactory_object_get_as_void ()">na_ifactory_object_get_as_void</a>      (<em class="parameter"><code>const <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAIFactoryObject.html#na-ifactory-object-set-from-void" title="na_ifactory_object_set_from_void ()">na_ifactory_object_set_from_void</a>    (<em class="parameter"><code><a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *data</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryObject.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GInterface
+   +----NAIFactoryObject
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryObject.prerequisites"></a><h2>Prerequisites</h2>
+<p>
+NAIFactoryObject requires
+ <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>.</p>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryObject.implementations"></a><h2>Known Implementations</h2>
+<p>
+NAIFactoryObject is implemented by
+ <a class="link" href="NAObjectAction.html" title="NAObjectAction">NAObjectAction</a>,  <a class="link" href="NAObjectMenu.html" title="NAObjectMenu">NAObjectMenu</a> and  <a class="link" href="NAObjectProfile.html" title="NAObjectProfile">NAObjectProfile</a>.</p>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryObject.description"></a><h2>Description</h2>
+<p>
+This interface is implemented by <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> derived objects so that they
+can take advantage of our data factory management system.
+</p>
+<p>
+A <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> derived object which would implement this <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a>
+interface must meet following conditions:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+      accept an empty constructor
+    </p></li></ul></div>
+<p>
+</p>
+<p>
+</p>
+<div class="refsect2">
+<a name="id390851"></a><h3>Versions historic</h3>
+<div class="table">
+<a name="id401175"></a><p class="title"><b>Table 9. Historic of the versions of the <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> interface</b></p>
+<div class="table-contents"><table summary="Historic of the versions of the NAIFactoryObject interface" border="1">
+<colgroup>
+<col align="center" class="na-version">
+<col align="center" class="api-version">
+<col align="center" class="current">
+</colgroup>
+<thead><tr>
+<th align="center">
+<span class="productname">Caja-Actions</span>™ version</th>
+<th align="center">
+<a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> interface version</th>
+<th align="center"> </th>
+</tr></thead>
+<tbody><tr>
+<td align="center">since 2.30</td>
+<td align="center">1</td>
+<td align="center">current version</td>
+</tr></tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="NAIFactoryObject.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NA-TYPE-IFACTORY-OBJECT:CAPS"></a><h3>NA_TYPE_IFACTORY_OBJECT</h3>
+<pre class="programlisting">#define NA_TYPE_IFACTORY_OBJECT                      ( na_ifactory_object_get_type())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IFACTORY-OBJECT:CAPS"></a><h3>NA_IFACTORY_OBJECT()</h3>
+<pre class="programlisting">#define NA_IFACTORY_OBJECT( instance )               ( G_TYPE_CHECK_INSTANCE_CAST( instance, NA_TYPE_IFACTORY_OBJECT, NAIFactoryObject ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IS-IFACTORY-OBJECT:CAPS"></a><h3>NA_IS_IFACTORY_OBJECT()</h3>
+<pre class="programlisting">#define NA_IS_IFACTORY_OBJECT( instance )            ( G_TYPE_CHECK_INSTANCE_TYPE( instance, NA_TYPE_IFACTORY_OBJECT ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IFACTORY-OBJECT-GET-INTERFACE:CAPS"></a><h3>NA_IFACTORY_OBJECT_GET_INTERFACE()</h3>
+<pre class="programlisting">#define NA_IFACTORY_OBJECT_GET_INTERFACE( instance ) ( G_TYPE_INSTANCE_GET_INTERFACE(( instance ), NA_TYPE_IFACTORY_OBJECT, NAIFactoryObjectInterface ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIFactoryObject-struct"></a><h3>NAIFactoryObject</h3>
+<pre class="programlisting">typedef struct _NAIFactoryObject NAIFactoryObject;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAIFactoryObjectInterface"></a><h3>NAIFactoryObjectInterface</h3>
+<pre class="programlisting">typedef struct {
+	/**
+	 * get_version:
+	 * @instance: this #NAIFactoryObject instance.
+	 *
+	 * Defaults to 1.
+	 *
+	 * Returns: the version of this interface supported by @instance implementation.
+	 *
+	 * Since: 2.30
+	 */
+	guint         ( *get_version )( const NAIFactoryObject *instance );
+
+	/**
+	 * get_groups:
+	 * @instance: this #NAIFactoryObject instance.
+	 *
+	 * Returns: a pointer to the NADataGroup which defines this object.
+	 *
+	 * Since: 2.30
+	 */
+	NADataGroup * ( *get_groups ) ( const NAIFactoryObject *instance );
+
+	/**
+	 * copy:
+	 * @instance: the target #NAIFactoryObject instance.
+	 * @source: the source #NAIFactoryObject instance.
+	 *
+	 * This function is triggered after having copied @source to
+	 * @instance target. This later may take advantage of this call
+	 * to do some particular copy tasks.
+	 *
+	 * Since: 2.30
+	 */
+	void          ( *copy )       ( NAIFactoryObject *instance, const NAIFactoryObject *source );
+
+	/**
+	 * are_equal:
+	 * @a: the first #NAIFactoryObject instance.
+	 * @b: the second #NAIFactoryObject instance.
+	 *
+	 * This function is triggered after all elementary data comparisons
+	 * have been sucessfully made.
+	 *
+	 * Returns: %TRUE if @a is equal to @b.
+	 *
+	 * Since: 2.30
+	 */
+	gboolean      ( *are_equal )  ( const NAIFactoryObject *a, const NAIFactoryObject *b );
+
+	/**
+	 * is_valid:
+	 * @object: the #NAIFactoryObject instance whose validity is to be checked.
+	 *
+	 * This function is triggered after all elementary data comparisons
+	 * have been sucessfully made.
+	 *
+	 * Returns: %TRUE if @object is valid.
+	 *
+	 * Since: 2.30
+	 */
+	gboolean      ( *is_valid )   ( const NAIFactoryObject *object );
+
+	/**
+	 * read_start:
+	 * @instance: this #NAIFactoryObject instance.
+	 * @reader: the instance which has provided read services.
+	 * @reader_data: the data associated to @reader.
+	 * @messages: a pointer to a #GSList list of strings; the instance
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * Called just before the object is unserialized.
+	 *
+	 * Since: 2.30
+	 */
+	void          ( *read_start ) ( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages );
+
+	/**
+	 * read_done:
+	 * @instance: this #NAIFactoryObject instance.
+	 * @reader: the instance which has provided read services.
+	 * @reader_data: the data associated to @reader.
+	 * @messages: a pointer to a #GSList list of strings; the instance
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * Called when the object has been unserialized.
+	 *
+	 * Since: 2.30
+	 */
+	void          ( *read_done )  ( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages );
+
+	/**
+	 * write_start:
+	 * @instance: this #NAIFactoryObject instance.
+	 * @writer: the instance which has provided writing services.
+	 * @writer_data: the data associated to @writer.
+	 * @messages: a pointer to a #GSList list of strings; the instance
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * Called just before the object is serialized.
+	 *
+	 * Returns: a NAIIOProvider operation return code.
+	 *
+	 * Since: 2.30
+	 */
+	guint         ( *write_start )( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages );
+
+	/**
+	 * write_done:
+	 * @instance: this #NAIFactoryObject instance.
+	 * @writer: the instance which has provided writing services.
+	 * @writer_data: the data associated to @writer.
+	 * @messages: a pointer to a #GSList list of strings; the instance
+	 *  may append messages to this list, but shouldn't reinitialize it.
+	 *
+	 * Called when the object has been serialized.
+	 *
+	 * Returns: a NAIIOProvider operation return code.
+	 *
+	 * Since: 2.30
+	 */
+	guint         ( *write_done ) ( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages );
+} NAIFactoryObjectInterface;
+</pre>
+<p>
+In order to take full advantage of our data managament system,
+NAObjectItem-derived objects all implement this <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a>
+interface.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.get-version"></a>get_version</code></em> ()</span></p></td>
+<td>returns the version of this interface the NAObjectItem implements.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.get-groups"></a>get_groups</code></em> ()</span></p></td>
+<td>returns a pointer to the NADataGroup which defines this object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.copy"></a>copy</code></em> ()</span></p></td>
+<td>post copy callback.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.are-equal"></a>are_equal</code></em> ()</span></p></td>
+<td>tests if two NAObjectItem are equals.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.is-valid"></a>is_valid</code></em> ()</span></p></td>
+<td>tests if one NAObjectItem is valid.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.read-start"></a>read_start</code></em> ()</span></p></td>
+<td>triggered before serializing a NAObjectItem.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.read-done"></a>read_done</code></em> ()</span></p></td>
+<td>triggered after a NAObjectItem has been serialized.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.write-start"></a>write_start</code></em> ()</span></p></td>
+<td>triggered before unserializing a NAObjectItem.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAIFactoryObjectInterface.write-done"></a>write_done</code></em> ()</span></p></td>
+<td>triggered after a NAObjectItem has been unserialized.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-ifactory-object-get-data-boxed"></a><h3>na_ifactory_object_get_data_boxed ()</h3>
+<pre class="programlisting"><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="returnvalue">NADataBoxed</span></a> *       na_ifactory_object_get_data_boxed   (<em class="parameter"><code>const <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+The returned <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> is owned by <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> <em class="parameter"><code>object</code></em>, and
+should not be released by the caller.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>a <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>the name of the elementary data we are searching for.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object which contains the specified data,
+or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-ifactory-object-get-data-groups"></a><h3>na_ifactory_object_get_data_groups ()</h3>
+<pre class="programlisting"><a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup"><span class="returnvalue">NADataGroup</span></a> *       na_ifactory_object_get_data_groups  (<em class="parameter"><code>const <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>);</pre>
+<p>
+The returned <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup"><span class="type">NADataGroup</span></a> is owned by the <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> <em class="parameter"><code>object</code></em>,
+and should not be released by the caller.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>a <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataGroup" title="NADataGroup"><span class="type">NADataGroup</span></a> groups definition, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-ifactory-object-get-as-void"></a><h3>na_ifactory_object_get_as_void ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span> *              na_ifactory_object_get_as_void      (<em class="parameter"><code>const <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+If the type of the value is <a class="link" href="caja-actions-NADataType.html#NA-DATA-TYPE-STRING:CAPS"><code class="literal">NA_DATA_TYPE_STRING</code></a>, <a class="link" href="caja-actions-NADataType.html#NA-DATA-TYPE-LOCALE-STRING:CAPS"><code class="literal">NA_DATA_TYPE_LOCALE_STRING</code></a>,
+or <a class="link" href="caja-actions-NADataType.html#NA-DATA-TYPE-STRING-LIST:CAPS"><code class="literal">NA_DATA_TYPE_STRING_LIST</code></a>, then the returned value is a newly allocated
+one and should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> (resp. <a class="link" href="caja-actions-Core-Misc.html#na-core-utils-slist-free" title="na_core_utils_slist_free ()"><code class="function">na_core_utils_slist_free()</code></a>) by the
+caller.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>this <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> instance.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>the elementary data whose value is to be got.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the searched value.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-ifactory-object-set-from-void"></a><h3>na_ifactory_object_set_from_void ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_ifactory_object_set_from_void    (<em class="parameter"><code><a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *data</code></em>);</pre>
+<p>
+Set the elementary data with the given value.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>this <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a> instance.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>the name of the elementary data whose value is to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>data</code></em> :</span></p></td>
+<td>the value to set.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

@@ -84,9 +84,9 @@ msgstr "ಪ್ರೊಫೈಲಿನ ವಿವರಣೆಯುಕ್ತ ಹೆಸ�
 #: ../src/common/caja-actions-config-mateconf-private.h:87
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
-"the Nact interface. If not set there will be a default auto generated string "
+"the Cact interface. If not set there will be a default auto generated string "
 "set by default"
-msgstr "Nact ಸಂಪರ್ಕಸಾಧನದಲ್ಲಿ ಪ್ರೊಫೈಲಿಗೆ ಮನುಷ್ಯರು ಓದುವಂತಹ ಒಂದು ಹೆಸರನ್ನು ನೀಡವು ಸಲುವಾಗಿ ಈ ಸ್ಥಳವಿರುತ್ತದೆ. ಇಲ್ಲದೆ ಹೋದಲ್ಲಿ ಇದು ಒಂದು ಸ್ವಯಂ ಉತ್ಪತ್ತಿಗೊಂಡ ವಾಕ್ಯಕ್ಕೆ ಹೊಂದಿಸಲ್ಪಡುತ್ತದೆ"
+msgstr "Cact ಸಂಪರ್ಕಸಾಧನದಲ್ಲಿ ಪ್ರೊಫೈಲಿಗೆ ಮನುಷ್ಯರು ಓದುವಂತಹ ಒಂದು ಹೆಸರನ್ನು ನೀಡವು ಸಲುವಾಗಿ ಈ ಸ್ಥಳವಿರುತ್ತದೆ. ಇಲ್ಲದೆ ಹೋದಲ್ಲಿ ಇದು ಒಂದು ಸ್ವಯಂ ಉತ್ಪತ್ತಿಗೊಂಡ ವಾಕ್ಯಕ್ಕೆ ಹೊಂದಿಸಲ್ಪಡುತ್ತದೆ"
 
 #: ../src/common/caja-actions-config-mateconf-private.h:88
 #: ../src/utils/caja-actions-new-config.c:60
@@ -350,48 +350,48 @@ msgid ""
 "instead of <%s>)"
 msgstr "ಈ XML ಕಡತವು ಒಂದು ಮಾನ್ಯವಾದ Caja-ಕ್ರಿಯೆಗಳ ಸಂರಚನಾ ಕಡತವಾಗಿಲ್ಲ (ರೂಟ್ ನೋಡ್ <%s> ಆಗಿದೆ, <%s> ನ ಬದಲಿಗೆ)"
 
-#: ../src/nact/nact.c:236
+#: ../src/cact/cact.c:236
 #, c-format
 msgid "Can't duplicate action '%s'!"
 msgstr "ಕ್ರಿಯೆ '%s' ಯ ಇನ್ನೊಂದು ಪ್ರತಿಯನ್ನು ನಿರ್ಮಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!"
 
 #. create columns on the tree view
-#: ../src/nact/nact.c:352 ../src/nact/nact-import-export.c:179
+#: ../src/cact/cact.c:352 ../src/cact/cact-import-export.c:179
 msgid "Icon"
 msgstr "ಚಿಹ್ನೆ"
 
-#: ../src/nact/nact.c:357 ../src/nact/nact-import-export.c:184
+#: ../src/cact/cact.c:357 ../src/cact/cact-import-export.c:184
 msgid "Label"
 msgstr "ಲೇಬಲ್"
 
-#: ../src/nact/nact.c:387 ../src/nact/nact-action-editor.c:161
-#: ../src/nact/nact-editor.c:663 ../src/nact/nact-import-export.c:331
-#: ../src/nact/nact-profile-editor.c:567
+#: ../src/cact/cact.c:387 ../src/cact/cact-action-editor.c:161
+#: ../src/cact/cact-editor.c:663 ../src/cact/cact-import-export.c:331
+#: ../src/cact/cact-profile-editor.c:567
 msgid "Could not load interface for Caja Actions Config Tool"
 msgstr "Caja ಕ್ರಿಯೆಗಳ ಸಂರಚನಾ ಉಪಕರಣದ ಸಂಪರ್ಕಸಾಧನವನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ"
 
-#: ../src/nact/nact-application.c:246
+#: ../src/cact/cact-application.c:246
 msgid "Another instance of Caja Actions Configurator is already running."
 msgstr "Caja ಕ್ರಿಯೆಗಳ ಸಂರಚನಾ ಉಪಕರಣದ ಇನ್ನೊಂದು ಸಂದರ್ಭವು ಈಗಾಗಲೆ ಚಾಲನೆಯಲ್ಲಿದೆ."
 
-#: ../src/nact/nact-application.c:247
+#: ../src/cact/cact-application.c:247
 msgid "Please switch back to it."
 msgstr "ದಯವಿಟ್ಟು ಅದಕ್ಕೆ ಹಿಂದಿರುಗು."
 
 #. i18n: this is the application name, used in window title
 #.
-#: ../src/nact/nact-application.c:258
+#: ../src/cact/cact-application.c:258
 msgid "Caja Actions Configuration Tool"
 msgstr "Caja ಕ್ರಿಯೆಗಳನ್ನು ಸಂರಚನೆ ಉಪಕರಣ"
 
 #. static int
-#. run_appli( NactApplication *application )
+#. run_appli( CactApplication *application )
 #. {
 #. int code = 0;
 #.
 #. g_object_set( G_OBJECT( application ), PROP_PIVOT_STR, na_pivot_new( NULL ), NULL );
 #.
-#. g_object_set( G_OBJECT( application ), PROP_MAINWINDOW_STR, nact_init_dialog( G_OBJECT( application ), NULL );
+#. g_object_set( G_OBJECT( application ), PROP_MAINWINDOW_STR, cact_init_dialog( G_OBJECT( application ), NULL );
 #.
 #. unique_app_watch_window( application->private->unique, application->private->main );
 #.
@@ -399,173 +399,173 @@ msgstr "Caja ಕ್ರಿಯೆಗಳನ್ನು ಸಂರಚನೆ ಉಪಕ�
 #.
 #. return( code );
 #. }
-#: ../src/nact/nact.desktop.in.h:1
+#: ../src/cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "Caja ಪುಟಿಕೆ ಮೆನುವನ್ನು ಅಂಶಗಳನ್ನು ಸೇರಿಸಿ"
 
-#: ../src/nact/nact.desktop.in.h:2
+#: ../src/cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "Caja ಕ್ರಿಯೆಗಳ ಸಂರಚನೆ"
 
-#: ../src/nact/nact-action-editor.c:186 ../src/nact/nact-action-editor.c:189
-#: ../src/nact/nact-editor.c:681 ../src/nact/nact-editor.c:684
+#: ../src/cact/cact-action-editor.c:186 ../src/cact/cact-action-editor.c:189
+#: ../src/cact/cact-editor.c:681 ../src/cact/cact-editor.c:684
 msgid "Icon of the menu item in the Caja popup menu"
 msgstr "Caja ಪುಟಿಕೆ ಮೆನುವಿನಲ್ಲಿರುವ ಮೆನು ಅಂಶದ ಚಿಹ್ನೆ"
 
-#: ../src/nact/nact-action-editor.c:230
+#: ../src/cact/cact-action-editor.c:230
 msgid "Add a new action"
 msgstr "ಒಂದು ಹೊಸ ಕ್ರಿಯೆಯನ್ನು ಸೇರಿಸಿ"
 
-#: ../src/nact/nact-action-editor.c:234
+#: ../src/cact/cact-action-editor.c:234
 #, c-format
 msgid "Edit action \"%s\""
 msgstr "ಕ್ರಿಯೆ \"%s\" ಅನ್ನು ಸಂಪಾದಿಸಿ"
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../src/nact/nact-editor.c:195
+#: ../src/cact/cact-editor.c:195
 msgid "None"
 msgstr "ಯಾವುದೂ ಇಲ್ಲ"
 
 #. i18n notes: will be displayed in a dialog
-#: ../src/nact/nact-editor.c:485
+#: ../src/cact/cact-editor.c:485
 #, c-format
 msgid "Can't copy action's profile '%s'!"
 msgstr "ಕ್ರಿಯೆಯ ಪ್ರೊಫೈಲ್ '%s' ಅನ್ನು ಕಾಪಿ ಮಾಡಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ!"
 
 #. i18n notes: will be displayed in a dialog
-#: ../src/nact/nact-editor.c:509
+#: ../src/cact/cact-editor.c:509
 #, c-format
 msgid "Can't paste action's profile '%s'!"
 msgstr "ಕ್ರಿಯೆಯ ಪ್ರೊಫೈಲ್ '%s' ಅನ್ನು ಅಂಟಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ!"
 
 #. printf ("profile_name : %s\n", action_profile->desc_name);
 #. i18n notes: this is the default name of a copied profile
-#: ../src/nact/nact-editor.c:514
+#: ../src/cact/cact-editor.c:514
 #, c-format
 msgid "%s Copy"
 msgstr "%s ನಕಲು ಪ್ರತಿ"
 
 #. i18n notes: will be displayed in a dialog
-#: ../src/nact/nact-editor.c:573
+#: ../src/cact/cact-editor.c:573
 #, c-format
 msgid "Can't delete action's profile '%s'!"
 msgstr "ಕ್ರಿಯೆ '%s' ಯ ಪ್ರೊಫೈಲ್ ಅನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ!"
 
-#: ../src/nact/nact-editor.c:626
+#: ../src/cact/cact-editor.c:626
 msgid "Profile Name"
 msgstr "ಪ್ರೊಫೈಲ್ ಹೆಸರು"
 
-#: ../src/nact/nact-editor.c:706
+#: ../src/cact/cact-editor.c:706
 msgid "Add a New Action"
 msgstr "ಒಂದು ಹೊಸ ಕ್ರಿಯೆ ಅನ್ನು ಸಂಪಾದಿಸಿ"
 
-#: ../src/nact/nact-editor.c:710
+#: ../src/cact/cact-editor.c:710
 #, c-format
 msgid "Edit Action \"%s\""
 msgstr "ಕ್ರಿಯೆ \"%s\" ಅನ್ನು ಸಂಪಾದಿಸಿ"
 
-#: ../src/nact/nact-import-export.c:223
+#: ../src/cact/cact-import-export.c:223
 #, c-format
 msgid "Can't parse file '%s' as MateConf schema description file!"
 msgstr "ಕಡತ '%s' ಅನ್ನು MateConf ಸ್ಕೀಮಾ ವಿವರಣೆ ಕಡತವಾಗಿ ಪಾರ್ಸ್ ಮಾಡಲಾಗಿಲ್ಲ!"
 
 #. i18n notes: %s is the label of the action (eg, 'Mount ISO')
-#: ../src/nact/nact-import-export.c:244
+#: ../src/cact/cact-import-export.c:244
 #, c-format
 msgid "Action '%s' importation failed!"
 msgstr "ಕ್ರಿಯೆ '%s' ಆಮದು ವಿಫಲಗೊಂಡಿದೆ!"
 
 #. initialize the default schemes
 #. i18n notes : description of 'file' scheme
-#: ../src/nact/nact-prefs.c:172
+#: ../src/cact/cact-prefs.c:172
 #, c-format
 msgid "%sLocal Files"
 msgstr "%sಸ್ಥಳೀಯ ಕಡತಗಳು"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../src/nact/nact-prefs.c:174
+#: ../src/cact/cact-prefs.c:174
 #, c-format
 msgid "%sSSH Files"
 msgstr "%sSSH ಕಡತಗಳು"
 
 #. i18n notes : description of 'smb' scheme
-#: ../src/nact/nact-prefs.c:176
+#: ../src/cact/cact-prefs.c:176
 #, c-format
 msgid "%sWindows Files"
 msgstr "%sWindows ಕಡತಗಳು"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../src/nact/nact-prefs.c:178
+#: ../src/cact/cact-prefs.c:178
 #, c-format
 msgid "%sFTP Files"
 msgstr "%sFTP ಕಡತಗಳು"
 
 #. i18n notes : description of 'dav' scheme
-#: ../src/nact/nact-prefs.c:180
+#: ../src/cact/cact-prefs.c:180
 #, c-format
 msgid "%sWebdav Files"
 msgstr "%sWebdav ಕಡತಗಳು"
 
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../src/nact/nact-profile-editor.c:299
+#: ../src/cact/cact-profile-editor.c:299
 msgid "new-scheme"
 msgstr "ಹೊಸ-ಸ್ಕೀಮ್"
 
-#: ../src/nact/nact-profile-editor.c:300
+#: ../src/cact/cact-profile-editor.c:300
 msgid "New Scheme Description"
 msgstr "ಹೊಸ ಸ್ಕೀಮ್ ವಿವರಣೆ"
 
-#: ../src/nact/nact-profile-editor.c:396
+#: ../src/cact/cact-profile-editor.c:396
 msgid "Scheme"
 msgstr "ಸ್ಕೀಮ್"
 
-#: ../src/nact/nact-profile-editor.c:407
+#: ../src/cact/cact-profile-editor.c:407
 msgid "Description"
 msgstr "ವಿವರಣೆ"
 
-#: ../src/nact/nact-profile-editor.c:608
+#: ../src/cact/cact-profile-editor.c:608
 msgid "Add a New Profile"
 msgstr "ಒಂದು ಹೊಸ ಪ್ರೊಫೈಲ್ ಅನ್ನು ಸೇರಿಸಿ"
 
-#: ../src/nact/nact-profile-editor.c:612
+#: ../src/cact/cact-profile-editor.c:612
 #, c-format
 msgid "Edit Profile \"%s\""
 msgstr "ಪ್ರೊಫೈಲ್ \"%s\" ಅನ್ನು ಸಂಪಾದಿಸಿ"
 
 #. i18n notes: example strings for the command preview
-#: ../src/nact/nact-utils.c:196
+#: ../src/cact/cact-utils.c:196
 msgid "/path/to"
 msgstr "/path/to"
 
-#: ../src/nact/nact-utils.c:197 ../src/nact/nact-utils.c:199
+#: ../src/cact/cact-utils.c:197 ../src/cact/cact-utils.c:199
 msgid "file1.txt"
 msgstr "file1.txt"
 
-#: ../src/nact/nact-utils.c:197
+#: ../src/cact/cact-utils.c:197
 msgid "file2.txt"
 msgstr "file2.txt"
 
-#: ../src/nact/nact-utils.c:198 ../src/nact/nact-utils.c:199
+#: ../src/cact/cact-utils.c:198 ../src/cact/cact-utils.c:199
 msgid "folder1"
 msgstr "folder1"
 
-#: ../src/nact/nact-utils.c:198
+#: ../src/cact/cact-utils.c:198
 msgid "folder2"
 msgstr "folder2"
 
-#: ../src/nact/nact-utils.c:201
+#: ../src/cact/cact-utils.c:201
 msgid "test.example.net"
 msgstr "test.example.net"
 
-#: ../src/nact/nact-utils.c:202
+#: ../src/cact/cact-utils.c:202
 msgid "file.txt"
 msgstr "file.txt"
 
-#: ../src/nact/nact-utils.c:203
+#: ../src/cact/cact-utils.c:203
 msgid "folder"
 msgstr "folder"
 
-#: ../src/nact/caja-actions-config.glade.h:1
+#: ../src/cact/caja-actions-config.glade.h:1
 msgid ""
 "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
 "(C) 2009 Pierre Wieser <pwieser@trychlos.org>"
@@ -573,89 +573,89 @@ msgstr ""
 "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
 "(C) 2009 Pierre Wieser <pwieser@trychlos.org>"
 
-#: ../src/nact/caja-actions-config.glade.h:4
+#: ../src/cact/caja-actions-config.glade.h:4
 #, no-c-format
 msgid "<b>%%</b>: a percent sign"
 msgstr "<b>%%</b>: ಒಂದು ಪ್ರತಿಶತದ ಚಿಹ್ನೆ"
 
-#: ../src/nact/caja-actions-config.glade.h:6
+#: ../src/cact/caja-actions-config.glade.h:6
 #, no-c-format
 msgid ""
 "<b>%M</b>: space-separated list of the selected file(s)/folder(s) with their "
 "full paths"
 msgstr "<b>%M</b>: ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತದ(ಗಳ)/ಕಡತಕೋಶದ(ಗಳ) ಮೂಲಹೆಸರುಗಳ ಒಂದು ಪಟ್ಟಿ, ಸಂಪೂರ್ಣ ಮಾರ್ಗದೊಂದಿಗೆ"
 
-#: ../src/nact/caja-actions-config.glade.h:8
+#: ../src/cact/caja-actions-config.glade.h:8
 #, no-c-format
 msgid "<b>%U</b>: username of the MateVFS URI"
 msgstr "<b>%U</b>: MateVFS URI ಯ ಬಳಕೆದಾರ ಹೆಸರು"
 
-#: ../src/nact/caja-actions-config.glade.h:10
+#: ../src/cact/caja-actions-config.glade.h:10
 #, no-c-format
 msgid "<b>%d</b>: base folder of the selected file(s)"
 msgstr "<b>%d</b>: ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತದ(ಗಳ) ಮೂಲ ಕಡತಕೋಶ"
 
-#: ../src/nact/caja-actions-config.glade.h:12
+#: ../src/cact/caja-actions-config.glade.h:12
 #, no-c-format
 msgid "<b>%f</b>: the name of the selected file or the 1st one if many are selected"
 msgstr "<b>%f</b>: ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತದ ಹೆಸರು ಅಥವ ಬಳಷ್ಟನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಲ್ಲಿ ಮೊದಲಿನದು"
 
-#: ../src/nact/caja-actions-config.glade.h:14
+#: ../src/cact/caja-actions-config.glade.h:14
 #, no-c-format
 msgid "<b>%h</b>: hostname of the MateVFS URI"
 msgstr "<b>%h</b>: MateVFS URI ಯ ಅತಿಥೇಯ ಹೆಸರು"
 
-#: ../src/nact/caja-actions-config.glade.h:16
+#: ../src/cact/caja-actions-config.glade.h:16
 #, no-c-format
 msgid ""
 "<b>%m</b>: space-separated list of the basenames of the selected\n"
 "file(s)/folder(s)"
 msgstr "<b>%m</b>: ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತದ(ಗಳ)/ಕಡತಕೋಶದ(ಗಳ) ಮೂಲಹೆಸರುಗಳ ಒಂದು ಪಟ್ಟಿ"
 
-#: ../src/nact/caja-actions-config.glade.h:19
+#: ../src/cact/caja-actions-config.glade.h:19
 #, no-c-format
 msgid "<b>%s</b>: scheme of the MateVFS URI"
 msgstr "<b>%s</b>: MateVFS URI ಯ ಸ್ಕೀಮ್"
 
-#: ../src/nact/caja-actions-config.glade.h:21
+#: ../src/cact/caja-actions-config.glade.h:21
 #, no-c-format
 msgid "<b>%u</b>: MateVFS URI"
 msgstr "<b>%u</b>: MateVFS URI"
 
-#: ../src/nact/caja-actions-config.glade.h:22
+#: ../src/cact/caja-actions-config.glade.h:22
 msgid "<b>Action</b>"
 msgstr "<b>ಕಾರ್ಯ</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:23
+#: ../src/cact/caja-actions-config.glade.h:23
 msgid "<b>Appears if file matches</b>"
 msgstr "<b>ಕಡತವು ತಾಳೆಯಾದಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:24
+#: ../src/cact/caja-actions-config.glade.h:24
 msgid "<b>Appears if scheme is in this list</b>"
 msgstr "<b>ಸ್ಕೀಮ್ ಈ ಪಟ್ಟಿಯಲ್ಲಿ ಇದ್ದಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:25
+#: ../src/cact/caja-actions-config.glade.h:25
 msgid "<b>Appears if selection contains</b>"
 msgstr "<b>ಆಯ್ಕೆಯು ಇದನ್ನು ಹೊಂದಿದ್ದಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:26
+#: ../src/cact/caja-actions-config.glade.h:26
 msgid "<b>Caja Menu Item</b>"
 msgstr "<b>Caja ಮೆನು ಅಂಶ</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:27
+#: ../src/cact/caja-actions-config.glade.h:27
 msgid "<b>Profiles</b>"
 msgstr "<b>ಪ್ರೊಫೈಲುಗಳು</b>"
 
-#: ../src/nact/caja-actions-config.glade.h:29
+#: ../src/cact/caja-actions-config.glade.h:29
 #, no-c-format
 msgid "<i><b><span size=\"small\">e.g., %s</span></b></i>"
 msgstr "<i><b><span size=\"small\">ಉದಾ., %s</span></b></i>"
 
-#: ../src/nact/caja-actions-config.glade.h:30
+#: ../src/cact/caja-actions-config.glade.h:30
 msgid "<span size=\"larger\"><b>Parameter Legend</b></span>"
 msgstr "<span size=\"larger\"><b>ನಿಯತಾಂಕ ಲೆಜೆಂಡ್</b></span>"
 
-#: ../src/nact/caja-actions-config.glade.h:31
+#: ../src/cact/caja-actions-config.glade.h:31
 msgid ""
 "<span weight=\"bold\" size=\"larger\">place primary text here</span>\n"
 "\n"
@@ -665,7 +665,7 @@ msgstr ""
 "\n"
 "ಪ್ರಮುಖವಲ್ಲದ ಪಠ್ಯವನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ"
 
-#: ../src/nact/caja-actions-config.glade.h:34
+#: ../src/cact/caja-actions-config.glade.h:34
 msgid ""
 "A string with wildcards (? or *) that will be used to match the filenames. "
 "You can set several filename patterns by separating them with a semi-colon "
@@ -674,7 +674,7 @@ msgstr ""
 "ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತದ ಹೆಸರುಗಳಿಗೆ ಹೋಲಿಸಬೇಕಿರುವ, ವೈಲ್ಡ್‌ಕಾರ್ಡುಗಳನ್ನು (* ಅಥವ ?) ಹೊಂದಿರುವ ಒಂದು ವಾಕ್ಯ. "
 "ನೀವು ಹಲವಾರು ಕಡತವಿನ್ಯಾಸಗಳನ್ನು ಸೂಚಿಸಲು ಅರ್ಧವಿರಾಮ ಚಿಹ್ನೆಯನ್ನು(;) ಬಳಸಬಹುದು."
 
-#: ../src/nact/caja-actions-config.glade.h:35
+#: ../src/cact/caja-actions-config.glade.h:35
 msgid ""
 "A string with wildcards (? or *) that will be used to match the mimetypes of "
 "files. You can set several mimetype patterns by separating them with a semi-"
@@ -683,131 +683,131 @@ msgstr ""
 "ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತದ ಮೈಮ್‌ಬಗೆಗಳಿಗೆ ಹೋಲಿಸಬೇಕಿರುವ, ವೈಲ್ಡ್‌ಕಾರ್ಡುಗಳನ್ನು (* ಅಥವ ?) ಹೊಂದಿರುವ ಒಂದು ವಾಕ್ಯ. "
 "ನೀವು ಹಲವಾರು ಮೈಮ್‌ಬಗೆಗಳನ್ನು ಸೂಚಿಸಲು ಅರ್ಧವಿರಾಮ ಚಿಹ್ನೆಯನ್ನು(;) ಬಳಸಬಹುದು."
 
-#: ../src/nact/caja-actions-config.glade.h:36
+#: ../src/cact/caja-actions-config.glade.h:36
 msgid "Action"
 msgstr "ಕಾರ್ಯ"
 
-#: ../src/nact/caja-actions-config.glade.h:37
+#: ../src/cact/caja-actions-config.glade.h:37
 msgid "Advanced Conditions"
 msgstr "ಸುಧಾರಿತ ಷರತ್ತುಗಳು"
 
-#: ../src/nact/caja-actions-config.glade.h:38
+#: ../src/cact/caja-actions-config.glade.h:38
 msgid "Appears if selection has multiple files or folders"
 msgstr "ಆಯ್ಕೆಯು ಅನೇಕ ಕಡತಗಳನ್ನು ಅಥವ ಕಡತಕೋಶಗಳನ್ನು ಹೊಂದಿದ್ದಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ"
 
-#: ../src/nact/caja-actions-config.glade.h:39
+#: ../src/cact/caja-actions-config.glade.h:39
 msgid "Both"
 msgstr "ಎರಡೂ"
 
-#: ../src/nact/caja-actions-config.glade.h:40
+#: ../src/cact/caja-actions-config.glade.h:40
 msgid "Click to add a new scheme."
 msgstr "ಒಂದು ಹೊಸ ಸ್ಕೀಮ್ ಅನ್ನು ಸೇರಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:41
+#: ../src/cact/caja-actions-config.glade.h:41
 msgid "Click to choose a command from the file chooser dialog."
 msgstr "ಕಡತ ಆಯ್ಕೆಗಾರ ಸಂವಾದದಿಂದ ಒಂದು ಆಜ್ಞೆಯನ್ನು ಆರಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:42
+#: ../src/cact/caja-actions-config.glade.h:42
 msgid ""
 "Click to choose a custom icon from a file instead of a predefined icon from "
 "the drop-down list."
 msgstr "ಬೀಳಿಕೆ(ಡ್ರಾಪ್‌ಡೌನ್) ಪಟ್ಟಿಯಿಂದ ಪೂರ್ವನಿರ್ಧಾರಿತವಾದ ಚಿಹ್ನೆಗಳ ಬದಲಿಗೆ ಕಡತದಿಂದ ಇಚ್ಛೆಯ ಚಿಹ್ನೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:43
+#: ../src/cact/caja-actions-config.glade.h:43
 msgid "Click to remove the selected scheme."
 msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಸ್ಕೀಮ್ ಅನ್ನು ತೆಗೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:44
+#: ../src/cact/caja-actions-config.glade.h:44
 msgid ""
 "Click to toggle the display of the list of special tokens you can use in the "
 "parameter field."
 msgstr "ನೀವು ನಿಯತಾಂಕದ ಸ್ಥಳದಲ್ಲಿ ಬಳಸಬಹುದಾದ ವಿಶೇಷ ಟೋಕನ್‌ಗಳ ಪ್ರದರ್ಶನವನ್ನು ಬದಲಾಯಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:45
+#: ../src/cact/caja-actions-config.glade.h:45
 msgid "Conditions"
 msgstr "ಷರತ್ತುಗಳು"
 
-#: ../src/nact/caja-actions-config.glade.h:46
+#: ../src/cact/caja-actions-config.glade.h:46
 msgid "Create a copy of the selected action."
 msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಕ್ರಿಯೆಯ ಒಂದು ಪ್ರತಿಯನ್ನು ರಚಿಸಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:47
+#: ../src/cact/caja-actions-config.glade.h:47
 msgid "Delete the action without any confirmation nor the possibility to restore it."
 msgstr "ಖಚಿತ ಪಡಿಸಲು ಕೇಳದೆ ಅಥವ ಮರಳಿ ಸ್ಥಾಪಿಸುವ ಸಾಧ್ಯತೆ ಇಲ್ಲದೆ ಕ್ರಿಯೆಯನ್ನು ಅಳಿಸಿ ಹಾಕು."
 
-#: ../src/nact/caja-actions-config.glade.h:48
+#: ../src/cact/caja-actions-config.glade.h:48
 msgid "Duplicate"
 msgstr "ನಕಲು"
 
-#: ../src/nact/caja-actions-config.glade.h:49
+#: ../src/cact/caja-actions-config.glade.h:49
 msgid "Export existing configs"
 msgstr "ಈಗಿರುವ ಸಂರಚನೆಗಳನ್ನು ರಫ್ತು ಮಾಡಿಕೊಳ್ಳಿ"
 
-#: ../src/nact/caja-actions-config.glade.h:50
+#: ../src/cact/caja-actions-config.glade.h:50
 msgid "File to Import:"
 msgstr "ಆಮದು ಮಾಡಲು ಕಡತ:"
 
-#: ../src/nact/caja-actions-config.glade.h:51
+#: ../src/cact/caja-actions-config.glade.h:51
 msgid "Filenames:"
 msgstr "ಕಡತದ ಹೆಸರುಗಳು:"
 
-#: ../src/nact/caja-actions-config.glade.h:52
+#: ../src/cact/caja-actions-config.glade.h:52
 msgid "Icon:"
 msgstr "ಚಿಹ್ನೆ:"
 
-#: ../src/nact/caja-actions-config.glade.h:53
+#: ../src/cact/caja-actions-config.glade.h:53
 msgid ""
 "If selected, the filename patterns will be matched case sensitive (eg, *.jpg "
 "will not match photo.JPG)"
 msgstr "ಆಯ್ಕೆ ಮಾಡಿದಲ್ಲಿ ಕಡತದ ಹೆಸರಿನ ವಿನ್ಯಾಸವನ್ನು ಕೇಸ್‌ ಸಂವೇದಿಯಲ್ಲಿ ತಾಳೆ ಮಾಡಲಾಗುತ್ತದೆ. (ಉದಾ, *.jpg ಯು photo.JPG ಗೆ ತಾಳೆಯಾಗುತ್ತದೆ)"
 
-#: ../src/nact/caja-actions-config.glade.h:54
+#: ../src/cact/caja-actions-config.glade.h:54
 msgid "Import new configurations"
 msgstr "ಹೊಸ ಸಂರಚನೆಗಳನ್ನು ಆಮದು ಮಾಡಿಕೊಳ್ಳಿ"
 
-#: ../src/nact/caja-actions-config.glade.h:55
+#: ../src/cact/caja-actions-config.glade.h:55
 msgid "Import/Export"
 msgstr "ಆಮದು/ರಫ್ತು"
 
-#: ../src/nact/caja-actions-config.glade.h:56
+#: ../src/cact/caja-actions-config.glade.h:56
 msgid "Import/Export Settings"
 msgstr "ಆಮದು/ರಫ್ತು ಸಿದ್ಧತೆಗಳು"
 
-#: ../src/nact/caja-actions-config.glade.h:57
+#: ../src/cact/caja-actions-config.glade.h:57
 msgid "Label of the menu item in the Caja popup menu."
 msgstr "ನಾಟಿಲಸ್ ಪುಟಿಕೆ ಮೆನುವಿನಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುವ ಮೆನು ಅಂಶದ ಲೇಬಲ್."
 
-#: ../src/nact/caja-actions-config.glade.h:58
+#: ../src/cact/caja-actions-config.glade.h:58
 msgid "Label:"
 msgstr "ಲೇಬಲ್:"
 
-#: ../src/nact/caja-actions-config.glade.h:59
+#: ../src/cact/caja-actions-config.glade.h:59
 msgid ""
 "Manage importation of external action configurations and exportation of "
 "existing actions."
 msgstr "ಹೊರಗಿನ ಕ್ರಿಯೆ ಸಂರಚನೆಗಳನ್ನು ಆಮದು ಮಾಡುವುದನ್ನು ಹಾಗು ಈಗಿರುವ ಕ್ರಿಯೆಗಳನ್ನು ರಫ್ತು ಮಾಡುವುದನ್ನು ನಿರ್ವಹಿಸಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:60
+#: ../src/cact/caja-actions-config.glade.h:60
 msgid "Match case"
 msgstr "ಕೇಸ್ ಅನ್ನು ಹೊಂದಿಸು"
 
-#: ../src/nact/caja-actions-config.glade.h:61
+#: ../src/cact/caja-actions-config.glade.h:61
 msgid "Mimetypes:"
 msgstr "ಮೈಮ್‌ಬಗೆಗಳು:"
 
-#: ../src/nact/caja-actions-config.glade.h:62
+#: ../src/cact/caja-actions-config.glade.h:62
 msgid "Caja Action Editor"
 msgstr "Caja ಕ್ರಿಯೆ ಸಂಪಾದಕ"
 
-#: ../src/nact/caja-actions-config.glade.h:63
+#: ../src/cact/caja-actions-config.glade.h:63
 msgid "Caja Action Profile Editor"
 msgstr "Caja ಕ್ರಿಯೆ ಪ್ರೊಫೈಲ್ ಸಂಪಾದಕ"
 
-#: ../src/nact/caja-actions-config.glade.h:64
+#: ../src/cact/caja-actions-config.glade.h:64
 msgid "Caja Actions"
 msgstr "Caja Actions"
 
-#: ../src/nact/caja-actions-config.glade.h:65
+#: ../src/cact/caja-actions-config.glade.h:65
 msgid ""
 "Caja Actions Configuration Tool\n"
 "Application to configure Caja Action extension"
@@ -815,57 +815,57 @@ msgstr ""
 "Caja Actions ಸಂರಚನಾ ಉಪಕರಣ\n"
 "Caja Action ವಿಸ್ತರಣೆಯನ್ನು ಸಂರಚಿಸುವ ಅನ್ವಯ"
 
-#: ../src/nact/caja-actions-config.glade.h:67
+#: ../src/cact/caja-actions-config.glade.h:67
 msgid "Only files"
 msgstr "ಕೇವಲ ಕಡತಗಳು"
 
-#: ../src/nact/caja-actions-config.glade.h:68
+#: ../src/cact/caja-actions-config.glade.h:68
 msgid "Only folders"
 msgstr "ಕೇವಲ ಕಡತಕೋಶಗಳು"
 
-#: ../src/nact/caja-actions-config.glade.h:69
+#: ../src/cact/caja-actions-config.glade.h:69
 msgid ""
 "Parameters that will be sent to the program. Click on the 'Legend' button to "
 "see the different replacement tokens."
 msgstr "ಪ್ರೊಗ್ರಾಮಿಗೆ ಕಳುಹಿಸಲಾಗುವ ನಿಯತಾಂಕಗಳು. ವಿವಿಧ ಬದಲಾಯಿಸುವ ಟೋಕನ್‌ಗಳನ್ನು ನೋಡಲು 'ಲೆಜೆಂಡ್' ಗುಂಡಿಯನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:70
+#: ../src/cact/caja-actions-config.glade.h:70
 msgid "Parameters:"
 msgstr "ನಿಯತಾಂಕಗಳು:"
 
-#: ../src/nact/caja-actions-config.glade.h:71
+#: ../src/cact/caja-actions-config.glade.h:71
 msgid "Path:"
 msgstr "ಮಾರ್ಗ:"
 
-#: ../src/nact/caja-actions-config.glade.h:72
+#: ../src/cact/caja-actions-config.glade.h:72
 msgid "Project website"
 msgstr "ಪರಿಯೋಜನೆಯ ಜಾಲತಾಣ"
 
-#: ../src/nact/caja-actions-config.glade.h:73
+#: ../src/cact/caja-actions-config.glade.h:73
 msgid "Save in Folder:"
 msgstr "ಈ ಕಡತಕೋಶದಲ್ಲಿ ಉಳಿಸಿ:"
 
-#: ../src/nact/caja-actions-config.glade.h:74
+#: ../src/cact/caja-actions-config.glade.h:74
 msgid ""
 "Select the configurations you want to export. Use Shift or Ctrl key to "
 "select more than one."
 msgstr "ನೀವು ಆಮದು ಮಾಡಿಕೊಳ್ಳಲು ಬಯಸುವ ಸಂರಚನೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಒಂದಕ್ಕಿಂತ ಹೆಚ್ಚಿನದನ್ನು ಆಯ್ಕೆ ಮಾಡಲು Shift ಅಥವ Ctrl ಕೀಲಿಯನ್ನು ಬಳಸಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:75
+#: ../src/cact/caja-actions-config.glade.h:75
 msgid "Select the configurations you want to export:"
 msgstr "ನೀವು ಆಮದು ಮಾಡಿಕೊಳ್ಳಲು ಬಯಸುವ ಸಂರಚನೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ:"
 
-#: ../src/nact/caja-actions-config.glade.h:76
+#: ../src/cact/caja-actions-config.glade.h:76
 msgid "Select the file you want to import."
 msgstr "ನೀವು ಆಮದು ಮಾಡಿಕೊಳ್ಳಲು ಬಯಸುವ ಕಡತವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ."
 
-#: ../src/nact/caja-actions-config.glade.h:77
+#: ../src/cact/caja-actions-config.glade.h:77
 msgid ""
 "Select the folder you want your config to be saved in. This folder must "
 "exist."
 msgstr "ಸಂರಚನೆಯನ್ನು ನೀವು ಉಳಿಸಲು ಬಯಸುವ ಕಡತಕೋಶವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಈ ಕಡತಕೋಶವು ಅಸ್ತಿತ್ವದಲ್ಲಿರಬೇಕು."
 
-#: ../src/nact/caja-actions-config.glade.h:78
+#: ../src/cact/caja-actions-config.glade.h:78
 msgid ""
 "Select the kind of files where you want your action to appear. If you don't "
 "know what to choose, try selecting just 'file' which is the most common "
@@ -873,33 +873,33 @@ msgid ""
 msgstr "ನಿಮ್ಮ ಕ್ರಿಯೆಯು ಎಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳಬೇಕೊ ಆ ಕಡತಗಳ ಬಗೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಏನನ್ನು ಆರಿಸಬೇಕೆಂದು ನಿಮಗೆ ತಿಳಿಯದೆ ಇದ್ದಲ್ಲಿ, ಸಾಮಾನ್ಯವಾಗಿ ಆರಿಸುವ 'file' ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. '+' ಗುಂಡಿಯನ್ನು ಒತ್ತುವ ಮೂಲಕ ನೀವು ಹೊಸ ಸ್ಕೀಮ್ ಅನ್ನು ಸೇರಿಸಬಹುದು."
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../src/nact/caja-actions-config.glade.h:80
+#: ../src/cact/caja-actions-config.glade.h:80
 msgid "The MATE Translation Project <mate-i18n@gnome.org>"
 msgstr "ಶಂಕರ್ ಪ್ರಸಾದ್ <mate-i18n@gnome.org>"
 
-#: ../src/nact/caja-actions-config.glade.h:81
+#: ../src/cact/caja-actions-config.glade.h:81
 msgid ""
 "The command that will be launched by selecting the action in Caja popup "
 "menu."
 msgstr "ನಾಟಿಲಸ್ ಪುಟಿಕೆ ಮೆನುವನ್ನು ಕ್ರಿಯೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಾಗ ಆರಂಭಗೊಳ್ಳುವ ಆಜ್ಞೆ."
 
-#: ../src/nact/caja-actions-config.glade.h:82
+#: ../src/cact/caja-actions-config.glade.h:82
 msgid "This software is licensed under the GNU Genaral Public License (GPL)"
 msgstr "ಈ ತಂತ್ರಾಂಶವನ್ನು GNU Genaral Public License (GPL) ಅಡಿಯಲ್ಲಿ ಲೈಸೆನ್ಸ್ ಮಾಡಲಾಗಿದೆ"
 
-#: ../src/nact/caja-actions-config.glade.h:83
+#: ../src/cact/caja-actions-config.glade.h:83
 msgid "Tooltip of the menu item that will appear in the Caja statusbar."
 msgstr "ನಾಟಿಲಸ್ ಸ್ಥಿತಿ ಪಟ್ಟಿಕೆಯಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುವ ಮೆನು ಅಂಶ ಉಪಕರಣಸಲಹೆ."
 
-#: ../src/nact/caja-actions-config.glade.h:84
+#: ../src/cact/caja-actions-config.glade.h:84
 msgid "Tooltip:"
 msgstr "ಉಪಕರಣಸಲಹೆ:"
 
-#: ../src/nact/caja-actions-config.glade.h:85
+#: ../src/cact/caja-actions-config.glade.h:85
 msgid "_Browse"
 msgstr "ವೀಕ್ಷಿಸು(_B)"
 
-#: ../src/nact/caja-actions-config.glade.h:86
+#: ../src/cact/caja-actions-config.glade.h:86
 msgid "_Legend"
 msgstr "ಲೆಜೆಂಡ್(_L)"
 

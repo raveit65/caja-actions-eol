@@ -1,0 +1,24 @@
+<sect2 id="usage-save">
+  <title>Saving your modifications</title>
+  <para>
+    To save your modifications, choose
+    <menuchoice>
+      <shortcut>
+        <keycombo>
+          <keycap>Ctrl</keycap>
+          <keycap>S</keycap>
+        </keycombo>
+      </shortcut>
+      <guimenu>File</guimenu>
+      <guisubmenu>Save</guisubmenu>
+    </menuchoice>.
+  </para>
+  <para>
+    All your pending modifications will be saved.
+    New items will be created by the first available writable I/O provider.
+  </para>
+  <para>
+    &prodname; also has an Auto-save feature which is configurable in 
+    <guimenuitem>Preferences</guimenuitem> dialog box.
+  </para>
+</sect2>

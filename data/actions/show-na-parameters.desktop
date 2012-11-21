@@ -1,0 +1,25 @@
+
+[Desktop Entry]
+Type=Action
+Profiles=profile-pre-v2;
+Name[en_US]=Display Caja-Actions Parameters
+Name[en]=Display Caja-Actions Parameters
+Name[C]=Display Caja-Actions Parameters
+Icon[en_US]=/usr/share/icons/hicolor/16x16/apps/caja-actions.png
+Icon[en]=/usr/share/icons/hicolor/16x16/apps/caja-actions.png
+Icon[C]=/usr/share/icons/hicolor/16x16/apps/caja-actions.png
+ToolbarLabel[en_US]=Display Caja-Actions Parameters
+ToolbarLabel[en]=Display Caja-Actions Parameters
+ToolbarLabel[C]=Display Caja-Actions Parameters
+Tooltip[en_US]=Display the Caja-Actions parameters
+Tooltip[en]=Display the Caja-Actions parameters
+Tooltip[C]=Display the Caja-Actions parameters
+TargetLocation=true
+TargetToolbar=true
+Enabled = false
+
+[X-Action-Profile profile-pre-v2]
+Exec=matedialog --list --text="Caja-Actions parameters for the selected items:" --column="Parameter" --column="Token" --column="Value" "space-separated list of basenames" %%B "%B" "(first) basename" %%b "%b" "count selection" %%c "%c" "(first) base directory" %%d "%d" "space-separated list of base directories" %%D "%D" "(first) filename" %%f "%f" "space-separated list of filenames" %%F "%F" "hostname" %%h "%h" "(first) mimetype" %%m "%m" "space-separated list of mimetypes" %%M "%M" "username" %%n "%n" "port number" %%p "%p" "scheme" %%s "%s" "(first) URI" %%u "%u" "space-separated list of URIs" %%U "%U" "(first) basename without extension" %%w "%w" "space-separated list of basenames w/o extension" %%W "%W" "(first) extension" %%x "%x" "space-separated list of extensions" %%X "%X" --height=370 --width=768 --print-column=ALL
+Name[en_US]=Profile automatically created from pre-v2 action
+Name[en]=Profile automatically created from pre-v2 action
+Name[C]=Profile automatically created from pre-v2 action

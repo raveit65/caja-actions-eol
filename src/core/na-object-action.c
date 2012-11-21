@@ -3,23 +3,22 @@
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -33,6 +32,7 @@
 #endif
 
 #include <glib/gi18n.h>
+#include <libintl.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -45,13 +45,13 @@
 
 /* private class data
  */
-struct NAObjectActionClassPrivate {
+struct _NAObjectActionClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct NAObjectActionPrivate {
+struct _NAObjectActionPrivate {
 	gboolean dispose_has_run;
 };
 
@@ -71,23 +71,25 @@ static void         instance_set_property( GObject *object, guint property_id, c
 static void         instance_dispose( GObject *object );
 static void         instance_finalize( GObject *object );
 
-static void         object_copy( NAObject *target, const NAObject *source, gboolean recursive );
+static void         object_dump( const NAObject *object );
+static gboolean     object_are_equal( const NAObject *a, const NAObject *b );
 static gboolean     object_is_valid( const NAObject *object );
 
-static void         ifactory_object_iface_init( NAIFactoryObjectInterface *iface );
+static void         ifactory_object_iface_init( NAIFactoryObjectInterface *iface, void *user_data );
 static guint        ifactory_object_get_version( const NAIFactoryObject *instance );
 static NADataGroup *ifactory_object_get_groups( const NAIFactoryObject *instance );
-static gboolean     ifactory_object_are_equal( const NAIFactoryObject *a, const NAIFactoryObject *b );
-static gboolean     ifactory_object_is_valid( const NAIFactoryObject *object );
-static void         ifactory_object_read_start( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages );
 static void         ifactory_object_read_done( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages );
 static guint        ifactory_object_write_start( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages );
 static guint        ifactory_object_write_done( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages );
 
-static void         convert_pre_v2_action( NAIFactoryObject *instance );
-static void         deals_with_toolbar_label( NAIFactoryObject *instance );
+static void         icontext_iface_init( NAIContextInterface *iface, void *user_data );
+static gboolean     icontext_is_candidate( NAIContext *object, guint target, GList *selection );
 
-static gboolean     object_object_is_valid( const NAObjectAction *action );
+static NAObjectProfile *read_done_convert_v1_to_v2( NAIFactoryObject *instance );
+static void             read_done_deals_with_toolbar_label( NAIFactoryObject *instance );
+
+static guint        write_done_write_profiles( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages );
+
 static gboolean     is_valid_label( const NAObjectAction *action );
 static gboolean     is_valid_toolbar_label( const NAObjectAction *action );
 
@@ -122,6 +124,12 @@ register_type( void )
 		( GInstanceInitFunc ) instance_init
 	};
 
+	static const GInterfaceInfo icontext_iface_info = {
+		( GInterfaceInitFunc ) icontext_iface_init,
+		NULL,
+		NULL
+	};
+
 	static const GInterfaceInfo ifactory_object_iface_info = {
 		( GInterfaceInitFunc ) ifactory_object_iface_init,
 		NULL,
@@ -130,9 +138,11 @@ register_type( void )
 
 	g_debug( "%s", thisfn );
 
-	type = g_type_register_static( NA_OBJECT_ITEM_TYPE, "NAObjectAction", &info, 0 );
+	type = g_type_register_static( NA_TYPE_OBJECT_ITEM, "NAObjectAction", &info, 0 );
 
-	g_type_add_interface_static( type, NA_IFACTORY_OBJECT_TYPE, &ifactory_object_iface_info );
+	g_type_add_interface_static( type, NA_TYPE_ICONTEXT, &icontext_iface_info );
+
+	g_type_add_interface_static( type, NA_TYPE_IFACTORY_OBJECT, &ifactory_object_iface_info );
 
 	return( type );
 }
@@ -155,9 +165,8 @@ class_init( NAObjectActionClass *klass )
 	object_class->finalize = instance_finalize;
 
 	naobject_class = NA_OBJECT_CLASS( klass );
-	naobject_class->dump = NULL;
-	naobject_class->copy = object_copy;
-	naobject_class->are_equal = NULL;
+	naobject_class->dump = object_dump;
+	naobject_class->are_equal = object_are_equal;
 	naobject_class->is_valid = object_is_valid;
 
 	klass->private = g_new0( NAObjectActionClassPrivate, 1 );
@@ -171,12 +180,12 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	static const gchar *thisfn = "na_object_action_instance_init";
 	NAObjectAction *self;
 
-	g_debug( "%s: instance=%p (%s), klass=%p",
-			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-
 	g_return_if_fail( NA_IS_OBJECT_ACTION( instance ));
 
 	self = NA_OBJECT_ACTION( instance );
+
+	g_debug( "%s: instance=%p (%s), klass=%p",
+			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
 
 	self->private = g_new0( NAObjectActionPrivate, 1 );
 }
@@ -211,13 +220,12 @@ instance_dispose( GObject *object )
 	static const gchar *thisfn = "na_object_action_instance_dispose";
 	NAObjectAction *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
-
 	g_return_if_fail( NA_IS_OBJECT_ACTION( object ));
 
 	self = NA_OBJECT_ACTION( object );
 
 	if( !self->private->dispose_has_run ){
+		g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 		self->private->dispose_has_run = TRUE;
 
@@ -234,11 +242,11 @@ instance_finalize( GObject *object )
 	static const gchar *thisfn = "na_object_action_instance_finalize";
 	NAObjectAction *self;
 
-	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
-
 	g_return_if_fail( NA_IS_OBJECT_ACTION( object ));
 
 	self = NA_OBJECT_ACTION( object );
+
+	g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
 
 	g_free( self->private );
 
@@ -249,39 +257,107 @@ instance_finalize( GObject *object )
 }
 
 static void
-object_copy( NAObject *target, const NAObject *source, gboolean recursive )
+object_dump( const NAObject *object )
 {
-	g_return_if_fail( NA_IS_OBJECT_ACTION( target ));
-	g_return_if_fail( NA_IS_OBJECT_ACTION( source ));
+	static const char *thisfn = "na_object_action_object_dump";
+	NAObjectAction *self;
 
-	if( !NA_OBJECT_ACTION( target )->private->dispose_has_run &&
-		!NA_OBJECT_ACTION( source )->private->dispose_has_run ){
+	g_return_if_fail( NA_IS_OBJECT_ACTION( object ));
 
-		na_factory_object_copy( NA_IFACTORY_OBJECT( target ), NA_IFACTORY_OBJECT( source ));
+	self = NA_OBJECT_ACTION( object );
+
+	if( !self->private->dispose_has_run ){
+		g_debug( "%s: object=%p (%s, ref_count=%d)", thisfn,
+				( void * ) object, G_OBJECT_TYPE_NAME( object ), G_OBJECT( object )->ref_count );
+
+		/* chain up to the parent class */
+		if( NA_OBJECT_CLASS( st_parent_class )->dump ){
+			NA_OBJECT_CLASS( st_parent_class )->dump( object );
+		}
+
+		g_debug( "+- end of dump" );
 	}
+}
+
+/*
+ * @a is the original object
+ * @b is the current one
+ *
+ * Even if they have both the same children list, the current action is
+ * considered modified as soon as one of its profile is itself modified.
+ */
+static gboolean
+object_are_equal( const NAObject *a, const NAObject *b )
+{
+	static const gchar *thisfn = "na_object_action_object_are_equal";
+	GList *it;
+	gboolean are_equal;
+
+	g_debug( "%s: a=%p, b=%p", thisfn, ( void * ) a, ( void * ) b );
+
+	for( it = na_object_get_items( b ) ; it ; it = it->next ){
+		if( na_object_is_modified( it->data )){
+			return( FALSE );
+		}
+	}
+
+	are_equal = TRUE;
+
+	/* chain call to parent class */
+	if( NA_OBJECT_CLASS( st_parent_class )->are_equal ){
+		are_equal &= NA_OBJECT_CLASS( st_parent_class )->are_equal( a, b );
+	}
+
+	return( are_equal );
 }
 
 static gboolean
 object_is_valid( const NAObject *object )
 {
+	static const gchar *thisfn = "na_object_action_object_is_valid";
+	gboolean is_valid;
+	NAObjectAction *action;
+
 	g_return_val_if_fail( NA_IS_OBJECT_ACTION( object ), FALSE );
 
-	return( object_object_is_valid( NA_OBJECT_ACTION( object )));
+	is_valid = FALSE;
+	action = NA_OBJECT_ACTION( object );
+
+	if( !action->private->dispose_has_run ){
+		g_debug( "%s: action=%p (%s)", thisfn, ( void * ) action, G_OBJECT_TYPE_NAME( action ));
+
+		is_valid = TRUE;
+
+		if( na_object_is_target_toolbar( action )){
+			is_valid &= is_valid_toolbar_label( action );
+		}
+
+		if( na_object_is_target_selection( action ) || na_object_is_target_location( action )){
+			is_valid &= is_valid_label( action );
+		}
+
+		if( !is_valid ){
+			na_object_debug_invalid( action, "no valid profile" );
+		}
+	}
+
+	/* chain up to the parent class */
+	if( NA_OBJECT_CLASS( st_parent_class )->is_valid ){
+		is_valid &= NA_OBJECT_CLASS( st_parent_class )->is_valid( object );
+	}
+
+	return( is_valid );
 }
 
 static void
-ifactory_object_iface_init( NAIFactoryObjectInterface *iface )
+ifactory_object_iface_init( NAIFactoryObjectInterface *iface, void *user_data )
 {
 	static const gchar *thisfn = "na_object_action_ifactory_object_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 
 	iface->get_version = ifactory_object_get_version;
 	iface->get_groups = ifactory_object_get_groups;
-	iface->copy = NULL;
-	iface->are_equal = ifactory_object_are_equal;
-	iface->is_valid = ifactory_object_is_valid;
-	iface->read_start = ifactory_object_read_start;
 	iface->read_done = ifactory_object_read_done;
 	iface->write_start = ifactory_object_write_start;
 	iface->write_done = ifactory_object_write_done;
@@ -299,45 +375,40 @@ ifactory_object_get_groups( const NAIFactoryObject *instance )
 	return( action_data_groups );
 }
 
-static gboolean
-ifactory_object_are_equal( const NAIFactoryObject *a, const NAIFactoryObject *b )
-{
-	return( na_object_item_are_equal( NA_OBJECT_ITEM( a ), NA_OBJECT_ITEM( b )));
-}
-
-static gboolean
-ifactory_object_is_valid( const NAIFactoryObject *object )
-{
-	g_return_val_if_fail( NA_IS_OBJECT_ACTION( object ), FALSE );
-
-	return( object_object_is_valid( NA_OBJECT_ACTION( object )));
-}
-
-static void
-ifactory_object_read_start( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages )
-{
-}
-
 /*
- * at this time, we don't yet have readen the profiles as this will be
- * done in ifactory_provider_read_done - we so just be able to deal with
- * action-specific properties (not check for profiles consistency)
+ * at this time, we don't yet have read the profiles as this will be
+ * triggered by ifactory_provider_read_done - we so just are able to deal with
+ * action-specific properties (not to check for profiles consistency)
  */
 static void
 ifactory_object_read_done( NAIFactoryObject *instance, const NAIFactoryProvider *reader, void *reader_data, GSList **messages )
 {
+	guint iversion;
+	NAObjectProfile *profile;
+
 	g_debug( "na_object_action_ifactory_object_read_done: instance=%p", ( void * ) instance );
 
-	/* may attach a new profile if we detect a pre-v2 action
+	na_object_item_deals_with_version( NA_OBJECT_ITEM( instance ));
+
+	/* should attach a new profile if we detect a pre-v2 action
+	 * the v1_to_v2 conversion must be followed by a v2_to_v3 one
 	 */
-	convert_pre_v2_action( instance );
+	iversion = na_object_get_iversion( instance );
+	if( iversion < 2 ){
+		profile = read_done_convert_v1_to_v2( instance );
+		na_object_profile_convert_v2_to_last( profile );
+	}
 
 	/* deals with obsoleted data, i.e. data which may have been written in the past
-	 * but are no long written by now
+	 * but are no long written by now - not relevant for a menu
 	 */
-	deals_with_toolbar_label( instance );
+	read_done_deals_with_toolbar_label( instance );
 
-	/* last, set other action defaults
+	/* prepare the context after the reading
+	 */
+	na_icontext_read_done( NA_ICONTEXT( instance ));
+
+	/* last, set action defaults
 	 */
 	na_factory_object_set_defaults( instance );
 }
@@ -345,7 +416,7 @@ ifactory_object_read_done( NAIFactoryObject *instance, const NAIFactoryProvider 
 static guint
 ifactory_object_write_start( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages )
 {
-	na_object_item_factory_write_start( NA_OBJECT_ITEM( instance ));
+	na_object_item_rebuild_children_slist( NA_OBJECT_ITEM( instance ));
 
 	return( NA_IIO_PROVIDER_CODE_OK );
 }
@@ -353,97 +424,87 @@ ifactory_object_write_start( NAIFactoryObject *instance, const NAIFactoryProvide
 static guint
 ifactory_object_write_done( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages )
 {
-	static const gchar *thisfn = "na_object_action_ifactory_object_write_done";
 	guint code;
-	GSList *children_slist, *ic;
-	NAObjectProfile *profile;
 
-	code = NA_IIO_PROVIDER_CODE_OK;
+	g_return_val_if_fail( NA_IS_OBJECT_ACTION( instance ), NA_IIO_PROVIDER_CODE_PROGRAM_ERROR );
 
-	if( NA_IS_OBJECT_ACTION( instance )){
-		children_slist = na_object_get_items_slist( instance );
-
-		for( ic = children_slist ; ic && code == NA_IIO_PROVIDER_CODE_OK ; ic = ic->next ){
-			profile = NA_OBJECT_PROFILE( na_object_get_item( instance, ic->data ));
-
-			if( profile ){
-				code = na_ifactory_provider_write_item( writer, writer_data, NA_IFACTORY_OBJECT( profile ), messages );
-
-			} else {
-				g_warning( "%s: profile not found: %s", thisfn, ( const gchar * ) ic->data );
-			}
-		}
-	}
+	code = write_done_write_profiles( instance, writer, writer_data, messages );
 
 	return( code );
 }
 
-/*
- * do we have a pre-v2 action ?
- *  it may be identified by an version = "1.x"
- *  or by any data found in data_def_action_v1 (defined in na-object-action-factory.c)
- *  -> move obsoleted data to a new profile
- */
 static void
-convert_pre_v2_action( NAIFactoryObject *instance )
+icontext_iface_init( NAIContextInterface *iface, void *user_data )
 {
-	gboolean is_pre_v2;
+	static const gchar *thisfn = "na_object_action_icontext_iface_init";
+
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
+
+	iface->is_candidate = icontext_is_candidate;
+}
+
+static gboolean
+icontext_is_candidate( NAIContext *object, guint target, GList *selection )
+{
+	return( TRUE );
+}
+
+/*
+ * if we have a pre-v2 action
+ *  any data found in data_def_action_v1 (defined in na-object-action-factory.c)
+ *  is obsoleted and should be moved to a new profile
+ *
+ * actions read from .desktop already have iversion=3 (cf. desktop_read_start)
+ * so v1 actions may only come from xml or mateconf
+ *
+ * returns the newly defined profile
+ */
+static NAObjectProfile *
+read_done_convert_v1_to_v2( NAIFactoryObject *instance )
+{
+	static const gchar *thisfn = "na_object_action_read_done_read_done_convert_v1_to_last";
 	GList *to_move;
 	NADataDef *def;
 	NADataBoxed *boxed;
-	gchar *version;
 	GList *ibox;
 	NAObjectProfile *profile;
 
-	is_pre_v2 = FALSE;
+	/* search for old data in the body: this is only possible before profiles
+	 * because starting with contexts, iversion was written
+	 */
 	to_move = NULL;
-
 	def = data_def_action_v1;
+
 	while( def->name ){
-		boxed = na_ifactory_object_get_data_boxed( instance , def->name );
+		boxed = na_ifactory_object_get_data_boxed( instance, def->name );
 		if( boxed ){
-			g_debug( "na_object_action_convert_pre_v2_action: " \
-					 "boxed=%p (%s) marked to be moved from action body to profile",
-							 ( void * ) boxed, def->name );
-			to_move =g_list_prepend( to_move, boxed );
+			g_debug( "%s: boxed=%p (%s) marked to be moved from action body to profile",
+							 thisfn, ( void * ) boxed, def->name );
+			to_move = g_list_prepend( to_move, boxed );
 		}
 		def++;
 	}
 
-	if( to_move ){
-		is_pre_v2 = TRUE;
+	/* now create a new profile
+	 */
+	profile = na_object_profile_new();
+	na_object_set_id( profile, "profile-pre-v2" );
+	na_object_set_label( profile, _( "Profile automatically created from pre-v2 action" ));
+	na_object_attach_profile( instance, profile );
 
-	} else {
-		version = na_object_get_version( instance );
-		if( version && strlen( version ) && atoi( version ) < 2 ){
-			is_pre_v2 = TRUE;
-		}
-		g_free( version );
+	for( ibox = to_move ; ibox ; ibox = ibox->next ){
+		na_factory_object_move_boxed(
+				NA_IFACTORY_OBJECT( profile ), instance, NA_DATA_BOXED( ibox->data ));
 	}
 
-	if( is_pre_v2 ){
-		profile = na_object_profile_new();
-		na_object_set_id( profile, "profile-pre-v2" );
-		na_object_set_label( profile, _( "Profile automatically created from pre-v2 action" ));
-		na_object_attach_profile( instance, profile );
-
-		if( to_move ){
-			for( ibox = to_move ; ibox ; ibox = ibox->next ){
-				na_factory_object_move_boxed(
-						NA_IFACTORY_OBJECT( profile ), instance, NA_DATA_BOXED( ibox->data ));
-			}
-		}
-
-		na_factory_object_set_defaults( NA_IFACTORY_OBJECT( profile ));
-		na_object_set_last_version( instance );
-	}
+	return( profile );
 }
 
 /*
  * if toolbar-same-label is true, then ensure that this is actually true
  */
 static void
-deals_with_toolbar_label( NAIFactoryObject *instance )
+read_done_deals_with_toolbar_label( NAIFactoryObject *instance )
 {
 	gchar *toolbar_label;
 	gchar *action_label;
@@ -465,47 +526,33 @@ deals_with_toolbar_label( NAIFactoryObject *instance )
 	g_free( toolbar_label );
 }
 
-static gboolean
-object_object_is_valid( const NAObjectAction *action )
+/*
+ * write the profiles of the action
+ * note that subitems string list has been rebuilt on write_start
+ */
+static guint
+write_done_write_profiles( NAIFactoryObject *instance, const NAIFactoryProvider *writer, void *writer_data, GSList **messages )
 {
-	gboolean is_valid;
-	GList *profiles, *ip;
-	gint valid_profiles;
+	static const gchar *thisfn = "na_object_action_write_done_write_profiles";
+	guint code;
+	GSList *children_slist, *ic;
+	NAObjectProfile *profile;
 
-	is_valid = FALSE;
+	code = NA_IIO_PROVIDER_CODE_OK;
+	children_slist = na_object_get_items_slist( instance );
 
-	if( !action->private->dispose_has_run ){
+	for( ic = children_slist ; ic && code == NA_IIO_PROVIDER_CODE_OK ; ic = ic->next ){
+		profile = NA_OBJECT_PROFILE( na_object_get_item( instance, ic->data ));
 
-		is_valid = TRUE;
+		if( profile ){
+			code = na_ifactory_provider_write_item( writer, writer_data, NA_IFACTORY_OBJECT( profile ), messages );
 
-		if( is_valid ){
-			if( na_object_is_target_toolbar( action )){
-				is_valid = is_valid_toolbar_label( action );
-			}
-		}
-
-		if( is_valid ){
-			if( na_object_is_target_selection( action )){
-				is_valid = is_valid_label( action );
-			}
-		}
-
-		if( is_valid ){
-			valid_profiles = 0;
-			profiles = na_object_get_items( action );
-			for( ip = profiles ; ip && !valid_profiles ; ip = ip->next ){
-				if( na_object_is_valid( ip->data )){
-					valid_profiles += 1;
-				}
-			}
-			is_valid = ( valid_profiles > 0 );
-			if( !is_valid ){
-				na_object_debug_invalid( action, "no valid profile" );
-			}
+		} else {
+			g_warning( "%s: profile not found: %s", thisfn, ( const gchar * ) ic->data );
 		}
 	}
 
-	return( is_valid );
+	return( code );
 }
 
 static gboolean
@@ -551,13 +598,15 @@ is_valid_toolbar_label( const NAObjectAction *action )
  * but without any profile.
  *
  * Returns: the newly allocated #NAObjectAction object.
+ *
+ * Since: 2.30
  */
 NAObjectAction *
 na_object_action_new( void )
 {
 	NAObjectAction *action;
 
-	action = g_object_new( NA_OBJECT_ACTION_TYPE, NULL );
+	action = g_object_new( NA_TYPE_OBJECT_ACTION, NULL );
 
 	return( action );
 }
@@ -568,6 +617,8 @@ na_object_action_new( void )
  * Allocates a new #NAObjectAction object along with a default profile.
  *
  * Returns: the newly allocated #NAObjectAction action.
+ *
+ * Since: 2.30
  */
 NAObjectAction *
 na_object_action_new_with_profile( void )
@@ -577,7 +628,7 @@ na_object_action_new_with_profile( void )
 
 	action = na_object_action_new();
 	profile = na_object_profile_new();
-	na_object_action_attach_profile( action, profile );
+	na_object_attach_profile( action, profile );
 
 	return( action );
 }
@@ -589,6 +640,8 @@ na_object_action_new_with_profile( void )
  * These two objects have suitable default values.
  *
  * Returns: the newly allocated #NAObjectAction action.
+ *
+ * Since: 2.30
  */
 NAObjectAction *
 na_object_action_new_with_defaults( void )
@@ -598,12 +651,12 @@ na_object_action_new_with_defaults( void )
 
 	action = na_object_action_new();
 	na_object_set_new_id( action, NULL );
-	na_object_set_label( action, NEW_CAJA_ACTION );
-	na_object_set_toolbar_label( action, NEW_CAJA_ACTION );
+	na_object_set_label( action, gettext( NEW_CAJA_ACTION ));
+	na_object_set_toolbar_label( action, gettext( NEW_CAJA_ACTION ));
 	na_factory_object_set_defaults( NA_IFACTORY_OBJECT( action ));
 
 	profile = na_object_profile_new_with_defaults();
-	na_object_action_attach_profile( action, profile );
+	na_object_attach_profile( action, profile );
 
 	return( action );
 }
@@ -619,12 +672,14 @@ na_object_action_new_with_defaults( void )
  * which is not yet allocated. The provided name is so only suitable
  * for the specified @action.
  *
- * Returns: a newly allocated profile name, which should be g_free() by
- * the caller.
- *
  * When inserting a list of profiles in the action, we iter first for
  * new names, before actually do the insertion. We so keep the last
  * allocated name to avoid to allocate the same one twice.
+ *
+ * Returns: a newly allocated profile name, which should be g_free() by
+ * the caller.
+ *
+ * Since: 2.30
  */
 gchar *
 na_object_action_get_new_profile_name( const NAObjectAction *action )
@@ -666,6 +721,8 @@ na_object_action_get_new_profile_name( const NAObjectAction *action )
  * @profile: the #NAObjectProfile profile to be attached to @action.
  *
  * Adds a profile at the end of the list of profiles.
+ *
+ * Since: 2.30
  */
 void
 na_object_action_attach_profile( NAObjectAction *action, NAObjectProfile *profile )
@@ -685,6 +742,8 @@ na_object_action_attach_profile( NAObjectAction *action, NAObjectProfile *profil
  * @action: the #NAObjectAction action to update.
  *
  * Set the version number of the @action to the last one.
+ *
+ * Since: 2.30
  */
 void
 na_object_action_set_last_version( NAObjectAction *action )
@@ -695,33 +754,4 @@ na_object_action_set_last_version( NAObjectAction *action )
 
 		na_object_set_version( action, "2.0" );
 	}
-}
-
-/**
- * na_object_action_is_candidate:
- * @action: the #NAObjectAction to be tested.
- * @target: the current target.
- * @selection: the current Caja selection.
- *
- * Returns: %TRUE if the @action may be candidate for this @target.
- *
- * Note that this public function will become NAIContext::is_candidate
- * when NAObjectAction will implement the interface.
- */
-gboolean
-na_object_action_is_candidate( const NAObjectAction *action, guint target, GList *selection )
-{
-	gboolean is_candidate = FALSE;
-
-	g_return_val_if_fail( NA_IS_OBJECT_ACTION( action ), is_candidate );
-
-	if( !action->private->dispose_has_run ){
-
-		is_candidate =
-			( na_object_is_target_selection( action ) && target == ITEM_TARGET_SELECTION ) ||
-			( na_object_is_target_location( action ) && target == ITEM_TARGET_LOCATION ) ||
-			( na_object_is_target_toolbar( action ) && target == ITEM_TARGET_TOOLBAR );
-	}
-
-	return( is_candidate );
 }

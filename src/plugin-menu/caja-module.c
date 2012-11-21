@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -34,8 +33,12 @@
 
 #include <string.h>
 #include <syslog.h>
+#include <unistd.h>
 
 #include <libcaja-extension/caja-extension-types.h>
+
+#include <core/na-mateconf-migration.h>
+#include <core/na-settings.h>
 
 #include "caja-actions.h"
 
@@ -69,6 +72,12 @@ caja_module_initialize( GTypeModule *module )
 
 	g_type_module_set_name( module, PACKAGE_STRING );
 
+	/* pwi 2011-01-05
+	 * run MateConf migration tools before doing anything else
+	 * above all before allocating a new NAPivot
+	 */
+	na_mateconf_migration_run();
+
 	caja_actions_register_type( module );
 }
 
@@ -83,6 +92,9 @@ caja_module_list_types( const GType **types, int *num_types )
 	type_list[0] = CAJA_ACTIONS_TYPE;
 	*types = type_list;
 	*num_types = 1;
+
+	/* this may let us some time to attach caja to the debugger :) */
+	/*sleep( 60 ); */
 }
 
 void
@@ -105,14 +117,26 @@ caja_module_shutdown( void )
 /*
  * a log handler that we install when in development mode in order to be
  * able to log plugin runtime
- * TODO: the debug flag should be dynamic, so that an advanced user could
- * setup a given key and obtain a full log to send to Bugzilla..
- * For now, is always install when compiled in maintainer mode, never else
+ *
+ * enabling log in the plugin menu at runtime requires a Caja restart
+ * (because we need to run in the code, which embeds g_debug instructions,
+ *  and we have to do so before the log handler be set, or we will run
+ *  into a deep stack recursion)
  */
 static void
 set_log_handler( void )
 {
-	st_default_log_func = g_log_set_default_handler(( GLogFunc ) log_handler, NULL );
+	gboolean is_log_enabled;
+
+#ifdef NA_MAINTAINER_MODE
+	is_log_enabled = TRUE;
+#else
+	is_log_enabled =
+			g_getenv( CAJA_ACTIONS_DEBUG ) ||
+			na_settings_get_boolean( NA_IPREFS_PLUGIN_MENU_LOG, NULL, NULL );
+#endif
+
+	st_default_log_func = g_log_set_default_handler(( GLogFunc ) log_handler, GUINT_TO_POINTER( is_log_enabled ));
 }
 
 /*
@@ -126,19 +150,19 @@ static void
 log_handler( const gchar *log_domain, GLogLevelFlags log_level, const gchar *message, gpointer user_data )
 {
 	gchar *tmp;
+	gboolean is_log_enabled;
 
-	tmp = g_strdup( "" );
-	if( log_domain && strlen( log_domain )){
+	is_log_enabled = ( gboolean ) GPOINTER_TO_UINT( user_data );
+
+	if( is_log_enabled ){
+		tmp = g_strdup( "" );
+
+		if( log_domain && strlen( log_domain )){
+			g_free( tmp );
+			tmp = g_strdup_printf( "[%s] ", log_domain );
+		}
+
+		syslog( LOG_USER | LOG_DEBUG, "%s%s", tmp, message );
 		g_free( tmp );
-		tmp = g_strdup_printf( "[%s] ", log_domain );
 	}
-
-#ifdef NA_MAINTAINER_MODE
-	/*( *st_default_log_func )( log_domain, log_level, message, user_data );*/
-	syslog( LOG_USER | LOG_DEBUG, "%s%s", tmp, message );
-#else
-	/* do nothing */
-#endif
-
-	g_free( tmp );
 }

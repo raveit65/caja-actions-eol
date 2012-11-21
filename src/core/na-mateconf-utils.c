@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,6 +31,8 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_MATECONF
+
 #include <string.h>
 
 #include <api/na-core-utils.h>
@@ -39,16 +40,21 @@
 
 static void        dump_entry( MateConfEntry *entry, void *user_data );
 static MateConfValue *read_value( MateConfClient *mateconf, const gchar *path, gboolean use_schema, MateConfValueType type );
+
+#ifdef NA_ENABLE_DEPRECATED
 static gboolean    sync_mateconf( MateConfClient *mateconf, gchar **message );
+#endif /* NA_ENABLE_DEPRECATED */
 
 /**
  * na_mateconf_utils_get_subdirs:
- * @mateconf: a  #MateConfClient instance.
- * @path: a full path to be readen.
+ * @mateconf: a MateConfClient instance.
+ * @path: a full path to be read.
  *
  * Returns: a list of full path subdirectories.
  *
- * The returned list should be #na_mateconf_utils_free_subdirs() by the caller.
+ * The returned list should be na_mateconf_utils_free_subdirs() by the caller.
+ *
+ * Since: 2.30
  */
 GSList *
 na_mateconf_utils_get_subdirs( MateConfClient *mateconf, const gchar *path )
@@ -70,9 +76,11 @@ na_mateconf_utils_get_subdirs( MateConfClient *mateconf, const gchar *path )
 
 /**
  * na_mateconf_utils_free_subdirs:
- * @subdirs: the subdirectory list as returned from #na_mateconf_utils_get_subdirs().
+ * @subdirs: the subdirectory list as returned from na_mateconf_utils_get_subdirs().
  *
  * Release the list.
+ *
+ * Since: 2.30
  */
 void
 na_mateconf_utils_free_subdirs( GSList *subdirs )
@@ -82,11 +90,13 @@ na_mateconf_utils_free_subdirs( GSList *subdirs )
 
 /**
  * na_mateconf_utils_has_entry:
- * @entries: the list of entries as returned by #na_mateconf_utils_get_entries().
+ * @entries: the list of entries as returned by na_mateconf_utils_get_entries().
  * @entry: the entry to be tested.
  *
  * Returns: %TRUE if the given @entry exists in the specified @entries,
  * %FALSE else.
+ *
+ * Since: 2.30
  */
 gboolean
 na_mateconf_utils_has_entry( GSList *entries, const gchar *entry )
@@ -107,8 +117,8 @@ na_mateconf_utils_has_entry( GSList *entries, const gchar *entry )
 
 /**
  * na_mateconf_utils_get_entries:
- * @mateconf: a  #MateConfClient instance.
- * @path: a full path to be readen.
+ * @mateconf: a  MateConfClient instance.
+ * @path: a full path to be read.
  *
  * Loads all the key=value pairs of the specified key.
  *
@@ -117,6 +127,8 @@ na_mateconf_utils_has_entry( GSList *entries, const gchar *entry )
  * The returned list is not recursive : it contains only the immediate
  * children of @path. To free the returned list, call
  * na_mateconf_utils_free_entries().
+ *
+ * Since: 2.30
  */
 GSList *
 na_mateconf_utils_get_entries( MateConfClient *mateconf, const gchar *path )
@@ -146,6 +158,8 @@ na_mateconf_utils_get_entries( MateConfClient *mateconf, const gchar *path )
  *
  * If the entry was not found, or was not of boolean type, @value is set
  * to %FALSE.
+ *
+ * Since: 2.30
  */
 gboolean
 na_mateconf_utils_get_bool_from_entries( GSList *entries, const gchar *entry, gboolean *value )
@@ -193,6 +207,8 @@ na_mateconf_utils_get_bool_from_entries( GSList *entries, const gchar *entry, gb
  * to %NULL.
  *
  * If @value is returned not NULL, it should be g_free() by the caller.
+ *
+ * Since: 2.30
  */
 gboolean
 na_mateconf_utils_get_string_from_entries( GSList *entries, const gchar *entry, gchar **value )
@@ -239,8 +255,10 @@ na_mateconf_utils_get_string_from_entries( GSList *entries, const gchar *entry, 
  * If the entry was not found, or was not of string list type, @value
  * is set to %NULL.
  *
- * If @value is returned not NULL, it should be na_utils_free_string_list()
+ * If @value is returned not NULL, it should be na_core_utils_slist_free()
  * by the caller.
+ *
+ * Since: 2.30
  */
 gboolean
 na_mateconf_utils_get_string_list_from_entries( GSList *entries, const gchar *entry, GSList **value )
@@ -282,14 +300,16 @@ na_mateconf_utils_get_string_list_from_entries( GSList *entries, const gchar *en
 
 /**
  * na_mateconf_utils_dump_entries:
- * @list: a list of #MateConfEntry as returned by na_mateconf_utils_get_entries().
+ * @entries: a list of #MateConfEntry as returned by na_mateconf_utils_get_entries().
  *
  * Dumps the content of the entries.
+ *
+ * Since: 2.30
  */
 void
-na_mateconf_utils_dump_entries( GSList *list )
+na_mateconf_utils_dump_entries( GSList *entries )
 {
-	g_slist_foreach( list, ( GFunc ) dump_entry, NULL );
+	g_slist_foreach( entries, ( GFunc ) dump_entry, NULL );
 }
 
 static void
@@ -298,6 +318,9 @@ dump_entry( MateConfEntry *entry, void *user_data )
 	static const gchar *thisfn = "na_mateconf_utils_dump_entry";
 	gchar *str = NULL;
 	gboolean str_free = FALSE;
+	GSList *value_list, *it;
+	MateConfValueType type_list;
+	GString *string;
 
 	gchar *key = g_path_get_basename( mateconf_entry_get_key( entry ));
 	MateConfValue *value = mateconf_entry_get_value( entry );
@@ -323,6 +346,27 @@ dump_entry( MateConfEntry *entry, void *user_data )
 				str_free = TRUE;
 				break;
 
+			case MATECONF_VALUE_LIST:
+				type_list = mateconf_value_get_list_type( value );
+				value_list = mateconf_value_get_list( value );
+				switch( type_list ){
+					case MATECONF_VALUE_STRING:
+						string = g_string_new( "[" );
+						for( it = value_list ; it ; it = it->next ){
+							if( g_utf8_strlen( string->str, -1 ) > 1 ){
+								string = g_string_append( string, "," );
+							}
+							string = g_string_append( string, ( const gchar * ) mateconf_value_get_string( it->data ));
+						}
+						string = g_string_append( string, "]" );
+						str = g_string_free( string, FALSE );
+						break;
+					default:
+						str = g_strdup( "(undetermined value)" );
+				}
+				str_free = TRUE;
+				break;
+
 			default:
 				str = g_strdup( "(undetermined value)" );
 				str_free = TRUE;
@@ -340,26 +384,30 @@ dump_entry( MateConfEntry *entry, void *user_data )
 
 /**
  * na_mateconf_utils_free_entries:
- * @list: a list of #MateConfEntry as returned by na_mateconf_utils_get_entries().
+ * @entries: a list of #MateConfEntry as returned by na_mateconf_utils_get_entries().
  *
  * Releases the provided list.
+ *
+ * Since: 2.30
  */
 void
-na_mateconf_utils_free_entries( GSList *list )
+na_mateconf_utils_free_entries( GSList *entries )
 {
-	g_slist_foreach( list, ( GFunc ) mateconf_entry_unref, NULL );
-	g_slist_free( list );
+	g_slist_foreach( entries, ( GFunc ) mateconf_entry_unref, NULL );
+	g_slist_free( entries );
 }
 
 /**
  * na_mateconf_utils_read_bool:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the key.
  * @use_schema: whether to use the default value from schema, or not.
  * @default_value: default value to be used if schema is not used or
  * doesn't exist.
  *
  * Returns: the required boolean value.
+ *
+ * Since: 2.30
  */
 gboolean
 na_mateconf_utils_read_bool( MateConfClient *mateconf, const gchar *path, gboolean use_schema, gboolean default_value )
@@ -382,13 +430,15 @@ na_mateconf_utils_read_bool( MateConfClient *mateconf, const gchar *path, gboole
 
 /**
  * na_mateconf_utils_read_int:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the key.
  * @use_schema: whether to use the default value from schema, or not.
  * @default_value: default value to be used if schema is not used or
  * doesn't exist.
  *
  * Returns: the required integer value.
+ *
+ * Since: 2.30
  */
 gint
 na_mateconf_utils_read_int( MateConfClient *mateconf, const gchar *path, gboolean use_schema, gint default_value )
@@ -412,7 +462,7 @@ na_mateconf_utils_read_int( MateConfClient *mateconf, const gchar *path, gboolea
 
 /**
  * na_mateconf_utils_read_string:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the key.
  * @use_schema: whether to use the default value from schema, or not.
  * @default_value: default value to be used if schema is not used or
@@ -420,6 +470,8 @@ na_mateconf_utils_read_int( MateConfClient *mateconf, const gchar *path, gboolea
  *
  * Returns: the required string value in a newly allocated string which
  * should be g_free() by the caller.
+ *
+ * Since: 2.30
  */
 gchar *
 na_mateconf_utils_read_string( MateConfClient *mateconf, const gchar *path, gboolean use_schema, const gchar *default_value )
@@ -444,13 +496,15 @@ na_mateconf_utils_read_string( MateConfClient *mateconf, const gchar *path, gboo
 
 /**
  * na_mateconf_utils_read_string_list:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the key to be read.
  *
  * Returns: a list of strings,
  * or %NULL if the entry was not found or was not of string list type.
  *
- * The returned list must be released with na_utils_free_string_list().
+ * The returned list must be released with na_core_utils_slist_free().
+ *
+ * Since: 2.30
  */
 GSList *
 na_mateconf_utils_read_string_list( MateConfClient *mateconf, const gchar *path )
@@ -472,19 +526,23 @@ na_mateconf_utils_read_string_list( MateConfClient *mateconf, const gchar *path 
 	return( list_strings );
 }
 
+#ifdef NA_ENABLE_DEPRECATED
 /**
  * na_mateconf_utils_write_bool:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the key.
  * @value: the value to be written.
  * @message: a pointer to a gchar * which will be allocated if needed.
  *
  * Writes a boolean at the given @path.
  *
- * Returns: %TRUE if the writing has been successfull, %FALSE else.
+ * Returns: %TRUE if the writing has been successful, %FALSE else.
  *
  * If returned not NULL, the @message contains an error message.
  * It should be g_free() by the caller.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 gboolean
 na_mateconf_utils_write_bool( MateConfClient *mateconf, const gchar *path, gboolean value, gchar **message )
@@ -509,17 +567,20 @@ na_mateconf_utils_write_bool( MateConfClient *mateconf, const gchar *path, gbool
 
 /**
  * na_mateconf_utils_write_int:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the key.
  * @value: the value to be written.
  * @message: a pointer to a gchar * which will be allocated if needed.
  *
  * Writes an integer at the given @path.
  *
- * Returns: %TRUE if the writing has been successfull, %FALSE else.
+ * Returns: %TRUE if the writing has been successful, %FALSE else.
  *
  * If returned not NULL, the @message contains an error message.
  * It should be g_free() by the caller.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 gboolean
 na_mateconf_utils_write_int( MateConfClient *mateconf, const gchar *path, gint value, gchar **message )
@@ -544,17 +605,20 @@ na_mateconf_utils_write_int( MateConfClient *mateconf, const gchar *path, gint v
 
 /**
  * na_mateconf_utils_write_string:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the key.
  * @value: the value to be written.
  * @message: a pointer to a gchar * which will be allocated if needed.
  *
  * Writes a string at the given @path.
  *
- * Returns: %TRUE if the writing has been successfull, %FALSE else.
+ * Returns: %TRUE if the writing has been successful, %FALSE else.
  *
  * If returned not NULL, the @message contains an error message.
  * It should be g_free() by the caller.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 gboolean
 na_mateconf_utils_write_string( MateConfClient *mateconf, const gchar *path, const gchar *value, gchar **message )
@@ -579,17 +643,20 @@ na_mateconf_utils_write_string( MateConfClient *mateconf, const gchar *path, con
 
 /**
  * na_mateconf_utils_write_string_list:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the key.
  * @value: the list of values to be written.
  * @message: a pointer to a gchar * which will be allocated if needed.
  *
  * Writes a list of strings at the given @path.
  *
- * Returns: %TRUE if the writing has been successfull, %FALSE else.
+ * Returns: %TRUE if the writing has been successful, %FALSE else.
  *
  * If returned not NULL, the @message contains an error message.
  * It should be g_free() by the caller.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 gboolean
 na_mateconf_utils_write_string_list( MateConfClient *mateconf, const gchar *path, GSList *value, gchar **message )
@@ -619,11 +686,16 @@ na_mateconf_utils_write_string_list( MateConfClient *mateconf, const gchar *path
 
 /**
  * na_mateconf_utils_remove_entry:
- * @mateconf: a #MateConfClient instance.
+ * @mateconf: a MateConfClient instance.
  * @path: the full path to the entry.
  * @message: a pointer to a gchar * which will be allocated if needed.
  *
  * Removes an entry from user preferences.
+ *
+ * Returns: %TRUE if the operation was successful, %FALSE else.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 gboolean
 na_mateconf_utils_remove_entry( MateConfClient *mateconf, const gchar *path, gchar **message )
@@ -660,6 +732,9 @@ na_mateconf_utils_remove_entry( MateConfClient *mateconf, const gchar *path, gch
  * Returns: a newly allocated list of strings, which should be
  * na_core_utils_slist_free() by the caller, or %NULL if the provided
  * string was not of the MateConf form.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 GSList *
 na_mateconf_utils_slist_from_string( const gchar *value )
@@ -693,6 +768,9 @@ na_mateconf_utils_slist_from_string( const gchar *value )
  *
  * Returns: the content of @slist, with the MateConf format, as a newly
  * allocated string which should be g_free() by the caller.
+ *
+ * Since: 2.30
+ * Deprecated: 3.1
  */
 gchar *
 na_mateconf_utils_slist_to_string( GSList *slist )
@@ -714,6 +792,7 @@ na_mateconf_utils_slist_to_string( GSList *slist )
 
 	return( g_string_free( str, FALSE ));
 }
+#endif /* NA_ENABLE_DEPRECATED */
 
 static MateConfValue *
 read_value( MateConfClient *mateconf, const gchar *path, gboolean use_schema, MateConfValueType type )
@@ -748,6 +827,7 @@ read_value( MateConfClient *mateconf, const gchar *path, gboolean use_schema, Ma
 	return( value );
 }
 
+#ifdef NA_ENABLE_DEPRECATED
 static gboolean
 sync_mateconf( MateConfClient *mateconf, gchar **message )
 {
@@ -767,3 +847,6 @@ sync_mateconf( MateConfClient *mateconf, gchar **message )
 
 	return( ret );
 }
+#endif /* NA_ENABLE_DEPRECATED */
+
+#endif /* HAVE_MATECONF */

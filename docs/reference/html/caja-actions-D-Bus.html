@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>D-Bus</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch04.html" title="DBus services">
+<link rel="prev" href="ch04.html" title="DBus services">
+<link rel="next" href="ch05.html" title="Data Factory Management System">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch04.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch04.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="ch05.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#caja-actions-D-Bus.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#caja-actions-D-Bus.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="caja-actions-D-Bus"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="caja-actions-D-Bus.top_of_page"></a>D-Bus</span></h2>
+<p>D-Bus — The D-Bus Services</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="caja-actions-D-Bus.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-dbus.h&gt;
+
+#define             <a class="link" href="caja-actions-D-Bus.html#CAJA-ACTIONS-DBUS-SERVICE:CAPS" title="CAJA_ACTIONS_DBUS_SERVICE">CAJA_ACTIONS_DBUS_SERVICE</a>
+#define             <a class="link" href="caja-actions-D-Bus.html#CAJA-ACTIONS-DBUS-TRACKER-PATH:CAPS" title="CAJA_ACTIONS_DBUS_TRACKER_PATH">CAJA_ACTIONS_DBUS_TRACKER_PATH</a>
+#define             <a class="link" href="caja-actions-D-Bus.html#CAJA-ACTIONS-DBUS-TRACKER-IFACE:CAPS" title="CAJA_ACTIONS_DBUS_TRACKER_IFACE">CAJA_ACTIONS_DBUS_TRACKER_IFACE</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="caja-actions-D-Bus.description"></a><h2>Description</h2>
+<p>
+<span class="productname">Caja-Actions</span>™, through its <span class="emphasis"><em>tracker</em></span> plugin, exposes
+several D-Bus interfaces. These interfaces may be queried in order to get
+informations about current selection, <span class="productname">Caja-Actions</span>™ status, and so on.
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>
+   To be really clear, <span class="productname">Caja-Actions</span>™ relies on <span class="productname">Caja</span>™ in order
+   to be able to register its own D-Bus services via the
+   <span class="emphasis"><em>tracker</em></span> plugin.
+  </p>
+<p>
+   If <span class="productname">Caja</span>™ does not run, or the <span class="emphasis"><em>tracker</em></span>
+   plugin is not loaded at <span class="productname">Caja</span>™ startup, then these D-Bus
+   services will not be available.
+  </p>
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="caja-actions-D-Bus.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="CAJA-ACTIONS-DBUS-SERVICE:CAPS"></a><h3>CAJA_ACTIONS_DBUS_SERVICE</h3>
+<pre class="programlisting">#define CAJA_ACTIONS_DBUS_SERVICE            "org.caja-actions.DBus"
+</pre>
+<p>
+This is the « well-known » name that
+<span class="productname">Caja-Actions</span>™ reserves on D-Bus session bus.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="CAJA-ACTIONS-DBUS-TRACKER-PATH:CAPS"></a><h3>CAJA_ACTIONS_DBUS_TRACKER_PATH</h3>
+<pre class="programlisting">#define CAJA_ACTIONS_DBUS_TRACKER_PATH       "/org/caja_actions/DBus/Tracker"
+</pre>
+<p>
+The D-Bus path of the <span class="emphasis"><em>tracker</em></span> object.
+</p>
+<p>
+When requested through the <code class="methodname">Introspect</code> of the
+<code class="interfacename">Introspectable</code> D-Bus interface, the
+<span class="emphasis"><em>tracker</em></span> object returns following informations:
+</p>
+<p>
+</p>
+<pre class="programlisting">
+  <span class="command"><strong>
+    dbus-send \
+      --session \
+      --type=method_call \
+      --print-reply \
+      --dest=org.caja-actions.DBus \
+        /org/caja_actions/DBus/Tracker \
+          org.freedesktop.DBus.Introspectable.Introspect
+  </strong></span>
+  <code class="computeroutput">
+   
+    method return sender=:1.29 -&gt; dest=:1.145 reply_serial=2
+      string "&lt;!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+    "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd"&gt;
+    &lt;node&gt;
+      &lt;interface name="org.freedesktop.DBus.Introspectable"&gt;
+        &lt;method name="Introspect"&gt;
+          &lt;arg name="data" direction="out" type="s"/&gt;
+        &lt;/method&gt;
+      &lt;/interface&gt;
+      &lt;interface name="org.freedesktop.DBus.Properties"&gt;
+        &lt;method name="Get"&gt;
+          &lt;arg name="interface" direction="in" type="s"/&gt;
+          &lt;arg name="propname" direction="in" type="s"/&gt;
+          &lt;arg name="value" direction="out" type="v"/&gt;
+        &lt;/method&gt;
+        &lt;method name="Set"&gt;
+          &lt;arg name="interface" direction="in" type="s"/&gt;
+          &lt;arg name="propname" direction="in" type="s"/&gt;
+          &lt;arg name="value" direction="in" type="v"/&gt;
+        &lt;/method&gt;
+        &lt;method name="GetAll"&gt;
+          &lt;arg name="interface" direction="in" type="s"/&gt;
+          &lt;arg name="props" direction="out" type="a{sv}"/&gt;
+        &lt;/method&gt;
+      &lt;/interface&gt;
+      &lt;interface name="org.caja_actions.DBus.Tracker.Status"&gt;
+        &lt;method name="GetSelectedPaths"&gt;
+          &lt;arg name="paths" type="as" direction="out"/&gt;
+        &lt;/method&gt;
+      &lt;/interface&gt;
+    &lt;/node&gt;
+   
+  </code>
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="CAJA-ACTIONS-DBUS-TRACKER-IFACE:CAPS"></a><h3>CAJA_ACTIONS_DBUS_TRACKER_IFACE</h3>
+<pre class="programlisting">#define CAJA_ACTIONS_DBUS_TRACKER_IFACE  	"org.caja_actions.DBus.Tracker.Properties1"
+</pre>
+<p>
+An interface defined on the <span class="emphasis"><em>tracker</em></span> object,
+identified by its <a class="link" href="caja-actions-D-Bus.html#CAJA-ACTIONS-DBUS-TRACKER-PATH:CAPS" title="CAJA_ACTIONS_DBUS_TRACKER_PATH"><code class="literal">CAJA_ACTIONS_DBUS_TRACKER_PATH</code></a> D-Bus path.
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

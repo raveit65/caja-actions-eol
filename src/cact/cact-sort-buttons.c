@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -37,256 +36,374 @@
 
 #include "cact-application.h"
 #include "cact-sort-buttons.h"
+#include "cact-tree-view.h"
+
+/* private class data
+ */
+struct _CactSortButtonsClassPrivate {
+	void *empty;						/* so that gcc -pedantic is happy */
+};
+
+struct _CactSortButtonsPrivate {
+	gboolean    dispose_has_run;
+	BaseWindow *window;
+	NAUpdater  *updater;
+	gboolean    toggling;
+	gint        active;
+	guint       count_items;
+};
 
 typedef struct {
-	gchar    *btn_name;
-	/*GCallback on_btn_toggled;*/
-	guint     order_mode;
+	gchar           *btn_name;
+	guint            order_mode;
+	GtkToggleButton *button;
 }
 	ToggleGroup;
 
-static gboolean st_set_sort_order = FALSE;
-static gboolean st_in_toggle      = FALSE;
-static gint     st_last_active    = -1;
-
-static void enable_buttons( CactMainWindow *window );
-static void on_toggle_button_toggled( GtkToggleButton *button, CactMainWindow *window );
-static void set_new_sort_order( CactMainWindow *window, guint order_mode );
-static void display_sort_order( CactMainWindow *window, guint order_mode );
-static gint toggle_group_get_active( ToggleGroup *group, BaseWindow *window );
-static gint toggle_group_get_for_mode( ToggleGroup *group, guint mode );
-static void toggle_group_set_active( ToggleGroup *group, BaseWindow *window, gint idx );
-static gint toggle_group_get_from_button( ToggleGroup *group, BaseWindow *window, GtkToggleButton *toggled_button );
-
 static ToggleGroup st_toggle_group [] = {
-		{ "SortManualButton", IPREFS_ORDER_MANUAL },
-		{ "SortUpButton",     IPREFS_ORDER_ALPHA_ASCENDING },
-		{ "SortDownButton",   IPREFS_ORDER_ALPHA_DESCENDING },
+		{ "SortManualButton", IPREFS_ORDER_MANUAL,           NULL },
+		{ "SortUpButton",     IPREFS_ORDER_ALPHA_ASCENDING,  NULL },
+		{ "SortDownButton",   IPREFS_ORDER_ALPHA_DESCENDING, NULL },
 		{ NULL }
 };
 
-/**
- * cact_sort_buttons_initial_load:
- * @window: the #CactMainWindow.
- *
- * Initial loading of the UI. This is done only once.
- */
-void
-cact_sort_buttons_initial_load( CactMainWindow *window )
-{
-	static const gchar *thisfn = "cact_sort_buttons_initial_load";
+#define WINDOW_DATA_SORT_BUTTONS				"window-data-sort-buttons"
 
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
+static GObjectClass *st_parent_class = NULL;
+
+static GType register_type( void );
+static void  class_init( CactSortButtonsClass *klass );
+static void  instance_init( GTypeInstance *instance, gpointer klass );
+static void  instance_dispose( GObject *application );
+static void  instance_finalize( GObject *application );
+
+static void  on_base_initialize_buttons( BaseWindow *window, gpointer user_data );
+static void  on_toggle_button_toggled( GtkToggleButton *button, BaseWindow *window );
+static void  on_settings_order_mode_changed( const gchar *group, const gchar *key, gconstpointer new_value, gboolean mandatory, CactSortButtons *sort_buttons );
+static void  on_tree_view_count_changed( BaseWindow *window, gboolean reset, gint menus_count, gint actions_count, gint profiles_count, gpointer user_data );
+
+static void  enable_buttons( const CactSortButtons *sort_buttons, gboolean enabled );
+static gint  toggle_group_get_from_mode( guint mode );
+static gint  toggle_group_get_from_button( GtkToggleButton *toggled_button );
+
+GType
+cact_sort_buttons_get_type( void )
+{
+	static GType type = 0;
+
+	if( !type ){
+		type = register_type();
+	}
+
+	return( type );
+}
+
+static GType
+register_type( void )
+{
+	static const gchar *thisfn = "cact_sort_buttons_register_type";
+	GType type;
+
+	static GTypeInfo info = {
+		sizeof( CactSortButtonsClass ),
+		( GBaseInitFunc ) NULL,
+		( GBaseFinalizeFunc ) NULL,
+		( GClassInitFunc ) class_init,
+		NULL,
+		NULL,
+		sizeof( CactSortButtons ),
+		0,
+		( GInstanceInitFunc ) instance_init
+	};
+
+	g_debug( "%s", thisfn );
+
+	type = g_type_register_static( G_TYPE_OBJECT, "CactSortButtons", &info, 0 );
+
+	return( type );
+}
+
+static void
+class_init( CactSortButtonsClass *klass )
+{
+	static const gchar *thisfn = "cact_sort_buttons_class_init";
+	GObjectClass *object_class;
+
+	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
+
+	st_parent_class = g_type_class_peek_parent( klass );
+
+	object_class = G_OBJECT_CLASS( klass );
+	object_class->dispose = instance_dispose;
+	object_class->finalize = instance_finalize;
+
+	klass->private = g_new0( CactSortButtonsClassPrivate, 1 );
+}
+
+static void
+instance_init( GTypeInstance *instance, gpointer klass )
+{
+	static const gchar *thisfn = "cact_sort_buttons_instance_init";
+	CactSortButtons *self;
+
+	g_return_if_fail( CACT_IS_SORT_BUTTONS( instance ));
+
+	g_debug( "%s: instance=%p (%s), klass=%p",
+			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
+
+	self = CACT_SORT_BUTTONS( instance );
+
+	self->private = g_new0( CactSortButtonsPrivate, 1 );
+
+	self->private->dispose_has_run = FALSE;
+	self->private->toggling = FALSE;
+	self->private->active = -1;
+	self->private->count_items = 0;
+}
+
+static void
+instance_dispose( GObject *object )
+{
+	static const gchar *thisfn = "cact_sort_buttons_instance_dispose";
+	CactSortButtons *self;
+
+	g_return_if_fail( CACT_IS_SORT_BUTTONS( object ));
+
+	self = CACT_SORT_BUTTONS( object );
+
+	if( !self->private->dispose_has_run ){
+		g_debug( "%s: object=%p (%s)", thisfn, ( void * ) object, G_OBJECT_TYPE_NAME( object ));
+
+		self->private->dispose_has_run = TRUE;
+
+		/* chain up to the parent class */
+		if( G_OBJECT_CLASS( st_parent_class )->dispose ){
+			G_OBJECT_CLASS( st_parent_class )->dispose( object );
+		}
+	}
+}
+
+static void
+instance_finalize( GObject *instance )
+{
+	static const gchar *thisfn = "cact_sort_buttons_instance_finalize";
+	CactSortButtons *self;
+
+	g_return_if_fail( CACT_IS_SORT_BUTTONS( instance ));
+
+	g_debug( "%s: instance=%p (%s)", thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ));
+
+	self = CACT_SORT_BUTTONS( instance );
+
+	g_free( self->private );
+
+	/* chain call to parent class */
+	if( G_OBJECT_CLASS( st_parent_class )->finalize ){
+		G_OBJECT_CLASS( st_parent_class )->finalize( instance );
+	}
 }
 
 /**
- * cact_sort_buttons_runtime_init:
- * @window: the #CactMainWindow.
+ * cact_sort_buttons_new:
+ * @window: the main window.
+ *
+ * Returns: a new #CactSortButtons object.
+ */
+CactSortButtons *
+cact_sort_buttons_new( BaseWindow *window )
+{
+	CactSortButtons *obj;
+	CactApplication *application;
+
+	g_return_val_if_fail( BASE_IS_WINDOW( window ), NULL );
+
+	obj = g_object_new( CACT_TYPE_SORT_BUTTONS, NULL );
+
+	base_window_signal_connect( window,
+			G_OBJECT( window ), BASE_SIGNAL_INITIALIZE_WINDOW, G_CALLBACK( on_base_initialize_buttons ));
+
+	g_object_set_data( G_OBJECT( window ), WINDOW_DATA_SORT_BUTTONS, obj );
+
+	obj->private->window = window;
+
+	application = CACT_APPLICATION( base_window_get_application( window ));
+	obj->private->updater = cact_application_get_updater( application );
+
+	return( obj );
+}
+
+/*
+ * on_base_initialize_buttons:
+ * @window: the #BaseWindow.
  *
  * Initialization of the UI each time it is displayed.
  *
  * At end, buttons are all :
- * - off,
- * - connected,
- * - enabled (sensitive) if level zero is writable
+ * - all off,
+ * - connected to a toggle handler,
+ * - enabled (sensitive) if sort order mode is modifiable.
  */
-void
-cact_sort_buttons_runtime_init( CactMainWindow *window )
+static void
+on_base_initialize_buttons( BaseWindow *window, gpointer user_data )
 {
-	static const gchar *thisfn = "cact_sort_buttons_runtime_init";
-	GtkToggleButton *button;
+	static const gchar *thisfn = "cact_sort_buttons_on_base_initialize_buttons";
+	CactSortButtons *sort_buttons;
 	gint i;
 
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
+	g_return_if_fail( BASE_IS_WINDOW( window ));
 
-	i = 0;
-	while( st_toggle_group[i].btn_name ){
+	g_debug( "%s: window=%p, user_data=%p", thisfn, ( void * ) window, ( void * ) user_data );
 
-		button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), st_toggle_group[i].btn_name ));
-		base_window_signal_connect(
-				BASE_WINDOW( window ),
-				G_OBJECT( button ),
-				"toggled",
-				G_CALLBACK( on_toggle_button_toggled ));
+	base_window_signal_connect( window,
+			G_OBJECT( window ), TREE_SIGNAL_COUNT_CHANGED, G_CALLBACK( on_tree_view_count_changed ));
 
-		i += 1;
+	sort_buttons = CACT_SORT_BUTTONS( g_object_get_data( G_OBJECT( window ), WINDOW_DATA_SORT_BUTTONS ));
+
+	for( i = 0 ; st_toggle_group[i].btn_name ; ++i ){
+		st_toggle_group[i].button =
+				GTK_TOGGLE_BUTTON( base_window_get_widget( window, st_toggle_group[i].btn_name ));
+		base_window_signal_connect( window,
+				G_OBJECT( st_toggle_group[i].button ), "toggled", G_CALLBACK( on_toggle_button_toggled ));
 	}
 
-	enable_buttons( window );
+	na_settings_register_key_callback(
+			NA_IPREFS_ITEMS_LIST_ORDER_MODE, G_CALLBACK( on_settings_order_mode_changed ), sort_buttons );
+
+	/* for now, disable the sort buttons
+	 * they will be enabled as soon as we receive the count of displayed items
+	 */
+	enable_buttons( sort_buttons, FALSE );
 }
 
-/**
- * cact_sort_buttons_all_widgets_showed:
- * @window: the #CactMainWindow.
- *
- * Called when all the widgets are showed after end of all runtime
- * initializations.
+/*
+ * if the user re-clicks on the already active buttons, reset it active
  */
-void
-cact_sort_buttons_all_widgets_showed( CactMainWindow *window )
-{
-	static const gchar *thisfn = "cact_sort_buttons_all_widgets_showed";
-
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
-
-	st_set_sort_order = TRUE;
-}
-
-/**
- * cact_sort_buttons_dispose:
- * @window: the #CactMainWindow.
- *
- * The main window is disposed.
- */
-void
-cact_sort_buttons_dispose( CactMainWindow *window )
-{
-	static const gchar *thisfn = "cact_sort_buttons_dispose";
-
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
-}
-
-/**
- * cact_sort_buttons_display_order_change:
- * @window: the #CactMainWindow.
- * @order_mode: the new order mode.
- *
- * Relayed via CactMainWindow, this is a NAIPivotConsumer notification.
- */
-void
-cact_sort_buttons_display_order_change( CactMainWindow *window, guint order_mode )
-{
-	static const gchar *thisfn = "cact_sort_buttons_display_order_change";
-
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
-
-	display_sort_order( window, order_mode );
-}
-
-/**
- * cact_sort_buttons_level_zero_writability_change:
- * @window: the #CactMainWindow.
- *
- * Relayed via CactMainWindow, this is a NAIPivotConsumer notification.
- */
-void
-cact_sort_buttons_level_zero_writability_change( CactMainWindow *window )
-{
-	static const gchar *thisfn = "cact_sort_buttons_level_zero_writability_change";
-
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
-
-	enable_buttons( window );
-}
-
 static void
-enable_buttons( CactMainWindow *window )
+on_toggle_button_toggled( GtkToggleButton *toggled_button, BaseWindow *window )
 {
-	CactApplication *application;
-	NAUpdater *updater;
-	gboolean writable;
-	GtkWidget *button;
-	gint i;
+	CactSortButtons *sort_buttons;
+	gint i, ibtn;
 
-	application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-	updater = cact_application_get_updater( application );
-	writable = na_pivot_is_level_zero_writable( NA_PIVOT( updater ));
+	g_return_if_fail( BASE_IS_WINDOW( window ));
 
-	i = 0;
-	while( st_toggle_group[i].btn_name ){
-		button = base_window_get_widget( BASE_WINDOW( window ), st_toggle_group[i].btn_name );
-		gtk_widget_set_sensitive( button, writable );
-		i += 1;
-	}
-}
+	sort_buttons = CACT_SORT_BUTTONS( g_object_get_data( G_OBJECT( window ), WINDOW_DATA_SORT_BUTTONS ));
 
-static void
-on_toggle_button_toggled( GtkToggleButton *toggled_button, CactMainWindow *window )
-{
-	static const gchar *thisfn = "cact_sort_buttons_on_toggle_button_toggled";
-	gint ibtn, iprev;
+	if( !sort_buttons->private->dispose_has_run ){
+		if( !sort_buttons->private->toggling ){
 
-	if( !st_in_toggle ){
+			sort_buttons->private->toggling = TRUE;
+			ibtn = toggle_group_get_from_button( toggled_button );
 
-		ibtn = toggle_group_get_from_button( st_toggle_group, BASE_WINDOW( window ), toggled_button );
-		g_return_if_fail( ibtn >= 0 );
+			/* the user re-clicks on the already active button
+			 * do not let it becomes false, but keep it active
+			 */
+			if( ibtn == sort_buttons->private->active ){
+				gtk_toggle_button_set_active( st_toggle_group[ibtn].button, TRUE );
 
-		iprev = toggle_group_get_active( st_toggle_group, BASE_WINDOW( window ));
+			/* reset all buttons to false, then the clicked one to active
+			 */
+			} else {
+				for( i = 0 ; st_toggle_group[i].btn_name ; ++i ){
+					gtk_toggle_button_set_active( st_toggle_group[i].button, FALSE );
+				}
+				gtk_toggle_button_set_active( toggled_button, TRUE );
+				sort_buttons->private->active = ibtn;
+				na_iprefs_set_order_mode( st_toggle_group[ibtn].order_mode );
+			}
 
-		g_debug( "%s: iprev=%d, ibtn=%d", thisfn, iprev, ibtn );
-
-		if( iprev == ibtn ){
-			gtk_toggle_button_set_active( toggled_button, TRUE );
-
-		} else {
-			toggle_group_set_active( st_toggle_group, BASE_WINDOW( window ), ibtn );
-			set_new_sort_order( window, st_toggle_group[ibtn].order_mode );
+			sort_buttons->private->toggling = FALSE;
 		}
 	}
 }
 
-static void
-set_new_sort_order( CactMainWindow *window, guint order_mode )
-{
-	static const gchar *thisfn = "cact_sort_buttons_set_new_sort_order";
-	CactApplication *application;
-	NAUpdater *updater;
-
-	if( st_set_sort_order ){
-		g_debug( "%s: order_mode=%d", thisfn, order_mode );
-
-		application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-		updater = cact_application_get_updater( application );
-		na_iprefs_set_order_mode( NA_IPREFS( updater ), order_mode );
-	}
-}
-
 /*
+ * NASettings callback for a change on NA_IPREFS_ITEMS_LIST_ORDER_MODE key
+ *
  * activate the button corresponding to the new sort order
  * desactivate the previous button
  * do nothing if new button and previous button are the sames
+ *
+ * testing 'toggling' is useless here because NASettings slightly delay the
+ * notifications: when we toggle a button, and update the settings, then
+ * we already have reset 'toggling' to FALSE when we are coming here
  */
 static void
-display_sort_order( CactMainWindow *window, guint order_mode )
+on_settings_order_mode_changed( const gchar *group, const gchar *key, gconstpointer new_value, gboolean mandatory, CactSortButtons *sort_buttons )
 {
-	static const gchar *thisfn = "cact_sort_buttons_display_sort_order";
-	gint iprev, inew;
+	static const gchar *thisfn = "cact_sort_buttons_on_settings_order_mode_changed";
+	const gchar *order_mode_str;
+	guint order_mode;
+	gint ibtn;
 
-	iprev = toggle_group_get_active( st_toggle_group, BASE_WINDOW( window ));
+	g_return_if_fail( CACT_IS_SORT_BUTTONS( sort_buttons ));
 
-	inew = toggle_group_get_for_mode( st_toggle_group, order_mode );
-	g_return_if_fail( inew >= 0 );
+	if( !sort_buttons->private->dispose_has_run ){
 
-	g_debug( "%s: iprev=%d, inew=%d", thisfn, iprev, inew );
+		order_mode_str = ( const gchar * ) new_value;
+		order_mode = na_iprefs_get_order_mode_by_label( order_mode_str );
 
-	if( iprev == -1 || inew != iprev ){
-		toggle_group_set_active( st_toggle_group, BASE_WINDOW( window ), inew );
+		g_debug( "%s: group=%s, key=%s, order_mode=%u (%s), mandatory=%s, sort_buttons=%p (%s)",
+				thisfn, group, key, order_mode, order_mode_str,
+				mandatory ? "True":"False", ( void * ) sort_buttons, G_OBJECT_TYPE_NAME( sort_buttons ));
+
+		ibtn = toggle_group_get_from_mode( order_mode );
+		g_return_if_fail( ibtn >= 0 );
+
+		if( sort_buttons->private->active == -1 || ibtn != sort_buttons->private->active ){
+			sort_buttons->private->active = ibtn;
+			gtk_toggle_button_set_active( st_toggle_group[ibtn].button, TRUE );
+		}
 	}
 }
 
-/*
- * returns the index of the button currently active
- * or -1 if not found
- */
-static gint
-toggle_group_get_active( ToggleGroup *group, BaseWindow *window )
+static void
+on_tree_view_count_changed( BaseWindow *window, gboolean reset, gint menus_count, gint actions_count, gint profiles_count, gpointer user_data )
 {
-	GtkToggleButton *button;
-	gint i = 0;
+	static const gchar *thisfn = "cact_sort_buttons_on_tree_view_count_changed";
+	CactSortButtons *sort_buttons;
 
-	if( st_last_active != -1 ){
-		return( st_last_active );
-	}
+	g_return_if_fail( BASE_IS_WINDOW( window ));
 
-	while( group[i].btn_name ){
-		button = GTK_TOGGLE_BUTTON( base_window_get_widget( window, group[i].btn_name ));
-		if( gtk_toggle_button_get_active( button )){
-			return( i );
+	sort_buttons = CACT_SORT_BUTTONS( g_object_get_data( G_OBJECT( window ), WINDOW_DATA_SORT_BUTTONS ));
+
+	if( !sort_buttons->private->dispose_has_run ){
+		g_debug( "%s: window=%p, reset=%s, nb_menus=%d, nb_actions=%d, nb_profiles=%d, user_data=%p",
+				thisfn, ( void * ) window, reset ? "True":"False",
+						menus_count, actions_count, profiles_count, ( void * ) user_data );
+
+		if( reset ){
+			sort_buttons->private->count_items = menus_count + actions_count;
+		} else {
+			sort_buttons->private->count_items += menus_count + actions_count;
 		}
-		i += 1;
+
+		enable_buttons( sort_buttons, sort_buttons->private->count_items > 0 );
 	}
 
-	return( -1 );
+}
+
+static void
+enable_buttons( const CactSortButtons *sort_buttons, gboolean enabled )
+{
+	gboolean level_zero_writable;
+	gboolean preferences_locked;
+	gboolean finally_enabled;
+	gint i;
+	guint order_mode;
+
+	level_zero_writable = na_updater_is_level_zero_writable( sort_buttons->private->updater );
+	preferences_locked = na_updater_are_preferences_locked( sort_buttons->private->updater );
+	finally_enabled = level_zero_writable && !preferences_locked && enabled;
+
+	for( i=0 ; st_toggle_group[i].btn_name ; ++i ){
+		gtk_widget_set_sensitive( GTK_WIDGET( st_toggle_group[i].button ), finally_enabled );
+	}
+
+	if( finally_enabled && sort_buttons->private->active == -1 ){
+		order_mode = na_iprefs_get_order_mode( NULL );
+		i = toggle_group_get_from_mode( order_mode );
+		gtk_toggle_button_set_active( st_toggle_group[i].button, TRUE );
+	}
 }
 
 /*
@@ -294,54 +411,31 @@ toggle_group_get_active( ToggleGroup *group, BaseWindow *window )
  * or -1 if not found
  */
 static gint
-toggle_group_get_for_mode( ToggleGroup *group, guint mode )
+toggle_group_get_from_mode( guint mode )
 {
-	gint i = 0;
+	guint i;
 
-	while( group[i].btn_name ){
-		if( group[i].order_mode == mode ){
+	for( i = 0 ; st_toggle_group[i].btn_name ; ++ i ){
+		if( st_toggle_group[i].order_mode == mode ){
 			return( i );
 		}
-		i += 1;
 	}
 
 	return( -1 );
 }
 
-static void
-toggle_group_set_active( ToggleGroup *group, BaseWindow *window, gint idx )
+/*
+ * returns the index of the toggle button, or -1
+ */
+static gint
+toggle_group_get_from_button( GtkToggleButton *toggled_button )
 {
-	static const gchar *thisfn = "cact_sort_buttons_toggle_group_set_active";
-	GtkToggleButton *button;
 	gint i;
 
-	g_debug( "%s: idx=%d", thisfn, idx );
-
-	i = 0;
-	st_in_toggle = TRUE;
-
-	while( group[i].btn_name ){
-		button = GTK_TOGGLE_BUTTON( base_window_get_widget( window, group[i].btn_name ));
-		gtk_toggle_button_set_active( button, i==idx );
-		i += 1;
-	}
-
-	st_in_toggle = FALSE;
-	st_last_active = idx;
-}
-
-static gint
-toggle_group_get_from_button( ToggleGroup *group, BaseWindow *window, GtkToggleButton *toggled_button )
-{
-	GtkToggleButton *button;
-	gint i = 0;
-
-	while( group[i].btn_name ){
-		button = GTK_TOGGLE_BUTTON( base_window_get_widget( window, group[i].btn_name ));
-		if( button == toggled_button ){
+	for( i = 0 ; st_toggle_group[i].btn_name ; ++i ){
+		if( st_toggle_group[i].button == toggled_button ){
 			return( i );
 		}
-		i += 1;
 	}
 
 	return( -1 );

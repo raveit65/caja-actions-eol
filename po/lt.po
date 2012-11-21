@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caja-actions HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 00:48+0300\n"
-"PO-Revision-Date: 2010-04-12 00:47+0300\n"
+"POT-Creation-Date: 2010-06-30 23:54+0300\n"
+"PO-Revision-Date: 2010-06-27 01:27+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <mate-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
@@ -331,19 +331,19 @@ msgstr ""
 msgid ""
 "When set to true (most probably as a mandatory key), this prevents all "
 "items, menus and actions, readen from .desktop files to being modified in "
-"NACT."
+"CACT."
 msgstr ""
 "Jei nustatyta teigiama (greičiausiai kaip privalomas raktas), draudžia visų "
 "elementų, meniu ir veiksmų, nuskaitytų iš .desktop failo pakeitimą naudojant "
-"NACT."
+"CACT."
 
 #: ../data/caja-actions-prefs.schemas.in.h:50
 msgid ""
 "When set to true (most probably as a mandatory key), this prevents all "
-"items, menus and actions, readen from MateConf to being modified in NACT."
+"items, menus and actions, readen from MateConf to being modified in CACT."
 msgstr ""
 "Jei nustatyta teigiama (greičiausiai kaip privalomas raktas), draudžia visų "
-"elementų, meniu ir veiksmų, nuskaitytų iš MateConf pakeitimą naudojant NACT."
+"elementų, meniu ir veiksmų, nuskaitytų iš MateConf pakeitimą naudojant CACT."
 
 #: ../data/caja-actions-prefs.schemas.in.h:51
 msgid "Whether actions should be relabeled when pasted or duplicated"
@@ -467,17 +467,19 @@ msgstr "MATE vertimo projektas <mate-i18n@gnome.org>"
 #: ../src/core/na-iabout.c:253
 #, c-format
 msgid ""
-"Copyright %s 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
-"Copyright %s 2009, 2010 Pierre Wieser <pwieser@trychlos.org>"
+"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
+"Copyright %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
-"Autorinės teisės %s 2005-2007 Frederic Ruaudel <grumz@grumz.net>\n"
-"Autorinės teisės %s 2009, 2010 Pierre Wieser <pwieser@trychlos.org>"
+"Autorinės teisės %s 2005-The MATE Foundation\n"
+"Autorinės teisės %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
+"Autorinės teisės %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 
-#: ../src/core/na-icontextual-factory.c:47
+#: ../src/core/na-icontext-factory.c:47
 msgid "List of patterns to be matched against the selected file(s)/folder(s)"
 msgstr "Šablonų atitinkančių pasirinktą bylą(as)/aplanką(us) sąrašas"
 
-#: ../src/core/na-icontextual-factory.c:48
+#: ../src/core/na-icontext-factory.c:48
 msgid ""
 "A list of strings with joker '*' or '?' to be matched against the name(s) of "
 "the selected file(s)/folder(s). Each selected items must match at least one "
@@ -492,7 +494,7 @@ msgstr ""
 "Žinoma, tai taikoma tik jei yra kas nors pasirinkta.\n"
 "Numatyta „*“."
 
-#: ../src/core/na-icontextual-factory.c:65
+#: ../src/core/na-icontext-factory.c:67
 msgid ""
 "A pattern to be matched against basenames of selected file(s)/folder(s). May "
 "include wildcards (* or ?). You must set one option for each pattern you need"
@@ -500,17 +502,16 @@ msgstr ""
 "Šablonas, kurį turėtų atitikti bylų/aplankų keliai. Galima naudoti ženklus "
 "„?“ arba „*“, Turite tai nurodyti parinktį  kiekvienam šablonui"
 
-#: ../src/core/na-icontextual-factory.c:68
-#: ../src/core/na-icontextual-factory.c:119
+#: ../src/core/na-icontext-factory.c:70 ../src/core/na-icontext-factory.c:125
 msgid "<EXPR>"
 msgstr "<EXPR>"
 
-#: ../src/core/na-icontextual-factory.c:74
+#: ../src/core/na-icontext-factory.c:76
 msgid "Whether the specified basenames are case sensitive (default)"
 msgstr ""
 "Ar pasirinktiems keliams skiriamos didžiosios ir mažosios raidės (numatyta)"
 
-#: ../src/core/na-icontextual-factory.c:75
+#: ../src/core/na-icontext-factory.c:77
 msgid ""
 "Must be set to 'true' if the filename patterns are case sensitive, to "
 "'false' otherwise. E.g., if you need to match a filename in a case-sensitive "
@@ -527,27 +528,27 @@ msgstr ""
 "Žinoma, tai galioje tik jei yra kas nors pasirinkta.\n"
 "Numatyta teigiama."
 
-#: ../src/core/na-icontextual-factory.c:99
+#: ../src/core/na-icontext-factory.c:103
 msgid ""
 "List of patterns to be matched against the mimetypes of the selected file(s)/"
 "folder(s)"
 msgstr "Šablonų sąrašas pažymėtų failų/aplankų MIME tipams"
 
-#: ../src/core/na-icontextual-factory.c:100
+#: ../src/core/na-icontext-factory.c:104
 msgid ""
 "A list of strings with joker '*' to be matched against the mimetypes of the "
 "selected file(s)/folder(s). Each selected items must match at least one of "
 "the mimetype patterns for the action to appear.\n"
 "This obviously only applies when there is a selection.\n"
-"Defaults to '*'."
+"Defaults to '*/*'."
 msgstr ""
 "Užrašų su ženklais „*“, kurie naudojami pasirinktų failų/aplankų atitikimui "
 "pagal MIME tipus, sąrašas. Kiekvienas pasirinktas elementas turi atitikti "
-"bent vieną iš šių šablonų, kad veiksmas būtų rodomas.\n"
+"bent vieną MIME tipo šabloną, kad veiksmas būtų rodomas.\n"
 "Tai žinoma galioja tik jei kas nors yra pasirinkta.\n"
-"Numatyta „*“."
+"Numatyta „*/*“."
 
-#: ../src/core/na-icontextual-factory.c:116
+#: ../src/core/na-icontext-factory.c:122
 msgid ""
 "A pattern to be matched against mimetypes of selected file(s)/folder(s). May "
 "include wildcards (* or ?). You must set one option for each pattern you need"
@@ -555,11 +556,11 @@ msgstr ""
 "Šablonas, kurį turėtų atitikti failų MIME tipai. Galima naudoti ženklus „?“ "
 "arba „*“. Turite tai nurodyti kiekvienam šablonui."
 
-#: ../src/core/na-icontextual-factory.c:125
+#: ../src/core/na-icontext-factory.c:160
 msgid "Whether the profile applies to files"
 msgstr "Ar profilis taikomas failams"
 
-#: ../src/core/na-icontextual-factory.c:126
+#: ../src/core/na-icontext-factory.c:161
 msgid ""
 "Set to 'true' if the selection can have files, to 'false' otherwise.\n"
 "This setting is tied in with the 'isdir' setting. The valid combinations "
@@ -583,11 +584,11 @@ msgstr ""
 "Tai žinoma yra taikoma tik jei kas nors pasirinkta.\n"
 "Numatyta teigiama."
 
-#: ../src/core/na-icontextual-factory.c:153
+#: ../src/core/na-icontext-factory.c:190
 msgid "Whether the profile applies to folders"
 msgstr "Ar profilis taikomas aplankams"
 
-#: ../src/core/na-icontextual-factory.c:154
+#: ../src/core/na-icontext-factory.c:191
 msgid ""
 "Set to 'true' if the selection can have folders, to 'false' otherwise.\n"
 "This setting is tied in with the 'isfile' setting. The valid combinations "
@@ -611,11 +612,11 @@ msgstr ""
 "Tai žinoma yra taikoma tik jei kas nors pasirinkta.\n"
 "Numatyta teigiama."
 
-#: ../src/core/na-icontextual-factory.c:181
+#: ../src/core/na-icontext-factory.c:223
 msgid "Whether the selection may be multiple"
 msgstr "Ar galima žymėti daugiau nei vieną"
 
-#: ../src/core/na-icontextual-factory.c:182
+#: ../src/core/na-icontext-factory.c:224
 msgid ""
 "If you need more than one files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set it to 'false'.\n"
@@ -628,13 +629,13 @@ msgstr ""
 "Tai žinoma yra taikoma tik jei kas nors pasirinkta.\n"
 "Numatyta teigiama."
 
-#: ../src/core/na-icontextual-factory.c:204
+#: ../src/core/na-icontext-factory.c:248
 msgid ""
 "List of schemes to be matched against those of selected file(s)/folder(s)"
 msgstr "Schemų sąrašas pritaikymui pažymėtiems failams/aplankams."
 
 #. too long string for iso c: 510 (max=509)
-#: ../src/core/na-icontextual-factory.c:206
+#: ../src/core/na-icontext-factory.c:250
 msgid ""
 "Defines the list of valid schemes to be matched against the selected items. "
 "The scheme is the protocol used to access the files. The keyword to use is "
@@ -670,7 +671,7 @@ msgstr ""
 "„x-caja-desktop“ schema.\n"
 "Numatyta „file“."
 
-#: ../src/core/na-icontextual-factory.c:233
+#: ../src/core/na-icontext-factory.c:279
 msgid ""
 "A valid GIO scheme where the selected file(s)/folder(s) should be located. "
 "You must set one option for each scheme you need"
@@ -678,20 +679,20 @@ msgstr ""
 "Tinkama GIO schema, kur turi būti surasti pasirinkti failai/aplankai. Turite "
 "tai nurodyti kiekvienai reikiamai schemai."
 
-#: ../src/core/na-icontextual-factory.c:235
-#: ../src/core/na-object-action-factory.c:158
-#: ../src/core/na-object-item-factory.c:94
-#: ../src/core/na-object-item-factory.c:116
-#: ../src/core/na-object-profile-factory.c:121
+#: ../src/core/na-icontext-factory.c:281
+#: ../src/core/na-object-action-factory.c:171
+#: ../src/core/na-object-item-factory.c:105
+#: ../src/core/na-object-item-factory.c:129
+#: ../src/core/na-object-profile-factory.c:155
 #: ../src/utils/caja-actions-run.c:60
 msgid "<STRING>"
 msgstr "<STRING>"
 
-#: ../src/core/na-icontextual-factory.c:241
+#: ../src/core/na-icontext-factory.c:287
 msgid "List of folders"
 msgstr "Aplankų sąrašas"
 
-#: ../src/core/na-icontextual-factory.c:242
+#: ../src/core/na-icontext-factory.c:288
 msgid ""
 "Defines the list of valid paths to be matched against the current folder.\n"
 " All folders 'under' the specified path are considered valid.\n"
@@ -701,7 +702,7 @@ msgstr ""
 " Visi aplankai nurodyti kelio viduje yra laikomi tinkamais.\n"
 "Numatyta „/“."
 
-#: ../src/core/na-icontextual-factory.c:256
+#: ../src/core/na-icontext-factory.c:304
 msgid ""
 "The path of a (parent) directory for which the item will be displayed. You "
 "must set one option for each folder you need"
@@ -709,11 +710,149 @@ msgstr ""
 "(Tėvinio) aplanko kelias, kuriam elementas bus rodomas. Turite pasirinkti "
 "kiekvienam reikiamam aplankui."
 
-#: ../src/core/na-icontextual-factory.c:258
-#: ../src/core/na-object-profile-factory.c:86
+#: ../src/core/na-icontext-factory.c:306
+#: ../src/core/na-object-profile-factory.c:94
 #: ../src/utils/caja-actions-new.c:132
 msgid "<PATH>"
 msgstr "<PATH>"
+
+#: ../src/core/na-icontext-factory.c:312
+msgid "Operator of the selection count relation"
+msgstr "Pažymėjimų skaičiaus ryšio operatorius"
+
+#: ../src/core/na-icontext-factory.c:313
+msgid ""
+"Whether this profile may be selected depending of the count of the "
+"selection.\n"
+"This is a string of the form \"{'<'|'='|'>'} number\".\n"
+"Examples of valid strings are: \"=0\", \"> 1\", \"< 10\".\n"
+"Defaults to \">0\"."
+msgstr ""
+"Ar šis profilis gali būti pasirinktas priklausomai nuo pažymėjimų skaičius.\n"
+"Tai yra simbolių eilutė, kurios formatas „{'<'|'='|'>'} skaičius“.\n"
+"Galimų eilučių pavyzdžiai: „=0“, „> 1“, „< 10“.\n"
+"Numatyta „>0“."
+
+#: ../src/core/na-icontext-factory.c:337
+msgid "Only show in environment"
+msgstr "Rodyti tik aplinkoje"
+
+#: ../src/core/na-icontext-factory.c:338
+msgid "Defaults to all."
+msgstr "Numatytas visus."
+
+#: ../src/core/na-icontext-factory.c:359
+msgid "Not show in environment"
+msgstr "Nerodyti aplinkos"
+
+#: ../src/core/na-icontext-factory.c:360
+msgid "Defaults to none."
+msgstr "Numatytas nieko."
+
+#: ../src/core/na-icontext-factory.c:381
+msgid "Try exec"
+msgstr "Bandyti exec"
+
+#: ../src/core/na-icontext-factory.c:382
+msgid ""
+"Note that, when specified, only the presence and the executability status of "
+"the specified file are checked.\n"
+"Parameters may appear in TryExec value, and will be substituted at runtime.\n"
+"Defaults to successful."
+msgstr ""
+"Nurodžius, tik buvimo ir vykdymo galimybės būsenos yra tikrinamos nurodytam "
+"failui.\n"
+"TryExec reikšmėje gali būti nurodyti parametrai ir jie bus pakeisti vykdymo "
+"metu.\n"
+"Numatyta sėkminga."
+
+#: ../src/core/na-icontext-factory.c:406
+msgid "Show if registered"
+msgstr "Rodyti, jei registruota"
+
+#: ../src/core/na-icontext-factory.c:407
+msgid ""
+"The well-known name of a DBus service.\n"
+"The item will be candidate if the named service is registered on session "
+"DBus at runtime.\n"
+"Parameters may appear in ShowIfRegistered value, and will be substituted at "
+"runtime.\n"
+"Defaults to successful."
+msgstr ""
+"Gerai žinomas DBus tarnybos pavadinimas.\n"
+"Elementas bus kandidatas, jei tarnyba tokiu pavadinimu yra registruota DBus "
+"vykdymo metu.\n"
+"ShowIfRegistered reikšmėje galima nurodyti parametrus ir jie bus pakeisti "
+"vykdymo metu.\n"
+"Numatyta sėkminga."
+
+#: ../src/core/na-icontext-factory.c:431
+msgid "Show if True"
+msgstr "Rodyti jei teigiama"
+
+#: ../src/core/na-icontext-factory.c:432
+msgid ""
+"A command which, when executed, should output a string on stdout.\n"
+"The item will be candidate if the outputed string is equal to \"true\".\n"
+"Parameters may appear in ShowIfTrue value, and will be substituted at "
+"runtime.\n"
+"Defaults to successful."
+msgstr ""
+"Komanda, kuri vykdymo metu turi išvesti simbolių eilutę į stdout.\n"
+"Elementas bus kandidatas, jei išvesta eilutė lygi „true“.\n"
+"ShowIfTrue reikšmėje gali būti nurodyti parametrai ir jie bus pakeisti "
+"vykdymo metu.\n"
+"Numatyta sėkminga."
+
+#: ../src/core/na-icontext-factory.c:456
+msgid "Show if running"
+msgstr "Rodyti jei vykdoma"
+
+#: ../src/core/na-icontext-factory.c:457
+msgid ""
+"The name of a process.\n"
+"The item will be candidate if the process name is found in memory at "
+"runtime.\n"
+"Parameters may appear in ShowIfRunning value, and will be substituted at "
+"runtime.\n"
+"Defaults to successful."
+msgstr ""
+"Proceso pavadinimas.\n"
+"Elementas bus kandidatas, jei proceso pavadinimas bus rastas atmintyje "
+"vykdymo metu.\n"
+"ShowIfRunning reikšmėje gali būti nurodyti parametrai ir jie bus pakeisti "
+"vykdymo metu.\n"
+"Numatyta sėkminga."
+
+#: ../src/core/na-icontext-factory.c:481
+msgid "Capabilities"
+msgstr "Galimybės"
+
+#: ../src/core/na-icontext-factory.c:482
+msgid ""
+"A list of capabilities each item of the selection must satisfy in order the "
+"item be candidate.\n"
+"Capabilities may be negated.\n"
+"Capabilities have to be choosen between following predefined ones:\n"
+"- Owner: current user is the owner of selected items\n"
+"- Readable: selected items are readable by user (probably more usefull when "
+"negated)\n"
+"- Writable: selected items are writable by user\n"
+"- Executable: selected items are executable by user\n"
+"- Local: selected items are local.\n"
+"Defaults to empty list."
+msgstr ""
+"Galimybių sąrašas, kurį turi tenkinti kiekvienas pažymėjimas, kad elementas "
+"būtų kandidatas.\n"
+"Galimybės gali būti paneigtos.\n"
+"Galimybės turi būti pasirinktos iš šių:\n"
+"- Savininkas: dabartinis naudotojas yra pažymėtų elementų savininkas\n"
+"- Skaitomas: naudotojo gali perskaityti pažymėtus elementus (greičiausiai "
+"naudingiau paneigtas)\n"
+"- Rašomi: naudotojas gali rašyti į pažymėtus elementus\n"
+"- Vykdomi: naudotojas gali vykdyti pažymėtus elementus\n"
+"- Vietiniai: pažymėti elementai yra vietiniai\n"
+"Numatyta tuščias sąrašas."
 
 #: ../src/core/na-importer-ask.c:292
 #, c-format
@@ -733,35 +872,35 @@ msgstr ""
 "Meniu „%s“, importuotas iš „%s“, turi tą patį identifikatorių kaip ir jau "
 "esamas „%s“."
 
-#: ../src/core/na-io-provider.c:1253
+#: ../src/core/na-io-provider.c:1295
 msgid "Item is read-only."
 msgstr "Elementas yra tik skaitymui."
 
-#: ../src/core/na-io-provider.c:1257
+#: ../src/core/na-io-provider.c:1299
 msgid "I/O provider is not willing to write."
 msgstr "Įvedimo/išvedimo tiekėjas nerašo."
 
-#: ../src/core/na-io-provider.c:1261
+#: ../src/core/na-io-provider.c:1303
 msgid "No writable I/O provider found."
 msgstr "Nerastas rašomas įvedimo/išvedimo tiekėjas."
 
-#: ../src/core/na-io-provider.c:1265
+#: ../src/core/na-io-provider.c:1307
 msgid "I/O provider has been locked down by an administrator."
 msgstr "Įvedimo/išvedimo tiekėją užrakino sistemos administratorius."
 
-#: ../src/core/na-io-provider.c:1269
+#: ../src/core/na-io-provider.c:1311
 msgid "I/O provider has been locked down by the user."
 msgstr "Įvedimo/išvedimo tiekėją užrakino kitas naudotojas."
 
-#: ../src/core/na-io-provider.c:1273
+#: ../src/core/na-io-provider.c:1315
 msgid "I/O provider implementation lacks of required API."
 msgstr "Įvedimo/išvedimo tiekėjui trūksta reikiamo API realizacijos."
 
-#: ../src/core/na-io-provider.c:1277
+#: ../src/core/na-io-provider.c:1319
 msgid "The whole configuration has been locked down by an administrator."
 msgstr "Visa konfigūracija užrakinta sistemos administratoriaus."
 
-#: ../src/core/na-io-provider.c:1286
+#: ../src/core/na-io-provider.c:1328
 #, c-format
 msgid ""
 "Item is not writable for an unknown reason (%d).\n"
@@ -770,11 +909,11 @@ msgstr ""
 "Elementas nerašomas dėl nežinomos priežasties (%d).\n"
 "Praneškite apie klaidą http://bugzilla.gnome.org."
 
-#: ../src/core/na-io-provider.c:1310
+#: ../src/core/na-io-provider.c:1352
 msgid "OK."
 msgstr "Sėkminga."
 
-#: ../src/core/na-io-provider.c:1314
+#: ../src/core/na-io-provider.c:1356
 msgid ""
 "Program flow error.\n"
 "Please, be kind enough to fill out a bug report on http://bugzilla.gnome.org."
@@ -782,23 +921,23 @@ msgstr ""
 "Programos tėkmės klaida.\n"
 "Please, be kind enough to fill out a bug report on http://bugzilla.gnome.org."
 
-#: ../src/core/na-io-provider.c:1319
+#: ../src/core/na-io-provider.c:1361
 msgid "The I/O provider is not willing to do that."
 msgstr "Įvedimo/išvedimo tiekėjas to neatlieka."
 
-#: ../src/core/na-io-provider.c:1323
+#: ../src/core/na-io-provider.c:1365
 msgid "Write error in I/O provider."
 msgstr "Rašymo klaida įvedimo/išvedimo tiekėjuje."
 
-#: ../src/core/na-io-provider.c:1327
+#: ../src/core/na-io-provider.c:1369
 msgid "Unable to delete MateConf schemas."
 msgstr "Nepavyko ištrinti MateConf schemų."
 
-#: ../src/core/na-io-provider.c:1331
+#: ../src/core/na-io-provider.c:1373
 msgid "Unable to delete configuration."
 msgstr "Nepavyko ištrinti konfigūracijos."
 
-#: ../src/core/na-io-provider.c:1335
+#: ../src/core/na-io-provider.c:1377
 #, c-format
 msgid ""
 "Unknow return code (%d).\n"
@@ -812,27 +951,15 @@ msgstr ""
 msgid "New Caja action"
 msgstr "Naujas Caja veiksmas"
 
-#: ../src/core/na-object-action.c:429
+#: ../src/core/na-object-action.c:465
 msgid "Profile automatically created from pre-v2 action"
 msgstr "Profilis automatiškai sukurtas iš prieš-v2 veiksmo"
 
-#: ../src/core/na-object-action-factory.c:50
-msgid "Version of the format"
-msgstr "Formato versija"
-
-#: ../src/core/na-object-action-factory.c:51
-msgid ""
-"The version of the configuration format that will be used to manage backward "
-"compatibility."
-msgstr ""
-"Konfigūracijos formato versija, kuri bus naudojama suderinamumui su "
-"senesnėmis versijomis."
-
-#: ../src/core/na-object-action-factory.c:71
+#: ../src/core/na-object-action-factory.c:76
 msgid "Targets the selection context menu (default)"
 msgstr "Taikosi į žymėjimo kontekstinį meniu (numatyta)"
 
-#: ../src/core/na-object-action-factory.c:72
+#: ../src/core/na-object-action-factory.c:77
 msgid ""
 "Whether the action targets the selection file manager context menus.\n"
 "This used to be the historical behavior.\n"
@@ -846,11 +973,11 @@ msgstr ""
 "meniu, jei tik raktas turi bent vieną veiksmą.\n"
 "Numatyta TEIGIAMA."
 
-#: ../src/core/na-object-action-factory.c:95
+#: ../src/core/na-object-action-factory.c:102
 msgid "Targets the location context menu"
 msgstr "Taikosi į vietos kontekstinį meniu"
 
-#: ../src/core/na-object-action-factory.c:96
+#: ../src/core/na-object-action-factory.c:103
 msgid ""
 "Whether the action targets the file manager context menus when there is no "
 "selection, thus applying to current location.\n"
@@ -864,11 +991,11 @@ msgstr ""
 "meniu, jei tik raktas turi bent vieną veiksmą.\n"
 "Numatyta NEIGIAMA."
 
-#: ../src/core/na-object-action-factory.c:119
+#: ../src/core/na-object-action-factory.c:128
 msgid "Targets the toolbar"
 msgstr "Taikosi į įrankinę"
 
-#: ../src/core/na-object-action-factory.c:120
+#: ../src/core/na-object-action-factory.c:129
 msgid ""
 "Whether the action is candidate to be displayed in file manager toolbar.\n"
 "This only applies to current location.\n"
@@ -880,11 +1007,11 @@ msgstr ""
 "Meniu niekada nerodomi įrankinėje.\n"
 "Numatyta NEIGIAMA."
 
-#: ../src/core/na-object-action-factory.c:142
+#: ../src/core/na-object-action-factory.c:153
 msgid "Label of the toolbar item"
 msgstr "Įrankinės elemento užrašas"
 
-#: ../src/core/na-object-action-factory.c:143
+#: ../src/core/na-object-action-factory.c:154
 msgid ""
 "The label displayed besides of the icon in the file manager toolbar.\n"
 "Note that actual display may depend of your own Desktop Environment "
@@ -902,11 +1029,11 @@ msgstr ""
 msgid "Copy of %s"
 msgstr "%s kopija"
 
-#: ../src/core/na-object-item-factory.c:51
+#: ../src/core/na-object-item-factory.c:58
 msgid "Type of the item"
 msgstr "Elemento tipas"
 
-#: ../src/core/na-object-item-factory.c:52
+#: ../src/core/na-object-item-factory.c:59
 msgid ""
 "Defines if the item is an action or a menu. Possible values are :\n"
 "- 'Action',\n"
@@ -918,11 +1045,11 @@ msgstr ""
 "- „Menu“,\n"
 "Reikšmė yra jautri raidžių dydžiui ir nelokalizuojama."
 
-#: ../src/core/na-object-item-factory.c:78
+#: ../src/core/na-object-item-factory.c:87
 msgid "Label of the context menu item (mandatory)"
 msgstr "Kontekstinio meniu punkto užrašas (privalomas)"
 
-#: ../src/core/na-object-item-factory.c:79
+#: ../src/core/na-object-item-factory.c:88
 msgid ""
 "The label of the menu item that will appear in the file manager context menu "
 "when the selection matches the appearance condition settings.\n"
@@ -932,11 +1059,11 @@ msgstr ""
 "pažymėjimas atitinka išvaizdos sąlygos nustatymus.\n"
 "Jis taip pat naudojamas kaip numatytas įrankinės veiksmo užrašas."
 
-#: ../src/core/na-object-item-factory.c:100
+#: ../src/core/na-object-item-factory.c:111
 msgid "Tooltip of the context menu item"
 msgstr "Kontekstinio meniu punkto paaiškinimas"
 
-#: ../src/core/na-object-item-factory.c:101
+#: ../src/core/na-object-item-factory.c:112
 msgid ""
 "The tooltip of the menu item that will appear in the file manager statusbar "
 "when the user points to the file manager context menu item with his/her "
@@ -945,11 +1072,11 @@ msgstr ""
 "Meniu punkto paaiškinimas, kuris bus rodomas failų naršyklės būsenos "
 "juostoje, kai naudotojas užves pelės žymeklį virš to meniu punkto."
 
-#: ../src/core/na-object-item-factory.c:122
+#: ../src/core/na-object-item-factory.c:135
 msgid "Icon of the context menu item"
 msgstr "Kontekstinio meniu punkto piktograma"
 
-#: ../src/core/na-object-item-factory.c:123
+#: ../src/core/na-object-item-factory.c:136
 msgid ""
 "The icon of the menu item that will appear next to the label in the file "
 "manager context menu when the selection matches the appearance conditions "
@@ -962,15 +1089,15 @@ msgstr ""
 "Gali būti lokalizuotas temos piktogramos pavadinimas arba pilnas kelias iki "
 "paveikslėlio."
 
-#: ../src/core/na-object-item-factory.c:139
+#: ../src/core/na-object-item-factory.c:154
 msgid "<PATH|NAME>"
 msgstr "<PATH|NAME>"
 
-#: ../src/core/na-object-item-factory.c:145
+#: ../src/core/na-object-item-factory.c:160
 msgid "Description relative to the item"
 msgstr "Elemento aprašymas"
 
-#: ../src/core/na-object-item-factory.c:146
+#: ../src/core/na-object-item-factory.c:161
 msgid ""
 "Some text which explains the goal of the menu or the action.\n"
 "May be used, e.g. when displaying available items on a web site."
@@ -978,11 +1105,31 @@ msgstr ""
 "Tekstas, paaiškinantis meniu arba veiksmo tikslą.\n"
 "Gali būti naudojamas, kai pvz. galimi elementai rodomi interneto svetainėje."
 
-#: ../src/core/na-object-item-factory.c:191
+#: ../src/core/na-object-item-factory.c:183
+msgid "Suggested shortcut"
+msgstr "Siūlomas šaukinys"
+
+#: ../src/core/na-object-item-factory.c:184
+msgid ""
+"A shortcut suggested for the action or the menu.\n"
+"Please note that this might be only a suggestion as the shortcut may be "
+"already reserved for another use. Implementation should not override an "
+"already existing shortcut to define this one.\n"
+"The format may look like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+"Defaults to empty."
+msgstr ""
+"Veiksmui arba meniu siūlomas šaukinys.\n"
+"Tai gali būti tik pasiūlymas, kadangi šaukinys jau gali būti rezervuotas "
+"kitam naudojimui. Realizacija neturi perrašyti jau esamo šaukinio, kad "
+"apibrėžtų šį.\n"
+"Formatas yra panašus į „<Control>a“ arba „<Shift><Alt>F1“.\n"
+"Numatyta tuščia."
+
+#: ../src/core/na-object-item-factory.c:237
 msgid "List of subitem ids"
 msgstr "Po-elementų identifikatorių sąrašas"
 
-#: ../src/core/na-object-item-factory.c:192
+#: ../src/core/na-object-item-factory.c:238
 msgid ""
 "Ordered list of the IDs of the subitems. This may be actions or menus if the "
 "item is a menu, or profiles if the item is an action.\n"
@@ -995,11 +1142,11 @@ msgstr ""
 "Jei šis sąrašas neegzistuoja arba yra tuščias veiksmui arba meniu, po-"
 "elementai yra prijungiami skaitymo operacijų seka."
 
-#: ../src/core/na-object-item-factory.c:214
+#: ../src/core/na-object-item-factory.c:262
 msgid "Whether the action or the menu is enabled (default)"
 msgstr "Ar veiksmas arba meniu yra leidžiamas (numatyta)"
 
-#: ../src/core/na-object-item-factory.c:215
+#: ../src/core/na-object-item-factory.c:263
 msgid ""
 "If the or the menu action is disabled, it will never appear in the file "
 "manager context menu.\n"
@@ -1009,13 +1156,25 @@ msgstr ""
 "naršyklės kontekstiniame meniu.\n"
 "Numatyta TEIGIAMA."
 
+#: ../src/core/na-object-item-factory.c:375
+msgid "Version of the format"
+msgstr "Formato versija"
+
+#: ../src/core/na-object-item-factory.c:376
+msgid ""
+"The version of the configuration format that will be used to manage backward "
+"compatibility."
+msgstr ""
+"Konfigūracijos formato versija, kuri bus naudojama suderinamumui su "
+"senesnėmis versijomis."
+
 #. i18n: default label for a new menu
 #: ../src/core/na-object-menu.c:58
 msgid "New Caja menu"
 msgstr "Naujas Caja meniu"
 
 #. i18n: label for the default profile
-#: ../src/core/na-object-profile.c:446
+#: ../src/core/na-object-profile.c:463
 msgid "Default profile"
 msgstr "Numatytas profilis"
 
@@ -1031,11 +1190,11 @@ msgstr ""
 "Gali būti naudojamas kaip profilio funkcijos aprašymas.\n"
 "Jei nenustatytas, pavadinimas automatiškai sugeneruojamas."
 
-#: ../src/core/na-object-profile-factory.c:71
+#: ../src/core/na-object-profile-factory.c:77
 msgid "Path of the command"
 msgstr "Komandos kelias"
 
-#: ../src/core/na-object-profile-factory.c:72
+#: ../src/core/na-object-profile-factory.c:78
 msgid ""
 "The path of the command to be executed when the user select the menu item in "
 "the file manager context menu or in the toolbar."
@@ -1043,128 +1202,260 @@ msgstr ""
 "Paleidžiamos komandos, kuri bus vykdoma naudotojui pasirinkus atitinkamą "
 "punktą failų naršyklės kontekstiniame meniu arba įrankinėje, kelias."
 
-#: ../src/core/na-object-profile-factory.c:92
+#: ../src/core/na-object-profile-factory.c:104
 msgid "Parameters of the command"
 msgstr "Komandos parametrai"
 
-#. too long string for iso c: 665 (max=509)
-#: ../src/core/na-object-profile-factory.c:94
+#. too long string for iso c: (max=509)
+#: ../src/core/na-object-profile-factory.c:106
 msgid ""
 "The parameters of the command to be executed when the user selects the menu "
 "item in the file manager context menu or in the toolbar.\n"
 "The parameters may contain some special tokens which are replaced by the "
 "informations provided by the file manager before starting the command:\n"
-"%d: base folder of the selected file(s)\n"
-"%f: the name of the selected file or the first one if several are selected\n"
-"%h: hostname of the URI\n"
-"%m: space-separated list of the basenames of the selected file(s)/folder(s)\n"
-"%M: space-separated list of the selected file(s)/folder(s), with their full "
-"paths\n"
-"%p: port number of the first URI\n"
-"%R: space-separated list of selected URIs\n"
-"%s: scheme of the URI\n"
-"%u: URI\n"
-"%U: username of the URI\n"
-"%%: a percent sign."
+"- up to version \"2.0\":\n"
+"  %d: base folder of the selected file(s)\n"
+"  %f: the name of the selected file or the first one if several are "
+"selected\n"
+"  %h: hostname of the URI\n"
+"  %m: space-separated list of the basenames of the selected file(s)/folder"
+"(s)\n"
+"  %M: space-separated list of the selected file(s)/folder(s), with their "
+"full paths\n"
+"  %p: port number of the first URI\n"
+"  %R: space-separated list of selected URIs\n"
+"  %s: scheme of the URI\n"
+"  %u: URI\n"
+"  %U: username of the URI\n"
+"  %%: a percent sign.- starting from version '1':\n"
+"  %b: (first) basename of the selected file(s)/folder(s)\n"
+"  %B: space-separated list of the basenames of the selected file(s)/folder"
+"(s)\n"
+"  %c: count the selected file(s)/folder(s)\n"
+"  %d: (first) base directory of the selected file(s)/folder(s)\n"
+"  %D: space-separated list of base directories of the selected file(s)/folder"
+"(s)\n"
+"  %f: (first) filename of the selected file(s)/folder(s)\n"
+"  %F: space-separated list of the filenames of the selected file(s)/folder"
+"(s)\n"
+"  %h: hostname of the (first) URI\n"
+"  %n: username of the (first) URI\n"
+"  %p: port number of the (first) URI\n"
+"  %s: scheme of the (first) URI\n"
+"  %u: (first) URI\n"
+"  %U: space-separated list of selected URIs\n"
+"  %w: (first) basename without the extension\n"
+"  %W: space-separated list of basenames without the extension\n"
+"  %x: (first) extension\n"
+"  %X: space-separated list of the extensions\n"
+"  %%: a percent sign."
 msgstr ""
-"Naudotojui pasirinkus failų naršyklės kontekstinio meniu arba įrankinės "
-"elementą paleidžiamos komandos parametrai.\n"
-"Parametruose gali būti keletas specialių leksemų, kurias failų naršyklė "
-"pakeičia prieš paleidžiant komandą:\n"
-"%d: pažymėtų failų aplankas\n"
-"%f: pažymėto failo pavadinimas, arba, jei pažymėti keli failai - pirmojo "
-"failo pavadinimas\n"
-"%h: URI kompiuterio pavadinimas\n"
-"%m: kableliais atskirtų pažymėtų failų/aplankų aplankų sąrašas\n"
-"%M: kableliais atskirtų pažymėtų failų/aplankų sąrašas su jų pilnais "
-"keliais\n"
-"%p: pirmojo URI prievado numeris\n"
-"%R: tarpais skiriamas pažymėtų URI sąrašas\n"
-"%s: URI schema\n"
-"%u: URI\n"
-"%U: URI aplankas\n"
-"%%: procento ženklas."
+"Komandos parametrai vykdymui, kai naudotojas pasirenka meniu punktą failų "
+"naršyklės kontekstiniame meniu arba įrankių juosotje.\n"
+"Parametrai gali turėti kai kurias specialias leksemas, kurios bus pakeistos "
+"failų naršyklės pateiktais duomenimis prieš vykdant komandą:\n"
+"- iki versijos „2.0“:\n"
+"  %d: pažymėtų failų bazinis aplankas\n"
+"  %f: pažymėto failo arba pirmojo iš pažymėtų pavadinimas\n"
+"  %h: URI kompiuterio vardas\n"
+"  %m: tarpais skiriamų pažymėtų failų/aplankų bazinių aplankų pavadinimų "
+"sąrašas\n"
+"  %M: tarpais skiriamų pažymėtų failų/aplankų su jų pilnais keliai sąršas\n"
+"  %p: pirmojo URI prievado numeris\n"
+"  %R: tarpais skiriamas pažymėtų URI sąrašas\n"
+"  %s: URI schema\n"
+"  %u: URI\n"
+"  %U: URI naudotojo vardas\n"
+"  %%: procento ženklas pradedant versija „1“:\n"
+"  %b: (pirmas) bazinio aplanko vardas pažymėtiems failams/aplankams\n"
+"  %B: tarpais skiriamas pažymėtų failų/aplankų bazinių aplankų pavadinimų "
+"sąrašas\n"
+"  %c: pažymėtų fialų/aplankų skaičius\n"
+"  %d: (pirmas) bazinis aplankas pažymėtiems failams/aplankams\n"
+"  %D: tarpais skiriamas pažymėtų failų/aplankų bazinių aplankų sąrašas\n"
+"  %f: (pirmas) failo pavadinimas iš pažymėtų failų/aplankų\n"
+"  %F: tarpais skiriamas pažymėtų failų/aplankų pavadinimų sąrašas\n"
+"  %h: pirmojo URI kompiuterio vardas\n"
+"  %n: (pirmojo) URI naudotojo vardas\n"
+"  %p: (pirmojo) URI prievado numeris\n"
+"  %s: (pirmojo) URI schema\n"
+"  %u: (pirmasis) URI\n"
+"  %U: tarpais skiriamas pažymėtų URI sąrašas\n"
+"  %w: (pirmasis) bazinis pavadinimas be plėtinio\n"
+"  %W: tarpais skiriamas bazinių pavadinimų be plėtinių sąrašas\n"
+"  %x: (pirmasis) plėtinys\n"
+"  %X: tarpais skiriamas plėtinių sąrašas\n"
+"  %%: procento ženklas."
 
-#: ../src/io-desktop/nadp-desktop-provider.c:220
+#: ../src/core/na-object-profile-factory.c:161
+msgid "Working directory"
+msgstr "Darbinis katalogas"
+
+#: ../src/core/na-object-profile-factory.c:162
+#, c-format
+msgid ""
+"The working directory the command will be started in.\n"
+"Defaults to \"%d\"."
+msgstr ""
+"Darbinis katalogas, kuriame bus paleista komanda.\n"
+"Numatyta „%d“."
+
+#: ../src/core/na-object-profile-factory.c:184
+msgid "Execution mode"
+msgstr "Vykdymo režimas"
+
+#: ../src/core/na-object-profile-factory.c:185
+msgid ""
+"Execution mode of the program.\n"
+"This may be choosen between following values:\n"
+"- Normal: starts as a standard graphical user interface\n"
+"- Terminal: starts the preferred terminal of the graphical environment, and "
+"runs the command in it\n"
+"- Embedded: makes use of a special feature of the file manager which allows "
+"a terminal to be ran inside of it; an acceptable fallback is Terminal\n"
+"- DisplayOutput: the ran terminal may be closed at end of the command, but "
+"standard streams (stdout, stderr) should be collected and displayed; an "
+"acceptable fallback is Terminal.\n"
+"Defaults to \"Normal\"."
+msgstr ""
+"Programos vykdymo režimas.\n"
+"Galima pasirinkti iš šių reikšmių:\n"
+"- Normal: paleidžia kaip įprastinę grafinę naudotojo sąsają\n"
+"- Terminal: paleidžia pageidaujamą grafinės aplinko terminalą ir paleidžia "
+"komandą jame\n"
+"- Embedded: išnaudoja failų naršyklės specialią savybę, leidžiančią paleisti "
+"terminalą jos viduje; priimtina atsarginė elgsena yra Terminal\n"
+"- DisplayOutput: paleistas terminalas gali būti užvertas pabaigoje, bet "
+"standartiniai srautai (stdout, stderr) turi būti surinkti ir parodyti; "
+"priimtina atsarginė elgsena yra terminalas.\n"
+"Numatyta „Normal“."
+
+#: ../src/core/na-object-profile-factory.c:216
+msgid "Startup notify"
+msgstr "Paleidimo pranešimas"
+
+#: ../src/core/na-object-profile-factory.c:217
+msgid ""
+"Only relevant when ExecutionMode=Normal.\n"
+"Defaults to FALSE."
+msgstr ""
+"Turi prasmę tik kai ExecutionMode=Normal.\n"
+"Numatyta NEIGIAMA."
+
+#: ../src/core/na-object-profile-factory.c:239
+msgid "Startup WM Class"
+msgstr "Paleidžiama WM klasė"
+
+#: ../src/core/na-object-profile-factory.c:240
+msgid ""
+"Only relevant when ExecutionMode=Normal.\n"
+"Defaults to empty."
+msgstr ""
+"Turi prasmę tik kai ExecutionMode=Normal.\n"
+"Numatyta tuščia."
+
+#: ../src/core/na-object-profile-factory.c:262
+msgid "Execute as user"
+msgstr "Vykdyti kaip naudotojas"
+
+#: ../src/core/na-object-profile-factory.c:263
+msgid ""
+"The user the command must be ran as. The user may be identified by its "
+"numeric UID or by its login.\n"
+"The implementation should ignore a profile defining a non-existing UID or "
+"login as a value for the ExecuteAs key.\n"
+"The implementation might require the presence of a well-configured subsystem "
+"(e.g. sudo).\n"
+"Defaults to empty: the command will be executed as the current user."
+msgstr ""
+"Vykdyti komandą kaip naudotojo. Naudotojas gali būti nurodytas skaitiniu UID "
+"arba jo prisijungimo vardu.\n"
+"Realizacija turi nepaisyti profilio, apibrėžiančio neegzistuojantį UID arba "
+"prisijungimo vardą ExecuteAs raktui.\n"
+"Realizacija gali reikalauti tinkamai sukonfigūruotos posistemės (pvz. "
+"sudo).\n"
+"Numatyta tuščia: komanda bus vykdoma kaip dabartinio naudotojo."
+
+#: ../src/io-desktop/cadp-desktop-provider.c:225
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Caja-Actions darbastalio įvesties/išvesties tiekėjas"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:228
+#: ../src/io-mateconf/nagp-mateconf-provider.c:226
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Caja-Actions MateConf įvesties/išvesties tiekėjas"
 
-#: ../src/io-xml/naxml-reader.c:147
+#: ../src/io-xml/caxml-reader.c:147
 #, c-format
 msgid "Item ID %s already exists."
 msgstr "Elemento ID %s jau yra."
 
-#: ../src/io-xml/naxml-reader.c:148
+#: ../src/io-xml/caxml-reader.c:148
 msgid "Item ID not found."
 msgstr "Elemento ID nerastas."
 
-#: ../src/io-xml/naxml-reader.c:149
+#: ../src/io-xml/caxml-reader.c:149
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr "Nelauktas rakto kelias %s importuojant meniu."
 
-#: ../src/io-xml/naxml-reader.c:150
+#: ../src/io-xml/caxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr "Elementas %s eilutėje %d jau rastas, nepaisomas."
 
-#: ../src/io-xml/naxml-reader.c:151
+#: ../src/io-xml/caxml-reader.c:151
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr "Neleistinas elemento ID: tikėtasi %s, rasta %s eilutėje %d."
 
-#: ../src/io-xml/naxml-reader.c:152
+#: ../src/io-xml/caxml-reader.c:152
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr "Nežinomas elementas %s rastas eilutėje %d tikintis %s."
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/naxml-reader.c:154
+#: ../src/io-xml/caxml-reader.c:154
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr "Nežinomas tipas %s rastas eilutėje %d, tikintis veiksmo arba meniu."
 
-#: ../src/io-xml/naxml-reader.c:155
+#: ../src/io-xml/caxml-reader.c:155
 #, c-format
 msgid "Invalid XML root element %s found at line %d while waiting for %s."
 msgstr "Neteisingas XML šakninis elementas %s rastas eilutėje %d tikintis %s."
 
-#: ../src/io-xml/naxml-reader.c:156
+#: ../src/io-xml/caxml-reader.c:156
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr "Nepavyko perskaityti XML failo: %s."
 
-#: ../src/io-xml/naxml-reader.c:157
+#: ../src/io-xml/caxml-reader.c:157
 #, c-format
 msgid "Node %s at line %d has not been dealt with."
 msgstr "Mazgas %s eilutėje %d neapdorotas."
 
-#: ../src/io-xml/naxml-reader.c:1322
+#: ../src/io-xml/caxml-reader.c:1322
 msgid "Item was renumbered due to user request."
 msgstr "Elementas buvo pernumeruotas naudotojo prašymu."
 
-#: ../src/io-xml/naxml-reader.c:1328
+#: ../src/io-xml/caxml-reader.c:1328
 msgid "Existing item was overriden due to user request."
 msgstr "Esamas elementas buvo perrašytas naudotojo prašymu."
 
-#: ../src/io-xml/naxml-reader.c:1337
+#: ../src/io-xml/caxml-reader.c:1337
 msgid "Import was canceled due to user request."
 msgstr "Importavimas atšauktas naudotojo prašymu."
 
 #. i18n: the action has been renumbered during import operation
-#: ../src/io-xml/naxml-reader.c:1376
+#: ../src/io-xml/caxml-reader.c:1376
 msgid "(renumbered)"
 msgstr "(pernumeruota)"
 
-#: ../src/io-xml/naxml-formats.c:48
+#: ../src/io-xml/caxml-formats.c:48
 msgid "Export as a _full MateConf schema file"
 msgstr "Eksportuoti kai _pilną MateConf schemos failą"
 
-#: ../src/io-xml/naxml-formats.c:49
+#: ../src/io-xml/caxml-formats.c:49
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1176,11 +1467,11 @@ msgstr ""
 "- Caja Actions Configuration Tool importavimo pagalbininkų,\n"
 "- arba mateconftool-2 --import-schema-file komandinės eilutės įrankiu."
 
-#: ../src/io-xml/naxml-formats.c:58
+#: ../src/io-xml/caxml-formats.c:58
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr "Eksportuoti kaip _supaprastintą MateConf schemos (v2) failą"
 
-#: ../src/io-xml/naxml-formats.c:59
+#: ../src/io-xml/caxml-formats.c:59
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
@@ -1199,11 +1490,11 @@ msgstr ""
 "- Caja Actions Configuration Tool importavimo pagalbininkų,\n"
 "- arba mateconftool-2 --import-schema-file komandinės eilutės įrankiu."
 
-#: ../src/io-xml/naxml-formats.c:71
+#: ../src/io-xml/caxml-formats.c:71
 msgid "Export as a MateConf _dump file"
 msgstr "Eksportuoti kai MateConf san_dėlio failą"
 
-#: ../src/io-xml/naxml-formats.c:72
+#: ../src/io-xml/caxml-formats.c:72
 msgid ""
 "This format has been introduced in v 1.11 serie, and should be the preferred "
 "format for newly exported items.\n"
@@ -1224,441 +1515,531 @@ msgstr ""
 "- Caja Actions Configuration Tool importavimo pagalbininkų,\n"
 "- arba mateconftool-2 --load komandinės eilutės įrankiu."
 
-#: ../src/nact/base-application.c:1292
+#: ../src/cact/base-application.c:1292
 msgid "Unable to initialize the internationalization environment."
 msgstr "Nepavyko inicializuoti internacionalizacijos aplinkos."
 
-#: ../src/nact/base-application.c:1301
+#: ../src/cact/base-application.c:1301
 msgid "Unable to initialize the Gtk+ user interface."
 msgstr "Nepavyko inicializuoti Gtk+ naudotojo sąsajos."
 
-#: ../src/nact/base-application.c:1310
+#: ../src/cact/base-application.c:1310
 msgid "Another instance of the application is already running."
 msgstr "Programa jau paleista."
 
-#: ../src/nact/base-application.c:1319
+#: ../src/cact/base-application.c:1319
 msgid "No filename provided for the UI XML definition."
 msgstr "Nepateiktas failas UI XML apibrėžimui."
 
 #. i18n: Unable to load the XML definition from <filename>
-#: ../src/nact/base-application.c:1329
+#: ../src/cact/base-application.c:1329
 #, c-format
 msgid "Unable to load the XML definition from %s."
 msgstr "Nepavyko pakrauti XML apibrėžimo iš %s."
 
-#: ../src/nact/base-application.c:1342
+#: ../src/cact/base-application.c:1342
 msgid "Unable to set the default icon for the application."
 msgstr "Nepavyko nustatyti numatytos piktogramos programai."
 
-#: ../src/nact/base-application.c:1351
+#: ../src/cact/base-application.c:1351
 msgid "Unable to get the main window of the application."
 msgstr "Nepavyko gauti programos pagrindinio lango."
 
-#: ../src/nact/base-assistant.c:577
+#: ../src/cact/base-assistant.c:577
 msgid "Are you sure you want to quit this assistant ?"
 msgstr "Ar tikrai norite užverti pagalbininką ?"
 
-#: ../src/nact/base-window.c:1200
+#: ../src/cact/base-window.c:1200
 #, c-format
 msgid "Unable to load %s XML definition."
 msgstr "Nepavyko pakrauti %s XML apibrėžimo."
 
-#: ../src/nact/base-window.c:1286
+#: ../src/cact/base-window.c:1286
 #, c-format
 msgid "Unable to load %s UI XML definition: %s"
 msgstr "Nepavyko pakrauti %s UI XML apibrėžimo: %s"
 
-#: ../src/nact/egg-desktop-file.c:165
+#: ../src/cact/egg-desktop-file.c:165
 #, c-format
 msgid "File is not a valid .desktop file"
 msgstr "Failas nėra tinkamas .desktop failas"
 
-#: ../src/nact/egg-desktop-file.c:188
+#: ../src/cact/egg-desktop-file.c:188
 #, c-format
 msgid "Unrecognized desktop file Version '%s'"
 msgstr "Neatpažinta desktop failo versija „%s“"
 
-#: ../src/nact/egg-desktop-file.c:958
+#: ../src/cact/egg-desktop-file.c:958
 #, c-format
 msgid "Starting %s"
 msgstr "Paleidžiama %s"
 
-#: ../src/nact/egg-desktop-file.c:1100
+#: ../src/cact/egg-desktop-file.c:1100
 #, c-format
 msgid "Application does not accept documents on command line"
 msgstr "Programa nepriima dokumentų komandinėje eilutėje"
 
-#: ../src/nact/egg-desktop-file.c:1168
+#: ../src/cact/egg-desktop-file.c:1168
 #, c-format
 msgid "Unrecognized launch option: %d"
 msgstr "Neatpažinta paleidimo parinktis: %d"
 
-#: ../src/nact/egg-desktop-file.c:1373
+#: ../src/cact/egg-desktop-file.c:1373
 #, c-format
 msgid "Can't pass document URIs to a 'Type=Link' desktop entry"
 msgstr "Negalima perduoti dokumento URI desktop įrašui „tipas=saitas“"
 
-#: ../src/nact/egg-desktop-file.c:1394
+#: ../src/cact/egg-desktop-file.c:1394
 #, c-format
 msgid "Not a launchable item"
 msgstr "Nepaleidžiamas elementas"
 
-#: ../src/nact/egg-sm-client.c:239
+#: ../src/cact/egg-sm-client.c:239
 msgid "Disable connection to session manager"
 msgstr "Uždrausti prisijungimą prie sesijų tvarkyklės"
 
-#: ../src/nact/egg-sm-client.c:242
+#: ../src/cact/egg-sm-client.c:242
 msgid "Specify file containing saved configuration"
 msgstr "Nurodykite failą su įrašyta konfigūracija"
 
-#: ../src/nact/egg-sm-client.c:242
+#: ../src/cact/egg-sm-client.c:242
 msgid "FILE"
 msgstr "FAILAS"
 
-#: ../src/nact/egg-sm-client.c:245
+#: ../src/cact/egg-sm-client.c:245
 msgid "Specify session management ID"
 msgstr "Nurodykite sesijos valdymo ID"
 
-#: ../src/nact/egg-sm-client.c:245
+#: ../src/cact/egg-sm-client.c:245
 msgid "ID"
 msgstr "ID"
 
-#: ../src/nact/egg-sm-client.c:267
+#: ../src/cact/egg-sm-client.c:267
 msgid "Session management options:"
 msgstr "Sesijos valdymo parinktys:"
 
-#: ../src/nact/egg-sm-client.c:268
+#: ../src/cact/egg-sm-client.c:268
 msgid "Show session management options"
 msgstr "Rodyti sesijos valdymo parinktis"
 
-#: ../src/nact/nact-application.c:72
+#: ../src/cact/cact-application.c:72
 msgid "Set it to run multiple instances of the program [unique]"
 msgstr "Nustatyti vykdyti daug programos vienetų [unikalus]"
 
-#: ../src/nact/nact-application.c:74
+#: ../src/cact/cact-application.c:74
 msgid "Output the version number, and exit gracefully [no]"
 msgstr "Išvesti versijos numerį ir gražiai išeiti [ne]"
 
-#: ../src/nact/nact-application.c:353
+#: ../src/cact/cact-application.c:353
 msgid ""
 "Another instance of Caja Actions Configuration Tool is already running."
 msgstr "Caja Actions Configuration Tool jau paleistas."
 
 #. i18n: another instance is already running: second line of error message
-#: ../src/nact/nact-application.c:355
+#: ../src/cact/cact-application.c:355
 msgid "Please switch back to it."
 msgstr "Grįžkite į jį."
 
-#. static const gchar *thisfn = "nact_application_appli_get_application_name";
+#. static const gchar *thisfn = "cact_application_appli_get_application_name";
 #. g_debug( "%s: application=%p", thisfn, ( void * ) application );
 #. i18n: this is the application name, used in window title
-#: ../src/nact/nact-application.c:413
+#: ../src/cact/cact-application.c:413
 msgid "Caja Actions Configuration Tool"
 msgstr "Caja Actions Configuration Tool"
 
-#: ../src/nact/nact-assistant-export.c:679
+#: ../src/cact/cact-add-capability-dialog.c:71
+msgid "User is the owner of the item"
+msgstr "Naudotojas yra elemento savininkas"
+
+#: ../src/cact/cact-add-capability-dialog.c:72
+msgid "Item is readable by the user"
+msgstr "Naudotojas gali skaityti elementą"
+
+#: ../src/cact/cact-add-capability-dialog.c:73
+msgid "Item is writable by the user"
+msgstr "Naudotojas gali rašyti į elementą"
+
+#: ../src/cact/cact-add-capability-dialog.c:74
+msgid "Item is executable by the user"
+msgstr "Naudotojas gali vykdyti elementą"
+
+#: ../src/cact/cact-add-capability-dialog.c:75
+msgid "Item is local"
+msgstr "Elementas yra vietinis"
+
+#. i18n: add a comment when a capability is already used by current item
+#. i18n: add a comment when a scheme is already used by current item
+#: ../src/cact/cact-add-capability-dialog.c:508
+#: ../src/cact/cact-schemes-list.c:365
+#, c-format
+msgid "%s (already used)"
+msgstr "%s (jau naudojamas)"
+
+#: ../src/cact/cact-assistant-export.c:679
 msgid "About to export selected items:"
 msgstr "Ruošiamasi eksportuoti pažymėtus elementus:"
 
-#: ../src/nact/nact-assistant-export.c:693
+#: ../src/cact/cact-assistant-export.c:693
 msgid "Into the destination folder:"
 msgstr "Į aplanką:"
 
-#: ../src/nact/nact-assistant-export.c:753
+#: ../src/cact/cact-assistant-export.c:753
 msgid "Export canceled due to user action."
 msgstr "Eksportavimas atšauktas dėl naudotojo veiksmo."
 
 #. i18n: result of the export assistant
-#: ../src/nact/nact-assistant-export.c:781
+#: ../src/cact/cact-assistant-export.c:781
 msgid "Selected actions have been proceeded :"
 msgstr "Pažymėti veiksmai buvo apdoroti :"
 
 #. i18n: action as been successfully exported to <filename>
-#: ../src/nact/nact-assistant-export.c:799
+#: ../src/cact/cact-assistant-export.c:799
 msgid "Successfully exported as"
 msgstr "Sėkmingai išeksportuota kaip"
 
-#: ../src/nact/nact-assistant-export.c:822
+#: ../src/cact/cact-assistant-export.c:822
 msgid "You may not have write permissions on selected folder."
 msgstr "Galbūt neturite teisių rašyti į nurodytą aplanką."
 
 #. i18n: the title of the confirm page of the import assistant
-#: ../src/nact/nact-assistant-import.c:563
+#: ../src/cact/cact-assistant-import.c:563
 msgid "About to import selected files:"
 msgstr "Ruošiamasi importuoti pažymėtus failus:"
 
 #. i18n: result of the import assistant
-#: ../src/nact/nact-assistant-import.c:788
+#: ../src/cact/cact-assistant-import.c:788
 msgid "Selected files have been proceeded :"
 msgstr "Pažymėti failai buvo apdoroti :"
 
 #. i18n: indicate that the file has been successfully imported
-#: ../src/nact/nact-assistant-import.c:806
+#: ../src/cact/cact-assistant-import.c:806
 msgid "Import OK"
 msgstr "Importavimas sėkmingas"
 
 #. i18n: this is the globally unique identifier and the label of the newly imported action
-#: ../src/nact/nact-assistant-import.c:812
+#: ../src/cact/cact-assistant-import.c:812
 #, c-format
 msgid "UUID: %s\t%s"
 msgstr "UUID: %s %s"
 
 #. i18n: indicate that the file was not iported
-#: ../src/nact/nact-assistant-import.c:823
+#: ../src/cact/cact-assistant-import.c:823
 msgid "Not imported"
 msgstr "Neimportuotas"
 
-#: ../src/nact/nact.desktop.in.h:1
+#: ../src/cact/cact.desktop.in.h:1
 msgid "Add items to the Caja popup menu"
 msgstr "Įtraukti naujus punktus į Caja meniu"
 
-#: ../src/nact/nact.desktop.in.h:2
+#: ../src/cact/cact.desktop.in.h:2
 msgid "Caja Actions Configuration"
 msgstr "Caja veiksmų konfigūravimas"
 
 #. i18n: The action <label> is about to be exported
-#: ../src/nact/nact-export-ask.c:326
+#: ../src/cact/cact-export-ask.c:326
 #, c-format
 msgid "The action \"%s\" is about to be exported."
 msgstr "Veiksmas „%s“ tuoj bus eksportuotas."
 
 #. i18n: The menu <label> is about to be exported
-#: ../src/nact/nact-export-ask.c:329
+#: ../src/cact/cact-export-ask.c:329
 #, c-format
 msgid "The menu \"%s\" is about to be exported."
 msgstr "Meniu „%s“ tuoj bus eksportuotas."
 
-#: ../src/nact/nact-export-format.c:46
+#: ../src/cact/cact-export-format.c:46
 msgid "_Ask me"
 msgstr "_Klausti"
 
-#: ../src/nact/nact-export-format.c:47
+#: ../src/cact/cact-export-format.c:47
 msgid ""
 "You will be asked for the format to choose each time an item is about to be "
 "exported."
 msgstr ""
 "Bus prašoma pasirinkti formatą kiekvieną kartą prie eksportuojant elementą."
 
-#: ../src/nact/nact-iaction-tab.c:525
-msgid "Menu"
-msgstr "Meniu"
-
-#: ../src/nact/nact-iaction-tab.c:526
-msgid "<b>Menu properties</b>"
-msgstr "<b>Meniu savybės</b>"
-
-#: ../src/nact/nact-iaction-tab.c:528
-msgid "Action"
-msgstr "Veiksmas"
-
-#: ../src/nact/nact-iaction-tab.c:529
-msgid "<b>Action properties</b>"
-msgstr "<b>Veiksmo savybės</b>"
-
-#: ../src/nact/nact-iaction-tab.c:677
+#: ../src/cact/cact-iaction-tab.c:596
 msgid "Caution: a label is mandatory for the action or the menu."
 msgstr "Pastaba: užrašas veiksmui ar meniu yra būtinas."
 
 #. i18n notes: when no icon is selected in the drop-down list
-#: ../src/nact/nact-iaction-tab.c:893
+#. i18n: label of the push button when there is not yet any shortcut
+#: ../src/cact/cact-iaction-tab.c:819 ../src/cact/cact-iproperties-tab.c:53
 msgid "None"
 msgstr "Jokios"
 
-#: ../src/nact/nact-iaction-tab.c:954
+#: ../src/cact/cact-iaction-tab.c:876
 msgid "Choosing an icon"
 msgstr "Pasirenkama piktograma"
 
-#: ../src/nact/nact-icommand-tab.c:416
+#: ../src/cact/cact-ibasenames-tab.c:165
+msgid "Basename filter"
+msgstr "Bazinio pavadinimo filtras"
+
+#: ../src/cact/cact-icapabilities-tab.c:157
+msgid "Capability filter"
+msgstr "Galimybių filtras"
+
+#: ../src/cact/cact-icommand-tab.c:429
 msgid "Caution: a label is mandatory for the profile."
 msgstr "Pastaba: užrašas profiliui yra būtinas."
 
-#: ../src/nact/nact-icommand-tab.c:573
+#: ../src/cact/cact-icommand-tab.c:571
 msgid "Choosing a command"
 msgstr "Pasirenkama komanda"
 
+#: ../src/cact/cact-icommand-tab.c:612
+msgid "Choosing a working directory"
+msgstr "Pasirenkamas darbinis katalogas"
+
 #. i18n notes: example strings for the command preview
-#: ../src/nact/nact-icommand-tab.c:652
+#: ../src/cact/cact-icommand-tab.c:649
 msgid "/path/to"
 msgstr "/kelias/iki"
 
-#: ../src/nact/nact-icommand-tab.c:653
+#: ../src/cact/cact-icommand-tab.c:650
 msgid "file1.txt"
 msgstr "byla1.txt"
 
-#: ../src/nact/nact-icommand-tab.c:653
+#: ../src/cact/cact-icommand-tab.c:650
 msgid "file2.txt"
 msgstr "byla2.txt"
 
-#: ../src/nact/nact-icommand-tab.c:654
+#: ../src/cact/cact-icommand-tab.c:651
 msgid " folder1"
 msgstr " aplankas1"
 
-#: ../src/nact/nact-icommand-tab.c:654
+#: ../src/cact/cact-icommand-tab.c:651
 msgid "folder2"
 msgstr "aplankas2"
 
-#: ../src/nact/nact-icommand-tab.c:655
+#: ../src/cact/cact-icommand-tab.c:652
 msgid " file1.txt"
 msgstr " failas1.txt"
 
-#: ../src/nact/nact-icommand-tab.c:655
+#: ../src/cact/cact-icommand-tab.c:652
 msgid "folder1"
 msgstr "aplankas1"
 
-#: ../src/nact/nact-icommand-tab.c:657
+#: ../src/cact/cact-icommand-tab.c:654
 msgid "test.example.net"
 msgstr "tai.pavyzdys.net"
 
-#: ../src/nact/nact-icommand-tab.c:658
+#: ../src/cact/cact-icommand-tab.c:655
 msgid "file.txt"
 msgstr "byla.txt"
 
-#: ../src/nact/nact-icommand-tab.c:659
+#: ../src/cact/cact-icommand-tab.c:656
 msgid "folder"
 msgstr "aplankas"
 
-#: ../src/nact/nact-icommand-tab.c:660
+#: ../src/cact/cact-icommand-tab.c:657
 msgid "8080"
 msgstr "8080"
 
-#: ../src/nact/nact-icommand-tab.c:664
+#: ../src/cact/cact-icommand-tab.c:661
 msgid "file:///path/to/file1.text"
 msgstr "file:///kelias/iki/failo1.text"
 
-#: ../src/nact/nact-icommand-tab.c:665
+#: ../src/cact/cact-icommand-tab.c:662
 msgid "file:///path/to/file2.text"
 msgstr "file:///kelias/iki/failo2.text"
 
-#: ../src/nact/nact-icommand-tab.c:666
+#: ../src/cact/cact-icommand-tab.c:663
 msgid "file:///path/to/a/dir"
 msgstr "file:///kelias/iki/katalogo"
 
-#: ../src/nact/nact-icommand-tab.c:667
+#: ../src/cact/cact-icommand-tab.c:664
 msgid "file:///path/to/another/dir"
 msgstr "file:///kelias/iki/kito/katalogo"
 
-#: ../src/nact/nact-icommand-tab.c:846
+#: ../src/cact/cact-icommand-tab.c:855
 msgid "e.g.,"
 msgstr "pvz.,"
+
+#: ../src/cact/cact-ienvironment-tab.c:68
+msgid "(strictly lesser than)"
+msgstr "(griežtai mažiau nei)"
+
+#: ../src/cact/cact-ienvironment-tab.c:69
+msgid "(equal to)"
+msgstr "(lygu)"
+
+#: ../src/cact/cact-ienvironment-tab.c:70
+msgid "(strictly greater than)"
+msgstr "(griežtai daugiau nei)"
+
+#: ../src/cact/cact-ienvironment-tab.c:90
+msgid "MATE desktop"
+msgstr "MATE darbastalis"
+
+#: ../src/cact/cact-ienvironment-tab.c:91
+msgid "KDE desktop"
+msgstr "KDE darbastalis"
+
+#: ../src/cact/cact-ienvironment-tab.c:92
+msgid "ROX desktop"
+msgstr "ROX darbastalis"
+
+#: ../src/cact/cact-ienvironment-tab.c:93
+msgid "XFCE desktop"
+msgstr "XFCE darbastalis"
+
+#: ../src/cact/cact-ienvironment-tab.c:94
+msgid "Legacy systems"
+msgstr "Pasenusios sistemos"
+
+#: ../src/cact/cact-ienvironment-tab.c:750
+#: ../src/cact/cact-ienvironment-tab.c:808
+msgid "Choosing an executable"
+msgstr "Pasirenkama programa"
+
+#: ../src/cact/cact-ifolders-tab.c:170
+msgid "Folder filter"
+msgstr "Aplanko filtras"
 
 #. i18n: title of the FileChoose dialog when selecting an URI which
 #. * will be compare to Caja 'current_folder'
 #.
-#: ../src/nact/nact-ifolders-tab.c:558 ../src/nact/nact-ifolders-tab.c:589
+#: ../src/cact/cact-ifolders-tab.c:255 ../src/cact/cact-ifolders-tab.c:285
 msgid "Select a folder"
 msgstr "Pasirinkite aplanką"
 
-#: ../src/nact/nact-main-menubar.c:106 ../src/nact/nact-main-menubar.c:213
+#: ../src/cact/cact-imimetypes-tab.c:163
+msgid "Mimetype filter"
+msgstr "MIME tipo filtras"
+
+#: ../src/cact/cact-iproperties-tab.c:279
+msgid "Me_nu"
+msgstr "Me_niu"
+
+#: ../src/cact/cact-iproperties-tab.c:280
+msgid "<b>Menu editable properties</b>"
+msgstr "<b>Meniu redagavimo savybės</b>"
+
+#: ../src/cact/cact-iproperties-tab.c:282
+msgid "_Action"
+msgstr "_Veiksmas"
+
+#: ../src/cact/cact-iproperties-tab.c:283
+msgid "<b>Action editable properties</b>"
+msgstr "<b>Veiksmo redagavimo savybės</b>"
+
+#: ../src/cact/cact-ischemes-tab.c:161
+msgid "Scheme filter"
+msgstr "Schemos filtras"
+
+#: ../src/cact/cact-main-menubar.c:107 ../src/cact/cact-main-menubar.c:214
 msgid "_File"
 msgstr "_Failas"
 
-#: ../src/nact/nact-main-menubar.c:107 ../src/nact/nact-main-menubar.c:217
+#: ../src/cact/cact-main-menubar.c:108 ../src/cact/cact-main-menubar.c:218
 msgid "_Edit"
 msgstr "_Keisti"
 
-#: ../src/nact/nact-main-menubar.c:108
+#: ../src/cact/cact-main-menubar.c:109
 msgid "_View"
 msgstr "R_odymas"
 
-#: ../src/nact/nact-main-menubar.c:109
+#: ../src/cact/cact-main-menubar.c:110
 msgid "_Toolbars"
 msgstr "_Įrankinės"
 
-#: ../src/nact/nact-main-menubar.c:110 ../src/nact/nact-main-menubar.c:221
+#: ../src/cact/cact-main-menubar.c:111 ../src/cact/cact-main-menubar.c:222
 msgid "_Tools"
 msgstr "Įr_ankiai"
 
-#: ../src/nact/nact-main-menubar.c:111
+#: ../src/cact/cact-main-menubar.c:112
 msgid "_Maintainer"
 msgstr "_Prižiūrėtojas"
 
-#: ../src/nact/nact-main-menubar.c:112 ../src/nact/nact-main-menubar.c:225
+#: ../src/cact/cact-main-menubar.c:113 ../src/cact/cact-main-menubar.c:226
 msgid "_Help"
 msgstr "_Žinynas"
 
-#: ../src/nact/nact-main-menubar.c:114
+#: ../src/cact/cact-main-menubar.c:115
 msgid "New _menu"
 msgstr "Naujas _meniu"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New menu' item
-#: ../src/nact/nact-main-menubar.c:116
+#: ../src/cact/cact-main-menubar.c:117
 msgid "Insert a new menu at the current position"
 msgstr "Įterpti naują meniu esamoje pozicijoje"
 
-#: ../src/nact/nact-main-menubar.c:118
+#: ../src/cact/cact-main-menubar.c:119
 msgid "_New action"
 msgstr "_Naujas veiksmas"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New action' item
-#: ../src/nact/nact-main-menubar.c:120
+#: ../src/cact/cact-main-menubar.c:121
 msgid "Define a new action"
 msgstr "Apibrėžti naują veiksmą"
 
-#: ../src/nact/nact-main-menubar.c:122
+#: ../src/cact/cact-main-menubar.c:123
 msgid "New _profile"
 msgstr "Naujas _profilis"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'New profile' item
-#: ../src/nact/nact-main-menubar.c:124
+#: ../src/cact/cact-main-menubar.c:125
 msgid "Define a new profile attached to the current action"
 msgstr "Apibrėžti naują profilį, prijungtą prie esamo veiksmo"
 
 #. i18n: tooltip displayed in the status bar when selecting 'Save' item
-#: ../src/nact/nact-main-menubar.c:128
+#: ../src/cact/cact-main-menubar.c:129
 msgid ""
 "Record all the modified actions. Invalid actions will be silently ignored"
 msgstr ""
 "Įrašyti visus pakeistus veiksmus. Netinkami veiksmai bus tyliai nepaisomi."
 
 #. i18n: tooltip displayed in the status bar when selecting 'Quit' item
-#: ../src/nact/nact-main-menubar.c:132
+#: ../src/cact/cact-main-menubar.c:133
 msgid "Quit the application"
 msgstr "Užverti programą"
 
 #. i18n: tooltip displayed in the status bar when selecting the Cut item
-#: ../src/nact/nact-main-menubar.c:136
+#: ../src/cact/cact-main-menubar.c:137
 msgid "Cut the selected item(s) to the clipboard"
 msgstr "Iškirpti pažymėtą(us) elementą(us) į iškarpinę"
 
 #. i18n: tooltip displayed in the status bar when selecting the Copy item
-#: ../src/nact/nact-main-menubar.c:140
+#: ../src/cact/cact-main-menubar.c:141
 msgid "Copy the selected item(s) to the clipboard"
 msgstr "Kopijuoti pažymėtą(us) elementą(us) į iškarpinę"
 
 #. i18n: tooltip displayed in the status bar when selecting the Paste item
-#: ../src/nact/nact-main-menubar.c:144
+#: ../src/cact/cact-main-menubar.c:145
 msgid "Insert the content of the clipboard just before the current position"
 msgstr "Įterpti iškarpinės turinį prie esamą poziciją"
 
-#: ../src/nact/nact-main-menubar.c:146
+#: ../src/cact/cact-main-menubar.c:147
 msgid "Paste _into"
 msgstr "Įdėti _į"
 
 #. i18n: tooltip displayed in the status bar when selecting the Paste Into item
-#: ../src/nact/nact-main-menubar.c:148
+#: ../src/cact/cact-main-menubar.c:149
 msgid "Insert the content of the clipboard as first child of the current item"
 msgstr "Įterpti iškarpinės turinį kaip pirmąjį esamo elemento vaiką"
 
-#: ../src/nact/nact-main-menubar.c:150
+#: ../src/cact/cact-main-menubar.c:151
 msgid "D_uplicate"
 msgstr "D_ubliuoti"
 
 #. i18n: tooltip displayed in the status bar when selecting the Duplicate item
-#: ../src/nact/nact-main-menubar.c:152
+#: ../src/cact/cact-main-menubar.c:153
 msgid "Duplicate the selected item(s)"
 msgstr "Dubliuoti pažymėtą(us) elementą(us)"
 
 #. i18n: tooltip displayed in the status bar when selecting the Delete item
-#: ../src/nact/nact-main-menubar.c:156
+#: ../src/cact/cact-main-menubar.c:157
 msgid "Delete the selected item(s)"
 msgstr "Ištrinti pažymėtą(us) elementą(us)"
 
-#: ../src/nact/nact-main-menubar.c:158
+#: ../src/cact/cact-main-menubar.c:159
 msgid "_Reload the items"
 msgstr "_Įkelti elementus iš naujo"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'Reload' item
-#: ../src/nact/nact-main-menubar.c:160
+#: ../src/cact/cact-main-menubar.c:161
 msgid ""
 "Cancel your current modifications and reload the initial list of menus and "
 "actions"
@@ -1667,147 +2048,147 @@ msgstr ""
 "veiksmų sąrašą"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'Preferences' item
-#: ../src/nact/nact-main-menubar.c:164
+#: ../src/cact/cact-main-menubar.c:165
 msgid "Edit your preferences"
 msgstr "Keisti nustatymus"
 
-#: ../src/nact/nact-main-menubar.c:166
+#: ../src/cact/cact-main-menubar.c:167
 msgid "_Expand all"
 msgstr "_Išskleisti visus"
 
 #. i18n: tooltip displayed in the status bar when selecting the Expand all item
-#: ../src/nact/nact-main-menubar.c:168
+#: ../src/cact/cact-main-menubar.c:169
 msgid "Entirely expand the items hierarchy"
 msgstr "Visiškai išskleisti elementų hierarchiją"
 
-#: ../src/nact/nact-main-menubar.c:170
+#: ../src/cact/cact-main-menubar.c:171
 msgid "_Collapse all"
 msgstr "_Suskleisti visus"
 
 #. i18n: tooltip displayed in the status bar when selecting the Collapse all item
-#: ../src/nact/nact-main-menubar.c:172
+#: ../src/cact/cact-main-menubar.c:173
 msgid "Entirely collapse the items hierarchy"
 msgstr "Visiškai suskleisti elementų hierarchiją"
 
-#: ../src/nact/nact-main-menubar.c:175
+#: ../src/cact/cact-main-menubar.c:176
 msgid "_Import assistant..."
 msgstr "_Importo pagalbininkas..."
 
 #. i18n: tooltip displayed in the status bar when selecting the Import item
-#: ../src/nact/nact-main-menubar.c:177
+#: ../src/cact/cact-main-menubar.c:178
 msgid ""
 "Import one or more actions from external (XML) files into your configuration"
 msgstr ""
 "Importuoti vieną ar daugiau veiksmų iš išorinių (XML) failų į jūsų "
 "konfigūraciją"
 
-#: ../src/nact/nact-main-menubar.c:179
+#: ../src/cact/cact-main-menubar.c:180
 msgid "E_xport assistant..."
 msgstr "_Eksporto pagalbininkas..."
 
 #. i18n: tooltip displayed in the status bar when selecting the Export item
-#: ../src/nact/nact-main-menubar.c:181
+#: ../src/cact/cact-main-menubar.c:182
 msgid ""
 "Export one or more actions from your configuration to external XML files"
 msgstr ""
 "Eksportuoti vieną ar daugiau veiksmų iš jūsų konfigūracijos į išorinius XML "
 "failus"
 
-#: ../src/nact/nact-main-menubar.c:184
+#: ../src/cact/cact-main-menubar.c:185
 msgid "_Dump the selection"
 msgstr "_Saugoti pažymėtus"
 
 #. i18n: tooltip displayed in the status bar when selecting the Dump selection item
-#: ../src/nact/nact-main-menubar.c:186
+#: ../src/cact/cact-main-menubar.c:187
 msgid "Recursively dump selected items"
 msgstr "Rekursiškai saugoti pažymėtus elementus"
 
-#: ../src/nact/nact-main-menubar.c:188
+#: ../src/cact/cact-main-menubar.c:189
 msgid "_Brief tree store dump"
 msgstr "_Trumpas medžio saugyklos saugojimas"
 
 #. i18n: tooltip displayed in the status bar when selecting the BriefTreeStoreDump item
-#: ../src/nact/nact-main-menubar.c:190
+#: ../src/cact/cact-main-menubar.c:191
 msgid "Briefly dump the tree store"
 msgstr "Trumpai saugoti medžio saugyklą"
 
-#: ../src/nact/nact-main-menubar.c:192
+#: ../src/cact/cact-main-menubar.c:193
 msgid "_List modified items"
 msgstr "_Pakeistų elementų sąrašas"
 
 #. i18n: tooltip displayed in the status bar when selecting the ListModifiedItems item
-#: ../src/nact/nact-main-menubar.c:194
+#: ../src/cact/cact-main-menubar.c:195
 msgid "List the modified items"
 msgstr "Išvardinti pakeistus elementus"
 
-#: ../src/nact/nact-main-menubar.c:196
+#: ../src/cact/cact-main-menubar.c:197
 msgid "_Dump the clipboard"
 msgstr "Iš_saugoti iškarpinę"
 
 #. i18n: tooltip displayed in the status bar when selecting the DumpClipboard item
-#: ../src/nact/nact-main-menubar.c:198
+#: ../src/cact/cact-main-menubar.c:199
 msgid "Dump the content of the clipboard object"
 msgstr "Išsaugoti iškarpinės turinį"
 
 #. i18n: tooltip displayed in the status bar when selecting the Help item
-#: ../src/nact/nact-main-menubar.c:203
+#: ../src/cact/cact-main-menubar.c:204
 msgid "Display help about this program"
 msgstr "Rodyti pagalbą apie šią programą"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
-#: ../src/nact/nact-main-menubar.c:207
+#: ../src/cact/cact-main-menubar.c:208
 msgid "Display informations about this program"
 msgstr "Rodyti informaciją apie šią programą"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
-#: ../src/nact/nact-main-menubar.c:215
+#: ../src/cact/cact-main-menubar.c:216
 msgid "Display the File toolbar"
 msgstr "Rodyti failo įrankinę"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View Edit toolbar' item
-#: ../src/nact/nact-main-menubar.c:219
+#: ../src/cact/cact-main-menubar.c:220
 msgid "Display the Edit toolbar"
 msgstr "Rodyti keitimo įrankinę"
 
 #. i18n: tooltip displayed in the status bar when selecting 'View Tools toolbar' item
-#: ../src/nact/nact-main-menubar.c:223
+#: ../src/cact/cact-main-menubar.c:224
 msgid "Display the Tools toolbar"
 msgstr "Rodyti įrankių įrankinę"
 
 #. i18n: tooltip displayed in the status bar when selecting 'View Help toolbar' item
-#: ../src/nact/nact-main-menubar.c:227
+#: ../src/cact/cact-main-menubar.c:228
 msgid "Display the Help toolbar"
 msgstr "Rodyti pagalbos įrankinę"
 
 #. i18n: note the space at the beginning of the sentence
-#: ../src/nact/nact-main-menubar.c:451
+#: ../src/cact/cact-main-menubar.c:454
 #, c-format
 msgid " %d menu(s), %d action(s), %d profile(s) are currently loaded"
 msgstr " Šiuo metu pakrauti %d meniu, %d veikas(ai), %d profilis(iai)"
 
-#: ../src/nact/nact-main-menubar-edit.c:242
+#: ../src/cact/cact-main-menubar-edit.c:242
 msgid "Not all items have been cut as following ones are not modifiable:"
 msgstr "Ne visi elementai buvo iškirpti, kadangi šie yra nekeičiami:"
 
-#: ../src/nact/nact-main-menubar-edit.c:492
+#: ../src/cact/cact-main-menubar-edit.c:492
 msgid "Not all items have been deleted as following ones are not modifiable:"
 msgstr "Ne visi elementai buvo ištrinti, kadangi šie yra nekeičiami:"
 
-#: ../src/nact/nact-main-menubar-file.c:200
+#: ../src/cact/cact-main-menubar-file.c:200
 msgid "New profile"
 msgstr "Naujas profilis"
 
-#: ../src/nact/nact-main-window.c:1338
+#: ../src/cact/cact-main-window.c:1422
 msgid ""
 "Reloading a fresh list of actions requires that you give up with your "
 "current modifications."
 msgstr "Veiksmų įkėlimas iš naujo reikalauja atšaukti visus jūsų pakeitimus."
 
-#: ../src/nact/nact-main-window.c:1341
+#: ../src/cact/cact-main-window.c:1425
 msgid "Do you really want to do this ?"
 msgstr "Ar tikrai norite tą padaryti ?"
 
-#: ../src/nact/nact-main-window.c:1364
+#: ../src/cact/cact-main-window.c:1448
 msgid ""
 "One or more actions have been modified in the filesystem.\n"
 "You could keep to work with your current list of actions, or you may want to "
@@ -1817,128 +2198,146 @@ msgstr ""
 "Jūs galite tęsti darbą su dabartiniu veiksmų sąrašu, arba pakrauti jį iš "
 "naujo."
 
-#: ../src/nact/nact-main-window.c:1371
+#: ../src/cact/cact-main-window.c:1455
 msgid ""
 "Note that reloading a fresh list of actions requires that you give up with "
 "your current modifications."
 msgstr ""
 "Veiksmų sąrašo įkėlimas iš naujo reikalauja atsisakyti visų esamų pakeitimų."
 
-#: ../src/nact/nact-main-window.c:1377
+#: ../src/cact/cact-main-window.c:1461
 msgid "Do you want to reload a fresh list of actions ?"
 msgstr "Ar tikrai norite pakrauti iš naujo veiksmų sąrašą ?"
 
-#: ../src/nact/nact-providers-list.c:117
+#: ../src/cact/cact-match-list.c:63
+msgid "Must match one of"
+msgstr "Turi atitikti vieną"
+
+#: ../src/cact/cact-match-list.c:64
+msgid "Must match all of"
+msgstr "Turi atitikti visus iš"
+
+#. i18n: label of the header of a column which let the user select a negative filter
+#.
+#: ../src/cact/cact-match-list.c:161
+msgid "Must not match any of"
+msgstr "Turi neatitikti nei vieno iš"
+
+#: ../src/cact/cact-match-list.c:729
+msgid "new-filter"
+msgstr "naujas filtras"
+
+#: ../src/cact/cact-providers-list.c:117
 msgid "To be read"
 msgstr "Bus perskaitytas"
 
-#: ../src/nact/nact-providers-list.c:125
+#: ../src/cact/cact-providers-list.c:125
 msgid "Writable"
 msgstr "Rašomas"
 
-#: ../src/nact/nact-providers-list.c:133
+#: ../src/cact/cact-providers-list.c:133
 msgid "I/O Provider"
 msgstr "Įvedimo/išvedimo tiekėjas"
 
 #. i18n: default name when the I/O providers doesn't provide one
-#: ../src/nact/nact-providers-list.c:210
+#: ../src/cact/cact-providers-list.c:210
 msgid "no name"
 msgstr "be pavadinimo"
 
 #. i18n: name displayed when the corresponding I/O provider is unavailable at runtime
-#: ../src/nact/nact-providers-list.c:214
+#: ../src/cact/cact-providers-list.c:214
 msgid "unavailable I/O provider"
 msgstr "nepasiekiamas įvedimo/išvedimo tiekėjas"
 
 #. i18n notes : description of 'file' scheme
-#: ../src/nact/nact-schemes-list.c:244
+#: ../src/cact/cact-schemes-list.c:259
 msgid "Local files"
 msgstr "Vietiniai failai"
 
 #. i18n notes : description of 'sftp' scheme
-#: ../src/nact/nact-schemes-list.c:246
+#: ../src/cact/cact-schemes-list.c:261
 msgid "SSH files"
 msgstr "SSH failai"
 
 #. i18n notes : description of 'smb' scheme
-#: ../src/nact/nact-schemes-list.c:248
+#: ../src/cact/cact-schemes-list.c:263
 msgid "Windows files"
 msgstr "Windows failai"
 
 #. i18n notes : description of 'ftp' scheme
-#: ../src/nact/nact-schemes-list.c:250
+#: ../src/cact/cact-schemes-list.c:265
 msgid "FTP files"
 msgstr "FTP failai"
 
 #. i18n notes : description of 'dav' scheme
-#: ../src/nact/nact-schemes-list.c:252
+#: ../src/cact/cact-schemes-list.c:267
 msgid "WebDAV files"
 msgstr "WebDAV failai"
 
 #. i18n notes : scheme name set for a new entry in the scheme list
-#: ../src/nact/nact-schemes-list.c:784
+#: ../src/cact/cact-schemes-list.c:687
 msgid "new-scheme"
 msgstr "nauja schema"
 
-#: ../src/nact/nact-schemes-list.c:785
+#: ../src/cact/cact-schemes-list.c:688
 msgid "New scheme description"
 msgstr "Naujos schemos aprašymas"
 
-#: ../src/nact/nact-tree-model-dnd.c:120
+#: ../src/cact/cact-tree-model-dnd.c:120
 msgid "Unable to drop a profile here"
 msgstr "Negalima numesti profilio čia"
 
-#: ../src/nact/nact-tree-model-dnd.c:121
+#: ../src/cact/cact-tree-model-dnd.c:121
 msgid "Unable to drop an action or a menu here"
 msgstr "Negalima numesti veiksmo arba meniu čia"
 
-#: ../src/nact/nact-tree-model-dnd.c:122
+#: ../src/cact/cact-tree-model-dnd.c:122
 msgid "Unable to drop here as parent is not writable"
 msgstr "Negalima numesti čia, kadangi tėvas nėra rašomas"
 
-#: ../src/nact/nact-tree-model-dnd.c:123
+#: ../src/cact/cact-tree-model-dnd.c:123
 msgid "Unable to drop here as level zero is not writable"
 msgstr "Negalima numesti čia, kadangi nulinis lygmuo nėra rašomas"
 
-#: ../src/nact/nact-tree-model-dnd.c:853
+#: ../src/cact/cact-tree-model-dnd.c:849
 msgid "Some messages have occurred during drop operation."
 msgstr "Kilo pranešimų numetimo veiksmo metu."
 
-#: ../src/nact/nact-window.c:358
+#: ../src/cact/cact-window.c:358
 msgid "An error has occured when trying to save the item"
 msgstr "Įvyko klaida bandant išsaugoti elementą"
 
-#: ../src/nact/nact-window.c:404
+#: ../src/cact/cact-window.c:404
 msgid "An error has occured when trying to delete the item"
 msgstr "Įvyko klaida bandant ištrinti elementą"
 
-#: ../src/nact/nact-window.c:461
+#: ../src/cact/cact-window.c:461
 #, c-format
 msgid "Some items have been modified."
 msgstr "Kai kurie elementai buvo pakeisti."
 
-#: ../src/nact/nact-window.c:462
+#: ../src/cact/cact-window.c:462
 msgid "Are you sure you want to quit without saving them ?"
 msgstr "Ar tikrai norite išeiti nesaugant elemento ?"
 
 #. i18n: title of the About dialog box, when seen from Caja file manager
 #. i18n: label of an automagic root submenu
-#: ../src/plugin-menu/caja-actions.c:295
-#: ../src/plugin-menu/caja-actions.c:809
+#: ../src/plugin-menu/caja-actions.c:299
+#: ../src/plugin-menu/caja-actions.c:907
 msgid "Caja Actions"
 msgstr "Caja veiksmai"
 
 #. i18n: tooltip of an automagic root submenu
-#: ../src/plugin-menu/caja-actions.c:811
+#: ../src/plugin-menu/caja-actions.c:909
 msgid ""
 "A submenu which embeds the currently available Caja Actions extensions"
 msgstr "Po-meniu, kuris laiko šiuo metu prieinamus Caja Actions plėtinius"
 
-#: ../src/plugin-menu/caja-actions.c:858
+#: ../src/plugin-menu/caja-actions.c:956
 msgid "About Caja Actions"
 msgstr "Apie Caja Actions"
 
-#: ../src/plugin-menu/caja-actions.c:859
+#: ../src/plugin-menu/caja-actions.c:957
 msgid "Display information about Caja Actions"
 msgstr "Rodyti informaciją apie Caja Actions"
 
@@ -1956,11 +2355,11 @@ msgstr "<URI>"
 msgid "Output the version number"
 msgstr "Išvedimo versijos numeris"
 
-#: ../src/test/test-reader.c:106
+#: ../src/test/test-reader.c:112
 msgid "Import a file."
 msgstr "Importuoti failą."
 
-#: ../src/test/test-reader.c:120 ../src/utils/caja-actions-new.c:333
+#: ../src/test/test-reader.c:126 ../src/utils/caja-actions-new.c:335
 #: ../src/utils/caja-actions-run.c:197
 #: ../src/utils/caja-actions-schemas.c:175
 msgid ""
@@ -1970,26 +2369,26 @@ msgstr ""
 "Pranešimai apie klaidas yra laukiami adresu http://bugzilla.gnome.org arba "
 "jūsų galite parašyti į <maintainer@caja-actions.org>.\n"
 
-#: ../src/test/test-reader.c:128 ../src/utils/caja-actions-new.c:347
+#: ../src/test/test-reader.c:134 ../src/utils/caja-actions-new.c:349
 #: ../src/utils/caja-actions-run.c:205
 #: ../src/utils/caja-actions-schemas.c:183
 msgid "Miscellaneous options"
 msgstr "Įvairios parinktys"
 
-#: ../src/test/test-reader.c:149 ../src/utils/caja-actions-new.c:177
+#: ../src/test/test-reader.c:155 ../src/utils/caja-actions-new.c:179
 #: ../src/utils/caja-actions-run.c:111
 #: ../src/utils/caja-actions-schemas.c:124
 #, c-format
 msgid "Syntax error: %s\n"
 msgstr "Sintaksės klaida: %s\n"
 
-#: ../src/test/test-reader.c:164
+#: ../src/test/test-reader.c:170
 #, c-format
 msgid "Error: uri is mandatory.\n"
 msgstr "Klaida: uri yra privalomas.\n"
 
-#: ../src/test/test-reader.c:176 ../src/utils/caja-actions-new.c:553
-#: ../src/utils/caja-actions-run.c:432
+#: ../src/test/test-reader.c:182 ../src/utils/caja-actions-new.c:555
+#: ../src/utils/caja-actions-run.c:439
 #: ../src/utils/caja-actions-schemas.c:368
 #, c-format
 msgid "Try %s --help for usage.\n"
@@ -2023,56 +2422,34 @@ msgstr ""
 "Aplanko kelias, kur išsaugoti naują veiksmą kaip MateConf saugyklos išvedimas "
 "[numatytasis: stdout]"
 
-#: ../src/utils/caja-actions-new.c:190
+#: ../src/utils/caja-actions-new.c:143
+#, c-format
+msgid "Error: '%s' and '%s' options cannot both be specified.\n"
+msgstr "Klaida: „%s“ ir „%s“ parinktys negali būti nurodytas abi.\n"
+
+#: ../src/utils/caja-actions-new.c:192
 #, c-format
 msgid "Error: an action label is mandatory.\n"
 msgstr "Klaida: veiksmo užrašas yra privalomas.\n"
 
-#: ../src/utils/caja-actions-new.c:195
-#, c-format
-msgid "Error: '--enabled' and '--disabled' options cannot both be specified.\n"
-msgstr ""
-"Klaida: „--enabled“ ir „--disabled“ parinktys negali būti abu nustatyti.\n"
-
-#: ../src/utils/caja-actions-new.c:202
-#, c-format
-msgid ""
-"Error: '--context' and '--nocontext' options cannot both be specified.\n"
-msgstr ""
-"Klaida: „--context“ ir „--nocontext“ parinktys negali būti abi nustatytos.\n"
-
-#: ../src/utils/caja-actions-new.c:209
-#, c-format
-msgid ""
-"Error: '--toolbar' and '--notoolbar' options cannot both be specified.\n"
-msgstr ""
-"Klaida: „--tollbar“ ir „--notoolbar“ parinktys negali būti abi nustatytos.\n"
-
-#: ../src/utils/caja-actions-new.c:214
-#, c-format
-msgid ""
-"Error: '--match-case' and '--nocase' options cannot both be specified.\n"
-msgstr ""
-"Klaida: „--match-case“ ir „--nocase“ parinktys negali būti abi nustatytos.\n"
-
-#: ../src/utils/caja-actions-new.c:221
+#: ../src/utils/caja-actions-new.c:223
 #, c-format
 msgid "Error: only one output option may be specified.\n"
 msgstr "Klaida: tik viena išvedimo parinktis gali būti nustatyta.\n"
 
 #. i18n: Action <action_label> written to...
-#: ../src/utils/caja-actions-new.c:234
+#: ../src/utils/caja-actions-new.c:236
 #, c-format
 msgid "Action '%s' succesfully written to MateConf configuration.\n"
 msgstr "Veiksmas „%s“ sėkmingai įrašytas į MateConf konfigūraciją.\n"
 
-#: ../src/utils/caja-actions-new.c:314
+#: ../src/utils/caja-actions-new.c:316
 msgid ""
 "Define a new action.\n"
 "\n"
 "  The created action defaults to be written to stdout.\n"
 "  It can also be written to an output folder, in a file later suitable for "
-"an import in NACT.\n"
+"an import in CACT.\n"
 "  Or you may choose to directly write the action into your MateConf "
 "configuration."
 msgstr ""
@@ -2080,34 +2457,34 @@ msgstr ""
 "\n"
 "  Sukurtas veiksmas numatytai rašomas į stdout.\n"
 "  Jis taip pat gali būti įrašytas į išvedimo aplanką bei failą, vėliau "
-"tinkamą importavimui su NACT.\n"
+"tinkamą importavimui su CACT.\n"
 "  Arba Jūs galite pasirinkti tiesiogiai rašyti veiksmo informaciją į MateConf "
 "konfigūraciją."
 
-#: ../src/utils/caja-actions-new.c:342
+#: ../src/utils/caja-actions-new.c:344
 msgid "Output of the program"
 msgstr "Programos išvedimas"
 
-#: ../src/utils/caja-actions-new.c:342
+#: ../src/utils/caja-actions-new.c:344
 msgid "Choose where the program creates the action"
 msgstr "Pasirinkite, kur programa sukuria veiksmą"
 
 #. i18n: unable to create <output_dir> dir: <strerror_message>
-#: ../src/utils/caja-actions-new.c:468
+#: ../src/utils/caja-actions-new.c:470
 #, c-format
 msgid "Error: unable to create %s dir: %s"
 msgstr "Klaida: negalima sukurti %s katalogo: %s"
 
 #. i18n: Action <action_label> written to <output_filename>...
-#: ../src/utils/caja-actions-new.c:482
+#: ../src/utils/caja-actions-new.c:484
 #, c-format
 msgid ""
-"Action '%s' succesfully written to %s, and ready to be imported in NACT.\n"
+"Action '%s' succesfully written to %s, and ready to be imported in CACT.\n"
 msgstr ""
 "Veiksmas „%s“ sėkmingai įrašytas į %s ir yra parinktas importavimui su "
-"NACT.\n"
+"CACT.\n"
 
-#: ../src/utils/caja-actions-new.c:515
+#: ../src/utils/caja-actions-new.c:517
 msgid "Error: unable to find 'na-mateconf' provider."
 msgstr "Klaida: nepavyko rasti „na-mateconf“ tiekėjo."
 
@@ -2127,10 +2504,20 @@ msgstr ""
 msgid "Error: action id is mandatory.\n"
 msgstr "Klaida: veiksmo id yra privalomas.\n"
 
+#: ../src/utils/caja-actions-run.c:151
+#, c-format
+msgid "No current selection. Nothing to do. Exiting.\n"
+msgstr "Nėra pažymėjimo. Nėra ką daryti. Išeinama.\n"
+
 #: ../src/utils/caja-actions-run.c:156
 #, c-format
 msgid "Action %s is not a valid candidate. Exiting.\n"
 msgstr "Veiksmas %s nėra tinkamas kandidatas. Išeinama.\n"
+
+#: ../src/utils/caja-actions-run.c:162
+#, c-format
+msgid "No valid profile is candidate to execution. Exiting.\n"
+msgstr "Nei vienas tinkamas profilis nėra kandidatas vykdymui. Išeinama.\n"
 
 #: ../src/utils/caja-actions-run.c:183
 msgid "Execute an action on the specified target."
@@ -2151,17 +2538,17 @@ msgstr "Klaida: veiksmas „%s“ uždraustas.\n"
 msgid "Error: action '%s' is not valid.\n"
 msgstr "Klaida: veiksmas „%s“ netinkamas.\n"
 
-#: ../src/utils/caja-actions-run.c:276
+#: ../src/utils/caja-actions-run.c:277
 #, c-format
 msgid "Error: unable to get a connection to session DBus: %s"
 msgstr "Klaida: nepavyko gauti prisijungimo prie sesijos DBus: %s"
 
-#: ../src/utils/caja-actions-run.c:287
+#: ../src/utils/caja-actions-run.c:288
 #, c-format
 msgid "Error: unable to get a proxy on %s service"
 msgstr "Klaida: nepavyko gauti proxy servisui %s"
 
-#: ../src/utils/caja-actions-run.c:297
+#: ../src/utils/caja-actions-run.c:298
 #, c-format
 msgid "Error on GetSelectedPaths call: %s"
 msgstr "Klaida iškvietime GetSelectedPaths: %s"
@@ -2173,6 +2560,23 @@ msgstr "Išvesti schemą į stdout"
 #: ../src/utils/caja-actions-schemas.c:161
 msgid "Output the Caja Actions MateConf schema on stdout."
 msgstr "Išvesti Caja Actions MateConf schemą į stdout."
+
+#~ msgid ""
+#~ "Error: '--enabled' and '--disabled' options cannot both be specified.\n"
+#~ msgstr ""
+#~ "Klaida: „--enabled“ ir „--disabled“ parinktys negali būti abu nustatyti.\n"
+
+#~ msgid ""
+#~ "Error: '--context' and '--nocontext' options cannot both be specified.\n"
+#~ msgstr ""
+#~ "Klaida: „--context“ ir „--nocontext“ parinktys negali būti abi "
+#~ "nustatytos.\n"
+
+#~ msgid ""
+#~ "Error: '--toolbar' and '--notoolbar' options cannot both be specified.\n"
+#~ msgstr ""
+#~ "Klaida: „--tollbar“ ir „--notoolbar“ parinktys negali būti abi "
+#~ "nustatytos.\n"
 
 #, fuzzy
 #~ msgid "(C) 2005-2007 Frederic Ruaudel <grumz@grumz.net>"
@@ -2442,9 +2846,6 @@ msgstr "Išvesti Caja Actions MateConf schemą į stdout."
 #~ msgid "Edit Action \"%s\""
 #~ msgstr "Keisti veiksmą „%s“"
 
-#~ msgid "Scheme"
-#~ msgstr "Schema"
-
 #~ msgid "Description"
 #~ msgstr "Aprašymas"
 
@@ -2475,9 +2876,6 @@ msgstr "Išvesti Caja Actions MateConf schemą į stdout."
 #~ msgstr ""
 #~ "Šablonas, kurį turėtų atitikti bylos. Galima naudoti ženklus „?“ arba "
 #~ "„*“ (turite tai nurodyti kiekvienam šablonui)"
-
-#~ msgid "Set it if the selection can contain files"
-#~ msgstr "Nustatykite jeigu galima pasirinkti bylas"
 
 #~ msgid "Set it if the selection can contain folders"
 #~ msgstr "Nustatykite jeigu galima pasirinkti aplankus"
@@ -2592,8 +2990,8 @@ msgstr "Išvesti Caja Actions MateConf schemą į stdout."
 #~ "WebDav. Čia gali būti naudojamos visos Nautiliaus naudojamos MateVFS "
 #~ "schemos."
 
-#~ msgid "Manage your actions using NACT, the configuration tool"
-#~ msgstr "Tvarkyti veiksmus naudojant NACT konfigūravimo įrankį"
+#~ msgid "Manage your actions using CACT, the configuration tool"
+#~ msgstr "Tvarkyti veiksmus naudojant CACT konfigūravimo įrankį"
 
 #~ msgid ""
 #~ "The parameters of the command to start when the user selects the menu "

@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NADataBoxed</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch05.html" title="Data Factory Management System">
+<link rel="prev" href="NABoxed.html" title="NABoxed">
+<link rel="next" href="caja-actions-NADataType.html" title="NADataType">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="NABoxed.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="caja-actions-NADataType.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#NADataBoxed.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#NADataBoxed.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#NADataBoxed.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="NADataBoxed"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="NADataBoxed.top_of_page"></a>NADataBoxed</span></h2>
+<p>NADataBoxed — The Data Factory Element Class Definition</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="NADataBoxed.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-data-boxed.h&gt;
+
+#define             <a class="link" href="NADataBoxed.html#NA-TYPE-DATA-BOXED:CAPS" title="NA_TYPE_DATA_BOXED">NA_TYPE_DATA_BOXED</a>
+#define             <a class="link" href="NADataBoxed.html#NA-DATA-BOXED:CAPS" title="NA_DATA_BOXED()">NA_DATA_BOXED</a>                       (object)
+#define             <a class="link" href="NADataBoxed.html#NA-IS-DATA-BOXED:CAPS" title="NA_IS_DATA_BOXED()">NA_IS_DATA_BOXED</a>                    (object)
+                    <a class="link" href="NADataBoxed.html#NADataBoxed-struct" title="NADataBoxed">NADataBoxed</a>;
+<a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="returnvalue">NADataBoxed</span></a> *       <a class="link" href="NADataBoxed.html#na-data-boxed-new" title="na_data_boxed_new ()">na_data_boxed_new</a>                   (<em class="parameter"><code>const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> *def</code></em>);
+const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="returnvalue">NADataDef</span></a> *   <a class="link" href="NADataBoxed.html#na-data-boxed-get-data-def" title="na_data_boxed_get_data_def ()">na_data_boxed_get_data_def</a>          (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="returnvalue">GParamSpec</span></a> *        <a class="link" href="NADataBoxed.html#na-data-boxed-get-param-spec" title="na_data_boxed_get_param_spec ()">na_data_boxed_get_param_spec</a>        (<em class="parameter"><code>const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> *def</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="NADataBoxed.html#na-data-boxed-are-equal" title="na_data_boxed_are_equal ()">na_data_boxed_are_equal</a>             (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *a</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *b</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="NADataBoxed.html#na-data-boxed-is-default" title="na_data_boxed_is_default ()">na_data_boxed_is_default</a>            (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="NADataBoxed.html#na-data-boxed-is-valid" title="na_data_boxed_is_valid ()">na_data_boxed_is_valid</a>              (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NADataBoxed.html#na-data-boxed-dump" title="na_data_boxed_dump ()">na_data_boxed_dump</a>                  (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NADataBoxed.html#na-data-boxed-set-data-def" title="na_data_boxed_set_data_def ()">na_data_boxed_set_data_def</a>          (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> *def</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="NADataBoxed.html#na-data-boxed-get-as-string" title="na_data_boxed_get_as_string ()">na_data_boxed_get_as_string</a>         (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);
+<span class="returnvalue">void</span> *              <a class="link" href="NADataBoxed.html#na-data-boxed-get-as-void" title="na_data_boxed_get_as_void ()">na_data_boxed_get_as_void</a>           (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NADataBoxed.html#na-data-boxed-get-as-value" title="na_data_boxed_get_as_value ()">na_data_boxed_get_as_value</a>          (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NADataBoxed.html#na-data-boxed-set-from-boxed" title="na_data_boxed_set_from_boxed ()">na_data_boxed_set_from_boxed</a>        (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *value</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NADataBoxed.html#na-data-boxed-set-from-string" title="na_data_boxed_set_from_string ()">na_data_boxed_set_from_string</a>       (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *value</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NADataBoxed.html#na-data-boxed-set-from-value" title="na_data_boxed_set_from_value ()">na_data_boxed_set_from_value</a>        (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NADataBoxed.html#na-data-boxed-set-from-void" title="na_data_boxed_set_from_void ()">na_data_boxed_set_from_void</a>         (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *value</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="NADataBoxed.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----<a class="link" href="NABoxed.html" title="NABoxed">NABoxed</a>
+         +----NADataBoxed
+</pre>
+</div>
+<div class="refsect1">
+<a name="NADataBoxed.description"></a><h2>Description</h2>
+<p>
+The object which encapsulates an elementary data of <a class="link" href="NAIFactoryObject.html" title="NAIFactoryObject"><span class="type">NAIFactoryObject</span></a>.
+A <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object has a type and a value.
+</p>
+<p>
+<a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> class is derived from <a class="link" href="NABoxed.html" title="NABoxed"><span class="type">NABoxed</span></a> one, and implements the same
+types that those defined in na-data-types.h.
+</p>
+<p>
+Additionally, <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> class holds the <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> data definition
+suitable for a NAFactoryObject object. It such provides default value
+and validity status.
+</p>
+</div>
+<div class="refsect1">
+<a name="NADataBoxed.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NA-TYPE-DATA-BOXED:CAPS"></a><h3>NA_TYPE_DATA_BOXED</h3>
+<pre class="programlisting">#define NA_TYPE_DATA_BOXED                ( na_data_boxed_get_type())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-DATA-BOXED:CAPS"></a><h3>NA_DATA_BOXED()</h3>
+<pre class="programlisting">#define NA_DATA_BOXED( object )           ( G_TYPE_CHECK_INSTANCE_CAST( object, NA_TYPE_DATA_BOXED, NADataBoxed ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IS-DATA-BOXED:CAPS"></a><h3>NA_IS_DATA_BOXED()</h3>
+<pre class="programlisting">#define NA_IS_DATA_BOXED( object )        ( G_TYPE_CHECK_INSTANCE_TYPE( object, NA_TYPE_DATA_BOXED ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NADataBoxed-struct"></a><h3>NADataBoxed</h3>
+<pre class="programlisting">typedef struct _NADataBoxed NADataBoxed;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-new"></a><h3>na_data_boxed_new ()</h3>
+<pre class="programlisting"><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="returnvalue">NADataBoxed</span></a> *       na_data_boxed_new                   (<em class="parameter"><code>const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> *def</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>def</code></em> :</span></p></td>
+<td>the <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> definition structure for this boxed.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly allocated <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-get-data-def"></a><h3>na_data_boxed_get_data_def ()</h3>
+<pre class="programlisting">const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="returnvalue">NADataDef</span></a> *   na_data_boxed_get_data_def          (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>this <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> structure attached to the object.
+Should never be <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-get-param-spec"></a><h3>na_data_boxed_get_param_spec ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="returnvalue">GParamSpec</span></a> *        na_data_boxed_get_param_spec        (<em class="parameter"><code>const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> *def</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>def</code></em> :</span></p></td>
+<td>a <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> definition structure.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> structure.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-are-equal"></a><h3>na_data_boxed_are_equal ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            na_data_boxed_are_equal             (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *a</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *b</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_are_equal</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-are-equal" title="na_boxed_are_equal ()"><code class="function">na_boxed_are_equal()</code></a> instead.</p>
+</div>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>a</code></em> :</span></p></td>
+<td>the first <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>b</code></em> :</span></p></td>
+<td>the second <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the two boxeds are equal, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> else.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-is-default"></a><h3>na_data_boxed_is_default ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            na_data_boxed_is_default            (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>this <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> holds its default value,
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> else.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-is-valid"></a><h3>na_data_boxed_is_valid ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            na_data_boxed_is_valid              (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object whose validity is to be checked.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the boxed is valid, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> else.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-dump"></a><h3>na_data_boxed_dump ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_data_boxed_dump                  (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_dump</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-dump" title="na_boxed_dump ()"><code class="function">na_boxed_dump()</code></a> instead.</p>
+</div>
+<p>
+Dump the content of <em class="parameter"><code>boxed</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>this <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-set-data-def"></a><h3>na_data_boxed_set_data_def ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_data_boxed_set_data_def          (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> *def</code></em>);</pre>
+<p>
+Changes the <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> a <em class="parameter"><code>boxed</code></em> points to:
+-&gt; the new type must be the same that the previous one.
+-&gt; value is unchanged.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>this <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>def</code></em> :</span></p></td>
+<td>the new <a class="link" href="caja-actions-NADataDef-NADataGroup.html#NADataDef" title="NADataDef"><span class="type">NADataDef</span></a> to be set.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-get-as-string"></a><h3>na_data_boxed_get_as_string ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             na_data_boxed_get_as_string         (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_get_as_string</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-get-string" title="na_boxed_get_string ()"><code class="function">na_boxed_get_string()</code></a> instead.</p>
+</div>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> whose value is to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the value of the <em class="parameter"><code>boxed</code></em>, as a newly allocated string which
+should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> by the caller.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-get-as-void"></a><h3>na_data_boxed_get_as_void ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span> *              na_data_boxed_get_as_void           (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_get_as_void</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-get-as-void" title="na_boxed_get_as_void ()"><code class="function">na_boxed_get_as_void()</code></a> instead.</p>
+</div>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> whose value is to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the content of the <em class="parameter"><code>boxed</code></em>.
+If of type NAFD_TYPE_STRING, NAFD_TYPE_LOCALE_STRING OR
+NAFD_TYPE_STRING_LIST, then the content is returned in a newly
+allocated value, which should be released by the caller.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-get-as-value"></a><h3>na_data_boxed_get_as_value ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_data_boxed_get_as_value          (<em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_get_as_value</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-get-as-value" title="na_boxed_get_as_value ()"><code class="function">na_boxed_get_as_value()</code></a> instead.</p>
+</div>
+<p>
+Setup <em class="parameter"><code>value</code></em> with the content of the <em class="parameter"><code>boxed</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> whose value is to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>the string to be set.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-set-from-boxed"></a><h3>na_data_boxed_set_from_boxed ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_data_boxed_set_from_boxed        (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *value</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_set_from_boxed</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-set-from-boxed" title="na_boxed_set_from_boxed ()"><code class="function">na_boxed_set_from_boxed()</code></a> instead.</p>
+</div>
+<p>
+Copy value from <em class="parameter"><code>value</code></em> to <em class="parameter"><code>boxed</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> whose value is to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>the source <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-set-from-string"></a><h3>na_data_boxed_set_from_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_data_boxed_set_from_string       (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *value</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_set_from_string</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-set-from-string" title="na_boxed_set_from_string ()"><code class="function">na_boxed_set_from_string()</code></a> instead.</p>
+</div>
+<p>
+Evaluates the <em class="parameter"><code>value</code></em> and set it to the <em class="parameter"><code>boxed</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> whose value is to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>the string to be set.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-set-from-value"></a><h3>na_data_boxed_set_from_value ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_data_boxed_set_from_value        (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_set_from_value</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-set-from-value" title="na_boxed_set_from_value ()"><code class="function">na_boxed_set_from_value()</code></a> instead.</p>
+</div>
+<p>
+Evaluates the <em class="parameter"><code>value</code></em> and set it to the <em class="parameter"><code>boxed</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> whose value is to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>the value whose content is to be got.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-data-boxed-set-from-void"></a><h3>na_data_boxed_set_from_void ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_data_boxed_set_from_void         (<em class="parameter"><code><a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> *boxed</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">void</span> *value</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_data_boxed_set_from_void</code> has been deprecated since version 3.1 and should not be used in newly-written code. Use <a class="link" href="NABoxed.html#na-boxed-set-from-void" title="na_boxed_set_from_void ()"><code class="function">na_boxed_set_from_void()</code></a> instead.</p>
+</div>
+<p>
+Evaluates the <em class="parameter"><code>value</code></em> and set it to the <em class="parameter"><code>boxed</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>boxed</code></em> :</span></p></td>
+<td>the <a class="link" href="NADataBoxed.html" title="NADataBoxed"><span class="type">NADataBoxed</span></a> whose value is to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>the value whose content is to be got.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

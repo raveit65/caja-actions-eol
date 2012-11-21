@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NAObject</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="Caja-Actions™ Reference Manual">
+<link rel="up" href="ch06.html" title="NAObject Hierarchy">
+<link rel="prev" href="ch06.html" title="NAObject Hierarchy">
+<link rel="next" href="NAObjectId.html" title="NAObjectId">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch06.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch06.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">
+<span class="productname">Caja-Actions</span>™ Reference Manual</th>
+<td><a accesskey="n" href="NAObjectId.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#NAObject.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#NAObject.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#NAObject.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#NAObject.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="NAObject"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="NAObject.top_of_page"></a>NAObject</span></h2>
+<p>NAObject — The Deepest Base Class Definition</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="NAObject.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#include &lt;caja-actions/na-object.h&gt;
+
+#define             <a class="link" href="NAObject.html#NA-TYPE-OBJECT:CAPS" title="NA_TYPE_OBJECT">NA_TYPE_OBJECT</a>
+#define             <a class="link" href="NAObject.html#NA-OBJECT:CAPS" title="NA_OBJECT()">NA_OBJECT</a>                           (object)
+#define             <a class="link" href="NAObject.html#NA-IS-OBJECT:CAPS" title="NA_IS_OBJECT()">NA_IS_OBJECT</a>                        (object)
+                    <a class="link" href="NAObject.html#NAObject-struct" title="NAObject">NAObject</a>;
+                    <a class="link" href="NAObject.html#NAObjectClass" title="NAObjectClass">NAObjectClass</a>;
+<span class="returnvalue">void</span>                <a class="link" href="NAObject.html#na-object-object-reset-origin" title="na_object_object_reset_origin ()">na_object_object_reset_origin</a>       (<em class="parameter"><code><a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *origin</code></em>);
+<a class="link" href="NAObject.html" title="NAObject"><span class="returnvalue">NAObject</span></a> *          <a class="link" href="NAObject.html#na-object-object-ref" title="na_object_object_ref ()">na_object_object_ref</a>                (<em class="parameter"><code><a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObject.html#na-object-object-unref" title="na_object_object_unref ()">na_object_object_unref</a>              (<em class="parameter"><code><a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObject.html#na-object-object-dump" title="na_object_object_dump ()">na_object_object_dump</a>               (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObject.html#na-object-object-dump-norec" title="na_object_object_dump_norec ()">na_object_object_dump_norec</a>         (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObject.html#na-object-object-dump-tree" title="na_object_object_dump_tree ()">na_object_object_dump_tree</a>          (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *tree</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObject.html#na-object-object-check-status-rec" title="na_object_object_check_status_rec ()">na_object_object_check_status_rec</a>   (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="NAObject.html#na-object-get-hierarchy" title="na_object_get_hierarchy ()">na_object_get_hierarchy</a>             (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObject.html#na-object-free-hierarchy" title="na_object_free_hierarchy ()">na_object_free_hierarchy</a>            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *hierarchy</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="NAObject.html#na-object-object-debug-invalid" title="na_object_object_debug_invalid ()">na_object_object_debug_invalid</a>      (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *reason</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAObject.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----NAObject
+         +----<a class="link" href="NAObjectId.html" title="NAObjectId">NAObjectId</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="NAObject.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+NAObject implements
+ <a class="link" href="NAIDuplicable.html" title="NAIDuplicable">NAIDuplicable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="NAObject.description"></a><h2>Description</h2>
+<p>
+This is the base class of all our data object hierarchy. <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> is
+supposed to be used as a pure virtual base class, i.e. should only be
+derived.
+</p>
+<p>
+All the API described here is rather private. External code should
+use the API described in <code class="filename">caja-actions/na-object-api.h</code>.
+</p>
+</div>
+<div class="refsect1">
+<a name="NAObject.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="NA-TYPE-OBJECT:CAPS"></a><h3>NA_TYPE_OBJECT</h3>
+<pre class="programlisting">#define NA_TYPE_OBJECT                ( na_object_object_get_type())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-OBJECT:CAPS"></a><h3>NA_OBJECT()</h3>
+<pre class="programlisting">#define NA_OBJECT( object )           ( G_TYPE_CHECK_INSTANCE_CAST( object, NA_TYPE_OBJECT, NAObject ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NA-IS-OBJECT:CAPS"></a><h3>NA_IS_OBJECT()</h3>
+<pre class="programlisting">#define NA_IS_OBJECT( object )        ( G_TYPE_CHECK_INSTANCE_TYPE( object, NA_TYPE_OBJECT ))
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObject-struct"></a><h3>NAObject</h3>
+<pre class="programlisting">typedef struct _NAObject NAObject;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="NAObjectClass"></a><h3>NAObjectClass</h3>
+<pre class="programlisting">typedef struct {
+	/**
+	 * dump:
+	 * @object: the NAObject-derived object to be dumped.
+	 *
+	 * Dumps via g_debug the content of the object.
+	 *
+	 * The derived class should call its parent class at the end of the
+	 * dump of its own datas.
+	 *
+	 * Since: 2.30
+	 */
+	void     ( *dump )     ( const NAObject *object );
+
+	/**
+	 * copy:
+	 * @target: the NAObject-derived object which will receive data.
+	 * @source: the NAObject-derived object which provides data.
+	 * @mode: the copy mode.
+	 *
+	 * Copies data and properties from @source to @target.
+	 *
+	 * The derived class should call its parent class at the end of the
+	 * copy of its own datas.
+	 *
+	 * Since: 2.30
+	 */
+	void     ( *copy )     ( NAObject *target, const NAObject *source, guint mode );
+
+	/**
+	 * are_equal:
+	 * @a: a first NAObject object.
+	 * @b: a second NAObject object to be compared to the first one.
+	 *
+	 * Compares the two objects.
+	 *
+	 * When testing for the modification status of an object, @a stands for
+	 * the original object, while @b stands for the duplicated one.
+	 *
+	 * As long as no difference is detected, the derived class should call
+	 * its parent class at the end of its comparison.
+	 * As soon as a difference is detected, the calling sequence should
+	 * be stopped, and the result returned.
+	 *
+	 * Returns: TRUE if @a and @b are identical, FALSE else.
+	 *
+	 * Since: 2.30
+	 */
+	gboolean ( *are_equal )( const NAObject *a, const NAObject *b );
+
+	/**
+	 * is_valid:
+	 * @object: the NAObject object to be checked.
+	 *
+	 * Checks @object for validity.
+	 *
+	 * A NAObject is valid if its internal identifier is set.
+	 *
+	 * As long as the item is valid, the derived class should call its parent
+	 * at the end of its checks.
+	 * As soon as an error is detected, the calling sequence should be stopped,
+	 * and the result returned.
+	 *
+	 * Returns: TRUE if @object is valid, FALSE else.
+	 *
+	 * Since: 2.30
+	 */
+	gboolean ( *is_valid ) ( const NAObject *object );
+} NAObjectClass;
+</pre>
+<p>
+The <a class="link" href="NAObject.html#NAObjectClass" title="NAObjectClass"><span class="type">NAObjectClass</span></a> defines some methods available to derived classes.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAObjectClass.dump"></a>dump</code></em> ()</span></p></td>
+<td>Dumps the <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -part of the <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAObjectClass.copy"></a>copy</code></em> ()</span></p></td>
+<td>Copies a <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> to another.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAObjectClass.are-equal"></a>are_equal</code></em> ()</span></p></td>
+<td>Tests if two <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> are equal.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="NAObjectClass.is-valid"></a>is_valid</code></em> ()</span></p></td>
+<td>Tests if a <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> is valid.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-object-reset-origin"></a><h3>na_object_object_reset_origin ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_object_reset_origin       (<em class="parameter"><code><a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *origin</code></em>);</pre>
+<p>
+Recursively reset origin of <em class="parameter"><code>object</code></em> and its children to <em class="parameter"><code>origin</code></em> (and
+its children), so that <em class="parameter"><code>origin</code></em> appears as the actual origin of <em class="parameter"><code>object</code></em>.
+</p>
+<p>
+The origin of <em class="parameter"><code>origin</code></em> itself is set to NULL.
+</p>
+<p>
+This only works if <em class="parameter"><code>origin</code></em> has just been duplicated from <em class="parameter"><code>object</code></em>,
+and thus we do not have to check if children lists are equal.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>a <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>origin</code></em> :</span></p></td>
+<td>must be a duplication of <em class="parameter"><code>object</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-object-ref"></a><h3>na_object_object_ref ()</h3>
+<pre class="programlisting"><a class="link" href="NAObject.html" title="NAObject"><span class="returnvalue">NAObject</span></a> *          na_object_object_ref                (<em class="parameter"><code><a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);</pre>
+<p>
+Recursively ref the <em class="parameter"><code>object</code></em> and all its children, incrementing their
+reference_count by 1.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>a <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a reference on the <em class="parameter"><code>object</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-object-unref"></a><h3>na_object_object_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_object_unref              (<em class="parameter"><code><a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);</pre>
+<p>
+Recursively unref the <em class="parameter"><code>object</code></em> and all its children, decrementing their
+reference_count by 1.
+</p>
+<p>
+Note that we may want to free a copy+ref of a list of items whichy have
+had already disposed (which is probably a bug somewhere). So first test
+is the object is still alive.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>a <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-object-dump"></a><h3>na_object_object_dump ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_object_dump               (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);</pre>
+<p>
+Dumps via <a href="http://library.gnome.org/devel/glib/unstable/glib-Message-Logging.html#g-debug"><code class="function">g_debug()</code></a> the actual content of the object.
+</p>
+<p>
+The recursivity is dealt with here because, if we would let
+<a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> do this, the dump of <a class="link" href="NAObjectItem.html" title="NAObjectItem"><span class="type">NAObjectItem</span></a> -derived object
+would be splitted, children being inserted inside.
+</p>
+<p>
+<a class="link" href="caja-actions-API.html#na-object-dump" title="na_object_dump()"><code class="function">na_object_dump()</code></a> doesn't modify the reference count of the dumped
+object.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object to be dumped.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-object-dump-norec"></a><h3>na_object_object_dump_norec ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_object_dump_norec         (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);</pre>
+<p>
+Dumps via g_debug the actual content of the object.
+</p>
+<p>
+This function is not recursive.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object to be dumped.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-object-dump-tree"></a><h3>na_object_object_dump_tree ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_object_dump_tree          (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *tree</code></em>);</pre>
+<p>
+Outputs a brief, hierarchical dump of the provided list.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>tree</code></em> :</span></p></td>
+<td>a hierarchical list of <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived objects.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-object-check-status-rec"></a><h3>na_object_object_check_status_rec ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_object_check_status_rec   (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);</pre>
+<p>
+Recursively checks for the edition status of <em class="parameter"><code>object</code></em> and its children
+(if any).
+</p>
+<p>
+Internally set some properties which may be requested later. This
+two-steps check-request let us optimize some work in the UI.
+</p>
+<p>
+</p>
+<div class="literallayout"><p><br>
+na_object_object_check_status_rec( object )<br>
+ +- na_iduplicable_check_status( object )<br>
+     +- get_origin( object )<br>
+     +- modified_status = v_are_equal( origin, object )<br>
+     |  +-&gt; interface <em class="structfield"><code>NAObjectClass::are_equal</code></em><br>
+     |      which happens to be iduplicable_are_equal( a, b )<br>
+     |       +- v_are_equal( a, b )<br>
+     |           +- NAObjectAction::<code class="function">are_equal()</code><br>
+     |               +- <code class="function">na_factory_object_are_equal()</code><br>
+     |               +- check NAObjectActionPrivate data<br>
+     |               +- call parent class<br>
+     |                  +- NAObjectItem::<code class="function">are_equal()</code><br>
+     |                      +- check NAObjectItemPrivate data<br>
+     |                      +- call parent class<br>
+     |                          +- NAObjectId::<code class="function">are_equal()</code><br>
+     |<br>
+     +- valid_status = v_is_valid( object )             -&gt; interface <em class="structfield"><code>NAObjectClass::is_valid</code></em><br>
+</p></div>
+<p>
+</p>
+<p>
+  Note that the recursivity is managed here, so that we can be sure
+  that edition status of children is actually checked before those of
+  the parent.
+</p>
+<p>
+</p>
+<p><b>
+  As of 3.1.0:
+ . </b>
+  </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>
+     when the modification status of a NAObjectProfile changes, then its
+     NAObjectAction parent is rechecked;
+    </p></li>
+<li class="listitem"><p>
+     when the validity status of an object is changed, then its parent is
+     also rechecked.
+    </p></li>
+</ul></div>
+<p>
+ </p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object to be checked.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-get-hierarchy"></a><h3>na_object_get_hierarchy ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             na_object_get_hierarchy             (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_object_get_hierarchy</code> is deprecated and should not be used in newly-written code. 3.1</p>
+</div>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the class hierarchy,
+from the topmost base class, to the most-derived one.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-free-hierarchy"></a><h3>na_object_free_hierarchy ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_free_hierarchy            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *hierarchy</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">na_object_free_hierarchy</code> is deprecated and should not be used in newly-written code. 3.1</p>
+</div>
+<p>
+Releases the <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> hierarchy.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>hierarchy</code></em> :</span></p></td>
+<td>the <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of hierarchy, as returned from
+<a class="link" href="NAObject.html#na-object-get-hierarchy" title="na_object_get_hierarchy ()"><code class="function">na_object_get_hierarchy()</code></a>.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="na-object-object-debug-invalid"></a><h3>na_object_object_debug_invalid ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                na_object_object_debug_invalid      (<em class="parameter"><code>const <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *reason</code></em>);</pre>
+<p>
+Dump the object with the invalidity reason.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>the <a class="link" href="NAObject.html" title="NAObject"><span class="type">NAObject</span></a> -derived object which is invalid.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reason</code></em> :</span></p></td>
+<td>the reason.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 2.30</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

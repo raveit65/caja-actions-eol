@@ -1,0 +1,610 @@
+<sect2 id="usage-execution">
+  <title>What action should be executed ?</title>
+  <para>
+    You most probably want that your action eventually ends up in
+    executing something. And, as a matter of fact, having something
+    to execute is one of the few conditions which are required
+    for an action to be considered as valid.
+  </para>
+  <para>
+    As we have already seen, the command to be executed is configured
+    in the <guilabel>Command</guilabel> page.
+  </para>
+  <para>
+    This command may take arguments, which themselves may embed
+    parameters. These parameters will be expanded at runtime,
+    with values which will depend on currently selected item(s).
+  </para>
+
+  <sect3 id="usage-execution-parameters">
+    <title>Available parameters</title>
+    <para>
+      In the <guilabel>Command</guilabel> page, click on <guilabel>Legend</guilabel>
+      button to see the list of available parameters.
+    </para>
+    <figure id="cact-FIG-legend">
+      <title>List of available parameters</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-legend.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows the list of available parameters.</phrase>
+          </textobject>
+          <caption>
+            <para>The available parameters</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <tip>
+      <para>
+        The <guibutton>Legend</guibutton> button has a toggling action:
+        click once to display the <guilabel>Parameter Legend</guilabel>
+        dialog box; click a second time to hide it.
+      </para>
+    </tip>
+    <note>
+      <para>
+        The word &laquosp;<guilabel>first</guilabel>&spraquo; may be misleading
+        as it only refers to the list of selected items internally provided by
+        the file manager to the &prodname; plugin.
+      </para>
+      <para>
+        In particular, it has <emphasis>nothing to do</emphasis> with the
+        visual selection you may
+        have done in the file manager window. And, in fact, which is the
+        &laquosp;<guilabel>first</guilabel>&spraquo; selected item in a
+        multiple selection is absolutely undefined and rather unpredictable.
+      </para>
+    </note>
+  </sect3>
+
+  <sect3 id="usage-execution-work">
+    <title>Where the action should it be executed ?</title>
+    <para>
+      Your action may be executed in a particular working directory.
+    </para>
+    <para>
+      You may specify it in the <guilabel>Command</guilabel> tab, in the
+      <guilabel>Working directory</guilabel> entry box, or by clicking
+      on <guibutton>Browse</guibutton> to select a folder on the 
+      filesystem.
+    </para>
+    <figure id="cact-FIG-work-dir-frame">
+      <title>Working directory frame</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-working-directory-frame.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Focus on the working directory selection frame.</phrase>
+          </textobject>
+          <caption>
+            <para>Working directory frame</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    <para>
+      The working directory defaults to <literal>%d</literal>, which runs
+      the command in the base directory of the (first) selected item.
+    </para>
+    <para>
+      In the particular case of the <literal>%d</literal> parameter,
+      the &laquosp;<guilabel>first</guilabel>&spraquo; selected item
+      is not very important because it is very likely that all selected items
+      are located in the same base directory.
+    </para>
+  </sect3>
+
+  <sect3 id="usage-execution-how">
+    <title>How should the action be executed ?</title>
+    <para>
+      Apart from configuring the conditions, the selection must be met in
+      order your action be displayed in file manager menus, &prodname;
+      allows you to configure how exactly your command will be
+      executed.
+    </para>
+    <para>
+      Click on the <guilabel>Execution</guilabel> tab to show the page
+      which configures the execution of your command.
+    </para>
+    <figure id="cact-FIG-execution">
+      <title>Configuration of the execution modes</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cact-execution-tab.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Shows how to configure the execution modes of a command.</phrase>
+          </textobject>
+          <caption>
+            <para>Configuration of the execution modes</para>
+          </caption>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <sect4 id="usage-execution-how-mode">
+      <title>Execution mode</title>
+      <figure id="cact-FIG-execution-mode">
+        <title>Configuration of the execution mode</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-exec-mode-frame.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Focus on the execution mode frame.</phrase>
+            </textobject>
+            <caption>
+              <para>Configuration of the execution mode</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        The execution mode of your command may be chosen between following 
+        values:
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term>
+            Normal
+          </term>
+          <listitem>
+            <para>
+              Starts the command as a standard graphical user interface.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            Terminal
+          </term>
+          <listitem>
+            <para>
+              Starts the preferred terminal of the desktop environment,
+              and runs the command in it.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            Embedded
+          </term>
+          <listitem>
+            <para>
+              Makes use of a special feature of the file manager which may allow
+              a terminal to be ran in it.
+            </para>
+            <para>
+              As &caja; does not have this feature, this option is strictly
+              equivalent to <literal>Terminal</literal> option.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            Display output
+          </term>
+          <listitem>
+            <para>
+              Starts the preferred terminal of the desktop environment, and
+              runs the command in it. At end, standard streams (stdout, stderr) 
+              are collected and displayed.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <para>
+        The execution mode of a command defaults to <literal>Normal</literal>.
+        That is, the command is executed without any particular pre- or
+        post-work.
+      </para>
+    </sect4>
+
+    <sect4 id="usage-execution-how-notify">
+      <title>Startup notification</title>
+      <figure id="cact-FIG-startup-mode">
+        <title>Configuration of the startup modes</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-startup-mode-frame.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Focus on the Startup mode frame.</phrase>
+            </textobject>
+            <caption>
+              <para>Configuration of the startup modes</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        If the execution mode of the command is <literal>Normal</literal>,
+        and if you know that the application will send a <literal>remove</literal>
+        message with the <envar>DESKTOP_STARTUP_ID</envar> environment variable set,
+        then check the <guilabel>Startup notify</guilabel> checkbox.
+      </para>
+      <para>
+        See the
+        <ulink url="http://www.freedesktop.org/Standards/startup-notification-spec" type="http">
+        <citetitle>Startup Notification Protocol Specification</citetitle></ulink>
+        for more details.
+      </para>
+    </sect4>
+
+    <sect4 id="usage-execution-how-class">
+      <title>Window class</title>
+      <para>
+        If the execution mode of the command is <literal>Normal</literal>,
+        and if you know that the application will map at least one window with a
+        given class name,
+        then enter that name into the <guilabel>Startup Window Manager class</guilabel>
+        entry box.
+      </para>
+      <para>
+        See the
+        <ulink url="http://www.freedesktop.org/Standards/startup-notification-spec" type="http">
+        <citetitle>Startup Notification Protocol Specification</citetitle></ulink>
+        for more details.
+      </para>
+    </sect4>
+
+    <sect4 id="usage-execution-how-user">
+      <title>Owner of the execution</title>
+      <figure id="cact-FIG-execute-as">
+        <title>Configuration of the owner of the run</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/cact-execute-as-frame.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Focus on the <guilabel>Execute as</guilabel> frame.</phrase>
+            </textobject>
+            <caption>
+              <para>Configuration of the owner of the run</para>
+            </caption>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>
+        Enter in the <guilabel>Execute as user</guilabel> entry box the username
+        or the <acronym>UID</acronym> of the user your command will be run as.
+      </para>
+      <para>
+        If you do not enter anything in this field, then the command will be
+        executed as the current user.
+      </para>
+    </sect4>
+
+    <sect4 id="usage-execution-how-singular">
+      <title>Multiple executions</title>
+      <para>
+        You may want your command to be executed once, providing it the list of
+        selected items as argument.
+      </para>
+      <para>
+        Or you may prefer your command to be repeated for each selected item,
+        providing a different item as argument for each execution.
+      </para>
+      <para>
+        Actually, &prodname; automatically handles these two behaviors,
+        depending of the form and the order of the parameters in the command
+        arguments.
+      </para>
+      <para>
+        Though some parameters are not depending on the count of the
+        selection (<abbrev>e.g.</abbrev> &laquosp;<literal>%c</literal>&spraquo;,
+        the selection count itself), most have two declensions:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            a &laquosp;singular&spraquo; one, <abbrev>e.g.</abbrev>
+            &laquosp;<literal>%b</literal>&spraquo;,
+            the basename of the selected item;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            a &laquosp;plural&spraquo; one, <abbrev>e.g.</abbrev>
+            &laquosp;<literal>%B</literal>&spraquo;,
+            the space-separated list of the basenames of selected items.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        When the selection is empty or contains only one element,
+        and from this topic point of view, these two forms are exactly equivalent.
+      </para>
+      <para>
+        When the selection contains more than one item:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            if the first relevant parameter is of a singular form,
+            then &prodname; will consider that the command is only able to deal
+            with one item at a time, and thus that it has to be ran one time for
+            each selected item;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            contrarily, if the first relevant parameter found is of the plural form,
+            then &prodname; will consider that the command is able to deal with a
+            list of items, and thus the command will be executed only once;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            if all found parameters are irrelevant, then &prodname; defaults
+            to consider that the command should be executed only once.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <table id="cact-TAB-multiple-execution" frame="all" tocentry="1">
+        <title>Characterization of the parameters <abbrev>vs.</abbrev> multiple execution</title>
+        <tgroup cols="5">
+          <colspec align="center" colwidth="*" />
+          <colspec align="left" colwidth="5*" />
+          <colspec align="center" colwidth="*" colname="c3"/>
+          <colspec align="center" colwidth="*" />
+          <colspec align="center" colwidth="*" colname="c5"/>
+          <thead>
+            <row>
+              <entry>Parameter</entry>
+              <entry>Description</entry>
+              <entry namest="c3" nameend="c5">Repetition</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><literal>%b</literal></entry>
+              <entry>(first) basename</entry>
+              <entry>singular</entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%B</literal></entry>
+              <entry>space-separated list of basenames</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%c</literal></entry>
+              <entry>count of selected items</entry>
+              <entry></entry>
+              <entry>irrelevant</entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%d</literal></entry>
+              <entry>(first) base directory</entry>
+              <entry>singular</entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%D</literal></entry>
+              <entry>space-separated list of base directory of each selected items</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%f</literal></entry>
+              <entry>(first) filename</entry>
+              <entry>singular</entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%F</literal></entry>
+              <entry>space-separated list of selected filenames</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%h</literal></entry>
+              <entry>hostname of the (first) URI</entry>
+              <entry></entry>
+              <entry>irrelevant</entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%m</literal></entry>
+              <entry>mimetype of the (first) selected item</entry>
+              <entry>singular</entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%M</literal></entry>
+              <entry>space-separated list of the mimetypes of the selected items</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%n</literal></entry>
+              <entry>username of the (first) URI</entry>
+              <entry></entry>
+              <entry>irrelevant</entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%o</literal></entry>
+              <entry>no-op operator which forces a singular form of execution</entry>
+              <entry>singular</entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%O</literal></entry>
+              <entry>no-op operator which forces a plural form of execution</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%p</literal></entry>
+              <entry>port number of the (first) URI</entry>
+              <entry></entry>
+              <entry>irrelevant</entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%s</literal></entry>
+              <entry>scheme of the (first) URI</entry>
+              <entry></entry>
+              <entry>irrelevant</entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%u</literal></entry>
+              <entry>(first) URI</entry>
+              <entry>singular</entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%U</literal></entry>
+              <entry>space-separated list of selected URIs</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%w</literal></entry>
+              <entry>(first) basename without the extension</entry>
+              <entry>singular</entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%W</literal></entry>
+              <entry>space-separated list of basenames without their extension</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%x</literal></entry>
+              <entry>(first) extension</entry>
+              <entry>singular</entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry><literal>%X</literal></entry>
+              <entry>space-separated list of extensions</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry>plural</entry>
+            </row>
+            <row>
+              <entry><literal>%%</literal></entry>
+              <entry>the &laquosp;<literal>%</literal>&spraquo; character</entry>
+              <entry></entry>
+              <entry>irrelevant</entry>
+              <entry></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <example>
+        <title>Usage of singular <abbrev>vs.</abbrev> plural forms</title>
+        <para>
+          Say the current folder is <filename>/data</filename>,
+          and the current selection contains the three files
+          <filename>pierre</filename>, <filename>paul</filename>
+          and <filename>jacques</filename>.
+        </para>
+        <formalpara>
+          <title>
+            If we have requested <command>echo %b</command>,
+          </title>
+          <para>
+            then the following commands will be successively run:
+          </para>
+        </formalpara>
+        <simplelist>
+          <member><command>echo pierre</command></member>
+          <member><command>echo paul</command></member>
+          <member><command>echo jacques</command></member>
+        </simplelist>
+        <para>
+          This is because <literal>%b</literal> marks a <emphasis>singular</emphasis>
+          parameter. The command is then run once for each of the selected items.
+        </para>
+        <formalpara>
+          <title>
+            Contrarily, if we have requested <command>echo %B</command>,
+          </title>
+          <para>
+            then the following command will be run:
+          </para>
+        </formalpara>
+        <simplelist>
+          <member><command>echo pierre paul jacques</command></member>
+        </simplelist>
+        <para>
+          This is because <literal>%B</literal> marks a <emphasis>plural</emphasis>
+          parameter. The command is then run only once, with the list of selected
+          items as arguments.
+        </para>
+        <formalpara>
+          <title>
+            If we have requested <command>echo %b %B</command>,
+          </title>
+          <para>
+            then the following commands will be successively run:
+          </para>
+        </formalpara>
+        <simplelist>
+          <member><command>echo pierre pierre paul jacques</command></member>
+          <member><command>echo paul pierre paul jacques</command></member>
+          <member><command>echo jacques pierre paul jacques</command></member>
+        </simplelist>
+        <para>
+          This is because the first <emphasis>relevant</emphasis> parameter
+          is <literal>%b</literal>, and so the command is run once for each
+          selected item, replacing at each occurrence the <literal>%b</literal>
+          parameter with the corresponding item. The second parameter is
+          computed and added as arguments to the executed command.
+        </para>
+        <formalpara>
+          <title>
+            And if we have requested <literal>echo %B %b</literal>,
+          </title>
+          <para>
+            then the following commands will be run:
+          </para>
+        </formalpara>
+        <simplelist>
+          <member><command>echo pierre paul jacques pierre</command></member>
+        </simplelist>
+        <para>
+          This is because the first <emphasis>relevant</emphasis> parameter here
+          is <literal>%B</literal>. The command is then run only once, replacing
+          <literal>%B</literal> with the space-separated list of basenames. As
+          the command is only run once, the <literal>%b</literal> is substituted
+          only once with the (first) basename. 
+        </para>
+      </example>
+   </sect4>
+  </sect3>
+
+</sect2>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY version_dir SYSTEM "version_dir.xml">
+  <!ENTITY prodname "<productname>Caja-Actions</productname>">
+  <!ENTITY caja "<productname>Caja</productname>">
+]>
+
+<refentry id="na-getting" revision="6 Dec 2010">
+
+  <refmeta>
+    <refentrytitle>Getting Caja-Actions</refentrytitle>
+    <refmiscinfo>Caja-Actions</refmiscinfo>
+  </refmeta>
+
+  <refnamediv>
+    <refname>Getting Caja-Actions</refname>
+    <refpurpose>
+      Where to find it ?
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1 id="getting">
+    <title>Getting Caja-Actions</title>
+    <para>
+      The latest release may always be found in
+    </para>
+    <itemizedlist>
+	  <listitem>
+	    <simpara>
+          <ulink role="online-location" url="http://www.caja-actions.org/downloads/">http://www.caja-actions.org/downloads/</ulink>
+        </simpara>
+	  </listitem>
+	  <listitem>
+	    <simpara>
+          <ulink role="online-location" url="http://download.gnome.org/sources/caja-actions/">http://ftp.gnome.org/caja-actions/&version_dir;/</ulink>
+        </simpara>
+	  </listitem>
+	  <listitem>
+	    <simpara>
+	      <!-- FIXME: address the last version subdirectory,
+               via the 'version_dir' entity, but without the final space -->
+          <ulink role="online-location" url="ftp://ftp.trychlos.org/pub/tarballs/caja-actions/">ftp://ftp.trychlos.org/pub/tarballs/caja-actions/</ulink>
+        </simpara>
+	  </listitem>
+    </itemizedlist>
+  </refsect1>
+
+</refentry>

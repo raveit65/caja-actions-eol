@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -55,10 +54,11 @@ typedef struct {
 
 static NAObjectItem *read_item( NagpMateConfProvider *provider, const gchar *path, GSList **messages );
 
-static void          read_done_item_is_writable( const NAIFactoryProvider *provider, NAObjectItem *item, ReaderData *data, GSList **messages );
-static void          read_done_action_load_profiles_from_list( const NAIFactoryProvider *provider, NAObjectAction *action, ReaderData *data, GSList **messages );
+static void          read_start_profile_attach_profile( const NAIFactoryProvider *provider, NAObjectProfile *profile, ReaderData *data, GSList **messages );
+
+static gboolean      read_done_item_is_writable( const NAIFactoryProvider *provider, NAObjectItem *item, ReaderData *data, GSList **messages );
+static void          read_done_action_read_profiles( const NAIFactoryProvider *provider, NAObjectAction *action, ReaderData *data, GSList **messages );
 static void          read_done_action_load_profile( const NAIFactoryProvider *provider, ReaderData *data, const gchar *path, GSList **messages );
-static void          read_done_profile_attach_profile( const NAIFactoryProvider *provider, NAObjectProfile *profile, ReaderData *data, GSList **messages );
 
 static NADataBoxed  *get_boxed_from_path( const NagpMateConfProvider *provider, const gchar *path, ReaderData *reader_data, const NADataDef *def );
 static gboolean      is_key_writable( NagpMateConfProvider *mateconf, const gchar *key );
@@ -66,14 +66,14 @@ static gboolean      is_key_writable( NagpMateConfProvider *mateconf, const gcha
 /*
  * nagp_iio_provider_read_items:
  *
- * Note that whatever be the version of the readen action, it will be
+ * Note that whatever be the version of the read action, it will be
  * stored as a #NAObjectAction and its set of #NAObjectProfile of the same,
  * latest, version of these classes.
  */
 GList *
 nagp_iio_provider_read_items( const NAIIOProvider *provider, GSList **messages )
 {
-	static const gchar *thisfn = "nagp_mateconf_provider_iio_provider_read_items";
+	static const gchar *thisfn = "nagp_reader_nagp_iio_provider_read_items";
 	NagpMateConfProvider *self;
 	GList *items_list = NULL;
 	GSList *listpath, *ip;
@@ -94,6 +94,7 @@ nagp_iio_provider_read_items( const NAIIOProvider *provider, GSList **messages )
 			item = read_item( self, ( const gchar * ) ip->data, messages );
 			if( item ){
 				items_list = g_list_prepend( items_list, item );
+				na_object_dump( item );
 			}
 		}
 
@@ -110,7 +111,7 @@ nagp_iio_provider_read_items( const NAIIOProvider *provider, GSList **messages )
 static NAObjectItem *
 read_item( NagpMateConfProvider *provider, const gchar *path, GSList **messages )
 {
-	static const gchar *thisfn = "nagp_mateconf_provider_read_item";
+	static const gchar *thisfn = "nagp_reader_read_item";
 	NAObjectItem *item;
 	gchar *full_path;
 	gchar *type;
@@ -127,7 +128,7 @@ read_item( NagpMateConfProvider *provider, const gchar *path, GSList **messages 
 	g_free( full_path );
 	item = NULL;
 
-	/* a menu may have 'Action' or 'Menu' type ; defaults to Action
+	/* an item may have 'Action' or 'Menu' type; defaults to Action
 	 */
 	if( !type || !strlen( type ) || !strcmp( type, NAGP_VALUE_TYPE_ACTION )){
 		item = NA_OBJECT_ITEM( na_object_action_new());
@@ -164,6 +165,36 @@ read_item( NagpMateConfProvider *provider, const gchar *path, GSList **messages 
 	return( item );
 }
 
+void
+nagp_reader_read_start( const NAIFactoryProvider *provider, void *reader_data, const NAIFactoryObject *object, GSList **messages  )
+{
+	static const gchar *thisfn = "nagp_reader_read_start";
+
+	g_return_if_fail( NA_IS_IFACTORY_PROVIDER( provider ));
+	g_return_if_fail( NAGP_IS_MATECONF_PROVIDER( provider ));
+	g_return_if_fail( NA_IS_IFACTORY_OBJECT( object ));
+
+	if( !NAGP_MATECONF_PROVIDER( provider )->private->dispose_has_run ){
+
+		g_debug( "%s: provider=%p (%s), reader_data=%p, object=%p (%s), messages=%p",
+				thisfn,
+				( void * ) provider, G_OBJECT_TYPE_NAME( provider ),
+				( void * ) reader_data,
+				( void * ) object, G_OBJECT_TYPE_NAME( object ),
+				( void * ) messages );
+
+		if( NA_IS_OBJECT_PROFILE( object )){
+			read_start_profile_attach_profile( provider, NA_OBJECT_PROFILE( object ), ( ReaderData * ) reader_data, messages );
+		}
+	}
+}
+
+static void
+read_start_profile_attach_profile( const NAIFactoryProvider *provider, NAObjectProfile *profile, ReaderData *data, GSList **messages )
+{
+	na_object_attach_profile( data->parent, profile );
+}
+
 NADataBoxed *
 nagp_reader_read_data( const NAIFactoryProvider *provider, void *reader_data, const NAIFactoryObject *object, const NADataDef *def, GSList **messages )
 {
@@ -194,33 +225,35 @@ void
 nagp_reader_read_done( const NAIFactoryProvider *provider, void *reader_data, const NAIFactoryObject *object, GSList **messages  )
 {
 	static const gchar *thisfn = "nagp_reader_read_done";
+	gboolean writable;
 
 	g_return_if_fail( NA_IS_IFACTORY_PROVIDER( provider ));
+	g_return_if_fail( NAGP_IS_MATECONF_PROVIDER( provider ));
 	g_return_if_fail( NA_IS_IFACTORY_OBJECT( object ));
 
-	g_debug( "%s: provider=%p, reader_data=%p, object=%p (%s), messages=%p",
-			thisfn,
-			( void * ) provider,
-			( void * ) reader_data,
-			( void * ) object, G_OBJECT_TYPE_NAME( object ),
-			( void * ) messages );
+	if( !NAGP_MATECONF_PROVIDER( provider )->private->dispose_has_run ){
 
-	if( NA_IS_OBJECT_ITEM( object )){
-		read_done_item_is_writable( provider, NA_OBJECT_ITEM( object ), ( ReaderData * ) reader_data, messages );
+		g_debug( "%s: provider=%p (%s), reader_data=%p, object=%p (%s), messages=%p",
+				thisfn,
+				( void * ) provider, G_OBJECT_TYPE_NAME( provider ),
+				( void * ) reader_data,
+				( void * ) object, G_OBJECT_TYPE_NAME( object ),
+				( void * ) messages );
+
+		if( NA_IS_OBJECT_ITEM( object )){
+			writable = read_done_item_is_writable( provider, NA_OBJECT_ITEM( object ), ( ReaderData * ) reader_data, messages );
+			na_object_set_readonly( object, !writable );
+		}
+
+		if( NA_IS_OBJECT_ACTION( object )){
+			read_done_action_read_profiles( provider, NA_OBJECT_ACTION( object ), ( ReaderData * ) reader_data, messages );
+		}
+
+		g_debug( "%s: quitting for %s at %p", thisfn, G_OBJECT_TYPE_NAME( object ), ( void * ) object );
 	}
-
-	if( NA_IS_OBJECT_ACTION( object )){
-		read_done_action_load_profiles_from_list( provider, NA_OBJECT_ACTION( object ), ( ReaderData * ) reader_data, messages );
-	}
-
-	if( NA_IS_OBJECT_PROFILE( object )){
-		read_done_profile_attach_profile( provider, NA_OBJECT_PROFILE( object ), ( ReaderData * ) reader_data, messages );
-	}
-
-	g_debug( "quitting nagp_read_done for %s at %p", G_OBJECT_TYPE_NAME( object ), ( void * ) object );
 }
 
-static void
+static gboolean
 read_done_item_is_writable( const NAIFactoryProvider *provider, NAObjectItem *item, ReaderData *data, GSList **messages )
 {
 	GSList *ie;
@@ -239,25 +272,27 @@ read_done_item_is_writable( const NAIFactoryProvider *provider, NAObjectItem *it
 	}
 
 	g_debug( "nagp_reader_read_done_item: writable=%s", writable ? "True":"False" );
-	na_object_set_readonly( item, !writable );
+	return( writable );
 }
 
 static void
-read_done_action_load_profiles_from_list( const NAIFactoryProvider *provider, NAObjectAction *action, ReaderData *data, GSList **messages )
+read_done_action_read_profiles( const NAIFactoryProvider *provider, NAObjectAction *action, ReaderData *data, GSList **messages )
 {
+	static const gchar *thisfn = "nagp_reader_read_done_action_read_profiles";
 	GSList *order;
 	GSList *list_profiles;
 	GSList *ip;
 	gchar *profile_id;
 	gchar *profile_path;
 	NAObjectId *found;
+	NAObjectProfile *profile;
 
 	data->parent = NA_OBJECT_ITEM( action );
 	order = na_object_get_items_slist( action );
 	list_profiles = na_mateconf_utils_get_subdirs( NAGP_MATECONF_PROVIDER( provider )->private->mateconf, data->path );
 
 	/* read profiles in the specified order
-	 * as a protection against bugs in NACT, we check that profile has not
+	 * as a protection against bugs in CACT, we check that profile has not
 	 * already been loaded
 	 */
 	for( ip = order ; ip ; ip = ip->next ){
@@ -282,6 +317,14 @@ read_done_action_load_profiles_from_list( const NAIFactoryProvider *provider, NA
 			read_done_action_load_profile( provider, data, ( const gchar * ) ip->data, messages );
 		}
 		g_free( profile_id );
+	}
+
+	/* make sure we have at least one profile
+	 */
+	if( !na_object_get_items_count( action )){
+		g_warning( "%s: no profile found in MateConf backend", thisfn );
+		profile = na_object_profile_new_with_defaults();
+		na_object_attach_profile( action, profile );
 	}
 }
 
@@ -312,12 +355,6 @@ read_done_action_load_profile( const NAIFactoryProvider *provider, ReaderData *d
 	g_free( profile_data );
 }
 
-static void
-read_done_profile_attach_profile( const NAIFactoryProvider *provider, NAObjectProfile *profile, ReaderData *data, GSList **messages )
-{
-	na_object_attach_profile( data->parent, profile );
-}
-
 static NADataBoxed *
 get_boxed_from_path( const NagpMateConfProvider *provider, const gchar *path, ReaderData *reader_data, const NADataDef *def )
 {
@@ -334,33 +371,32 @@ get_boxed_from_path( const NagpMateConfProvider *provider, const gchar *path, Re
 	g_debug( "%s: entry=%s, have_entry=%s", thisfn, def->mateconf_entry, have_entry ? "True":"False" );
 
 	if( have_entry ){
-		boxed = na_data_boxed_new( def );
 		gchar *entry_path = mateconf_concat_dir_and_key( path, def->mateconf_entry );
+		boxed = na_data_boxed_new( def );
 
 		switch( def->type ){
 
-			case NAFD_TYPE_STRING:
-			case NAFD_TYPE_LOCALE_STRING:
+			case NA_DATA_TYPE_STRING:
+			case NA_DATA_TYPE_LOCALE_STRING:
 				str_value = na_mateconf_utils_read_string( provider->private->mateconf, entry_path, TRUE, NULL );
-				g_debug( "%s: entry=%s, value=%s", thisfn, def->mateconf_entry, str_value );
-				na_data_boxed_set_from_string( boxed, str_value );
+				na_boxed_set_from_string( NA_BOXED( boxed ), str_value );
 				g_free( str_value );
 				break;
 
-			case NAFD_TYPE_BOOLEAN:
+			case NA_DATA_TYPE_BOOLEAN:
 				bool_value = na_mateconf_utils_read_bool( provider->private->mateconf, entry_path, TRUE, FALSE );
-				na_data_boxed_set_from_void( boxed, GUINT_TO_POINTER( bool_value ));
+				na_boxed_set_from_void( NA_BOXED( boxed ), GUINT_TO_POINTER( bool_value ));
 				break;
 
-			case NAFD_TYPE_STRING_LIST:
+			case NA_DATA_TYPE_STRING_LIST:
 				slist_value = na_mateconf_utils_read_string_list( provider->private->mateconf, entry_path );
-				na_data_boxed_set_from_void( boxed, slist_value );
+				na_boxed_set_from_void( NA_BOXED( boxed ), slist_value );
 				na_core_utils_slist_free( slist_value );
 				break;
 
-			case NAFD_TYPE_UINT:
+			case NA_DATA_TYPE_UINT:
 				int_value = na_mateconf_utils_read_int( provider->private->mateconf, entry_path, TRUE, 0 );
-				na_data_boxed_set_from_void( boxed, GUINT_TO_POINTER( int_value ));
+				na_boxed_set_from_void( NA_BOXED( boxed ), GUINT_TO_POINTER( int_value ));
 				break;
 
 			default:

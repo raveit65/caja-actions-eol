@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -36,10 +35,7 @@
 
 #include "na-factory-provider.h"
 
-extern gboolean ifactory_provider_initialized;		/* defined in na-ifactory-provider.c */
-extern gboolean ifactory_provider_finalized;
-
-/**
+/*
  * na_factory_provider_read_data:
  * @reader: the instance which implements this #NAIFactoryProvider interface.
  * @reader_data: instance data.
@@ -64,18 +60,14 @@ na_factory_provider_read_data( const NAIFactoryProvider *reader, void *reader_da
 
 	boxed = NULL;
 
-	if( ifactory_provider_initialized && !ifactory_provider_finalized ){
-
-		if( NA_IFACTORY_PROVIDER_GET_INTERFACE( reader )->read_data ){
-
-			boxed = NA_IFACTORY_PROVIDER_GET_INTERFACE( reader )->read_data( reader, reader_data, object, def, messages );
-		}
+	if( NA_IFACTORY_PROVIDER_GET_INTERFACE( reader )->read_data ){
+		boxed = NA_IFACTORY_PROVIDER_GET_INTERFACE( reader )->read_data( reader, reader_data, object, def, messages );
 	}
 
 	return( boxed );
 }
 
-/**
+/*
  * na_factory_provider_write_data:
  * @writer: the instance which implements this #NAIFactoryProvider interface.
  * @writer_data: instance data.
@@ -98,12 +90,8 @@ na_factory_provider_write_data( const NAIFactoryProvider *writer, void *writer_d
 
 	code = NA_IIO_PROVIDER_CODE_NOT_WILLING_TO_RUN;
 
-	if( ifactory_provider_initialized && !ifactory_provider_finalized ){
-
-		if( NA_IFACTORY_PROVIDER_GET_INTERFACE( writer )->write_data ){
-
-			code = NA_IFACTORY_PROVIDER_GET_INTERFACE( writer )->write_data( writer, writer_data, object, boxed, messages );
-		}
+	if( NA_IFACTORY_PROVIDER_GET_INTERFACE( writer )->write_data ){
+		code = NA_IFACTORY_PROVIDER_GET_INTERFACE( writer )->write_data( writer, writer_data, object, boxed, messages );
 	}
 
 	return( code );

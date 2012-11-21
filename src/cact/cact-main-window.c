@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,158 +31,178 @@
 #include <config.h>
 #endif
 
+#include <glib/gi18n.h>
 #include <stdlib.h>
 
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-
 #include <api/na-object-api.h>
+#include <api/na-timeout.h>
 
-#include <core/na-iabout.h>
-#include <core/na-ipivot-consumer.h>
 #include <core/na-iprefs.h>
 #include <core/na-pivot.h>
 
-#include "base-iprefs.h"
-#include "cact-application.h"
-#include "cact-iactions-list.h"
+#include "base-isession.h"
 #include "cact-iaction-tab.h"
 #include "cact-icommand-tab.h"
+#include "cact-ibasenames-tab.h"
+#include "cact-imimetypes-tab.h"
 #include "cact-ifolders-tab.h"
-#include "cact-iconditions-tab.h"
-#include "cact-iadvanced-tab.h"
+#include "cact-ischemes-tab.h"
+#include "cact-icapabilities-tab.h"
+#include "cact-ienvironment-tab.h"
+#include "cact-iexecution-tab.h"
+#include "cact-iproperties-tab.h"
 #include "cact-main-tab.h"
-#include "cact-main-menubar.h"
 #include "cact-main-statusbar.h"
-#include "cact-marshal.h"
 #include "cact-main-window.h"
+#include "cact-marshal.h"
+#include "cact-menubar.h"
+#include "cact-tree-view.h"
 #include "cact-confirm-logout.h"
 #include "cact-sort-buttons.h"
 
 /* private class data
  */
-struct CactMainWindowClassPrivate {
+struct _CactMainWindowClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct CactMainWindowPrivate {
+struct _CactMainWindowPrivate {
 	gboolean         dispose_has_run;
 
-	/* TODO: this will have to be replaced with undo-manager */
-	GList           *deleted;
+	NAUpdater       *updater;
 
 	/**
-	 * Currently edited action or menu.
+	 * Current action or menu.
 	 *
-	 * This is the action or menu which is displayed in tab Action ;
-	 * it may be different of the row being currently selected.
+	 * This is the action or menu which is displayed in tabs Action/Menu
+	 * and Properties ; it may be different of the exact row being currently
+	 * selected, e.g. when a sub-profile is edited.
 	 *
-	 * Can be null, and this implies that edited_profile is also null.
+	 * Can be null, and this implies that @current_profile is also null,
+	 * e.g. when the list is empty or in the case of a multiple selection.
 	 *
-	 * 'editable_item' property is computed on selection change;
-	 * This is the real writability status of the item.
+	 * 'editable' property is set on selection change;
+	 * This is the actual current writability status of the item at this time.
 	 */
-	NAObjectItem    *edited_item;
+	NAObjectItem    *current_item;
 	gboolean         editable;
-	gint             reason;
+	guint            reason;
 
 	/**
-	 * Currently edited profile.
+	 * Current profile.
 	 *
-	 * This is the profile which is displayed in tabs Command,
-	 * Conditions and Advanced ; it may be different of the row being
-	 * currently selected.
+	 * This is the profile which is displayed in tab Command;
+	 * it may be different of the exact row being currently selected,
+	 * e.g. when an action with only one profile is selected.
 	 *
-	 * Can be null if @edited_item is a menu, or an action with more
-	 * than one profile and action is selected, or an action without
-	 * any profile.
+	 * Can be null if @current_item is a menu, or an action with more
+	 * than one profile is selected, or the list is empty, or in the
+	 * case of a multiple selection.
+	 *
+	 * In other words, it is not null if:
+	 * a) a profile is selected,
+	 * b) an action is selected and it has exactly one profile.
 	 */
-	NAObjectProfile *edited_profile;
+	NAObjectProfile *current_profile;
 
 	/**
-	 * Currently selected row.
-	 * May be null if list is empty or selection is multiple.
+	 * Current context.
+	 *
+	 * This is the #NAIContext data which corresponds to @current_profile
+	 * or @current_item, depending of which one is actually selected.
 	 */
-	NAObjectId      *selected_row;
+	NAIContext      *current_context;
 
 	/**
-	 * The convenience clipboard object.
+	 * Some convenience objects and data.
 	 */
+	CactTreeView    *items_view;
+	gboolean         is_tree_modified;
 	CactClipboard   *clipboard;
+	CactMenubar     *menubar;
+
+	gulong           pivot_handler_id;
+	NATimeout        pivot_timeout;
 };
 
-/* action properties
- * these are set when selection changes as an optimization try
+/* properties set against the main window
+ * these are set on selection changes
  */
 enum {
-	PROP_EDITED_ITEM = 1,
-	PROP_EDITED_PROFILE,
-	PROP_SELECTED_ROW,
-	PROP_EDITABLE,
-	PROP_REASON
+	MAIN_PROP_0 = 0,
+
+	MAIN_PROP_ITEM_ID,
+	MAIN_PROP_PROFILE_ID,
+	MAIN_PROP_CONTEXT_ID,
+	MAIN_PROP_EDITABLE_ID,
+	MAIN_PROP_REASON_ID,
+
+	MAIN_PROP_N_PROPERTIES
 };
 
 /* signals
  */
 enum {
-	PROVIDER_CHANGED,
+	MAIN_ITEM_UPDATED,
+	TAB_ITEM_UPDATED,
 	SELECTION_CHANGED,
-	ITEM_UPDATED,
-	ENABLE_TAB,
-	UPDATE_SENSITIVITIES,
-	ORDER_CHANGED,
+	CONTEXT_MENU,
 	LAST_SIGNAL
 };
 
-static CactWindowClass *st_parent_class = NULL;
+static const gchar     *st_xmlui_filename         = PKGUIDIR "/caja-actions-config-tool.ui";
+static const gchar     *st_toplevel_name          = "MainWindow";
+static const gchar     *st_wsp_name               = NA_IPREFS_MAIN_WINDOW_WSP;
+
+static gint             st_burst_timeout          = 2500;		/* burst timeout in msec */
+static BaseWindowClass *st_parent_class           = NULL;
 static gint             st_signals[ LAST_SIGNAL ] = { 0 };
 
-static GType    register_type( void );
-static void     class_init( CactMainWindowClass *klass );
-static void     iactions_list_iface_init( CactIActionsListInterface *iface );
-static void     iaction_tab_iface_init( CactIActionTabInterface *iface );
-static void     icommand_tab_iface_init( CactICommandTabInterface *iface );
-static void     ifolders_tab_iface_init( CactIFoldersTabInterface *iface );
-static void     iconditions_tab_iface_init( CactIConditionsTabInterface *iface );
-static void     iadvanced_tab_iface_init( CactIAdvancedTabInterface *iface );
-static void     iabout_iface_init( NAIAboutInterface *iface );
-static void     ipivot_consumer_iface_init( NAIPivotConsumerInterface *iface );
-static void     iprefs_base_iface_init( BaseIPrefsInterface *iface );
-static void     instance_init( GTypeInstance *instance, gpointer klass );
-static void     instance_get_property( GObject *object, guint property_id, GValue *value, GParamSpec *spec );
-static void     instance_set_property( GObject *object, guint property_id, const GValue *value, GParamSpec *spec );
-static void     instance_dispose( GObject *application );
-static void     instance_finalize( GObject *application );
+static GType      register_type( void );
+static void       class_init( CactMainWindowClass *klass );
+static void       iaction_tab_iface_init( CactIActionTabInterface *iface, void *user_data );
+static void       icommand_tab_iface_init( CactICommandTabInterface *iface, void *user_data );
+static void       ibasenames_tab_iface_init( CactIBasenamesTabInterface *iface, void *user_data );
+static void       imimetypes_tab_iface_init( CactIMimetypesTabInterface *iface, void *user_data );
+static void       ifolders_tab_iface_init( CactIFoldersTabInterface *iface, void *user_data );
+static void       ischemes_tab_iface_init( CactISchemesTabInterface *iface, void *user_data );
+static void       icapabilities_tab_iface_init( CactICapabilitiesTabInterface *iface, void *user_data );
+static void       ienvironment_tab_iface_init( CactIEnvironmentTabInterface *iface, void *user_data );
+static void       iexecution_tab_iface_init( CactIExecutionTabInterface *iface, void *user_data );
+static void       iproperties_tab_iface_init( CactIPropertiesTabInterface *iface, void *user_data );
+static void       instance_init( GTypeInstance *instance, gpointer klass );
+static void       instance_get_property( GObject *object, guint property_id, GValue *value, GParamSpec *spec );
+static void       instance_set_property( GObject *object, guint property_id, const GValue *value, GParamSpec *spec );
+static void       instance_constructed( GObject *window );
+static void       instance_dispose( GObject *window );
+static void       instance_finalize( GObject *window );
 
-static void     actually_delete_item( CactMainWindow *window, NAObject *item, NAUpdater *updater );
+static void       on_base_initialize_gtk( CactMainWindow *window, GtkWindow *toplevel, gpointer user_data );
+static void       on_base_initialize_window( CactMainWindow *window, gpointer user_data );
+static void       on_base_show_widgets( CactMainWindow *window, gpointer user_data );
 
-static gchar   *base_get_toplevel_name( const BaseWindow *window );
-static gchar   *base_get_iprefs_window_id( const BaseWindow *window );
-static gboolean base_is_willing_to_quit( const BaseWindow *window );
-static void     on_base_initial_load_toplevel( CactMainWindow *window, gpointer user_data );
-static void     on_base_runtime_init_toplevel( CactMainWindow *window, gpointer user_data );
-static void     on_base_all_widgets_showed( CactMainWindow *window, gpointer user_data );
+static void       on_block_items_changed_timeout( CactMainWindow *window );
+static void       on_tree_view_modified_status_changed( CactMainWindow *window, gboolean is_modified, gpointer user_data );
+static void       on_tree_view_selection_changed( CactMainWindow *window, GList *selected_items, gpointer user_data );
+static void       on_selection_changed_cleanup_handler( BaseWindow *window, GList *selected_items );
+static void       on_tab_updatable_item_updated( CactMainWindow *window, NAIContext *context, guint data, gpointer user_data );
+static void       raz_selection_properties( CactMainWindow *window );
+static void       setup_current_selection( CactMainWindow *window, NAObjectId *selected_row );
+static void       setup_dialog_title( CactMainWindow *window );
+static void       setup_writability_status( CactMainWindow *window );
 
-static void     on_main_window_level_zero_order_changed( CactMainWindow *window, gpointer user_data );
-static void     on_iactions_list_selection_changed( CactIActionsList *instance, GSList *selected_items );
-static void     on_iactions_list_status_changed( CactMainWindow *window, gpointer user_data );
-static void     set_current_object_item( CactMainWindow *window, GSList *selected_items );
-static void     set_current_profile( CactMainWindow *window, gboolean set_action, GSList *selected_items );
-static gchar   *iactions_list_get_treeview_name( CactIActionsList *instance );
-static void     setup_dialog_title( CactMainWindow *window );
+/* items have changed */
+static void       on_pivot_items_changed( NAUpdater *updater, CactMainWindow *window );
+static gboolean   confirm_for_giveup_from_pivot( const CactMainWindow *window );
+static gboolean   confirm_for_giveup_from_menu( const CactMainWindow *window );
+static void       load_or_reload_items( CactMainWindow *window );
 
-static void     on_tab_updatable_item_updated( CactMainWindow *window, gpointer user_data, gboolean force_display );
-
-static gboolean confirm_for_giveup_from_menu( CactMainWindow *window );
-static gboolean confirm_for_giveup_from_pivot( CactMainWindow *window );
-static void     ipivot_consumer_on_items_changed( NAIPivotConsumer *instance, gpointer user_data );
-static void     ipivot_consumer_on_display_order_changed( NAIPivotConsumer *instance, gint order_mode );
-static void     ipivot_consumer_on_mandatory_prefs_changed( NAIPivotConsumer *instance );
-static void     reload( CactMainWindow *window );
-
-static gchar   *iabout_get_application_name( NAIAbout *instance );
+/* application termination */
+static gboolean   on_base_quit_requested( CactApplication *application, CactMainWindow *window );
+static gboolean   on_delete_event( GtkWidget *toplevel, GdkEvent *event, CactMainWindow *window );
+static gboolean   warn_modified( CactMainWindow *window );
 
 GType
 cact_main_window_get_type( void )
@@ -215,12 +234,6 @@ register_type( void )
 		( GInstanceInitFunc ) instance_init
 	};
 
-	static const GInterfaceInfo iactions_list_iface_info = {
-		( GInterfaceInitFunc ) iactions_list_iface_init,
-		NULL,
-		NULL
-	};
-
 	static const GInterfaceInfo iaction_tab_iface_info = {
 		( GInterfaceInitFunc ) iaction_tab_iface_init,
 		NULL,
@@ -233,63 +246,77 @@ register_type( void )
 		NULL
 	};
 
+	static const GInterfaceInfo ibasenames_tab_iface_info = {
+		( GInterfaceInitFunc ) ibasenames_tab_iface_init,
+		NULL,
+		NULL
+	};
+
+	static const GInterfaceInfo imimetypes_tab_iface_info = {
+		( GInterfaceInitFunc ) imimetypes_tab_iface_init,
+		NULL,
+		NULL
+	};
+
 	static const GInterfaceInfo ifolders_tab_iface_info = {
 		( GInterfaceInitFunc ) ifolders_tab_iface_init,
 		NULL,
 		NULL
 	};
 
-	static const GInterfaceInfo iconditions_tab_iface_info = {
-		( GInterfaceInitFunc ) iconditions_tab_iface_init,
+	static const GInterfaceInfo ischemes_tab_iface_info = {
+		( GInterfaceInitFunc ) ischemes_tab_iface_init,
 		NULL,
 		NULL
 	};
 
-	static const GInterfaceInfo iadvanced_tab_iface_info = {
-		( GInterfaceInitFunc ) iadvanced_tab_iface_init,
+	static const GInterfaceInfo icapabilities_tab_iface_info = {
+		( GInterfaceInitFunc ) icapabilities_tab_iface_init,
 		NULL,
 		NULL
 	};
 
-	static const GInterfaceInfo iabout_iface_info = {
-		( GInterfaceInitFunc ) iabout_iface_init,
+	static const GInterfaceInfo ienvironment_tab_iface_info = {
+		( GInterfaceInitFunc ) ienvironment_tab_iface_init,
 		NULL,
 		NULL
 	};
 
-	static const GInterfaceInfo ipivot_consumer_iface_info = {
-		( GInterfaceInitFunc ) ipivot_consumer_iface_init,
+	static const GInterfaceInfo iexecution_tab_iface_info = {
+		( GInterfaceInitFunc ) iexecution_tab_iface_init,
 		NULL,
 		NULL
 	};
 
-	static const GInterfaceInfo iprefs_base_iface_info = {
-		( GInterfaceInitFunc ) iprefs_base_iface_init,
+	static const GInterfaceInfo iproperties_tab_iface_info = {
+		( GInterfaceInitFunc ) iproperties_tab_iface_init,
 		NULL,
 		NULL
 	};
 
 	g_debug( "%s", thisfn );
 
-	type = g_type_register_static( CACT_WINDOW_TYPE, "CactMainWindow", &info, 0 );
+	type = g_type_register_static( BASE_TYPE_WINDOW, "CactMainWindow", &info, 0 );
 
-	g_type_add_interface_static( type, CACT_IACTIONS_LIST_TYPE, &iactions_list_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_IACTION_TAB, &iaction_tab_iface_info );
 
-	g_type_add_interface_static( type, CACT_IACTION_TAB_TYPE, &iaction_tab_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_ICOMMAND_TAB, &icommand_tab_iface_info );
 
-	g_type_add_interface_static( type, CACT_ICOMMAND_TAB_TYPE, &icommand_tab_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_IBASENAMES_TAB, &ibasenames_tab_iface_info );
 
-	g_type_add_interface_static( type, CACT_IFOLDERS_TAB_TYPE, &ifolders_tab_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_IMIMETYPES_TAB, &imimetypes_tab_iface_info );
 
-	g_type_add_interface_static( type, CACT_ICONDITIONS_TAB_TYPE, &iconditions_tab_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_IFOLDERS_TAB, &ifolders_tab_iface_info );
 
-	g_type_add_interface_static( type, CACT_IADVANCED_TAB_TYPE, &iadvanced_tab_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_ISCHEMES_TAB, &ischemes_tab_iface_info );
 
-	g_type_add_interface_static( type, NA_IABOUT_TYPE, &iabout_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_ICAPABILITIES_TAB, &icapabilities_tab_iface_info );
 
-	g_type_add_interface_static( type, NA_IPIVOT_CONSUMER_TYPE, &ipivot_consumer_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_IENVIRONMENT_TAB, &ienvironment_tab_iface_info );
 
-	g_type_add_interface_static( type, BASE_IPREFS_TYPE, &iprefs_base_iface_info );
+	g_type_add_interface_static( type, CACT_TYPE_IEXECUTION_TAB, &iexecution_tab_iface_info );
+
+	g_type_add_interface_static( type, CACT_TYPE_IPROPERTIES_TAB, &iproperties_tab_iface_info );
 
 	return( type );
 }
@@ -299,107 +326,79 @@ class_init( CactMainWindowClass *klass )
 {
 	static const gchar *thisfn = "cact_main_window_class_init";
 	GObjectClass *object_class;
-	BaseWindowClass *base_class;
-	GParamSpec *spec;
 
 	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
 
 	st_parent_class = g_type_class_peek_parent( klass );
 
 	object_class = G_OBJECT_CLASS( klass );
-	object_class->dispose = instance_dispose;
-	object_class->finalize = instance_finalize;
 	object_class->set_property = instance_set_property;
 	object_class->get_property = instance_get_property;
+	object_class->constructed = instance_constructed;
+	object_class->dispose = instance_dispose;
+	object_class->finalize = instance_finalize;
 
-	spec = g_param_spec_pointer(
-			TAB_UPDATABLE_PROP_EDITED_ACTION,
-			"Edited NAObjectItem",
-			"A pointer to the edited NAObjectItem, an action or a menu",
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, PROP_EDITED_ITEM, spec );
+	g_object_class_install_property( object_class, MAIN_PROP_ITEM_ID,
+			g_param_spec_pointer(
+					MAIN_PROP_ITEM,
+					_( "Current NAObjectItem" ),
+					_( "A pointer to the currently edited NAObjectItem, an action or a menu" ),
+					G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE ));
 
-	spec = g_param_spec_pointer(
-			TAB_UPDATABLE_PROP_EDITED_PROFILE,
-			"Edited NAObjectProfile",
-			"A pointer to the edited NAObjectProfile",
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, PROP_EDITED_PROFILE, spec );
+	g_object_class_install_property( object_class, MAIN_PROP_PROFILE_ID,
+			g_param_spec_pointer(
+					MAIN_PROP_PROFILE,
+					_( "Current NAObjectProfile" ),
+					_( "A pointer to the currently edited NAObjectProfile" ),
+					G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE ));
 
-	spec = g_param_spec_pointer(
-			TAB_UPDATABLE_PROP_SELECTED_ROW,
-			"Selected NAObjectId",
-			"A pointer to the currently selected row",
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, PROP_SELECTED_ROW, spec );
+	g_object_class_install_property( object_class, MAIN_PROP_CONTEXT_ID,
+			g_param_spec_pointer(
+					MAIN_PROP_CONTEXT,
+					_( "Current NAIContext" ),
+					_( "A pointer to the currently edited NAIContext" ),
+					G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE ));
 
-	spec = g_param_spec_boolean(
-			TAB_UPDATABLE_PROP_EDITABLE,
-			"Editable item ?",
-			"Whether the item will be able to be updated against its I/O provider", FALSE,
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, PROP_EDITABLE, spec );
+	g_object_class_install_property( object_class, MAIN_PROP_EDITABLE_ID,
+			g_param_spec_boolean(
+					MAIN_PROP_EDITABLE,
+					_( "Editable item ?" ),
+					_( "Whether the item will be able to be updated against its I/O provider" ),
+					FALSE,
+					G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE ));
 
-	spec = g_param_spec_int(
-			TAB_UPDATABLE_PROP_REASON,
-			"No edition reason",
-			"Why is this item not editable", 0, 255, 0,
-			G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE );
-	g_object_class_install_property( object_class, PROP_REASON, spec );
+	g_object_class_install_property( object_class, MAIN_PROP_REASON_ID,
+			g_param_spec_int(
+					MAIN_PROP_REASON,
+					_( "No edition reason" ),
+					_( "Why is this item not editable" ),
+					0, 255, 0,
+					G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE ));
 
 	klass->private = g_new0( CactMainWindowClassPrivate, 1 );
 
-	base_class = BASE_WINDOW_CLASS( klass );
-	base_class->get_toplevel_name = base_get_toplevel_name;
-	base_class->get_iprefs_window_id = base_get_iprefs_window_id;
-	base_class->is_willing_to_quit = base_is_willing_to_quit;
-
 	/**
-	 * cact-tab-updatable-provider-changed:
+	 * CactMainWindow::main-item-updated:
 	 *
-	 * This signal is emitted at save time, when we are noticing that
-	 * the save operation has led to a modification of the I/O provider.
-	 * This signal may be caught by a tab in order to display the
-	 * new provider's name.
+	 * This signal is emitted on the BaseWindow when the item has been modified
+	 * elsewhere that in a tab. The tabs should so update accordingly their
+	 * widgets.
+	 *
+	 * Args:
+	 * - an OR-ed list of the modified data, or 0 if not relevant.
 	 */
-	st_signals[ PROVIDER_CHANGED ] = g_signal_new(
-			TAB_UPDATABLE_SIGNAL_PROVIDER_CHANGED,
+	st_signals[ MAIN_ITEM_UPDATED ] = g_signal_new(
+			MAIN_SIGNAL_ITEM_UPDATED,
 			G_TYPE_OBJECT,
 			G_SIGNAL_RUN_LAST,
 			0,					/* no default handler */
 			NULL,
 			NULL,
-			g_cclosure_marshal_VOID__POINTER,
+			cact_cclosure_marshal_VOID__POINTER_UINT,
 			G_TYPE_NONE,
-			1,
-			G_TYPE_POINTER );
-
-	/**
-	 * main-window-selection-changed:
-	 *
-	 * This signal is emitted by this main window, in response of a
-	 * change of the selection in IActionsList, after having updated
-	 * its properties.
-	 * Notebook tabs should connect to this signal and update their
-	 * display to reflect the content of the new selection (if applyable).
-	 *
-	 * Note also that, where this main window will receive from
-	 * IActionsList the full list of currently selected items, this
-	 * signal only carries to the tabs the count of selected items.
-	 *
-	 * See #iactions_list_selection_changed().
-	 */
-	st_signals[ SELECTION_CHANGED ] = g_signal_new(
-			MAIN_WINDOW_SIGNAL_SELECTION_CHANGED,
-			G_TYPE_OBJECT,
-			G_SIGNAL_RUN_LAST,
-			0,					/* no default handler */
-			NULL,
-			NULL,
-			g_cclosure_marshal_VOID__POINTER,
-			G_TYPE_NONE,
-			1,
-			G_TYPE_POINTER );
+			2,
+			G_TYPE_POINTER,
+			G_TYPE_UINT );
 
 	/**
 	 * cact-tab-updatable-item-updated:
@@ -407,35 +406,48 @@ class_init( CactMainWindowClass *klass )
 	 * This signal is emitted by the notebook tabs, when any property
 	 * of an item has been modified.
 	 *
+	 * Args:
+	 * - an OR-ed list of the modified data, or 0 if not relevant.
+	 *
 	 * This main window is rather the only consumer of this message,
 	 * does its tricks (title, etc.), and then reforward an item-updated
 	 * message to IActionsList.
 	 */
-	st_signals[ ITEM_UPDATED ] = g_signal_new(
+	st_signals[ TAB_ITEM_UPDATED ] = g_signal_new(
 			TAB_UPDATABLE_SIGNAL_ITEM_UPDATED,
 			G_TYPE_OBJECT,
 			G_SIGNAL_RUN_LAST,
 			0,					/* no default handler */
 			NULL,
 			NULL,
-			cact_marshal_VOID__POINTER_BOOLEAN,
+			cact_cclosure_marshal_VOID__POINTER_UINT,
 			G_TYPE_NONE,
 			2,
 			G_TYPE_POINTER,
-			G_TYPE_BOOLEAN );
+			G_TYPE_UINT );
 
 	/**
-	 * cact-tab-updatable-enable-tab:
+	 * CactMainWindow::main-selection-changed:
 	 *
-	 * This signal is emitted by the IActionTab when the nature of the
-	 * item has been modified: some tabs should probably be enabled or
-	 * disabled
+	 * This signal is emitted on the window parent each time the selection
+	 * has changed in the treeview, after having set the current item/profile/
+	 * context properties.
+	 *
+	 * This way, we are sure that notebook edition tabs which required to
+	 * have a current item/profile/context will have it, whenever they have
+	 * connected to the 'selection-changed' signal.
+	 *
+	 * Signal args:
+	 * - a #GList of currently selected #NAObjectItems.
+	 *
+	 * Handler prototype:
+	 * void ( *handler )( BaseWindow *window, GList *selected, gpointer user_data );
 	 */
-	st_signals[ ENABLE_TAB ] = g_signal_new(
-			TAB_UPDATABLE_SIGNAL_ENABLE_TAB,
+	st_signals[ SELECTION_CHANGED ] = g_signal_new_class_handler(
+			MAIN_SIGNAL_SELECTION_CHANGED,
 			G_TYPE_OBJECT,
-			G_SIGNAL_RUN_LAST,
-			0,					/* no default handler */
+			G_SIGNAL_RUN_CLEANUP,
+			G_CALLBACK( on_selection_changed_cleanup_handler ),
 			NULL,
 			NULL,
 			g_cclosure_marshal_VOID__POINTER,
@@ -444,122 +456,110 @@ class_init( CactMainWindowClass *klass )
 			G_TYPE_POINTER );
 
 	/**
-	 * main-window-update-sensitivities:
+	 * CactMainWindow::main-signal-open-popup
 	 *
-	 * This signal is emitted each time a user interaction may led the
-	 * action sensitivities to be updated.
+	 * This signal is emitted on the BaseWindow parent when the user right
+	 * clicks somewhere (on an active zone).
+	 *
+	 * Signal args:
+	 * - the GdkEvent
+	 * - the popup name to be opened.
+	 *
+	 * Handler prototype:
+	 * void ( *handler )( BaseWindow *window, GdkEvent *event, const gchar *popup_name, gpointer user_data );
 	 */
-	st_signals[ UPDATE_SENSITIVITIES ] = g_signal_new(
-			MAIN_WINDOW_SIGNAL_UPDATE_ACTION_SENSITIVITIES,
+	st_signals[ CONTEXT_MENU ] = g_signal_new(
+			MAIN_SIGNAL_CONTEXT_MENU,
 			G_TYPE_OBJECT,
 			G_SIGNAL_RUN_LAST,
-			0,					/* no default handler */
+			0,
 			NULL,
 			NULL,
-			g_cclosure_marshal_VOID__POINTER,
+			cact_cclosure_marshal_VOID__POINTER_STRING,
 			G_TYPE_NONE,
-			1,
-			G_TYPE_POINTER );
-
-	/**
-	 * main-window-level-zero-order-changed:
-	 *
-	 * This signal is emitted each time a user interaction may led the
-	 * action sensitivities to be updated.
-	 */
-	st_signals[ ORDER_CHANGED ] = g_signal_new(
-			MAIN_WINDOW_SIGNAL_LEVEL_ZERO_ORDER_CHANGED,
-			G_TYPE_OBJECT,
-			G_SIGNAL_RUN_LAST,
-			0,					/* no default handler */
-			NULL,
-			NULL,
-			g_cclosure_marshal_VOID__POINTER,
-			G_TYPE_NONE,
-			1,
-			G_TYPE_POINTER );
+			2,
+			G_TYPE_POINTER,
+			G_TYPE_STRING);
 }
 
 static void
-iactions_list_iface_init( CactIActionsListInterface *iface )
-{
-	static const gchar *thisfn = "cact_main_window_iactions_list_iface_init";
-
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
-
-	iface->get_treeview_name = iactions_list_get_treeview_name;
-}
-
-static void
-iaction_tab_iface_init( CactIActionTabInterface *iface )
+iaction_tab_iface_init( CactIActionTabInterface *iface, void *user_data )
 {
 	static const gchar *thisfn = "cact_main_window_iaction_tab_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 }
 
 static void
-icommand_tab_iface_init( CactICommandTabInterface *iface )
+icommand_tab_iface_init( CactICommandTabInterface *iface, void *user_data )
 {
 	static const gchar *thisfn = "cact_main_window_icommand_tab_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 }
 
 static void
-ifolders_tab_iface_init( CactIFoldersTabInterface *iface )
+ibasenames_tab_iface_init( CactIBasenamesTabInterface *iface, void *user_data )
+{
+	static const gchar *thisfn = "cact_main_window_ibasenames_tab_iface_init";
+
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
+}
+
+static void
+imimetypes_tab_iface_init( CactIMimetypesTabInterface *iface, void *user_data )
+{
+	static const gchar *thisfn = "cact_main_window_imimetypes_tab_iface_init";
+
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
+}
+
+static void
+ifolders_tab_iface_init( CactIFoldersTabInterface *iface, void *user_data )
 {
 	static const gchar *thisfn = "cact_main_window_ifolders_tab_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 }
 
 static void
-iconditions_tab_iface_init( CactIConditionsTabInterface *iface )
+ischemes_tab_iface_init( CactISchemesTabInterface *iface, void *user_data )
 {
-	static const gchar *thisfn = "cact_main_window_iconditions_tab_iface_init";
+	static const gchar *thisfn = "cact_main_window_ischemes_tab_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 }
 
 static void
-iadvanced_tab_iface_init( CactIAdvancedTabInterface *iface )
+icapabilities_tab_iface_init( CactICapabilitiesTabInterface *iface, void *user_data )
 {
-	static const gchar *thisfn = "cact_main_window_iadvanced_tab_iface_init";
+	static const gchar *thisfn = "cact_main_window_icapabilities_tab_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 }
 
 static void
-iabout_iface_init( NAIAboutInterface *iface )
+ienvironment_tab_iface_init( CactIEnvironmentTabInterface *iface, void *user_data )
 {
-	static const gchar *thisfn = "cact_main_window_iabout_iface_init";
+	static const gchar *thisfn = "cact_main_window_ienvironment_tab_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
-
-	iface->get_application_name = iabout_get_application_name;
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 }
 
 static void
-ipivot_consumer_iface_init( NAIPivotConsumerInterface *iface )
+iexecution_tab_iface_init( CactIExecutionTabInterface *iface, void *user_data )
 {
-	static const gchar *thisfn = "cact_main_window_ipivot_consumer_iface_init";
+	static const gchar *thisfn = "cact_main_window_iexecution_tab_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
-
-	iface->on_items_changed = ipivot_consumer_on_items_changed;
-	iface->on_create_root_menu_changed = NULL;
-	iface->on_display_about_changed = NULL;
-	iface->on_display_order_changed = ipivot_consumer_on_display_order_changed;
-	iface->on_mandatory_prefs_changed = ipivot_consumer_on_mandatory_prefs_changed;
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 }
 
 static void
-iprefs_base_iface_init( BaseIPrefsInterface *iface )
+iproperties_tab_iface_init( CactIPropertiesTabInterface *iface, void *user_data )
 {
-	static const gchar *thisfn = "cact_main_window_iprefs_base_iface_init";
+	static const gchar *thisfn = "cact_main_window_iproperties_tab_iface_init";
 
-	g_debug( "%s: iface=%p", thisfn, ( void * ) iface );
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
 }
 
 static void
@@ -567,39 +567,24 @@ instance_init( GTypeInstance *instance, gpointer klass )
 {
 	static const gchar *thisfn = "cact_main_window_instance_init";
 	CactMainWindow *self;
+	CactMainWindowPrivate *priv;
+
+	g_return_if_fail( CACT_IS_MAIN_WINDOW( instance ));
 
 	g_debug( "%s: instance=%p (%s), klass=%p",
 			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-	g_return_if_fail( CACT_IS_MAIN_WINDOW( instance ));
+
 	self = CACT_MAIN_WINDOW( instance );
-
 	self->private = g_new0( CactMainWindowPrivate, 1 );
+	priv = self->private;
+	priv->dispose_has_run = FALSE;
 
-	base_window_signal_connect(
-			BASE_WINDOW( instance ),
-			G_OBJECT( instance ),
-			BASE_WINDOW_SIGNAL_INITIAL_LOAD,
-			G_CALLBACK( on_base_initial_load_toplevel ));
-
-	base_window_signal_connect(
-			BASE_WINDOW( instance ),
-			G_OBJECT( instance ),
-			BASE_WINDOW_SIGNAL_RUNTIME_INIT,
-			G_CALLBACK( on_base_runtime_init_toplevel ));
-
-	base_window_signal_connect(
-			BASE_WINDOW( instance ),
-			G_OBJECT( instance ),
-			BASE_WINDOW_SIGNAL_ALL_WIDGETS_SHOWED,
-			G_CALLBACK( on_base_all_widgets_showed ));
-
-	base_window_signal_connect(
-			BASE_WINDOW( instance ),
-			G_OBJECT( instance ),
-			TAB_UPDATABLE_SIGNAL_ITEM_UPDATED,
-			G_CALLBACK( on_tab_updatable_item_updated ));
-
-	self->private->dispose_has_run = FALSE;
+	/* initialize timeout parameters when blocking 'pivot-items-changed' handler
+	 */
+	priv->pivot_timeout.timeout = st_burst_timeout;
+	priv->pivot_timeout.handler = ( NATimeoutFunc ) on_block_items_changed_timeout;
+	priv->pivot_timeout.user_data = self;
+	priv->pivot_timeout.source_id = 0;
 }
 
 static void
@@ -613,23 +598,23 @@ instance_get_property( GObject *object, guint property_id, GValue *value, GParam
 	if( !self->private->dispose_has_run ){
 
 		switch( property_id ){
-			case PROP_EDITED_ITEM:
-				g_value_set_pointer( value, self->private->edited_item );
+			case MAIN_PROP_ITEM_ID:
+				g_value_set_pointer( value, self->private->current_item );
 				break;
 
-			case PROP_EDITED_PROFILE:
-				g_value_set_pointer( value, self->private->edited_profile );
+			case MAIN_PROP_PROFILE_ID:
+				g_value_set_pointer( value, self->private->current_profile );
 				break;
 
-			case PROP_SELECTED_ROW:
-				g_value_set_pointer( value, self->private->selected_row );
+			case MAIN_PROP_CONTEXT_ID:
+				g_value_set_pointer( value, self->private->current_context );
 				break;
 
-			case PROP_EDITABLE:
+			case MAIN_PROP_EDITABLE_ID:
 				g_value_set_boolean( value, self->private->editable );
 				break;
 
-			case PROP_REASON:
+			case MAIN_PROP_REASON_ID:
 				g_value_set_int( value, self->private->reason );
 				break;
 
@@ -651,23 +636,23 @@ instance_set_property( GObject *object, guint property_id, const GValue *value, 
 	if( !self->private->dispose_has_run ){
 
 		switch( property_id ){
-			case PROP_EDITED_ITEM:
-				self->private->edited_item = g_value_get_pointer( value );
+			case MAIN_PROP_ITEM_ID:
+				self->private->current_item = g_value_get_pointer( value );
 				break;
 
-			case PROP_EDITED_PROFILE:
-				self->private->edited_profile = g_value_get_pointer( value );
+			case MAIN_PROP_PROFILE_ID:
+				self->private->current_profile = g_value_get_pointer( value );
 				break;
 
-			case PROP_SELECTED_ROW:
-				self->private->selected_row = g_value_get_pointer( value );
+			case MAIN_PROP_CONTEXT_ID:
+				self->private->current_context = g_value_get_pointer( value );
 				break;
 
-			case PROP_EDITABLE:
+			case MAIN_PROP_EDITABLE_ID:
 				self->private->editable = g_value_get_boolean( value );
 				break;
 
-			case PROP_REASON:
+			case MAIN_PROP_REASON_ID:
 				self->private->reason = g_value_get_int( value );
 				break;
 
@@ -679,41 +664,122 @@ instance_set_property( GObject *object, guint property_id, const GValue *value, 
 }
 
 static void
+instance_constructed( GObject *window )
+{
+	static const gchar *thisfn = "cact_main_window_instance_constructed";
+	CactMainWindowPrivate *priv;
+	CactApplication *application;
+
+	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
+
+	priv = CACT_MAIN_WINDOW( window )->private;
+
+	if( !priv->dispose_has_run ){
+
+		/* chain up to the parent class */
+		if( G_OBJECT_CLASS( st_parent_class )->constructed ){
+			G_OBJECT_CLASS( st_parent_class )->constructed( window );
+		}
+
+		g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
+
+		/* connect to BaseWindow signals
+		 * so that convenience objects instanciated later will have this same signal
+		 * triggered after the one of CactMainWindow
+		 */
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( window ),
+				BASE_SIGNAL_INITIALIZE_GTK,
+				G_CALLBACK( on_base_initialize_gtk ));
+
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( window ),
+				BASE_SIGNAL_INITIALIZE_WINDOW,
+				G_CALLBACK( on_base_initialize_window ));
+
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( window ),
+				BASE_SIGNAL_SHOW_WIDGETS,
+				G_CALLBACK( on_base_show_widgets ));
+
+		/* monitor the items stored on the disk for modifications
+		 * outside of this application
+		 */
+		application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
+		priv->updater = cact_application_get_updater( application );
+
+		priv->pivot_handler_id = base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( priv->updater ),
+				PIVOT_SIGNAL_ITEMS_CHANGED,
+				G_CALLBACK( on_pivot_items_changed ));
+
+		/* monitor the updates which originates from each property tab
+		 */
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( window ),
+				TAB_UPDATABLE_SIGNAL_ITEM_UPDATED,
+				G_CALLBACK( on_tab_updatable_item_updated ));
+
+		/* create the menubar and other convenience objects
+		 */
+		priv->menubar = cact_menubar_new( BASE_WINDOW( window ));
+		priv->clipboard = cact_clipboard_new( BASE_WINDOW( window ));
+
+		/* initialize the notebook interfaces
+		 */
+		cact_iaction_tab_init( CACT_IACTION_TAB( window ));
+		cact_icommand_tab_init( CACT_ICOMMAND_TAB( window ));
+		cact_ibasenames_tab_init( CACT_IBASENAMES_TAB( window ));
+		cact_imimetypes_tab_init( CACT_IMIMETYPES_TAB( window ));
+		cact_ifolders_tab_init( CACT_IFOLDERS_TAB( window ));
+		cact_ischemes_tab_init( CACT_ISCHEMES_TAB( window ));
+		cact_icapabilities_tab_init( CACT_ICAPABILITIES_TAB( window ));
+		cact_ienvironment_tab_init( CACT_IENVIRONMENT_TAB( window ));
+		cact_iexecution_tab_init( CACT_IEXECUTION_TAB( window ));
+		cact_iproperties_tab_init( CACT_IPROPERTIES_TAB( window ));
+	}
+}
+
+static void
 instance_dispose( GObject *window )
 {
 	static const gchar *thisfn = "cact_main_window_instance_dispose";
 	CactMainWindow *self;
 	GtkWidget *pane;
 	gint pos;
-	GList *it;
+	GtkNotebook *notebook;
 
-	g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
 	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
+
 	self = CACT_MAIN_WINDOW( window );
 
 	if( !self->private->dispose_has_run ){
+		g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
 
 		self->private->dispose_has_run = TRUE;
 
+		gtk_main_quit();
+
 		g_object_unref( self->private->clipboard );
+		g_object_unref( self->private->menubar );
 
 		pane = base_window_get_widget( BASE_WINDOW( window ), "MainPaned" );
 		pos = gtk_paned_get_position( GTK_PANED( pane ));
-		base_iprefs_set_int( BASE_WINDOW( window ), "main-paned", pos );
+		na_settings_set_uint( NA_IPREFS_MAIN_PANED, pos );
 
-		for( it = self->private->deleted ; it ; it = it->next ){
-			g_debug( "cact_main_window_instance_dispose: deleted=%p (%s)", ( void * ) it->data, G_OBJECT_TYPE_NAME( it->data ));
-		}
-		na_object_unref_items( self->private->deleted );
+		notebook = GTK_NOTEBOOK( base_window_get_widget( BASE_WINDOW( window ), "MainNotebook" ));
+		pos = gtk_notebook_get_tab_pos( notebook );
+		na_iprefs_set_tabs_pos( pos );
 
-		cact_iactions_list_dispose( CACT_IACTIONS_LIST( window ));
-		cact_sort_buttons_dispose( self );
-		cact_iaction_tab_dispose( CACT_IACTION_TAB( window ));
-		cact_icommand_tab_dispose( CACT_ICOMMAND_TAB( window ));
-		cact_ifolders_tab_dispose( CACT_IFOLDERS_TAB( window ));
-		cact_iconditions_tab_dispose( CACT_ICONDITIONS_TAB( window ));
-		cact_iadvanced_tab_dispose( CACT_IADVANCED_TAB( window ));
-		cact_main_menubar_dispose( self );
+		/* unref items view at last as gtk_tree_model_store_clear() will
+		 * finalize all objects, thus invaliditing all our references
+		 */
+		g_object_unref( self->private->items_view );
 
 		/* chain up to the parent class */
 		if( G_OBJECT_CLASS( st_parent_class )->dispose ){
@@ -728,8 +794,10 @@ instance_finalize( GObject *window )
 	static const gchar *thisfn = "cact_main_window_instance_finalize";
 	CactMainWindow *self;
 
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
 	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
+
+	g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
+
 	self = CACT_MAIN_WINDOW( window );
 
 	g_free( self->private );
@@ -744,27 +812,166 @@ instance_finalize( GObject *window )
  * Returns a newly allocated CactMainWindow object.
  */
 CactMainWindow *
-cact_main_window_new( BaseApplication *application )
+cact_main_window_new( const CactApplication *application )
 {
+	CactMainWindow *window;
+
 	g_return_val_if_fail( CACT_IS_APPLICATION( application ), NULL );
 
-	return( g_object_new( CACT_MAIN_WINDOW_TYPE, BASE_WINDOW_PROP_APPLICATION, application, NULL ));
+	window = g_object_new( CACT_TYPE_MAIN_WINDOW,
+			BASE_PROP_APPLICATION,        application,
+			BASE_PROP_XMLUI_FILENAME,     st_xmlui_filename,
+			BASE_PROP_TOPLEVEL_NAME,      st_toplevel_name,
+			BASE_PROP_WSP_NAME,           st_wsp_name,
+			BASE_PROP_DESTROY_ON_DISPOSE, TRUE,
+			NULL );
+
+	if( !base_window_init( BASE_WINDOW( window ))){
+		g_object_unref( window );
+		window = NULL;
+	}
+
+	return( window );
+}
+
+/*
+ * note that for this CactMainWindow, on_base_initialize_gtk_toplevel() and
+ * on_base_initialize_base_window() are roughly equivalent, as there is only
+ * one occurrence on this window in the application: closing this window
+ * is the same than quitting the application
+ */
+static void
+on_base_initialize_gtk( CactMainWindow *window, GtkWindow *toplevel, gpointer user_data )
+{
+	static const gchar *thisfn = "cact_main_window_on_base_initialize_gtk";
+	GtkWidget *tree_parent;
+	GtkNotebook *notebook;
+
+	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
+
+	if( !window->private->dispose_has_run ){
+
+		g_debug( "%s: window=%p, toplevel=%p, user_data=%p",
+				thisfn,
+				( void * ) window,
+				( void * ) toplevel,
+				( void * ) user_data );
+
+		/* create the tree view which will create itself its own tree model
+		 */
+		tree_parent = base_window_get_widget( BASE_WINDOW( window ), "MainVBox" );
+		g_debug( "%s: tree_parent=%p (%s)", thisfn, ( void * ) tree_parent, G_OBJECT_TYPE_NAME( tree_parent ));
+		window->private->items_view = cact_tree_view_new(
+				BASE_WINDOW( window ),
+				GTK_CONTAINER( tree_parent ),
+				"ActionsList",
+				TREE_MODE_EDITION );
+
+		cact_main_statusbar_initialize_gtk_toplevel( window );
+
+		/* enable popup menu on  the notebook
+		 */
+		notebook = GTK_NOTEBOOK( base_window_get_widget( BASE_WINDOW( window ), "MainNotebook" ));
+		gtk_notebook_popup_enable( notebook );
+	}
+}
+
+static void
+on_base_initialize_window( CactMainWindow *window, gpointer user_data )
+{
+	static const gchar *thisfn = "cact_main_window_on_base_initialize_window";
+	guint pos;
+	GtkWidget *pane;
+	CactApplication *application;
+	GtkNotebook *notebook;
+
+	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
+
+	if( !window->private->dispose_has_run ){
+
+		g_debug( "%s: window=%p, user_data=%p",
+				thisfn,
+				( void * ) window,
+				( void * ) user_data );
+
+		pos = na_settings_get_uint( NA_IPREFS_MAIN_PANED, NULL, NULL );
+		if( pos ){
+			pane = base_window_get_widget( BASE_WINDOW( window ), "MainPaned" );
+			gtk_paned_set_position( GTK_PANED( pane ), pos );
+		}
+
+		/* terminate the application by clicking the top right [X] button
+		 */
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( base_window_get_gtk_toplevel( BASE_WINDOW( window ))),
+				"delete-event",
+				G_CALLBACK( on_delete_event ));
+
+		/* is willing to quit ?
+		 * connect to the signal of the BaseISession interface
+		 */
+		application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( application ),
+				BASE_SIGNAL_QUIT_REQUESTED,
+				G_CALLBACK( on_base_quit_requested ));
+
+		/* connect to treeview signals
+		 */
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( window ),
+				MAIN_SIGNAL_SELECTION_CHANGED,
+				G_CALLBACK( on_tree_view_selection_changed ));
+
+		base_window_signal_connect(
+				BASE_WINDOW( window ),
+				G_OBJECT( window ),
+				TREE_SIGNAL_MODIFIED_STATUS_CHANGED,
+				G_CALLBACK( on_tree_view_modified_status_changed ));
+
+		/* restore the notebook tabs position
+		 */
+		pos = na_iprefs_get_tabs_pos( NULL );
+		notebook = GTK_NOTEBOOK( base_window_get_widget( BASE_WINDOW( window ), "MainNotebook" ));
+		gtk_notebook_set_tab_pos( notebook, pos );
+	}
+}
+
+static void
+on_base_show_widgets( CactMainWindow *window, gpointer user_data )
+{
+	static const gchar *thisfn = "cact_main_window_on_base_show_widgets";
+
+	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
+
+	if( !window->private->dispose_has_run ){
+
+		g_debug( "%s: window=%p, user_data=%p", thisfn, ( void * ) window, ( void * ) user_data );
+
+		load_or_reload_items( window );
+	}
 }
 
 /**
  * cact_main_window_get_clipboard:
  * @window: this #CactMainWindow instance.
  *
- * Returns: the #cactClipboard convenience object.
+ * Returns: the #CactClipboard convenience object.
  */
 CactClipboard *
 cact_main_window_get_clipboard( const CactMainWindow *window )
 {
-	CactClipboard *clipboard = NULL;
+	CactClipboard *clipboard;
 
 	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( window ), NULL );
 
+	clipboard = NULL;
+
 	if( !window->private->dispose_has_run ){
+
 		clipboard = window->private->clipboard;
 	}
 
@@ -772,118 +979,26 @@ cact_main_window_get_clipboard( const CactMainWindow *window )
 }
 
 /**
- * cact_main_window_get_item:
+ * cact_main_window_get_items_view:
  * @window: this #CactMainWindow instance.
- * @uuid: the uuid to check for existancy.
  *
- * Returns: a pointer to the #NAObjectItem if it exists in the current
- * tree, or %NULL else.
- *
- * Do not check in NAPivot: actions which are not displayed in the user
- * interface are not considered as existing.
- *
- * Also note that the returned object may be an action, but also a menu.
+ * Returns: The #CactTreeView convenience object.
  */
-NAObjectItem *
-cact_main_window_get_item( const CactMainWindow *window, const gchar *uuid )
+CactTreeView *
+cact_main_window_get_items_view( const CactMainWindow *window )
 {
-	NAObjectItem *exists;
-	CactApplication *application;
-	NAUpdater *updater;
+	CactTreeView *view;
 
-	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( window ), FALSE );
+	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( window ), NULL );
 
-	exists = NULL;
+	view = NULL;
 
 	if( !window->private->dispose_has_run ){
 
-		/* leave here this dead code, in case I change of opinion later */
-		if( 0 ){
-			application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-			updater = cact_application_get_updater( application );
-			exists = na_pivot_get_item( NA_PIVOT( updater ), uuid );
-		}
-
-		if( !exists ){
-			exists = NA_OBJECT_ITEM( cact_iactions_list_bis_get_item( CACT_IACTIONS_LIST( window ), uuid ));
-		}
+		view = window->private->items_view;
 	}
 
-	return( exists );
-}
-
-/**
- * cact_main_window_has_modified_items:
- * @window: this #CactMainWindow instance.
- *
- * Returns: %TRUE if there is at least one modified item in IActionsList.
- *
- * Note that exact count of modified actions is subject to some
- * approximation:
- * 1. counting the modified actions currently in the list is ok
- * 2. but what about deleted actions ?
- *    we can create any new actions, deleting them, and so on
- *    if we have eventually deleted all newly created actions, then the
- *    final count of modified actions should be zero... don't it ?
- */
-gboolean
-cact_main_window_has_modified_items( const CactMainWindow *window )
-{
-	static const gchar *thisfn = "cact_main_window_has_modified_items";
-	GList *ia;
-	gint count_deleted = 0;
-	gboolean has_modified = FALSE;
-
-	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( window ), FALSE );
-	g_return_val_if_fail( CACT_IS_IACTIONS_LIST( window ), FALSE );
-
-	if( !window->private->dispose_has_run ){
-
-		for( ia = window->private->deleted ; ia ; ia = ia->next ){
-			if( na_object_get_origin( NA_OBJECT( ia->data )) != NULL ){
-				count_deleted += 1;
-			}
-		}
-		g_debug( "%s: count_deleted=%d", thisfn, count_deleted );
-
-		has_modified = cact_iactions_list_has_modified_items( CACT_IACTIONS_LIST( window ));
-		g_debug( "%s: has_modified=%s", thisfn, has_modified ? "True":"False" );
-	}
-
-	return( count_deleted > 0 || has_modified || cact_main_menubar_is_level_zero_order_changed( window ));
-}
-
-/**
- * cact_main_window_move_to_deleted:
- * @window: this #CactMainWindow instance.
- * @items: list of deleted objects.
- *
- * Adds the given list to the deleted one.
- *
- * Note that we move the ref from @items list to our own deleted list.
- * So that the caller should not try to na_object_free_items_list() the
- * provided list.
- */
-void
-cact_main_window_move_to_deleted( CactMainWindow *window, GList *items )
-{
-	static const gchar *thisfn = "cact_main_window_move_to_deleted";
-	GList *it;
-
-	g_debug( "%s: window=%p, items=%p (%d items)",
-			thisfn, ( void * ) window, ( void * ) items, g_list_length( items ));
-	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
-
-	if( !window->private->dispose_has_run ){
-
-		for( it = items ; it ; it = it->next ){
-			g_debug( "%s: %p (%s, ref_count=%d)", thisfn,
-					( void * ) it->data, G_OBJECT_TYPE_NAME( it->data ), G_OBJECT( it->data )->ref_count );
-		}
-
-		window->private->deleted = g_list_concat( window->private->deleted, items );
-		g_debug( "%s: main_deleted has %d items", thisfn, g_list_length( window->private->deleted ));
-	}
+	return( view );
 }
 
 /**
@@ -906,368 +1021,164 @@ cact_main_window_reload( CactMainWindow *window )
 		reload_ok = confirm_for_giveup_from_menu( window );
 
 		if( reload_ok ){
-			reload( window );
+			load_or_reload_items( window );
 		}
 	}
 }
 
 /**
- * cact_main_window_remove_deleted:
+ * cact_main_window_block_reload:
  * @window: this #CactMainWindow instance.
  *
- * Removes the deleted items from the underlying I/O storage subsystem.
+ * Temporarily blocks the handling of pivot-items-changed signal.
  */
 void
-cact_main_window_remove_deleted( CactMainWindow *window )
+cact_main_window_block_reload( CactMainWindow *window )
 {
-	CactApplication *application;
-	NAUpdater *updater;
-	GList *it;
-	NAObject *item;
+	static const gchar *thisfn = "cact_main_window_block_reload";
 
 	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
 
 	if( !window->private->dispose_has_run ){
 
-		application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-		updater = cact_application_get_updater( application );
+		g_debug( "%s: blocking %s signal", thisfn, PIVOT_SIGNAL_ITEMS_CHANGED );
+		g_signal_handler_block( window->private->updater, window->private->pivot_handler_id );
+		na_timeout_event( &window->private->pivot_timeout );
+	}
+}
 
-		for( it = window->private->deleted ; it ; it = it->next ){
-			item = NA_OBJECT( it->data );
-			actually_delete_item( window, item, updater );
+static void
+on_block_items_changed_timeout( CactMainWindow *window )
+{
+	static const gchar *thisfn = "cact_main_window_on_block_items_changed_timeout";
+
+	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
+
+	g_debug( "%s: unblocking %s signal", thisfn, PIVOT_SIGNAL_ITEMS_CHANGED );
+	g_signal_handler_unblock( window->private->updater, window->private->pivot_handler_id );
+}
+
+/*
+ * the modification status of the items view has changed
+ */
+static void
+on_tree_view_modified_status_changed( CactMainWindow *window, gboolean is_modified, gpointer user_data )
+{
+	static const gchar *thisfn = "cact_main_window_on_tree_view_modified_status_changed";
+
+	g_debug( "%s: window=%p, is_modified=%s, user_data=%p",
+			thisfn, ( void * ) window, is_modified ? "True":"False", ( void * ) user_data );
+
+	if( !window->private->dispose_has_run ){
+
+		window->private->is_tree_modified = is_modified;
+		setup_dialog_title( window );
+	}
+}
+
+/*
+ * tree view selection has changed
+ */
+static void
+on_tree_view_selection_changed( CactMainWindow *window, GList *selected_items, gpointer user_data )
+{
+	static const gchar *thisfn = "cact_main_window_on_tree_view_selection_changed";
+	guint count;
+
+	count = g_list_length( selected_items );
+
+	if( !window->private->dispose_has_run ){
+		g_debug( "%s: window=%p, selected_items=%p (count=%d), user_data=%p",
+				thisfn, ( void * ) window,
+				( void * ) selected_items, count, ( void * ) user_data );
+
+		raz_selection_properties( window );
+
+		if( count == 1 ){
+			g_return_if_fail( NA_IS_OBJECT_ID( selected_items->data ));
+			setup_current_selection( window, NA_OBJECT_ID( selected_items->data ));
+			setup_writability_status( window );
 		}
-
-		na_object_unref_items( window->private->deleted );
-		window->private->deleted = NULL;
 
 		setup_dialog_title( window );
 	}
 }
 
 /*
- * If the deleted item is a profile, then do nothing because the parent
- * action has been marked as modified when the profile has been deleted,
- * and thus updated in the storage subsystem as well as in the pivot
+ * cleanup handler for our MAIN_SIGNAL_SELECTION_CHANGED signal
  */
 static void
-actually_delete_item( CactMainWindow *window, NAObject *item, NAUpdater *updater )
+on_selection_changed_cleanup_handler( BaseWindow *window, GList *selected_items )
 {
-	GList *items, *it;
-	NAObject *origin;
+	static const gchar *thisfn = "cact_main_window_on_selection_changed_cleanup_handler";
 
-	g_debug( "cact_main_window_actually_delete_item: item=%p (%s)",
-			( void * ) item, G_OBJECT_TYPE_NAME( item ));
+	g_debug( "%s: window=%p, selected_items=%p (count=%u)",
+			thisfn, ( void * ) window,
+			( void * ) selected_items, g_list_length( selected_items ));
 
-	if( NA_IS_OBJECT_ITEM( item )){
-		cact_window_delete_item( CACT_WINDOW( window ), NA_OBJECT_ITEM( item ));
-
-		if( NA_IS_OBJECT_MENU( item )){
-			items = na_object_get_items( item );
-			for( it = items ; it ; it = it->next ){
-				actually_delete_item( window, NA_OBJECT( it->data ), updater );
-			}
-		}
-
-		origin = ( NAObject * ) na_object_get_origin( item );
-		if( origin ){
-			na_updater_remove_item( updater, origin );
-		}
-	}
+	na_object_free_items( selected_items );
 }
 
-static gchar *
-base_get_toplevel_name( const BaseWindow *window )
-{
-	return( g_strdup( "MainWindow" ));
-}
-
-static gchar *
-base_get_iprefs_window_id( const BaseWindow *window )
-{
-	return( g_strdup( "main-window" ));
-}
-
-static gboolean
-base_is_willing_to_quit( const BaseWindow *window )
-{
-	static const gchar *thisfn = "cact_main_window_is_willing_to_quit";
-	gboolean willing_to;
-
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
-
-	willing_to = TRUE;
-	if( cact_main_window_has_modified_items( CACT_MAIN_WINDOW( window ))){
-		willing_to = cact_confirm_logout_run( CACT_MAIN_WINDOW( window ));
-	}
-
-	return( willing_to );
-}
-
-/*
- * note that for this CactMainWindow, on_initial_load_toplevel and
- * on_runtime_init_toplevel are equivalent, as there is only one
- * occurrence on this window in the application : closing this window
- * is the same than quitting the application
- */
 static void
-on_base_initial_load_toplevel( CactMainWindow *window, gpointer user_data )
+on_tab_updatable_item_updated( CactMainWindow *window, NAIContext *context, guint data, gpointer user_data )
 {
-	static const gchar *thisfn = "cact_main_window_on_base_initial_load_toplevel";
-	gint pos;
-	GtkWidget *pane;
+	static const gchar *thisfn = "cact_main_window_on_tab_updatable_item_updated";
 
-	g_debug( "%s: window=%p, user_data=%p", thisfn, ( void * ) window, ( void * ) user_data );
 	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
 
 	if( !window->private->dispose_has_run ){
+		g_debug( "%s: window=%p, context=%p (%s), data=%u, user_data=%p",
+				thisfn, ( void * ) window, ( void * ) context, G_OBJECT_TYPE_NAME( context ),
+				data, ( void * ) user_data );
 
-		pos = base_iprefs_get_int( BASE_WINDOW( window ), "main-paned" );
-		if( pos ){
-			pane = base_window_get_widget( BASE_WINDOW( window ), "MainPaned" );
-			gtk_paned_set_position( GTK_PANED( pane ), pos );
+		if( context ){
+			na_object_check_status( context );
 		}
-
-		cact_iactions_list_set_management_mode( CACT_IACTIONS_LIST( window ), IACTIONS_LIST_MANAGEMENT_MODE_EDITION );
-		cact_iactions_list_initial_load_toplevel( CACT_IACTIONS_LIST( window ));
-		cact_sort_buttons_initial_load( window );
-
-		cact_iaction_tab_initial_load_toplevel( CACT_IACTION_TAB( window ));
-		cact_icommand_tab_initial_load_toplevel( CACT_ICOMMAND_TAB( window ));
-		cact_ifolders_tab_initial_load_toplevel( CACT_IFOLDERS_TAB( window ));
-		cact_iconditions_tab_initial_load_toplevel( CACT_ICONDITIONS_TAB( window ));
-		cact_iadvanced_tab_initial_load_toplevel( CACT_IADVANCED_TAB( window ));
-
-		cact_main_statusbar_initial_load_toplevel( window );
 	}
 }
 
 static void
-on_base_runtime_init_toplevel( CactMainWindow *window, gpointer user_data )
+raz_selection_properties( CactMainWindow *window )
 {
-	static const gchar *thisfn = "cact_main_window_on_base_runtime_init_toplevel";
-	CactApplication *application;
-	NAUpdater *updater;
-	GList *tree;
-	gint order_mode;
-
-	g_debug( "%s: window=%p, user_data=%p", thisfn, ( void * ) window, ( void * ) user_data );
-	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
-
-	if( !window->private->dispose_has_run ){
-
-		window->private->clipboard = cact_clipboard_new( BASE_WINDOW( window ));
-
-		base_window_signal_connect(
-				BASE_WINDOW( window ),
-				G_OBJECT( window ),
-				IACTIONS_LIST_SIGNAL_SELECTION_CHANGED,
-				G_CALLBACK( on_iactions_list_selection_changed ));
-
-		application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-		updater = cact_application_get_updater( application );
-		tree = na_pivot_get_items( NA_PIVOT( updater ));
-		g_debug( "%s: pivot_tree=%p", thisfn, ( void * ) tree );
-
-		cact_iaction_tab_runtime_init_toplevel( CACT_IACTION_TAB( window ));
-		cact_icommand_tab_runtime_init_toplevel( CACT_ICOMMAND_TAB( window ));
-		cact_ifolders_tab_runtime_init_toplevel( CACT_IFOLDERS_TAB( window ));
-		cact_iconditions_tab_runtime_init_toplevel( CACT_ICONDITIONS_TAB( window ));
-		cact_iadvanced_tab_runtime_init_toplevel( CACT_IADVANCED_TAB( window ));
-		cact_main_menubar_runtime_init( window );
-
-		order_mode = na_iprefs_get_order_mode( NA_IPREFS( updater ));
-		ipivot_consumer_on_display_order_changed( NA_IPIVOT_CONSUMER( window ), order_mode );
-
-		/* fill the IActionsList at last so that all signals are connected
-		 */
-		cact_iactions_list_runtime_init_toplevel( CACT_IACTIONS_LIST( window ), tree );
-		cact_sort_buttons_runtime_init( window );
-
-		/* this to update the title when an item is modified
-		 */
-		base_window_signal_connect(
-				BASE_WINDOW( window ),
-				G_OBJECT( window ),
-				IACTIONS_LIST_SIGNAL_STATUS_CHANGED,
-				G_CALLBACK( on_iactions_list_status_changed ));
-
-		base_window_signal_connect(
-				BASE_WINDOW( window ),
-				G_OBJECT( window ),
-				MAIN_WINDOW_SIGNAL_LEVEL_ZERO_ORDER_CHANGED,
-				G_CALLBACK( on_main_window_level_zero_order_changed ));
-	}
-}
-
-static void
-on_base_all_widgets_showed( CactMainWindow *window, gpointer user_data )
-{
-	static const gchar *thisfn = "cact_main_window_on_base_all_widgets_showed";
-
-	g_debug( "%s: window=%p, user_data=%p", thisfn, ( void * ) window, ( void * ) user_data );
-	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
-	g_return_if_fail( CACT_IS_IACTIONS_LIST( window ));
-	g_return_if_fail( CACT_IS_IACTION_TAB( window ));
-	g_return_if_fail( CACT_IS_ICOMMAND_TAB( window ));
-	g_return_if_fail( CACT_IS_IFOLDERS_TAB( window ));
-	g_return_if_fail( CACT_IS_ICONDITIONS_TAB( window ));
-	g_return_if_fail( CACT_IS_IADVANCED_TAB( window ));
-
-	if( !window->private->dispose_has_run ){
-
-		cact_iaction_tab_all_widgets_showed( CACT_IACTION_TAB( window ));
-		cact_icommand_tab_all_widgets_showed( CACT_ICOMMAND_TAB( window ));
-		cact_ifolders_tab_all_widgets_showed( CACT_IFOLDERS_TAB( window ));
-		cact_iconditions_tab_all_widgets_showed( CACT_ICONDITIONS_TAB( window ));
-		cact_iadvanced_tab_all_widgets_showed( CACT_IADVANCED_TAB( window ));
-
-		cact_iactions_list_all_widgets_showed( CACT_IACTIONS_LIST( window ));
-		cact_sort_buttons_all_widgets_showed( window );
-	}
-}
-
-static void
-on_main_window_level_zero_order_changed( CactMainWindow *window, gpointer user_data )
-{
-	g_debug( "cact_main_window_on_main_window_level_zero_order_changed" );
-
-	setup_dialog_title( window );
-}
-
-/*
- * iactions_list_selection_changed:
- * @window: this #CactMainWindow instance.
- * @selected_items: the currently selected items in ActionsList
- */
-static void
-on_iactions_list_selection_changed( CactIActionsList *instance, GSList *selected_items )
-{
-	static const gchar *thisfn = "cact_main_window_on_iactions_list_selection_changed";
-	CactMainWindow *window;
-	NAObject *object;
-	gint count;
-	CactApplication *application;
-	NAUpdater *updater;
-
-	count = g_slist_length( selected_items );
-
-	g_debug( "%s: instance=%p, selected_items=%p, count=%d",
-			thisfn, ( void * ) instance, ( void * ) selected_items, count );
-
-	window = CACT_MAIN_WINDOW( instance );
-
-	if( window->private->dispose_has_run ){
-		return;
-	}
-
-	window->private->selected_row = NULL;
-	window->private->edited_item = NULL;
+	window->private->current_item = NULL;
+	window->private->current_profile = NULL;
+	window->private->current_context = NULL;
 	window->private->editable = FALSE;
 	window->private->reason = 0;
+
 	cact_main_statusbar_set_locked( window, FALSE, 0 );
-
-	if( count == 1 ){
-		g_return_if_fail( NA_IS_OBJECT_ID( selected_items->data ));
-		object = NA_OBJECT( selected_items->data );
-		window->private->selected_row = NA_OBJECT_ID( object );
-
-		if( NA_IS_OBJECT_ITEM( object )){
-			window->private->edited_item = NA_OBJECT_ITEM( object );
-			set_current_object_item( window, selected_items );
-
-		} else {
-			g_assert( NA_IS_OBJECT_PROFILE( object ));
-			window->private->edited_profile = NA_OBJECT_PROFILE( object );
-			set_current_profile( window, TRUE, selected_items );
-		}
-
-		application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( instance )));
-		updater = cact_application_get_updater( application );
-		window->private->editable = na_updater_is_item_writable( updater, window->private->edited_item, &window->private->reason );
-		cact_main_statusbar_set_locked( window, !window->private->editable, window->private->reason );
-
-	} else {
-		set_current_object_item( window, selected_items );
-	}
-
-	setup_dialog_title( window );
-
-	g_signal_emit_by_name( window, MAIN_WINDOW_SIGNAL_SELECTION_CHANGED, GINT_TO_POINTER( count ));
-}
-
-static void
-on_iactions_list_status_changed( CactMainWindow *window, gpointer user_data )
-{
-	g_debug( "cact_main_window_on_iactions_list_status_changed" );
-
-	setup_dialog_title( window );
 }
 
 /*
- * update the notebook when selection changes in ActionsList
- * if there is only one profile, we also setup the profile
- * count_profiles may be null (invalid action)
+ * enter after raz_properties
+ * only called when only one selected row
  */
 static void
-set_current_object_item( CactMainWindow *window, GSList *selected_items )
+setup_current_selection( CactMainWindow *window, NAObjectId *selected_row )
 {
-	static const gchar *thisfn = "cact_main_window_set_current_object_item";
-	gint count_profiles;
+	guint nb_profiles;
 	GList *profiles;
-	/*NAObject *current;*/
 
-	g_debug( "%s: window=%p, current=%p, selected_items=%p",
-			thisfn, ( void * ) window, ( void * ) window->private->edited_item, ( void * ) selected_items );
+	if( NA_IS_OBJECT_PROFILE( selected_row )){
+		window->private->current_profile = NA_OBJECT_PROFILE( selected_row );
+		window->private->current_context = NA_ICONTEXT( selected_row );
+		window->private->current_item = NA_OBJECT_ITEM( na_object_get_parent( selected_row ));
 
-	/* set the profile to be displayed, if any
-	 */
-	window->private->edited_profile = NULL;
+	} else {
+		g_return_if_fail( NA_IS_OBJECT_ITEM( selected_row ));
+		window->private->current_item = NA_OBJECT_ITEM( selected_row );
+		window->private->current_context = NA_ICONTEXT( selected_row );
 
-	if( window->private->edited_item ){
+		if( NA_IS_OBJECT_ACTION( selected_row )){
+			nb_profiles = na_object_get_items_count( selected_row );
 
-		if( NA_IS_OBJECT_ACTION( window->private->edited_item )){
-
-			count_profiles = na_object_get_items_count( window->private->edited_item );
-			/*g_return_if_fail( count_profiles >= 1 );*/
-
-			if( count_profiles == 1 ){
-				profiles = na_object_get_items( window->private->edited_item );
-				window->private->edited_profile = NA_OBJECT_PROFILE( profiles->data );
+			if( nb_profiles == 1 ){
+				profiles = na_object_get_items( selected_row );
+				window->private->current_profile = NA_OBJECT_PROFILE( profiles->data );
+				window->private->current_context = NA_ICONTEXT( profiles->data );
 			}
 		}
 	}
-
-	set_current_profile( window, FALSE, selected_items );
-}
-
-static void
-set_current_profile( CactMainWindow *window, gboolean set_action, GSList *selected_items )
-{
-	static const gchar *thisfn = "cact_main_window_set_current_profile";
-
-	g_debug( "%s: window=%p, set_action=%s, selected_items=%p",
-			thisfn, ( void * ) window, set_action ? "True":"False", ( void * ) selected_items );
-
-	if( window->private->edited_profile && set_action ){
-
-		NAObjectAction *action = NA_OBJECT_ACTION( na_object_get_parent( window->private->edited_profile ));
-		CactApplication *application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-		NAUpdater *updater = cact_application_get_updater( application );
-		window->private->edited_item = NA_OBJECT_ITEM( action );
-		window->private->editable = na_updater_is_item_writable( updater, window->private->edited_item, &window->private->reason );
-	}
-}
-
-static gchar *
-iactions_list_get_treeview_name( CactIActionsList *instance )
-{
-	gchar *name = NULL;
-
-	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( instance ), NULL );
-
-	name = g_strdup( "ActionsList" );
-
-	return( name );
 }
 
 /*
@@ -1285,68 +1196,60 @@ setup_dialog_title( CactMainWindow *window )
 	gchar *title;
 	gchar *label;
 	gchar *tmp;
+	gboolean is_modified;
 
 	g_debug( "%s: window=%p", thisfn, ( void * ) window );
 
 	application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
 	title = base_application_get_application_name( BASE_APPLICATION( application ));
 
-	if( window->private->edited_item ){
-		label = na_object_get_label( window->private->edited_item );
-		tmp = g_strdup_printf( "%s - %s", title, label );
+	if( window->private->current_item ){
+		label = na_object_get_label( window->private->current_item );
+		is_modified = na_object_is_modified( window->private->current_item );
+		tmp = g_strdup_printf( "%s%s - %s", is_modified ? "*" : "", label, title );
 		g_free( label );
 		g_free( title );
 		title = tmp;
 	}
 
-	if( cact_main_window_has_modified_items( window )){
-		tmp = g_strdup_printf( "*%s", title );
-		g_free( title );
-		title = tmp;
-	}
-
-	toplevel = base_window_get_toplevel( BASE_WINDOW( window ));
+	toplevel = base_window_get_gtk_toplevel( BASE_WINDOW( window ));
 	gtk_window_set_title( toplevel, title );
 	g_free( title );
 }
 
 static void
-on_tab_updatable_item_updated( CactMainWindow *window, gpointer user_data, gboolean force_display )
+setup_writability_status( CactMainWindow *window )
 {
-	/*static const gchar *thisfn = "cact_main_window_on_tab_updatable_item_updated";*/
+	g_return_if_fail( NA_IS_OBJECT_ITEM( window->private->current_item ));
 
-	/*g_debug( "%s: window=%p, user_data=%p", thisfn, ( void * ) window, ( void * ) user_data );*/
-	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
-
-	if( !window->private->dispose_has_run ){
-	}
+	window->private->editable = na_object_is_finally_writable( window->private->current_item, &window->private->reason );
+	cact_main_statusbar_set_locked( window, !window->private->editable, window->private->reason );
 }
 
 /*
- * requires a confirmation from the user when is has asked for reloading
- * the actions via the Edit menu
+ * The handler of the signal sent by NAPivot when items have been modified
+ * in the underlying storage subsystems
  */
-static gboolean
-confirm_for_giveup_from_menu( CactMainWindow *window )
+static void
+on_pivot_items_changed( NAUpdater *updater, CactMainWindow *window )
 {
-	gboolean reload_ok = TRUE;
-	gchar *first, *second;
+	static const gchar *thisfn = "cact_main_window_on_pivot_items_changed";
+	gboolean reload_ok;
 
-	if( cact_main_window_has_modified_items( window )){
+	g_return_if_fail( NA_IS_UPDATER( updater ));
+	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
 
-		first = g_strdup(
-					_( "Reloading a fresh list of actions requires "
-						"that you give up with your current modifications." ));
+	if( !window->private->dispose_has_run ){
+		g_debug( "%s: updater=%p (%s), window=%p (%s)", thisfn,
+				( void * ) updater, G_OBJECT_TYPE_NAME( updater ),
+				( void * ) window, G_OBJECT_TYPE_NAME( window ));
 
-		second = g_strdup( _( "Do you really want to do this ?" ));
+		reload_ok = confirm_for_giveup_from_pivot( window );
 
-		reload_ok = base_window_yesno_dlg( BASE_WINDOW( window ), GTK_MESSAGE_QUESTION, first, second );
-
-		g_free( second );
-		g_free( first );
+		if( reload_ok ){
+			load_or_reload_items( window );
+		}
 	}
-
-	return( reload_ok );
 }
 
 /*
@@ -1355,7 +1258,7 @@ confirm_for_giveup_from_menu( CactMainWindow *window )
  *
  */
 static gboolean
-confirm_for_giveup_from_pivot( CactMainWindow *window )
+confirm_for_giveup_from_pivot( const CactMainWindow *window )
 {
 	gboolean reload_ok;
 	gchar *first, *second;
@@ -1365,7 +1268,7 @@ confirm_for_giveup_from_pivot( CactMainWindow *window )
 					"You could keep to work with your current list of actions, "
 					"or you may want to reload a fresh one." ));
 
-	if( cact_main_window_has_modified_items( window )){
+	if( window->private->is_tree_modified){
 
 		gchar *tmp = g_strdup_printf( "%s\n\n%s", first,
 				_( "Note that reloading a fresh list of actions requires "
@@ -1376,7 +1279,7 @@ confirm_for_giveup_from_pivot( CactMainWindow *window )
 
 	second = g_strdup( _( "Do you want to reload a fresh list of actions ?" ));
 
-	reload_ok = base_window_yesno_dlg( BASE_WINDOW( window ), GTK_MESSAGE_QUESTION, first, second );
+	reload_ok = base_window_display_yesno_dlg( BASE_WINDOW( window ), first, second );
 
 	g_free( second );
 	g_free( first );
@@ -1385,97 +1288,146 @@ confirm_for_giveup_from_pivot( CactMainWindow *window )
 }
 
 /*
- * called by NAPivot because this window implements the IIOConsumer
- * interface, i.e. it wish to be advertised when the list of actions
- * changes in the underlying I/O storage subsystem (typically, when we
- * save the modifications)
- *
- * note that we only reload the full list of actions when asking for a
- * reset - saving is handled on a per-action basis.
+ * requires a confirmation from the user when is has asked for reloading
+ * the actions via the Edit menu
  */
-static void
-ipivot_consumer_on_items_changed( NAIPivotConsumer *instance, gpointer user_data )
+static gboolean
+confirm_for_giveup_from_menu( const CactMainWindow *window )
 {
-	static const gchar *thisfn = "cact_main_window_ipivot_consumer_on_items_changed";
-	CactMainWindow *window;
-	gboolean reload_ok;
+	gboolean reload_ok = TRUE;
+	gchar *first, *second;
 
-	g_debug( "%s: instance=%p, user_data=%p", thisfn, ( void * ) instance, ( void * ) user_data );
-	g_return_if_fail( CACT_IS_MAIN_WINDOW( instance ));
-	window = CACT_MAIN_WINDOW( instance );
+	if( window->private->is_tree_modified ){
 
-	if( !window->private->dispose_has_run ){
+		first = g_strdup(
+					_( "Reloading a fresh list of actions requires "
+						"that you give up with your current modifications." ));
 
-		reload_ok = confirm_for_giveup_from_pivot( window );
+		second = g_strdup( _( "Do you really want to do this ?" ));
 
-		if( reload_ok ){
-			reload( window );
-		}
+		reload_ok = base_window_display_yesno_dlg( BASE_WINDOW( window ), first, second );
+
+		g_free( second );
+		g_free( first );
 	}
+
+	return( reload_ok );
 }
 
 static void
-reload( CactMainWindow *window )
+load_or_reload_items( CactMainWindow *window )
 {
-	static const gchar *thisfn = "cact_main_window_reload";
-	CactApplication *application;
-	NAUpdater *updater;
+	static const gchar *thisfn = "cact_main_window_load_or_reload_items";
+	GList *tree;
 
 	g_debug( "%s: window=%p", thisfn, ( void * ) window );
-	g_return_if_fail( CACT_IS_MAIN_WINDOW( window ));
+
+	raz_selection_properties( window );
+
+	tree = na_updater_load_items( window->private->updater );
+	cact_tree_view_fill( window->private->items_view, tree );
+
+	g_debug( "%s: end of tree view filling", thisfn );
+}
+
+/**
+ * cact_main_window_quit:
+ * @window: the #CactMainWindow main window.
+ *
+ * Quit the window, thus terminating the application.
+ *
+ * Returns: %TRUE if the application will terminate, and the @window object
+ * is no more valid; %FALSE if the application will continue to run.
+ */
+gboolean
+cact_main_window_quit( CactMainWindow *window )
+{
+	static const gchar *thisfn = "cact_main_window_quit";
+	gboolean terminated;
+
+	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( window ), FALSE );
+
+	terminated = FALSE;
 
 	if( !window->private->dispose_has_run ){
+		g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
 
-		window->private->edited_item = NULL;
-		window->private->edited_profile = NULL;
-		window->private->selected_row = NULL;
-
-		na_object_unref_items( window->private->deleted );
-		window->private->deleted = NULL;
-
-		application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-		updater = cact_application_get_updater( application );
-		na_pivot_load_items( NA_PIVOT( updater ));
-		cact_iactions_list_fill( CACT_IACTIONS_LIST( window ), na_pivot_get_items( NA_PIVOT( updater )));
-		cact_iactions_list_bis_select_first_row( CACT_IACTIONS_LIST( window ));
+		if( !window->private->is_tree_modified  || warn_modified( window )){
+			g_object_unref( window );
+			terminated = TRUE;
+		}
 	}
+
+	return( terminated );
 }
 
 /*
- * called by NAPivot via NAIPivotConsumer whenever the
- * "sort in alphabetical order" preference is modified.
+ * signal handler
+ * should return %FALSE if it is not willing to quit
+ * this will also stop the emission of the signal (i.e. the first FALSE wins)
  */
-static void
-ipivot_consumer_on_display_order_changed( NAIPivotConsumer *instance, gint order_mode )
+static gboolean
+on_base_quit_requested( CactApplication *application, CactMainWindow *window )
 {
-	static const gchar *thisfn = "cact_main_window_ipivot_consumer_on_display_order_changed";
-	/*CactMainWindow *self;*/
+	static const gchar *thisfn = "cact_main_window_on_base_quit_requested";
+	gboolean willing_to;
 
-	g_debug( "%s: instance=%p, order_mode=%d", thisfn, ( void * ) instance, order_mode );
-	g_assert( CACT_IS_MAIN_WINDOW( instance ));
-	/*self = CACT_MAIN_WINDOW( instance );*/
+	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( window ), TRUE );
 
-	cact_iactions_list_display_order_change( CACT_IACTIONS_LIST( instance ), order_mode );
-	cact_sort_buttons_display_order_change( CACT_MAIN_WINDOW( instance ), order_mode );
+	willing_to = TRUE;
 
-	g_signal_emit_by_name(
-			CACT_MAIN_WINDOW( instance ), MAIN_WINDOW_SIGNAL_LEVEL_ZERO_ORDER_CHANGED, GINT_TO_POINTER( TRUE ));
+	if( !window->private->dispose_has_run ){
+
+		g_debug( "%s: application=%p, window=%p", thisfn, ( void * ) application, ( void * ) window );
+
+		if( window->private->is_tree_modified ){
+			willing_to = cact_confirm_logout_run( window );
+		}
+	}
+
+	return( willing_to );
 }
 
-static void
-ipivot_consumer_on_mandatory_prefs_changed( NAIPivotConsumer *instance )
+/*
+ * triggered when the user clicks on the top right [X] button
+ * returns %TRUE to stop the signal to be propagated (which would cause the
+ * window to be destroyed); instead we gracefully quit the application
+ */
+static gboolean
+on_delete_event( GtkWidget *toplevel, GdkEvent *event, CactMainWindow *window )
 {
-	cact_sort_buttons_level_zero_writability_change( CACT_MAIN_WINDOW( instance ));
+	static const gchar *thisfn = "cact_main_window_on_delete_event";
+
+	g_debug( "%s: toplevel=%p, event=%p, window=%p",
+			thisfn, ( void * ) toplevel, ( void * ) event, ( void * ) window );
+
+	cact_main_window_quit( window );
+
+	return( TRUE );
 }
 
-static gchar *
-iabout_get_application_name( NAIAbout *instance )
+/*
+ * warn_modified:
+ * @window: this #CactWindow instance.
+ *
+ * Emits a warning if at least one item has been modified.
+ *
+ * Returns: %TRUE if the user confirms he wants to quit.
+ */
+static gboolean
+warn_modified( CactMainWindow *window )
 {
-	BaseApplication *application;
+	gboolean confirm = FALSE;
+	gchar *first;
+	gchar *second;
 
-	g_return_val_if_fail( NA_IS_IABOUT( instance ), NULL );
-	g_return_val_if_fail( BASE_IS_WINDOW( instance ), NULL );
+	first = g_strdup_printf( _( "Some items have been modified." ));
+	second = g_strdup( _( "Are you sure you want to quit without saving them ?" ));
 
-	application = base_window_get_application( BASE_WINDOW( instance ));
-	return( base_application_get_application_name( application ));
+	confirm = base_window_display_yesno_dlg( BASE_WINDOW( window ), first, second );
+
+	g_free( second );
+	g_free( first );
+
+	return( confirm );
 }

@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,27 +31,23 @@
 #include <config.h>
 #endif
 
-#include <mateconf/mateconf-client.h>
 #include <glib/gi18n.h>
+#include <libintl.h>
 #include <string.h>
 
 #include <api/na-core-utils.h>
 #include <api/na-object-api.h>
 
-#include <core/na-iprefs.h>
 #include <core/na-mate-vfs-uri.h>
 #include <core/na-importer.h>
 
 #include "cact-application.h"
 #include "cact-clipboard.h"
-#include "cact-iactions-list.h"
-#include "cact-iprefs.h"
-#include "cact-main-menubar-edit.h"
 #include "cact-main-statusbar.h"
 #include "cact-main-window.h"
 #include "cact-tree-model.h"
-#include "cact-tree-model-dnd.h"
 #include "cact-tree-model-priv.h"
+#include "cact-tree-ieditable.h"
 
 /*
  * call once egg_tree_multi_drag_add_drag_support( treeview ) at init time (before gtk_main)
@@ -64,16 +59,21 @@
  *
  * as soon as mouse has quitted the selected area
  *   call once egg_tree_multi_dnd_stop_drag_check( treeview )
- *   call once cact_tree_model_imulti_drag_source_row_draggable: drag_source=0x92a0d70, path_list=0x9373c90
+ *   call once cact_tree_model_dnd_imulti_drag_source_row_draggable: drag_source=0x92a0d70, path_list=0x9373c90
+ *   call once cact_tree_model_dnd_on_drag_begin
+ *     cact_clipboard_dnd_clear()
  *   call once cact_clipboard_on_drag_begin( treeview, context, main_window )
  *
  * when we drop (e.g. in Caja)
  *   call once egg_tree_multi_dnd_on_drag_data_get( treeview, context, selection_data, info=0, time )
- *   call once cact_tree_model_imulti_drag_source_drag_data_get( drag_source, context, selection_data, path_list, atom=XdndDirectSave0 )
- *   call once cact_tree_model_idrag_dest_drag_data_received
- *   call once cact_clipboard_on_drag_end( treeview, context, main_window )
+ *   call once cact_tree_model_dnd_imulti_drag_source_drag_data_get( drag_source, context, selection_data, path_list, atom=XdndDirectSave0 )
+ *     cact_clipboard_dnd_set()
+ *   call once cact_tree_model_dnd_on_drag_end
+ *     cact_clipboard_dnd_drag_end
+ *       cact_clipboard_get_from_dnd_clipboard_callback
+ *     cact_clipboard_dnd_clear
  *
- * when we drop in Caja Actions
+ * when we drop in Caja-Actions
  *   call once egg_tree_multi_dnd_on_drag_data_get( treeview, context, selection_data, info=0, time )
  *   call once cact_tree_model_imulti_drag_source_drag_data_get( drag_source, context, selection_data, path_list, atom=XdndCajaActions )
  *   call once cact_clipboard_get_data_for_intern_use
@@ -106,7 +106,7 @@ static GtkTargetEntry dnd_source_formats[] = {
  * - of course, the same special XdndCajaAction format for internal move/copy
  * - a list of uris, to be imported
  * - a XML buffer, to be imported
- * - a plain text, which we are goint to try to import as a XML description
+ * - a plain text, which we are going to try to import as a XML description
  */
 GtkTargetEntry tree_model_dnd_dest_formats[] = {
 	{ "XdndCajaActions", 0, CACT_XCHANGE_FORMAT_CACT },
@@ -130,7 +130,7 @@ static void          drop_inside_move_dest( CactTreeModel *model, GList *rows, G
 static gboolean      drop_uri_list( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selection_data );
 static NAObjectItem *is_dropped_already_exists( const NAObjectItem *importing, const CactMainWindow *window );
 static char         *get_xds_atom_value( GdkDragContext *context );
-static gboolean      is_parent_accept_new_childs( CactApplication *application, CactMainWindow *window, NAObjectItem *parent );
+static gboolean      is_parent_accept_new_children( CactApplication *application, CactMainWindow *window, NAObjectItem *parent );
 static guint         target_atom_to_id( GdkAtom atom );
 
 /**
@@ -139,8 +139,9 @@ static guint         target_atom_to_id( GdkAtom atom );
  * @dest:
  * @selection_data:
  *
- * Called when a drop from the outside occurs in the treeview;
- * this may be an import action, or a move/copy inside of the tree.
+ * Called when a drop occurs in the treeview;
+ * this may be an import action from the outside world, or a move/copy
+ * inside of the tree.
  *
  * Returns: %TRUE if the specified rows were successfully inserted at
  * the given dest, %FALSE else.
@@ -160,48 +161,69 @@ cact_tree_model_dnd_idrag_dest_drag_data_received( GtkTreeDragDest *drag_dest, G
 {
 	static const gchar *thisfn = "cact_tree_model_dnd_idrag_dest_drag_data_received";
 	gboolean result = FALSE;
+	CactTreeModel *model;
 	gchar *atom_name;
 	guint info;
 	gchar *path_str;
+	GdkAtom selection_data_selection;
+	GdkAtom selection_data_target;
+	GdkAtom selection_data_type;
+	gint selection_data_format;
+	gint selection_data_length;
 
-	g_debug( "%s: drag_dest=%p, dest=%p, selection_data=%p", thisfn, ( void * ) drag_dest, ( void * ) dest, ( void * ) selection_data );
-	g_return_val_if_fail( CACT_IS_TREE_MODEL( drag_dest ), FALSE );
+	g_return_val_if_fail( CACT_IS_TREE_MODEL( drag_dest ), result );
 
-	atom_name = gdk_atom_name( selection_data->selection );
-	g_debug( "%s: selection=%s", thisfn, atom_name );
-	g_free( atom_name );
+	model = CACT_TREE_MODEL( drag_dest );
 
-	atom_name = gdk_atom_name( selection_data->target );
-	g_debug( "%s: target=%s", thisfn, atom_name );
-	g_free( atom_name );
+	if( !model->private->dispose_has_run ){
 
-	atom_name = gdk_atom_name( selection_data->type );
-	g_debug( "%s: type=%s", thisfn, atom_name );
-	g_free( atom_name );
+		g_debug( "%s: drag_dest=%p (ref_count=%d), dest=%p, selection_data=%p",
+				thisfn,
+				( void * ) drag_dest, G_OBJECT( drag_dest )->ref_count,
+				( void * ) dest,
+				( void * ) selection_data );
 
-	g_debug( "%s: format=%d, length=%d", thisfn, selection_data->format, selection_data->length );
+		selection_data_selection = gtk_selection_data_get_selection( selection_data );
+		atom_name = gdk_atom_name( selection_data_selection );
+		g_debug( "%s: selection=%s", thisfn, atom_name );
+		g_free( atom_name );
 
-	info = target_atom_to_id( selection_data->type );
-	g_debug( "%s: info=%u", thisfn, info );
+		selection_data_target = gtk_selection_data_get_target( selection_data );
+		atom_name = gdk_atom_name( selection_data_target );
+		g_debug( "%s: target=%s", thisfn, atom_name );
+		g_free( atom_name );
 
-	path_str = gtk_tree_path_to_string( dest );
-	g_debug( "%s: dest_path=%s", thisfn, path_str );
-	g_free( path_str );
+		selection_data_type = gtk_selection_data_get_data_type( selection_data );
+		atom_name = gdk_atom_name( selection_data_type );
+		g_debug( "%s: type=%s", thisfn, atom_name );
+		g_free( atom_name );
 
-	switch( info ){
-		case CACT_XCHANGE_FORMAT_CACT:
-			result = drop_inside( CACT_TREE_MODEL( drag_dest ), dest, selection_data );
-			break;
+		selection_data_format = gtk_selection_data_get_format( selection_data );
+		selection_data_length = gtk_selection_data_get_length( selection_data );
+		g_debug( "%s: format=%d, length=%d", thisfn, selection_data_format, selection_data_length );
 
-		/* drop some actions from outside
-		 * most probably from the file manager as a list of uris
-		 */
-		case CACT_XCHANGE_FORMAT_URI_LIST:
-			result = drop_uri_list( CACT_TREE_MODEL( drag_dest ), dest, selection_data );
-			break;
+		info = target_atom_to_id( selection_data_type );
+		g_debug( "%s: info=%u", thisfn, info );
 
-		default:
-			break;
+		path_str = gtk_tree_path_to_string( dest );
+		g_debug( "%s: dest_path=%s", thisfn, path_str );
+		g_free( path_str );
+
+		switch( info ){
+			case CACT_XCHANGE_FORMAT_CACT:
+				result = drop_inside( model, dest, selection_data );
+				break;
+
+			/* drop some actions from outside
+			 * most probably from the file manager as a list of uris
+			 */
+			case CACT_XCHANGE_FORMAT_URI_LIST:
+				result = drop_uri_list( model, dest, selection_data );
+				break;
+
+			default:
+				break;
+		}
 	}
 
 	return( result );
@@ -230,12 +252,12 @@ cact_tree_model_dnd_idrag_dest_row_drop_possible( GtkTreeDragDest *drag_dest, Gt
 /**
  * cact_tree_model_dnd_imulti_drag_source_drag_data_get:
  * @context: contains
- *  - the suggested action, as choosen by the drop site,
+ *  - the suggested action, as chosen by the drop site,
  *    between those we have provided in imulti_drag_source_get_drag_actions()
  *  - the target folder (XDS protocol)
  * @selection_data:
  * @rows: list of row references which are to be dropped
- * @info: the suggested format, as choosen by the drop site, between those
+ * @info: the suggested format, as chosen by the drop site, between those
  *  we have provided in imulti_drag_source_get_target_list()
  *
  * This function is called when we release the selected items onto the
@@ -276,11 +298,28 @@ cact_tree_model_dnd_imulti_drag_source_drag_data_get( EggTreeMultiDragSource *dr
 	gchar *dest_folder, *folder;
 	gboolean is_writable;
 	gboolean copy_data;
-	NAMateVFSURI *vfs;
+	GdkAtom selection_data_target;
+	GdkDragAction context_suggested_action;
+	GdkDragAction context_selected_action;
 
-	atom_name = gdk_atom_name( selection_data->target );
-	g_debug( "%s: drag_source=%p, context=%p, action=%d, selection_data=%p, rows=%p, atom=%s",
-			thisfn, ( void * ) drag_source, ( void * ) context, ( int ) context->suggested_action, ( void * ) selection_data, ( void * ) rows,
+	selection_data_target = gtk_selection_data_get_target( selection_data );
+
+#if GTK_CHECK_VERSION( 2, 22, 0 )
+	context_suggested_action = gdk_drag_context_get_suggested_action( context );
+	context_selected_action = gdk_drag_context_get_selected_action( context );
+#else
+	context_suggested_action = context->suggested_action;
+	context_selected_action = context->action;
+#endif
+
+	atom_name = gdk_atom_name( selection_data_target );
+	g_debug( "%s: drag_source=%p (ref_count=%d), context=%p, suggested action=%d, selection_data=%p, rows=%p (count=%d), atom=%s",
+			thisfn,
+			( void * ) drag_source, G_OBJECT( drag_source )->ref_count,
+			( void * ) context,
+			( int ) context_suggested_action,
+			( void * ) selection_data,
+			( void * ) rows, g_list_length( rows ),
 			atom_name );
 	g_free( atom_name );
 
@@ -295,8 +334,9 @@ cact_tree_model_dnd_imulti_drag_source_drag_data_get( EggTreeMultiDragSource *dr
 
 		switch( info ){
 			case CACT_XCHANGE_FORMAT_CACT:
-				copy_data = ( context->action == GDK_ACTION_COPY );
-				gtk_selection_data_set( selection_data, selection_data->target, 8, ( guchar * ) "", 0 );
+				copy_data = ( context_selected_action == GDK_ACTION_COPY );
+				gtk_selection_data_set( selection_data,
+						selection_data_target, 8, ( guchar * ) "", 0 );
 				cact_clipboard_dnd_set( model->private->clipboard, info, rows, NULL, copy_data );
 				ret = TRUE;
 				break;
@@ -306,28 +346,29 @@ cact_tree_model_dnd_imulti_drag_source_drag_data_get( EggTreeMultiDragSource *dr
 				 * e.g. file:///home/pierre/data/eclipse/caja-actions/trash/xds.txt
 				 */
 				folder = get_xds_atom_value( context );
-				/* get the dest folder as a path
-				 */
-				vfs = g_new0( NAMateVFSURI, 1 );
-				na_mate_vfs_uri_parse( vfs, folder );
-				dest_folder = g_path_get_dirname( vfs->path );
-				na_mate_vfs_uri_free( vfs );
-				g_free( folder );
+				dest_folder = g_path_get_dirname( folder );
+
 				/* check that target folder is writable
 				 */
-				is_writable = na_core_utils_dir_is_writable_path( dest_folder );
-				gtk_selection_data_set( selection_data, selection_data->target, 8, ( guchar * )( is_writable ? "S" : "F" ), 1 );
+				is_writable = na_core_utils_dir_is_writable_uri( dest_folder );
+				g_debug( "%s: dest_folder=%s, is_writable=%s", thisfn, dest_folder, is_writable ? "True":"False" );
+				gtk_selection_data_set( selection_data,
+						selection_data_target, 8, ( guchar * )( is_writable ? "S" : "F" ), 1 );
+
 				if( is_writable ){
 					cact_clipboard_dnd_set( model->private->clipboard, info, rows, dest_folder, TRUE );
 				}
+
 				g_free( dest_folder );
+				g_free( folder );
 				ret = is_writable;
 				break;
 
 			case CACT_XCHANGE_FORMAT_APPLICATION_XML:
 			case CACT_XCHANGE_FORMAT_TEXT_PLAIN:
 				data = cact_clipboard_dnd_get_text( model->private->clipboard, rows );
-				gtk_selection_data_set( selection_data, selection_data->target, 8, ( guchar * ) data, strlen( data ));
+				gtk_selection_data_set( selection_data,
+						selection_data_target, 8, ( guchar * ) data, strlen( data ));
 				g_free( data );
 				ret = TRUE;
 				break;
@@ -395,8 +436,10 @@ cact_tree_model_dnd_imulti_drag_source_row_draggable( EggTreeMultiDragSource *dr
 	NAObject *object;
 	GList *it;
 
-	g_debug( "%s: drag_source=%p, rows=%p (%d items)",
-			thisfn, ( void * ) drag_source, ( void * ) rows, g_list_length( rows ));
+	g_debug( "%s: drag_source=%p (ref_count=%d), rows=%p (%d items)",
+			thisfn,
+			( void * ) drag_source, G_OBJECT( drag_source )->ref_count,
+			( void * ) rows, g_list_length( rows ));
 
 	g_return_val_if_fail( CACT_IS_TREE_MODEL( drag_source ), FALSE );
 	model = CACT_TREE_MODEL( drag_source );
@@ -410,7 +453,7 @@ cact_tree_model_dnd_imulti_drag_source_row_draggable( EggTreeMultiDragSource *dr
 
 			path = gtk_tree_row_reference_get_path(( GtkTreeRowReference * ) it->data );
 			gtk_tree_model_get_iter( store, &iter, path );
-			gtk_tree_model_get( store, &iter, IACTIONS_LIST_NAOBJECT_COLUMN, &object, -1 );
+			gtk_tree_model_get( store, &iter, TREE_COLUMN_NAOBJECT, &object, -1 );
 
 			if( NA_IS_OBJECT_PROFILE( object )){
 				model->private->drag_has_profiles = TRUE;
@@ -438,22 +481,34 @@ cact_tree_model_dnd_on_drag_begin( GtkWidget *widget, GdkDragContext *context, B
 {
 	static const gchar *thisfn = "cact_tree_model_dnd_on_drag_begin";
 	CactTreeModel *model;
+	GdkWindow *context_source_window;
 
-	g_debug( "%s: widget=%p, context=%p, window=%p",
-			thisfn, ( void * ) widget, ( void * ) context, ( void * ) window );
-
-	model = CACT_TREE_MODEL( gtk_tree_view_get_model( GTK_TREE_VIEW( widget )));
+	g_return_if_fail( GTK_IS_TREE_VIEW( widget ));
+	model = ( CactTreeModel * ) gtk_tree_view_get_model( GTK_TREE_VIEW( widget ));
 	g_return_if_fail( CACT_IS_TREE_MODEL( model ));
 
 	if( !model->private->dispose_has_run ){
+
+		g_debug( "%s: widget=%p, context=%p, window=%p, model=%p (ref_count=%d)",
+				thisfn,
+				( void * ) widget,
+				( void * ) context,
+				( void * ) window,
+				( void * ) model, G_OBJECT( model )->ref_count );
 
 		model->private->drag_highlight = FALSE;
 		model->private->drag_drop = FALSE;
 
 		cact_clipboard_dnd_clear( model->private->clipboard );
 
+#if GTK_CHECK_VERSION( 2, 22, 0 )
+		context_source_window = gdk_drag_context_get_source_window( context );
+#else
+		context_source_window = context->source_window;
+#endif
+
 		gdk_property_change(
-				context->source_window,
+				context_source_window,
 				XDS_ATOM, TEXT_ATOM, 8, GDK_PROP_MODE_REPLACE, ( guchar * ) XDS_FILENAME, strlen( XDS_FILENAME ));
 	}
 }
@@ -469,18 +524,31 @@ cact_tree_model_dnd_on_drag_end( GtkWidget *widget, GdkDragContext *context, Bas
 {
 	static const gchar *thisfn = "cact_tree_model_dnd_on_drag_end";
 	CactTreeModel *model;
+	GdkWindow *context_source_window;
 
-	g_debug( "%s: widget=%p, context=%p, window=%p",
-			thisfn, ( void * ) widget, ( void * ) context, ( void * ) window );
-
-	model = CACT_TREE_MODEL( gtk_tree_view_get_model( GTK_TREE_VIEW( widget )));
+	g_return_if_fail( GTK_IS_TREE_VIEW( widget ));
+	model = ( CactTreeModel * ) gtk_tree_view_get_model( GTK_TREE_VIEW( widget ));
 	g_return_if_fail( CACT_IS_TREE_MODEL( model ));
 
 	if( !model->private->dispose_has_run ){
 
+		g_debug( "%s: widget=%p, context=%p, window=%p, model=%p (ref_count=%d)",
+				thisfn,
+				( void * ) widget,
+				( void * ) context,
+				( void * ) window,
+				( void * ) model, G_OBJECT( model )->ref_count );
+
 		cact_clipboard_dnd_drag_end( model->private->clipboard );
 		cact_clipboard_dnd_clear( model->private->clipboard );
-		gdk_property_delete( context->source_window, XDS_ATOM );
+
+#if GTK_CHECK_VERSION( 2, 22, 0 )
+		context_source_window = gdk_drag_context_get_source_window( context );
+#else
+		context_source_window = context->source_window;
+#endif
+
+		gdk_property_delete( context_source_window, XDS_ATOM );
 	}
 }
 
@@ -490,17 +558,6 @@ cact_tree_model_dnd_on_drag_end( GtkWidget *widget, GdkDragContext *context, Bas
  *
  * Returns: %TRUE if the specified rows were successfully inserted at
  * the given dest, %FALSE else.
- *
- * The dest path is computed based on the current appearance of the list
- * Drop should so occurs inside an inchanged list to keep a valid path
- * in the case of a move, this leads to :
- *  1) marks dragged items as 'to be deleted'
- *  2) insert new dropped items
- *  3) remove 'to be deleted' items
- * -> not an easy idea as we want modify the id of all the dragged
- *    hierarchy
- *
- * adjusting the path: quid if the target dest is not at the same level
  */
 static gboolean
 drop_inside( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selection_data )
@@ -520,10 +577,14 @@ drop_inside( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selecti
 	GtkTreeIter iter;
 	GList *deletable;
 	gboolean relabel;
+	CactTreeView *items_view;
 
 	application = CACT_APPLICATION( base_window_get_application( model->private->window ));
 	updater = cact_application_get_updater( application );
-	main_window = CACT_MAIN_WINDOW( base_application_get_main_window( BASE_APPLICATION( application )));
+
+	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( model->private->window ), FALSE );
+	main_window = CACT_MAIN_WINDOW( model->private->window );
+	items_view = cact_main_window_get_items_view( main_window );
 
 	/*
 	 * CACT format (may embed profiles, or not)
@@ -548,22 +609,23 @@ drop_inside( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selecti
 		path = gtk_tree_row_reference_get_path(( GtkTreeRowReference * ) it->data );
 		if( path ){
 			if( gtk_tree_model_get_iter( GTK_TREE_MODEL( model ), &iter, path )){
-				gtk_tree_model_get( GTK_TREE_MODEL( model ), &iter, IACTIONS_LIST_NAOBJECT_COLUMN, &current, -1 );
+				gtk_tree_model_get( GTK_TREE_MODEL( model ), &iter, TREE_COLUMN_NAOBJECT, &current, -1 );
 				g_object_unref( current );
 
 				if( copy_data ){
-					inserted = ( NAObject * ) na_object_duplicate( current );
+					inserted = ( NAObject * ) na_object_duplicate( current, DUPLICATE_REC );
 					na_object_set_origin( inserted, NULL );
 					na_object_check_status( inserted );
+					relabel = na_updater_should_pasted_be_relabeled( updater, inserted );
 
 				} else {
 					inserted = na_object_ref( current );
 					deletable = g_list_prepend( NULL, inserted );
-					cact_iactions_list_bis_delete( CACT_IACTIONS_LIST( main_window ), deletable, FALSE );
+					cact_tree_ieditable_delete( CACT_TREE_IEDITABLE( items_view ), deletable, TREE_OPE_MOVE );
 					g_list_free( deletable );
+					relabel = FALSE;
 				}
 
-				relabel = cact_main_menubar_edit_is_pasted_object_relabeled( inserted, NA_PIVOT( updater ));
 				na_object_prepare_for_paste( inserted, relabel, copy_data, parent );
 				object_list = g_list_prepend( object_list, inserted );
 				g_debug( "%s: dropped=%s", thisfn, na_object_get_label( inserted ));
@@ -573,14 +635,9 @@ drop_inside( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selecti
 	}
 	object_list = g_list_reverse( object_list );
 
-	cact_iactions_list_bis_insert_at_path( CACT_IACTIONS_LIST( main_window ), object_list, new_dest );
+	cact_tree_ieditable_insert_at_path( CACT_TREE_IEDITABLE( items_view ), object_list, new_dest );
 
-	if( gtk_tree_path_get_depth( new_dest ) == 1 ){
-		g_signal_emit_by_name( main_window, MAIN_WINDOW_SIGNAL_LEVEL_ZERO_ORDER_CHANGED, GINT_TO_POINTER( TRUE ));
-	}
-
-	g_list_foreach( object_list, ( GFunc ) na_object_object_unref, NULL );
-	g_list_free( object_list );
+	na_object_free_items( object_list );
 	gtk_tree_path_free( new_dest );
 
 	g_list_foreach( rows, ( GFunc ) gtk_tree_row_reference_free, NULL );
@@ -614,7 +671,9 @@ is_drop_possible( CactTreeModel *model, GtkTreePath *dest, NAObjectItem **parent
 	drop_ok = FALSE;
 	parent_dest = NULL;
 	application = CACT_APPLICATION( base_window_get_application( model->private->window ));
-	main_window = CACT_MAIN_WINDOW( base_application_get_main_window( BASE_APPLICATION( application )));
+
+	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( model->private->window ), FALSE );
+	main_window = CACT_MAIN_WINDOW( model->private->window );
 
 	/* if we can have an iter on given dest, then the dest already exists
 	 * so dropped items should be of the same type that already existing
@@ -629,7 +688,7 @@ is_drop_possible( CactTreeModel *model, GtkTreePath *dest, NAObjectItem **parent
 
 		if( model->private->drag_has_profiles ){
 			cact_main_statusbar_display_with_timeout(
-						main_window, TREE_MODEL_STATUSBAR_CONTEXT, st_refuse_drop_profile );
+						main_window, TREE_MODEL_STATUSBAR_CONTEXT, gettext( st_refuse_drop_profile ));
 
 		} else {
 			drop_ok = TRUE;
@@ -644,7 +703,7 @@ is_drop_possible( CactTreeModel *model, GtkTreePath *dest, NAObjectItem **parent
 	}
 
 	if( drop_ok ){
-		drop_ok = is_parent_accept_new_childs( application, main_window, parent_dest );
+		drop_ok = is_parent_accept_new_children( application, main_window, parent_dest );
 	}
 
 	if( drop_ok && parent ){
@@ -664,7 +723,7 @@ is_drop_possible_before_iter( CactTreeModel *model, GtkTreeIter *iter, CactMainW
 	drop_ok = FALSE;
 	*parent = NULL;
 
-	gtk_tree_model_get( GTK_TREE_MODEL( model ), iter, IACTIONS_LIST_NAOBJECT_COLUMN, &object, -1 );
+	gtk_tree_model_get( GTK_TREE_MODEL( model ), iter, TREE_COLUMN_NAOBJECT, &object, -1 );
 	g_object_unref( object );
 	g_debug( "%s: current object at dest is %s", thisfn, G_OBJECT_TYPE_NAME( object ));
 
@@ -677,7 +736,7 @@ is_drop_possible_before_iter( CactTreeModel *model, GtkTreeIter *iter, CactMainW
 		} else {
 			/* unable to drop a profile here */
 			cact_main_statusbar_display_with_timeout(
-					window, TREE_MODEL_STATUSBAR_CONTEXT, st_refuse_drop_profile );
+					window, TREE_MODEL_STATUSBAR_CONTEXT, gettext( st_refuse_drop_profile ));
 		}
 
 	} else if( NA_IS_OBJECT_ITEM( object )){
@@ -687,7 +746,7 @@ is_drop_possible_before_iter( CactTreeModel *model, GtkTreeIter *iter, CactMainW
 	} else {
 		/* unable to drop an action or a menu here */
 		cact_main_statusbar_display_with_timeout(
-				window, TREE_MODEL_STATUSBAR_CONTEXT, st_refuse_drop_item );
+				window, TREE_MODEL_STATUSBAR_CONTEXT, gettext( st_refuse_drop_item ));
 	}
 
 	return( drop_ok );
@@ -709,7 +768,7 @@ is_drop_possible_into_dest( CactTreeModel *model, GtkTreePath *dest, CactMainWin
 
 	if( gtk_tree_path_up( path )){
 		if( gtk_tree_model_get_iter( GTK_TREE_MODEL( model ), &iter, path )){
-			gtk_tree_model_get( GTK_TREE_MODEL( model ), &iter, IACTIONS_LIST_NAOBJECT_COLUMN, &object, -1 );
+			gtk_tree_model_get( GTK_TREE_MODEL( model ), &iter, TREE_COLUMN_NAOBJECT, &object, -1 );
 			g_object_unref( object );
 			g_debug( "%s: current object at parent dest is %s", thisfn, G_OBJECT_TYPE_NAME( object ));
 
@@ -721,7 +780,7 @@ is_drop_possible_into_dest( CactTreeModel *model, GtkTreePath *dest, CactMainWin
 
 				} else {
 					cact_main_statusbar_display_with_timeout(
-							window, TREE_MODEL_STATUSBAR_CONTEXT, st_refuse_drop_profile );
+							window, TREE_MODEL_STATUSBAR_CONTEXT, gettext( st_refuse_drop_profile ));
 				}
 
 			} else if( NA_IS_OBJECT_MENU( object )){
@@ -730,7 +789,7 @@ is_drop_possible_into_dest( CactTreeModel *model, GtkTreePath *dest, CactMainWin
 
 			} else {
 				cact_main_statusbar_display_with_timeout(
-						window, TREE_MODEL_STATUSBAR_CONTEXT, st_refuse_drop_item );
+						window, TREE_MODEL_STATUSBAR_CONTEXT, gettext( st_refuse_drop_item ));
 			}
 		}
 	}
@@ -755,9 +814,7 @@ drop_inside_move_dest( CactTreeModel *model, GList *rows, GtkTreePath **dest )
 	for( it = rows ; it ; it = it->next ){
 		path = gtk_tree_row_reference_get_path(( GtkTreeRowReference * ) it->data );
 		if( path ){
-			if( gtk_tree_path_get_depth( path ) == 1 &&
-				gtk_tree_path_compare( path, *dest ) == -1 ){
-
+			if( gtk_tree_path_get_depth( path ) == 1 && gtk_tree_path_compare( path, *dest ) == -1 ){
 				before += 1;
 			}
 			gtk_tree_path_free( path );
@@ -799,9 +856,16 @@ drop_uri_list( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selec
 	CactApplication *application;
 	NAUpdater *updater;
 	CactMainWindow *main_window;
-	NAIImporterListParms parms;
-	MateConfClient *mateconf;
-	GList *it;
+	NAImporterParms parms;
+	GList *import_results, *it;
+	guint count;
+	GSList *im;
+	GList *imported, *overriden;
+	const gchar *selection_data_data;
+	CactTreeView *view;
+	GSList *messages;
+	gchar *dlg_message;
+	GtkWidget *dialog;
 
 	gchar *dest_str = gtk_tree_path_to_string( dest );
 	g_debug( "%s: model=%p, dest=%p (%s), selection_data=%p",
@@ -817,63 +881,96 @@ drop_uri_list( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selec
 
 	application = CACT_APPLICATION( base_window_get_application( model->private->window ));
 	updater = cact_application_get_updater( application );
-	main_window = CACT_MAIN_WINDOW( base_application_get_main_window( BASE_APPLICATION( application )));
 
-	parms.version = 1;
-	g_debug( "%s", ( const gchar * ) selection_data->data );
-	parms.uris = g_slist_reverse( na_core_utils_slist_from_split(( const gchar * ) selection_data->data, "\r\n" ));
+	g_return_val_if_fail( CACT_IS_MAIN_WINDOW( model->private->window ), FALSE );
+	main_window = CACT_MAIN_WINDOW( model->private->window );
 
-	mateconf = mateconf_client_get_default();
-	parms.mode = na_iprefs_get_import_mode( mateconf, IPREFS_IMPORT_ITEMS_IMPORT_MODE );
-	g_object_unref( mateconf );
+	selection_data_data = ( const gchar * ) gtk_selection_data_get_data( selection_data );
+	g_debug( "%s", selection_data_data );
 
-	parms.window = base_window_get_toplevel( BASE_WINDOW( main_window ));
-	parms.imported = NULL;
-	parms.check_fn = ( NAIImporterCheckFn ) is_dropped_already_exists;
+	memset( &parms, '\0', sizeof( NAImporterParms ));
+	parms.uris = g_slist_reverse( na_core_utils_slist_from_split( selection_data_data, "\r\n" ));
+	parms.check_fn = ( NAImporterCheckFn ) is_dropped_already_exists;
 	parms.check_fn_data = main_window;
-	parms.messages = NULL;
+	parms.preferred_mode = 0;
+	parms.parent_toplevel = base_window_get_gtk_toplevel( BASE_WINDOW( main_window ));
 
-	na_importer_import_from_list( NA_PIVOT( updater ), &parms );
+	import_results = na_importer_import_from_uris( NA_PIVOT( updater ), &parms );
 
-	/* display first message in status bar
+	/* analysing output results, simultaneously building a concatenation
+	 * of all lines of messages, and the list of imported items
 	 */
-	if( parms.messages ){
-		cact_main_statusbar_display_with_timeout(
-				main_window,
-				TREE_MODEL_STATUSBAR_CONTEXT,
-				parms.messages->data );
+	imported = NULL;
+	overriden = NULL;
+	messages = NULL;
+
+	for( it = import_results ; it ; it = it->next ){
+		NAImporterResult *result = ( NAImporterResult * ) it->data;
+
+		for( im = result->messages ; im ; im = im->next ){
+			messages = g_slist_prepend( messages, im->data );
+		}
+		if( result->imported ){
+			if( !result->exist || result->mode == IMPORTER_MODE_RENUMBER ){
+				imported = g_list_prepend( imported, result->imported );
+				na_updater_check_item_writability_status( updater, result->imported );
+
+			} else if( result->mode == IMPORTER_MODE_OVERRIDE ){
+				overriden = g_list_prepend( overriden, result->imported );
+			}
+		}
 	}
 
 	/* if there is more than one message, display them in a dialog box
+	 * else in the status bar
 	 */
-	if( parms.messages && g_slist_length( parms.messages ) >= 2 ){
-		GtkMessageDialog *dialog = GTK_MESSAGE_DIALOG( gtk_message_dialog_new(
-				parms.window,
+	count = g_slist_length( messages );
+	g_debug( "%s: count=%d", thisfn, count );
+	if( count == 1 ){
+		cact_main_statusbar_display_with_timeout(
+				main_window, TREE_MODEL_STATUSBAR_CONTEXT, messages->data );
+	}
+	if( count > 1 ){
+		dlg_message = na_core_utils_slist_join_at_end( messages, "\n" );
+		g_debug( "%s: dlg_message='%s'", thisfn, dlg_message );
+		dialog = gtk_message_dialog_new(
+				parms.parent_toplevel,
 				GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
-				"%s", _( "Some messages have occurred during drop operation." )));
-		GString *str = g_string_new( "" );
-		GSList *im;
-		for( im = parms.messages ; im ; im = im->next ){
-			g_string_append_printf( str, "%s\n", ( const gchar * ) im->data );
-		}
-		gtk_message_dialog_format_secondary_markup( dialog, "%s", str->str );
-		g_string_free( str, TRUE );
+				"%s", _( "Some messages have occurred during drop operation." ));
+		gtk_message_dialog_format_secondary_markup( GTK_MESSAGE_DIALOG( dialog ), "%s", dlg_message );
+		gtk_dialog_run( GTK_DIALOG( dialog ));
+		gtk_widget_destroy( dialog );
+		g_free( dlg_message );
 	}
+	g_slist_free( messages );
 
-	/* check status of newly imported items, and insert them in the list view
+	/* insert newly imported items in the list view
 	 */
-	for( it = parms.imported ; it ; it = it->next ){
-		na_object_check_status( it->data );
-		na_object_dump( it->data );
-		drop_done = TRUE;
+	if( imported ){
+		na_object_dump_tree( imported );
+		view = cact_main_window_get_items_view( main_window );
+		cact_tree_ieditable_insert_at_path( CACT_TREE_IEDITABLE( view ), imported, dest );
 	}
 
-	cact_iactions_list_bis_insert_at_path( CACT_IACTIONS_LIST( main_window ), parms.imported, dest );
-	cact_tree_model_dump( model );
+	/* override items if needed
+	 * they may safely be released after having updated the store
+	 */
+	if( overriden ){
+		na_object_dump_tree( overriden );
+		view = cact_main_window_get_items_view( main_window );
+		cact_tree_ieditable_set_items( CACT_TREE_IEDITABLE( view ), overriden );
+		na_object_free_items( overriden );
+	}
 
-	na_object_unref_items( parms.imported );
+	drop_done = TRUE;
+	na_object_free_items( imported );
+	na_object_free_items( overriden );
 	na_core_utils_slist_free( parms.uris );
-	na_core_utils_slist_free( parms.messages );
+
+	for( it = import_results ; it ; it = it->next ){
+		na_importer_free_result( it->data );
+	}
+	g_list_free( import_results );
 
 	return( drop_done );
 }
@@ -881,8 +978,11 @@ drop_uri_list( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selec
 static NAObjectItem *
 is_dropped_already_exists( const NAObjectItem *importing, const CactMainWindow *window )
 {
+	CactTreeView *items_view;
+
 	gchar *id = na_object_get_id( importing );
-	NAObjectItem *exists = cact_main_window_get_item( window, id );
+	items_view = cact_main_window_get_items_view( window );
+	NAObjectItem *exists = cact_tree_view_get_item_by_id( items_view, id );
 	g_free( id );
 
 	return( exists );
@@ -1003,11 +1103,18 @@ get_xds_atom_value( GdkDragContext *context )
 {
 	gchar *ret;
 	gint actual_length;
+	GdkWindow *context_source_window;
+
+#if GTK_CHECK_VERSION( 2, 22, 0 )
+		context_source_window = gdk_drag_context_get_source_window( context );
+#else
+		context_source_window = context->source_window;
+#endif
 
 	g_return_val_if_fail( context != NULL, NULL );
-	g_return_val_if_fail( context->source_window != NULL, NULL );
+	g_return_val_if_fail( context_source_window != NULL, NULL );
 
-	gdk_property_get( context->source_window,		/* a GdkWindow */
+	gdk_property_get( context_source_window,		/* a GdkWindow */
 						XDS_ATOM, 					/* the property to retrieve */
 						TEXT_ATOM,					/* the desired property type */
 						0, 							/* offset (in 4 bytes chunks) */
@@ -1028,7 +1135,7 @@ get_xds_atom_value( GdkDragContext *context )
  * to register the new child
  */
 static gboolean
-is_parent_accept_new_childs( CactApplication *application, CactMainWindow *window, NAObjectItem *parent )
+is_parent_accept_new_children( CactApplication *application, CactMainWindow *window, NAObjectItem *parent )
 {
 	gboolean accept_ok;
 	NAUpdater *updater;
@@ -1040,23 +1147,22 @@ is_parent_accept_new_childs( CactApplication *application, CactMainWindow *windo
 	 * ensure that level zero is writable
 	 */
 	if( parent == NULL ){
-
-		if( na_pivot_is_level_zero_writable( NA_PIVOT( updater ))){
+		if( na_updater_is_level_zero_writable( updater )){
 			accept_ok = TRUE;
 
 		} else {
 			cact_main_statusbar_display_with_timeout(
-						window, TREE_MODEL_STATUSBAR_CONTEXT, st_level_zero_not_writable );
+						window, TREE_MODEL_STATUSBAR_CONTEXT, gettext( st_level_zero_not_writable ));
 		}
 
 	/* see if the parent is writable
 	 */
-	} else if( na_updater_is_item_writable( updater, parent, NULL )){
+	} else if( na_object_is_finally_writable( parent, NULL )){
 		accept_ok = TRUE;
 
 	} else {
 			cact_main_statusbar_display_with_timeout(
-						window, TREE_MODEL_STATUSBAR_CONTEXT, st_parent_not_writable );
+						window, TREE_MODEL_STATUSBAR_CONTEXT, gettext( st_parent_not_writable ));
 	}
 
 	return( accept_ok );

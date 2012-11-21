@@ -1,0 +1,4047 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Caja-Actions Configuration Tool User's Manual</title>
+<style type="text/css">
+
+html { height: 100%; }
+body {
+  margin: 0px; padding: 12px;
+  background-color: #f9f9f6;
+  min-height: 100%;
+  direction: ltr;
+}
+div, p, pre, blockquote { margin: 0; padding: 0; }
+p img { vertical-align: middle; }
+sub { font-size: 0.83em; }
+sub sub { font-size: 1em; }
+sup { font-size: 0.83em; }
+sup sup { font-size: 1em; }
+table { border-collapse: collapse; }
+table.table-pgwide { width: 100%; }
+td { vertical-align: top; }
+td { padding: 0.2em 0.83em 0.2em 0.83em; }
+th { padding: 0 0.83em 0 0.83em; }
+tr.tr-shade {
+  background-color: #f9f9f6;
+}
+td.td-colsep { border-right: solid 1px; }
+td.td-rowsep { border-bottom: solid 1px; }
+thead { border-top: solid 2px; border-bottom: solid 2px; }
+tfoot { border-top: solid 2px; border-bottom: solid 2px; }
+div.body {
+  padding: 1em;
+  max-width: 60em;
+  background-color: #ffffff;
+  border: solid 1px #e0e0df;
+}
+div.body-sidebar {
+  margin-right: 13em;
+}
+div.division div.division { margin-top: 1.72em; }
+div.division div.division div.division { margin-top: 1.44em; }
+div.header {
+  margin: 0;
+  color: #3f3f3f;
+  border-bottom: solid 1px #e0e0df;
+}
+h1, h2, h3, h4, h5, h6, h7 {
+  margin: 0; padding: 0;
+  color: #3f3f3f;
+}
+h1.title { font-size: 1.72em; }
+h2.title { font-size: 1.44em; }
+h3.title { font-size: 1.2em; }
+h4.title, h5.title, h6.title, h7.title { font-size: 1em; }
+.block { margin-top: 1em; }
+.block .block-first { margin-top: 0; }
+.block-indent {
+  margin-left left: 1.72em;
+  margin-: 1em;
+}
+.block-indent .block-indent { margin-left: 0em; margin-right: 0em; }
+td .block-indent  { margin-left: 0em; margin-right: 0em; }
+dd .block-indent  { margin-left: 0em; margin-right: 0em; }
+.block-verbatim { white-space: pre; }
+div.title {
+  margin-bottom: 0.2em;
+  font-weight: bold;
+  color: #3f3f3f;
+}
+div.title-formal { padding-left: 0.2em; padding-right: 0.2em; }
+div.title-formal .label { font-weight: normal; }
+a {
+  color: #1f609f;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+a:visited { color: #9f1f6f; }
+ul, ol, dl { margin: 0; padding: 0; }
+li {
+  margin-top: 1em;
+  margin-left: 2.4em;
+  padding: 0;
+}
+li.li-first { margin-top: 0; }
+dt { margin: 1em 0 0 0; }
+dt.dt-first { margin: 0; }
+dd {
+  margin-left: 1.72em;
+  margin-top: 0.5em;
+}
+dl.dl-compact dt { margin-top: 0; }
+dl.dl-compact dd { margin-top: 0; margin-bottom: 0; }
+
+
+ul.linktrail {
+  display: block;
+  margin: 0.2em 0 0 0;
+  text-align: right;
+}
+li.linktrail { display: inline; margin: 0; padding: 0; }
+
+li.linktrail::before {
+  content: '  /  ';
+  color: #3f3f3f;
+}
+
+li.linktrail-first::before, li.linktrail-only::before { content: ''; }
+
+
+div.navbar {
+  padding: 0.5em 1em 0.5em 1em;
+  max-width: 60em;
+  background-color: #ffffff;
+  border: solid 1px #e0e0df;
+}
+div.navbar-top { margin-bottom: 1em; }
+div.navbar-bottom { margin-top: 1em; clear: both; }
+div.navbar img { border: 0; vertical-align: -0.4em; }
+table.navbar { width: 100%; margin: 0; border: none; }
+table.navbar td { padding: 0; border: none; }
+td.navbar-next {
+  text-align: right;
+}
+a.navbar-prev::before {
+  
+  content: '◀  ';
+  color: #3f3f3f;
+}
+a.navbar-next::after {
+  
+  content: '  ▶';
+  color: #3f3f3f;
+}
+
+
+div.sidebar {
+  float: right;
+  padding: 0; margin: 0; width: 12em;
+}
+div.sidenav {
+  padding: 0.5em 1em 0 1em;
+  background-color: #ffffff;
+  border: solid 1px #e0e0df;
+}
+div.sidenav div.autotoc {
+  background-color: #ffffff;
+  border: none; padding: 0; margin: 0;
+}
+div.sidenav div.autotoc div.autotoc { margin-top: 0.5em; }
+div.sidenav div.autotoc li { margin-bottom: 0.5em; }
+div.sidenav div.autotoc div.autotoc div.autotoc {
+  margin-left: 1em;
+  margin-top: 0;
+}
+div.sidenav div.autotoc div.autotoc div.autotoc li { margin-bottom: 0; }
+
+
+div.autotoc {
+  
+  display: table;
+  margin-top: 1em;
+  margin-left: 1.72em;
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: #f0f9ff;
+  border: solid 1px #c0c9ff;
+}
+div.autotoc ul { margin: 0; padding: 0; }
+div.autotoc li { list-style-type: none; margin: 0; }
+div.autotoc div.autotoc-title { margin-bottom: 0.5em; }
+div.autotoc div.autotoc { border: none; padding: 0; margin-top: 0; margin-bottom: 0.5em; }
+div.autotoc div.autotoc div.autotoc { margin-bottom: 0; }
+
+
+span.bibliolabel {
+  color: #3f3f3f;
+}
+
+
+div.admonition {
+  padding: 0.5em 6px 0.5em 6px;
+  border: solid 1px #e0e0df;
+  background-color: #fffff0;
+}
+div.caution-inner, div.important-inner, div.note-inner, div.tip-inner, div.warning-inner {
+  padding-left: 60px;
+  background-position: left top;
+  background-repeat: no-repeat;
+  min-height: 48px;
+}
+div.caution-inner { background-image: url("admon/admon-caution.png"); }
+div.important-inner { background-image: url("admon/admon-important.png"); }
+div.note-inner { background-image: url("admon/admon-note.png"); }
+div.note-bug div.note-inner { background-image: url("admon/admon-bug.png"); }
+div.tip-inner { background-image: url("admon/admon-tip.png"); }
+div.warning-inner { background-image: url("admon/admon-warning.png"); }
+div.blockquote {
+  
+  background-image: url('watermark-blockquote-201C.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  padding: 0.5em;
+  padding-left: 4em;
+}
+div.attribution {
+  margin-top: 0.5em;
+  color: #3f3f3f;
+}
+div.attribution::before {
+  
+  content: '― ';
+}
+div.epigraph {
+  text-align: right;
+  margin-left: 20%;
+  margin-right: 0;
+  color: #3f3f3f;
+}
+div.figure, div.informalfigure {
+  
+  display: table;
+  padding: 0.5em;
+  background-color: #f9f9f6;
+  border: solid 1px #e0e0df;
+}
+div.figure-inner, div.informalfigure-inner {
+  padding: 0.5em;
+  background-color: #ffffff;
+  border: solid 1px #e0e0df;
+}
+div.caption { margin-top: 0.5em; }
+div.programlisting {
+  padding: 0.5em;
+  
+  background-color: #f9f9f6;
+  border: solid 1px #e0e0df;
+}
+div.screen {
+  padding: 0.5em;
+  
+  background-color: #f9f9f6;
+  border: solid 1px #e0e0df;
+}
+div.screen .prompt {
+  color: #3f3f3f;
+}
+div.screen .userinput {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+div.programlisting .userinput {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+pre.linenumbering {
+  color: #3f3f3f;
+  margin: 0;
+  padding-right: 1em;
+  float: left;
+  text-align: right;
+}
+
+
+
+dl.index dt { margin-top: 0; }
+dl.index dd { margin-top: 0; margin-bottom: 0; }
+dl.indexdiv dt { margin-top: 0; }
+dl.indexdiv dd { margin-top: 0; margin-bottom: 0; }
+dl.setindex dt { margin-top: 0; }
+dl.setindex dd { margin-top: 0; margin-bottom: 0; }
+div.list div.title-formal span.title {
+  border-bottom: solid 1px #e0e0df;
+}
+div.simplelist {
+  margin-left: 1.72em;
+}
+div.simplelist table { margin-left: 0; border: none; }
+div.simplelist td {
+  padding: 0.5em;
+  border-left: solid 1px #e0e0df;
+}
+div.simplelist td.td-first {
+  padding-left: 0;
+  border-left: 0;
+}
+div.synopsis {
+  padding: 0.5em;
+  
+  background-color: #f9f9f6;
+  border-top: solid 2px #c0c9ff;
+  border-bottom: solid 2px #c0c9ff;
+}
+div.synopsis div.synopsis {
+  padding: 0;
+  border: none;
+}
+div.synopsis div.block { margin-top: 0.2em; }
+div.synopsis div.block-first { margin-top: 0; }
+div.cmdsynopsis { font-family: monospace; }
+
+span.accel { text-decoration: underline; }
+span.acronym { font-family: sans-serif; }
+span.application { font-style: italic; }
+span.classname, span.exceptionname, span.interfacename { font-family: monospace; }
+span.code {
+  font-family: monospace;
+  border: solid 1px #e0e0df;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+pre span.code { border: none; padding: 0; }
+span.command {
+  font-family: monospace;
+  border: solid 1px #e0e0df;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+pre span.command { border: none; padding: 0; }
+span.computeroutput { font-family: monospace; }
+
+span.constant { font-family: monospace; }
+span.database { font-family: monospace; }
+span.email { font-family: monospace; }
+span.emphasis { font-style: italic; }
+span.emphasis-bold { font-style: normal; font-weight: bold; }
+span.envar { font-family: monospace; }
+
+span.filename { font-family: monospace; }
+span.firstterm { font-style: italic; }
+span.foreignphrase { font-style: italic; }
+span.function { font-family: monospace; }
+
+dt.glossterm span.glossterm { font-style: normal; }
+
+
+span.glossterm { font-style: italic; }
+
+span.guibutton, span.guilabel, span.guimenu, span.guimenuitem, span.guisubmenu, span.interface {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+span.keycap {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+span.lineannotation { font-style: italic; }
+span.literal { font-family: monospace; }
+span.markup  { font-family: monospace; }
+span.medialabel { font-style: italic; }
+span.methodname { font-family: monospace; }
+span.ooclass, span.ooexception, span.oointerface { font-family: monospace; }
+span.option { font-family: monospace; }
+span.package { font-family: monospace; }
+span.parameter { font-family: monospace; }
+span.paramdef span.parameter { font-style: italic; }
+span.prompt { font-family: monospace; }
+span.property { font-family: monospace; }
+span.replaceable  { font-style: italic; }
+span.returnvalue { font-family: monospace; }
+span.sgmltag { font-family: monospace; }
+span.structfield, span.structname { font-family: monospace; }
+span.symbol { font-family: monospace; }
+span.systemitem { font-family: monospace; }
+span.token { font-family: monospace; }
+span.type { font-family: monospace; }
+span.uri { font-family: monospace; }
+span.userinput { font-family: monospace; }
+span.varname { font-family: monospace; }
+span.wordasword { font-style: italic; }
+
+
+
+div.footnotes { font-style: italic; font-size: 0.8em; }
+div.footnote { margin-top: 1.44em; }
+span.footnote-number { display: inline; padding-right: 0.83em; }
+span.footnote-number + p { display: inline; }
+a.footnote { text-decoration: none; font-size: 0.8em; }
+a.footnote-ref { text-decoration: none; }
+
+span.co {
+  margin-left: 0.2em; margin-right: 0.2em;
+  padding-left: 0.4em; padding-right: 0.4em;
+  border: solid 1px #000000;
+  -moz-border-radius: 8px;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: 8px;
+}
+span.co:hover {
+  border-color: #333333;
+  background-color: #333333;
+  color: #FFFFFF;
+}
+span.co a { text-decoration: none; }
+span.co a:hover { text-decoration: none; }
+
+dt.question { margin-left: 0em; }
+dt.question div.label { float: left; }
+dd + dt.question { margin-top: 1em; }
+dd.answer {
+  margin-top: 1em;
+  margin-left: 2em;
+  margin-right: 1em;
+}
+dd.answer div.label { float: left; }
+</style>
+</head>
+<body>
+<div class="navbar navbar-top"><table class="navbar"><tr>
+<td class="navbar-prev"></td>
+<td class="navbar-next"></td>
+</tr></table></div>
+<div class="sidebar"><div class="sidenav"><div class="autotoc"><ul><li>
+<span class="application">Caja-Actions Configuration Tool</span> User's Manual</li></ul></div></div></div>
+<div class="body body-sidebar"><div class="division article" dir="ltr">
+<a name="index"></a><div class="header"><h1 class="article title"><span class="title"><span class="application">Caja-Actions Configuration Tool</span> User's Manual</span></h1></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">1. </span><a class="xref" href="caja-actions-config-tool.html#introduction" title="Introduction">Introduction</a>
+</li>
+<li>
+<span class="label">2. </span><a class="xref" href="caja-actions-config-tool.html#getting-started" title="Getting Started">Getting Started</a>
+</li>
+<li>
+<span class="label">3. </span><a class="xref" href="caja-actions-config-tool.html#usage" title="Using Caja-Actions Configuration Tool">Using <span class="application">Caja-Actions Configuration Tool</span></a>
+</li>
+<li>
+<span class="label">4. </span><a class="xref" href="caja-actions-config-tool.html#misc" title="Miscellaneous informations">Miscellaneous informations</a>
+</li>
+<li>
+<span class="label">5. </span><a class="xref" href="caja-actions-config-tool.html#bugs" title="Known Bugs and Limitations">Known Bugs and Limitations</a>
+</li>
+<li>
+<span class="label">6. </span><a class="xref" href="caja-actions-config-tool.html#about" title="About Caja-Actions Configuration Tool">About <span class="application">Caja-Actions Configuration Tool</span></a>
+</li>
+<li>
+<span class="label">A. </span><a class="xref" href="caja-actions-config-tool.html#appendix-gnu-fdl" title="GNU Free Documentation License">GNU Free Documentation License</a>
+</li>
+</ul></div>
+<div class="division sect1">
+<a name="introduction"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">1. </span>Introduction</span></h2></div>
+<p class="para block block-first">
+      <span class="productname">Caja-Actions™</span> is a <span class="productname">Caja™</span> extension whose principal function
+      is to allow the user to add arbitrary actions to the file manager
+      context menus. These actions may be organized in menus and submenus,
+      exported and shared with other desktop environments.
+    </p>
+<p class="para block">
+      The <span class="application">Caja-Actions Configuration Tool</span> application is the user interface which lets you precisely
+      configure how, where and when your actions should appear in <span class="productname">Caja™</span>
+      context menus, and how they will be executed.
+    </p>
+<p class="para block">
+      <span class="application">Caja-Actions Configuration Tool</span> provides the following features:
+    </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">Define and configure actions from scratch.</span>
+      </li>
+<li>
+        <span class="para">Organize actions into menus, submenus and so on.</span>
+      </li>
+<li>
+        <span class="para">Import and export actions and menus from and to outside world.</span>
+      </li>
+</ul></div>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">
+        <span class="productname">Caja-Actions™</span> also comes with additional features such as:
+      </p>
+      <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <p class="para block block-first">
+            A <span class="productname">Caja™</span> plugin which exports in real time to D-Bus the currently
+            selected files.
+          </p>
+        </li>
+<li>
+          <p class="para block block-first">
+            A command-line program which is able to run any action.
+          </p>
+          <p class="para block">
+            Associated with the D-Bus interface, this program lets the user
+            run any action from a keyboard shortcut, applying this action
+            to the item(s) currently selected in the file manager.
+          </p>
+        </li>
+<li>
+          <p class="para block block-first">
+            A command-line program which is able to create a new action.
+          </p>
+        </li>
+</ul></div>
+      <p class="para block">
+        All these features are more thoroughly described in the global
+        <span class="productname">Caja-Actions™</span> documentation.
+      </p>
+    </div></div>
+</div>
+<div class="division sect1">
+<a name="getting-started"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">2. </span>Getting Started</span></h2></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">2.1. </span><a class="xref" href="caja-actions-config-tool.html#getting-started-starting" title="Starting Caja-Actions Configuration Tool">Starting <span class="application">Caja-Actions Configuration Tool</span></a>
+</li>
+<li>
+<span class="label">2.2. </span><a class="xref" href="caja-actions-config-tool.html#getting-started-first-run" title="The first run">The first run</a>
+</li>
+<li>
+<span class="label">2.3. </span><a class="xref" href="caja-actions-config-tool.html#getting-started-first-action" title="Creating your first action">Creating your first action</a>
+</li>
+</ul></div>
+<div class="division sect2">
+<a name="getting-started-starting"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">2.1. </span>Starting <span class="application">Caja-Actions Configuration Tool</span></span></h3></div>
+<p class="para block block-first">
+        You can start <span class="application">Caja-Actions Configuration Tool</span> in the following ways:
+      </p>
+<div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">
+<span class="guimenu">System</span> menu</dt>
+<dd>
+            <p class="para block block-first">
+              Choose
+              <span class="menuchoice"><span class="guisubmenu">Preferences</span> ▸ <span class="guisubmenu">Look and Feel</span> ▸ <span class="guimenuitem">Caja-Actions Configuration Tool</span></span>.
+            </p>
+          </dd>
+<dt class="term">Command line</dt>
+<dd>
+            <p class="para block block-first">
+              To start <span class="application">Caja-Actions Configuration Tool</span> from a command line, type the following command:
+            </p>
+            <p class="para block">
+              <span class="command" dir="ltr"><span class="filename" dir="ltr">caja-actions-config-tool</span></span>
+            </p>
+            <p class="para block">
+              then press <span class="keycap">Return</span>.
+            </p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">
+                To view available command line options, type:
+              </p>
+              <p class="para block">
+                <span class="command" dir="ltr">
+                  <span class="filename" dir="ltr">caja-actions-config-tool</span>
+                  <span class="option" dir="ltr">--help-all</span>
+                </span>
+              </p>
+              <p class="para block">
+                then press <span class="keycap">Return</span>.
+              </p>
+            </div></div>
+          </dd>
+</dl></div>
+</div>
+<div class="division sect2">
+<a name="getting-started-first-run"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">2.2. </span>The first run</span></h3></div>
+<p class="para block block-first">
+        When you start <span class="application">Caja-Actions Configuration Tool</span>, the following window is displayed.
+      </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-main-empty"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 1</span> </span><span class="application">Caja-Actions Configuration Tool</span> Start Up Window</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-main-empty.png"><div class=" block caption">
+              <p class="para block block-first">The empty <span class="application">Caja-Actions Configuration Tool</span> main window</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">
+        The <span class="application">Caja-Actions Configuration Tool</span> main window contains the following elements:
+      </p>
+<div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">Menubar.</dt>
+<dd>
+            <p class="para block block-first">
+              The menus on the menubar contain all of the commands
+              you need to use in <span class="application">Caja-Actions Configuration Tool</span>.
+            </p>
+            <p class="para block">
+              Shortcuts are available for some commands:
+            </p>
+            <div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">N</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Create a new action.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">S</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Save modified actions and menus.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">Q</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Quit the application.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">X</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Cut the current selection, keeping it in the clipboard.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">C</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Copy the current selection to the clipboard.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">V</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Insert the content of the clipboard before the current item.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Shift</span>+<span class="keycap">Ctrl</span>+<span class="keycap">V</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Insert the content of the clipboard as subitem(s) of the current item.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">Delete</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Delete the current selection.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">F5</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Reload the actions and menus.
+                  </p>
+                </dd>
+<dt class="term">
+                    <span class="keycombo"><span class="keycap">F1</span></span>
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Display the help.
+                  </p>
+                </dd>
+</dl></div>
+          </dd>
+<dt class="term">Toolbar.</dt>
+<dd>
+            <p class="para block block-first">
+              Several toolbars may be displayed below the menubar, depending of
+              your choices in the
+              <span class="menuchoice"><span class="guimenu">View</span> ▸ <span class="guimenuitem">Toolbars</span></span> submenu.
+            </p>
+          </dd>
+<dt class="term">Items list.</dt>
+<dd>
+            <p class="para block block-first">
+              The list on the left of the main window contains all items,
+              whether they are actions or menus, currently available for edition in
+              <span class="application">Caja-Actions Configuration Tool</span>.
+            </p>
+            <p class="para block">
+              Items may be sorted in ascending or descending alphabetical order, or
+              not sorted at all, being directly organized and managed by the user.
+            </p>
+            <p class="para block">
+              Invalid items are displayed in red color.
+            </p>
+            <p class="para block">
+              Modified items are displayed in italic characters.
+            </p>
+          </dd>
+<dt class="term">Sort buttons</dt>
+<dd>
+            <p class="para block block-first">
+              Three buttons allow you to toggle between sort modes.
+            </p>
+          </dd>
+<dt class="term">Properties tabs.</dt>
+<dd>
+            <p class="para block block-first">
+              The right part of the main window displays all is needed to define
+              how, when and where actions and menus should be displayed.
+            </p>
+            <div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">
+                  Action/Menu
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Define in which <span class="productname">Caja™</span> menus the item should appear, and
+                    how it will be displayed.
+                  </p>
+                </dd>
+<dt class="term">
+                  Command
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Specify which command to execute, and which parameters
+                    pass to it.
+                  </p>
+                </dd>
+<dt class="term">
+                  Execution
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Specify how the command should be executed.
+                  </p>
+                </dd>
+<dt class="term">
+                  Basenames
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Define the basename filters the <span class="productname">Caja™</span> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </p>
+                </dd>
+<dt class="term">
+                  Mimetypes
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Define the mimetype filters the <span class="productname">Caja™</span> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </p>
+                </dd>
+<dt class="term">
+                  Folders
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Define the folder filters the <span class="productname">Caja™</span> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </p>
+                </dd>
+<dt class="term">
+                  Schemes
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Define the scheme filters the <span class="productname">Caja™</span> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </p>
+                </dd>
+<dt class="term">
+                  Capabilities
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Define the capability filters the <span class="productname">Caja™</span> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </p>
+                </dd>
+<dt class="term">
+                  Environment
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Define some environment conditions the <span class="productname">Caja™</span> selection must satisfy
+                    in order the action or menu be candidate for display.
+                  </p>
+                </dd>
+<dt class="term">
+                  Properties
+                </dt>
+<dd>
+                  <p class="para block block-first">
+                    Display item properties.
+                  </p>
+                </dd>
+</dl></div>
+          </dd>
+<dt class="term">Statusbar.</dt>
+<dd>
+            <p class="para block block-first">
+              The statusbar displays some status informations about the
+              currently selected row in the items list.
+            </p>
+            <p class="para block">
+              When no relevant information is to be displayed, the statusbar
+              displays the count of loaded menus, actions and profiles.
+            </p>
+            <p class="para block">
+              The « read-only » icon 
+              <span class="inlinegraphic"><img src="figures/read-only.png"></span>
+              is displayed in
+              the right of the statusbar when appropriate.
+            </p>
+          </dd>
+</dl></div>
+</div>
+<div class="division sect2">
+<a name="getting-started-first-action"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">2.3. </span>Creating your first action</span></h3></div>
+<p class="para block block-first">
+        In this example, we are going to create an action which displays some
+        pretty informations about the current selection.
+      </p>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Checking for prerequisites</span></div>
+        <p class="para block block-first">
+          This action will require <span class="productname">MateDialog™</span>.
+        </p>
+      </div>
+<p class="para block">
+        <span class="productname">MateDialog™</span> is a program which will allow you to create a graphical
+        user interface from a command-line.
+      </p>
+<p class="para block">
+        You should check that this program
+        is installed on your system, by example by typing the following command
+        in a terminal:
+      </p>
+<p class="para block">
+        <span class="command" dir="ltr">
+          <span class="filename" dir="ltr">matedialog</span>
+        </span>
+      </p>
+<p class="para block">
+        then press <span class="keycap">Return</span>.
+      </p>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Creating the action</span></div>
+        <p class="para block block-first">
+          To create a new action, choose
+          <span class="menuchoice"><span class="guimenu">File</span> ▸ <span class="guisubmenu">New action</span> <span class="shortcut">(
+              <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">N</span></span>
+            )</span></span>.
+        </p>
+      </div>
+<p class="para block">
+        A new action is inserted in the items list,
+        and its properties are displayed in the tabs on the right pane.
+      </p>
+<p class="para block">
+        The label of the currently edited action (this one) is added
+        to the application name in the title bar.
+      </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-action"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 2</span> </span>Default properties of a new action</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-action-tab.png"><div class=" block caption">
+              <p class="para block block-first">Default properties of a new action</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">
+        In the <span class="guilabel">Items list</span>, the new action is displayed in italic characters.
+      </p>
+<p class="para block">
+        Italics are used as a reminder that the item has not yet been saved.
+      </p>
+<p class="para block">
+        As another reminder that there is some pending modifications,
+        an asterisk (« <span class="literal" dir="ltr">*</span> »)
+        comes to prefix the application name in the title bar. 
+      </p>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Qualifying your new action</span></div>
+        <p class="para block block-first">
+          It merely consists of choosing how your action will be displayed
+          in the file manager context menu.
+        </p>
+      </div>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <p class="para block block-first">
+            Enter <span class="userinput" dir="ltr">My first action</span>
+            in the <span class="guilabel">Context label</span> entry box.
+          </p>
+          <p class="para block">
+            The <span class="guilabel">Context label</span> entry box contains the label
+            of the action as you want it to be displayed in the file manager
+            context menu.
+          </p>
+         <p class="para block">
+            The label is a mandatory property of your action. If it happens
+            to be empty, then your action will be considered as invalid by
+            <span class="productname">Caja-Actions™</span>: it will be displayed in red in <span class="guilabel">Items list</span>
+            and will never be candidate to be displayed in the
+            file manager context menus.
+          </p>
+        </li>
+<li>
+          <p class="para block block-first">
+            Enter <span class="userinput" dir="ltr">This will execute an action with some parameters</span>
+            in the <span class="guilabel">Tooltip</span> entry box.
+          </p>
+          <p class="para block">
+            The <span class="guilabel">Tooltip</span> entry box contains the text
+            you want to be displayed as a short help to your action.
+          </p>
+        </li>
+<li>
+          <p class="para block block-first">
+            Select <span class="inlinegraphic"><img src="figures/stock-icon-about.png"></span> 
+            in the <span class="guilabel">Icon</span> drop-down list.
+          </p>
+          <p class="para block">
+            The <span class="guilabel">Icon</span> selection defines the icon which will
+            be associated with your action in file manager context menus and in
+            the toolbar.
+          </p>
+          <p class="para block">
+            You have two ways of choosing the icon associated to your action:
+          </p>
+          <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+              <span class="para">
+                Click on the <span class="guilabel">Icon</span> drop-down list to select an icon.
+              </span>
+            </li>
+<li>
+              <span class="para">
+                Click on <span class="guibutton">Browse</span> to search 
+                for an image in the filesystem.
+              </span>
+            </li>
+</ul></div>
+        </li>
+</ul></div>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Specifying the command to be executed</span></div>
+        <p class="para block block-first">
+          When you will select your action in the file manager
+          context menu, this command will be executed, with
+          arguments of your choice.
+        </p>
+      </div>
+<p class="para block">
+        Click on the <span class="guilabel">Command</span> tab to show the page
+        which will permit you to enter the command.
+      </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-command"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 3</span> </span>Command page</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-command-tab.png"><div class=" block caption">
+              <p class="para block block-first">Command page</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <p class="para block block-first">
+            Enter <span class="userinput" dir="ltr">matedialog</span> in the <span class="guilabel">Path</span>
+            entry box.
+          </p>
+          <p class="para block">
+            The <span class="guilabel">Path</span> entry box defines the command which
+            will be executed when you will select your action in the file manager
+            context menu.
+          </p>
+          <p class="para block">
+            You have two ways of defining the command to be executed:
+          </p>
+          <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+              <span class="para">
+                Enter it in the <span class="guilabel">Path</span> entry box.
+              </span>
+            </li>
+<li>
+              <span class="para">
+                Click on <span class="guibutton">Browse</span> to select
+                the executable file on the filesystem.
+              </span>
+            </li>
+</ul></div>
+          <p class="para block">
+            If the command you enter does not have an absolute path,
+            then it will be searched for in the <span class="envar" dir="ltr">PATH</span>
+            variable at execution time.
+          </p>
+        </li>
+<li>
+          <p class="para block block-first">
+            Enter <span class="userinput" dir="ltr">--info --text='%c selected item(s): %U'</span>
+            in the <span class="guilabel">Parameters</span>
+            entry box.
+          </p>
+          <p class="para block">
+            The <span class="guilabel">Parameters</span> contains the arguments which will
+            be passed to your command when it will be executed. These arguments may
+            embed parameters which will be expanded at runtime.
+          </p>
+          <p class="para block">
+            If both <span class="guilabel">Path</span> and <span class="guilabel">Parameters</span>
+            are empty, then this action will be considered as invalid: it will be
+            displayed in red in <span class="guilabel">Items list</span> and will be
+            never be candidate to be displayed in the
+            file manager context menus.
+          </p>
+        </li>
+</ul></div>
+<div class=" block formalpara">
+        <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Saving</span></div>
+        <p class="para block block-first">
+          To save all pending modifications, choose
+          <span class="menuchoice"><span class="guimenu">File</span> ▸ <span class="guisubmenu">Save</span> <span class="shortcut">(
+              <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">S</span></span>
+            )</span></span>.
+        </p>
+      </div>
+<p class="para block">
+        <span class="productname">Caja™</span> automatically takes into account your new action,
+        and displays it in its context menu.
+      </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-start-caja-context"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 4</span> </span>Your first action in the <span class="productname">Caja™</span> context menu</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/start-context-menu-caja.png"><div class=" block caption">
+              <p class="para block block-first">Your first action in the <span class="productname">Caja™</span> context menu</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">
+        Cliking of the item in the <span class="productname">Caja™</span> context menu activates it,
+        and executes the corresponding command.
+      </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-start-matedialog"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 5</span> </span>The result of the execution of your first action</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/start-matedialog-result.png"><div class=" block caption">
+              <p class="para block block-first">The result of the execution of your first action</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+</div>
+</div>
+<div class="division sect1">
+<a name="usage"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">3. </span>Using <span class="application">Caja-Actions Configuration Tool</span></span></h2></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">3.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions" title="Defining the conditions">Defining the conditions</a>
+</li>
+<li>
+<span class="label">3.2. </span><a class="xref" href="caja-actions-config-tool.html#usage-where" title="Locating the action">Locating the action</a>
+</li>
+<li>
+<span class="label">3.3. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution" title="What action should be executed ?">What action should be executed ?</a>
+</li>
+<li>
+<span class="label">3.4. </span><a class="xref" href="caja-actions-config-tool.html#usage-profile" title="Using profiles to extend your action">Using profiles to extend your action</a>
+</li>
+<li>
+<span class="label">3.5. </span><a class="xref" href="caja-actions-config-tool.html#usage-menus" title="Organizing actions in menus">Organizing actions in menus</a>
+</li>
+<li>
+<span class="label">3.6. </span><a class="xref" href="caja-actions-config-tool.html#usage-sorting" title="Sorting the items list">Sorting the items list</a>
+</li>
+<li>
+<span class="label">3.7. </span><a class="xref" href="caja-actions-config-tool.html#usage-edit" title="Editing">Editing</a>
+</li>
+<li>
+<span class="label">3.8. </span><a class="xref" href="caja-actions-config-tool.html#usage-save" title="Saving your modifications">Saving your modifications</a>
+</li>
+<li>
+<span class="label">3.9. </span><a class="xref" href="caja-actions-config-tool.html#usage-export" title="Exporting your actions">Exporting your actions</a>
+</li>
+<li>
+<span class="label">3.10. </span><a class="xref" href="caja-actions-config-tool.html#usage-import" title="Importing actions">Importing actions</a>
+</li>
+<li>
+<span class="label">3.11. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs" title="Setting your own preferences">Setting your own preferences</a>
+</li>
+</ul></div>
+<div class="division sect2">
+<a name="usage-conditions"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.1. </span>Defining the conditions</span></h3></div>
+<p class="para block block-first">
+    Whether your action will eventually be displayed in <span class="productname">Caja™</span> file manager
+    context menus or in its toolbar depends on the conditions you will have
+    defined for it.
+  </p>
+<p class="para block">
+    Conditions may be put against the location the file manager currently
+    points to, or against the currently selected items in this location.
+  </p>
+<p class="para block">
+    Each time the selection or the location change in the file manager,
+    <span class="productname">Caja-Actions™</span> checks all your actions, comparing the defined conditions
+    against the new location and selection: all defined conditions must
+    be satisfied in order your action be actually displayed. 
+  </p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">3.1.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-basenames" title="Basename-based conditions">Basename-based conditions</a>
+</li>
+<li>
+<span class="label">3.1.2. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-mimetypes" title="Mimetype-based conditions">Mimetype-based conditions</a>
+</li>
+<li>
+<span class="label">3.1.3. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-folders" title="Folder-based conditions">Folder-based conditions</a>
+</li>
+<li>
+<span class="label">3.1.4. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-schemes" title="Scheme-base-conditions">Scheme-base-conditions</a>
+</li>
+<li>
+<span class="label">3.1.5. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-capabilities" title="Capability-based conditions">Capability-based conditions</a>
+</li>
+<li>
+<span class="label">3.1.6. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-count" title="Selection count condition">Selection count condition</a>
+</li>
+<li>
+<span class="label">3.1.7. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-desktop" title="Desktop selection">Desktop selection</a>
+</li>
+<li>
+<span class="label">3.1.8. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-executable" title="Executable found condition">Executable found condition</a>
+</li>
+<li>
+<span class="label">3.1.9. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-dbus" title="D-Bus registration condition">D-Bus registration condition</a>
+</li>
+<li>
+<span class="label">3.1.10. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-true" title="Customized condition">Customized condition</a>
+</li>
+<li>
+<span class="label">3.1.11. </span><a class="xref" href="caja-actions-config-tool.html#usage-conditions-run" title="Running process condition">Running process condition</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-conditions-basenames"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.1. </span>Basename-based conditions</span></h4></div>
+<p class="para block block-first">
+      You may decide that your action will appear depending on the basenames
+      of the items currently selected in the file-manager: you may define that each
+      item of the selection must meet some sort of basename, and you may simultaneously
+      decide that none of the selected item(s) can have some other sort of basename.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Basenames</span> tab to show the page
+      which will permit you to configure your basename-based conditions.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-basenames"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 6</span> </span>Basename-based conditions</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-basenames-tab.png"><div class=" block caption">
+            <p class="para block block-first">The basename-based conditions tab</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      In fact, basename-based conditions are built as a list of
+      « must match one of » and « must not match any of »
+      patterns. In order for your action to be a candidate regarding these basename-based
+      conditions, each element of the selection must be valid for all the listed
+      conditions: the basename of each element must match at least one of the defined
+      « must match one of » patterns, and must not match any of
+      the defined « must not match any of » patterns.
+    </p>
+<p class="para block">
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </p>
+<p class="para block">
+      When targeting the selection context menu, your basename-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your basename-based conditions will
+      be checked against the basename of the current location.
+    </p>
+<p class="para block">
+      Defining a new basename-based condition involves two steps.
+    </p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">
+          Define the new condition filter.
+        </p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">
+              Press <span class="keycap">Insert</span> or click on 
+              <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span>
+              button to insert a new condition filter
+            </p>
+          </li>
+<li>
+            <p class="para block block-first">
+              Edit the newly inserted condition filter to the basename you want match.
+            </p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">
+                A basename-based condition may use « <span class="literal" dir="ltr">*</span> » or
+                « <span class="literal" dir="ltr">?</span> » wildcard characters.
+              </p>
+            </div></div>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">
+          Indicates whether this a « must match one of »
+          or a « must not match any of » condition.
+        </p>
+        <p class="para block">
+          Click on the <span class="guilabel">Must match one of</span> or
+          <span class="guilabel">Must not match any of</span> radio button in the same
+          row to set the corresponding condition.
+        </p>
+      </li>
+</ol></div>
+<p class="para block">
+      Depending of your target operating system, make sure that the
+      <span class="guilabel">Match case</span> checkbox is activated (or not). 
+    </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <p class="para block block-first">
+          When activated, all filters are considered as case sensitive,
+          which means that <span class="filename" dir="ltr">/my/file</span> filename is
+          considered distinct from <span class="filename" dir="ltr">/My/File</span> one.
+        </p>
+        <p class="para block">
+          This is the default behavior on Unix-like systems.
+        </p>
+      </li>
+<li>
+        <p class="para block block-first">
+          When deactivated, filters are considered as case insensitive,
+          which means that <span class="filename" dir="ltr">/my/file</span> and
+          <span class="filename" dir="ltr">/My/File</span> filenames are considered the same
+          name.
+        </p>
+        <p class="para block">
+          This is most probably what you want if you target some sort of
+          <span class="productname">Windows™</span> system.
+        </p>
+      </li>
+</ul></div>
+<p class="para block">
+      Removing a defined basename-based condition is as simple as selecting
+      it, and pressing <span class="keycap">Del</span> (or clicking on 
+      <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>
+      button).
+    </p>
+<p class="para block">
+      By default, the basename-based condition is just one
+      « <span class="literal" dir="ltr">must match one of *</span> » condition.
+      As all basenames always match the « <span class="literal" dir="ltr">*</span> »
+      condition, this just means that basename-based conditions are not
+      considered as relevant for the action.
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-mimetypes"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.2. </span>Mimetype-based conditions</span></h4></div>
+<p class="para block block-first">
+      You may decide that your action will appear depending on the mimetypes
+      of the items currently selected in the file-manager: you may define that each
+      item of the selection must meet some sort of mimetype; and you may simultaneously
+      decide that none of the selected item(s) can have some other sort of mimetype.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Mimetypes</span> tab to show the page
+      which will permit you to configure your mimetype-based conditions.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-mimetypes"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 7</span> </span>Mimetype-based conditions</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-mimetypes-tab.png"><div class=" block caption">
+            <p class="para block block-first">The mimetype-based conditions tab</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      In fact, mimetype-based conditions are built as a list of
+      « must match one of » and « must not match any of » patterns.
+      In order for your action to be a candidate regarding these mimetype-based
+      conditions, each element of the selection must be valid for all the listed
+      conditions: the mimetype of each element must match at least one of the defined
+      « must match one of » patterns, and must not match any of
+      the defined « must not match any of » patterns.
+    </p>
+<p class="para block">
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </p>
+<p class="para block">
+      When targeting the selection context menu, your mimetype-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your mimetype-based conditions will
+      be checked against the mimetype of the current location, which happens to
+      be the well known « inode/directory » mimetype.
+    </p>
+<p class="para block">
+      Defining a new mimetype-based condition involves two steps.
+    </p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">
+          Define the new condition filter.
+        </p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">
+              Press <span class="keycap">Insert</span> or click on 
+              <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span>
+              button to insert a new condition filter
+            </p>
+          </li>
+<li>
+            <p class="para block block-first">
+              Edit the newly inserted condition filter to the mimetype you want match.
+            </p>
+            <p class="para block">
+              A mimetype must be defined as a <span class="literal" dir="ltr">group/subgroup</span>
+              expression.
+            </p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">
+                The « <span class="literal" dir="ltr">*</span> » wildcard is supported only in some situations:
+              </p>
+              <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+                  <span class="para">
+                    The « <span class="literal" dir="ltr">*/*</span> » expression
+                    matches all mimetypes. As a convenient shortcut, the
+                    « <span class="literal" dir="ltr">*</span> » literal is also accepted for this same purpose.
+                  </span>
+                </li>
+<li>
+                  <span class="para">
+                    A <span class="literal" dir="ltr">group/*</span> string
+                    matches all subgroups of <span class="literal" dir="ltr">group</span> mimetype.
+                  </span>
+                </li>
+<li>
+                  <span class="para">
+                    The <span class="literal" dir="ltr">*/subgroup</span> string
+                    is not accepted as a valid wildcard.
+                  </span>
+                </li>
+</ul></div>
+            </div></div>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">
+          Indicates whether this a « must match one of » or a « must not match any of » condition.
+        </p>
+        <p class="para block">
+          Click on the <span class="guilabel">Must match one of</span> or
+          <span class="guilabel">Must not match any of</span> radio button in the same
+          row to set the corresponding condition.
+        </p>
+      </li>
+</ol></div>
+<p class="para block">
+      Removing a defined mimetype-based condition is as simple as selecting
+      it, and pressing <span class="keycap">Del</span> (or clicking on 
+      <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>
+      button).
+    </p>
+<p class="para block">
+      By default, the mimetype-based condition is just one
+      « <span class="literal" dir="ltr">must match one of */*</span> » condition.
+      As all mimetypes always match the « <span class="literal" dir="ltr">*/*</span> »,
+      this just means that mimetypes are not considered as relevant 
+      for the action.
+    </p>
+<div class=" block example block-indent">
+<div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Example 1</span> </span>Example of usual mimetypes</span></div>
+<div class="example-inner">
+      
+      <div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">
+            <span class="literal" dir="ltr">all/all</span>
+          </dt>
+<dd>
+            <p class="para block block-first">
+              Matches all items.
+            </p>
+          </dd>
+<dt class="term">
+            <span class="literal" dir="ltr">all/allfiles</span>
+          </dt>
+<dd>
+            <p class="para block block-first">
+              Matches all regular files.
+            </p>
+          </dd>
+<dt class="term">
+            <span class="literal" dir="ltr">inode/directory</span>
+          </dt>
+<dd>
+            <p class="para block block-first">
+              Matches only directories.
+            </p>
+          </dd>
+</dl></div>
+    </div>
+</div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-folders"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.3. </span>Folder-based conditions</span></h4></div>
+<p class="para block block-first">
+      You may decide that your action will appear depending on the directory
+      the items currently selected in the file-manager are located in:
+      you may define that each item of the selection must be located in one
+      hierarchy or in another; and you may simultaneously
+      decide that none of the selected item(s) can be located in some other
+      hierarchy.
+    </p>
+<p class="para block">
+      A folder-based condition must be understood as the specification
+      of the hierarchy in which the currently examined item should (or
+      should not) stay: this is a pattern on the dirname of the element.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Folders</span> tab to show the page
+      which will permit you to configure your folder-based conditions.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-folders"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 8</span> </span>Folder-based conditions</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-folders-tab.png"><div class=" block caption">
+            <p class="para block block-first">The folder-based conditions tab</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      In fact, folder-based conditions are built as a list of
+      « must match one of » and « must not match any of » patterns.
+      In order for your action to be a candidate regarding these folder-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: each element must be located in one of the defined
+      « must match one of » folders, and must not match any of the defined
+      « must not match any of » folders.
+    </p>
+<p class="para block">
+      If at least one element of the selection does not match all the
+      defined conditions, then your action will not be displayed.
+    </p>
+<p class="para block">
+      When targeting the selection context menu, your folder-based
+      conditions will be checked against the dirname of each currently
+      selected items.
+      When targeting the location context menu or the toolbar,
+      your folder-based conditions will be checked against the current
+      location.
+    </p>
+<p class="para block">
+      Defining a new folder-based condition involves two steps.
+    </p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">
+          Define the new condition filter.
+        </p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">
+              Press <span class="keycap">Insert</span> or click on 
+              <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span>
+              button to insert a new condition filter
+            </p>
+          </li>
+<li>
+            <p class="para block block-first">
+              Edit the newly inserted condition filter to the folder you want match.
+            </p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">
+                The « <span class="literal" dir="ltr">*</span> » and « <span class="literal" dir="ltr">?</span> » characters
+                are accepted as wildcards at any level of the defined
+                folder filter.
+              </p>
+            </div></div>
+          </li>
+<li>
+            <p class="para block block-first">
+              Or click on
+              <span class="guibutton">Browse</span> to select a folder on the file system.
+            </p>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">
+          Indicates whether this a « must match one of » or a « must not match any of »
+          condition.
+        </p>
+        <p class="para block">
+          Click on the <span class="guilabel">Must match one of</span> or
+          <span class="guilabel">Must not match any of</span> radio button in the same
+          row to set the corresponding condition.
+        </p>
+      </li>
+</ol></div>
+<p class="para block">
+      Removing a defined folder-based condition is as simple as selecting
+      it, and pressing <span class="keycap">Del</span> (or clicking on 
+      <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>
+      button).
+    </p>
+<p class="para block">
+      By default, the folder-based condition is just one
+      « <span class="literal" dir="ltr">must match one of /</span> » condition.
+      As <span class="literal" dir="ltr">/</span> is always the top of an Unix-like file system,
+      then all selected items always match this condition.
+    </p>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">
+        If you target a <span class="productname">Windows™</span> system, then this default value may
+        not be what you actually want.
+      </p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-schemes"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.4. </span>Scheme-base-conditions</span></h4></div>
+<p class="para block block-first">
+      You may decide that your action will appear depending on the schemes
+      of the URIs of the items currently selected in the file-manager:
+      you may define that each item of the selection must have some scheme;
+      and you may simultaneously
+      decide that none of the selected item(s) may have some other scheme.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Schemes</span> tab to show the page
+      which will permit you to configure your scheme-based conditions.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-schemes"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 9</span> </span>Scheme-based conditions</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-schemes-tab.png"><div class=" block caption">
+            <p class="para block block-first">The scheme-based conditions tab</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      In fact, scheme-based conditions are built as a list of
+      « must match one of » and « must not match any of » patterns.
+      In order for your action to be a candidate regarding these scheme-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: the scheme of each element must match at least one
+      of the defined « must match one of » patterns, and must not match any of
+      the defined « must not match any of » patterns.
+    </p>
+<p class="para block">
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </p>
+<p class="para block">
+      When targeting the selection context menu, your scheme-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your scheme-based conditions will
+      be checked against the scheme of the current location.
+    </p>
+<p class="para block">
+      Defining a new scheme-based condition involves two steps.
+    </p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">
+          Define the new condition filter.
+        </p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">
+              Press <span class="keycap">Insert</span> or click on 
+              <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span>
+              button to insert a new condition filter
+            </p>
+          </li>
+<li>
+            <p class="para block block-first">
+              Edit the newly inserted condition filter to the scheme you want match.
+            </p>
+            <div class="admonition block tip block-indent"><div class="tip-inner">
+              <p class="para block block-first">
+                Scheme-based conditions only accept « <span class="literal" dir="ltr">*</span> » wildcard,
+                which stands for « any scheme ».
+              </p>
+            </div></div>
+          </li>
+<li>
+            <p class="para block block-first">
+              Or click on
+              <span class="guibutton">Common</span> to select a scheme among those
+              predefined in 
+              <span class="menuchoice"><span class="guimenu">Edit</span> ▸ <span class="guimenuitem">Preferences</span></span>.
+            </p>
+            <div class=" block figure block-indent">
+<a name="cact-FIG-add-scheme"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 10</span> </span>Selecting a scheme among predefined defaults</span></div>
+<div class="figure-inner">
+              
+              <div class=" block screenshot block-first">
+                <div class="mediaobject">
+<img src="figures/cact-new-scheme.png"><div class=" block caption">
+                    <p class="para block block-first">Selecting a scheme among predefined defaults</p>
+                  </div>
+</div>
+              </div>
+            </div>
+</div>
+            <p class="para block">
+              A new scheme may only be selected here if it is not already
+              defined as a scheme filter.
+            </p>
+            <p class="para block">
+              To select a new scheme, click <span class="guibutton">OK</span>, or
+              double-click on the desired row.
+            </p>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">
+          Indicates whether this a « must match one of » or a « must not match any of » condition.
+        </p>
+        <p class="para block">
+          Click on the <span class="guilabel">Must match one of</span> or
+          <span class="guilabel">Must not match any of</span> radio button
+          in the same row to set the corresponding condition.
+        </p>
+      </li>
+</ol></div>
+<p class="para block">
+      Removing a defined scheme-based condition is as simple as selecting
+      it, and pressing <span class="keycap">Del</span> (or clicking on 
+      <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>
+      button).
+    </p>
+<p class="para block">
+      By default, the scheme-based condition is just one
+      « <span class="literal" dir="ltr">must match one of *</span> » condition,
+      which means that schemes are not relevant for this action.
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-capabilities"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.5. </span>Capability-based conditions</span></h4></div>
+<p class="para block block-first">
+      Capabilities are some properties that a file may exhibit to the user.
+    </p>
+<p class="para block">
+      But except for the <span class="literal" dir="ltr">Local</span> capability, all others
+      depend on the user who executes the command.
+    </p>
+<p class="para block">
+      You may so decide that your action will appear, or not, depending
+      on the capabilities of the selected item(s) <span class="abbrev">vs.</span>
+      the current user.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Capabilities</span> tab to show the page
+      which will permit you to configure your capability-based conditions.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-capabilities"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 11</span> </span>Capability-based conditions</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-capabilities-tab.png"><div class=" block caption">
+            <p class="para block block-first">The capability-based conditions tab</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      In fact, capability-based conditions are built as a list of
+      « must match all of » and « must not match any of » patterns.
+      In order for your action to be a candidate regarding these capability-based
+      conditions, each element of the selection must be valid for all the
+      listed conditions: the capability of each element must match each
+      of the defined « must match all of » capabilities,
+      and must not match any of the defined « must not match any of » ones.
+    </p>
+<p class="para block">
+      If at least one element of the selection does not match all the defined
+      conditions, then your action will not be displayed.
+    </p>
+<p class="para block">
+      When targeting the selection context menu, your capability-based conditions
+      will be checked against the currently selected items. When targeting the
+      location context menu or the toolbar, your capability-based conditions will
+      be checked against those of of the current location.
+    </p>
+<p class="para block">
+      Defining a new capability-based condition involves two steps.
+    </p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">
+          Define the new condition filter.
+        </p>
+        <div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+            <p class="para block block-first">
+              Press <span class="keycap">Insert</span> to insert a new condition filter
+            </p>
+          </li>
+<li>
+            <p class="para block block-first">
+              Edit the newly inserted condition filter to the capability you want match.
+            </p>
+          </li>
+<li>
+            <p class="para block block-first">
+              Or click on
+              <span class="guibutton"><span class="inlinegraphic"><img src="figures/add.png"></span></span>
+              to open the <span class="guilabel">Adding a new capability</span> dialog
+              box.
+            </p>
+            <div class=" block figure block-indent">
+<a name="cact-FIG-add-capability"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 12</span> </span>Managed capabilities</span></div>
+<div class="figure-inner">
+              
+              <div class=" block screenshot block-first">
+                <div class="mediaobject">
+<img src="figures/cact-new-capability.png"><div class=" block caption">
+                    <p class="para block block-first">The list of managed capabilities</p>
+                  </div>
+</div>
+              </div>
+            </div>
+</div>
+            <p class="para block">
+              A new capability may only be selected here if it is not already
+              defined as a capability filter.
+            </p>
+            <p class="para block">
+              To select a new capability, click <span class="guibutton">OK</span>, or
+              double-click on the desired row.
+            </p>
+          </li>
+</ul></div>
+      </li>
+<li>
+        <p class="para block block-first">
+          Indicates whether this a « must match all of »
+          or a « must not match any of » condition.
+        </p>
+        <p class="para block">
+          Click on the <span class="guilabel">Must match all of</span> or
+          <span class="guilabel">Must not match any of</span> radio button in the same
+          row to set the corresponding condition.
+        </p>
+      </li>
+</ol></div>
+<p class="para block">
+      Removing a defined capability-based condition is as simple as selecting
+      it, and pressing <span class="keycap">Del</span> (or clicking on 
+      <span class="guibutton"><span class="inlinegraphic"><img src="figures/remove.png"></span></span>
+      button).
+    </p>
+<p class="para block">
+      By default, the capability-based condition list is empty. This means
+      that capabilities are not relevant for this action.
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-count"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.6. </span>Selection count condition</span></h4></div>
+<p class="para block block-first">
+      You may define that your action will only appear if the current
+      selection in the file manager has some precise count, or some
+      precise relation with a given count.
+    </p>
+<div class=" block example block-indent">
+<div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Example 2</span> </span>A selection count use case</span></div>
+<div class="example-inner">
+      
+      <p class="para block block-first">
+        If your action consists in displaying the differences between
+        two files, you may define here
+        « <span class="literal" dir="ltr">Count = (equal to) 2</span> ».
+      </p>
+    </div>
+</div>
+<p class="para block">
+      Click on the <span class="guilabel">Environment</span> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-tab-environment"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 13</span> </span>Environment-based conditions</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-environment-tab.png"><div class=" block caption">
+            <p class="para block block-first">The environment-based conditions tab</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      The selection count condition is defined in the
+      <span class="guilabel">Appears if selection contains</span> frame.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-frame-count"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 14</span> </span>Selection count condition frame</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-selection-count-frame.png"><div class=" block caption">
+            <p class="para block block-first">Selection count condition frame</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      When targeting the selection context menu, the count condition
+      defined here will be checked against the count of currently
+      selected items. When targeting the location context menu or
+      the toolbar, the count condition will be checked against zero
+      because there is no selected item in this case.
+    </p>
+<p class="para block">
+      To define a selection count condition:
+    </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <p class="para block block-first">
+          Select in the <span class="guilabel">Count</span> drop-down list
+          the operator you want apply to the selection count:
+        </p>
+        <div class="block list simplelist"><table class="simplelist">
+<tr><td class="td-first"><span class="member"><span class="literal" dir="ltr">&lt;</span> (strictly less than)</span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="literal" dir="ltr">=</span> (equal to)</span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="literal" dir="ltr">&gt;</span> (strictly greater than)</span></td></tr>
+</table></div>
+      </li>
+<li>
+        <p class="para block block-first">
+          Enter the reference count you wish.
+        </p>
+      </li>
+</ul></div>
+<p class="para block">
+      The selection count defaults to
+      « <span class="literal" dir="ltr">Count &gt; (strictly greater than) 0</span> »,
+      which means that the action will be a candidate to be displayed
+      as soon as at least one item is selected in the file manager.
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-desktop"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.7. </span>Desktop selection</span></h4></div>
+<p class="para block block-first">
+      You may define that your action:
+    </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">
+          will always appear,
+        </span>
+      </li>
+<li>
+        <span class="para">
+          or will only appear in some given desktop environments,
+        </span>
+      </li>
+<li>
+        <span class="para">
+          or will not appear in some given desktop environments.
+        </span>
+      </li>
+</ul></div>
+<p class="para block">
+      Only one choice between these three items is possible.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Environment</span> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </p>
+<p class="para block">
+      The desktop selection is defined in the
+      <span class="guilabel">Desktop environment</span> frame.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-frame-desktop"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 15</span> </span>Desktop selection frame</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-desktop-environment-frame.png"><div class=" block caption">
+            <p class="para block block-first">Desktop selection frame</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      To define the desktop environment condition:
+    </p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <p class="para block block-first">
+          First select the type of filter:
+        </p>
+        <div class="block list simplelist"><table class="simplelist">
+<tr><td class="td-first"><span class="member">should your action always appear, regardless of
+           the desktop environment ?</span></td></tr>
+<tr><td class="td-first"><span class="member">should your action only appear in some desktop
+           environment(s) ?</span></td></tr>
+<tr><td class="td-first"><span class="member">should your action never appear in some
+           desktop environment(s) ?</span></td></tr>
+</table></div>
+      </li>
+<li>
+        <p class="para block block-first">
+          If your action should not always appear, then
+          select the relevant desktop environment(s) in the listbox
+          in the right side.
+        </p>
+      </li>
+</ol></div>
+<p class="para block">
+      The targeted desktop environment condition defaults to
+      « <span class="literal" dir="ltr">Always appear</span> »,
+      which means that the action will be a candidate to be displayed
+      regardless of the current desktop environment.
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-executable"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.8. </span>Executable found condition</span></h4></div>
+<p class="para block block-first">
+      You may define that your action will only appear if some
+      prerequisite package is installed on your system. This is
+      checked here by specifying that a specific file, known or
+      at least supposed to be provided by the package, must be
+      present on the file system, and executable.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Environment</span> tab to show the page
+      which will permit you to configure your environment-based conditions.
+    </p>
+<p class="para block">
+      The executable found condition is defined in the
+      <span class="guilabel">Execution environment</span> frame.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-frame-execution-environment"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 16</span> </span>Execution environment frame</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-execution-environment-frame.png"><div class=" block caption">
+            <p class="para block block-first">Execution environment frame</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      To define the relevant file, enter its full filename in the
+      <span class="guilabel">Appears if the file is executable</span> entry
+      box, or click on <span class="guibutton">Browse</span> to select a file
+      on the file system.
+    </p>
+<p class="para block">
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        You may embed some parameters in the searched filename.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-dbus"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.9. </span>D-Bus registration condition</span></h4></div>
+<p class="para block block-first">
+      You may define that your action will only appear if some given
+      name is registered on the D-Bus system at runtime.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Environment</span> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <span class="guilabel">Execution environment</span> frame.
+    </p>
+<p class="para block">
+      To define the relevant name, enter it in the
+      <span class="guilabel">Appears if the name is registered on D-Bus</span>
+      entry box.
+    </p>
+<p class="para block">
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        You may embed some parameters in the searched name.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-true"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.10. </span>Customized condition</span></h4></div>
+<p class="para block block-first">
+      You may define that your action will only appear if some given
+      command outputs a <span class="literal" dir="ltr">true</span> string on its standard
+      output.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Environment</span> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <span class="guilabel">Execution environment</span> frame.
+    </p>
+<p class="para block">
+      This lets you define your own customized condition filter,
+      by writing a small script which outputs, or not, the
+      <span class="literal" dir="ltr">true</span> string on stdout when it is ran.
+    </p>
+<p class="para block">
+      To define the command, enter it in the
+      <span class="guilabel">Appears if the command outputs "true"</span>
+      entry box.
+    </p>
+<p class="para block">
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        You may embed some parameters in the executed filename or its options.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-conditions-run"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.1.11. </span>Running process condition</span></h4></div>
+<p class="para block block-first">
+      You may define that your action will only appear if some given
+      binary is currently running.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Environment</span> tab to show the page
+      which will permit you to configure your environment-based conditions,
+      and focus on <span class="guilabel">Execution environment</span> frame.
+    </p>
+<p class="para block">
+      To define the binary, enter its name in the
+      <span class="guilabel">Appears if the binary is running</span>
+      entry box, or click on <span class="guibutton">Browse</span> to select
+      a file on the file system.
+    </p>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">
+        Even if you enter here the full filename of a binary, only
+        its basename will be searched for in the processes list
+        at runtime.
+      </p>
+    </div></div>
+<p class="para block">
+      Leave the field empty if this condition is not relevant for
+      your action.
+    </p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        You may embed some parameters in the searched name.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </p>
+    </div></div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-where"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.2. </span>Locating the action</span></h3></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-target-location-where"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 17</span> </span>Target configuration</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-target-location.png"><div class=" block caption">
+            <p class="para block block-first">Target configuration</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    <span class="productname">Caja™</span> file manager may display your action in different places,
+    depending on what you will request here, and if some item is currently
+    selected (or not).
+  </p>
+<p class="para block">
+    Click on the <span class="guilabel">Action</span> tab to show the page
+    which will permit you to configure the locations your action
+    targets.
+  </p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">3.2.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-where-selection" title="Targeting the selection context menu">Targeting the selection context menu</a>
+</li>
+<li>
+<span class="label">3.2.2. </span><a class="xref" href="caja-actions-config-tool.html#usage-where-location" title="Targeting the location context menu">Targeting the location context menu</a>
+</li>
+<li>
+<span class="label">3.2.3. </span><a class="xref" href="caja-actions-config-tool.html#usage-where-toolbar" title="Targeting the toolbar">Targeting the toolbar</a>
+</li>
+<li>
+<span class="label">3.2.4. </span><a class="xref" href="caja-actions-config-tool.html#usage-where-notes" title="Notes">Notes</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-where-selection"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.2.1. </span>Targeting the selection context menu</span></h4></div>
+<p class="para block block-first">
+      When <span class="guilabel">Display item in selection context menu</span>
+      is checked, then your action will be a candidate to be displayed in 
+      <span class="productname">Caja™</span>' context menu as soon as at least one item is selected in 
+      the file manager. Your action will so deal with currently selected
+      item(s).In order to be
+      actually displayed, all the conditions defined in
+      your candidate action must be met by each item currently selected
+      in the <span class="productname">Caja™</span> file manager. 
+    </p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        When an action targets the selection context menu, and is actually 
+        displayed in <span class="productname">Caja™</span>' context menu, then it is also displayed
+        in <span class="productname">Caja™</span>' <span class="guimenu">Edit</span> menu.
+      </p>
+    </div></div>
+<p class="para block">
+      This target is checked by default.
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-where-location"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.2.2. </span>Targeting the location context menu</span></h4></div>
+<p class="para block block-first">
+      When <span class="guilabel">Display item in location context menu</span> checkbox
+      is activated, then your action will be a candidate to be displayed in 
+      <span class="productname">Caja™</span>' context menu when the file manager selection is empty.
+      Your action will so deal with currently displayed location.
+      In order to be
+      actually displayed, all the conditions defined in
+      your candidate action must be met by the location currently displayed
+      in the <span class="productname">Caja™</span> file manager. 
+    </p>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        When an action targets the location context menu, and is actually 
+        displayed in <span class="productname">Caja™</span>' context menu, then it is also displayed
+        in <span class="productname">Caja™</span>' <span class="guimenu">File</span> menu.
+      </p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-where-toolbar"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.2.3. </span>Targeting the toolbar</span></h4></div>
+<p class="para block block-first">
+      When <span class="guilabel">Display item in the toolbar</span> checkbox
+      is activated, then your action will be a candidate to be displayed in 
+      <span class="productname">Caja™</span>' toolbar.
+    </p>
+<p class="para block">
+      Actions displayed in the toolbar only deal with the location which
+      is currently displayed in the file-manager, not with the items which
+      may be currently selected (or not). In order to be displayed, all the
+      conditions defined in your candidate action must so be met by the
+      current location. 
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-where-notes"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.2.4. </span>Notes</span></h4></div>
+<div class=" block formalpara block-first">
+      <div class="block block-first title title-formal"><span class="title"><span class="label"></span>If your action is to be displayed in a context menu</span></div>
+      <p class="para block block-first">
+        Whether it is the selection context menu or the location
+        context menu, and both in <span class="productname">Caja™</span>' context menus and in 
+        <span class="guimenu">File</span> or <span class="guimenu">Edit</span> menus, it
+        will be displayed as
+      </p>
+    </div>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">
+          the <span class="guilabel">Context label</span> as a label,
+        </span>
+      </li>
+<li>
+        <span class="para">
+          the <span class="guilabel">Icon</span>,
+        </span>
+      </li>
+<li>
+        <span class="para">
+          these two properties being associated with the
+          <span class="guilabel">Tooltip</span>.
+        </span>
+      </li>
+</ul></div>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">
+        Depending of the exact configuration of your desktop environment,
+        the icon may or may not be displayed in front of the label in
+        the menu.
+      </p>
+    </div></div>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        You may embed some parameters in the label, the icon name or the tooltip.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </p>
+    </div></div>
+<div class=" block formalpara">
+      <div class="block block-first title title-formal"><span class="title"><span class="label"></span>If your action is to be displayed in the toolbar</span></div>
+      <p class="para block block-first">
+        It will be displayed as
+      </p>
+    </div>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">
+          the <span class="guilabel">Toolbar label</span> as a label,
+        </span>
+      </li>
+<li>
+        <span class="para">
+          the <span class="guilabel">Icon</span>,
+        </span>
+      </li>
+<li>
+        <span class="para">
+          these two properties being associated with the
+          <span class="guilabel">Tooltip</span>.
+        </span>
+      </li>
+</ul></div>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">
+        Depending of the exact configuration of your desktop environment,
+        the toolbar label may or may not be displayed in front of the icon
+        in the toolbar.
+      </p>
+    </div></div>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        The toolbar label defaults to the same label as
+        those used in menus. By unchecking the
+        <span class="guilabel">Use same label for icon in the toolbar</span>
+        checkbox you can define a label specific to the
+        toolbar, which is usually shorter that those defined for the menus.
+      </p>
+    </div></div>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        You may embed some parameters in the toolbar label, the icon name or the tooltip.
+        These parameters will be dynamically substituted at runtime with values
+        which will depend on currently selected item(s). 
+      </p>
+    </div></div>
+<div class=" block formalpara">
+      <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Defining several targets</span></div>
+      <p class="para block block-first">
+        An action may target the selection context menu, the location context
+        menu and the toolbar, or one or more of these.
+      </p>
+    </div>
+<div class=" block formalpara">
+      <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Defining no target at all</span></div>
+      <p class="para block block-first">
+        If no target is defined,
+        <span class="abbrev">i.e.</span> if the three checkboxes are unchecked, then your action
+        will never be displayed.
+      </p>
+    </div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-execution"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.3. </span>What action should be executed ?</span></h3></div>
+<p class="para block block-first">
+    You most probably want that your action eventually ends up in
+    executing something. And, as a matter of fact, having something
+    to execute is one of the few conditions which are required
+    for an action to be considered as valid.
+  </p>
+<p class="para block">
+    As we have already seen, the command to be executed is configured
+    in the <span class="guilabel">Command</span> page.
+  </p>
+<p class="para block">
+    This command may take arguments, which themselves may embed
+    parameters. These parameters will be expanded at runtime,
+    with values which will depend on currently selected item(s).
+  </p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">3.3.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-parameters" title="Available parameters">Available parameters</a>
+</li>
+<li>
+<span class="label">3.3.2. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-work" title="Where the action should it be executed ?">Where the action should it be executed ?</a>
+</li>
+<li>
+<span class="label">3.3.3. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how" title="How should the action be executed ?">How should the action be executed ?</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-execution-parameters"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.3.1. </span>Available parameters</span></h4></div>
+<p class="para block block-first">
+      In the <span class="guilabel">Command</span> page, click on <span class="guilabel">Legend</span>
+      button to see the list of available parameters.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-legend"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 18</span> </span>List of available parameters</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-legend.png"><div class=" block caption">
+            <p class="para block block-first">The available parameters</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<div class="admonition block tip block-indent"><div class="tip-inner">
+      <p class="para block block-first">
+        The <span class="guibutton">Legend</span> button has a toggling action:
+        click once to display the <span class="guilabel">Parameter Legend</span>
+        dialog box; click a second time to hide it.
+      </p>
+    </div></div>
+<div class="admonition block note block-indent"><div class="note-inner">
+      <p class="para block block-first">
+        The word « <span class="guilabel">first</span> » may be misleading
+        as it only refers to the list of selected items internally provided by
+        the file manager to the <span class="productname">Caja-Actions™</span> plugin.
+      </p>
+      <p class="para block">
+        In particular, it has <span class="emphasis">nothing to do</span> with the
+        visual selection you may
+        have done in the file manager window. And, in fact, which is the
+        « <span class="guilabel">first</span> » selected item in a
+        multiple selection is absolutely undefined and rather unpredictable.
+      </p>
+    </div></div>
+</div>
+<div class="division sect3">
+<a name="usage-execution-work"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.3.2. </span>Where the action should it be executed ?</span></h4></div>
+<p class="para block block-first">
+      Your action may be executed in a particular working directory.
+    </p>
+<p class="para block">
+      You may specify it in the <span class="guilabel">Command</span> tab, in the
+      <span class="guilabel">Working directory</span> entry box, or by clicking
+      on <span class="guibutton">Browse</span> to select a folder on the 
+      filesystem.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-work-dir-frame"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 19</span> </span>Working directory frame</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-working-directory-frame.png"><div class=" block caption">
+            <p class="para block block-first">Working directory frame</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      The working directory defaults to <span class="literal" dir="ltr">%d</span>, which runs
+      the command in the base directory of the (first) selected item.
+    </p>
+<p class="para block">
+      In the particular case of the <span class="literal" dir="ltr">%d</span> parameter,
+      the « <span class="guilabel">first</span> » selected item
+      is not very important because it is very likely that all selected items
+      are located in the same base directory.
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-execution-how"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.3.3. </span>How should the action be executed ?</span></h4></div>
+<p class="para block block-first">
+      Apart from configuring the conditions, the selection must be met in
+      order your action be displayed in file manager menus, <span class="productname">Caja-Actions™</span>
+      allows you to configure how exactly your command will be
+      executed.
+    </p>
+<p class="para block">
+      Click on the <span class="guilabel">Execution</span> tab to show the page
+      which configures the execution of your command.
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-execution"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 20</span> </span>Configuration of the execution modes</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-execution-tab.png"><div class=" block caption">
+            <p class="para block block-first">Configuration of the execution modes</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">3.3.3.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-mode" title="Execution mode">Execution mode</a>
+</li>
+<li>
+<span class="label">3.3.3.2. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-notify" title="Startup notification">Startup notification</a>
+</li>
+<li>
+<span class="label">3.3.3.3. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-class" title="Window class">Window class</a>
+</li>
+<li>
+<span class="label">3.3.3.4. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-user" title="Owner of the execution">Owner of the execution</a>
+</li>
+<li>
+<span class="label">3.3.3.5. </span><a class="xref" href="caja-actions-config-tool.html#usage-execution-how-singular" title="Multiple executions">Multiple executions</a>
+</li>
+</ul></div>
+<div class="division sect4">
+<a name="usage-execution-how-mode"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">3.3.3.1. </span>Execution mode</span></h5></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-execution-mode"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 21</span> </span>Configuration of the execution mode</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-exec-mode-frame.png"><div class=" block caption">
+              <p class="para block block-first">Configuration of the execution mode</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">
+        The execution mode of your command may be chosen between following 
+        values:
+      </p>
+<div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">
+            Normal
+          </dt>
+<dd>
+            <p class="para block block-first">
+              Starts the command as a standard graphical user interface.
+            </p>
+          </dd>
+<dt class="term">
+            Terminal
+          </dt>
+<dd>
+            <p class="para block block-first">
+              Starts the preferred terminal of the desktop environment,
+              and runs the command in it.
+            </p>
+          </dd>
+<dt class="term">
+            Embedded
+          </dt>
+<dd>
+            <p class="para block block-first">
+              Makes use of a special feature of the file manager which may allow
+              a terminal to be ran in it.
+            </p>
+            <p class="para block">
+              As <span class="productname">Caja™</span> does not have this feature, this option is strictly
+              equivalent to <span class="literal" dir="ltr">Terminal</span> option.
+            </p>
+          </dd>
+<dt class="term">
+            Display output
+          </dt>
+<dd>
+            <p class="para block block-first">
+              Starts the preferred terminal of the desktop environment, and
+              runs the command in it. At end, standard streams (stdout, stderr) 
+              are collected and displayed.
+            </p>
+          </dd>
+</dl></div>
+<p class="para block">
+        The execution mode of a command defaults to <span class="literal" dir="ltr">Normal</span>.
+        That is, the command is executed without any particular pre- or
+        post-work.
+      </p>
+</div>
+<div class="division sect4">
+<a name="usage-execution-how-notify"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">3.3.3.2. </span>Startup notification</span></h5></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-startup-mode"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 22</span> </span>Configuration of the startup modes</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-startup-mode-frame.png"><div class=" block caption">
+              <p class="para block block-first">Configuration of the startup modes</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">
+        If the execution mode of the command is <span class="literal" dir="ltr">Normal</span>,
+        and if you know that the application will send a <span class="literal" dir="ltr">remove</span>
+        message with the <span class="envar" dir="ltr">DESKTOP_STARTUP_ID</span> environment variable set,
+        then check the <span class="guilabel">Startup notify</span> checkbox.
+      </p>
+<p class="para block">
+        See the
+        <a class="ulink" href="http://www.freedesktop.org/Standards/startup-notification-spec" title="http://www.freedesktop.org/Standards/startup-notification-spec">http://www.freedesktop.org/Standards/startup-notification-spec</a>
+        for more details.
+      </p>
+</div>
+<div class="division sect4">
+<a name="usage-execution-how-class"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">3.3.3.3. </span>Window class</span></h5></div>
+<p class="para block block-first">
+        If the execution mode of the command is <span class="literal" dir="ltr">Normal</span>,
+        and if you know that the application will map at least one window with a
+        given class name,
+        then enter that name into the <span class="guilabel">Startup Window Manager class</span>
+        entry box.
+      </p>
+<p class="para block">
+        See the
+        <a class="ulink" href="http://www.freedesktop.org/Standards/startup-notification-spec" title="http://www.freedesktop.org/Standards/startup-notification-spec">http://www.freedesktop.org/Standards/startup-notification-spec</a>
+        for more details.
+      </p>
+</div>
+<div class="division sect4">
+<a name="usage-execution-how-user"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">3.3.3.4. </span>Owner of the execution</span></h5></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-execute-as"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 23</span> </span>Configuration of the owner of the run</span></div>
+<div class="figure-inner">
+        
+        <div class=" block screenshot block-first">
+          <div class="mediaobject">
+<img src="figures/cact-execute-as-frame.png"><div class=" block caption">
+              <p class="para block block-first">Configuration of the owner of the run</p>
+            </div>
+</div>
+        </div>
+      </div>
+</div>
+<p class="para block">
+        Enter in the <span class="guilabel">Execute as user</span> entry box the username
+        or the <span class="acronym">UID</span> of the user your command will be run as.
+      </p>
+<p class="para block">
+        If you do not enter anything in this field, then the command will be
+        executed as the current user.
+      </p>
+</div>
+<div class="division sect4">
+<a name="usage-execution-how-singular"></a><div class="header"><h5 class="sect4 title"><span class="title"><span class="label">3.3.3.5. </span>Multiple executions</span></h5></div>
+<p class="para block block-first">
+        You may want your command to be executed once, providing it the list of
+        selected items as argument.
+      </p>
+<p class="para block">
+        Or you may prefer your command to be repeated for each selected item,
+        providing a different item as argument for each execution.
+      </p>
+<p class="para block">
+        Actually, <span class="productname">Caja-Actions™</span> automatically handles these two behaviors,
+        depending of the form and the order of the parameters in the command
+        arguments.
+      </p>
+<p class="para block">
+        Though some parameters are not depending on the count of the
+        selection (<span class="abbrev">e.g.</span> « <span class="literal" dir="ltr">%c</span> »,
+        the selection count itself), most have two declensions:
+      </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <span class="para">
+            a « singular » one, <span class="abbrev">e.g.</span>
+            « <span class="literal" dir="ltr">%b</span> »,
+            the basename of the selected item;
+          </span>
+        </li>
+<li>
+          <span class="para">
+            a « plural » one, <span class="abbrev">e.g.</span>
+            « <span class="literal" dir="ltr">%B</span> »,
+            the space-separated list of the basenames of selected items.
+          </span>
+        </li>
+</ul></div>
+<p class="para block">
+        When the selection is empty or contains only one element,
+        and from this topic point of view, these two forms are exactly equivalent.
+      </p>
+<p class="para block">
+        When the selection contains more than one item:
+      </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+          <span class="para">
+            if the first relevant parameter is of a singular form,
+            then <span class="productname">Caja-Actions™</span> will consider that the command is only able to deal
+            with one item at a time, and thus that it has to be ran one time for
+            each selected item;
+          </span>
+        </li>
+<li>
+          <span class="para">
+            contrarily, if the first relevant parameter found is of the plural form,
+            then <span class="productname">Caja-Actions™</span> will consider that the command is able to deal with a
+            list of items, and thus the command will be executed only once;
+          </span>
+        </li>
+<li>
+          <span class="para">
+            if all found parameters are irrelevant, then <span class="productname">Caja-Actions™</span> defaults
+            to consider that the command should be executed only once.
+          </span>
+        </li>
+</ul></div>
+<div class="table block block-indent">
+<a name="cact-TAB-multiple-execution"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Table 1</span> </span>Characterization of the parameters <span class="abbrev">vs.</span> multiple execution</span></div>
+<table summary="Characterization of the parameters vs. multiple execution" style="border: solid 1px;">
+<thead><tr>
+<th style="text-align: center;" class="td-colsep">Parameter</th>
+<th style="text-align: left;" class="td-colsep">Description</th>
+<th style="text-align: center;" colspan="3">Repetition</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%b</span></td>
+<td style="text-align: left;" class="td-colsep">(first) basename</td>
+<td style="text-align: center;" class="td-colsep">singular</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%B</span></td>
+<td style="text-align: left;" class="td-colsep">space-separated list of basenames</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">plural</td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%c</span></td>
+<td style="text-align: left;" class="td-colsep">count of selected items</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">irrelevant</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%d</span></td>
+<td style="text-align: left;" class="td-colsep">(first) base directory</td>
+<td style="text-align: center;" class="td-colsep">singular</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%D</span></td>
+<td style="text-align: left;" class="td-colsep">space-separated list of base directory of each selected items</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">plural</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%f</span></td>
+<td style="text-align: left;" class="td-colsep">(first) filename</td>
+<td style="text-align: center;" class="td-colsep">singular</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%F</span></td>
+<td style="text-align: left;" class="td-colsep">space-separated list of selected filenames</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">plural</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%h</span></td>
+<td style="text-align: left;" class="td-colsep">hostname of the (first) URI</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">irrelevant</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%m</span></td>
+<td style="text-align: left;" class="td-colsep">mimetype of the (first) selected item</td>
+<td style="text-align: center;" class="td-colsep">singular</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%M</span></td>
+<td style="text-align: left;" class="td-colsep">space-separated list of the mimetypes of the selected items</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">plural</td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%n</span></td>
+<td style="text-align: left;" class="td-colsep">username of the (first) URI</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">irrelevant</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%o</span></td>
+<td style="text-align: left;" class="td-colsep">no-op operator which forces a singular form of execution</td>
+<td style="text-align: center;" class="td-colsep">singular</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%O</span></td>
+<td style="text-align: left;" class="td-colsep">no-op operator which forces a plural form of execution</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">plural</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%p</span></td>
+<td style="text-align: left;" class="td-colsep">port number of the (first) URI</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">irrelevant</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%s</span></td>
+<td style="text-align: left;" class="td-colsep">scheme of the (first) URI</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">irrelevant</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%u</span></td>
+<td style="text-align: left;" class="td-colsep">(first) URI</td>
+<td style="text-align: center;" class="td-colsep">singular</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%U</span></td>
+<td style="text-align: left;" class="td-colsep">space-separated list of selected URIs</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">plural</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%w</span></td>
+<td style="text-align: left;" class="td-colsep">(first) basename without the extension</td>
+<td style="text-align: center;" class="td-colsep">singular</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%W</span></td>
+<td style="text-align: left;" class="td-colsep">space-separated list of basenames without their extension</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">plural</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%x</span></td>
+<td style="text-align: left;" class="td-colsep">(first) extension</td>
+<td style="text-align: center;" class="td-colsep">singular</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%X</span></td>
+<td style="text-align: left;" class="td-colsep">space-separated list of extensions</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;">plural</td>
+</tr>
+<tr class="tr-shade">
+<td style="text-align: center;" class="td-colsep"><span class="literal" dir="ltr">%%</span></td>
+<td style="text-align: left;" class="td-colsep">the « <span class="literal" dir="ltr">%</span> » character</td>
+<td style="text-align: center;" class="td-colsep"></td>
+<td style="text-align: center;" class="td-colsep">irrelevant</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=" block example block-indent">
+<div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Example 3</span> </span>Usage of singular <span class="abbrev">vs.</span> plural forms</span></div>
+<div class="example-inner">
+        
+        <p class="para block block-first">
+          Say the current folder is <span class="filename" dir="ltr">/data</span>,
+          and the current selection contains the three files
+          <span class="filename" dir="ltr">pierre</span>, <span class="filename" dir="ltr">paul</span>
+          and <span class="filename" dir="ltr">jacques</span>.
+        </p>
+        <div class=" block formalpara">
+          <div class="block block-first title title-formal"><span class="title"><span class="label"></span>
+            If we have requested <span class="command" dir="ltr">echo %b</span>,
+          </span></div>
+          <p class="para block block-first">
+            then the following commands will be successively run:
+          </p>
+        </div>
+        <div class="block list simplelist"><table class="simplelist">
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo pierre</span></span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo paul</span></span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo jacques</span></span></td></tr>
+</table></div>
+        <p class="para block">
+          This is because <span class="literal" dir="ltr">%b</span> marks a <span class="emphasis">singular</span>
+          parameter. The command is then run once for each of the selected items.
+        </p>
+        <div class=" block formalpara">
+          <div class="block block-first title title-formal"><span class="title"><span class="label"></span>
+            Contrarily, if we have requested <span class="command" dir="ltr">echo %B</span>,
+          </span></div>
+          <p class="para block block-first">
+            then the following command will be run:
+          </p>
+        </div>
+        <div class="block list simplelist"><table class="simplelist"><tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo pierre paul jacques</span></span></td></tr></table></div>
+        <p class="para block">
+          This is because <span class="literal" dir="ltr">%B</span> marks a <span class="emphasis">plural</span>
+          parameter. The command is then run only once, with the list of selected
+          items as arguments.
+        </p>
+        <div class=" block formalpara">
+          <div class="block block-first title title-formal"><span class="title"><span class="label"></span>
+            If we have requested <span class="command" dir="ltr">echo %b %B</span>,
+          </span></div>
+          <p class="para block block-first">
+            then the following commands will be successively run:
+          </p>
+        </div>
+        <div class="block list simplelist"><table class="simplelist">
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo pierre pierre paul jacques</span></span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo paul pierre paul jacques</span></span></td></tr>
+<tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo jacques pierre paul jacques</span></span></td></tr>
+</table></div>
+        <p class="para block">
+          This is because the first <span class="emphasis">relevant</span> parameter
+          is <span class="literal" dir="ltr">%b</span>, and so the command is run once for each
+          selected item, replacing at each occurrence the <span class="literal" dir="ltr">%b</span>
+          parameter with the corresponding item. The second parameter is
+          computed and added as arguments to the executed command.
+        </p>
+        <div class=" block formalpara">
+          <div class="block block-first title title-formal"><span class="title"><span class="label"></span>
+            And if we have requested <span class="literal" dir="ltr">echo %B %b</span>,
+          </span></div>
+          <p class="para block block-first">
+            then the following commands will be run:
+          </p>
+        </div>
+        <div class="block list simplelist"><table class="simplelist"><tr><td class="td-first"><span class="member"><span class="command" dir="ltr">echo pierre paul jacques pierre</span></span></td></tr></table></div>
+        <p class="para block">
+          This is because the first <span class="emphasis">relevant</span> parameter here
+          is <span class="literal" dir="ltr">%B</span>. The command is then run only once, replacing
+          <span class="literal" dir="ltr">%B</span> with the space-separated list of basenames. As
+          the command is only run once, the <span class="literal" dir="ltr">%b</span> is substituted
+          only once with the (first) basename. 
+        </p>
+      </div>
+</div>
+</div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-profile"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.4. </span>Using profiles to extend your action</span></h3></div>
+<p class="para block block-first">
+    There are some situations where you will want a given action behave
+    slightly differently depending on the currently selected items or
+    the current runtime environment.
+  </p>
+<div class=" block example block-indent">
+<div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Example 4</span> </span>Open a terminal here</span></div>
+<div class="example-inner">
+    
+    <p class="para block block-first">
+      Say you have an action which opens a terminal in the current location.
+    </p>
+    <p class="para block">
+      You have configured it to open your preferred terminal in the
+      location your file manager currently points to.
+    </p>
+    <p class="para block">
+      But what if you want to select a directory in your file manager,
+      and directly open your terminal in this directory ? If you
+      keep based on the current file manager location, your
+      terminal will open in the parent of the targeted directory.
+    </p>
+    <p class="para block">
+      One solution is to define a new profile to your action,
+      configuring this profile to open the terminal in the
+      targeted directory.
+    </p>
+    <p class="para block">
+      At runtime, <span class="productname">Caja-Actions™</span> will successively examine each profile
+      attached to your action. If the first profile targets a file
+      while you have selected a directory, then <span class="productname">Caja-Actions™</span> will just
+      try with your second profile.
+    </p>
+  </div>
+</div>
+<p class="para block">
+    To create a new profile, first select the action in the items list,
+    then choose
+    <span class="menuchoice"><span class="guisubmenu">File</span> ▸ <span class="guimenuitem">New profile</span></span>.
+  </p>
+<p class="para block">
+    A new profile is created in your action.
+  </p>
+<p class="para block">
+    You can now define the conditions which must be met in order
+    this profile be selected, and the command which will be executed.
+  </p>
+<div class="autotoc"><ul><li>
+<span class="label">3.4.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-profile-order" title="Ordering the profiles inside an action">Ordering the profiles inside an action</a>
+</li></ul></div>
+<div class="division sect3">
+<a name="usage-profile-order"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.4.1. </span>Ordering the profiles inside an action</span></h4></div>
+<p class="para block block-first">
+      At runtime, <span class="productname">Caja-Actions™</span> will begin with examining the conditions
+      set on your action.
+    </p>
+<p class="para block">
+      If these conditions (the action-conditions) are met, then <span class="productname">Caja-Actions™</span>
+      will examine in order each profile.
+    </p>
+<p class="para block">
+      If the conditions defined in a profile are met, then this profile
+      will be validated, and the review of other profiles will stop.
+    </p>
+<p class="para block">
+      If no profile is found valid at runtime, then the action will be
+      itself considered invalid, and will not be displayed in the file
+      manager context menu.
+    </p>
+<p class="para block">
+      Profiles of an action are ordered, and they are examined in that order
+      at runtime. The first profile whose conditions are met will be validated,
+      and made selectable in the <span class="productname">Caja™</span> context menu.
+    </p>
+<p class="para block">
+      So, ordering of the profiles may be important for your action: the
+      first valid profile found is the only one selected.
+    </p>
+<p class="para block">
+      You may order your profiles inside an action in two ways.
+    </p>
+<div class="block list orderedlist"><ol class="orderedlist">
+<li class="li-first">
+        <span class="para">
+          Cut the profile to be moved, select the profile before which
+          you want your cut profile to be inserted, and paste it.
+        </span>
+      </li>
+<li>
+        <span class="para">
+          Click on the profile to be moved, and drag it to its right place.
+        </span>
+      </li>
+</ol></div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-menus"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.5. </span>Organizing actions in menus</span></h3></div>
+<p class="para block block-first">
+    As your list of actions will grow, you most probably will want to organize
+    them into menus, submenus, and so on.
+  </p>
+<p class="para block">
+    In order to create a new menu, choose
+    <span class="menuchoice"><span class="guimenu">File</span> ▸ <span class="guimenuitem">New menu</span></span>.
+  </p>
+<p class="para block">
+    A menu may be created anywhere in the list of your actions, but inside
+    of an action (<span class="abbrev">i.e.</span> not between two profiles of an action).
+  </p>
+<p class="para block">
+    As an action, the exact place where a new menu will be inserted
+    depends on the current sort order:
+  </p>
+<div class="block list variablelist"><dl class="variablelist">
+<dt class="term dt-first">
+        Manual order:
+      </dt>
+<dd>
+        <p class="para block block-first">
+          The new menu is inserted just before the current action or menu.
+        </p>
+        <p class="para block">
+          This place will not change when you later modify the label of the menu.
+        </p>
+      </dd>
+<dt class="term">
+        Ascending (resp. descending) alphabetical order:
+      </dt>
+<dd>
+        <p class="para block block-first">
+          The new menu is inserted at the correct place, regarding the default
+          « <span class="literal" dir="ltr">New Caja menu</span> » label.
+        </p>
+        <p class="para block">
+          This place will be automatically changed, each time you modify the
+          label of the menu.
+        </p>
+      </dd>
+</dl></div>
+<p class="para block">
+    As an action, too, a menu requires a label, and may have an icon and a
+    tooltip. Also, you may define some conditions in order your menu be
+    candidate to be displayed in <span class="productname">Caja™</span> context menu. If the defined
+    conditions are not met at runtime, then your whole menu, including
+    its submenus, its actions and so on, will not be displayed.
+  </p>
+</div>
+<div class="division sect2">
+<a name="usage-sorting"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.6. </span>Sorting the items list</span></h3></div>
+<p class="para block block-first">
+    Your actions and menus will be displayed in file manager context menus
+    in the same order that they are listed in the <span class="guilabel">Items list</span>,
+    on the left pane of the main <span class="application">Caja-Actions Configuration Tool</span> window.
+  </p>
+<p class="para block">
+    You may decide to:
+  </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+      <span class="para">
+        sort your actions and menus in ascending or descending alphabetical
+        order of their label,
+      </span>
+    </li>
+<li>
+      <span class="para">
+        or do not sort, and manually organize your actions and menus
+        in your own order.
+      </span>
+    </li>
+</ul></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">3.6.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-sorting-alpha" title="Alphabetically sorting your actions and menus">Alphabetically sorting your actions and menus</a>
+</li>
+<li>
+<span class="label">3.6.2. </span><a class="xref" href="caja-actions-config-tool.html#usage-sorting-manual" title="Manually organizing your actions and menus">Manually organizing your actions and menus</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-sorting-alpha"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.6.1. </span>Alphabetically sorting your actions and menus</span></h4></div>
+<p class="para block block-first">
+      In these modes, actions and menus are sorted depending of their label,
+      inside of their parent. 
+    </p>
+<div class=" block figure block-indent">
+<a name="cact-FIG-sort-buttons"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 24</span> </span>Sort buttons in the main window</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/sort-buttons-frame.png"><div class=" block caption">
+            <p class="para block block-first">Sort buttons in the main window</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+      You may sort your actions by:
+    </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">
+          Click on
+          <span class="guibutton"><span class="inlinegraphic"><img src="figures/sort-asc.png"></span></span>
+          (<span class="abbrev">resp.</span>
+          <span class="guibutton"><span class="inlinegraphic"><img src="figures/sort-desc.png"></span></span>)
+          button to sort your actions in ascending (<span class="abbrev">resp.</span> descending)
+          order.
+        </span>
+      </li>
+<li>
+        <span class="para">
+          Or edit the corresponding preference.
+        </span>
+      </li>
+</ul></div>
+</div>
+<div class="division sect3">
+<a name="usage-sorting-manual"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.6.2. </span>Manually organizing your actions and menus</span></h4></div>
+<p class="para block block-first">
+      When items are manually sorted in the list, new items are usually
+      inserted just at the current position.
+    </p>
+<p class="para block">
+      There is nonetheless the case where an action is
+      selected, and not expanded (or has currently only one profile).
+      Inserting a new profile will not insert it before the action,
+      but inside of the action. 
+    </p>
+<p class="para block">
+      To choose this mode:
+    </p>
+<div class="block list itemizedlist"><ul class="itemizedlist">
+<li class="li-first">
+        <span class="para">
+          Click on
+          <span class="guibutton"><span class="inlinegraphic"><img src="figures/sort-manual.png"></span></span>
+          button.
+        </span>
+      </li>
+<li>
+        <span class="para">
+          Or edit the corresponding preference.
+        </span>
+      </li>
+</ul></div>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-edit"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.7. </span>Editing</span></h3></div>
+<p class="para block block-first">
+    With <span class="application">Caja-Actions Configuration Tool</span>, you may safely cut, copy, paste to and from the clipboard.
+  </p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">3.7.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-edit-cut" title="Cut/Delete">Cut/Delete</a>
+</li>
+<li>
+<span class="label">3.7.2. </span><a class="xref" href="caja-actions-config-tool.html#usage-edit-multiple" title="Multiple selection">Multiple selection</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-edit-cut"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.7.1. </span>Cut/Delete</span></h4></div>
+<p class="para block block-first">
+      Deletion applies to current selection.
+    </p>
+<p class="para block">
+      Be warned that selecting and deleting all profiles of an action
+      leaves it without any profile, so in an invalid state.
+      The name of the action will be written in red (because it is
+      invalid) italic (because it has been modified) characters.
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-edit-multiple"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.7.2. </span>Multiple selection</span></h4></div>
+<p class="para block block-first">
+      Multiple selection is possible in <span class="application">Caja-Actions Configuration Tool</span>.
+      You can extend the current selection
+      by pressing <span class="keycap">Ctrl</span> or <span class="keycap">Shift</span>
+      while selecting an item to add to the selection.
+    </p>
+<p class="para block">
+      <span class="application">Caja-Actions Configuration Tool</span> only accepts homogeneous multiple selections. That is, you may
+      select one or more profiles, or one or more actions or menus. A multiple
+      selection containing both profiles and actions or menus is not allowed.
+      This is because <span class="application">Caja-Actions Configuration Tool</span> would not know where to paste such a selection.
+    </p>
+<p class="para block">
+      Note that selecting any row means also selecting children of this row.
+      These children are said « implicitely selected »:
+      they will be part of next edition operations, but are not considered
+      when verifying if selection is homogeneous.
+      Also, they cannot be explicitely selected (nor unselected).
+    </p>
+</div>
+</div>
+<div class="division sect2">
+<a name="usage-save"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.8. </span>Saving your modifications</span></h3></div>
+<p class="para block block-first">
+    To save your modifications, choose
+    <span class="menuchoice"><span class="guimenu">File</span> ▸ <span class="guisubmenu">Save</span> <span class="shortcut">(
+        <span class="keycombo"><span class="keycap">Ctrl</span>+<span class="keycap">S</span></span>
+      )</span></span>.
+  </p>
+<p class="para block">
+    All your pending modifications will be saved.
+    New items will be created by the first available writable I/O provider.
+  </p>
+<p class="para block">
+    <span class="productname">Caja-Actions™</span> also has an Auto-save feature which is configurable in 
+    <span class="guimenuitem">Preferences</span> dialog box.
+  </p>
+</div>
+<div class="division sect2">
+<a name="usage-export"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.9. </span>Exporting your actions</span></h3></div>
+<p class="para block block-first">
+  </p>
+</div>
+<div class="division sect2">
+<a name="usage-import"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.10. </span>Importing actions</span></h3></div>
+<p class="para block block-first">
+  </p>
+</div>
+<div class="division sect2">
+<a name="usage-prefs"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">3.11. </span>Setting your own preferences</span></h3></div>
+<p class="para block block-first">
+      Choose
+      <span class="menuchoice"><span class="guimenu">Edit</span> ▸ <span class="guimenuitem">Preferences</span></span>
+      to access to the configuration of your preferences.
+    </p>
+<div class="autotoc"><ul>
+<li>
+<span class="label">3.11.1. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-runtime" title="Runtime preferences">Runtime preferences</a>
+</li>
+<li>
+<span class="label">3.11.2. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-execution" title="Runtime execution preferences">Runtime execution preferences</a>
+</li>
+<li>
+<span class="label">3.11.3. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-ui" title="User interface preferences">User interface preferences</a>
+</li>
+<li>
+<span class="label">3.11.4. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-import" title="Import preferences">Import preferences</a>
+</li>
+<li>
+<span class="label">3.11.5. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-export" title="Export preferences">Export preferences</a>
+</li>
+<li>
+<span class="label">3.11.6. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-schemes" title="Schemes preferences">Schemes preferences</a>
+</li>
+<li>
+<span class="label">3.11.7. </span><a class="xref" href="caja-actions-config-tool.html#usage-prefs-providers" title="I/O providers preferences">I/O providers preferences</a>
+</li>
+</ul></div>
+<div class="division sect3">
+<a name="usage-prefs-runtime"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.11.1. </span>Runtime preferences</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-runtime"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 25</span> </span>Runtime preferences</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-runtime.png"><div class=" block caption">
+            <p class="para block block-first">Runtime preferences</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-execution"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.11.2. </span>Runtime execution preferences</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-execution"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 26</span> </span>Runtime execution preferences</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-execution.png"><div class=" block caption">
+            <p class="para block block-first">Runtime execution preferences</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<div class=" block figure block-indent">
+<a name="cact-FIG-prefs-desktop"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 27</span> </span>Desktop selection</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-desktop.png"><div class=" block caption">
+            <p class="para block block-first">Desktop selection</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-ui"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.11.3. </span>User interface preferences</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-ui"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 28</span> </span>UI preferences</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-ui.png"><div class=" block caption">
+            <p class="para block block-first">UI preferences</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-import"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.11.4. </span>Import preferences</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-import"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 29</span> </span>Import preferences</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-import.png"><div class=" block caption">
+            <p class="para block block-first">Import preferences</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-export"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.11.5. </span>Export preferences</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-export"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 30</span> </span>Export preferences</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-export.png"><div class=" block caption">
+            <p class="para block block-first">Export preferences</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-schemes"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.11.6. </span>Schemes preferences</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-schemes"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 31</span> </span>Schemes preferences</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-schemes.png"><div class=" block caption">
+            <p class="para block block-first">Schemes preferences</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    </p>
+</div>
+<div class="division sect3">
+<a name="usage-prefs-providers"></a><div class="header"><h4 class="sect3 title"><span class="title"><span class="label">3.11.7. </span>I/O providers preferences</span></h4></div>
+<div class=" block figure block-first block-indent">
+<a name="cact-FIG-prefs-io-providers"></a><div class="block block-first title title-formal"><span class="title"><span class="label"><span style="font-style: italic; ">Figure 32</span> </span>I/O providers preferences</span></div>
+<div class="figure-inner">
+      
+      <div class=" block screenshot block-first">
+        <div class="mediaobject">
+<img src="figures/cact-preferences-io-providers.png"><div class=" block caption">
+            <p class="para block block-first">I/O providers preferences</p>
+          </div>
+</div>
+      </div>
+    </div>
+</div>
+<p class="para block">
+    </p>
+</div>
+</div>
+</div>
+<div class="division sect1">
+<a name="misc"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">4. </span>Miscellaneous informations</span></h2></div>
+<p class="para block block-first">
+          The new action is also displayed in red color in the items list.
+          Red color is used as an indicator that the item
+          is invalid, that is that the item cannot be candidate to be displayed in a
+          <span class="productname">Caja™</span> context menu because some of its informations are missing or erroneous.
+          Here, and though this newly inserted action has some suitable defaults, it lacks a 
+          command to be executed to be considered valid by <span class="application">Caja-Actions Configuration Tool</span>
+        </p>
+</div>
+<div class="division sect1">
+<a name="bugs"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">5. </span>Known Bugs and Limitations</span></h2></div>
+<div class="autotoc"><ul>
+<li>
+<span class="label">5.1. </span><a class="xref" href="caja-actions-config-tool.html#bugs-bugs" title="Known bugs">Known bugs</a>
+</li>
+<li>
+<span class="label">5.2. </span><a class="xref" href="caja-actions-config-tool.html#bugs-limits" title="Known limitations">Known limitations</a>
+</li>
+</ul></div>
+<div class="division sect2">
+<a name="bugs-bugs"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">5.1. </span>Known bugs</span></h3></div>
+<p class="para block block-first">
+    Known bugs are available on
+    <a class="ulink" href="https://bugzilla.gnome.org/buglist.cgi?product=caja-actions&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED" title="https://bugzilla.gnome.org/buglist.cgi?product=caja-actions&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED">Bugzilla summary page</a>.
+  </p>
+<p class="para block">
+    If you find some new bug in <span class="productname">Caja-Actions™</span>, you are welcome to open it by pointing
+    your favorite browser to
+    <a class="ulink" href="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" title="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions">Bugzilla web site</a>.
+  </p>
+<div class=" block formalpara">
+    <div class="block block-first title title-formal"><span class="title"><span class="label"></span><a class="ulink" href="https://bugzilla.gnome.org/show_bug.cgi?id=616532" title="https://bugzilla.gnome.org/show_bug.cgi?id=616532">#616532</a> Directory selection</span></div>
+    <p class="para block block-first">
+      When you're browsing the folder you want to export to in the <span class="application">Caja-Actions Configuration Tool</span>'s
+      export assistant you can't select it as the directory to export to.
+      Instead you have to go to the directory a level up and select the directory
+      you want to export to there.
+    </p>
+  </div>
+</div>
+<div class="division sect2">
+<a name="bugs-limits"></a><div class="header"><h3 class="sect2 title"><span class="title"><span class="label">5.2. </span>Known limitations</span></h3></div>
+<div class=" block formalpara block-first">
+    <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Execution mode</span></div>
+    <p class="para block block-first">
+      As of version 3.0, execution mode may be configured in <span class="application">Caja-Actions Configuration Tool</span> but is
+      not yet honored by <span class="productname">Caja™</span> plugin.
+    </p>
+  </div>
+<p class="para block">
+    This concern working directory, execution mode, startup notification and
+    execution's owner parameters.
+  </p>
+<div class=" block formalpara">
+    <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Suggested shortcut</span></div>
+    <p class="para block block-first">
+      As of version 3.0, suggested shortcut, as described in <a class="ulink" href="http://www.caja-actions.org/?q=node/377" title="http://www.caja-actions.org/?q=node/377">DES-EMA specification</a> cannot be
+      configured in <span class="application">Caja-Actions Configuration Tool</span>, and is not honored by <span class="productname">Caja™</span> plugin.
+    </p>
+  </div>
+<div class=" block formalpara">
+    <div class="block block-first title title-formal"><span class="title"><span class="label"></span>Menu separator</span></div>
+    <p class="para block block-first">
+      As of version 3.0, menu separators cannot be
+      configured in <span class="application">Caja-Actions Configuration Tool</span>, and are not honored by <span class="productname">Caja™</span> plugin.
+    </p>
+  </div>
+<p class="para block">
+    One has to note that, for now, <span class="productname">Caja™</span> file manager does not
+    allow its plugins to define separators in the context menu.
+  </p>
+</div>
+</div>
+<div class="division sect1">
+<a name="about"></a><div class="header"><h2 class="sect1 title"><span class="title"><span class="label">6. </span>About <span class="application">Caja-Actions Configuration Tool</span></span></h2></div>
+<p class="para block block-first">
+      The first version of <span class="productname">Caja-Actions™</span> was initially written by
+      Frederic Ruaudel (<span class="email" dir="ltr">&lt;<a href="mailto:grumz@grumz.net" title="Send email to ‘grumz@grumz.net’.">grumz@grumz.net</a>&gt;</span>) and
+      Rodrigo Moya (<span class="email" dir="ltr">&lt;<a href="mailto:rodrigo@mate-db.org" title="Send email to ‘rodrigo@mate-db.org’.">rodrigo@mate-db.org</a>&gt;</span>).
+      It has been thoroughly improved and is currently maintained by
+      Pierre Wieser (<span class="email" dir="ltr">&lt;<a href="mailto:pwieser@trychlos.org" title="Send email to ‘pwieser@trychlos.org’.">pwieser@trychlos.org</a>&gt;</span>).
+    </p>
+<p class="para block">
+      Artwork is due to courtesy of
+      Ulisse Perusin (<span class="email" dir="ltr">&lt;<a href="mailto:uli.peru@gmail.com" title="Send email to ‘uli.peru@gmail.com’.">uli.peru@gmail.com</a>&gt;</span>) and
+      DragonArtz
+      (<a class="ulink" href="http://www.dragonartz.net/" title="http://www.dragonartz.net/">http://www.dragonartz.net</a>).
+    </p>
+<p class="para block">
+      To find more information about <span class="productname">Caja-Actions™</span>, please visit the
+      <a class="ulink" href="http://www.caja-actions.org/" title="http://www.caja-actions.org/">http://www.caja-actions.org/</a>
+      <span class="productname">Caja-Actions™</span> website.
+    </p>
+<p class="para block">
+      To report a bug or make a suggestion regarding <span class="productname">Caja-Actions™</span>,
+      the <span class="application">Caja-Actions Configuration Tool</span> or this manual, follow the directions in the
+      <a class="ulink" href="ghelp:user-guide#feedback" title="ghelp:user-guide#feedback">MATE Feedback Page</a>,
+      or you may prefer, at your convenience, directly open a bug
+      or a request for enhancement in
+      <a class="ulink" href="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" title="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions">Bugzilla website</a>.
+    </p>
+</div>
+<div class="division appendix">
+<a name="appendix-gnu-fdl"></a><div class="header"><h2 class="appendix title"><span class="title"><span class="label">A. </span>GNU Free Documentation License</span></h2></div>
+<p class="simpara block block-first">Version 1.3, 3 November 2008</p>
+<p class="simpara block">
+    Copyright © 2000, 2001, 2002, 2007, 2008
+    <a class="ulink" href="http://www.fsf.org/" title="http://www.fsf.org/">Free Software Foundation, Inc.</a>
+  </p>
+<p class="simpara block">
+    Everyone is permitted to copy and distribute verbatim copies of this
+    license document, but changing it is not allowed.
+  </p>
+<p class="simpara block">
+    The purpose of this License is to make a manual, textbook, or other
+    functional and useful document “free” in the sense of freedom:
+    to assure everyone the effective freedom to copy and redistribute it, with
+    or without modifying it, either commercially or
+    noncommercially. Secondarily, this License preserves for the author and
+    publisher a way to get credit for their work, while not being considered
+    responsible for modifications made by others.
+  </p>
+<p class="simpara block">
+    This License is a kind of “copyleft”, which means that
+    derivative works of the document must themselves be free in the same
+    sense. It complements the GNU General Public License, which is a copyleft
+    license designed for free software.
+  </p>
+<p class="simpara block">
+    We have designed this License in order to use it for manuals for free
+    software, because free software needs free documentation: a free program
+    should come with manuals providing the same freedoms that the software
+    does. But this License is not limited to software manuals; it can be used
+    for any textual work, regardless of subject matter or whether it is
+    published as a printed book. We recommend this License principally for
+    works whose purpose is instruction or reference.
+  </p>
+<p class="simpara block">
+    This License applies to any manual or other work, in any medium, that
+    contains a notice placed by the copyright holder saying it can be
+    distributed under the terms of this License. Such a notice grants a
+    world-wide, royalty-free license, unlimited in duration, to use that work
+    under the conditions stated herein. The “Document”, below,
+    refers to any such manual or work. Any member of the public is a licensee,
+    and is addressed as “you”. You accept the license if you copy,
+    modify or distribute the work in a way requiring permission under
+    copyright law.
+  </p>
+<p class="simpara block">
+    A “Modified Version” of the Document means any work containing
+    the Document or a portion of it, either copied verbatim, or with
+    modifications and/or translated into another language.
+  </p>
+<p class="simpara block">
+    A “Secondary Section” is a named appendix or a front-matter
+    section of the Document that deals exclusively with the relationship of
+    the publishers or authors of the Document to the Document’s overall
+    subject (or to related matters) and contains nothing that could fall
+    directly within that overall subject. (Thus, if the Document is in part a
+    textbook of mathematics, a Secondary Section may not explain any
+    mathematics.) The relationship could be a matter of historical connection
+    with the subject or with related matters, or of legal, commercial,
+    philosophical, ethical or political position regarding them.
+  </p>
+<p class="simpara block">
+    The “Invariant Sections” are certain Secondary Sections whose
+    titles are designated, as being those of Invariant Sections, in the notice
+    that says that the Document is released under this License. If a section
+    does not fit the above definition of Secondary then it is not allowed to
+    be designated as Invariant. The Document may contain zero Invariant
+    Sections. If the Document does not identify any Invariant Sections then
+    there are none.
+  </p>
+<p class="simpara block">
+    The “Cover Texts” are certain short passages of text that are
+    listed, as Front-Cover Texts or Back-Cover Texts, in the notice that says
+    that the Document is released under this License. A Front-Cover Text may
+    be at most 5 words, and a Back-Cover Text may be at most 25 words.
+  </p>
+<p class="simpara block">
+    A “Transparent” copy of the Document means a machine-readable
+    copy, represented in a format whose specification is available to the
+    general public, that is suitable for revising the document
+    straightforwardly with generic text editors or (for images composed of
+    pixels) generic paint programs or (for drawings) some widely available
+    drawing editor, and that is suitable for input to text formatters or for
+    automatic translation to a variety of formats suitable for input to text
+    formatters. A copy made in an otherwise Transparent file format whose
+    markup, or absence of markup, has been arranged to thwart or discourage
+    subsequent modification by readers is not Transparent. An image format is
+    not Transparent if used for any substantial amount of text. A copy that is
+    not “Transparent” is called “Opaque”.
+  </p>
+<p class="simpara block">
+    Examples of suitable formats for Transparent copies include plain ASCII
+    without markup, Texinfo input format, LaTeX input format, SGML or XML
+    using a publicly available DTD, and standard-conforming simple HTML,
+    PostScript or PDF designed for human modification. Examples of transparent
+    image formats include PNG, XCF and JPG. Opaque formats include proprietary
+    formats that can be read and edited only by proprietary word processors,
+    SGML or XML for which the DTD and/or processing tools are not generally
+    available, and the machine-generated HTML, PostScript or PDF produced by
+    some word processors for output purposes only.
+  </p>
+<p class="simpara block">
+    The “Title Page” means, for a printed book, the title page
+    itself, plus such following pages as are needed to hold, legibly, the
+    material this License requires to appear in the title page. For works in
+    formats which do not have any title page as such, “Title Page”
+    means the text near the most prominent appearance of the work’s
+    title, preceding the beginning of the body of the text.
+  </p>
+<p class="simpara block">
+    The “publisher” means any person or entity that distributes
+    copies of the Document to the public.
+  </p>
+<p class="simpara block">
+    A section “Entitled XYZ” means a named subunit of the Document
+    whose title either is precisely XYZ or contains XYZ in parentheses
+    following text that translates XYZ in another language. (Here XYZ stands
+    for a specific section name mentioned below, such as
+    “Acknowledgements”, “Dedications”,
+    “Endorsements”, or “History”.) To “Preserve
+    the Title” of such a section when you modify the Document means that
+    it remains a section “Entitled XYZ” according to this
+    definition.
+  </p>
+<p class="simpara block">
+    The Document may include Warranty Disclaimers next to the notice which
+    states that this License applies to the Document. These Warranty
+    Disclaimers are considered to be included by reference in this License,
+    but only as regards disclaiming warranties: any other implication that
+    these Warranty Disclaimers may have is void and has no effect on the
+    meaning of this License.
+  </p>
+<p class="simpara block">
+    You may copy and distribute the Document in any medium, either
+    commercially or noncommercially, provided that this License, the copyright
+    notices, and the license notice saying this License applies to the
+    Document are reproduced in all copies, and that you add no other
+    conditions whatsoever to those of this License. You may not use technical
+    measures to obstruct or control the reading or further copying of the
+    copies you make or distribute. However, you may accept compensation in
+    exchange for copies. If you distribute a large enough number of copies you
+    must also follow the conditions in section 3.
+  </p>
+<p class="simpara block">
+    You may also lend copies, under the same conditions stated above, and you
+    may publicly display copies.
+  </p>
+<p class="simpara block">
+    If you publish printed copies (or copies in media that commonly have
+    printed covers) of the Document, numbering more than 100, and the
+    Document’s license notice requires Cover Texts, you must enclose
+    the copies in covers that carry, clearly and legibly, all these Cover
+    Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on the
+    back cover. Both covers must also clearly and legibly identify you as the
+    publisher of these copies. The front cover must present the full title
+    with all words of the title equally prominent and visible. You may add
+    other material on the covers in addition. Copying with changes limited to
+    the covers, as long as they preserve the title of the Document and satisfy
+    these conditions, can be treated as verbatim copying in other respects.
+  </p>
+<p class="simpara block">
+    If the required texts for either cover are too voluminous to fit legibly,
+    you should put the first ones listed (as many as fit reasonably) on the
+    actual cover, and continue the rest onto adjacent pages.
+  </p>
+<p class="simpara block">
+    If you publish or distribute Opaque copies of the Document numbering more
+    than 100, you must either include a machine-readable Transparent copy
+    along with each Opaque copy, or state in or with each Opaque copy a
+    computer-network location from which the general network-using public has
+    access to download using public-standard network protocols a complete
+    Transparent copy of the Document, free of added material. If you use the
+    latter option, you must take reasonably prudent steps, when you begin
+    distribution of Opaque copies in quantity, to ensure that this Transparent
+    copy will remain thus accessible at the stated location until at least one
+    year after the last time you distribute an Opaque copy (directly or
+    through your agents or retailers) of that edition to the public.
+  </p>
+<p class="simpara block">
+    It is requested, but not required, that you contact the authors of the
+    Document well before redistributing any large number of copies, to give
+    them a chance to provide you with an updated version of the Document.
+  </p>
+<p class="simpara block">
+    You may copy and distribute a Modified Version of the Document under the
+    conditions of sections 2 and 3 above, provided that you release the
+    Modified Version under precisely this License, with the Modified Version
+    filling the role of the Document, thus licensing distribution and
+    modification of the Modified Version to whoever possesses a copy of it. In
+    addition, you must do these things in the Modified Version:
+  </p>
+<div class="block list orderedlist"><ol class="orderedlist" type="A">
+<li class="li-first">
+      <p class="simpara block block-first">
+        Use in the Title Page (and on the covers, if any) a title distinct
+        from that of the Document, and from those of previous versions (which
+        should, if there were any, be listed in the History section of the
+        Document). You may use the same title as a previous version if the
+        original publisher of that version gives permission.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        List on the Title Page, as authors, one or more persons or entities
+        responsible for authorship of the modifications in the Modified
+        Version, together with at least five of the principal authors of the
+        Document (all of its principal authors, if it has fewer than five),
+        unless they release you from this requirement.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        State on the Title page the name of the publisher of the Modified
+        Version, as the publisher.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Preserve all the copyright notices of the Document.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Add an appropriate copyright notice for your modifications adjacent to
+        the other copyright notices.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Include, immediately after the copyright notices, a license notice
+        giving the public permission to use the Modified Version under the
+        terms of this License, in the form shown in the Addendum below.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Preserve in that license notice the full lists of Invariant Sections
+        and required Cover Texts given in the Document’s license
+        notice.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Include an unaltered copy of this License.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Preserve the section Entitled “History”, Preserve its
+        Title, and add to it an item stating at least the title, year, new
+        authors, and publisher of the Modified Version as given on the Title
+        Page. If there is no section Entitled “History” in the
+        Document, create one stating the title, year, authors, and publisher
+        of the Document as given on its Title Page, then add an item
+        describing the Modified Version as stated in the previous sentence.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Preserve the network location, if any, given in the Document for
+        public access to a Transparent copy of the Document, and likewise the
+        network locations given in the Document for previous versions it was
+        based on.  These may be placed in the “History”
+        section. You may omit a network location for a work that was published
+        at least four years before the Document itself, or if the original
+        publisher of the version it refers to gives permission.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        For any section Entitled “Acknowledgements” or
+        “Dedications”, Preserve the Title of the section, and
+        preserve in the section all the substance and tone of each of the
+        contributor acknowledgements and/or dedications given therein.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Preserve all the Invariant Sections of the Document, unaltered in
+        their text and in their titles. Section numbers or the equivalent are
+        not considered part of the section titles.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Delete any section Entitled “Endorsements”. Such a section
+        may not be included in the Modified Version.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Do not retitle any existing section to be Entitled
+        “Endorsements” or to conflict in title with any Invariant
+        Section.
+      </p>
+    </li>
+<li>
+      <p class="simpara block block-first">
+        Preserve any Warranty Disclaimers.
+      </p>
+    </li>
+</ol></div>
+<p class="simpara block">
+    If the Modified Version includes new front-matter sections or appendices
+    that qualify as Secondary Sections and contain no material copied from the
+    Document, you may at your option designate some or all of these sections
+    as invariant. To do this, add their titles to the list of Invariant
+    Sections in the Modified Version’s license notice. These titles
+    must be distinct from any other section titles.
+  </p>
+<p class="simpara block">
+    You may add a section Entitled “Endorsements”, provided it
+    contains nothing but endorsements of your Modified Version by various
+    parties — for example, statements of peer review or that the text
+    has been approved by an organization as the authoritative definition of a
+    standard.
+  </p>
+<p class="simpara block">
+    You may add a passage of up to five words as a Front-Cover Text, and a
+    passage of up to 25 words as a Back-Cover Text, to the end of the list of
+    Cover Texts in the Modified Version. Only one passage of Front-Cover Text
+    and one of Back-Cover Text may be added by (or through arrangements made
+    by) any one entity. If the Document already includes a cover text for the
+    same cover, previously added by you or by arrangement made by the same
+    entity you are acting on behalf of, you may not add another; but you may
+    replace the old one, on explicit permission from the previous publisher
+    that added the old one.
+  </p>
+<p class="simpara block">
+    The author(s) and publisher(s) of the Document do not by this License give
+    permission to use their names for publicity for or to assert or imply
+    endorsement of any Modified Version.
+  </p>
+<p class="simpara block">
+    You may combine the Document with other documents released under this
+    License, under the terms defined in section 4 above for modified versions,
+    provided that you include in the combination all of the Invariant Sections
+    of all of the original documents, unmodified, and list them all as
+    Invariant Sections of your combined work in its license notice, and that
+    you preserve all their Warranty Disclaimers.
+  </p>
+<p class="simpara block">
+    The combined work need only contain one copy of this License, and multiple
+    identical Invariant Sections may be replaced with a single copy. If there
+    are multiple Invariant Sections with the same name but different contents,
+    make the title of each such section unique by adding at the end of it, in
+    parentheses, the name of the original author or publisher of that section
+    if known, or else a unique number. Make the same adjustment to the section
+    titles in the list of Invariant Sections in the license notice of the
+    combined work.
+  </p>
+<p class="simpara block">
+    In the combination, you must combine any sections Entitled
+    “History” in the various original documents, forming one
+    section Entitled “History”; likewise combine any sections
+    Entitled “Acknowledgements”, and any sections Entitled
+    “Dedications”. You must delete all sections Entitled
+    “Endorsements”.
+  </p>
+<p class="simpara block">
+    You may make a collection consisting of the Document and other documents
+    released under this License, and replace the individual copies of this
+    License in the various documents with a single copy that is included in
+    the collection, provided that you follow the rules of this License for
+    verbatim copying of each of the documents in all other respects.
+  </p>
+<p class="simpara block">
+    You may extract a single document from such a collection, and distribute
+    it individually under this License, provided you insert a copy of this
+    License into the extracted document, and follow this License in all other
+    respects regarding verbatim copying of that document.
+  </p>
+<p class="simpara block">
+    A compilation of the Document or its derivatives with other separate and
+    independent documents or works, in or on a volume of a storage or
+    distribution medium, is called an “aggregate” if the copyright
+    resulting from the compilation is not used to limit the legal rights of
+    the compilation’s users beyond what the individual works
+    permit. When the Document is included in an aggregate, this License does
+    not apply to the other works in the aggregate which are not themselves
+    derivative works of the Document.
+  </p>
+<p class="simpara block">
+    If the Cover Text requirement of section 3 is applicable to these copies
+    of the Document, then if the Document is less than one half of the entire
+    aggregate, the Document’s Cover Texts may be placed on covers that
+    bracket the Document within the aggregate, or the electronic equivalent of
+    covers if the Document is in electronic form. Otherwise they must appear
+    on printed covers that bracket the whole aggregate.
+  </p>
+<p class="simpara block">
+    Translation is considered a kind of modification, so you may distribute
+    translations of the Document under the terms of section 4. Replacing
+    Invariant Sections with translations requires special permission from
+    their copyright holders, but you may include translations of some or all
+    Invariant Sections in addition to the original versions of these Invariant
+    Sections. You may include a translation of this License, and all the
+    license notices in the Document, and any Warranty Disclaimers, provided
+    that you also include the original English version of this License and the
+    original versions of those notices and disclaimers. In case of a
+    disagreement between the translation and the original version of this
+    License or a notice or disclaimer, the original version will prevail.
+  </p>
+<p class="simpara block">
+    If a section in the Document is Entitled “Acknowledgements”,
+    “Dedications”, or “History”, the requirement
+    (section 4) to Preserve its Title (section 1) will typically require
+    changing the actual title.
+  </p>
+<p class="simpara block">
+    You may not copy, modify, sublicense, or distribute the Document except as
+    expressly provided under this License. Any attempt otherwise to copy,
+    modify, sublicense, or distribute it is void, and will automatically
+    terminate your rights under this License.
+  </p>
+<p class="simpara block">
+    However, if you cease all violation of this License, then your license
+    from a particular copyright holder is reinstated (a) provisionally, unless
+    and until the copyright holder explicitly and finally terminates your
+    license, and (b) permanently, if the copyright holder fails to notify you
+    of the violation by some reasonable means prior to 60 days after the
+    cessation.
+  </p>
+<p class="simpara block">
+    Moreover, your license from a particular copyright holder is reinstated
+    permanently if the copyright holder notifies you of the violation by some
+    reasonable means, this is the first time you have received notice of
+    violation of this License (for any work) from that copyright holder, and
+    you cure the violation prior to 30 days after your receipt of the notice.
+  </p>
+<p class="simpara block">
+    Termination of your rights under this section does not terminate the
+    licenses of parties who have received copies or rights from you under this
+    License. If your rights have been terminated and not permanently
+    reinstated, receipt of a copy of some or all of the same material does not
+    give you any rights to use it.
+  </p>
+<p class="simpara block">
+    The Free Software Foundation may publish new, revised versions of the GNU
+    Free Documentation License from time to time. Such new versions will be
+    similar in spirit to the present version, but may differ in detail to
+    address new problems or concerns. See
+    <a class="ulink" href="http://www.gnu.org/copyleft/" title="http://www.gnu.org/copyleft/">Copyleft</a>.
+  </p>
+<p class="simpara block">
+    Each version of the License is given a distinguishing version number. If
+    the Document specifies that a particular numbered version of this License
+    “or any later version” applies to it, you have the option of
+    following the terms and conditions either of that specified version or of
+    any later version that has been published (not as a draft) by the Free
+    Software Foundation. If the Document does not specify a version number of
+    this License, you may choose any version ever published (not as a draft)
+    by the Free Software Foundation. If the Document specifies that a proxy
+    can decide which future versions of this License can be used, that
+    proxy’s public statement of acceptance of a version permanently
+    authorizes you to choose that version for the Document.
+  </p>
+<p class="simpara block">
+    “Massive Multiauthor Collaboration Site” (or “MMC
+    Site”) means any World Wide Web server that publishes copyrightable
+    works and also provides prominent facilities for anybody to edit those
+    works. A public wiki that anybody can edit is an example of such a
+    server. A “Massive Multiauthor Collaboration” (or
+    “MMC”) contained in the site means any set of copyrightable
+    works thus published on the MMC site.
+  </p>
+<p class="simpara block">
+    “CC-BY-SA” means the Creative Commons Attribution-Share Alike
+    3.0 license published by Creative Commons Corporation, a not-for-profit
+    corporation with a principal place of business in San Francisco,
+    California, as well as future copyleft versions of that license published
+    by that same organization.
+  </p>
+<p class="simpara block">
+    “Incorporate” means to publish or republish a Document, in
+    whole or in part, as part of another Document.
+  </p>
+<p class="simpara block">
+    An MMC is “eligible for relicensing” if it is licensed under
+    this License, and if all works that were first published under this
+    License somewhere other than this MMC, and subsequently incorporated in
+    whole or in part into the MMC, (1) had no cover texts or invariant
+    sections, and (2) were thus incorporated prior to November 1, 2008.
+  </p>
+<p class="simpara block">
+    The operator of an MMC Site may republish an MMC contained in the site
+    under CC-BY-SA on the same site at any time before August 1, 2009,
+    provided the MMC is eligible for relicensing.
+  </p>
+<p class="simpara block">
+    To use this License in a document you have written, include a copy of the
+    License in the document and put the following copyright and license
+    notices just after the title page:
+  </p>
+<div dir="ltr" class=" block screen block-indent"><pre class="screen">Copyright © YEAR YOUR NAME
+
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.3 or any later version
+published by the Free Software Foundation; with no Invariant Sections, no
+Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in
+the section entitled “GNU Free Documentation License”.</pre></div>
+<p class="simpara block">
+    If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+    replace the “with… Texts.” line with this:
+  </p>
+<div dir="ltr" class=" block screen block-indent"><pre class="screen">with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover Texts
+being LIST, and with the Back-Cover Texts being LIST.</pre></div>
+<p class="simpara block">
+    If you have Invariant Sections without Cover Texts, or some other
+    combination of the three, merge those two alternatives to suit the
+    situation.
+  </p>
+<p class="simpara block">
+    If your document contains nontrivial examples of program code, we
+    recommend releasing these examples in parallel under your choice of free
+    software license, such as the GNU General Public License, to permit their
+    use in free software.
+  </p>
+</div>
+</div></div>
+<div class="navbar navbar-bottom"><table class="navbar"><tr>
+<td class="navbar-prev"></td>
+<td class="navbar-next"></td>
+</tr></table></div>
+</body>
+</html>

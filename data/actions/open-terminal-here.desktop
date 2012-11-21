@@ -1,0 +1,26 @@
+
+[Desktop Entry]
+Type=Action
+TargetLocation=true
+Icon[en_US]=/usr/share/icons/mate/24x24/apps/mate-terminal.png
+Icon[en]=/usr/share/icons/mate/24x24/apps/mate-terminal.png
+Icon[C]=/usr/share/icons/mate/24x24/apps/mate-terminal.png
+Tooltip[en_US]=Open a terminal if the current location
+Tooltip[en]=Open a terminal if the current location
+Tooltip[C]=Open a terminal if the current location
+ToolbarLabel[en_US]=Open a terminal here
+ToolbarLabel[en]=Open a terminal here
+ToolbarLabel[C]=Open a terminal here
+Name[en_US]=Open a terminal here
+Name[en]=Open a terminal here
+Name[C]=Open a terminal here
+Profiles=profile-zero;
+TargetToolbar=true
+Enabled = false
+
+[X-Action-Profile profile-zero]
+Exec=mate-terminal --working-directory=%f
+MimeTypes=inode/directory;
+Name[en_US]=Default profile
+Name[en]=Default profile
+Name[C]=Default profile

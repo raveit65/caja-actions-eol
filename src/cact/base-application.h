@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,103 +31,266 @@
 #define __BASE_APPLICATION_H__
 
 /**
- * SECTION: base_application
- * @short_description: #BaseApplication public function declarations.
- * @include: cact/base-application.h
+ * SECTION: base-application
+ * @title: BaseApplication
+ * @short_description: The Base Application application base class definition
+ * @include: base-application.h
+ *
+ * #BaseApplication is the base class for the application part of Gtk programs.
+ * It aims at providing all common services. It interacts with #BaseBuilder
+ * and #BaseWindow classes.
+ *
+ * #BaseApplication is a pure virtual class. A Gtk program should derive
+ * its own class from #BaseApplication, and instantiate it in its main()
+ * program entry point.
+ *
+ * <example>
+ *   <programlisting>
+ *     #include "my-application.h"
+ *
+ *     int
+ *     main( int argc, char **argv )
+ *     {
+ *         MyApplication *appli;
+ *         int code;
+ *
+ *         appli = my_application_new();
+ *         code = base_appliction_run_with_args( BASE_APPLICATION( appli ), argc, argv );
+ *         g_object_unref( appli );
+ *
+ *         return( code );
+ *     }
+ *   </programlisting>
+ * </example>
+ *
+ * main                 BaseApplication      CactApplication      BaseWindow           CactWindow
+ * ===================  ===================  ===================  ===================  ===================
+ * appli = cact_application_new()
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                                           appli = g_object_new()
+ *                                           set properties
+ *                                             application name
+ *                                             icon name
+ *                                             description
+ *                                             command-line definitions
+ *                                             unique name (if apply)
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ * ret = base_application_run_with_args( appli, argc, argv )
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                      init i18n
+ *                      init application name
+ *                      init gtk with command-line options
+ *                      manage command-line options
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                                           manage specific command-line options
+ *                                           calling parent class if ok to continue
+ *                                           setting application code else
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                      init unique manager
+ *                        unique app name must have been set at this time
+ *                        application name should have been set at this time
+ *                      init session manager
+ *                      init icon name
+ *                      create window(s)
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                                           foreach window to create
+ *                                             create BaseWindow-derived window
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                                                                on class init
+ *                                                                  init common builder
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                                                                                     init window
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                                                                load and init gtk toplevel
+ *                                                                init window
+ *                                                                show widgets
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ *                      enter the main loop
+ *                        leaving to the main window the
+ *                        responsability to gtk_main_quit()
+ *                        after having set the application
+ *                        exit code.
+ * --------------------+--------------------+--------------------+--------------------+-------------------
+ * g_object_unref( appli )
+ * return( ret )
+ * ===================  ===================  ===================  ===================  ===================
+ * main                 BaseApplication      CactApplication      BaseWindow           CactWindow
+ *
+ * At any time, a function may preset the exit code of the application just by
+ * setting the @BASE_PROP_CODE property. Note that unless it also asks to quit
+ * immediately by returning %FALSE, another function may always set another exit
+ * code after that.
  */
 
-#include <gtk/gtk.h>
-
-#include "base-application-class.h"
-#include "base-builder.h"
-#include "base-window-class.h"
+#include "glib-object.h"
 
 G_BEGIN_DECLS
 
-enum {
-	BASE_APPLICATION_ERROR_I18N = 1,		/* i18n initialization error */
-	BASE_APPLICATION_ERROR_GTK,				/* gtk+ initialization error */
-	BASE_APPLICATION_ERROR_MAIN_WINDOW,		/* unable to obtain the main window */
-	BASE_APPLICATION_ERROR_UNIQUE_APP,		/* another instance is running */
-	BASE_APPLICATION_ERROR_UI_FNAME,		/* empty XML filename */
-	BASE_APPLICATION_ERROR_UI_LOAD,			/* unable to load the XML definition of the UI */
-	BASE_APPLICATION_ERROR_DEFAULT_ICON		/* unable to set default icon */
-};
+#define BASE_TYPE_APPLICATION                ( base_application_get_type())
+#define BASE_APPLICATION( object )           ( G_TYPE_CHECK_INSTANCE_CAST( object, BASE_TYPE_APPLICATION, BaseApplication ))
+#define BASE_APPLICATION_CLASS( klass )      ( G_TYPE_CHECK_CLASS_CAST( klass, BASE_TYPE_APPLICATION, BaseApplicationClass ))
+#define BASE_IS_APPLICATION( object )        ( G_TYPE_CHECK_INSTANCE_TYPE( object, BASE_TYPE_APPLICATION ))
+#define BASE_IS_APPLICATION_CLASS( klass )   ( G_TYPE_CHECK_CLASS_TYPE(( klass ), BASE_TYPE_APPLICATION ))
+#define BASE_APPLICATION_GET_CLASS( object ) ( G_TYPE_INSTANCE_GET_CLASS(( object ), BASE_TYPE_APPLICATION, BaseApplicationClass ))
+
+typedef struct _BaseApplicationPrivate       BaseApplicationPrivate;
+
+typedef struct {
+	/*< private >*/
+	GObject                 parent;
+	BaseApplicationPrivate *private;
+}
+	BaseApplication;
+
+typedef struct _BaseApplicationClassPrivate  BaseApplicationClassPrivate;
 
 /**
- * @BASE_APPLICATION_PROP_ARGC: count of arguments in command-line.
- * @BASE_APPLICATION_PROP_ARGV: list of command-line arguments
+ * BaseApplicationClass:
+ * @manage_options:  manage the command-line arguments.
+ * @main_window_new: open and run the first (main) window of the application.
  *
- * These two variables must be provided before running the
- * initialization process ; they are required in order to correctly
- * initialize the Gtk+ user interface.
+ * This defines the virtual method a derived class may, should or must implement.
  */
-#define BASE_APPLICATION_PROP_ARGC					"base-application-argc"
-#define BASE_APPLICATION_PROP_ARGV					"base-application-argv"
+typedef struct {
+	/*< private >*/
+	GObjectClass                 parent;
+	BaseApplicationClassPrivate *private;
+
+	/*< public >*/
+	/**
+	 * manage_options:
+	 * @appli: this #BaseApplication -derived instance.
+	 *
+	 * This is invoked by the BaseApplication base class, after arguments
+	 * in the command-line have been processed by gtk_init_with_args()
+	 * function.
+	 *
+	 * This let the derived class an opportunity to manage command-line
+	 * arguments. Unless it decides to stop the execution of the program,
+	 * the derived class should call the parent class method (would it be
+	 * defined) in order to let it manage its own options.
+	 *
+	 * The derived class may set the exit code of the application by
+	 * setting the @BASE_PROP_CODE property of @appli.
+	 *
+	 * Returns: %TRUE to continue execution, %FALSE to stop it.
+	 */
+	gboolean  ( *manage_options ) ( BaseApplication *appli );
+
+	/**
+	 * init_application:
+	 * @appli: this #BaseApplication -derived instance.
+	 *
+	 * This is invoked by the BaseApplication base class to let the derived
+	 * class do its own initializations.
+	 *
+	 * Versus initializations which occur at instanciation time, this method
+	 * let the application terminate its initializatin process, after command-line
+	 * arguments have been managed, and before creating any window.
+	 *
+	 * Unless it decides to stop the execution of the program,
+	 * the derived class should call the parent class method (would it be
+	 * defined) in order to let it manage its own options.
+	 *
+	 * The derived class may set the exit code of the application by
+	 * setting the @BASE_PROP_CODE property of @appli.
+	 *
+	 * Returns: %TRUE to continue execution, %FALSE to stop it.
+	 */
+	gboolean ( *init_application )( BaseApplication *appli );
+
+	/**
+	 * create_windows:
+	 * @appli: this #BaseApplication -derived instance.
+	 *
+	 * This is invoked by the BaseApplication base class to let the derived
+	 * class create its startup windows. This may include a splash window,
+	 * a main window, some secondary or toolbox windows, and so on.
+	 *
+	 * Each created window should initialize and show itself at this time
+	 * by calling base_window_init(). base_window_init() will return
+	 * %FALSE if the Gtk toplevel cannot have been initialized.
+	 *
+	 * This is a pure virtual method. Only the most derived class
+	 * create_windows() method is invoked.
+	 *
+	 * The derived class may set the exit code of the application by
+	 * setting the @BASE_PROP_CODE property of @appli.
+	 *
+	 * Returns: %TRUE to continue execution, %FALSE to stop it.
+	 *
+	 * Only if this method returns %TRUE, the #BaseApplication class will
+	 * enter in main loop, and stay in it until gtk_main_quit() is called.
+	 *
+	 * It is usually the responsability of main application window of calling
+	 * gtk_main_quit() when it is closed, either as a menu action or if the
+	 * user destroys it.
+	 */
+	gboolean ( *create_windows )( BaseApplication *appli );
+}
+	BaseApplicationClass;
 
 /**
- * @BASE_APPLICATION_PROP_OPTIONS: command-line options.
+ * Properties defined by the BaseApplication class.
+ * They may be provided at object instantiation time, either in the derived-
+ * application constructor, or in the main() function, but in all cases
+ * before calling base_application_run_with_args().
  *
- * Can be provided at instanciation time only.
+ * @BASE_PROP_ARGC:             count of arguments in command-line.
+ * @BASE_PROP_ARGV:             array of command-line arguments.
+ * @BASE_PROP_OPTIONS:          array of command-line options descriptions.
+ * @BASE_PROP_APPLICATION_NAME: application name.
+ * @BASE_PROP_DESCRIPTION:      short description.
+ * @BASE_PROP_ICON_NAME:        icon name.
+ * @BASE_PROP_UNIQUE_NAME:      unique name of the application (if not empty)
+ * @BASE_PROP_CODE:             return code of the application
  */
-#define BASE_APPLICATION_PROP_OPTIONS				"base-application-options"
+#define BASE_PROP_ARGC						"base-prop-application-argc"
+#define BASE_PROP_ARGV						"base-prop-application-argv"
+#define BASE_PROP_OPTIONS					"base-prop-application-options"
+#define BASE_PROP_APPLICATION_NAME			"base-prop-application-name"
+#define BASE_PROP_DESCRIPTION				"base-prop-application-description"
+#define BASE_PROP_ICON_NAME					"base-prop-application-icon-name"
+#define BASE_PROP_UNIQUE_NAME				"base-prop-application-unique-name"
+#define BASE_PROP_CODE						"base-prop-application-code"
 
 /**
- * @BASE_APPLICATION_PROP_IS_GTK_INITIALIZED: set to %TRUE after
- * successfully returning from the application_initialize_gtk() virtual
- * function.
+ * BaseExitCode:
  *
- * While this flag is not %TRUE, error messages are printed to
- * stdout. When %TRUE, error messages are displayed with a dialog
- * box.
- */
-#define BASE_APPLICATION_PROP_IS_GTK_INITIALIZED	"base-application-is-gtk-initialized"
-
-/**
- * @BASE_APPLICATION_PROP_UNIQUE_APP_HANDLE: the UniqueApp object allocated
- * if the derived-class has provided a UniqueApp name (see
- * #application_get_unique_app_name). Rather for internal use.
- */
-#define BASE_APPLICATION_PROP_UNIQUE_APP_HANDLE		"base-application-unique-app-handle"
-
-/**
- * @BASE_APPLICATION_PROP_EXIT_CODE: the code which will be returned by the
- * program to the operating system.
- * @BASE_APPLICATION_PROP_EXIT_MESSAGE1:
- * @BASE_APPLICATION_PROP_EXIT_MESSAGE2: the message which will be displayed
- * at program terminaison if @BASE_APPLICATION_PROP_EXIT_CODE is not zero.
- * When in graphical mode, the first line is displayed as bold.
+ * The code returned by the application.
  *
- * See @BASE_APPLICATION_PROP_IS_GTK_INITIALIZED for how the
- * @BASE_APPLICATION_PROP_EXIT_MESSAGE is actually displayed.
+ * The BaseApplication -derived class may define its own codes, starting
+ * them with @BASE_EXIT_CODE_USER_APP.
+ *
+ * @BASE_EXIT_CODE_PROGRAM = -1:         this is a program error code.
+ * @BASE_EXIT_CODE_OK = 0:               the program has successfully run, and returns zero.
+ * @BASE_EXIT_CODE_APPLICATION_NAME = 1: no application name has been set by the derived class
+ * @BASE_EXIT_CODE_ARGS = 2:             unable to interpret command-line options
+ * @BASE_EXIT_CODE_UNIQUE_APP = 3:       another instance is already running
+ * @BASE_EXIT_CODE_INIT_WINDOW = 4:      unable to create a startup window
+ *
+ * @BASE_EXIT_CODE_USER_APP = 32:        BaseApplication -derived class may use program return codes
+ *                                       starting with this value
  */
-#define BASE_APPLICATION_PROP_EXIT_CODE				"base-application-exit-code"
-#define BASE_APPLICATION_PROP_EXIT_MESSAGE1			"base-application-exit-message1"
-#define BASE_APPLICATION_PROP_EXIT_MESSAGE2			"base-application-exit-message2"
+typedef enum {
+	BASE_EXIT_CODE_PROGRAM = -1,
+	BASE_EXIT_CODE_OK = 0,
+	BASE_EXIT_CODE_APPLICATION_NAME,
+	BASE_EXIT_CODE_ARGS,
+	BASE_EXIT_CODE_UNIQUE_APP,
+	BASE_EXIT_CODE_INIT_WINDOW,
 
-/**
- * @BASE_APPLICATION_PROP_BUILDER: the #BaseBuilder object allocated to
- * handle the user interface XML definition. Rather for internal use.
- */
-#define BASE_APPLICATION_PROP_BUILDER				"base-application-builder"
+	BASE_EXIT_CODE_USER_APP = 32
+}
+	BaseExitCode;
 
-/**
- * @BASE_APPLICATION_PROP_MAIN_WINDOW: as its name says: a pointer to the
- * #BaseWindow-derived main window of the application.
- */
-#define BASE_APPLICATION_PROP_MAIN_WINDOW			"base-application-main-window"
+GType    base_application_get_type            ( void );
 
-int          base_application_run( BaseApplication *application );
-gchar       *base_application_get_application_name( BaseApplication *application );
-gchar       *base_application_get_icon_name( BaseApplication *application );
-gchar       *base_application_get_unique_app_name( BaseApplication *application );
-gchar       *base_application_get_ui_filename( BaseApplication *application );
-BaseBuilder *base_application_get_builder( BaseApplication *application );
-BaseWindow  *base_application_get_main_window( BaseApplication *application );
+int      base_application_run_with_args       ( BaseApplication *application, int argc, GStrv argv );
 
-void         base_application_message_dlg( BaseApplication *application, GSList *message );
-void         base_application_error_dlg( BaseApplication *application, GtkMessageType type, const gchar *first, const gchar *second );
-gboolean     base_application_yesno_dlg( BaseApplication *application, GtkMessageType type, const gchar *first, const gchar *second );
+gchar   *base_application_get_application_name( const BaseApplication *application );
+
+gboolean base_application_is_willing_to_quit  ( const BaseApplication *application );
 
 G_END_DECLS
 

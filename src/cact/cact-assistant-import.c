@@ -1,25 +1,24 @@
 /*
- * Caja Actions
+ * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
  * Copyright (C) 2005 The MATE Foundation
- * Copyright (C) 2006, 2007, 2008 Frederic Ruaudel and others (see AUTHORS)
- * Copyright (C) 2009, 2010 Pierre Wieser and others (see AUTHORS)
+ * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
+ * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
- * This Program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * Caja-Actions is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General  Public  License  as
+ * published by the Free Software Foundation; either  version  2  of
  * the License, or (at your option) any later version.
  *
- * This Program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * Caja-Actions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
+ * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this Library; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU General Public  License
+ * along with Caja-Actions; see the file  COPYING.  If  not,  see
+ * <http://www.gnu.org/licenses/>.
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
@@ -32,20 +31,23 @@
 #include <config.h>
 #endif
 
+#include <gdk/gdk.h>
 #include <glib/gi18n.h>
 #include <string.h>
 
 #include <api/na-object-api.h>
 #include <api/na-core-utils.h>
 
+#include <core/na-import-mode.h>
 #include <core/na-importer.h>
-#include <core/na-iprefs.h>
+#include <core/na-ioptions-list.h>
+#include <core/na-gtk-utils.h>
+#include <core/na-settings.h>
 
 #include "cact-application.h"
-#include "cact-iprefs.h"
-#include "cact-iactions-list.h"
 #include "cact-assistant-import.h"
 #include "cact-main-window.h"
+#include "cact-tree-ieditable.h"
 
 /* Import Assistant
  *
@@ -54,10 +56,9 @@
  *   0   Intro    Introduction
  *   1   Content  Selection of the files
  *   2   Content  Duplicate management: what to do with duplicates ?
- *   2   Confirm  Display the selected files before import
- *   3   Summary  Import is done: summary of the done operations
+ *   3   Confirm  Display the selected files before import
+ *   4   Summary  Import is done: summary of the done operations
  */
-
 enum {
 	ASSIST_PAGE_INTRO = 0,
 	ASSIST_PAGE_FILES_SELECTION,
@@ -66,68 +67,69 @@ enum {
 	ASSIST_PAGE_DONE
 };
 
-/* a structure which hosts successfully imported files
+/* column ordering in the duplicates treeview
  */
-typedef struct {
-	gchar        *uri;
-	NAObjectItem *item;
-	GSList       *msg;
-}
-	ImportUriStruct;
-
-/* a structure to check for existance of imported items
- */
-typedef struct {
-	CactMainWindow *window;
-	GList          *imported;
-}
-	ImportCheck;
+enum {
+	IMAGE_COLUMN = 0,
+	LABEL_COLUMN,
+	TOOLTIP_COLUMN,
+	MODE_COLUMN,
+	INDEX_COLUMN,
+	N_COLUMN
+};
 
 /* private class data
  */
-struct CactAssistantImportClassPrivate {
+struct _CactAssistantImportClassPrivate {
 	void *empty;						/* so that gcc -pedantic is happy */
 };
 
 /* private instance data
  */
-struct CactAssistantImportPrivate {
+struct _CactAssistantImportPrivate {
 	gboolean     dispose_has_run;
-	MateConfClient *mateconf;
-	GSList      *results;
-	GList       *items;
+	GtkWidget   *file_chooser;
+	GtkTreeView *duplicates_listview;
+	NAIOption   *mode;
+	GList       *results;
+	GList       *overriden;
 };
 
-static BaseAssistantClass *st_parent_class = NULL;
+static const gchar        *st_xmlui_filename = PKGUIDIR "/cact-assistant-import.ui";
+static const gchar        *st_toplevel_name  = "ImportAssistant";
+static const gchar        *st_wsp_name       = NA_IPREFS_IMPORT_ASSISTANT_WSP;
+
+static BaseAssistantClass *st_parent_class   = NULL;
 
 static GType         register_type( void );
 static void          class_init( CactAssistantImportClass *klass );
+static void          ioptions_list_iface_init( NAIOptionsListInterface *iface, void *user_data );
+static GList        *ioptions_list_get_modes( const NAIOptionsList *instance, GtkWidget *container );
+static void          ioptions_list_free_modes( const NAIOptionsList *instance, GtkWidget *container, GList *modes );
+static NAIOption    *ioptions_list_get_ask_option( const NAIOptionsList *instance, GtkWidget *container );
 static void          instance_init( GTypeInstance *instance, gpointer klass );
 static void          instance_dispose( GObject *application );
 static void          instance_finalize( GObject *application );
 
-static CactAssistantImport *assist_new( BaseWindow *parent );
-
-static gchar        *window_get_iprefs_window_id( const BaseWindow *window );
-static gchar        *window_get_dialog_name( const BaseWindow *dialog );
-
-static void          on_initial_load_dialog( CactAssistantImport *dialog, gpointer user_data );
-static void          on_runtime_init_dialog( CactAssistantImport *dialog, gpointer user_data );
+static void          on_base_initialize_gtk( CactAssistantImport *dialog );
+static void          create_duplicates_treeview_model( CactAssistantImport *dialog );
+static void          on_base_initialize_base_window( CactAssistantImport *dialog );
 static void          runtime_init_intro( CactAssistantImport *window, GtkAssistant *assistant );
 static void          runtime_init_file_selector( CactAssistantImport *window, GtkAssistant *assistant );
 static void          on_file_selection_changed( GtkFileChooser *chooser, gpointer user_data );
-static gboolean      has_readable_files( GSList *uris );
+static gboolean      has_loadable_files( GSList *uris );
 static void          runtime_init_duplicates( CactAssistantImport *window, GtkAssistant *assistant );
-static void          set_import_mode( CactAssistantImport *window, gint mode );
 
 static void          assistant_prepare( BaseAssistant *window, GtkAssistant *assistant, GtkWidget *page );
 static void          prepare_confirm( CactAssistantImport *window, GtkAssistant *assistant, GtkWidget *page );
-static gint          get_import_mode( CactAssistantImport *window );
-static gchar        *add_import_mode( CactAssistantImport *window, const gchar *text );
 static void          assistant_apply( BaseAssistant *window, GtkAssistant *assistant );
-static NAObjectItem *check_for_existance( const NAObjectItem *, ImportCheck *check );
+static NAObjectItem *check_for_existence( const NAObjectItem *, CactMainWindow *window );
 static void          prepare_importdone( CactAssistantImport *window, GtkAssistant *assistant, GtkWidget *page );
-static void          free_results( GSList *list );
+static void          free_results( GList *list );
+
+static GtkWidget    *find_widget_from_page( GtkWidget *page, const gchar *name );
+static GtkTreeView  *get_duplicates_treeview_from_assistant_import( CactAssistantImport *window );
+static GtkTreeView  *get_duplicates_treeview_from_page( GtkWidget *page );
 
 GType
 cact_assistant_import_get_type( void )
@@ -159,9 +161,17 @@ register_type( void )
 		( GInstanceInitFunc ) instance_init
 	};
 
+	static const GInterfaceInfo ioptions_list_iface_info = {
+		( GInterfaceInitFunc ) ioptions_list_iface_init,
+		NULL,
+		NULL
+	};
+
 	g_debug( "%s", thisfn );
 
-	type = g_type_register_static( BASE_ASSISTANT_TYPE, "CactAssistantImport", &info, 0 );
+	type = g_type_register_static( BASE_TYPE_ASSISTANT, "CactAssistantImport", &info, 0 );
+
+	g_type_add_interface_static( type, NA_TYPE_IOPTIONS_LIST, &ioptions_list_iface_info );
 
 	return( type );
 }
@@ -171,7 +181,6 @@ class_init( CactAssistantImportClass *klass )
 {
 	static const gchar *thisfn = "cact_assistant_import_class_init";
 	GObjectClass *object_class;
-	BaseWindowClass *base_class;
 	BaseAssistantClass *assist_class;
 
 	g_debug( "%s: klass=%p", thisfn, ( void * ) klass );
@@ -184,13 +193,45 @@ class_init( CactAssistantImportClass *klass )
 
 	klass->private = g_new0( CactAssistantImportClassPrivate, 1 );
 
-	base_class = BASE_WINDOW_CLASS( klass );
-	base_class->get_toplevel_name = window_get_dialog_name;
-	base_class->get_iprefs_window_id = window_get_iprefs_window_id;
-
 	assist_class = BASE_ASSISTANT_CLASS( klass );
 	assist_class->apply = assistant_apply;
 	assist_class->prepare = assistant_prepare;
+}
+
+static void
+ioptions_list_iface_init( NAIOptionsListInterface *iface, void *user_data )
+{
+	static const gchar *thisfn = "cact_assistant_import_ioptions_list_iface_init";
+
+	g_debug( "%s: iface=%p, user_data=%p", thisfn, ( void * ) iface, ( void * ) user_data );
+
+	iface->get_options = ioptions_list_get_modes;
+	iface->free_options = ioptions_list_free_modes;
+	iface->get_ask_option = ioptions_list_get_ask_option;
+}
+
+static GList *
+ioptions_list_get_modes( const NAIOptionsList *instance, GtkWidget *container )
+{
+	GList *modes;
+
+	g_return_val_if_fail( CACT_IS_ASSISTANT_IMPORT( instance ), NULL );
+
+	modes = na_importer_get_modes();
+
+	return( modes );
+}
+
+static void
+ioptions_list_free_modes( const NAIOptionsList *instance, GtkWidget *container, GList *modes )
+{
+	na_importer_free_modes( modes );
+}
+
+static NAIOption *
+ioptions_list_get_ask_option( const NAIOptionsList *instance, GtkWidget *container )
+{
+	return( na_importer_get_ask_mode());
 }
 
 static void
@@ -199,9 +240,11 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	static const gchar *thisfn = "cact_assistant_import_instance_init";
 	CactAssistantImport *self;
 
+	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( instance ));
+
 	g_debug( "%s: instance=%p (%s), klass=%p",
 			thisfn, ( void * ) instance, G_OBJECT_TYPE_NAME( instance ), ( void * ) klass );
-	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( instance ));
+
 	self = CACT_ASSISTANT_IMPORT( instance );
 
 	self->private = g_new0( CactAssistantImportPrivate, 1 );
@@ -211,16 +254,14 @@ instance_init( GTypeInstance *instance, gpointer klass )
 	base_window_signal_connect(
 			BASE_WINDOW( instance ),
 			G_OBJECT( instance ),
-			BASE_WINDOW_SIGNAL_INITIAL_LOAD,
-			G_CALLBACK( on_initial_load_dialog ));
+			BASE_SIGNAL_INITIALIZE_GTK,
+			G_CALLBACK( on_base_initialize_gtk ));
 
 	base_window_signal_connect(
 			BASE_WINDOW( instance ),
 			G_OBJECT( instance ),
-			BASE_WINDOW_SIGNAL_RUNTIME_INIT,
-			G_CALLBACK( on_runtime_init_dialog ));
-
-	self->private->mateconf = mateconf_client_get_default();
+			BASE_SIGNAL_INITIALIZE_WINDOW,
+			G_CALLBACK( on_base_initialize_base_window ));
 
 	self->private->dispose_has_run = FALSE;
 }
@@ -231,15 +272,14 @@ instance_dispose( GObject *window )
 	static const gchar *thisfn = "cact_assistant_import_instance_dispose";
 	CactAssistantImport *self;
 
-	g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
 	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( window ));
+
 	self = CACT_ASSISTANT_IMPORT( window );
 
 	if( !self->private->dispose_has_run ){
+		g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
 
 		self->private->dispose_has_run = TRUE;
-
-		g_object_unref( self->private->mateconf );
 
 		/* chain up to the parent class */
 		if( G_OBJECT_CLASS( st_parent_class )->dispose ){
@@ -254,8 +294,10 @@ instance_finalize( GObject *window )
 	static const gchar *thisfn = "cact_assistant_import_instance_finalize";
 	CactAssistantImport *self;
 
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
 	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( window ));
+
+	g_debug( "%s: window=%p (%s)", thisfn, ( void * ) window, G_OBJECT_TYPE_NAME( window ));
+
 	self = CACT_ASSISTANT_IMPORT( window );
 
 	free_results( self->private->results );
@@ -268,12 +310,6 @@ instance_finalize( GObject *window )
 	}
 }
 
-static CactAssistantImport *
-assist_new( BaseWindow *parent )
-{
-	return( g_object_new( CACT_ASSISTANT_IMPORT_TYPE, BASE_WINDOW_PROP_PARENT, parent, NULL ));
-}
-
 /**
  * cact_assistant_import_run:
  * @main: the #CactMainWindow parent window of this assistant.
@@ -283,57 +319,90 @@ assist_new( BaseWindow *parent )
 void
 cact_assistant_import_run( BaseWindow *main_window )
 {
-	CactAssistantImport *assist;
-
-	assist = assist_new( main_window );
-	g_object_set( G_OBJECT( assist ), BASE_WINDOW_PROP_HAS_OWN_BUILDER, TRUE, NULL );
-
-	base_window_run( BASE_WINDOW( assist ));
-}
-
-static gchar *
-window_get_iprefs_window_id( const BaseWindow *window )
-{
-	return( g_strdup( "import-assistant" ));
-}
-
-static gchar *
-window_get_dialog_name( const BaseWindow *dialog )
-{
-	return( g_strdup( "ImportAssistant" ));
-}
-
-static void
-on_initial_load_dialog( CactAssistantImport *dialog, gpointer user_data )
-{
-	static const gchar *thisfn = "cact_assistant_import_on_initial_load_dialog";
-	CactApplication *application;
-	NAUpdater *updater;
+	CactAssistantImport *assistant;
 	gboolean esc_quit, esc_confirm;
 
-	g_debug( "%s: dialog=%p, user_data=%p", thisfn, ( void * ) dialog, ( void * ) user_data );
-	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( dialog ));
+	g_return_if_fail( CACT_IS_MAIN_WINDOW( main_window ));
 
-	application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( dialog )));
-	updater = cact_application_get_updater( application );
-	esc_quit = na_iprefs_read_bool( NA_IPREFS( updater ), IPREFS_ASSIST_ESC_QUIT, TRUE );
-	base_assistant_set_cancel_on_esc( BASE_ASSISTANT( dialog ), esc_quit );
-	esc_confirm = na_iprefs_read_bool( NA_IPREFS( updater ), IPREFS_ASSIST_ESC_CONFIRM, TRUE );
-	base_assistant_set_warn_on_esc( BASE_ASSISTANT( dialog ), esc_confirm );
+	esc_quit = na_settings_get_boolean( NA_IPREFS_ASSISTANT_ESC_QUIT, NULL, NULL );
+	esc_confirm = na_settings_get_boolean( NA_IPREFS_ASSISTANT_ESC_CONFIRM, NULL, NULL );
+
+	assistant = g_object_new( CACT_TYPE_ASSISTANT_IMPORT,
+			BASE_PROP_PARENT,          main_window,
+			BASE_PROP_HAS_OWN_BUILDER, TRUE,
+			BASE_PROP_XMLUI_FILENAME,  st_xmlui_filename,
+			BASE_PROP_TOPLEVEL_NAME,   st_toplevel_name,
+			BASE_PROP_WSP_NAME,        st_wsp_name,
+			BASE_PROP_QUIT_ON_ESCAPE,  esc_quit,
+			BASE_PROP_WARN_ON_ESCAPE,  esc_confirm,
+			NULL );
+
+	base_window_run( BASE_WINDOW( assistant ));
 }
 
 static void
-on_runtime_init_dialog( CactAssistantImport *dialog, gpointer user_data )
+on_base_initialize_gtk( CactAssistantImport *dialog )
 {
-	static const gchar *thisfn = "cact_assistant_import_on_runtime_init_dialog";
-	GtkAssistant *assistant;
+	static const gchar *thisfn = "cact_assistant_import_on_base_initialize_gtk";
 
-	g_debug( "%s: dialog=%p, user_data=%p", thisfn, ( void * ) dialog, ( void * ) user_data );
 	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( dialog ));
 
 	if( !dialog->private->dispose_has_run ){
+		g_debug( "%s: dialog=%p", thisfn, ( void * ) dialog );
 
-		assistant = GTK_ASSISTANT( base_window_get_toplevel( BASE_WINDOW( dialog )));
+#if !GTK_CHECK_VERSION( 3,0,0 )
+		guint padder = 8;
+		GtkAssistant *assistant = GTK_ASSISTANT( base_window_get_gtk_toplevel( BASE_WINDOW( dialog )));
+		/* selecting files */
+		GtkWidget *page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_FILES_SELECTION );
+		GtkWidget *container = find_widget_from_page( page, "p1-l2-alignment1" );
+		g_object_set( G_OBJECT( container ), "top_padding", padder, NULL );
+		/* managing duplicates */
+		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_DUPLICATES );
+		container = find_widget_from_page( page, "p2-l2-alignment1" );
+		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
+		/* summary */
+		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_CONFIRM );
+		container = find_widget_from_page( page, "p3-l2-alignment1" );
+		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
+		/* import is done */
+		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_DONE );
+		container = find_widget_from_page( page, "p4-l2-alignment1" );
+		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
+#endif
+
+		create_duplicates_treeview_model( dialog );
+	}
+}
+
+static void
+create_duplicates_treeview_model( CactAssistantImport *dialog )
+{
+	static const gchar *thisfn = "cact_assistant_import_create_duplicates_treeview_model";
+
+	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( dialog ));
+	g_return_if_fail( !dialog->private->dispose_has_run );
+
+	g_debug( "%s: dialog=%p", thisfn, ( void * ) dialog );
+
+	dialog->private->duplicates_listview = get_duplicates_treeview_from_assistant_import( dialog );
+	g_return_if_fail( GTK_IS_TREE_VIEW( dialog->private->duplicates_listview ));
+
+	na_ioptions_list_gtk_init( NA_IOPTIONS_LIST( dialog ), GTK_WIDGET( dialog->private->duplicates_listview ), TRUE );
+}
+
+static void
+on_base_initialize_base_window( CactAssistantImport *dialog )
+{
+	static const gchar *thisfn = "cact_assistant_import_on_base_initialize_base_window";
+	GtkAssistant *assistant;
+
+	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( dialog ));
+
+	if( !dialog->private->dispose_has_run ){
+		g_debug( "%s: dialog=%p", thisfn, ( void * ) dialog );
+
+		assistant = GTK_ASSISTANT( base_window_get_gtk_toplevel( BASE_WINDOW( dialog )));
 
 		runtime_init_intro( dialog, assistant );
 		runtime_init_file_selector( dialog, assistant );
@@ -355,26 +424,29 @@ runtime_init_intro( CactAssistantImport *window, GtkAssistant *assistant )
 	gtk_assistant_set_page_complete( assistant, page, TRUE );
 }
 
+/*
+ * Starting with Gtk 3.2, the widgets of the page are no more attached
+ * to the GtkAssistant, but only to the page.
+ */
 static void
 runtime_init_file_selector( CactAssistantImport *window, GtkAssistant *assistant )
 {
 	static const gchar *thisfn = "cact_assistant_import_runtime_init_file_selector";
-	CactApplication *application;
-	NAUpdater *updater;
 	GtkWidget *page;
 	GtkWidget *chooser;
 	gchar *uri;
 
 	page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_FILES_SELECTION );
+	g_return_if_fail( GTK_IS_CONTAINER( page ));
 
-	g_debug( "%s: window=%p, assistant=%p, page=%p",
-			thisfn, ( void * ) window, ( void * ) assistant, ( void * ) page );
+	chooser = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), "ImportFileChooser" );
+	g_return_if_fail( GTK_IS_FILE_CHOOSER( chooser ));
 
-	application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( window )));
-	updater = cact_application_get_updater( application );
+	g_debug( "%s: window=%p, assistant=%p, page=%p, chooser=%p",
+			thisfn, ( void * ) window, ( void * ) assistant, ( void * ) page, ( void * ) chooser );
 
-	chooser = base_window_get_widget( BASE_WINDOW( window ), "ImportFileChooser" );
-	uri = na_iprefs_read_string( NA_IPREFS( updater ), IPREFS_IMPORT_ITEMS_FOLDER_URI, "file:///tmp" );
+
+	uri = na_settings_get_string( NA_IPREFS_IMPORT_ASSISTANT_URI, NULL, NULL );
 	if( uri && strlen( uri )){
 		gtk_file_chooser_set_current_folder_uri( GTK_FILE_CHOOSER( chooser ), uri );
 	}
@@ -386,15 +458,15 @@ runtime_init_file_selector( CactAssistantImport *window, GtkAssistant *assistant
 			"selection-changed",
 			G_CALLBACK( on_file_selection_changed ));
 
+	window->private->file_chooser = chooser;
+
 	gtk_assistant_set_page_complete( assistant, page, FALSE );
 }
 
 static void
 on_file_selection_changed( GtkFileChooser *chooser, gpointer user_data )
 {
-	/*static const gchar *thisfn = "cact_assistant_import_on_file_selection_changed";
-	g_debug( "%s: chooser=%p, user_data=%p", thisfn, chooser, user_data );*/
-
+	static const gchar *thisfn = "cact_assistant_import_on_file_selection_changed";
 	GtkAssistant *assistant;
 	gint pos;
 	GSList *uris;
@@ -403,16 +475,24 @@ on_file_selection_changed( GtkFileChooser *chooser, gpointer user_data )
 	GtkWidget *content;
 
 	g_assert( CACT_IS_ASSISTANT_IMPORT( user_data ));
-	assistant = GTK_ASSISTANT( base_window_get_toplevel( BASE_WINDOW( user_data )));
+	assistant = GTK_ASSISTANT( base_window_get_gtk_toplevel( BASE_WINDOW( user_data )));
 	pos = gtk_assistant_get_current_page( assistant );
 	if( pos == ASSIST_PAGE_FILES_SELECTION ){
 
 		uris = gtk_file_chooser_get_uris( chooser );
-		enabled = has_readable_files( uris );
+		enabled = has_loadable_files( uris );
 
 		if( enabled ){
+			/*
+			 * if user has selected the 'Recently used' place in the file chooser,
+			 * then the current folder uri is null
+			 * (Gtk+ 3.2.0, don't know before...)
+			 */
 			folder = gtk_file_chooser_get_current_folder_uri( GTK_FILE_CHOOSER( chooser ));
-			cact_iprefs_write_string( BASE_WINDOW( user_data ), IPREFS_IMPORT_ITEMS_FOLDER_URI, folder );
+			g_debug( "%s: current folder uri=%s", thisfn, folder );
+			if( folder && strlen( folder )){
+				na_settings_set_string( NA_IPREFS_IMPORT_ASSISTANT_URI, folder );
+			}
 			g_free( folder );
 		}
 
@@ -424,102 +504,55 @@ on_file_selection_changed( GtkFileChooser *chooser, gpointer user_data )
 	}
 }
 
+/*
+ * enable forward button if current selection has at least one loadable file
+ */
 static gboolean
-has_readable_files( GSList *uris )
+has_loadable_files( GSList *uris )
 {
-	static const gchar *thisfn = "cact_assistant_import_has_readable_files";
 	GSList *iuri;
-	int readables = 0;
 	gchar *uri;
-	GFile *file;
-	GFileInfo *info;
-	GFileType type;
-	GError *error = NULL;
-	gboolean readable;
+	int loadables = 0;
 
 	for( iuri = uris ; iuri ; iuri = iuri->next ){
-
 		uri = ( gchar * ) iuri->data;
+
 		if( !strlen( uri )){
 			continue;
 		}
 
-		file = g_file_new_for_uri( uri );
-		info = g_file_query_info( file,
-				G_FILE_ATTRIBUTE_ACCESS_CAN_READ "," G_FILE_ATTRIBUTE_STANDARD_TYPE,
-				G_FILE_QUERY_INFO_NONE, NULL, &error );
-
-		if( error ){
-			g_warning( "%s: g_file_query_info error: %s", thisfn, error->message );
-			g_error_free( error );
-			g_object_unref( file );
-			continue;
+		if( na_core_utils_file_is_loadable( uri )){
+			loadables += 1;
 		}
-
-		type = g_file_info_get_file_type( info );
-		if( type != G_FILE_TYPE_REGULAR ){
-			g_warning( "%s: %s is not a file", thisfn, uri );
-			g_object_unref( info );
-			continue;
-		}
-
-		readable = g_file_info_get_attribute_boolean( info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ );
-		if( !readable ){
-			g_warning( "%s: %s is not readable", thisfn, uri );
-			g_object_unref( info );
-			continue;
-		}
-
-		readables += 1;
-		g_object_unref( info );
 	}
 
-	return( readables > 0 );
+	return( loadables > 0 );
 }
 
 static void
 runtime_init_duplicates( CactAssistantImport *window, GtkAssistant *assistant )
 {
 	static const gchar *thisfn = "cact_assistant_import_runtime_init_duplicates";
+	gchar *import_mode;
 	GtkWidget *page;
-	guint mode;
+	gboolean mandatory;
 
-	g_debug( "%s: window=%p", thisfn, ( void * ) window );
+	g_return_if_fail( GTK_IS_TREE_VIEW( window->private->duplicates_listview ));
 
-	mode = na_iprefs_get_import_mode( window->private->mateconf, IPREFS_IMPORT_ITEMS_IMPORT_MODE );
-	set_import_mode( window, mode );
+	g_debug( "%s: window=%p, assistant=%p",
+			thisfn, ( void * ) window, ( void * ) assistant );
+
+	import_mode = na_settings_get_string( NA_IPREFS_IMPORT_PREFERRED_MODE, NULL, &mandatory );
+	na_ioptions_list_set_editable(
+			NA_IOPTIONS_LIST( window ), GTK_WIDGET( window->private->duplicates_listview ),
+			!mandatory );
+	na_ioptions_list_set_default(
+			NA_IOPTIONS_LIST( window ), GTK_WIDGET( window->private->duplicates_listview ),
+			import_mode );
+	g_free( import_mode );
 
 	page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_DUPLICATES );
 	gtk_assistant_set_page_complete( assistant, page, TRUE );
-}
-
-static void
-set_import_mode( CactAssistantImport *window, gint mode )
-{
-	GtkToggleButton *button;
-
-	switch( mode ){
-		case IMPORTER_MODE_ASK:
-			button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "AskButton" ));
-			gtk_toggle_button_set_active( button, TRUE );
-			break;
-
-		case IMPORTER_MODE_RENUMBER:
-			button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "RenumberButton" ));
-			gtk_toggle_button_set_active( button, TRUE );
-			break;
-
-		case IMPORTER_MODE_OVERRIDE:
-			button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "OverrideButton" ));
-			gtk_toggle_button_set_active( button, TRUE );
-			break;
-
-		case IMPORTER_MODE_NO_IMPORT:
-		default:
-			button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "NoImportButton" ));
-			gtk_toggle_button_set_active( button, TRUE );
-			break;
-	}
 }
 
 static void
@@ -552,114 +585,62 @@ prepare_confirm( CactAssistantImport *window, GtkAssistant *assistant, GtkWidget
 {
 	static const gchar *thisfn = "cact_assistant_import_prepare_confirm";
 	gchar *text, *tmp;
-	GtkWidget *chooser;
 	GSList *uris, *is;
-	GtkLabel *confirm_label;
+	GtkWidget *label;
+	gchar *mode_label, *label2, *mode_description;
 
 	g_debug( "%s: window=%p, assistant=%p, page=%p",
 			thisfn, ( void * ) window, ( void * ) assistant, ( void * ) page );
 
-	/* i18n: the title of the confirm page of the import assistant */
-	text = g_strdup( _( "About to import selected files:" ));
-	tmp = g_strdup_printf( "<b>%s</b>\n\n", text );
-	g_free( text );
-	text = tmp;
+#if !GTK_CHECK_VERSION( 3,0,0 )
+	/* Note that, at least, in Gtk 2.20 (Ubuntu 10) and 2.22 (Fedora 14), GtkLabel
+	 * queues its resize (when the text is being set), but the actual resize does
+	 * not happen immediately - We have to wait until Gtk 3.0, most probably due
+	 * to the new width-for-height and height-for-width features...
+	 */
+	GtkWidget *vbox = find_widget_from_page( page, "p3-ConfirmVBox" );
+	gtk_container_set_resize_mode( GTK_CONTAINER( vbox ), GTK_RESIZE_IMMEDIATE );
+#endif
 
-	chooser = base_window_get_widget( BASE_WINDOW( window ), "ImportFileChooser" );
-	uris = gtk_file_chooser_get_uris( GTK_FILE_CHOOSER( chooser ));
-
+	/* adding list of uris to import
+	 */
+	text = NULL;
+	uris = gtk_file_chooser_get_uris( GTK_FILE_CHOOSER( window->private->file_chooser ));
 	for( is = uris ; is ; is = is->next ){
-		tmp = g_strdup_printf( "%s\t%s\n", text, ( gchar * ) is->data );
-		g_free( text );
-		text = tmp;
+		g_debug( "%s: uri=%s", thisfn, ( const gchar * ) is->data );
+
+		if( text ){
+			tmp = g_strdup_printf( "%s\n%s", text, ( const gchar * ) is->data );
+			g_free( text );
+			text = tmp;
+
+		} else {
+			text = g_strdup(( const gchar * ) is->data );
+		}
 	}
-
-	tmp = add_import_mode( window, text );
+	label = find_widget_from_page( page, "p3-ConfirmFilesList" );
+	g_return_if_fail( GTK_IS_LABEL( label ));
+	gtk_label_set_text( GTK_LABEL( label ), text );
 	g_free( text );
-	text = tmp;
 
-	confirm_label = GTK_LABEL( base_window_get_widget( BASE_WINDOW( window ), "AssistantImportConfirmLabel" ));
-	gtk_label_set_markup( confirm_label, text );
+	/* adding import mode
+	 */
+	label = find_widget_from_page( page, "p3-ConfirmImportMode" );
+	g_return_if_fail( GTK_IS_LABEL( label ));
+	window->private->mode = na_ioptions_list_get_selected(
+			NA_IOPTIONS_LIST( window ), GTK_WIDGET( window->private->duplicates_listview ));
+	g_return_if_fail( NA_IS_IMPORT_MODE( window->private->mode ));
+	mode_label = na_ioption_get_label( window->private->mode );
+	label2 = na_core_utils_str_remove_char( mode_label, "_" );
+	mode_description = na_ioption_get_description( window->private->mode );
+	text = g_markup_printf_escaped( "%s\n\n<span style=\"italic\">%s</span>", label2, mode_description );
+	gtk_label_set_markup( GTK_LABEL( label ), text );
 	g_free( text );
+	g_free( mode_description );
+	g_free( mode_label );
+	g_free( label2 );
 
 	gtk_assistant_set_page_complete( assistant, page, TRUE );
-}
-
-static gint
-get_import_mode( CactAssistantImport *window )
-{
-	GtkToggleButton *no_import_button;
-	GtkToggleButton *renumber_button;
-	GtkToggleButton *override_button;
-	GtkToggleButton *ask_button;
-	gint mode;
-
-	no_import_button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "NoImportButton" ));
-	renumber_button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "RenumberButton" ));
-	override_button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "OverrideButton" ));
-	ask_button = GTK_TOGGLE_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "AskButton" ));
-
-	mode = IMPORTER_MODE_NO_IMPORT;
-	if( gtk_toggle_button_get_active( renumber_button )){
-		mode = IMPORTER_MODE_RENUMBER;
-
-	} else if( gtk_toggle_button_get_active( override_button )){
-		mode = IMPORTER_MODE_OVERRIDE;
-
-	} else if( gtk_toggle_button_get_active( ask_button )){
-		mode = IMPORTER_MODE_ASK;
-	}
-
-	return( mode );
-}
-
-static gchar *
-add_import_mode( CactAssistantImport *window, const gchar *text )
-{
-	gint mode;
-	gchar *label1, *label2, *label3;
-	gchar *result;
-
-	mode = get_import_mode( window );
-	label1 = NULL;
-	label2 = NULL;
-	result = NULL;
-
-	switch( mode ){
-		case IMPORTER_MODE_NO_IMPORT:
-			label1 = na_core_utils_str_remove_char( gtk_button_get_label( GTK_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "NoImportButton" ))), "_" );
-			label2 = g_strdup( gtk_label_get_text( GTK_LABEL( base_window_get_widget( BASE_WINDOW( window ), "NoImportLabel"))));
-			break;
-
-		case IMPORTER_MODE_RENUMBER:
-			label1 = na_core_utils_str_remove_char( gtk_button_get_label( GTK_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "RenumberButton" ))), "_" );
-			label2 = g_strdup( gtk_label_get_text( GTK_LABEL( base_window_get_widget( BASE_WINDOW( window ), "RenumberLabel"))));
-			break;
-
-		case IMPORTER_MODE_OVERRIDE:
-			label1 = na_core_utils_str_remove_char( gtk_button_get_label( GTK_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "OverrideButton" ))), "_" );
-			label2 = g_strdup( gtk_label_get_text( GTK_LABEL( base_window_get_widget( BASE_WINDOW( window ), "OverrideLabel"))));
-			break;
-
-		case IMPORTER_MODE_ASK:
-			label1 = na_core_utils_str_remove_char( gtk_button_get_label( GTK_BUTTON( base_window_get_widget( BASE_WINDOW( window ), "AskButton" ))), "_" );
-			label2 = g_strdup( gtk_label_get_text( GTK_LABEL( base_window_get_widget( BASE_WINDOW( window ), "AskLabel"))));
-			break;
-
-		default:
-			break;
-	}
-
-	if( label1 ){
-		label3 = na_core_utils_str_add_prefix( "\t", label2 );
-		g_free( label2 );
-
-		result = g_strdup_printf( "%s\n\n<b>%s</b>\n\n%s", text, label1, label3 );
-		g_free( label3 );
-		g_free( label1 );
-	}
-
-	return( result );
 }
 
 /*
@@ -670,197 +651,255 @@ assistant_apply( BaseAssistant *wnd, GtkAssistant *assistant )
 {
 	static const gchar *thisfn = "cact_assistant_import_assistant_apply";
 	CactAssistantImport *window;
-	GtkWidget *chooser;
-	GSList *uris, *is;
-	ImportUriStruct *str;
-	GList *imported_items;
-	BaseWindow *mainwnd;
-	guint mode;
+	NAImporterParms importer_parms;
+	BaseWindow *main_window;
+	GList *import_results, *it;
+	GList *insertable_items, *overriden_items;
+	NAImporterResult *result;
 	CactApplication *application;
 	NAUpdater *updater;
-	NAIImporterUriParms parms;
-	guint code;
-	ImportCheck check_str;
+	CactTreeView *items_view;
+
+	g_return_if_fail( CACT_IS_ASSISTANT_IMPORT( wnd ));
 
 	g_debug( "%s: window=%p, assistant=%p", thisfn, ( void * ) wnd, ( void * ) assistant );
-	g_assert( CACT_IS_ASSISTANT_IMPORT( wnd ));
 	window = CACT_ASSISTANT_IMPORT( wnd );
-
-	chooser = base_window_get_widget( BASE_WINDOW( window ), "ImportFileChooser" );
-	uris = gtk_file_chooser_get_uris( GTK_FILE_CHOOSER( chooser ));
-	mode = get_import_mode( window );
-
-	g_object_get( G_OBJECT( wnd ), BASE_WINDOW_PROP_PARENT, &mainwnd, NULL );
-
-	application = CACT_APPLICATION( base_window_get_application( BASE_WINDOW( wnd )));
+	g_object_get( G_OBJECT( window ), BASE_PROP_PARENT, &main_window, NULL );
+	application = CACT_APPLICATION( base_window_get_application( main_window ));
 	updater = cact_application_get_updater( application );
-	imported_items = NULL;
-	check_str.window = CACT_MAIN_WINDOW( mainwnd );
-	check_str.imported = imported_items;
 
-	/* import actions
-	 * getting results in the same order than uris
-	 * simultaneously building the actions list
-	 */
-	for( is = uris ; is ; is = is->next ){
+	memset( &importer_parms, '\0', sizeof( NAImporterParms ));
+	importer_parms.uris = gtk_file_chooser_get_uris( GTK_FILE_CHOOSER( window->private->file_chooser ));
+	importer_parms.check_fn = ( NAImporterCheckFn ) check_for_existence;
+	importer_parms.check_fn_data = main_window;
+	importer_parms.preferred_mode = na_import_mode_get_id( NA_IMPORT_MODE( window->private->mode ));
+	importer_parms.parent_toplevel = base_window_get_gtk_toplevel( BASE_WINDOW( wnd ));
 
-		parms.version = 1;
-		parms.uri = ( gchar * ) is->data;
-		parms.mode = mode;
-		parms.window = base_window_get_toplevel( base_application_get_main_window( BASE_APPLICATION( application )));
-		parms.messages = NULL;
-		parms.imported = NULL;
-		parms.check_fn = ( NAIImporterCheckFn ) check_for_existance;
-		parms.check_fn_data = &check_str;
+	import_results = na_importer_import_from_uris( NA_PIVOT( updater ), &importer_parms );
 
-		code = na_importer_import_from_uri( NA_PIVOT( updater ), &parms );
+	insertable_items = NULL;
+	overriden_items = NULL;
 
-		str = g_new0( ImportUriStruct, 1 );
-		str->uri = g_strdup( parms.uri );
-		str->item = parms.imported;
-		str->msg = na_core_utils_slist_duplicate( parms.messages );
-		na_core_utils_slist_free( parms.messages );
+	for( it = import_results ; it ; it = it->next ){
+		result = ( NAImporterResult * ) it->data;
+		if( result->imported ){
 
-		if( str->item ){
-			na_object_check_status( str->item );
-			imported_items = g_list_prepend( imported_items, str->item );
+			if( !result->exist || result->mode == IMPORTER_MODE_RENUMBER ){
+				insertable_items = g_list_prepend( insertable_items, result->imported );
+
+			} else if( result->mode == IMPORTER_MODE_OVERRIDE ){
+				overriden_items = g_list_prepend( overriden_items, result->imported );
+			}
 		}
-
-		window->private->results = g_slist_prepend( window->private->results, str );
 	}
-	na_core_utils_slist_free( uris );
-	window->private->results = g_slist_reverse( window->private->results );
+
+	na_core_utils_slist_free( importer_parms.uris );
+	window->private->results = import_results;
 
 	/* then insert the list
 	 * assuring that actions will be inserted in the same order as uris
+	 *
+	 * the tree view (and its underlying tree store) takes a new reference
+	 * on the inserted objects; the pointers so remain valid even after
+	 * having released the imported_items list
 	 */
-	imported_items = g_list_reverse( imported_items );
-	cact_iactions_list_bis_insert_items( CACT_IACTIONS_LIST( mainwnd ), imported_items, NULL );
-	na_object_unref_items( imported_items );
+	if( insertable_items ){
+		insertable_items = g_list_reverse( insertable_items );
+		items_view = cact_main_window_get_items_view( CACT_MAIN_WINDOW( main_window ));
+		cact_tree_ieditable_insert_items( CACT_TREE_IEDITABLE( items_view ), insertable_items, NULL );
+		na_object_free_items( insertable_items );
+	}
+
+	/* contrarily, the tree store may or not take a new reference on overriding
+	 * items, so do not release it here
+	 */
+	if( overriden_items ){
+		items_view = cact_main_window_get_items_view( CACT_MAIN_WINDOW( main_window ));
+		cact_tree_ieditable_set_items( CACT_TREE_IEDITABLE( items_view ), overriden_items );
+		window->private->overriden = overriden_items;
+	}
 }
 
 static NAObjectItem *
-check_for_existance( const NAObjectItem *item, ImportCheck *check )
+check_for_existence( const NAObjectItem *item, CactMainWindow *window )
 {
+	static const gchar *thisfn = "cact_assistant_import_check_for_existence";
+	CactTreeView *items_view;
 	NAObjectItem *exists;
-	GList *ip;
+	gchar *importing_id;
 
-	exists = NULL;
-	gchar *importing_id = na_object_get_id( item );
-	g_debug( "cact_assistant_import_check_for_existance: item=%p (%s), importing_id=%s",
-			( void * ) item, G_OBJECT_TYPE_NAME( item ), importing_id );
+	importing_id = na_object_get_id( item );
+	g_debug( "%s: item=%p (%s), importing_id=%s",
+			thisfn, ( void * ) item, G_OBJECT_TYPE_NAME( item ), importing_id );
 
-	/* is the importing item already in the current importation list ?
-	 */
-	for( ip = check->imported ; ip && !exists ; ip = ip->next ){
-		gchar *id = na_object_get_id( ip->data );
-		if( !strcmp( importing_id, id )){
-			exists = NA_OBJECT_ITEM( ip->data );
-		}
-		g_free( id );
-	}
-
-	if( !exists ){
-		exists = cact_main_window_get_item( check->window, importing_id );
-	}
+	items_view = cact_main_window_get_items_view( window );
+	exists = cact_tree_view_get_item_by_id( items_view, importing_id );
 
 	g_free( importing_id );
 
 	return( exists );
 }
 
+/*
+ * summary page is a vbox inside of a scrolled window
+ * each line in this vbox is a GtkLabel
+ * Starting with 3.1.6, uri is displayed in red if an error has occured, or
+ * in blue.
+ */
 static void
 prepare_importdone( CactAssistantImport *window, GtkAssistant *assistant, GtkWidget *page )
 {
 	static const gchar *thisfn = "cact_assistant_import_prepare_importdone";
-	gchar *text, *tmp, *text2;
-	gchar *bname, *uuid, *label;
-	GSList *is, *im;
-	ImportUriStruct *str;
-	GFile *file;
-	guint mode;
-	GtkLabel *summary_label;
+	guint width;
+	GtkWidget *vbox;
+	GtkWidget *file_vbox, *file_uri, *file_report;
+	GList *is;
+	GSList *im;
+	NAImporterResult *result;
+	gchar *text, *id, *item_label, *text2, *tmp;
+	const gchar *color;
+	gchar *mode_id;
 
 	g_debug( "%s: window=%p, assistant=%p, page=%p",
 			thisfn, ( void * ) window, ( void * ) assistant, ( void * ) page );
 
-	/* i18n: result of the import assistant */
-	text = g_strdup( _( "Selected files have been proceeded :" ));
-	tmp = g_strdup_printf( "<b>%s</b>\n\n", text );
-	g_free( text );
-	text = tmp;
+	width = 15;
+	vbox = find_widget_from_page( page, "p4-SummaryVBox" );
+	g_return_if_fail( GTK_IS_BOX( vbox ));
 
+#if !GTK_CHECK_VERSION( 3,0,0 )
+	/* Note that, at least, in Gtk 2.20 (Ubuntu 10) and 2.22 (Fedora 14), GtkLabel
+	 * queues its resize (when the text is being set), but the actual resize does
+	 * not happen immediately - We have to wait until Gtk 3.0, most probably due
+	 * to the new width-for-height and height-for-width features...
+	 */
+	gtk_container_set_resize_mode( GTK_CONTAINER( vbox ), GTK_RESIZE_IMMEDIATE );
+#endif
+
+	/* for each uri
+	 * 	- display the uri
+	 *  - display a brief import log
+	 */
 	for( is = window->private->results ; is ; is = is->next ){
-		str = ( ImportUriStruct * ) is->data;
+		result = ( NAImporterResult * ) is->data;
+		g_debug( "%s: uri=%s", thisfn, result->uri );
 
-		file = g_file_new_for_uri( str->uri );
-		bname = g_file_get_basename( file );
-		g_object_unref( file );
-		tmp = g_strdup_printf( "%s\t%s\n", text, bname );
+		/* display the uri
+		 */
+#if GTK_CHECK_VERSION( 3,0,0 )
+		file_vbox = gtk_box_new( GTK_ORIENTATION_VERTICAL, 4 );
+#else
+		file_vbox = gtk_vbox_new( FALSE, 4 );
+#endif
+		gtk_box_pack_start( GTK_BOX( vbox ), file_vbox, FALSE, FALSE, 0 );
+
+		color = result->imported ? "blue" : "red";
+		text = g_markup_printf_escaped( "<span foreground=\"%s\">%s</span>", color, result->uri );
+		file_uri = gtk_label_new( NULL );
+		gtk_label_set_markup( GTK_LABEL( file_uri ), text );
 		g_free( text );
-		text = tmp;
-		g_free( bname );
+		g_object_set( G_OBJECT( file_uri ), "xalign", 0, NULL );
+		g_object_set( G_OBJECT( file_uri ), "xpad", width, NULL );
+		gtk_box_pack_start( GTK_BOX( file_vbox ), file_uri, FALSE, FALSE, 0 );
 
-		if( str->item ){
+		/* display the import log
+		 */
+		if( result->imported ){
 			/* i18n: indicate that the file has been successfully imported */
-			tmp = g_strdup_printf( "%s\t\t%s\n", text, _( "Import OK" ));
-			g_free( text );
-			text = tmp;
-			uuid = na_object_get_id( str->item );
-			label = na_object_get_label( str->item );
+			text = g_strdup( _( "Import OK" ));
+			id = na_object_get_id( result->imported );
+			item_label = na_object_get_label( result->imported );
 			/* i18n: this is the globally unique identifier and the label of the newly imported action */
-			text2 = g_strdup_printf( _( "UUID: %s\t%s" ), uuid, label);
-			g_free( label );
-			g_free( uuid );
-			tmp = g_strdup_printf( "%s\t\t%s\n", text, text2 );
+			text2 = g_strdup_printf( _( "Id.: %s\t%s" ), id, item_label);
+			g_free( item_label );
+			g_free( id );
+			tmp = g_strdup_printf( "%s\n%s", text, text2 );
 			g_free( text );
+			g_free( text2 );
 			text = tmp;
-
-			window->private->items = g_list_prepend( window->private->items, str->item );
 
 		} else {
-			/* i18n: indicate that the file was not iported */
-			tmp = g_strdup_printf( "%s\t\t%s\n", text, _( "Not imported" ));
+			/* i18n: indicate that the file was not imported */
+			text = g_strdup( _( "Not imported" ));
+		}
+
+		/* add messages if any
+		 */
+		for( im = result->messages ; im ; im = im->next ){
+			tmp = g_strdup_printf( "%s\n%s", text, ( const char * ) im->data );
 			g_free( text );
 			text = tmp;
 		}
 
-		/* add messages if any */
-		for( im = str->msg ; im ; im = im->next ){
-			tmp = g_strdup_printf( "%s\t\t%s\n", text, ( const char * ) im->data );
-			g_free( text );
-			text = tmp;
-		}
-
-		/* add a blank line between two actions */
-		tmp = g_strdup_printf( "%s\n", text );
-		g_free( text );
-		text = tmp;
+		file_report = gtk_label_new( text );
+		gtk_label_set_line_wrap( GTK_LABEL( file_report ), TRUE );
+		gtk_label_set_line_wrap_mode( GTK_LABEL( file_report ), PANGO_WRAP_WORD );
+		g_object_set( G_OBJECT( file_report ), "xalign", 0, NULL );
+		g_object_set( G_OBJECT( file_report ), "xpad", 2*width, NULL );
+		gtk_box_pack_start( GTK_BOX( file_vbox ), file_report, FALSE, FALSE, 0 );
 	}
 
-	summary_label = GTK_LABEL( base_window_get_widget( BASE_WINDOW( window ), "AssistantImportSummaryLabel" ));
-	gtk_label_set_markup( summary_label, text );
-	g_free( text );
+	mode_id = na_ioption_get_id( window->private->mode );
+	na_settings_set_string( NA_IPREFS_IMPORT_PREFERRED_MODE, mode_id );
+	g_free( mode_id );
 
-	mode = get_import_mode( window );
-	na_iprefs_set_import_mode( window->private->mateconf, IPREFS_IMPORT_ITEMS_IMPORT_MODE, mode );
+	/* release here our reference on overriding items
+	 */
+	if( window->private->overriden ){
+		na_object_free_items( window->private->overriden );
+	}
 
+	g_object_set( G_OBJECT( window ), BASE_PROP_WARN_ON_ESCAPE, FALSE, NULL );
 	gtk_assistant_set_page_complete( assistant, page, TRUE );
-	base_assistant_set_warn_on_cancel( BASE_ASSISTANT( window ), FALSE );
-	base_assistant_set_warn_on_esc( BASE_ASSISTANT( window ), FALSE );
+	gtk_widget_show_all( page );
 }
 
 static void
-free_results( GSList *list )
+free_results( GList *list )
 {
-	GSList *is;
-	ImportUriStruct *str;
+	GList *it;
 
-	for( is = list ; is ; is = is->next ){
-		str = ( ImportUriStruct * ) is->data;
-		g_free( str->uri );
-		na_core_utils_slist_free( str->msg );
+	for( it = list ; it ; it = it->next ){
+		na_importer_free_result(( NAImporterResult * ) it->data );
 	}
 
-	g_slist_free( list );
+	g_list_free( list );
+}
+
+static GtkWidget *
+find_widget_from_page( GtkWidget *page, const gchar *name )
+{
+	GtkWidget *widget;
+
+	g_return_val_if_fail( GTK_IS_CONTAINER( page ), NULL );
+
+	widget = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), name );
+
+	return( widget );
+}
+
+static GtkTreeView *
+get_duplicates_treeview_from_assistant_import( CactAssistantImport *window )
+{
+	GtkAssistant *assistant;
+	GtkWidget *page;
+
+	g_return_val_if_fail( CACT_IS_ASSISTANT_IMPORT( window ), NULL );
+
+	assistant = GTK_ASSISTANT( base_window_get_gtk_toplevel( BASE_WINDOW( window )));
+	page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_DUPLICATES );
+
+	return( get_duplicates_treeview_from_page( page ));
+}
+
+static GtkTreeView *
+get_duplicates_treeview_from_page( GtkWidget *page )
+{
+	GtkWidget *listview;
+
+	listview = find_widget_from_page( page, "p2-AskTreeView" );
+
+	g_return_val_if_fail( GTK_IS_TREE_VIEW( listview ), NULL );
+
+	return( GTK_TREE_VIEW( listview ));
 }
