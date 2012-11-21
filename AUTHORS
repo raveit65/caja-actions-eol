@@ -1,16 +1,21 @@
+For MATE:
+Wolfgang Ulbrich <chat-to-me@raveit.de
+
+For GNOME:
+
 Frederic Ruaudel <grumz@grumz.net>
 Rodrigo Moya <rodrigo@mate-db.org>
 Pierre Wieser <pwieser@trychlos.org>
 
-based on caja-sendto module from Roberto Majadas <roberto.majadas@hispalinux.es>
+based on nautilus-sendto module from Roberto Majadas <roberto.majadas@hispalinux.es>
 
 == Contributors ==
 
 Bruce van der Kooij <brucevdkooij@gmail.com> :
-- Patch to initialize MateVFS stuff waiting for migration to GVFS
+- Patch to initialize GnomeVFS stuff waiting for migration to GVFS
 
 Tom Parker <caja-actions@tevp.net> : 
-- Patch to add actions in the background popup menu of Caja's windows. 
+- Patch to add actions in the background popup menu of Nautilus's windows. 
 - Patch to add missing library test in configure.
 - Patch to remove numerous compilation warnings.
 
@@ -33,7 +38,7 @@ Brian Pepple <bpepple@fedoraproject.org> :
 == Artwork ==
 
 Ulisse Perusin <uli.peru@gmail.com> :
-- Create the Tango style caja-actions icons
+- Create the Tango style nautilus-actions icons
 
 == Translators ==
 

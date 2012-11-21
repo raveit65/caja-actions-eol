@@ -4,11 +4,11 @@ Deprecating MateConf
  Mate is deprecating MateConf in favour of GSettings. This is the short story.
  We so have to migrate several pool of datas.
  
- Starting with 3.1.0, Caja-Actions is distributed with the needed migration
+ Starting with 1.5.0, Caja-Actions is distributed with the needed migration
  tools, whether the migration may occur automatically (for users items and
  preferences), or the system admin must run a script (for mandatory items).
  
- Note that this does not break backward compatibility. The 3.1.x serie of
+ Note that this does not break backward compatibility. The 1.5.x serie of
  Caja-Actions may still be run on a "old" platform. The oldest supported
  as of January 2011 is Ubuntu 8 LTS.
 
