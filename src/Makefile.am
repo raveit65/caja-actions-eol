@@ -29,8 +29,6 @@ SUBDIRS = \
 	api									\
 	core								\
 	io-desktop							\
-	io-mateconf							\
-	io-xml								\
 	cact								\
 	plugin-menu							\
 	plugin-tracker						\

@@ -70,10 +70,6 @@ libna_core_la_SOURCES = \
 	na-factory-object.h									\
 	na-factory-provider.c								\
 	na-factory-provider.h								\
-	na-mateconf-migration.c								\
-	na-mateconf-migration.h								\
-	na-mateconf-monitor.c									\
-	na-mateconf-utils.c									\
 	na-mate-vfs-uri.c									\
 	na-mate-vfs-uri.h									\
 	na-gtk-utils.c										\

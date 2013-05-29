@@ -36,7 +36,6 @@
 #include <string.h>
 
 #include <api/na-core-utils.h>
-#include <api/na-mateconf-utils.h>
 #include <api/na-data-def.h>
 #include <api/na-data-types.h>
 #include <api/na-data-boxed.h>

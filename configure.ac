@@ -41,7 +41,6 @@ AC_CONFIG_FILES([
 	data/Makefile
 	data/actions/Makefile
 	data/exports/Makefile
-	data/mateconf-schemas/Makefile
 	docs/Makefile
 	docs/cact/Makefile
 	docs/reference/Makefile
@@ -57,8 +56,6 @@ AC_CONFIG_FILES([
 	src/api/Makefile
 	src/core/Makefile
 	src/io-desktop/Makefile
-	src/io-mateconf/Makefile
-	src/io-xml/Makefile
 	src/plugin-menu/Makefile
 	src/plugin-tracker/Makefile
 	src/cact/Makefile
@@ -112,9 +109,6 @@ AM_GLIB_GNU_GETTEXT
 # Enable deprecated functions ?
 NA_CHECK_FOR_DEPRECATED
 
-# Have and want MateConf support ?
-NA_CHECK_FOR_MATECONF
-
 # note that requiring through pkg-config the version number of the
 # caja-extension library actually returns the version number of
 # caja itself (e.g. 2.24.2) instead of the library version info
@@ -137,7 +131,6 @@ NA_CHECK_MODULE([GMODULE],[gmodule-2.0 >= ${glib_required}])
 NA_CHECK_FOR_GDBUS
 
 dnl aclocal complains if the comma is not just after the square bracket
-NA_CHECK_MODULE([MATECONF],             [mateconf-2.0 >= 1.4.0])
 NA_CHECK_MODULE([GIO_UNIX],          [gio-unix-2.0])
 NA_CHECK_MODULE([GTOP],              [libgtop-2.0 >= 2.23.1])
 NA_CHECK_MODULE([LIBXML],            [libxml-2.0 >= 2.6])
@@ -205,8 +198,6 @@ $as_echo "
 	Gtk+ version                    ${msg_gtk_version}
 	Default I/O provider            ${with_default_io_provider}
 	Enable deprecated functions     ${enable_deprecated}
-	MateConf enabled                   ${enable_mateconf}
-	MateConf schemas installation      ${msg_schemas_install}
 	Maintainer mode                 ${msg_maintainer_mode}
 	API Reference generation        ${msg_gtk_doc}
 	HTML User's Manuals generation  ${msg_html_manuals}

@@ -34,7 +34,6 @@
 #include <glib/gi18n.h>
 
 #include <api/na-core-utils.h>
-#include <api/na-mateconf-utils.h>
 #include <api/na-object-api.h>
 
 #include <core/na-io-provider.h>

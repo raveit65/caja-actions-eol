@@ -28,5 +28,4 @@
 SUBDIRS = \
 	actions								\
 	exports								\
-	mateconf-schemas						\
 	$(NULL)

@@ -55,12 +55,8 @@ content_files = \
 	$(patsubst $(abs_srcdir)/%,%,$(shell \ls -1 $(abs_srcdir)/*.xml)) \
 	$(auto_created_files)
 
-if !HAVE_MATECONF
-ignore_headers = na-mateconf-monitor.h
-else
 if !ENABLE_DEPRECATED
 ignore_headers = na-mateconf-monitor.h
-endif
 endif
 
 # Extra options to supply to gtkdoc-scan

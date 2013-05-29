@@ -37,7 +37,6 @@
 
 #include <libcaja-extension/caja-extension-types.h>
 
-#include <core/na-mateconf-migration.h>
 #include <core/na-settings.h>
 
 #include "caja-actions.h"
@@ -71,12 +70,6 @@ caja_module_initialize( GTypeModule *module )
 	g_debug( "%s: module=%p", thisfn, ( void * ) module );
 
 	g_type_module_set_name( module, PACKAGE_STRING );
-
-	/* pwi 2011-01-05
-	 * run MateConf migration tools before doing anything else
-	 * above all before allocating a new NAPivot
-	 */
-	na_mateconf_migration_run();
 
 	caja_actions_register_type( module );
 }

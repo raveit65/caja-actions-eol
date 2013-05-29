@@ -36,14 +36,11 @@ api_include_HEADERS = \
 	na-ifactory-provider.h								\
 	na-ifactory-provider-provider.h						\
 	na-iio-provider.h									\
-	\
 	na-boxed.h											\
 	na-core-utils.h										\
 	na-data-boxed.h										\
 	na-data-def.h										\
 	na-data-types.h										\
-	na-mateconf-monitor.h									\
-	na-mateconf-utils.h									\
 	na-icontext.h										\
 	na-iduplicable.h									\
 	na-ifactory-object.h								\

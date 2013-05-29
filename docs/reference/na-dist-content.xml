@@ -55,13 +55,6 @@
             command-line utility for running an existing action,
             taking into account the current &caja; selection;
           </listitem>
-          <listitem>
-            <application>caja-actions-schemas</application>
-            is a command-line utility which outputs
-            to stdout the MateConf schemas of the
-            <application>Caja-Actions Configuration Tool</application>;
-            it rather targets packagers.
-          </listitem>
         </itemizedlist>
       </listitem>
       <listitem>

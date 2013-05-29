@@ -31,8 +31,6 @@
 #include <config.h>
 #endif
 
-#include <core/na-mateconf-migration.h>
-
 #include "cact-application.h"
 
 /*
@@ -57,12 +55,6 @@ main( int argc, char *argv[] )
 	int ret;
 
 	set_log_handler();
-
-	/* pwi 2011-01-05
-	 * run MateConf migration tools before doing anything else
-	 * above all before allocating a new NAPivot
-	 */
-	na_mateconf_migration_run();
 
 	/* create and run the application
 	 */

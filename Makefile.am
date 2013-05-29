@@ -49,7 +49,6 @@ DISTCHECK_CONFIGURE_FLAGS = \
 	--enable-silent-rules				\
 	--enable-as-needed					\
 	--disable-scrollkeeper				\
-	--disable-schemas-install			\
 	--enable-deprecated					\
 	--enable-gtk-doc					\
 	--disable-html-manuals				\
@@ -93,7 +92,6 @@ dist_pkgdoc_DATA = \
 	MAINTAINERS							\
 	NEWS								\
 	README								\
-	README-MATECONF						\
 	TODO								\
 	$(NULL)
 

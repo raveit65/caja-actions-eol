@@ -130,49 +130,8 @@ na_set_conf_LDADD = \
 	$(NULL)
 
 EXTRA_DIST = \
-	na-mateconf2key.sh.in											\
 	$(NULL)
 
 CLEANFILES = \
 	$(BUILT_SOURCES)											\
 	$(NULL)
-
-# If MateConf support is enabled, then also build the migration tools
-
-if HAVE_MATECONF
-pkglibexec_PROGRAMS += \
-	na-delete-xmltree											\
-	$(NULL)
-
-na_delete_xmltree_SOURCES = \
-	na-delete-xmltree.c											\
-	console-utils.c												\
-	console-utils.h												\
-	$(NULL)
-
-na_delete_xmltree_LDADD = \
-	$(NA_UTILS_LDADD)											\
-	$(NULL)
-
-pkglibexec_SCRIPTS = \
-	na-mateconf2key.sh												\
-	$(NULL)
-
-do_subst = sed \
-		-e 's,[@]PACKAGE[@],$(PACKAGE),g'						\
-		-e 's,[@]PACKAGE_NAME[@],$(PACKAGE_NAME),g'				\
-		-e 's,[@]PACKAGE_VERSION[@],$(PACKAGE_VERSION),g'		\
-		-e 's,[@]sysconfdir[@],$(sysconfdir),g'					\
-		-e 's,[@]bindir[@],$(bindir),g'							\
-		-e 's,[@]libexecdir[@],$(libexecdir),g'					\
-		-e 's,[@]pkglibexecdir[@],$(pkglibexecdir),g'			\
-		$(NULL)
-
-%.sh: %.sh.in
-	$(do_subst) < $< > $@
-	chmod a+x $@
-
-CLEANFILES += \
-	$(pkglibexec_SCRIPTS)										\
-	$(NULL)
-endif
