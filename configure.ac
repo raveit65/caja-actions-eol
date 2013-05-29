@@ -27,7 +27,7 @@
 
 AC_PREREQ([2.53])
 
-AC_INIT([Caja-Actions],[1.5.0],[maintainer@caja-actions.org],,[http://www.caja-actions.org])
+AC_INIT([Caja-Actions],[1.6.0],[maintainer@caja-actions.org],,[http://www.caja-actions.org])
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CANONICAL_TARGET
