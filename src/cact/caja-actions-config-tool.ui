@@ -2307,7 +2307,7 @@ Basenames may be negated to specify for which basenames your item must not appea
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="tooltip_text" translatable="yes">This list lets you determine for which mimetypes the currently selected item will be displayed in the Caja context menu.
-Mimetypes may be specified as '*', '/*', 'group/*' or 'group/subgroup'.
+Mimetypes may be specified as '*', '*/*', 'group/*' or 'group/subgroup'.
 Mimetypes may be negated to specify for which type of objects your item must not appear.</property>
                                             <property name="shadow_type">in</property>
                                             <child>
