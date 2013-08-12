@@ -84,9 +84,9 @@ void     na_core_utils_selcount_get_ope_int( const gchar *selection_count, gchar
 
 /* directory management
  */
-void     na_core_utils_dir_list_perms      ( const gchar *path, const gchar *message );
 gboolean na_core_utils_dir_is_writable_path( const gchar *path );
 gboolean na_core_utils_dir_is_writable_uri ( const gchar *uri );
+void     na_core_utils_dir_list_perms      ( const gchar *path, const gchar *message );
 void     na_core_utils_dir_split_ext       ( const gchar *string, gchar **first, gchar **ext );
 
 /* file management
@@ -94,6 +94,7 @@ void     na_core_utils_dir_split_ext       ( const gchar *string, gchar **first,
 gboolean na_core_utils_file_delete       ( const gchar *path );
 gboolean na_core_utils_file_exists       ( const gchar *uri );
 gboolean na_core_utils_file_is_loadable  ( const gchar *uri );
+void     na_core_utils_file_list_perms   ( const gchar *path, const gchar *message );
 gchar   *na_core_utils_file_load_from_uri( const gchar *uri, gsize *length );
 
 /* miscellaneous

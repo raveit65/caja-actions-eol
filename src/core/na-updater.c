@@ -226,7 +226,7 @@ is_level_zero_writable( const NAUpdater *updater )
 
 	na_core_utils_slist_free( level_zero );
 
-	g_debug( "na_updater_is_level_zero_writable: NA_IPREFS_ITEMS_LEVEL_ZERO_ORDER is mandatory=%s",
+	g_debug( "na_updater_is_level_zero_writable: NA_IPREFS_ITEMS_LEVEL_ZERO_ORDER: mandatory=%s",
 			mandatory ? "True":"False" );
 
 	return( !mandatory );

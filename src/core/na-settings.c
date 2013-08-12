@@ -82,6 +82,7 @@ struct _NASettingsClassPrivate {
  */
 typedef struct {
 	gchar        *fname;
+	gboolean      mandatory;
 	GKeyFile     *key_file;
 	GFileMonitor *monitor;
 	gulong        handler;
@@ -224,8 +225,7 @@ static void      instance_finalize( GObject *object );
 static void      settings_new( void );
 
 static GList    *content_diff( GList *old, GList *new );
-static GList    *content_load( void );
-static GList    *content_load_keys( GList *content, KeyFile *key_file, gboolean mandatory );
+static GList    *content_load_keys( GList *content, KeyFile *keyfile );
 static KeyDef   *get_key_def( const gchar *key );
 static KeyFile  *key_file_new( const gchar *dir );
 static void      on_keyfile_changed( GFileMonitor *monitor, GFile *file, GFile *other_file, GFileMonitorEvent event_type );
@@ -233,7 +233,7 @@ static void      on_keyfile_changed_timeout( void );
 static void      on_key_changed_final_handler( NASettings *settings, gchar *group, gchar *key, NABoxed *new_value, gboolean mandatory );
 static KeyValue *peek_key_value_from_content( GList *content, const gchar *group, const gchar *key );
 static KeyValue *read_key_value( const gchar *group, const gchar *key, gboolean *found, gboolean *mandatory );
-static KeyValue *read_key_value_from_key_file( GKeyFile *key_file, const gchar *group, const gchar *key, const KeyDef *key_def );
+static KeyValue *read_key_value_from_key_file( KeyFile *keyfile, const gchar *group, const gchar *key, const KeyDef *key_def );
 static void      release_consumer( Consumer *consumer );
 static void      release_key_file( KeyFile *key_file );
 static void      release_key_value( KeyValue *value );
@@ -413,23 +413,28 @@ settings_new( void )
 {
 	static const gchar *thisfn = "na_settings_new";
 	gchar *dir;
+	GList *content;
 
 	if( !st_settings ){
 		st_settings = g_object_new( NA_SETTINGS_TYPE, NULL );
 
-		dir = g_build_filename( SYSCONFDIR, "xdg", PACKAGE, NULL );
 		g_debug( "%s: reading mandatory configuration", thisfn );
+		dir = g_build_filename( SYSCONFDIR, "xdg", PACKAGE, NULL );
 		st_settings->private->mandatory = key_file_new( dir );
 		g_free( dir );
+		st_settings->private->mandatory->mandatory = TRUE;
+		content = content_load_keys( NULL, st_settings->private->mandatory );
 
+		g_debug( "%s: reading user configuration", thisfn );
 		dir = g_build_filename( g_get_home_dir(), ".config", PACKAGE, NULL );
 		g_mkdir_with_parents( dir, 0750 );
-		na_core_utils_dir_list_perms( dir, thisfn );
-		g_debug( "%s: reading user configuration", thisfn );
 		st_settings->private->user = key_file_new( dir );
 		g_free( dir );
+		st_settings->private->mandatory->mandatory = FALSE;
+		content = content_load_keys( content, st_settings->private->user );
 
-		st_settings->private->content = content_load();
+		st_settings->private->content = g_list_copy( content );
+		g_list_free( content );
 	}
 }
 
@@ -1020,23 +1025,14 @@ content_diff( GList *old, GList *new )
 	return( diffs );
 }
 
-/* load the content of the two configuration files (actually of _the_ configuration)
- * taking care of not overriding mandatory preferences with user ones
+/* add the content of a configuration files to those already loaded
+ *
+ * when the two configuration files have been read, then the content of
+ * _the_ configuration has been loaded, while preserving the mandatory
+ * keys
  */
 static GList *
-content_load( void )
-{
-	GList *content;
-
-	settings_new();
-	content = content_load_keys( NULL, st_settings->private->mandatory, TRUE );
-	content = content_load_keys( content, st_settings->private->user, FALSE );
-
-	return( content );
-}
-
-static GList *
-content_load_keys( GList *content, KeyFile *key_file, gboolean mandatory )
+content_load_keys( GList *content, KeyFile *keyfile )
 {
 	static const gchar *thisfn = "na_settings_content_load_keys";
 	GError *error;
@@ -1046,27 +1042,29 @@ content_load_keys( GList *content, KeyFile *key_file, gboolean mandatory )
 	KeyDef *key_def;
 
 	error = NULL;
-	if( !g_key_file_load_from_file( key_file->key_file, key_file->fname, G_KEY_FILE_KEEP_COMMENTS, &error )){
+	if( !g_key_file_load_from_file( keyfile->key_file, keyfile->fname, G_KEY_FILE_KEEP_COMMENTS, &error )){
 		if( error->code != G_FILE_ERROR_NOENT ){
-			g_warning( "%s: %s (%d) %s", thisfn, key_file->fname, error->code, error->message );
+			g_warning( "%s: %s (%d) %s", thisfn, keyfile->fname, error->code, error->message );
+		} else {
+			g_debug( "%s: %s: file doesn't exist", thisfn, keyfile->fname );
 		}
 		g_error_free( error );
 		error = NULL;
 
 	} else {
-		groups = g_key_file_get_groups( key_file->key_file, NULL );
+		groups = g_key_file_get_groups( keyfile->key_file, NULL );
 		ig = groups;
 		while( *ig ){
-			keys = g_key_file_get_keys( key_file->key_file, *ig, NULL, NULL );
+			keys = g_key_file_get_keys( keyfile->key_file, *ig, NULL, NULL );
 			ik = keys;
 			while( *ik ){
 				key_def = get_key_def( *ik );
 				if( key_def ){
 					key_value = peek_key_value_from_content( content, *ig, *ik );
 					if( !key_value ){
-						key_value = read_key_value_from_key_file( key_file->key_file, *ig, *ik, key_def );
+						key_value = read_key_value_from_key_file( keyfile, *ig, *ik, key_def );
 						if( key_value ){
-							key_value->mandatory = mandatory;
+							key_value->mandatory = keyfile->mandatory;
 							content = g_list_prepend( content, key_value );
 						}
 					}
@@ -1111,28 +1109,29 @@ static KeyFile *
 key_file_new( const gchar *dir )
 {
 	static const gchar *thisfn = "na_settings_key_file_new";
-	KeyFile *key_file;
+	KeyFile *keyfile;
 	GError *error;
 	GFile *file;
 
-	key_file = g_new0( KeyFile, 1 );
+	keyfile = g_new0( KeyFile, 1 );
 
-	key_file->key_file = g_key_file_new();
-	key_file->fname = g_strdup_printf( "%s/%s.conf", dir, PACKAGE );
+	keyfile->key_file = g_key_file_new();
+	keyfile->fname = g_strdup_printf( "%s/%s.conf", dir, PACKAGE );
+	na_core_utils_file_list_perms( keyfile->fname, thisfn );
 
 	error = NULL;
-	file = g_file_new_for_path( key_file->fname );
-	key_file->monitor = g_file_monitor_file( file, 0, NULL, &error );
+	file = g_file_new_for_path( keyfile->fname );
+	keyfile->monitor = g_file_monitor_file( file, 0, NULL, &error );
 	if( error ){
-		g_warning( "%s: %s: %s", thisfn, key_file->fname, error->message );
+		g_warning( "%s: %s: %s", thisfn, keyfile->fname, error->message );
 		g_error_free( error );
 		error = NULL;
 	} else {
-		key_file->handler = g_signal_connect( key_file->monitor, "changed", ( GCallback ) on_keyfile_changed, NULL );
+		keyfile->handler = g_signal_connect( keyfile->monitor, "changed", ( GCallback ) on_keyfile_changed, NULL );
 	}
 	g_object_unref( file );
 
-	return( key_file );
+	return( keyfile );
 }
 
 /*
@@ -1168,7 +1167,8 @@ on_keyfile_changed_timeout( void )
 	/* last individual notification is older that the st_burst_timeout
 	 * we may so suppose that the burst is terminated
 	 */
-	new_content = content_load();
+	new_content = content_load_keys( NULL, st_settings->private->mandatory );
+	new_content = content_load_keys( new_content, st_settings->private->user );
 	modifs = content_diff( st_settings->private->content, new_content );
 
 #ifdef NA_MAINTAINER_MODE
@@ -1256,6 +1256,7 @@ peek_key_value_from_content( GList *content, const gchar *group, const gchar *ke
 static KeyValue *
 read_key_value( const gchar *group, const gchar *key, gboolean *found, gboolean *mandatory )
 {
+	static const gchar *thisfn = "na_settings_read_key_value";
 	KeyDef *key_def;
 	gboolean has_entry;
 	KeyValue *key_value;
@@ -1273,7 +1274,7 @@ read_key_value( const gchar *group, const gchar *key, gboolean *found, gboolean 
 
 	if( key_def ){
 		has_entry = FALSE;
-		key_value = read_key_value_from_key_file( st_settings->private->mandatory->key_file, group ? group : key_def->group, key, key_def );
+		key_value = read_key_value_from_key_file( st_settings->private->mandatory, group ? group : key_def->group, key, key_def );
 		if( key_value ){
 			has_entry = TRUE;
 			if( found ){
@@ -1281,10 +1282,11 @@ read_key_value( const gchar *group, const gchar *key, gboolean *found, gboolean 
 			}
 			if( mandatory ){
 				*mandatory = TRUE;
+				g_debug( "%s: %s: key is mandatory", thisfn, key );
 			}
 		}
 		if( !has_entry ){
-			key_value = read_key_value_from_key_file( st_settings->private->user->key_file, group ? group : key_def->group, key, key_def );
+			key_value = read_key_value_from_key_file( st_settings->private->user, group ? group : key_def->group, key, key_def );
 			if( key_value ){
 				has_entry = TRUE;
 				if( found ){
@@ -1298,7 +1300,7 @@ read_key_value( const gchar *group, const gchar *key, gboolean *found, gboolean 
 }
 
 static KeyValue *
-read_key_value_from_key_file( GKeyFile *key_file, const gchar *group, const gchar *key, const KeyDef *key_def )
+read_key_value_from_key_file( KeyFile *keyfile, const gchar *group, const gchar *key, const KeyDef *key_def )
 {
 	static const gchar *thisfn = "na_settings_read_key_value_from_key_file";
 	KeyValue *value;
@@ -1316,7 +1318,7 @@ read_key_value_from_key_file( GKeyFile *key_file, const gchar *group, const gcha
 		case NA_DATA_TYPE_UINT:
 		case NA_DATA_TYPE_UINT_LIST:
 		case NA_DATA_TYPE_BOOLEAN:
-			str = g_key_file_get_string( key_file, group, key, &error );
+			str = g_key_file_get_string( keyfile->key_file, group, key, &error );
 			if( error ){
 				if( error->code != G_KEY_FILE_ERROR_KEY_NOT_FOUND && error->code != G_KEY_FILE_ERROR_GROUP_NOT_FOUND ){
 					g_warning( "%s: %s", thisfn, error->message );
@@ -1345,13 +1347,10 @@ read_key_value_from_key_file( GKeyFile *key_file, const gchar *group, const gcha
 			return( NULL );
 	}
 
-#ifdef NA_MAINTAINER_MODE
 	if( value ){
-		g_debug( "%s: group=%s, key=%s value=%s", thisfn, group, key, str );
-	} else {
-		g_debug( "%s: group=%s, key=%s not found", thisfn, group, key );
+		g_debug( "%s: group=%s, key=%s, value=%s, mandatory=%s",
+				thisfn, group, key, str, keyfile->mandatory ? "True":"False" );
 	}
-#endif
 
 	g_free( str );
 
