@@ -80,6 +80,7 @@ cact_menubar_file_initialize( CactMenubar *bar )
 void
 cact_menubar_file_on_update_sensitivities( const CactMenubar *bar )
 {
+	static const gchar *thisfn = "cact_menubar_file_on_update_sensitivities";
 	gboolean new_item_enabled;
 
 	/* new menu / new action
@@ -88,6 +89,11 @@ cact_menubar_file_on_update_sensitivities( const CactMenubar *bar )
 	 * we must have at least one writable provider
 	 */
 	new_item_enabled = bar->private->is_parent_writable && bar->private->has_writable_providers;
+	g_debug( "%s: is_parent_writable=%s, has_writable_providers=%s, new_item_enabled=%s",
+			thisfn,
+			bar->private->is_parent_writable ? "True":"False",
+			bar->private->has_writable_providers ? "True":"False",
+			new_item_enabled ? "True":"False" );
 	cact_menubar_enable_item( bar, "NewMenuItem", new_item_enabled );
 	cact_menubar_enable_item( bar, "NewActionItem", new_item_enabled );
 

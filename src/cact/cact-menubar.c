@@ -523,6 +523,11 @@ on_base_initialize_window( BaseWindow *window, gpointer user_data )
 		bar->private->has_writable_providers =
 				( na_io_provider_find_writable_io_provider( NA_PIVOT( bar->private->updater )) != NULL );
 
+		g_debug( "%s: na_updater_is_level_zero_writable=%s, na_io_provider_find_writable_io_provider=%s",
+				thisfn,
+				bar->private->is_level_zero_writable ? "True":"False",
+				bar->private->has_writable_providers ? "True":"False" );
+
 		/* connect to all signal which may have an influence on the menu
 		 * items sensitivity
 		 */
@@ -817,8 +822,12 @@ on_tree_view_selection_changed( BaseWindow *window, GList *selected, gpointer us
 	}
 	if( first ){
 		bar->private->is_parent_writable = na_object_is_finally_writable( first, NULL );
+		g_debug( "%s: parent of first selected is not null: is_parent_writable=%s",
+				thisfn, bar->private->is_parent_writable ? "True":"False" );
 	} else {
 		bar->private->is_parent_writable = bar->private->is_level_zero_writable;
+		g_debug( "%s: first selected is at level zero: is_level_zero_writable=%s",
+				thisfn, bar->private->is_level_zero_writable ? "True":"False" );
 	}
 
 	/* check is only an action is selected, or only profile(s) of a same action

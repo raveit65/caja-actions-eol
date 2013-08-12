@@ -926,6 +926,12 @@ io_providers_list_set_module( const NAPivot *pivot, NAIOProvider *provider_objec
 
 	provider_object->private->writable =
 			is_finally_writable( provider_object, pivot, &provider_object->private->reason );
+
+	g_debug( "na_io_provider_list_set_module: provider_module=%p (%s), writable=%s, reason=%d",
+			( void * ) provider_module,
+			provider_object->private->id,
+			provider_object->private->writable ? "True":"False",
+			provider_object->private->reason );
 }
 
 static gboolean
@@ -948,6 +954,7 @@ is_conf_writable( const NAIOProvider *provider, const NAPivot *pivot, gboolean *
 static gboolean
 is_finally_writable( const NAIOProvider *provider, const NAPivot *pivot, guint *reason )
 {
+	static const gchar *thisfn = "na_io_provider_is_finally_writable";
 	gboolean writable;
 	gboolean is_writable, mandatory;
 
@@ -968,16 +975,22 @@ is_finally_writable( const NAIOProvider *provider, const NAPivot *pivot, guint *
 
 				writable = FALSE;
 				*reason = NA_IIO_PROVIDER_STATUS_INCOMPLETE_API;
+				g_debug( "%s: provider_module=%p (%s), writable=False, reason=NA_IIO_PROVIDER_STATUS_INCOMPLETE_API",
+						thisfn, ( void * ) provider->private->provider, provider->private->id );
 
 		} else if( !NA_IIO_PROVIDER_GET_INTERFACE( provider->private->provider )->is_willing_to_write( provider->private->provider )){
 
 				writable = FALSE;
 				*reason = NA_IIO_PROVIDER_STATUS_NOT_WILLING_TO;
+				g_debug( "%s: provider_module=%p (%s), writable=False, reason=NA_IIO_PROVIDER_STATUS_NOT_WILLING_TO",
+						thisfn, ( void * ) provider->private->provider, provider->private->id );
 
 		} else if( !NA_IIO_PROVIDER_GET_INTERFACE( provider->private->provider )->is_able_to_write( provider->private->provider )){
 
 				writable = FALSE;
 				*reason = NA_IIO_PROVIDER_STATUS_NOT_ABLE_TO;
+				g_debug( "%s: provider_module=%p (%s), writable=False, reason=NA_IIO_PROVIDER_STATUS_NOT_ABLE_TO",
+						thisfn, ( void * ) provider->private->provider, provider->private->id );
 
 		} else {
 			is_writable = is_conf_writable( provider, pivot, &mandatory );
@@ -988,6 +1001,9 @@ is_finally_writable( const NAIOProvider *provider, const NAPivot *pivot, guint *
 				} else {
 					*reason = NA_IIO_PROVIDER_STATUS_LOCKED_BY_USER;
 				}
+				g_debug( "%s: provider_module=%p (%s), writable=False, reason=NA_IIO_PROVIDER_STATUS_LOCKED_BY_someone, mandatory=%s",
+						thisfn, ( void * ) provider->private->provider, provider->private->id,
+						mandatory ? "True":"False" );
 			}
 		}
 	}
