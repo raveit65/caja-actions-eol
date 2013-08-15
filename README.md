@@ -1,3 +1,8 @@
+18.08.2013 update to 1.6.1
+
+changelog:
+- improve debug usage
+
 29.11.2012 update to 1.6.0
 
 changelog:
