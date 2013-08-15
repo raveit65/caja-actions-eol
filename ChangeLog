@@ -1,6 +1,25 @@
+2012-11-21 Wolfgang Ulbrich <chat-to-me@raveit.de>
+
+   * release 1.6.0
+
+   * removal of mateconf usage
+
+2012-11-21 Wolfgang Ulbrich <chat-to-me@raveit.de>
+
+   * release 1.5.0
+
+   * update to nautilus-acions-3.2.2
+
+2012-09-06 Wolfgang Ulbrich <chat-to-me@raveit.de>
+
+   * release 1.4.0
+
 2012-04-01 Wolfgang Ulbrich <chat-to-me@raveit.de>
 
-   * fork to  Mate Desktop
+   * initial for Mate Desktop
+
+------------------------------------------------------------------------------
+nautilus-actions
 
 2012-03-04 Pierre Wieser <pwieser@trychlos.org>
 
