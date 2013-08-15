@@ -92,7 +92,6 @@ dist_pkgdoc_DATA = \
 	MAINTAINERS							\
 	NEWS								\
 	README								\
-	TODO								\
 	$(NULL)
 
 uninstall-hook:
