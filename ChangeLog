@@ -1,5 +1,11 @@
 2013-08-15 Wolfgang Ulbrich <chat-to-me@raveit.de>
 
+   * release 1.6.2
+
+   * fix Copying-DOCS issue,  wrong-file-end-of-line-encoding
+
+2013-08-15 Wolfgang Ulbrich <chat-to-me@raveit.de>
+
    * release 1.6.1
 
    * improve debug usage
