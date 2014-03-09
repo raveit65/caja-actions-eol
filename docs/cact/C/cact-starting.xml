@@ -27,6 +27,7 @@
               <command><filename>caja-actions-config-tool</filename></command>
             </para>
             <para>
+              <!-- i18n: "Return" is a key name -->
               then press <keycap>Return</keycap>.
             </para>
             <tip>
@@ -40,6 +41,7 @@
                 </command>
               </para>
               <para>
+                <!-- i18n: "Return" is a key name -->
                 then press <keycap>Return</keycap>.
               </para>
             </tip>
@@ -64,8 +66,8 @@
               <phrase>
                 Shows &appname; main window.
                 Contains menubar, toolbar, display area,
-                an empty items list in the left, several disabled properties tabs,
-                and statusbar.
+                an empty items list in the left, several disabled
+                properties tabs, and statusbar.
               </phrase>
             </textobject>
             <caption>
@@ -229,8 +231,8 @@
           <term>Toolbar.</term>
           <listitem>
             <para>
-              Several toolbars may be displayed below the menubar, depending of
-              your choices in the
+              Several toolbars may be displayed below the menubar,
+              depending of your choices in the
               <menuchoice>
                 <guimenu>View</guimenu>
                 <guimenuitem>Toolbars</guimenuitem>
@@ -243,12 +245,13 @@
           <listitem>
             <para>
               The list on the left of the main window contains all items,
-              whether they are actions or menus, currently available for edition in
-              &appname;.
+              whether they are actions or menus, currently available for
+              edition in &appname;.
             </para>
             <para>
-              Items may be sorted in ascending or descending alphabetical order, or
-              not sorted at all, being directly organized and managed by the user.
+              Items may be sorted in ascending or descending alphabetical
+              order, or not sorted at all, being directly organized and
+              managed by the user.
             </para>
             <para>
               Invalid items are displayed in red color.
@@ -270,8 +273,9 @@
           <term>Properties tabs.</term>
           <listitem>
             <para>
-              The right part of the main window displays all is needed to define
-              how, when and where actions and menus should be displayed.
+              The right part of the main window displays all is needed
+              to define how, when and where actions and menus should be
+              displayed.
             </para>
             <variablelist>
               <varlistentry>
@@ -280,8 +284,8 @@
                 </term>
                 <listitem>
                   <para>
-                    Define in which &caja; menus the item should appear, and
-                    how it will be displayed.
+                    Define in which &caja; menus the item should
+                    appear, and how it will be displayed.
                   </para>
                 </listitem>
               </varlistentry>
@@ -312,8 +316,9 @@
                 </term>
                 <listitem>
                   <para>
-                    Define the basename filters the &caja; selection must satisfy
-                    in order the action or menu be candidate for display.
+                    Define the basename filters the &caja; selection
+                    must satisfy in order the action or menu be candidate
+                    for display.
                   </para>
                 </listitem>
               </varlistentry>
@@ -323,8 +328,9 @@
                 </term>
                 <listitem>
                   <para>
-                    Define the mimetype filters the &caja; selection must satisfy
-                    in order the action or menu be candidate for display.
+                    Define the mimetype filters the &caja; selection
+                    must satisfy in order the action or menu be candidate
+                    for display.
                   </para>
                 </listitem>
               </varlistentry>
@@ -334,8 +340,9 @@
                 </term>
                 <listitem>
                   <para>
-                    Define the folder filters the &caja; selection must satisfy
-                    in order the action or menu be candidate for display.
+                    Define the folder filters the &caja; selection
+                    must satisfy in order the action or menu be candidate
+                    for display.
                   </para>
                 </listitem>
               </varlistentry>
@@ -345,8 +352,9 @@
                 </term>
                 <listitem>
                   <para>
-                    Define the scheme filters the &caja; selection must satisfy
-                    in order the action or menu be candidate for display.
+                    Define the scheme filters the &caja; selection
+                    must satisfy in order the action or menu be candidate
+                    for display.
                   </para>
                 </listitem>
               </varlistentry>
@@ -356,8 +364,9 @@
                 </term>
                 <listitem>
                   <para>
-                    Define the capability filters the &caja; selection must satisfy
-                    in order the action or menu be candidate for display.
+                    Define the capability filters the &caja; selection
+                    must satisfy in order the action or menu be candidate
+                    for display.
                   </para>
                 </listitem>
               </varlistentry>
@@ -367,8 +376,9 @@
                 </term>
                 <listitem>
                   <para>
-                    Define some environment conditions the &caja; selection must satisfy
-                    in order the action or menu be candidate for display.
+                    Define some environment conditions the &caja;
+                    selection must satisfy in order the action or menu
+                    be candidate for display.
                   </para>
                 </listitem>
               </varlistentry>
@@ -393,10 +403,12 @@
               currently selected row in the items list.
             </para>
             <para>
-              When no relevant information is to be displayed, the statusbar
-              displays the count of loaded menus, actions and profiles.
+              When no relevant information is to be displayed, the
+              statusbar displays the count of loaded menus, actions
+              and profiles.
             </para>
             <para>
+              <!-- i18n: "read-only" may be translated -->
               The &laquosp;read-only&spraquo; icon 
               <inlinegraphic fileref="figures/read-only.png" />
               is displayed in
@@ -410,27 +422,27 @@
     <sect2 id="getting-started-first-action">
       <title>Creating your first action</title>
       <para>
-        In this example, we are going to create an action which displays some
-        pretty informations about the current selection.
+        In this example, we are going to create an action which displays
+        some pretty informations about the current selection.
       </para>
       <formalpara>
         <title>Checking for prerequisites</title>
         <para>
-          This action will require &matedialog;.
+          This action will require &zenity;.
         </para>
       </formalpara>
       <para>
-        &matedialog; is a program which will allow you to create a graphical
+        &zenity; is a program which will allow you to create a graphical
         user interface from a command-line.
       </para>
       <para>
         You should check that this program
-        is installed on your system, by example by typing the following command
-        in a terminal:
+        is installed on your system, by example by typing the following
+        command in a terminal:
       </para>
       <para>
         <command>
-          <filename>matedialog</filename>
+          <filename>zenity</filename>
         </command>
       </para>
       <para>
@@ -479,10 +491,13 @@
         </screenshot>
       </figure>
       <para>
-        In the <guilabel>Items list</guilabel>, the new action is displayed in italic characters.
+        <!-- i18n: "Items list" is a UI label -->
+        In the <guilabel>Items list</guilabel>, the new action is
+        displayed in italic characters.
       </para>
       <para>
-        Italics are used as a reminder that the item has not yet been saved.
+        Italics are used as a reminder that the item has not yet been
+        saved.
       </para>
       <para>
         As another reminder that there is some pending modifications,
@@ -492,35 +507,41 @@
       <formalpara>
         <title>Qualifying your new action</title>
         <para>
-          It merely consists of choosing how your action will be displayed
-          in the file manager context menu.
+          It merely consists of choosing how your action will be
+          displayed in the file manager context menu.
         </para>
       </formalpara>
       <itemizedlist>
         <listitem>
           <para>
+            <!-- i18n: "My first action" is a user entry -->
             Enter <userinput>My first action</userinput>
+            <!-- i18n: "Context label" is a UI label -->
             in the <guilabel>Context label</guilabel> entry box.
           </para>
           <para>
-            The <guilabel>Context label</guilabel> entry box contains the label
-            of the action as you want it to be displayed in the file manager
-            context menu.
+            <!-- i18n: "Context label" is a UI label -->
+            The <guilabel>Context label</guilabel> entry box contains
+            the label of the action as you want it to be displayed in
+            the file manager context menu.
           </para>
          <para>
-            The label is a mandatory property of your action. If it happens
-            to be empty, then your action will be considered as invalid by
-            &prodname;: it will be displayed in red in <guilabel>Items list</guilabel>
-            and will never be candidate to be displayed in the
-            file manager context menus.
+            The label is a mandatory property of your action. If it
+            happens to be empty, then your action will be considered as
+            invalid by &prodname;: it will be displayed in red in
+            <!-- i18n: "Items list" is a UI label -->
+            <guilabel>Items list</guilabel> and will never be candidate
+            to be displayed in the file manager context menus.
           </para>
         </listitem>
         <listitem>
           <para>
             Enter <userinput>This will execute an action with some parameters</userinput>
+            <!-- i18n: "Tooltip" is a UI label -->
             in the <guilabel>Tooltip</guilabel> entry box.
           </para>
           <para>
+            <!-- i18n: "Tooltip" is a UI label -->
             The <guilabel>Tooltip</guilabel> entry box contains the text
             you want to be displayed as a short help to your action.
           </para>
@@ -528,20 +549,25 @@
         <listitem>
           <para>
             Select <inlinegraphic fileref="figures/stock-icon-about.png" /> 
+            <!-- i18n: "Icon" is a UI label -->
             in the <guilabel>Icon</guilabel> drop-down list.
           </para>
           <para>
-            The <guilabel>Icon</guilabel> selection defines the icon which will
-            be associated with your action in file manager context menus and in
-            the toolbar.
+            <!-- i18n: "Icon" is a UI label -->
+            The <guilabel>Icon</guilabel> selection defines the icon
+            which will be associated with your action in file manager
+            context menus and in the toolbar.
           </para>
           <para>
-            You have two ways of choosing the icon associated to your action:
+            You have two ways of choosing the icon associated to your
+            action:
           </para>
           <itemizedlist>
             <listitem>
               <para>
-                Click on the <guilabel>Icon</guilabel> drop-down list to select an icon.
+                <!-- i18n: "Icon" is a UI label -->
+                Click on the <guilabel>Icon</guilabel> drop-down list
+                to select an icon.
               </para>
             </listitem>
             <listitem>
@@ -562,6 +588,7 @@
         </para>
       </formalpara>
       <para>
+        <!-- i18n: "Command" is a UI label -->
         Click on the <guilabel>Command</guilabel> tab to show the page
         which will permit you to enter the command.
       </para>
@@ -589,13 +616,15 @@
       <itemizedlist>
         <listitem>
           <para>
-            Enter <userinput>matedialog</userinput> in the <guilabel>Path</guilabel>
-            entry box.
+            Enter <userinput>zenity</userinput> in the
+            <!-- i18n: "Path" is a UI label -->
+            <guilabel>Path</guilabel> entry box.
           </para>
           <para>
-            The <guilabel>Path</guilabel> entry box defines the command which
-            will be executed when you will select your action in the file manager
-            context menu.
+            <!-- i18n: "Path" is a UI label -->
+            The <guilabel>Path</guilabel> entry box defines the command
+            which will be executed when you will select your action in
+            the file manager context menu.
           </para>
           <para>
             You have two ways of defining the command to be executed:
@@ -603,6 +632,7 @@
           <itemizedlist>
             <listitem>
               <para>
+                <!-- i18n: "Path" is a UI label -->
                 Enter it in the <guilabel>Path</guilabel> entry box.
               </para>
             </listitem>
@@ -621,21 +651,27 @@
         </listitem>
         <listitem>
           <para>
+            <!-- i18n: only "selected item(s)" is translatable -->
             Enter <userinput>--info --text='%c selected item(s): %U'</userinput>
+            <!-- i18n: "Parameters" is a UI label -->
             in the <guilabel>Parameters</guilabel>
             entry box.
           </para>
           <para>
-            The <guilabel>Parameters</guilabel> contains the arguments which will
-            be passed to your command when it will be executed. These arguments may
-            embed parameters which will be expanded at runtime.
+            <!-- i18n: "Parameters" is a UI label -->
+            The <guilabel>Parameters</guilabel> contains the arguments
+            which will be passed to your command when it will be executed.
+            These arguments may embed parameters which will be expanded
+            at runtime.
           </para>
           <para>
+            <!-- i18n: "Path" and "Parameters" are UI labels -->
             If both <guilabel>Path</guilabel> and <guilabel>Parameters</guilabel>
-            are empty, then this action will be considered as invalid: it will be
-            displayed in red in <guilabel>Items list</guilabel> and will be
-            never be candidate to be displayed in the
-            file manager context menus.
+            are empty, then this action will be considered as invalid:
+            <!-- i18n: "Items list" is a UI label -->
+            it will be displayed in red in <guilabel>Items list</guilabel>
+            and will never be candidate to be displayed in the file
+            manager context menus.
           </para>
         </listitem>
       </itemizedlist>
@@ -680,17 +716,17 @@
         Cliking of the item in the &caja; context menu activates it,
         and executes the corresponding command.
       </para>
-      <figure id="cact-FIG-start-matedialog">
+      <figure id="cact-FIG-start-zenity">
         <title>The result of the execution of your first action</title>
         <screenshot>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="figures/start-matedialog-result.png" format="PNG"/>
+              <imagedata fileref="figures/start-zenity-result.png" format="PNG"/>
             </imageobject>
             <textobject>
               <phrase>
                 Shows the result of the execution of your first action.
-                This is &matedialog; dialog box, displaying the URI of the selected item.
+                This is &zenity; dialog box, displaying the URI of the selected item.
               </phrase>
             </textobject>
             <caption>
@@ -700,3 +736,4 @@
         </screenshot>
       </figure>
     </sect2>
+

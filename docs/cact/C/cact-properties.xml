@@ -1,7 +1,7 @@
 <sect2 id="usage-properties">
   <title>Accessing and editing item properties</title>
   <para>
-    An item has bot editable and read-only properties
+    An item has both editable and read-only properties.
   </para>
     
   <figure id="cact-FIG-prefs-runtime">

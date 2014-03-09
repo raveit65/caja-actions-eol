@@ -22,6 +22,7 @@
     selected (or not).
   </para>
   <para>
+    <!-- i18n: "Action" is a UI label -->
     Click on the <guilabel>Action</guilabel> tab to show the page
     which will permit you to configure the locations your action
     targets.
@@ -103,17 +104,20 @@
     <itemizedlist>
       <listitem>
         <para>
+          <!-- i18n: "Context label" is a UI label -->
           the <guilabel>Context label</guilabel> as a label,
         </para>
       </listitem>
       <listitem>
         <para>
+          <!-- i18n: "Icon" is a UI label -->
           the <guilabel>Icon</guilabel>,
         </para>
       </listitem>
       <listitem>
         <para>
           these two properties being associated with the
+          <!-- i18n: "Tooltip" is a UI label -->
           <guilabel>Tooltip</guilabel>.
         </para>
       </listitem>
@@ -127,9 +131,9 @@
     </note>
     <tip>
       <para>
-        You may embed some parameters in the label, the icon name or the tooltip.
-        These parameters will be dynamically substituted at runtime with values
-        which will depend on currently selected item(s). 
+        You may embed some parameters in the label, the icon name or the
+        tooltip. These parameters will be dynamically substituted at runtime
+        with values which will depend on currently selected item(s). 
       </para>
     </tip>
 
@@ -142,17 +146,20 @@
     <itemizedlist>
       <listitem>
         <para>
+          <!-- i18n: "Toolbar label" is a UI label -->
           the <guilabel>Toolbar label</guilabel> as a label,
         </para>
       </listitem>
       <listitem>
         <para>
+          <!-- i18n: "Icon" is a UI label -->
           the <guilabel>Icon</guilabel>,
         </para>
       </listitem>
       <listitem>
         <para>
           these two properties being associated with the
+          <!-- i18n: "Tooltip" is a UI label -->
           <guilabel>Tooltip</guilabel>.
         </para>
       </listitem>
@@ -170,14 +177,16 @@
         those used in menus. By unchecking the
         <guilabel>Use same label for icon in the toolbar</guilabel>
         checkbox you can define a label specific to the
-        toolbar, which is usually shorter that those defined for the menus.
+        toolbar, which is usually shorter that those defined for the
+        menus.
       </para>
     </tip>
     <tip>
       <para>
-        You may embed some parameters in the toolbar label, the icon name or the tooltip.
-        These parameters will be dynamically substituted at runtime with values
-        which will depend on currently selected item(s). 
+        You may embed some parameters in the toolbar label, the icon
+        name or the tooltip. These parameters will be dynamically
+        substituted at runtime with values which will depend on currently
+        selected item(s). 
       </para>
     </tip>
 
@@ -193,9 +202,10 @@
       <title>Defining no target at all</title>
       <para>
         If no target is defined,
-        <abbrev>i.e.</abbrev> if the three checkboxes are unchecked, then your action
-        will never be displayed.
+        <abbrev>i.e.</abbrev> if the three checkboxes are unchecked,
+        then your action will never be displayed.
       </para>
     </formalpara>
   </sect3>
 </sect2>
+

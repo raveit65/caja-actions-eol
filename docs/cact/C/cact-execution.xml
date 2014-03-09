@@ -8,6 +8,7 @@
   </para>
   <para>
     As we have already seen, the command to be executed is configured
+      <!-- i18n: "Command" is a UI label -->
     in the <guilabel>Command</guilabel> page.
   </para>
   <para>
@@ -19,7 +20,10 @@
   <sect3 id="usage-execution-parameters">
     <title>Available parameters</title>
     <para>
-      In the <guilabel>Command</guilabel> page, click on <guilabel>Legend</guilabel>
+      <!-- i18n: "Command" is a UI label -->
+      In the <guilabel>Command</guilabel> page,
+      <!-- i18n: "Legend" is a UI label -->
+      click on <guilabel>Legend</guilabel>
       button to see the list of available parameters.
     </para>
     <figure id="cact-FIG-legend">
@@ -40,23 +44,27 @@
     </figure>
     <tip>
       <para>
+        <!-- i18n: "Legend" is a UI label -->
         The <guibutton>Legend</guibutton> button has a toggling action:
+        <!-- i18n: "Parameter Legend" is a UI label -->
         click once to display the <guilabel>Parameter Legend</guilabel>
         dialog box; click a second time to hide it.
       </para>
     </tip>
     <note>
       <para>
-        The word &laquosp;<guilabel>first</guilabel>&spraquo; may be misleading
-        as it only refers to the list of selected items internally provided by
-        the file manager to the &prodname; plugin.
+        <!-- i18n: "first" is a UI label -->
+        The word &laquosp;<guilabel>first</guilabel>&spraquo; may be
+        misleading as it only refers to the list of selected items
+        internally provided by the file manager to the &prodname; plugin.
       </para>
       <para>
-        In particular, it has <emphasis>nothing to do</emphasis> with the
-        visual selection you may
-        have done in the file manager window. And, in fact, which is the
-        &laquosp;<guilabel>first</guilabel>&spraquo; selected item in a
-        multiple selection is absolutely undefined and rather unpredictable.
+        In particular, it has <emphasis>nothing to do</emphasis> with
+        the visual selection you may have done in the file manager window.
+        <!-- i18n: "first" is a UI label -->
+        And, in fact, which is the &laquosp;<guilabel>first</guilabel>&spraquo;
+        selected item in a multiple selection is absolutely undefined
+        and rather unpredictable.
       </para>
     </note>
   </sect3>
@@ -67,8 +75,11 @@
       Your action may be executed in a particular working directory.
     </para>
     <para>
+      <!-- i18n: "Command" is a UI label -->
       You may specify it in the <guilabel>Command</guilabel> tab, in the
+      <!-- i18n: "Working directory" is a UI label -->
       <guilabel>Working directory</guilabel> entry box, or by clicking
+      <!-- i18n: "Browse" is a UI (button) label -->
       on <guibutton>Browse</guibutton> to select a folder on the 
       filesystem.
     </para>
@@ -89,26 +100,29 @@
       </screenshot>
     </figure>
     <para>
-      The working directory defaults to <literal>%d</literal>, which runs
-      the command in the base directory of the (first) selected item.
+      The working directory defaults to <literal>%d</literal>, which
+      runs the command in the base directory of the (first) selected
+      item.
     </para>
     <para>
       In the particular case of the <literal>%d</literal> parameter,
+      <!-- i18n: "first" is a UI label -->
       the &laquosp;<guilabel>first</guilabel>&spraquo; selected item
-      is not very important because it is very likely that all selected items
-      are located in the same base directory.
+      is not very important because it is very likely that all selected
+      items are located in the same base directory.
     </para>
   </sect3>
 
   <sect3 id="usage-execution-how">
     <title>How should the action be executed ?</title>
     <para>
-      Apart from configuring the conditions, the selection must be met in
-      order your action be displayed in file manager menus, &prodname;
+      Apart from configuring the conditions, the selection must be met
+      in order your action be displayed in file manager menus, &prodname;
       allows you to configure how exactly your command will be
       executed.
     </para>
     <para>
+      <!-- i18n: "Execution" is a UI label -->
       Click on the <guilabel>Execution</guilabel> tab to show the page
       which configures the execution of your command.
     </para>
@@ -228,8 +242,10 @@
       </figure>
       <para>
         If the execution mode of the command is <literal>Normal</literal>,
+        <!-- i18n: "remove" is a X literal, do not translate -->
         and if you know that the application will send a <literal>remove</literal>
         message with the <envar>DESKTOP_STARTUP_ID</envar> environment variable set,
+        <!-- i18n: "Startup notify" is a UI label -->
         then check the <guilabel>Startup notify</guilabel> checkbox.
       </para>
       <para>
@@ -244,9 +260,10 @@
       <title>Window class</title>
       <para>
         If the execution mode of the command is <literal>Normal</literal>,
-        and if you know that the application will map at least one window with a
-        given class name,
-        then enter that name into the <guilabel>Startup Window Manager class</guilabel>
+        and if you know that the application will map at least one window
+        with a given class name, then enter that name into the
+        <!-- i18n: "Startup Window Manager class" is a UI label -->
+         <guilabel>Startup Window Manager class</guilabel>
         entry box.
       </para>
       <para>
@@ -276,29 +293,30 @@
         </screenshot>
       </figure>
       <para>
-        Enter in the <guilabel>Execute as user</guilabel> entry box the username
-        or the <acronym>UID</acronym> of the user your command will be run as.
+        Enter in the <guilabel>Execute as user</guilabel> entry box the
+        username or the <acronym>UID</acronym> of the user your command
+        will be run as.
       </para>
       <para>
-        If you do not enter anything in this field, then the command will be
-        executed as the current user.
+        If you do not enter anything in this field, then the command will
+        be executed as the current user.
       </para>
     </sect4>
 
     <sect4 id="usage-execution-how-singular">
       <title>Multiple executions</title>
       <para>
-        You may want your command to be executed once, providing it the list of
-        selected items as argument.
+        You may want your command to be executed once, providing it the
+        list of selected items as argument.
       </para>
       <para>
-        Or you may prefer your command to be repeated for each selected item,
-        providing a different item as argument for each execution.
+        Or you may prefer your command to be repeated for each selected
+        item, providing a different item as argument for each execution.
       </para>
       <para>
         Actually, &prodname; automatically handles these two behaviors,
-        depending of the form and the order of the parameters in the command
-        arguments.
+        depending of the form and the order of the parameters in the
+        command arguments.
       </para>
       <para>
         Though some parameters are not depending on the count of the
@@ -323,7 +341,8 @@
       </itemizedlist>
       <para>
         When the selection is empty or contains only one element,
-        and from this topic point of view, these two forms are exactly equivalent.
+        and from this topic point of view, these two forms are exactly
+        equivalent.
       </para>
       <para>
         When the selection contains more than one item:
@@ -332,16 +351,17 @@
         <listitem>
           <para>
             if the first relevant parameter is of a singular form,
-            then &prodname; will consider that the command is only able to deal
-            with one item at a time, and thus that it has to be ran one time for
-            each selected item;
+            then &prodname; will consider that the command is only able
+            to deal with one item at a time, and thus that it has to be
+            ran one time for each selected item;
           </para>
         </listitem>
         <listitem>
           <para>
-            contrarily, if the first relevant parameter found is of the plural form,
-            then &prodname; will consider that the command is able to deal with a
-            list of items, and thus the command will be executed only once;
+            contrarily, if the first relevant parameter found is of the
+            plural form, then &prodname; will consider that the command
+            is able to deal with a list of items, and thus the command
+            will be executed only once;
           </para>
         </listitem>
         <listitem>
@@ -597,14 +617,16 @@
           <member><command>echo pierre paul jacques pierre</command></member>
         </simplelist>
         <para>
-          This is because the first <emphasis>relevant</emphasis> parameter here
-          is <literal>%B</literal>. The command is then run only once, replacing
-          <literal>%B</literal> with the space-separated list of basenames. As
-          the command is only run once, the <literal>%b</literal> is substituted
-          only once with the (first) basename. 
+          This is because the first <emphasis>relevant</emphasis>
+          parameter here is <literal>%B</literal>. The command is then
+          run only once, replacing <literal>%B</literal> with the
+          space-separated list of basenames. As the command is only run
+          once, the <literal>%b</literal> is substituted only once with
+          the (first) basename. 
         </para>
       </example>
    </sect4>
   </sect3>
 
 </sect2>
+

@@ -1,8 +1,10 @@
 <sect2 id="usage-sorting">
   <title>Sorting the items list</title>
   <para>
-    Your actions and menus will be displayed in file manager context menus
-    in the same order that they are listed in the <guilabel>Items list</guilabel>,
+    Your actions and menus will be displayed in file manager context
+    menus in the same order that they are listed in the
+    <!-- i18n: "Items list" is a UI label -->
+    <guilabel>Items list</guilabel>,
     on the left pane of the main &appname; window.
   </para>
   <para>
@@ -11,8 +13,8 @@
   <itemizedlist>
     <listitem>
       <para>
-        sort your actions and menus in ascending or descending alphabetical
-        order of their label,
+        sort your actions and menus in ascending or descending
+        alphabetical order of their label,
       </para>
     </listitem>
     <listitem>
@@ -26,8 +28,8 @@
   <sect3 id="usage-sorting-alpha">
     <title>Alphabetically sorting your actions and menus</title>
     <para>
-      In these modes, actions and menus are sorted depending of their label,
-      inside of their parent. 
+      In these modes, actions and menus are sorted depending of their
+      label, inside of their parent. 
     </para>
     <figure id="cact-FIG-sort-buttons">
       <title>Sort buttons in the main window</title>

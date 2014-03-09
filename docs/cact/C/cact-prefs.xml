@@ -3,7 +3,9 @@
     <para>
       Choose
       <menuchoice>
+        <!-- i18n: "Edit" is a menu item -->
         <guimenu>Edit</guimenu>
+        <!-- i18n: "Preferences" is a menu item -->
         <guimenuitem>Preferences</guimenuitem>
       </menuchoice>
       to access to the configuration of your preferences.

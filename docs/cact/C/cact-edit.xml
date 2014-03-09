@@ -13,7 +13,7 @@
       Be warned that selecting and deleting all profiles of an action
       leaves it without any profile, so in an invalid state.
       The name of the action will be written in red (because it is
-      invalid) italic (because it has been modified) characters.
+      invalid) and italic (because it has been modified) characters.
     </para>
   </sect3>
 
@@ -22,6 +22,7 @@
     <para>
       Multiple selection is possible in &appname;.
       You can extend the current selection
+      <!-- i18n: "Ctrl" and "Shit" are key names -->
       by pressing <keycap>Ctrl</keycap> or <keycap>Shift</keycap>
       while selecting an item to add to the selection.
     </para>

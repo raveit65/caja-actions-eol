@@ -1,19 +1,22 @@
 <sect2 id="usage-menus">
   <title>Organizing actions in menus</title>
   <para>
-    As your list of actions will grow, you most probably will want to organize
-    them into menus, submenus, and so on.
+    As your list of actions will grow, you most probably will want to
+    organize them into menus, submenus, and so on.
   </para>
   <para>
     In order to create a new menu, choose
     <menuchoice>
+      <!-- i18n: "File" is a menu item -->
       <guimenu>File</guimenu>
+      <!-- i18n: "New menu" is a menu item -->
       <guimenuitem>New menu</guimenuitem>
     </menuchoice>.
   </para>
   <para>
-    A menu may be created anywhere in the list of your actions, but inside
-    of an action (<abbrev>i.e.</abbrev> not between two profiles of an action).
+    A menu may be created anywhere in the list of your actions, but
+    inside of an action (<abbrev>i.e.</abbrev> not between two profiles
+    of an action).
   </para>
   <para>
     As an action, the exact place where a new menu will be inserted
@@ -26,10 +29,12 @@
       </term>
       <listitem>
         <para>
-          The new menu is inserted just before the current action or menu.
+          The new menu is inserted just before the current action or
+          menu.
         </para>
         <para>
-          This place will not change when you later modify the label of the menu.
+          This place will not change when you later modify the label of
+          the menu.
         </para>
       </listitem>
     </varlistentry>
@@ -39,21 +44,24 @@
       </term>
       <listitem>
         <para>
-          The new menu is inserted at the correct place, regarding the default
-          &laquosp;<literal>New Caja menu</literal>&spraquo; label.
+          The new menu is inserted at the correct place, regarding the
+          <!-- i18n: "New Caja menu" is a UI label -->
+          default &laquosp;<literal>New Caja menu</literal>&spraquo;
+          label.
         </para>
         <para>
-          This place will be automatically changed, each time you modify the
-          label of the menu.
+          This place will be automatically changed, each time you modify
+          the label of the menu.
         </para>
       </listitem>
     </varlistentry>
   </variablelist>
   <para>
-    As an action, too, a menu requires a label, and may have an icon and a
-    tooltip. Also, you may define some conditions in order your menu be
-    candidate to be displayed in &caja; context menu. If the defined
-    conditions are not met at runtime, then your whole menu, including
-    its submenus, its actions and so on, will not be displayed.
+    As an action, too, a menu requires a label, and may have an icon and
+    a tooltip. Also, you may define some conditions in order your menu
+    be candidate to be displayed in &caja; context menu. If the
+    defined conditions are not met at runtime, then your whole menu,
+    including its submenus, its actions and so on, will not be displayed.
   </para>
 </sect2>
+
