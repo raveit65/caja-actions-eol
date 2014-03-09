@@ -43,15 +43,7 @@
 #include <api/na-data-types.h>
 #include <api/na-ifactory-object-data.h>
 
-#include <io-mateconf/nagp-keys.h>
-
-#include <io-xml/caxml-keys.h>
-
 #include "console-utils.h"
-
-extern NADataGroup menu_data_groups[];				/* defined in na-object-menu-factory.c */
-extern NADataGroup action_data_groups[];			/* defined in na-object-action-factory.c */
-extern NADataGroup profile_data_groups[];			/* defined in na-object-profile-factory.c */
 
 static gboolean   output_action = FALSE;
 static gboolean   output_menu   = FALSE;
@@ -75,9 +67,6 @@ static GOptionEntry misc_entries[] = {
 };
 
 static GOptionContext *init_options( void );
-static NADataGroup    *build_full_action_group( void );
-static int             output_to_stdout( NADataGroup *groups, GSList **msgs );
-static void            attach_schema_node( xmlDocPtr doc, xmlNodePtr list_node, const NADataDef *data_def );
 static void            exit_with_usage( void );
 
 int
@@ -89,7 +78,6 @@ main( int argc, char** argv )
 	GError *error = NULL;
 	GSList *msgs = NULL;
 	GSList *im;
-	NADataGroup *full_action_groups = NULL;
 
 	g_type_init();
 	setlocale( LC_ALL, "" );
@@ -118,18 +106,6 @@ main( int argc, char** argv )
 
 	if( !output_action && !output_menu ){
 		output_action = TRUE;
-	}
-	if( output_action ){
-		full_action_groups = build_full_action_group();
-	}
-
-	if( output_stdout ){
-		if( output_action ){
-			status = output_to_stdout( full_action_groups, &msgs );
-		}
-		if( output_menu ){
-			status = output_to_stdout( menu_data_groups, &msgs );
-		}
 	}
 
 	if( msgs ){
@@ -191,105 +167,6 @@ init_options( void )
 	g_option_context_add_group( context, misc_group );
 
 	return( context );
-}
-
-/*
- * build a NADataGroup array with action and profile definitions
- * so that the action schemas also include profile ones
- */
-static NADataGroup *
-build_full_action_group( void )
-{
-	guint i, action_count, profile_count;
-	NADataGroup *group;
-
-	for( action_count = 0 ; action_data_groups[action_count].group ; ++action_count )
-		;
-	for( profile_count = 0 ; profile_data_groups[profile_count].group ; ++profile_count )
-		;
-	group = g_new0( NADataGroup, 1+action_count+profile_count );
-
-	for( i = action_count = 0 ; action_data_groups[action_count].group ; ++action_count, ++i ){
-		memcpy( group+i, action_data_groups+action_count, sizeof( NADataGroup ));
-	}
-	for( profile_count = 0 ; profile_data_groups[profile_count].group ; ++profile_count, ++i ){
-		memcpy( group+i, profile_data_groups+profile_count, sizeof( NADataGroup ));
-	}
-
-	return( group );
-}
-
-static int
-output_to_stdout( NADataGroup *groups, GSList **msgs )
-{
-	xmlDocPtr doc;
-	xmlNodePtr root_node;
-	xmlNodePtr list_node;
-	xmlChar *text;
-	int textlen;
-	guint ig, id;
-	GSList *displayed = NULL;
-
-	doc = xmlNewDoc( BAD_CAST( "1.0" ));
-
-	root_node = xmlNewNode( NULL, BAD_CAST( CAXML_KEY_SCHEMA_ROOT ));
-	xmlDocSetRootElement( doc, root_node );
-	list_node = xmlNewChild( root_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_LIST ), NULL );
-
-	for( ig = 0 ; groups[ig].group ; ++ig ){
-		for( id = 0 ; groups[ig].def[id].name ; ++id ){
-			if( groups[ig].def[id].writable ){
-				if( !na_core_utils_slist_count( displayed, groups[ig].def[id].name )){
-					displayed = g_slist_prepend( displayed, groups[ig].def[id].name );
-					attach_schema_node( doc, list_node, ( const NADataDef * ) groups[ig].def+id );
-				}
-			}
-		}
-	}
-
-	xmlDocDumpFormatMemoryEnc( doc, &text, &textlen, "UTF-8", 1 );
-	g_printf( "%s\n", ( const char * ) text );
-
-	xmlFree( text );
-	xmlFreeDoc (doc);
-	xmlCleanupParser();
-
-	return( EXIT_SUCCESS );
-}
-
-static void
-attach_schema_node( xmlDocPtr doc, xmlNodePtr list_node, const NADataDef *def )
-{
-	xmlNodePtr schema_node;
-	xmlChar *content;
-	xmlNodePtr parent_value_node;
-	xmlNodePtr locale_node;
-
-	schema_node = xmlNewChild( list_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE ), NULL );
-
-	content = BAD_CAST( g_build_path( "/", NAGP_SCHEMAS_PATH, def->mateconf_entry, NULL ));
-	xmlNewChild( schema_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE_KEY ), content );
-	xmlFree( content );
-
-	xmlNewChild( schema_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE_OWNER ), BAD_CAST( PACKAGE_TARNAME ));
-
-	xmlNewChild( schema_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE_TYPE ), BAD_CAST( na_data_types_get_mateconf_dump_key( def->type )));
-	if( def->type == NA_DATA_TYPE_STRING_LIST ){
-		xmlNewChild( schema_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE_LISTTYPE ), BAD_CAST( "string" ));
-	}
-
-	locale_node = xmlNewChild( schema_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE_LOCALE ), NULL );
-	xmlNewProp( locale_node, BAD_CAST( "name" ), BAD_CAST( "C" ));
-
-	xmlNewChild( locale_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE_LOCALE_SHORT ), BAD_CAST( gettext( def->short_label )));
-
-	xmlNewChild( locale_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE_LOCALE_LONG ), BAD_CAST( gettext( def->long_label )));
-
-	parent_value_node = def->localizable ? locale_node : schema_node;
-
-	content = xmlEncodeSpecialChars( doc, BAD_CAST( def->default_value ));
-	xmlNewChild( parent_value_node, NULL, BAD_CAST( CAXML_KEY_SCHEMA_NODE_DEFAULT ), content );
-	xmlFree( content );
 }
 
 /*

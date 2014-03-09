@@ -32,7 +32,6 @@
 #endif
 
 #include <api/na-core-utils.h>
-#include <api/na-mateconf-utils.h>
 #include <api/na-object-api.h>
 
 #include "na-io-provider.h"
