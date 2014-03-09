@@ -23,6 +23,7 @@
 #   Frederic Ruaudel <grumz@grumz.net>
 #   Rodrigo Moya <rodrigo@mate-db.org>
 #   Pierre Wieser <pwieser@trychlos.org>
+#   Wolfgang Ulbrich <chat-to-me@raveit.de>
 #   ... and many others (see AUTHORS)
 
 AC_PREREQ([2.53])
@@ -31,7 +32,7 @@ AC_INIT([Caja-Actions],[1.6.2],[maintainer@caja-actions.org],,[http://www.caja-a
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz])
 
 AC_CONFIG_SRCDIR([src/plugin-menu/caja-module.c])
 AC_CONFIG_HEADERS([src/config.h])
