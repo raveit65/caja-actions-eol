@@ -428,11 +428,11 @@
       <formalpara>
         <title>Checking for prerequisites</title>
         <para>
-          This action will require &zenity;.
+          This action will require &matedialog;.
         </para>
       </formalpara>
       <para>
-        &zenity; is a program which will allow you to create a graphical
+        &matedialog; is a program which will allow you to create a graphical
         user interface from a command-line.
       </para>
       <para>
@@ -442,7 +442,7 @@
       </para>
       <para>
         <command>
-          <filename>zenity</filename>
+          <filename>matedialog</filename>
         </command>
       </para>
       <para>
@@ -616,7 +616,7 @@
       <itemizedlist>
         <listitem>
           <para>
-            Enter <userinput>zenity</userinput> in the
+            Enter <userinput>matedialog</userinput> in the
             <!-- i18n: "Path" is a UI label -->
             <guilabel>Path</guilabel> entry box.
           </para>
@@ -716,17 +716,17 @@
         Cliking of the item in the &caja; context menu activates it,
         and executes the corresponding command.
       </para>
-      <figure id="cact-FIG-start-zenity">
+      <figure id="cact-FIG-start-matedialog">
         <title>The result of the execution of your first action</title>
         <screenshot>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="figures/start-zenity-result.png" format="PNG"/>
+              <imagedata fileref="figures/start-matedialog-result.png" format="PNG"/>
             </imageobject>
             <textobject>
               <phrase>
                 Shows the result of the execution of your first action.
-                This is &zenity; dialog box, displaying the URI of the selected item.
+                This is &matedialog; dialog box, displaying the URI of the selected item.
               </phrase>
             </textobject>
             <caption>
