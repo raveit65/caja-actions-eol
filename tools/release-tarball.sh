@@ -1,29 +1,31 @@
 #!/bin/ksh
-# Nautilus-Actions
-# A Nautilus extension which offers configurable context menu actions.
+# Caja-Actions
+# A Caja extension which offers configurable context menu actions.
 #
 # Copyright (C) 2005 The GNOME Foundation
 # Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
 # Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
+# Copyright (C) 2012-2014 Wolfgang Ulbrich and others (see AUTHORS)
 #
-# Nautilus-Actions is free software; you can redistribute it and/or
+# Caja-Actions is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General  Public  License  as
 # published by the Free Software Foundation; either  version  2  of
 # the License, or (at your option) any later version.
 #
-# Nautilus-Actions is distributed in the hope that it will be useful,
+# Caja-Actions is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even  the  implied  warranty  of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  the  GNU
 # General Public License for more details.
 #
 # You should have received a copy of the GNU General Public  License
-# along with Nautilus-Actions; see the file  COPYING.  If  not,  see
+# along with Caja-Actions; see the file  COPYING.  If  not,  see
 # <http://www.gnu.org/licenses/>.
 #
 # Authors:
 #   Frederic Ruaudel <grumz@grumz.net>
 #   Rodrigo Moya <rodrigo@gnome-db.org>
 #   Pierre Wieser <pwieser@trychlos.org>
+#   Wolfgang Ulbrich <chat-to-me@raveit.de>
 #   ... and many others (see AUTHORS)
 
 errs=0										# will be the exit code of the script
@@ -92,7 +94,7 @@ msg_help()
 {
 	msg_version
 	echo "
- This script releases a new Nautilus-Actions version.
+ This script releases a new Caja-Actions version.
 
  Usage: ${my_cmd} [options]
    --[no]help                print this message, and exit [${opt_help_def}]
@@ -198,8 +200,8 @@ done
 set -- ${my_parms}
 
 # interpreting command-line arguments
-# pck_name:  Nautilus-Actions
-# product:   nautilus-actions
+# pck_name:  Caja-Actions
+# product:   caja-actions
 # version:   most recent found in builddir
 thisdir=$(cd ${0%/*}; pwd)
 rootdir=${thisdir%/*}
