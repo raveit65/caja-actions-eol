@@ -50,7 +50,6 @@
 
 G_BEGIN_DECLS
 
-#define NA_MATECONF_MONITOR_TYPE                ( na_mateconf_monitor_get_type())
 #define NA_MATECONF_MONITOR( object )           ( G_TYPE_CHECK_INSTANCE_CAST( object, NA_MATECONF_MONITOR_TYPE, NAMateConfMonitor ))
 #define NA_MATECONF_MONITOR_CLASS( klass )      ( G_TYPE_CHECK_CLASS_CAST( klass, NA_MATECONF_MONITOR_TYPE, NAMateConfMonitorClass ))
 #define NA_IS_MATECONF_MONITOR( object )        ( G_TYPE_CHECK_INSTANCE_TYPE( object, NA_MATECONF_MONITOR_TYPE ))
@@ -74,8 +73,6 @@ typedef struct {
 	NAMateConfMonitorClassPrivate *private;
 }
 	NAMateConfMonitorClass;
-
-GType           na_mateconf_monitor_get_type( void );
 
 NAMateConfMonitor *na_mateconf_monitor_new( const gchar *path, MateConfClientNotifyFunc handler, gpointer user_data );
 

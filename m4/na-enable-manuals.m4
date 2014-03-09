@@ -25,7 +25,7 @@
 #   Pierre Wieser <pwieser@trychlos.org>
 #   ... and many others (see AUTHORS)
 
-# serial 3 add 'msg_' prefixed messages
+# serial 4 define ENABLE_MANUALS conditional
 
 dnl --enable-html-manuals[=gdt|db2html]
 dnl   generates HTML manuals for all locales
@@ -50,6 +50,7 @@ AC_DEFUN([NA_ENABLE_MANUALS],[
 	
 	_CHECK_FOR_HTML_MANUALS
 	_CHECK_FOR_PDF_MANUALS
+	AM_CONDITIONAL([ENABLE_MANUALS], [test "x${enable_html_manuals}" != "xno" || test "x${enable_pdf_manuals}" != "xno"])
 ])
 
 AC_DEFUN([_AC_ARG_NA_ENABLE_HTML_MANUALS],[

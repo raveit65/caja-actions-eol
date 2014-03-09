@@ -194,7 +194,7 @@ $as_echo "
 
 	Installation prefix             ${prefix}
 	Build system type               ${ac_cv_build}
-	Caja extensions directory   ${with_caja_extdir}
+	Caja extensions directory       ${with_caja_extdir}
 	Gtk+ version                    ${msg_gtk_version}
 	Default I/O provider            ${with_default_io_provider}
 	Enable deprecated functions     ${enable_deprecated}
