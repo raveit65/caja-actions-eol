@@ -26,7 +26,7 @@
 #   ... and many others (see AUTHORS)
 #
 # from Migrating your documentation to mate-doc-utils
-# http://live.gnome.org/MateDocUtilsMigrationHowTo
+# http://live.gnome.org/GnomeDocUtilsMigrationHowTo
 #
 # The mate-doc-utils packages produces the Caja-Actions Configuration
 # Tool (CACT) Users's Manual as DocBook XML documents, suitable for Yelp,
@@ -455,7 +455,7 @@ dist-pdf-manuals-hook:
 	done
 
 # Distributing .omf files is required if we want the user be able to
-# get rid of gnome-doc-utils
+# get rid of mate-doc-utils
 dist-omf-hook:
 	@for lc in C $(DOC_LINGUAS); do \
 		omf="$(DOC_MODULE)-$$lc.omf"; \
