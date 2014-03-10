@@ -50,12 +50,12 @@ msgstr ""
 "કરતા પહેલા હાજર રહેલા એકને પહેલાં દૂર કરો"
 
 #. MateConf description strings :
-#: ../src/common/caja-actions-config-mateconf-private.h:80
+#: ../src/common/caja-actions-config-gconf-private.h:80
 #: ../src/utils/caja-actions-new-config.c:57
 msgid "The label of the menu item"
 msgstr "મેનુ વસ્તુનું લેબલ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:81
+#: ../src/common/caja-actions-config-gconf-private.h:81
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -63,12 +63,12 @@ msgstr ""
 "મેનુ વસ્તુનું લેબલ કે જે નોટિલસ પોપઅપ મેનુમાં જ્યારે પસંદગી શરતોના સુયોજનોના દેખાવ સાથે બંધબેસે "
 "ત્યારે લેબલની આગળ દેખાશે"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:82
+#: ../src/common/caja-actions-config-gconf-private.h:82
 #: ../src/utils/caja-actions-new-config.c:58
 msgid "The tooltip of the menu item"
 msgstr "મેનુ વસ્તુની સાધનમદદ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:83
+#: ../src/common/caja-actions-config-gconf-private.h:83
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -76,11 +76,11 @@ msgstr ""
 "મેનુ વસ્તુની સાધનમદદ કે જે નોટિલસ પરિસ્થિતિદર્શક પટ્ટીમાં દેખાશે જ્યારે વપરાશકર્તા તેના માઉસ "
 "સાથે નોટિલસ પોપઅપ મેનુ વસ્તુનો નિર્દેશ કરે"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:84
+#: ../src/common/caja-actions-config-gconf-private.h:84
 msgid "The icon of the menu item"
 msgstr "મેનુ વસ્તુનું ચિહ્ન"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:85
+#: ../src/common/caja-actions-config-gconf-private.h:85
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -88,11 +88,11 @@ msgstr ""
 "મેનુ વસ્તુનું ચિહ્ન કે જે નોટિલસ પોપઅપ મેનુમાં જ્યારે પસંદગી શરતોના સુયોજનોના દેખાવ સાથે બંધબેસે "
 "ત્યારે લેબલની આગળ દેખાશે"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:86
+#: ../src/common/caja-actions-config-gconf-private.h:86
 msgid "A description name of the profile"
 msgstr "રૂપરેખાનું વર્ણન નામ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:87
+#: ../src/common/caja-actions-config-gconf-private.h:87
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
@@ -101,24 +101,24 @@ msgstr ""
 "Cact ઇન્ટરફેસમાં રૂપરેખા માટે વપરાશકર્તાને મનુષ્ય વાંચી શકાય તેવા નામને આપવા માટે ક્ષેત્ર એ "
 "અહિંયા છે. જો સુયોજિત ન હોય તો ત્યાં મૂળભૂત દ્દારા મૂળભૂત આપોઆપ ઉત્પન્ન થયેલ શબ્દમાળા હશે"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:88
+#: ../src/common/caja-actions-config-gconf-private.h:88
 #: ../src/utils/caja-actions-new-config.c:60
 #: ../src/utils/caja-actions-new-config.c:63
 msgid "The path of the command"
 msgstr "આદેશનો પાથ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:89
+#: ../src/common/caja-actions-config-gconf-private.h:89
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
 msgstr "શરૂ કરવા માટેના આદેશનો પાથ કે જ્યારે વપરાશકર્તા નોટિલસ પોપઅપ મેનુમાંથી મેનુ વસ્તુ પસંદ કરે"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:90
+#: ../src/common/caja-actions-config-gconf-private.h:90
 #: ../src/utils/caja-actions-new-config.c:61
 msgid "The parameters of the command"
 msgstr "આદેશના પરિમાણો"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:91
+#: ../src/common/caja-actions-config-gconf-private.h:91
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
 "in the Caja popup menu.\n"
@@ -153,11 +153,11 @@ msgstr ""
 "%U : નું વપરાશકર્તા નામ\n"
 "%% : ટકાનું ચિહ્ન"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:92
+#: ../src/common/caja-actions-config-gconf-private.h:92
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "પસંદ કરેલ ફાઈલો/ફોલ્ડરો સાથે સરખાવવા માટે ભાતની યાદી"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:93
+#: ../src/common/caja-actions-config-gconf-private.h:93
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -166,11 +166,11 @@ msgstr ""
 "પસંદ કરેલ ફાઈલો/ફોલ્ડરો નાં નામ સાથે સરખાવવા માટે જોકર '*' અથવા '?' સાથે શબ્દમાળાઓની "
 "યાદી. દરેક પસંદ કરેલ વસ્તુઓ ક્રિયાને દેખાવા માટે ઓછામાં ઓછી એક ભાત સાથે બંધબેસવી જ જોઈએ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:94
+#: ../src/common/caja-actions-config-gconf-private.h:94
 msgid "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr "'true' જો ફાઇલનામ ભાતો એ કેસ પ્રત્યે સંવેદનશીલ થવુ જ પડશે,નહિં તો 'false'"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:95
+#: ../src/common/caja-actions-config-gconf-private.h:95
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -180,11 +180,11 @@ msgstr ""
 "'true' તરીકે સુયોજિત કરો. જો તમે ઇચ્છતા હોય તો, ઉદાહરણ તરીકે 'photo.JPG' સાથે "
 "બંધબેસાડવા માટે '*.jpg', 'false' તરીકે સુયોજિત કરો"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:96
+#: ../src/common/caja-actions-config-gconf-private.h:96
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "પસંદ કરેલ ફાઈલ (ઓ) નાં માઇમ પ્રકારો સાથે સરખાવવા માટે ભાતોની યાદી"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:97
+#: ../src/common/caja-actions-config-gconf-private.h:97
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -193,7 +193,7 @@ msgstr ""
 "પસંદ કરેલ ફાઈલોને માઇમપ્રકારો સાથે સરખાવવા માટે જોકર '*' અથવા '?' સાથે શબ્દમાળાઓની "
 "યાદી. દરેક પસંદ કરેલ વસ્તુઓ ક્રિયાને દેખાવા માટે ઓછામાં ઓછી એક ભાત સાથે બંધબેસવી જ જોઈએ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:98
+#: ../src/common/caja-actions-config-gconf-private.h:98
 msgid ""
 "The valid combinations are:\n"
 "\n"
@@ -210,29 +210,29 @@ msgstr ""
 "isfile=TRUE અને isdir=TRUE': પસંદગી બંને ફાઈલો અને ફોલ્ડરો પકડી શકશે\n"
 "isfile=FALSE અને isdir=FALSE: આ અયોગ્ય જોડણી છે (તમારું રૂપરેખાંકન ક્યારે દેખાશે નહિં)"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:99
+#: ../src/common/caja-actions-config-gconf-private.h:99
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr "'true' જો પસંદગીને ફાઈલો હોઈ શકે, નહિંતર 'false'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../src/common/caja-actions-config-mateconf-private.h:101
+#: ../src/common/caja-actions-config-gconf-private.h:101
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "આ સુયોજન 'isdir' સુયોજન સાથે બંધાયેલ છે. "
 
-#: ../src/common/caja-actions-config-mateconf-private.h:102
+#: ../src/common/caja-actions-config-gconf-private.h:102
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "'true' જો પસંદગીને ફોલ્ડરો હોઈ શકે, નહિંતર 'false'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../src/common/caja-actions-config-mateconf-private.h:104
+#: ../src/common/caja-actions-config-gconf-private.h:104
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "આ સુયોજન 'isfile' સુયોજન સાથે બંધાયેલ છે. "
 
-#: ../src/common/caja-actions-config-mateconf-private.h:105
+#: ../src/common/caja-actions-config-gconf-private.h:105
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr "'સાચું' જો પસંદગીને ઘણી વસ્તુઓ હોઈ શકે, નહિંતર 'ખોટું'"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:106
+#: ../src/common/caja-actions-config-gconf-private.h:106
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -240,11 +240,11 @@ msgstr ""
 "જો તમને એક અથવા વધુ ફાઈલો અથવા ફોલ્ડરો પસંદ થાય એમ જરૂરી હોય, તો આ કીને 'સાચું' "
 "સુયોજિત કરો. જો તમને ખાલી એક ફાઈલ અથવા ફોલ્ડર જરૂરી હોય, તો 'ખોટું' સુયોજિત કરો"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:107
+#: ../src/common/caja-actions-config-gconf-private.h:107
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr "MateVFS પદ્ધતિઓની યાદી કે જ્યાં પસંદ કરેલ ફાઈલો સ્થિત થયેલ હોવી જોઈએ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:108
+#: ../src/common/caja-actions-config-gconf-private.h:108
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -282,11 +282,11 @@ msgstr ""
 "\n"
 "નોટિલસ દ્વારા વપરાતી બધી MateVFS પદ્ધતિ અંહિ વાપરી શકાય છે."
 
-#: ../src/common/caja-actions-config-mateconf-private.h:109
+#: ../src/common/caja-actions-config-gconf-private.h:109
 msgid "The version of the configuration format"
 msgstr "રૂપરેખાંકન બંધારણની આવૃત્તિ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:110
+#: ../src/common/caja-actions-config-gconf-private.h:110
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -353,7 +353,7 @@ msgid_plural ""
 msgstr[0] "આ XML ફાઇલ એ યોગ્ય Caja-actions રૂપરેખા ફાઇલ નથી (ગુમ થયેલ કી: %s)%s"
 msgstr[1] "આ XML ફાઇલ એ યોગ્ય Caja-actions રૂપરેખા ફાઇલ નથી (ગુમ થયેલ કીઓ: %s)%s"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../src/common/caja-actions-config-schema-reader.c:772
 #, c-format
@@ -911,8 +911,8 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../src/cact/caja-actions-config.glade.h:80
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "MATE ભાષાંતર પ્રોજેક્ટ <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "GNOME ભાષાંતર પ્રોજેક્ટ <gnome-i18n@gnome.org>"
 
 #: ../src/cact/caja-actions-config.glade.h:81
 msgid ""

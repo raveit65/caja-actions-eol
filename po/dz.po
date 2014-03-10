@@ -359,8 +359,8 @@ msgstr ""
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
 #, fuzzy
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "ཇི་ནོམ་འདི་གི་སྐད་སྒྱུར་ལས་འགུལ་ <mate-i18n@gnome.org>mate-i18n@gnome.org"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "ཇི་ནོམ་འདི་གི་སྐད་སྒྱུར་ལས་འགུལ་ <gnome-i18n@gnome.org>gnome-i18n@gnome.org"
 
 #: ../cact/caja-actions-config.glade.h:80
 msgid ""
@@ -559,7 +559,7 @@ msgstr "བྱ་བ་འདི་ཞུན་དག་འབད།\"%s\""
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "དཀར་ཆག་རམ་གྲངས་ཀྱི་ཁ་ཡིག"
 
@@ -568,7 +568,7 @@ msgid "LABEL"
 msgstr "ཁ་ཡིག"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "དཀར་ཆག་རྣམ་གྲངས་ཀྱི་ལག་ཆས་ཕན་བསླབ།"
 
@@ -586,7 +586,7 @@ msgstr "ངོས་དཔར།"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "བརྡ་བཀོད་ཀྱི་འགྲུལ་ལམ།"
 
@@ -597,7 +597,7 @@ msgid "PATH"
 msgstr "འགྲུལ་ལམ།"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "བརྡ་བཀོད་ཀྱི་ཚད་བཟུང་།"
 
@@ -699,7 +699,7 @@ msgstr "ཡིག་སྣོད་ཀྱི་ནང་ལུ་གནད་ས
 msgid "Can't open file %s for writing\n"
 msgstr "འབྲི་ནི་གི་དོན་ལུ་%sགི་ཡིག་སྣོད་ཁ་ཕྱེ་མི་བཏུབ།\n"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -707,7 +707,7 @@ msgstr ""
 "སེལ་འཐུ་འདི་གིས་ གཞི་སྒྲིག་གནས་སྟངས་ཀྱི་འབྱུང་སྣང་དང་མཐུན་པའི་བསྒང་ ནའུ་ཊི་ལཱསི་པོཔ་ཨཔ་དཀར་ཆག་ནང་ལུ་"
 "བྱུང་ནི་ཨིན་པའི་ དཀར་ཆག་རྣམ་གྲངས་ཀྱི་ཁ་ཡིག"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -715,11 +715,11 @@ msgstr ""
 "ལག་ལེན་པ་གིས་ ཁོ་ཡང་ཅིན་/མོ་གི་མཱའུསི་དེ་གིས་ ནའུ་ཊི་ལཱསི་པོཔ་ཨོཔ་དཀར་ཆག་གི་རྣམ་གྲངས་ལུ་ དཔག་པའི་"
 "བསྒང་ ནའུ་ཊི་ལཱསི་གནས་ཚད་ཕྲ་རིང་ནང་བྱུང་མི་ དཀར་ཆག་རྣམ་གྲངས་ཀྱི་ལག་ཆས་ཕན་བསླབ།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "དཀར་ཆག་གིརྣམ་གྲངས་ཀྱི་ངོས་དཔར།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -727,11 +727,11 @@ msgstr ""
 "སེལ་འཐུ་འདི་ གནས་སྟངས་གཞི་སྒྲིག་གི་འབྱུང་སྣང་དང་མཐུན་པའི་བསྒང་ ནའུ་ཊི་ལཱསི་པོཔ་ཨཔ་དཀར་ཆག་གི་ནང་ལུ་ "
 "ཁ་ཡིག་གི་ཤུལ་མ་བྱུང་མི་དཀར་ཆག་རྣམ་གྲངས་གི་ངོས་དཔར།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr "གསལ་སྡུད་འདི་གི་འགྲེལ་བཤད་མིང་གཅིག་"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
@@ -741,7 +741,7 @@ msgstr ""
 "དོན་ལུ་ ས་སྒོ་འདི་ན་ལུ་ཡོདཔ་ཨིན། གལ་སྲིད་གཞི་སྒྲིག་འབད་དེ་མེད་པ་ཅིན་ སྔོན་སྒྲིག་གིས་སྦེ་གཞི་སྒྲིག་འབད་བའི་ "
 "རང་བཞིན་གྱིས་སྔོན་སྒྲིག་བཟོ་བཏོན་འབད་ཡོད་པའི་ཡིག་རྒྱུན་ཅིག་འབྱུང་འོང་"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
@@ -749,7 +749,7 @@ msgstr ""
 "ནའུ་ཊི་ལཱསི་པོཔ་ཨཔ་དཀར་ཆག་གི་ནང་ལུ་ ལག་ལེན་པ་གིས་ དཀར་ཆག་རྣམ་གྲངས་ སེལ་འཐུ་འབད་བའི་བསྒང་ བརྡ་"
 "བཀོད་ཀྱི་འགྲུལ་ལམ་འགོ་བཙུགས་མི།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 #, fuzzy
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
@@ -784,12 +784,12 @@ msgstr ""
 "%h: ཇི་ནོམ་ ཝི་ཨེཕ་ཨེསི་  ཡུ་ཨར་ཨའི་གི་ཧོསཊི་ནིམ།\n"
 "%U::%s/ ཇི་ནོམ་ཝི་ཨེཕ་ཨེསི་ ཡུ་ཨར་ཨའི་གི་ལག་ལེན་པའི་མིང་།%%: བརྒྱ་ཆའི་ མིང་རྟགས་བཀོད།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr ""
 "སེལ་འཐུ་གྲུབ་ཡོད་པའི་ཡིག་སྣོད་ལུ་ དཔེ་རིས་ཀྱི་ཐོ་བཀོད་མཐུན་སྒྲིག་འབད་ནིའི་དོན་ལས་(s)/སྣོད་འཛིན།(s)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -799,12 +799,12 @@ msgstr ""
 "རྒྱུན་ཐོ་བཀོད།(s)/སྣོད་འཛིན།(s) བྱ་བ་བྱུང་བཅུག་ནིའི་དོན་ལུ་ སེལ་འཐུ་གྲུབ་ཡོད་མིའི་རྣམ་གྲངས་ཚུ་ དཔེ་རིས་"
 "ཡིག་སྣོད་ཀྱི་མིང་གཅིག་དང་མཐུན་སྒྲིག་འབད་དགོ།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr "ཡིག་སྣོད་མིང་གི་དཔེ་རིས་འདི་གནད་དོན་ཚོར་ཅན་འོང་དགོ་པ་ཅིན་ 'བདེན'། དེ་མེན་པ་ཅིན་ 'རྫུན'།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -814,11 +814,11 @@ msgstr ""
 "ཆ་ཚན་འབད། དཔེ་འབད་བ་ཅིན་'*.ཇེ་པི་ཇི' འདི་དཔར་དང་མཐུན་སྒྲིག་འབད་དགོ་པ་ཅིན་ ཇེ་པི་ཇི' ཁྱོད་རང་ད་"
 "རུང་དགོ་པ་ཅིན་ 'རྫུན་མ'ཆ་ཚན་འབད།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "སེལ་འཐུ་གྲུབ་པའི་ཡིག་སྣོད་གི་མ་ཡམ་དབྱེ་བ་ལུ་མཐུན་སྒྲིག་བཟོ་ནིའི་དོན་ལུ་ དཔེ་རིས་ཀྱི་ཐོ་བཀོད།(s)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -828,7 +828,7 @@ msgstr ""
 "'*' or '?'དང་བཅས།(s) བྱ་བ་འདི་བྱུང་ནིའི་དོན་ལུ་ སེལ་འཐུ་གྲུབ་ཡོད་པའི་རྣམ་གྲངས་ཚུ་མ་ཡམ་དཔེ་རིས་"
 "གཅིག་དང་མཐུན་སྒྲིག་འབད་དགོ།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -848,29 +848,29 @@ msgstr ""
 "isfile=རྫུན་མ་and isdir=བདེན་མ་: འ་ནི་འདི་ནུས་ཅན་མེད་མི་གི་མཉམ་མཐུད་ཨིན།(ཁྱོད་ཀྱི་རིམ་སྒྲིག་ནམ་"
 "ཡང་མི་བྱུང་།)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr "སེལ་འཐུ་འདི་ལུ་ཡིག་སྣོད་ཡོད་པ་ཅིན་'བདེན་' དེ་མེན་པ་ཅིན་'རྫུན།'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "འ་ནི་གཞི་སྒྲིག་འདི་'ཨིསི་ཌིར་'གཞི་སྒྲིག་དང་སྡམ་བཞག་ནུག"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "སེལ་འཐུ་ལུ་་སྣེད་འཛིན་ཡོད་པ་ཅིན་'བདེན་' དེ་མེན་པ་ཅིན་'རྫུན་མ་ཨིན།' "
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "འ་ནི་གཞི་སྒྲིག་འདི་'ཨིསི་ཕཱཡལ་'གཞི་སྒྲིག་དང་བཅས་སྡམ་བཞག་ནུག "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr "སེལ་འཐུ་འདི་ལུ་རྣམ་གྲངས་ལེ་ཤ་ཅིག་ཡོད་པ་ཅིན་'བདེན་' དེ་མེན་པ་ཅིན་རྫུན་མ་ཨིན།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -878,11 +878,11 @@ msgstr ""
 "ཁྱོད་རང་ཡིག་སྣོད་དང་སྣོད་འཛིན་ཚུ་ མངམ་འབད་སེལ་འཐུ་འབད་ནི་ཨིན་པ་ཅིན་ ལྡེ་མིག་འདི་'བདེན་པ་' ལུ་ཆ་"
 "ཚན་འབད། ཁྱོད་རང་ཡིག་སྣོད་དང་སྣོད་འཛིན་གཅིག་རྐྱངམ་ཅིག་དགོ་ནི་ཨིན་པ་ཅིན་ 'རྫུན་མ་ལུ་' ཆ་ཚན་འབད།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr "སེལ་འཐུ་གྲུབ་ཡོད་པའི་ཡིག་སྣོད་འཚོལ་དགོ་ས་ལུ་ ཇི་ནོམ་ ཝི་ཨེཕ་ཨེསི་ འཆར་ལས་ཀྱི་ཐོ་བཀོད།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -920,11 +920,11 @@ msgstr ""
 "\n"
 "ནའུ་ཊི་ལཱསི་གི་ལག་ལེན་འཐབ་ཡོད་མི་ ཇི་ནོམ་ ཝི་ཨེཕ་ཨེསི་ འཆར་ལས་ཚུ་ཆ་མཉམ་ན་ལུ་ལག་ལེན་འཐབ་བཏུབ།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "རིམ་སྒྲིགས་རྩ་སྒྲིག་གི་ཐོན་རིམ།"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -1022,7 +1022,7 @@ msgstr ""
 #"ཨེགསི་ཨེམ་ཨེལ་ཡིག་སྣོད་འདི་ནའུ་ཊི་ལཱསི་བྱ་བ་ཚུ་གི་རིམ་སྒྲིག་ཡིག་སྣོད་ནུས་ཅན་མེན (ལྡེ་མིག་བརླག་བསྟོར་ཞུགས་"
 #"ཡོདཔ : %s)"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, c-format

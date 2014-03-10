@@ -41,12 +41,12 @@ msgid ""
 msgstr "'%s' ಎಂಬ ಹೆಸರಿನಲ್ಲಿ ಒಂದು ಪ್ರೊಫೈಲ್ ಈಗಾಗಲೆ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ, ದಯವಿಟ್ಟು ಹೊಸತೊಂದನ್ನು ಸೇರಿಸುವ ಮೊದಲು ಈಗಿರುವುದನ್ನು ತೆಗೆದು ಹಾಕಿ"
 
 #. MateConf description strings :
-#: ../src/common/caja-actions-config-mateconf-private.h:80
+#: ../src/common/caja-actions-config-gconf-private.h:80
 #: ../src/utils/caja-actions-new-config.c:57
 msgid "The label of the menu item"
 msgstr "ಮೆನು ಅಂಶದ ಲೇಬಲ್"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:81
+#: ../src/common/caja-actions-config-gconf-private.h:81
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -54,22 +54,22 @@ msgstr ""
 "ಆಯ್ಕೆ ಮಾಡಲಾಗಿರುವ ಗೋಚರಿಸುವ ಸ್ಥಿತಿಯ ಸಿದ್ಧತೆಗಳಿಗೆ ತಾಳೆಯಾದಾಗ ನಾಟಿಲಸ್ ಪುಟಿಕೆ ಮೆನುವಿನಲ್ಲಿ "
 "ಕಾಣಿಸಿಕೊಳ್ಳುವ ಮೆನು ಅಂಶದ ಲೇಬಲ್"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:82
+#: ../src/common/caja-actions-config-gconf-private.h:82
 #: ../src/utils/caja-actions-new-config.c:58
 msgid "The tooltip of the menu item"
 msgstr "ಮೆನು ಅಂಶದ ಉಪಕರಣಸಲಹೆ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:83
+#: ../src/common/caja-actions-config-gconf-private.h:83
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
 msgstr "ಬಳಕೆದಾರರು ತಮ್ಮ ಮೌಸ್‌ನ ಸೂಚಕವನ್ನು ನಾಟಿಲಸ್ ಪುಟಿಕೆ ಅಂಶದತ್ತ ಸೂಚಿಸಿದಾಗ ನಾಟಿಲಸ್ ಸ್ಥಿತಿ ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುವ ಮೆನು ಅಂಶದ ಉಪಕರಣಸಲಹೆ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:84
+#: ../src/common/caja-actions-config-gconf-private.h:84
 msgid "The icon of the menu item"
 msgstr "ಮೆನು ಅಂಶದ ಚಿಹ್ನೆ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:85
+#: ../src/common/caja-actions-config-gconf-private.h:85
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -77,35 +77,35 @@ msgstr ""
 "ಆಯ್ಕೆ ಮಾಡಲಾಗಿರುವ ಗೋಚರಿಸುವ ಸ್ಥಿತಿಯ ಸಿದ್ಧತೆಗಳಿಗೆ ತಾಳೆಯಾದಾಗ ನಾಟಿಲಸ್ ಪುಟಿಕೆ ಮೆನುವಿನಲ್ಲಿನ ಲೇಬಲ್‌ನ "
 "ಎದುರಿಗೆ ಕಾಣಿಸಿಕೊಳ್ಳುವ ಮೆನು ಅಂಶದ ಚಿಹ್ನೆ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:86
+#: ../src/common/caja-actions-config-gconf-private.h:86
 msgid "A description name of the profile"
 msgstr "ಪ್ರೊಫೈಲಿನ ವಿವರಣೆಯುಕ್ತ ಹೆಸರು"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:87
+#: ../src/common/caja-actions-config-gconf-private.h:87
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr "Cact ಸಂಪರ್ಕಸಾಧನದಲ್ಲಿ ಪ್ರೊಫೈಲಿಗೆ ಮನುಷ್ಯರು ಓದುವಂತಹ ಒಂದು ಹೆಸರನ್ನು ನೀಡವು ಸಲುವಾಗಿ ಈ ಸ್ಥಳವಿರುತ್ತದೆ. ಇಲ್ಲದೆ ಹೋದಲ್ಲಿ ಇದು ಒಂದು ಸ್ವಯಂ ಉತ್ಪತ್ತಿಗೊಂಡ ವಾಕ್ಯಕ್ಕೆ ಹೊಂದಿಸಲ್ಪಡುತ್ತದೆ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:88
+#: ../src/common/caja-actions-config-gconf-private.h:88
 #: ../src/utils/caja-actions-new-config.c:60
 #: ../src/utils/caja-actions-new-config.c:63
 msgid "The path of the command"
 msgstr "ಆಜ್ಞೆಯ ಮಾರ್ಗ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:89
+#: ../src/common/caja-actions-config-gconf-private.h:89
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
 msgstr "ನಾಟಿಲಸ್ ಪುಟಿಕೆ ಮೆನುವಿನಲ್ಲಿ ಬಳಕೆದಾರರು ಮೆನು ಅಂಶವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಾಗ ಆರಂಭಗೊಳ್ಳಬೇಕಿರುವ ಆಜ್ಞೆಯ ಮಾರ್ಗ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:90
+#: ../src/common/caja-actions-config-gconf-private.h:90
 #: ../src/utils/caja-actions-new-config.c:61
 msgid "The parameters of the command"
 msgstr "ಆಜ್ಞೆಯ ನಿಯತಾಂಕಗಳು"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:91
+#: ../src/common/caja-actions-config-gconf-private.h:91
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
 "in the Caja popup menu.\n"
@@ -140,11 +140,11 @@ msgstr ""
 "%U: MateVFS URI ನ ಬಳಕೆದಾರ ಹೆಸರು\n"
 "%%: ಒಂದು ಪ್ರತಿಶತ ಸಂಕೇತ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:92
+#: ../src/common/caja-actions-config-gconf-private.h:92
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತಕ್ಕೆ(ಗಳಿಗೆ)/ಕಡತಕೋಶಕ್ಕೆ(ಗಳಿಗೆ) ತಾಳೆಯಾಗುವ ವಿನ್ಯಾಸದ ಪಟ್ಟಿ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:93
+#: ../src/common/caja-actions-config-gconf-private.h:93
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -154,11 +154,11 @@ msgstr ""
 "ಒಳಗೊಂಡಿರುವ ವಾಕ್ಯಗಳ ಪಟ್ಟಿ. ಕ್ರಿಯೆಯು ಕಾಣಿಸಿಕೊಳ್ಳಲು ಆಯ್ಕೆ ಮಾಡಲಾದ ಪ್ರತಿಯೊಂದು ಅಂಶಗಳು "
 "ಕನಿಷ್ಟ ಒಂದು ಕಡತದ ಹೆಸರಿನ ವಿನ್ಯಾಸಕ್ಕೆ ತಾಳೆಯಾಗಬೇಕು"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:94
+#: ../src/common/caja-actions-config-gconf-private.h:94
 msgid "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr "ಕಡತದ ಹೆಸರುಗಳು ಕೇಸ್ ಸಂವೇದಿಯಾಗಿರಬೇಕಿದ್ದಲ್ಲಿ 'true' ಆಗಿರುತ್ತವೆ, ಇಲ್ಲದೆ ಹೋದಲ್ಲಿ 'false' ಆಗಿರುತ್ತದೆ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:95
+#: ../src/common/caja-actions-config-gconf-private.h:95
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -168,11 +168,11 @@ msgstr ""
 "'true' ಬದಲಾಯಿಸಿ. ನೀವು. ಉದಾಹರಣೆಗೆ '*.jpg' ಯು 'photo.JPG' ಗೆ ತಾಳೆಯಾಗಬೇಕೆಂದು ಬಯಸಿದರೆ, "
 "'false' ಗೆ ಬದಲಾಯಿಸಿ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:96
+#: ../src/common/caja-actions-config-gconf-private.h:96
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತದ(ಗಳ) ಮೈಮ್‌ಬಗೆಗಳಿಗೆ ತಾಳೆಯಾಗುವ ವಿನ್ಯಾಸಗಳ ಪಟ್ಟಿ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:97
+#: ../src/common/caja-actions-config-gconf-private.h:97
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -182,7 +182,7 @@ msgstr ""
 "ವಾಕ್ಯಗಳ ಪಟ್ಟಿ. ಕ್ರಿಯೆಯು ಕಾಣಿಸಿಕೊಳ್ಳಲು ಆಯ್ಕೆ ಮಾಡಲಾದ ಪ್ರತಿಯೊಂದು ಅಂಶಗಳು ಕನಿಷ್ಟ ಒಂದು "
 "ಮೈಮ್‌ಬಗೆಗಳ ವಿನ್ಯಾಸಕ್ಕೆ ತಾಳೆಯಾಗಬೇಕು"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:98
+#: ../src/common/caja-actions-config-gconf-private.h:98
 msgid ""
 "The valid combinations are:\n"
 "\n"
@@ -199,29 +199,29 @@ msgstr ""
 "isfile=TRUE ಹಾಗು isdir=TRUE: ಈ ಆಯ್ಕೆಯು ಕಡತಗಳನ್ನು ಹಾಗು ಕಡತಕೋಶಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ\n"
 "isfile=FALSE ಹಾಗು isdir=FALSE: ಇದು ಒಂದು ಮಾನ್ಯವಾದ ಸಂಯೋಜನೆಯಾಗಿಲ್ಲ (ನಿಮ್ಮ ಸಂರಚನೆಯು ಎಂದಿಗೂ ಕಾಣಿಸಿಕೊಳ್ಳುವುದಿಲ್ಲ)"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:99
+#: ../src/common/caja-actions-config-gconf-private.h:99
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr "ಆಯ್ಕೆಯು ಕಡತವನ್ನು ಹೊಂದಿರುವಂತಿದ್ದರೆ 'true' ಆಗಿರುತ್ತದೆ, ಇಲ್ಲದೆ ಹೋದಲ್ಲಿ 'false' ಆಗಿರುತ್ತದೆ"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../src/common/caja-actions-config-mateconf-private.h:101
+#: ../src/common/caja-actions-config-gconf-private.h:101
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "ಈ ಸಿದ್ಧತೆಯನ್ನು 'isdir' ಸಿದ್ಧತೆಯೊಂದಿಗೆ ಜೋಡಿಸಿರಲಾಗಿರುತ್ತದೆ. "
 
-#: ../src/common/caja-actions-config-mateconf-private.h:102
+#: ../src/common/caja-actions-config-gconf-private.h:102
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "ಆಯ್ಕೆಯು ಕಡತಕೋಶವನ್ನು ಹೊಂದಿರುವಂತಿದ್ದರೆ 'true' ಆಗಿರುತ್ತದೆ, ಇಲ್ಲದೆ ಹೋದಲ್ಲಿ 'false' ಆಗಿರುತ್ತದೆ"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../src/common/caja-actions-config-mateconf-private.h:104
+#: ../src/common/caja-actions-config-gconf-private.h:104
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "ಈ ಸಿದ್ಧತೆಯನ್ನು 'isfile' ಸಿದ್ಧತೆಯೊಂದಿಗೆ ಜೋಡಿಸಿರಲಾಗಿರುತ್ತದೆ. "
 
-#: ../src/common/caja-actions-config-mateconf-private.h:105
+#: ../src/common/caja-actions-config-gconf-private.h:105
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr "ಆಯ್ಕೆಯು ಹಲವಾರು ಅಂಶಗಳನ್ನು ಹೊಂದಿರುವಂತಿದ್ದರೆ 'true' ಆಗಿರುತ್ತದೆ, ಇಲ್ಲದೆ ಹೋದಲ್ಲಿ 'false' ಆಗಿರುತ್ತದೆ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:106
+#: ../src/common/caja-actions-config-gconf-private.h:106
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -229,11 +229,11 @@ msgstr ""
 "ನೀವು ಒಂದು ಅಥವ ಹೆಚ್ಚಿನ ಕಡತಗಳನ್ನು ಅಥವ ಕಡತಕೋಶಗಳನ್ನು ಆರಿಸಿಕೊಳ್ಳಲು ನೀವು ಬಯಸಿದಲ್ಲಿ, ಇದನ್ನು "
 "'true' ಗೆ ಬದಲಾಯಿಸಿ. ನೀವು ಕೇವಲ ಒಂದು ಕಡತಕೋಶವನ್ನು ಆಯ್ಕೆ ಮಾಡಲು ಬಯಸಿದಲ್ಲಿ 'false' ಗೆ ಬದಲಾಯಿಸಿ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:107
+#: ../src/common/caja-actions-config-gconf-private.h:107
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಕಡತಗಳನ್ನು ಶೇಖರಿಸಿಡಬೇಕಿರುವ MateVFS ಸ್ಕೀಮ್‌ಗಳ ಪಟ್ಟಿ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:108
+#: ../src/common/caja-actions-config-gconf-private.h:108
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -269,11 +269,11 @@ msgstr ""
 "\n"
 "ನಾಟಿಲಸ್‌ನಿಂದ ಬಳಸಲಾಗುವ ಎಲ್ಲಾ MateVFS ಸ್ಕೀಮ್‌ಗಳನ್ನು ಇಲ್ಲಿ ಬಳಸಬಹುದಾಗಿದೆ."
 
-#: ../src/common/caja-actions-config-mateconf-private.h:109
+#: ../src/common/caja-actions-config-gconf-private.h:109
 msgid "The version of the configuration format"
 msgstr "ಸಂರಚನೆಯ ವಿನ್ಯಾಸದ ಆವೃತ್ತಿ"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:110
+#: ../src/common/caja-actions-config-gconf-private.h:110
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -335,7 +335,7 @@ msgid_plural ""
 msgstr[0] "ಈ XML ಕಡತವು ಒಂದು ಮಾನ್ಯವಾದ Caja-ಕ್ರಿಯೆಗಳ ಸಂರಚನಾ ಕಡತವಾಗಿಲ್ಲ (ಕಾಣೆಯಾಗಿರುವ ಕೀಲಿ: %s)%s"
 msgstr[1] "ಈ XML ಕಡತವು ಒಂದು ಮಾನ್ಯವಾದ Caja-ಕ್ರಿಯೆಗಳ ಸಂರಚನಾ ಕಡತವಾಗಿಲ್ಲ (ಕಾಣೆಯಾಗಿರುವ ಕೀಲಿಗಳು: %s)%s"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../src/common/caja-actions-config-schema-reader.c:772
 #, c-format
@@ -874,8 +874,8 @@ msgstr "ನಿಮ್ಮ ಕ್ರಿಯೆಯು ಎಲ್ಲಿ ಕಾಣಿಸ
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../src/cact/caja-actions-config.glade.h:80
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "ಶಂಕರ್ ಪ್ರಸಾದ್ <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "ಶಂಕರ್ ಪ್ರಸಾದ್ <gnome-i18n@gnome.org>"
 
 #: ../src/cact/caja-actions-config.glade.h:81
 msgid ""

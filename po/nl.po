@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE.HEAD\n"
+"Project-Id-Version: GNOME.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-16 17:18+0200\n"
 "PO-Revision-Date: 2006-10-11 12:56+0200\n"
@@ -373,7 +373,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 
 #: ../cact/caja-actions-config.glade.h:80
@@ -582,7 +582,7 @@ msgstr "Actie \"%s\" bewerken"
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "Het label van het menu-item"
 
@@ -591,7 +591,7 @@ msgid "LABEL"
 msgstr "LABEL"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "De tooltip van het menu-item"
 
@@ -609,7 +609,7 @@ msgstr "PICTOGRAM"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "Het pad naar de opdracht"
 
@@ -620,7 +620,7 @@ msgid "PATH"
 msgstr "PAD"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "De parameters van de opdracht"
 
@@ -726,7 +726,7 @@ msgid "Can't open file %s for writing\n"
 msgstr "Kan bestand %s niet openen voor schrijven\n"
 
 # appearance condition settings?
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -734,7 +734,7 @@ msgstr ""
 "De label van het menu-item dat in het Caja popup-menu verschijnt wanneer "
 "de selectie voldoet aan de verschijningsvoorwaarden"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -742,12 +742,12 @@ msgstr ""
 "De tooltip van het menu-item dat in de statusbalk van Caja verschijnt "
 "wanneer de gebruiker naar het Caja popup-menu wijst met zijn/haar muis"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "Het pictogram van het menu-item"
 
 # appearance condition settings?
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -756,11 +756,11 @@ msgstr ""
 "Caja popup-menu wanneer de selectie voldoet aan de "
 "verschijningsvoorwaarden"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
@@ -768,7 +768,7 @@ msgid ""
 msgstr ""
 
 # Engels taalfout: when the user select the menu item
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
@@ -776,7 +776,7 @@ msgstr ""
 "Het pad naar de opdracht die uitgevoerd wordt wanneer de gebruiker het menu-"
 "item selecteert in het Caja popup-menu"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 #, fuzzy
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
@@ -816,12 +816,12 @@ msgstr ""
 "%% : een percent-teken"
 
 # zoeken/vinden
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr ""
 "De lijst met patronen om de geselecteerde bestand(en)/map(pen) te vinden"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -833,14 +833,14 @@ msgstr ""
 "wordt."
 
 # wanneer/als (niet indien)
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr ""
 "'true' als de bestandsnaampatronen hoofdlettergevoelig moeten zijn, 'false' "
 "als dat niet nodig is"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -851,11 +851,11 @@ msgstr ""
 "bestand als 'foto.JPG', stelt u dit in op 'false'"
 
 # die met de geselecteerde bestand(en)/map(pen) overeenkomen
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "De lijst met patronen die met de geselecteerde mimetypes overeenkomen"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -866,7 +866,7 @@ msgstr ""
 "item moet met tenminste een van de patronen overeenkomen voordat de actie "
 "getoond wordt."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -886,33 +886,33 @@ msgstr ""
 "isfile=FALSE en isdir=FALSE: dit is een ongeldige combinatie (uw "
 "configuratie zal nooit verschijnen)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr ""
 "'true' als de selectie bestanden mag bevatten, 'false' in andere gevallen"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "Deze instelling is verbonden met de 'isdir'-instelling. "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "'true' als de selectie mappen mag bevatten, 'false' in ander gevallen"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "Deze instelling is verbonden met de 'isfile'-instelling."
 
 # wanneer/als (niet indien)
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr ""
 "'true' als de selectie meerdere items mag bevatten, 'false' in andere "
 "gevallen"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -922,12 +922,12 @@ msgstr ""
 "zijn, stelt u dit in op 'false'"
 
 # ?
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr ""
 "De lijst met MateVFS-schemes waar de geselecteerde bestanden horen te staan"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -967,12 +967,12 @@ msgstr ""
 "Alle MateVFS schemes die door Caja gebruikt worden kunnen hier ook "
 "gebruikt worden."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "De versie van het configuratieformaat"
 
 # vrij vertaald
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -1074,7 +1074,7 @@ msgstr[1] ""
 "Dit XML-bestand is geen geldig Caja-acties configuratiebestand "
 "(ontbrekende sleutel: %s)"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, fuzzy, c-format

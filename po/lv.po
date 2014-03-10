@@ -364,7 +364,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 
 #: ../cact/caja-actions-config.glade.h:80
@@ -564,7 +564,7 @@ msgstr "Rediģēt darbību \"%s\""
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "Izvēlnes sadaļas etiķete"
 
@@ -573,7 +573,7 @@ msgid "LABEL"
 msgstr "ETIĶETE"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "Izvēlnes sadaļas paskaidre"
 
@@ -591,7 +591,7 @@ msgstr "IKONA"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "Komandas ceļš"
 
@@ -602,7 +602,7 @@ msgid "PATH"
 msgstr "CEĻŠ"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "Komandas parametri"
 
@@ -704,7 +704,7 @@ msgstr "Nevar ierakstīt datus failā %s\n"
 msgid "Can't open file %s for writing\n"
 msgstr "Nevar atvērt failu %s rakstīšanai\n"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -712,7 +712,7 @@ msgstr ""
 "Izvēlnes sadaļas etiķete, kas parādās Caja izlecošajā izvēlnē, kad "
 "izvēle saskan ar izskata stāvokļa uzstādījumiem"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -720,11 +720,11 @@ msgstr ""
 "Paskaidre no izvēlnes elementa, kas parādās Caja stāvokļa joslā, kad "
 "lietotājs norāda uz Caja izlecošo izvēlni ar tā peli"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "Izvēlnes sadaļas ikona"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -732,18 +732,18 @@ msgstr ""
 "Izvēlnes ikonas elements, kas uzrodas blakus šablonam Caja iznirstošajā "
 "izvēlnē, kad izvēlētie elementi atbilst atlases nosacījuma uzstādījumiem"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
@@ -751,7 +751,7 @@ msgstr ""
 "Komandas ceļš, lai sāktu, kad lietotājs atzīmē izvēlnes elementu Caja "
 "izlecošajā izvēlnē"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 #, fuzzy
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
@@ -790,11 +790,11 @@ msgstr ""
 "%U: %s/MateVFS URI lietotājvārds\n"
 "%%: procenta zīme"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "Šablonu saraksts, lai saskaņotu izvēlēto failu(s)/mapi(es)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -804,14 +804,14 @@ msgstr ""
 "mapes(ju) nosaukumu. Katram  izvēlētajam priekšmetam jāsakrīt vismaz ar "
 "vienu faila nosaukuma šablonu, lai parādītos darbība"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr ""
 "'patiess', ja faila nosaukuma paraugiem jābūt reģistrjūtīgiem, citādi "
 "'aplams'"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -821,12 +821,12 @@ msgstr ""
 "uz 'patiess'. Ja vēlaties arī , lai, piemēram, '*jpg' sakristu ar 'photo."
 "JPG', uzstādiet 'aplams'"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr ""
 "Paraugu saraksts, ko saskaņot izvēlētā faila(u) mimetipu salīdzināšanai"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -836,7 +836,7 @@ msgstr ""
 "mimetipu. Katram izvēlētajam priekšmetam jāsaskan vismaz ar vienu mimetipa "
 "paraugu, lai parādītos darbība"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -855,29 +855,29 @@ msgstr ""
 "isfile=APLAMS un isdir=APLAMS: šī ir nederīga kombinācija (jūsu "
 "konfigurācija nekad neparādīsies)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr "'patiess', ja izvēle var saturēt failus, citadi 'aplams'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "Šis uzstādījums ir saistīts ar 'isdir' uzstādījumu. "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "'patiess', ja izvēle var saturēt mapes, citādi 'aplams'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "Šis uzstādījums ir saistīts ar 'isfile' uzstādījumu. "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr "'patiess', ja atlasei ir vairāki elementi, citādi 'aplams'"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -886,13 +886,13 @@ msgstr ""
 "atslēgu uz 'patiess'. Ja jūs vēlieties tikai vienu failu vai mapi, uzstādiet "
 "uz 'aplams'"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr ""
 "MateVFS shēmu saraksts, kur izvēlētajiem failiem vajadzētu noteikt "
 "atrašanās vietu"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -930,11 +930,11 @@ msgstr ""
 "\n"
 "Visas MateVFS shēmas, ko izmanto Caja, var tikt šeit lietotas."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "Konfigurēšanas formāta versija"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -1038,7 +1038,7 @@ msgstr[2] ""
 "XML fails nav derīgs Caja-actions konfigurācias fails (trūkst atslēga : %"
 "s)"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, fuzzy, c-format

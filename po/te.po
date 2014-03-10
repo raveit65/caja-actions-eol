@@ -1684,8 +1684,8 @@ msgstr ""
 "Copyright © 2009 Pierre Wieser <pwieser@trychlos.org>"
 
 #: ../src/runtime/na-iabout.c:213
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "MATE అనువాదీకరణ ప్రోజెక్టు <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "GNOME అనువాదీకరణ ప్రోజెక్టు <gnome-i18n@gnome.org>"
 
 #. i18n: default label for a newly created action
 #: ../src/runtime/na-object-action-fn.h:59
@@ -1874,7 +1874,7 @@ msgstr "ప్రోగ్రామ్ చర్యను యెక్కడ స
 msgid "Try %s --help for usage.\n"
 msgstr "వినియోగము కొరకు %s --help ప్రయత్నించండి.\n"
 
-#. { "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_mateconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
+#. { "output-gconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_gconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
 #. { "output-filename"      , 'o', 0, G_OPTION_ARG_FILENAME, &output_fname   , N_("The file where to write the MateConf schema ('-' for stdout)"), N_("FILENAME") },
 #: ../src/utils/caja-actions-schemas.c:54
 msgid "Output the schema on stdout"

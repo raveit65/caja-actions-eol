@@ -1,6 +1,6 @@
 # List of supported languages has been moved here to make
 # translators' life easier :)
-# More info here : http://live.gnome.org/MateGoals/PoLinguas
+# More info here : http://live.gnome.org/GnomeGoals/PoLinguas
 # please keep this list sorted alphabetically
 #
 ar
@@ -42,6 +42,8 @@ pt
 pt_BR
 ru
 sl
+sr
+sr@latin
 sv
 ta
 te

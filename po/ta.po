@@ -1531,8 +1531,8 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr "A graphical interface to create and edit your Caja actions."
 
 #: ../src/runtime/na-iabout.c:213
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "MATE மொழிபெயர்ப்பு<mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "GNOME மொழிபெயர்ப்பு<gnome-i18n@gnome.org>"
 
 #: ../src/runtime/na-iabout.c:254
 #, c-format
@@ -1814,7 +1814,7 @@ msgstr "மற்ற விருப்பங்கள்"
 msgid "Try %s --help for usage.\n"
 msgstr "%sஐ --பயன்படுத்துவதற்கு உதவ முயற்சிக்கவும்.\n"
 
-#. { "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_mateconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
+#. { "output-gconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_gconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
 #. { "output-filename"      , 'o', 0, G_OPTION_ARG_FILENAME, &output_fname   , N_("The file where to write the MateConf schema ('-' for stdout)"), N_("FILENAME") },
 #: ../src/utils/caja-actions-schemas.c:57
 msgid "Output the schema on stdout"

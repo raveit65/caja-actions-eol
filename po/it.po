@@ -544,7 +544,7 @@ msgstr ""
 "Caja."
 
 #: ../src/core/na-about.c:108
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 "Claudio Arseni <claudio.arseni@gmail.com>\n"
 "Hanno collaborato:\n"
@@ -554,7 +554,7 @@ msgstr ""
 "MATE è tradotto dal gruppo di traduzione in molte lingue, tra cui "
 "l'italiano. \n"
 "\n"
-"Per contattare il team italiano, scrivi alla mailing list mate-i18n@it."
+"Per contattare il team italiano, scrivi alla mailing list gnome-i18n@it."
 "gnome.org o visita http://www.it.gnome.org/\n"
 "\n"
 "Per informazioni sulla traduzione di MATE (anche in altre lingue), visita "
@@ -571,11 +571,11 @@ msgstr "Azioni di Caja"
 #: ../src/core/na-about.c:161
 #, c-format
 msgid ""
-"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2005 The GNOME Foundation\n"
 "Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Copyright %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
-"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2005 The GNOME Foundation\n"
 "Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Copyright %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 
@@ -1185,10 +1185,10 @@ msgstr "S_ovrascrivi l'azione esistente"
 #, fuzzy
 #| msgid ""
 #| "Program flow error.\n"
-#| "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#| "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #| "org."
 msgid ""
-"Please, be kind enough to fill out a bug report on https://bugzilla.mate."
+"Please, be kind enough to fill out a bug report on https://bugzilla.gnome."
 "org/enter_bug.cgi?product=caja-actions."
 msgstr ""
 "Errore nel flusso del programma.\n"
@@ -1810,15 +1810,15 @@ msgstr ""
 msgid "Standard error:"
 msgstr "Errore durante il salvataggio"
 
-#: ../src/io-desktop/cadp-desktop-provider.c:260
+#: ../src/io-desktop/nadp-desktop-provider.c:260
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Provider desktop I/O delle azioni di Caja"
 
-#: ../src/io-desktop/cadp-formats.c:47
+#: ../src/io-desktop/nadp-formats.c:47
 msgid "Export as a ._desktop file"
 msgstr "Esportare come file ._desktop"
 
-#: ../src/io-desktop/cadp-formats.c:48
+#: ../src/io-desktop/nadp-formats.c:48
 msgid ""
 "This format let you easily share your actions with others, including other "
 "desktop environments.\n"
@@ -1837,61 +1837,61 @@ msgstr ""
 "di Caja,\n"
 "- copiandolo in una directory XDG_DATA_DIRS/gestore-file/azioni."
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:248
+#: ../src/io-gconf/nagp-gconf-provider.c:248
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Provider MateConf I/O delle azioni di Caja"
 
-#: ../src/io-xml/caxml-reader.c:148
+#: ../src/io-xml/naxml-reader.c:148
 msgid "Item ID not found."
 msgstr "ID dell'oggetto non trovato."
 
-#: ../src/io-xml/caxml-reader.c:149
+#: ../src/io-xml/naxml-reader.c:149
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr "Percorso %s inatteso durante l'importazione di un menù."
 
-#: ../src/io-xml/caxml-reader.c:150
+#: ../src/io-xml/naxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr "L'elemento %s alla riga %d è già stato trovato, verrà ignorato."
 
-#: ../src/io-xml/caxml-reader.c:151
+#: ../src/io-xml/naxml-reader.c:151
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr "ID dell'oggetto non valido: atteso %s, trovato %s alla riga %d."
 
-#: ../src/io-xml/caxml-reader.c:152
+#: ../src/io-xml/naxml-reader.c:152
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr "Trovato elemento %s sconosciuto alla riga %d attendendo %s."
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/caxml-reader.c:154
+#: ../src/io-xml/naxml-reader.c:154
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr ""
 "Trovato tipo %s sconosciuto alla riga %d, attendendo una azione o un menù."
 
-#: ../src/io-xml/caxml-reader.c:155
+#: ../src/io-xml/naxml-reader.c:155
 #, c-format
 msgid "Invalid XML root element %s found at line %d while waiting for %s."
 msgstr "Trovato elemento XML principale %s alla riga %d attendendo %s."
 
-#: ../src/io-xml/caxml-reader.c:156
+#: ../src/io-xml/naxml-reader.c:156
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr "Impossibile analizzare il file XML: %s."
 
-#: ../src/io-xml/caxml-reader.c:157
+#: ../src/io-xml/naxml-reader.c:157
 #, c-format
 msgid "Node %s at line %d has not been dealt with."
 msgstr "Il nodo %s alla riga %d non è stato utilizzato."
 
-#: ../src/io-xml/caxml-formats.c:48
+#: ../src/io-xml/naxml-formats.c:48
 msgid "Export as a _full MateConf schema file"
 msgstr "Esportare come schema completo di GCon_f"
 
-#: ../src/io-xml/caxml-formats.c:49
+#: ../src/io-xml/naxml-formats.c:49
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1907,11 +1907,11 @@ msgstr ""
 "di Caja,\n"
 "- usando lo strumento a riga di comando mateconftool-2 --import-schema-file."
 
-#: ../src/io-xml/caxml-formats.c:59
+#: ../src/io-xml/naxml-formats.c:59
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr "Esportare come schema parzia_le di MateConf (v2)"
 
-#: ../src/io-xml/caxml-formats.c:60
+#: ../src/io-xml/naxml-formats.c:60
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
@@ -1934,11 +1934,11 @@ msgstr ""
 "di Caja,\n"
 "- usando lo strumento a riga di comando mateconftool-2 --import-schema-file."
 
-#: ../src/io-xml/caxml-formats.c:73
+#: ../src/io-xml/naxml-formats.c:73
 msgid "Export as a MateConf _dump file"
 msgstr "Esportare come file _dump di MateConf"
 
-#: ../src/io-xml/caxml-formats.c:74
+#: ../src/io-xml/naxml-formats.c:74
 msgid ""
 "This format has been introduced in v 1.11 serie, and should be the preferred "
 "format for newly exported items.\n"
@@ -4608,7 +4608,7 @@ msgid ""
 "Bug reports are welcomed at http://bugzilla.gnome.org, or you may prefer to "
 "mail to <maintainer@caja-actions.org>.\n"
 msgstr ""
-"Le segnalazioni di bug possono essere riportate su http://bugzilla.mate."
+"Le segnalazioni di bug possono essere riportate su http://bugzilla.gnome."
 "org, oppure è possibile inviare una email a <maintainer@caja-actions."
 "org>.\n"
 
@@ -4646,7 +4646,7 @@ msgid ""
 "product=caja-actions,\n"
 "or you may prefer to mail to <maintainer@caja-actions.org>.\n"
 msgstr ""
-"Le segnalazioni di bug possono essere riportate su https://bugzilla.mate."
+"Le segnalazioni di bug possono essere riportate su https://bugzilla.gnome."
 "org/enter_bug.cgi?product=caja-actions,\n"
 "oppure è possibile inviare una email a <maintainer@caja-actions.org>.\n"
 
@@ -4903,7 +4903,7 @@ msgstr "Errore sulla chiamata «GetSelectedPaths»: %s"
 
 #~ msgid ""
 #~ "Item is not writable for an unknown reason (%d).\n"
-#~ "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#~ "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #~ "org."
 #~ msgstr ""
 #~ "L'oggetto non è scrivibile per una ragione sconosciuta (%d).\n"
@@ -4912,7 +4912,7 @@ msgstr "Errore sulla chiamata «GetSelectedPaths»: %s"
 
 #~ msgid ""
 #~ "Unknown return code (%d).\n"
-#~ "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#~ "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #~ "org."
 #~ msgstr ""
 #~ "Restituito codice sconosciuto (%d).\n"

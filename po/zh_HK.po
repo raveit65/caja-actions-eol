@@ -338,7 +338,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 
 #: ../cact/caja-actions-config.glade.h:80
@@ -537,7 +537,7 @@ msgstr "編輯動作「%s」"
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "選單項目的標籤"
 
@@ -546,7 +546,7 @@ msgid "LABEL"
 msgstr "LABEL"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "選單項目的工具提示"
 
@@ -564,7 +564,7 @@ msgstr "ICON"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "指令的路徑"
 
@@ -575,7 +575,7 @@ msgid "PATH"
 msgstr "PATH"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "指令的參數"
 
@@ -672,13 +672,13 @@ msgstr "不能將資料寫入檔案 %s\n"
 msgid "Can't open file %s for writing\n"
 msgstr "無法開啟要寫入的檔案 %s\n"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
 msgstr "在選擇區比對顯現條件設定值時出現在 Caja 彈出式選單的選單項目標籤"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -686,35 +686,35 @@ msgstr ""
 "當使用者將滑鼠指向 Caja 彈出式選單項目時在 Caja 狀態列中顯現關於該選"
 "單項目的工具提示"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "選單項目的圖示"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
 msgstr ""
 "在選擇區比對顯現條件設定值時出現在 Caja 彈出式選單標籤旁的選單項目圖示"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
 msgstr "當使用者選擇 Caja 彈出式選單中的項目時啟動命令的路徑。"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 #, fuzzy
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
@@ -749,11 +749,11 @@ msgstr ""
 "%U：mate-vfs URI 的使用者名稱 \n"
 "%%：百分比符號"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "用來比對選定檔案/資料夾的樣式清單"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 #, fuzzy
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
@@ -763,13 +763,13 @@ msgstr ""
 "用來比對以選擇檔案的字串清單(可用萬用字元 ? 或 *)。每個選定的項目必須至少符合"
 "一項出現的動作樣式"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 #, fuzzy
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr "若選取區可以有多個項目則為「true」，否則為「false」"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 #, fuzzy
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
@@ -779,12 +779,12 @@ msgstr ""
 "如果需要選擇一或多個檔案和資料夾，請將此鍵值設為「true」。如果只要一個檔案或"
 "資料夾，請設為「false」"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 #, fuzzy
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "用來比對選定檔案/資料夾的樣式清單"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 #, fuzzy
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
@@ -794,7 +794,7 @@ msgstr ""
 "用來比對以選擇檔案的字串清單(可用萬用字元 ? 或 *)。每個選定的項目必須至少符合"
 "一項出現的動作樣式"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -813,29 +813,29 @@ msgstr ""
 "–「isfile」為「false」而「isdir」為「false」：無效的組合方式(你的組態將永遠不"
 "會出現)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr "若選取區可以包含檔案則為「true」，否則為「false」"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "這個設定值是和「isdir」連結在一起的。"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "若選取區可以包含資料夾則為「true」，否則為「false」"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "這個設定值是和「isfile」連結在一起的。"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr "若選取區可以有多個項目則為「true」，否則為「false」"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -843,11 +843,11 @@ msgstr ""
 "如果需要選擇一或多個檔案和資料夾，請將此鍵值設為「true」。如果只要一個檔案或"
 "資料夾，請設為「false」"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr "選定的檔案所在的 MateVFS 基模清單"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -884,11 +884,11 @@ msgstr ""
 "\n"
 "所有 MateVFS 基模在 Caja 中使用的都可以在這裏使用。"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "組態格式的版本"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -976,7 +976,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, c-format

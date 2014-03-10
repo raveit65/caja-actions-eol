@@ -430,8 +430,8 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr "Et grafisk grensesnitt for å lage og redigere handlinger for Caja."
 
 #: ../src/core/na-about.c:107
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "Oversettelsesprosjektet for MATE <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "Oversettelsesprosjektet for GNOME <gnome-i18n@gnome.org>"
 
 #. i18n: title of the About dialog box, when seen from Caja file manager
 #: ../src/core/na-about.c:128
@@ -441,11 +441,11 @@ msgstr "Caja handlinger"
 #: ../src/core/na-about.c:162
 #, c-format
 msgid ""
-"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2005 The GNOME Foundation\n"
 "Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Copyright %s 2009, 2010, 2011, 2012 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
-"Opphavsrett %s 2005 The MATE Foundation\n"
+"Opphavsrett %s 2005 The GNOME Foundation\n"
 "Opphavsrett %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Opphavsrett %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 
@@ -940,7 +940,7 @@ msgstr ""
 
 #: ../src/core/na-io-provider.c:70
 msgid ""
-"Please, be kind enough to fill out a bug report on https://bugzilla.mate."
+"Please, be kind enough to fill out a bug report on https://bugzilla.gnome."
 "org/enter_bug.cgi?product=caja-actions."
 msgstr ""
 
@@ -1409,16 +1409,16 @@ msgstr "Standard utdata:"
 msgid "Standard error:"
 msgstr "Standard feil:"
 
-#: ../src/io-desktop/cadp-desktop-provider.c:260
+#: ../src/io-desktop/nadp-desktop-provider.c:260
 #, fuzzy
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Redigering av handlinger for Caja"
 
-#: ../src/io-desktop/cadp-formats.c:57
+#: ../src/io-desktop/nadp-formats.c:57
 msgid "Export as a ._desktop file"
 msgstr "Eksporter som en ._desktop-fil"
 
-#: ../src/io-desktop/cadp-formats.c:58
+#: ../src/io-desktop/nadp-formats.c:58
 msgid ""
 "This format has been introduced with v 3.0 serie, and should be your newly "
 "preferred format when exporting items.\n"
@@ -1431,60 +1431,60 @@ msgid ""
 "- or by copying it into a XDG_DATA_DIRS/file-manager/actions directory."
 msgstr ""
 
-#: ../src/io-desktop/cadp-reader.c:65
+#: ../src/io-desktop/nadp-reader.c:65
 msgid "The Desktop I/O Provider is not able to handle the URI"
 msgstr ""
 
 #. i18n: 'type' is the nature of the item: Action or Menu
-#: ../src/io-desktop/cadp-reader.c:293
+#: ../src/io-desktop/nadp-reader.c:293
 #, c-format
 msgid "unknown type: %s"
 msgstr "ukjent type: %s"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:248
+#: ../src/io-gconf/nagp-gconf-provider.c:248
 #, fuzzy
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Caja handlinger"
 
-#: ../src/io-xml/caxml-reader.c:148
+#: ../src/io-xml/naxml-reader.c:148
 msgid "Item ID not found."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:149
+#: ../src/io-xml/naxml-reader.c:149
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:150
+#: ../src/io-xml/naxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:151
+#: ../src/io-xml/naxml-reader.c:151
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:152
+#: ../src/io-xml/naxml-reader.c:152
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr ""
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/caxml-reader.c:154
+#: ../src/io-xml/naxml-reader.c:154
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:155
+#: ../src/io-xml/naxml-reader.c:155
 msgid "The XML I/O Provider is not able to handle the URI"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:56
+#: ../src/io-xml/naxml-formats.c:56
 msgid "Export as a _full MateConf schema file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:57
+#: ../src/io-xml/naxml-formats.c:57
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1493,11 +1493,11 @@ msgid ""
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:68
+#: ../src/io-xml/naxml-formats.c:68
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:69
+#: ../src/io-xml/naxml-formats.c:69
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools, "
@@ -1509,11 +1509,11 @@ msgid ""
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:83
+#: ../src/io-xml/naxml-formats.c:83
 msgid "Export as a MateConf _dump file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:84
+#: ../src/io-xml/naxml-formats.c:84
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "Tough not backward compatible with Caja-Actions Configuration Tool "

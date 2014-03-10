@@ -12,7 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2010-05-26 00:18+0200\n"
 "PO-Revision-Date: 2010-05-26 00:45+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
-"Language-Team: Galician <mate@g11.net>\n"
+"Language-Team: Galician <gnome@g11.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -405,7 +405,7 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr ""
 
 #: ../src/core/na-iabout.c:212
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 
 #: ../src/core/na-iabout.c:253
@@ -1001,88 +1001,88 @@ msgstr ""
 "%U: nome de usuario da URI MateVFS\n"
 "%%: un signo de porcentaxe"
 
-#: ../src/io-desktop/cadp-desktop-provider.c:215
+#: ../src/io-desktop/nadp-desktop-provider.c:215
 #, fuzzy
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Editor de accións de Caja"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:228
+#: ../src/io-gconf/nagp-gconf-provider.c:228
 #, fuzzy
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Configuración de Accións de Caja"
 
-#: ../src/io-xml/caxml-reader.c:147
+#: ../src/io-xml/naxml-reader.c:147
 #, c-format
 msgid "Item ID %s already exists."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:148
+#: ../src/io-xml/naxml-reader.c:148
 msgid "Item ID not found."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:149
+#: ../src/io-xml/naxml-reader.c:149
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:150
+#: ../src/io-xml/naxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:151
+#: ../src/io-xml/naxml-reader.c:151
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:152
+#: ../src/io-xml/naxml-reader.c:152
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr ""
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/caxml-reader.c:154
+#: ../src/io-xml/naxml-reader.c:154
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:155
+#: ../src/io-xml/naxml-reader.c:155
 #, c-format
 msgid "Invalid XML root element %s found at line %d while waiting for %s."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:156
+#: ../src/io-xml/naxml-reader.c:156
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:157
+#: ../src/io-xml/naxml-reader.c:157
 #, c-format
 msgid "Node %s at line %d has not been dealt with."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:1322
+#: ../src/io-xml/naxml-reader.c:1322
 msgid "Item was renumbered due to user request."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:1328
+#: ../src/io-xml/naxml-reader.c:1328
 msgid "Existing item was overriden due to user request."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:1337
+#: ../src/io-xml/naxml-reader.c:1337
 msgid "Import was canceled due to user request."
 msgstr ""
 
 #. i18n: the action has been renumbered during import operation
-#: ../src/io-xml/caxml-reader.c:1376
+#: ../src/io-xml/naxml-reader.c:1376
 msgid "(renumbered)"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:48
+#: ../src/io-xml/naxml-formats.c:48
 msgid "Export as a _full MateConf schema file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:49
+#: ../src/io-xml/naxml-formats.c:49
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1090,11 +1090,11 @@ msgid ""
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:58
+#: ../src/io-xml/naxml-formats.c:58
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:59
+#: ../src/io-xml/naxml-formats.c:59
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
@@ -1105,11 +1105,11 @@ msgid ""
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:71
+#: ../src/io-xml/naxml-formats.c:71
 msgid "Export as a MateConf _dump file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:72
+#: ../src/io-xml/naxml-formats.c:72
 msgid ""
 "This format has been introduced in v 1.11 serie, and should be the preferred "
 "format for newly exported items.\n"
@@ -1972,7 +1972,7 @@ msgid ""
 msgstr ""
 
 #: ../src/utils/caja-actions-new.c:517
-msgid "Error: unable to find 'na-mateconf' provider."
+msgid "Error: unable to find 'na-gconf' provider."
 msgstr ""
 
 #: ../src/utils/caja-actions-run.c:60

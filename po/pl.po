@@ -360,7 +360,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 "Renata Perkowska <alysium@interia.pl>\n"
 "Ryszard Perkowski <usultis@gmail.com>"
@@ -564,7 +564,7 @@ msgstr "Modyfikuj profil \"%s\""
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "Nazwa dla elementu menu"
 
@@ -573,7 +573,7 @@ msgid "LABEL"
 msgstr "NAZWA"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "Podpowiedź dla elementu menu"
 
@@ -591,7 +591,7 @@ msgstr "IKONA"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "Ścieżka polecenia"
 
@@ -602,7 +602,7 @@ msgid "PATH"
 msgstr "ŚCIEŻKA"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "Parametry polecenia"
 
@@ -660,7 +660,7 @@ msgid ""
 "The path of the file where to save the new MateConf schema definition file "
 "[default: /tmp/config_UUID.schemas]"
 msgstr ""
-"Ścieżka do pliku, gdzie należy zapisać nowy plik definicji schematu MATECONF "
+"Ścieżka do pliku, gdzie należy zapisać nowy plik definicji schematu GCONF "
 "[domyślnie: /tmp/config_UUID.schemas]"
 
 #: ../utils/caja-actions-new-config.c:100
@@ -704,7 +704,7 @@ msgstr "Nie można zapisać danych do pliku %s\n"
 msgid "Can't open file %s for writing\n"
 msgstr "Nie można otworzyć pliku %s w trybie zapisu\n"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -712,7 +712,7 @@ msgstr ""
 "Nazwa elementu menu, która pojawi się w menu podręcznym Cajaa, gdy "
 "wybrany element spełni ustawione warunki dotyczące wyglądu aplikacji."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -720,11 +720,11 @@ msgstr ""
 "Podpowiedź dla elementu menu, która pojawi się w pasku stanu Cajaa, gdy "
 "użytkownik wskaże kursorem myszy element menu podręcznego Cajaa "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "Ikona dla elementu menu"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -733,11 +733,11 @@ msgstr ""
 "Cajaa, gdy wybrany element spełni wszystkie ustawione warunki dotyczące "
 "wyglądu aplikacji"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr "Nazwa opisowa profilu"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
@@ -747,7 +747,7 @@ msgstr ""
 "Jeśli nazwa nie zostanie podana, w jej miejsce zostanie wygenerowany łańcuch "
 "tekstowy"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
@@ -755,7 +755,7 @@ msgstr ""
 "Ścieżka polecenia, które należy uruchomić, gdy użytkownik wybierze element w "
 "menu podręcznym Cajaa"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
 "in the Caja popup menu.\n"
@@ -792,11 +792,11 @@ msgstr ""
 "%U: użytkownik adresu MateVFSI\n"
 "%%: znak procentu"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "Lista wzorców służących do sprawdzenia nazw wybranych plików/katalogów"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -806,14 +806,14 @@ msgstr ""
 "nazw wybranych plików/katalogów. Aby akcja została wyświetlona, każdy "
 "wybrany element musi być zgodny z co najmniej jednym wzorcem "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr ""
 "Wartość \"true\", jeśli wzorce nazwy pliku mają sprawdzać wielkość liter, "
 "\"false\" w przeciwnym wypadku"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -823,11 +823,11 @@ msgstr ""
 "ustawić wartość tego klucza na \"true\". Jeśli np. wzorzec \"*.jpg\" ma "
 "odnajdywać \"photo.JPG\", należy ustawić wartość \"false\"."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "Lista wzorców służących do sprawdzenia typów MIME wybranych plików"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -837,7 +837,7 @@ msgstr ""
 "typów MIME wybranych plików. Aby akcja została wyświetlona, każdy wybrany "
 "element musi być zgodny z co najmniej jednym wzorcem"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -857,35 +857,35 @@ msgstr ""
 "isfile=FALSE i isdir=FALSE: niepoprawna kombinacja (podana konfiguracja nie "
 "zostanie wyświetlona)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr ""
 "Wartość \"true\", jeśli wybrane elementy mogą zawierać pliki, \"false\" w "
 "przeciwnym wypadku"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "Ta opcja jest powiązana z opcją \"isdir\"."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr ""
 "Wartość \"true\", jeśli wybrane elementy mogą zawierać katalogi, \"false\" w "
 "przeciwnym wypadku"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "Ta opcja jest powiązana z opcją \"isfile\"."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr ""
 "Wartość \"true\" jeśli wybranych elementów może być kilka, \"false\" w "
 "przeciwnym wypadku"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -894,11 +894,11 @@ msgstr ""
 "ustawić wartość tego klucza na \"true\". Jeśli ma być zaznaczony tylko jeden "
 "plik lub katalog, należy ustawić \"false\"."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr "Lista schematów MateVFS, gdzie wybrane pliki powinny się znajdować"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -937,11 +937,11 @@ msgstr ""
 "\n"
 "Wszystkie schematy MateVFS stosowane przez Cajaa mogą być tu użyte."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "Wersja formatu konfiguracji"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -1049,7 +1049,7 @@ msgstr[2] ""
 "Podany plik XML nie jest poprawnym plikiem konfiguracji Caja-actions "
 "(brakuje kluczy: %s)%s"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, c-format

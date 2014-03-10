@@ -425,7 +425,7 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr ""
 
 #: ../src/core/na-iabout.c:212
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 "Josep Puigdemont i Casamajó <josep.puigdemont@gmail.com>Francesc Vilches "
 "Batet <francesc.vilches@gmail.com>"
@@ -433,7 +433,7 @@ msgstr ""
 #: ../src/core/na-iabout.c:253
 #, c-format
 msgid ""
-"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2005 The GNOME Foundation\n"
 "Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Copyright %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
@@ -1354,68 +1354,68 @@ msgstr "exemple"
 msgid "user"
 msgstr ""
 
-#: ../src/io-desktop/cadp-desktop-provider.c:249
+#: ../src/io-desktop/nadp-desktop-provider.c:249
 #, fuzzy
 #| msgid "Caja Action Profile Editor"
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Editor de perfils de les accions del Caja"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:225
+#: ../src/io-gconf/nagp-gconf-provider.c:225
 #, fuzzy
 #| msgid "Caja Actions Configuration"
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Configuració de les accions del Caja"
 
-#: ../src/io-xml/caxml-reader.c:148
+#: ../src/io-xml/naxml-reader.c:148
 msgid "Item ID not found."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:149
+#: ../src/io-xml/naxml-reader.c:149
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:150
+#: ../src/io-xml/naxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:151
+#: ../src/io-xml/naxml-reader.c:151
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:152
+#: ../src/io-xml/naxml-reader.c:152
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr ""
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/caxml-reader.c:154
+#: ../src/io-xml/naxml-reader.c:154
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:155
+#: ../src/io-xml/naxml-reader.c:155
 #, c-format
 msgid "Invalid XML root element %s found at line %d while waiting for %s."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:156
+#: ../src/io-xml/naxml-reader.c:156
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr ""
 
-#: ../src/io-xml/caxml-reader.c:157
+#: ../src/io-xml/naxml-reader.c:157
 #, c-format
 msgid "Node %s at line %d has not been dealt with."
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:48
+#: ../src/io-xml/naxml-formats.c:48
 msgid "Export as a _full MateConf schema file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:49
+#: ../src/io-xml/naxml-formats.c:49
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1424,11 +1424,11 @@ msgid ""
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:59
+#: ../src/io-xml/naxml-formats.c:59
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:60
+#: ../src/io-xml/naxml-formats.c:60
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
@@ -1440,11 +1440,11 @@ msgid ""
 "- or via the mateconftool-2 --import-schema-file command-line tool."
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:73
+#: ../src/io-xml/naxml-formats.c:73
 msgid "Export as a MateConf _dump file"
 msgstr ""
 
-#: ../src/io-xml/caxml-formats.c:74
+#: ../src/io-xml/naxml-formats.c:74
 msgid ""
 "This format has been introduced in v 1.11 serie, and should be the preferred "
 "format for newly exported items.\n"
@@ -2421,7 +2421,7 @@ msgid ""
 msgstr ""
 
 #: ../src/utils/caja-actions-new.c:517
-msgid "Error: unable to find 'na-mateconf' provider."
+msgid "Error: unable to find 'na-gconf' provider."
 msgstr ""
 
 #: ../src/utils/caja-actions-run.c:61

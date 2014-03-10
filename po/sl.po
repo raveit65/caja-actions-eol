@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caja-actions\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-02-29 23:13+0000\n"
-"PO-Revision-Date: 2012-03-01 21:17+0100\n"
-"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
-"Language-Team: Slovenščina <mate-si@googlegroups.com>\n"
+"POT-Creation-Date: 2012-04-04 08:06+0000\n"
+"PO-Revision-Date: 2012-04-04 13:37+0100\n"
+"Last-Translator: Matej Urbančič <gnomeju@svn.gnome.org>\n"
+"Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -351,7 +351,7 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr "Grafični vmesnik za ustvarjanje in urejanje dejanj Cajaa."
 
 #: ../src/core/na-about.c:106
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com>"
 
 #. i18n: title of the About dialog box, when seen from Caja file manager
@@ -362,11 +362,11 @@ msgstr "Dejanja Cajaa"
 #: ../src/core/na-about.c:161
 #, c-format
 msgid ""
-"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2005 The GNOME Foundation\n"
 "Copyright %s 2006-2008 Frederic Ruaudel <grumz@grumz.net>\n"
-"Copyright %s 2009-2012 Pierre Wieser <pwieser@trychlos.org>"
+"Copyright %s 2009-2013 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
-"Avtorske pravice %s 2005, Fundacija MATE\n"
+"Avtorske pravice %s 2005, Fundacija GNOME\n"
 "Avtorske pravice %s 2006 - 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Avtorske pravice %s 2009 - 2012  Pierre Wieser <pwieser@trychlos.org>"
 
@@ -899,39 +899,39 @@ msgstr "Z_apomni si mojo izbiro v prihodnjih opravilih izvoza"
 msgid "Please, be kind enough to fill out a bug report on https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions."
 msgstr "Bodite prijazni in izpolnite poročilo o hrošču na https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions."
 
-#: ../src/core/na-io-provider.c:1356
+#: ../src/core/na-io-provider.c:1372
 msgid "Unavailable I/O provider."
 msgstr "Ponudnik V/I ni na voljo."
 
-#: ../src/core/na-io-provider.c:1360
+#: ../src/core/na-io-provider.c:1376
 msgid "I/O provider implementation lacks of required API."
 msgstr "Podpori V/I ponudnika manjka zahtevani API."
 
-#: ../src/core/na-io-provider.c:1364
+#: ../src/core/na-io-provider.c:1380
 msgid "I/O provider is not willing to write."
 msgstr "V ponudnika V/I ni mogoče pisati."
 
-#: ../src/core/na-io-provider.c:1368
+#: ../src/core/na-io-provider.c:1384
 msgid "I/O provider announces itself as unable to write."
 msgstr "Ponudnik V/I se je naznanil kot nezmožen pisanja."
 
-#: ../src/core/na-io-provider.c:1372
+#: ../src/core/na-io-provider.c:1388
 msgid "I/O provider has been locked down by an administrator."
 msgstr "Skrbnik je zaklenil ponudnika V/I."
 
-#: ../src/core/na-io-provider.c:1376
+#: ../src/core/na-io-provider.c:1392
 msgid "I/O provider has been locked down by the user."
 msgstr "Uporabnik je zaklenil ponudnika V/I."
 
-#: ../src/core/na-io-provider.c:1380
+#: ../src/core/na-io-provider.c:1396
 msgid "Item is read-only."
 msgstr "Predmet je le za branje."
 
-#: ../src/core/na-io-provider.c:1384
+#: ../src/core/na-io-provider.c:1400
 msgid "No writable I/O provider found."
 msgstr "Ni mogoče najti zapisljivega ponudnika V/I."
 
-#: ../src/core/na-io-provider.c:1389
+#: ../src/core/na-io-provider.c:1405
 #, c-format
 msgid ""
 "Item is not writable for an unknown reason (%d).\n"
@@ -940,11 +940,11 @@ msgstr ""
 "Predmeta ni mogoče zapisati zaradi neznanega vzroka (%d).\n"
 "%s"
 
-#: ../src/core/na-io-provider.c:1412
+#: ../src/core/na-io-provider.c:1428
 msgid "OK."
 msgstr "V redu."
 
-#: ../src/core/na-io-provider.c:1416
+#: ../src/core/na-io-provider.c:1432
 #, c-format
 msgid ""
 "Program flow error.\n"
@@ -953,23 +953,23 @@ msgstr ""
 "Napaka teka programa.\n"
 "%s"
 
-#: ../src/core/na-io-provider.c:1420
+#: ../src/core/na-io-provider.c:1436
 msgid "The I/O provider is not willing to do that."
 msgstr "Ponudnik V/I tega noče storiti."
 
-#: ../src/core/na-io-provider.c:1424
+#: ../src/core/na-io-provider.c:1440
 msgid "Write error in I/O provider."
 msgstr "Napaka pisanja v ponudnika V/I."
 
-#: ../src/core/na-io-provider.c:1428
+#: ../src/core/na-io-provider.c:1444
 msgid "Unable to delete MateConf schemas."
 msgstr "Ni mogoče izbrisati shem MateConf."
 
-#: ../src/core/na-io-provider.c:1432
+#: ../src/core/na-io-provider.c:1448
 msgid "Unable to delete configuration."
 msgstr "Ni mogoče izbrisati nastavitve."
 
-#: ../src/core/na-io-provider.c:1436
+#: ../src/core/na-io-provider.c:1452
 #, c-format
 msgid ""
 "Unknown return code (%d).\n"
@@ -1371,7 +1371,7 @@ msgstr ""
 "Ta način podprtosti naj bi prezrl profil, ki določa ne obstoječi UID ali prijavo.\n"
 "Privzeto prazno: ukaz bo bil izveden kot trenutni uporabnik."
 
-#: ../src/core/na-selected-info.c:847
+#: ../src/core/na-selected-info.c:869
 #, c-format
 msgid "Error when querying informations for %s URI: %s"
 msgstr "Napaka med poizvedbo podatkov za URI %s: %s"
@@ -1416,15 +1416,15 @@ msgstr "Standardni izhod:"
 msgid "Standard error:"
 msgstr "Običajna napaka:"
 
-#: ../src/io-desktop/cadp-desktop-provider.c:259
+#: ../src/io-desktop/nadp-desktop-provider.c:259
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Ponudnik V/I namizja dejanj Cajaa"
 
-#: ../src/io-desktop/cadp-formats.c:56
+#: ../src/io-desktop/nadp-formats.c:56
 msgid "Export as a ._desktop file"
 msgstr "Izvozi kot datoteko ._desktop"
 
-#: ../src/io-desktop/cadp-formats.c:57
+#: ../src/io-desktop/nadp-formats.c:57
 msgid ""
 "This format has been introduced with v 3.0 serie, and should be your newly preferred format when exporting items.\n"
 "It let you easily share your actions with the whole world, including with users of other desktop environments, as long as their own application implements the DES-EMA specification which describes this format.\n"
@@ -1440,59 +1440,59 @@ msgstr ""
 "- z dejanjem povleci in spusti v orodje nastavitev dejanj Cajaa\n"
 "- s kopiranjem v mapo XDG_DATA_DIRS/file-manager/actions."
 
-#: ../src/io-desktop/cadp-reader.c:64
+#: ../src/io-desktop/nadp-reader.c:64
 msgid "The Desktop I/O Provider is not able to handle the URI"
 msgstr "S ponudnikom V/I namizja ni mogoče upravljati z naslovom URI."
 
 #. i18n: 'type' is the nature of the item: Action or Menu
-#: ../src/io-desktop/cadp-reader.c:292
+#: ../src/io-desktop/nadp-reader.c:292
 #, c-format
 msgid "unknown type: %s"
 msgstr "neznana vrsta: %s"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:247
+#: ../src/io-gconf/nagp-gconf-provider.c:247
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Ponudnik V/I MateConf dejanj Cajaa"
 
-#: ../src/io-xml/caxml-reader.c:147
+#: ../src/io-xml/naxml-reader.c:147
 msgid "Item ID not found."
 msgstr "ID predmeta ni mogoče najti."
 
-#: ../src/io-xml/caxml-reader.c:148
+#: ../src/io-xml/naxml-reader.c:148
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr "Nečakana pot ključa %s med uvažanjem menija."
 
-#: ../src/io-xml/caxml-reader.c:149
+#: ../src/io-xml/naxml-reader.c:149
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr "Element %s v vrstici %d je bil že najden, prezrt."
 
-#: ../src/io-xml/caxml-reader.c:150
+#: ../src/io-xml/naxml-reader.c:150
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr "Neveljaven ID predmeta: med čakanjem na %s, je bil najden %s v vrstici %d."
 
-#: ../src/io-xml/caxml-reader.c:151
+#: ../src/io-xml/naxml-reader.c:151
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr "Neznan element %s je bil najden v vrstici %d med čakanjem na %s."
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/caxml-reader.c:153
+#: ../src/io-xml/naxml-reader.c:153
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr "Neznana vrsta %s je bila najdena v vrstici %d med čakanjem na Dejanje ali Meni."
 
-#: ../src/io-xml/caxml-reader.c:154
+#: ../src/io-xml/naxml-reader.c:154
 msgid "The XML I/O Provider is not able to handle the URI"
 msgstr "S ponudnikom V/I XML ni mogoče upravljati z naslovom URI."
 
-#: ../src/io-xml/caxml-formats.c:55
+#: ../src/io-xml/naxml-formats.c:55
 msgid "Export as a _full MateConf schema file"
 msgstr "Izvozi kot _polno datoteko sheme MateConf"
 
-#: ../src/io-xml/caxml-formats.c:56
+#: ../src/io-xml/naxml-formats.c:56
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1506,11 +1506,11 @@ msgstr ""
 "- dejanja povleci in spusti v orodje nastavitev dejanj Cajaa\n"
 "- ali preko orodja ukazne vrstice mateconftool-2 --import-schema-file."
 
-#: ../src/io-xml/caxml-formats.c:67
+#: ../src/io-xml/naxml-formats.c:67
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr "Izvozi kot _lahko datoteko sheme MateConf (r2)"
 
-#: ../src/io-xml/caxml-formats.c:68
+#: ../src/io-xml/naxml-formats.c:68
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools, while keeping backward compatibility with the Caja-Actions Configuration Tool oldest versions.\n"
@@ -1527,11 +1527,11 @@ msgstr ""
 "- dejanja povleci in spusti v orodje nastavitev dejanj Cajaa\n"
 "- ali preko orodja ukazne vrstice mateconftool-2 --import-schema-file."
 
-#: ../src/io-xml/caxml-formats.c:82
+#: ../src/io-xml/naxml-formats.c:82
 msgid "Export as a MateConf _dump file"
 msgstr "Izvozi kot datoteko _izpisa MateConf"
 
-#: ../src/io-xml/caxml-formats.c:83
+#: ../src/io-xml/naxml-formats.c:83
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "Tough not backward compatible with Caja-Actions Configuration Tool versions previous to 1.11, it may still be imported via standard MateConf command-line tools.\n"
@@ -2166,7 +2166,7 @@ msgid "Must match all of"
 msgstr "Mora se skladati z vsemi"
 
 #. i18n: label of the header of a column which let the user select a negative filter
-#: ../src/cact/cact-match-list.c:252
+#: ../src/cact/cact-match-list.c:245
 msgid "Must not match any of"
 msgstr "Se ne sme skladati z nobenim od"
 
@@ -2451,7 +2451,7 @@ msgstr "Na _dnu"
 msgid "Display the notebook tabs on the bottom side"
 msgstr "Pokaži zavihke prenosnika na dnu."
 
-#: ../src/cact/cact-menubar.c:713
+#: ../src/cact/cact-menubar.c:718
 #, c-format
 msgid " %d menu(s), %d action(s), %d profile(s) are currently loaded"
 msgstr "%d menijev, %d dejanj, %d profilov je trenutno naloženih"
@@ -2480,11 +2480,11 @@ msgstr "Seznama predmetov ničte ravni ni bilo mogoče prepisati"
 msgid "Some items have not been deleted"
 msgstr "Nekaterih predmetov ni bilo mogoče izbrisati"
 
-#: ../src/cact/cact-menubar-file.c:195
+#: ../src/cact/cact-menubar-file.c:201
 msgid "New profile"
 msgstr "Nov profil"
 
-#: ../src/cact/cact-menubar-file.c:483
+#: ../src/cact/cact-menubar-file.c:489
 msgid "Automatically saving pending modifications..."
 msgstr "Samodejno shrani pridržane spremembe ..."
 
@@ -3477,12 +3477,12 @@ msgstr "Trenutni predmet se bo pojavil če se vrsta mime vsakega elementa izbire
 #: ../src/cact/caja-actions-config-tool.ui.h:159
 msgid ""
 "This list lets you determine for which mimetypes the currently selected item will be displayed in the Caja context menu.\n"
-"Mimetypes may be specified as '*', '/*', 'group/*' or 'group/subgroup'.\n"
+"Mimetypes may be specified as '*', '*/*', 'group/*' or 'group/subgroup'.\n"
 "Mimetypes may be negated to specify for which type of objects your item must not appear."
 msgstr ""
-"Ta seznam vam omogoča določitev katere vrste mime izbranega predmeta bodo bile prikazane v vsebinskem meniju Cajaa.\n"
-"Vrste mime je mogoče določiti kot '*', '/*', 'skupina/*' ali 'skupina/podskupina'.\n"
-"Vrste mime je mogoče negirati za navedbo za katere vrste predmetov se vaš predmet ne sme pojaviti."
+"Ta seznam vam omogoča določitev vrste MIME, ki bodo prikazane v vsebinskem meniju programa Caja.\n"
+"Vrste MIME je mogoče določiti kot '*', '/*', 'skupina/*' ali 'skupina/podskupina'.\n"
+"Vrste MIME je mogoče tudi izločiti iz navedbe v povezavi s posameznimi programi."
 
 #: ../src/cact/caja-actions-config-tool.ui.h:162
 msgid "Click to add a new mimetype filter."
@@ -3805,20 +3805,20 @@ msgid "P_roperties"
 msgstr "L_astnosti"
 
 #. i18n: label of an automagic root submenu
-#: ../src/plugin-menu/caja-actions.c:915
+#: ../src/plugin-menu/caja-actions.c:933
 msgid "Caja-Actions actions"
 msgstr "Dejanja Dejanj Cajaa"
 
 #. i18n: tooltip of an automagic root submenu
-#: ../src/plugin-menu/caja-actions.c:917
+#: ../src/plugin-menu/caja-actions.c:935
 msgid "A submenu which embeds the currently available Caja-Actions actions and menus"
 msgstr "Podmeni, ki vključuje trenutno razpoložljive razširitve dejanj  in menijev Cajaa"
 
-#: ../src/plugin-menu/caja-actions.c:961
+#: ../src/plugin-menu/caja-actions.c:979
 msgid "About Caja-Actions"
 msgstr "O programu"
 
-#: ../src/plugin-menu/caja-actions.c:962
+#: ../src/plugin-menu/caja-actions.c:980
 msgid "Display some informations about Caja-Actions"
 msgstr "Prikaže podrobnosti o programu"
 
@@ -4257,7 +4257,7 @@ msgstr "Napaka v klicu GetSelectedPaths: %s"
 
 #~ msgid ""
 #~ "Item is not writable for an unknown reason (%d).\n"
-#~ "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#~ "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #~ "org."
 #~ msgstr ""
 #~ "Predmet ni zapisljiv zaradi neznanega vzroka (%d).\n"
@@ -4265,7 +4265,7 @@ msgstr "Napaka v klicu GetSelectedPaths: %s"
 
 #~ msgid ""
 #~ "Unknown return code (%d).\n"
-#~ "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#~ "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #~ "org."
 #~ msgstr ""
 #~ "Neznana vrnjena koda (%d).\n"

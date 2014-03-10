@@ -5,12 +5,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Caja-Actions (MATE 2.14)\n"
+"Project-Id-Version: Caja-Actions (GNOME 2.14)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-16 17:18+0200\n"
 "PO-Revision-Date: 2006-03-10 23:30+0600\n"
 "Last-Translator: Progga <progga@BengaLinux.Org>\n"
-"Language-Team: Bangla <mate-translation@BengaLinux.Org>\n"
+"Language-Team: Bangla <gnome-translation@BengaLinux.Org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -359,7 +359,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 
 # FIXME: Lack of clarity.
@@ -561,7 +561,7 @@ msgstr "\"%s\" অ্যাকশনকে সম্পাদন করো"
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "মেনু বস্তুর লেবেল"
 
@@ -570,7 +570,7 @@ msgid "LABEL"
 msgstr "লেবেল"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "মেনু বস্তুর টুলটিপ"
 
@@ -588,7 +588,7 @@ msgstr "আইকন"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "কমান্ডের পাথ"
 
@@ -599,7 +599,7 @@ msgid "PATH"
 msgstr "পাথ"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "কমান্ডের পরামিতি"
 
@@ -705,7 +705,7 @@ msgid "Can't open file %s for writing\n"
 msgstr "লেখার জন্য %s ফাইলটিকে খোলা যাচ্ছে না\n"
 
 # FIXME: Incomplete translation.
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -713,7 +713,7 @@ msgstr ""
 "নির্বাচিত বস্তু উপযুক্ত শর্তাবলীর সাথে মিলে গেলে নটিলাস পপ-আপ মেনুতে যে মেনু বস্তু "
 "দেখানো হবে তার লেবেল"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -721,11 +721,11 @@ msgstr ""
 "নটিলাস পপ-আপ মেনুর কোন বস্তুর প্রতি মাউস দিয়ে নির্দেশ করা হলে নটিলাসের সাইডবারে "
 "যে মেনু বস্তু দেখা যাবে তার টুলটিপ"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "মেনু বস্তুর আইকন"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -733,18 +733,18 @@ msgstr ""
 "নির্বাচিত বস্তু উপযুক্ত শর্তাবলীর সাথে মিলে গেলে নটিলাস পপ-আপ মেনুতে মেনু বস্তুর "
 "লেবেলের পাশে যে আইকন দেখা দেবে"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
@@ -753,7 +753,7 @@ msgstr ""
 "হবে তার পাথ"
 
 # FIXME
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 #, fuzzy
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
@@ -791,11 +791,11 @@ msgstr ""
 "%U:  :%s/গনোম-ভি.এফ.এস. ইউ.আর.আই.-এর ব্যবহারকারীর নাম\n"
 "%%: শতকরা চিহ্ন"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "নির্বাচিত ফাইল/ফোল্ডার-এর সাথে যে সব প্যাটার্ন মিলে যাবে, তাদের তালিকা"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 #, fuzzy
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
@@ -806,7 +806,7 @@ msgstr ""
 "বা '?' রয়েছে।  নির্বাচিত বস্তু যদি অন্তত একটি প্যাটার্নের সাথে মিলে যায়, শুধুমাত্র সে "
 "ক্ষেত্রেই কেবল অ্যাকশনটি আবির্ভূত হবে"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 #, fuzzy
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
@@ -814,7 +814,7 @@ msgstr ""
 "একাধিক বস্তুকে নির্বাচন করা গেলে এর মান 'সত্য' (true) হবে।  অন্যথায় এর মান "
 "'মিথ্যা' (false) হবে"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 #, fuzzy
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
@@ -824,12 +824,12 @@ msgstr ""
 "আপনি যদি একাধিক ফাইল বা ফোল্ডার নির্বাচন করতে চান, তবে এই কী (key) এর মান "
 "'সত্য' (true) নির্ধারণ করুন।  অন্যথায় এর মান 'মিথ্যা' (false) রাখুন"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 #, fuzzy
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "নির্বাচিত ফাইল/ফোল্ডার-এর সাথে যে সব প্যাটার্ন মিলে যাবে, তাদের তালিকা"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 #, fuzzy
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
@@ -840,7 +840,7 @@ msgstr ""
 "বা '?' রয়েছে।  নির্বাচিত বস্তু যদি অন্তত একটি প্যাটার্নের সাথে মিলে যায়, শুধুমাত্র সে "
 "ক্ষেত্রেই কেবল অ্যাকশনটি আবির্ভূত হবে"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -858,35 +858,35 @@ msgstr ""
 "isfile=TRUE ও isdir=TRUE: ফাইল ও ফোল্ডার উভয়কেই নির্বাচন করা যাবে\n"
 "isfile=FALSE and isdir=FALSE: এটি একটি অবৈধ মান (একে কখনোই দেখা যাবে না)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr ""
 "নির্বাচিত বস্তুর তালিকায় যদি ফাইল থাকতে পারে, তবে এর মান 'সত্য' (true) হবে।  "
 "অন্যথায় এর মান 'মিথ্যা' (false) হবে"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "এই বৈশিষ্ট্যটি 'isdir' বৈশিষ্ট্যের সাথে যুক্ত। "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr ""
 "নির্বাচিত বস্তুর তালিকায় যদি ফোল্ডার থাকতে পারে, তবে এর মান 'সত্য' (true) হবে।  "
 "অন্যথায় এর মান 'মিথ্যা' (false) হবে"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "এই বৈশিষ্ট্যটি 'isfile' বৈশিষ্ট্যের সাথে যুক্ত। "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr ""
 "একাধিক বস্তুকে নির্বাচন করা গেলে এর মান 'সত্য' (true) হবে।  অন্যথায় এর মান "
 "'মিথ্যা' (false) হবে"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -894,12 +894,12 @@ msgstr ""
 "আপনি যদি একাধিক ফাইল বা ফোল্ডার নির্বাচন করতে চান, তবে এই কী (key) এর মান "
 "'সত্য' (true) নির্ধারণ করুন।  অন্যথায় এর মান 'মিথ্যা' (false) রাখুন"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr ""
 "নির্বাচিত ফাইলগুলো যে সব স্থানে রাখা হবে, সে সব গনোম-ভি.এফ.এস. স্থানের তালিকা"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -938,11 +938,11 @@ msgstr ""
 "\n"
 "নটিলাসের ব্যবহৃত সকল গনোম-ভি.এফ.এস. বিন্যাসকেই এখানে ব্যবহার করা যাবে।"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "কনফিগারেশন ফরম্যাটের সংস্করণ"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -1032,7 +1032,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, c-format

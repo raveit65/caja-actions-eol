@@ -11,7 +11,7 @@ msgstr ""
 "POT-Creation-Date: 2009-05-16 17:18+0200\n"
 "PO-Revision-Date: 2007-12-31 14:45+0900\n"
 "Last-Translator: Namhyung Kim <namhyung@gmail.com>\n"
-"Language-Team: MATE Korea <mate-kr-hackers@lists.kldp.net>\n"
+"Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -348,7 +348,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr "김남형 <namhyung@gmail.com>, 2007."
 
 #: ../cact/caja-actions-config.glade.h:80
@@ -546,7 +546,7 @@ msgstr "\"%s\" 프로파일 편집"
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "메뉴 항목의 레이블"
 
@@ -555,7 +555,7 @@ msgid "LABEL"
 msgstr "LABEL"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "메뉴 항목의 툴팁"
 
@@ -573,7 +573,7 @@ msgstr "ICON"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "명령의 경로"
 
@@ -584,7 +584,7 @@ msgid "PATH"
 msgstr "PATH"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "명령의 매개변수"
 
@@ -685,7 +685,7 @@ msgstr "데이터를 %s 파일에 쓸 수 없음\n"
 msgid "Can't open file %s for writing\n"
 msgstr "%s 파일을 쓰기 위해 열 수 없음\n"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -693,7 +693,7 @@ msgstr ""
 "선택 사항이 표시 조건 설정과 일치할 때 노틸러스 팝업 메뉴에 나타날 메뉴 항목"
 "의 레이블"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -701,11 +701,11 @@ msgstr ""
 "사용자가 마우스로 노틸러스 팝업 메뉴 항목을 가리켰을 때 노틸러스 상태 표시줄"
 "에 나타날 메뉴 항목의 툴팁 문자열"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "메뉴 항목의 아이콘"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -713,11 +713,11 @@ msgstr ""
 "선택 사항이 표시 조건 설정과 일치할 때 노틸러스 팝업 메뉴의 레이블 옆에 표시"
 "될 메뉴 항목의 아이콘"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr "프로그램의 설명 이름"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
@@ -727,14 +727,14 @@ msgstr ""
 "니다. 만약 이 항목의 내용을 입력하지 않으면 기본적으로 자동 생성된 문자열이 "
 "설정될 것입니다"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
 msgstr ""
 "사용자가 노틸러스 팝업 메뉴 내의 메뉴 항목을 선택했을 때 실행할 명령의 경로"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
 "in the Caja popup menu.\n"
@@ -769,11 +769,11 @@ msgstr ""
 "%U: MateVFS URI의 사용자 이름\n"
 "%%: 퍼센트 기호"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "선택된 파일/폴더와 비교할 패턴의 목록"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -783,12 +783,12 @@ msgstr ""
 "자열. 동작이 보이려면 선택된 각 항목들은 파일 이름 패턴 중의 최소 하나 이상"
 "과 일치해야 합니다"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr "파일 이름 패턴이 대소문자를 구분하면 '참', 그렇지 않으면 '거짓'"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -798,11 +798,11 @@ msgstr ""
 "만약 예를 들어 '*.jpg\" 패턴을 'photo.JPG' 파일과 일치시려면 '거짓'으로 설정"
 "합니다."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "선택된 파일의 MIME 형식과 비교할 패턴의 목록"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -812,7 +812,7 @@ msgstr ""
 "함한 문자열. 동작이 보이려면 선택된 각 항목들은 MIME 형식 패턴 중의 최소 하"
 "나 이상과 일치해야 합니다"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -831,29 +831,29 @@ msgstr ""
 "다\n"
 "isfile=FALSE, isdir=FALSE: 잘못된 조합(이 설정은 절대 나타나지 않을 것입니다)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr "선택 사항이 여러 파일을 포함할 수 있으면 '참', 그렇지 않으면 '거짓'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "이 설정은 'isdir' 설정과 묶여있습니다. "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "선택 사항이 여러 폴더를 포함할 수 있으면 '참', 그렇지 않으면 '거짓'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "이 설정은 'isfile' 설정과 묶여있습니다. "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr "선택 사항이 여러 항목을 포함할 수 있으면 '참', 그렇지 않으면 '거짓'"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -861,11 +861,11 @@ msgstr ""
 "만약 하나 이상의 파일/폴더를 선택해야 한다면, 이 키를 '참'으로 선택하십시오. "
 "그렇지 않고 하나의 파일/폴더 만을 원한다면 '거짓'을 선택하십시오"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr "선택된 파일들이 위치해야 할 MateVFS 목록"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -903,11 +903,11 @@ msgstr ""
 "\n"
 "노틸러스에서 사용되는 모든 MateVFS.스킴은 여기에 사용될 수 있습니다."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "설정 형식의 버전"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -1004,7 +1004,7 @@ msgstr[0] ""
 "이 XML 파일은 올바른 노틸러스 동작 설정 파일이 아닙니다 (설정되지 않은 키: %"
 "s)"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, c-format

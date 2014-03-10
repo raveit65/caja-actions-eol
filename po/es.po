@@ -15,10 +15,10 @@ msgstr ""
 "Project-Id-Version: caja-actions.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=caja-actions&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-02-29 21:48+0000\n"
-"PO-Revision-Date: 2012-03-02 13:59+0100\n"
+"POT-Creation-Date: 2012-04-04 08:06+0000\n"
+"PO-Revision-Date: 2012-04-04 09:57+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español <mate-es-list@gnome.org>\n"
+"Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -559,7 +559,7 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr "Una interfaz gráfica para crear y editar sus acciones de Caja."
 
 #: ../src/core/na-about.c:106
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2007-2010"
 
 #. i18n: title of the About dialog box, when seen from Caja file manager
@@ -569,18 +569,14 @@ msgstr "Acciones de Caja"
 
 #: ../src/core/na-about.c:161
 #, c-format
-#| msgid ""
-#| "Copyright %s 2005 The MATE Foundation\n"
-#| "Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
-#| "Copyright %s 2009, 2010, 2011, 2012 Pierre Wieser <pwieser@trychlos.org>"
 msgid ""
-"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2005 The GNOME Foundation\n"
 "Copyright %s 2006-2008 Frederic Ruaudel <grumz@grumz.net>\n"
-"Copyright %s 2009-2012 Pierre Wieser <pwieser@trychlos.org>"
+"Copyright %s 2009-2013 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
-"Copyright %s 2005 La Fundación MATE\n"
+"Copyright %s 2005 La Fundación GNOME\n"
 "Copyright %s 2006-2008 Frederic Ruaudel <grumz@grumz.net>\n"
-"Copyright %s 2009-2012 Pierre Wieser <pwieser@trychlos.org>"
+"Copyright %s 2009-2013 Pierre Wieser <pwieser@trychlos.org>"
 
 #: ../src/core/na-desktop-environment.c:39
 msgid "MATE desktop"
@@ -737,7 +733,7 @@ msgstr ""
 "isfile='false' e isdir='true': la selección sólo pude contener carpetas\n"
 "isfile='true' e isdir='true': la selección contiene tanto archivos como "
 "carpetas\n"
-"isfile='false' e isdir='false': combinación inválida (su configuración nunca "
+"isfile='false' e isdir='false': combinación no válida (su configuración nunca "
 "aparecerá).\n"
 "Esto obviamente sólo se aplica cuando existe una selección.\n"
 "Lo predeterminado es cierto."
@@ -772,7 +768,7 @@ msgstr ""
 "isfile='false' e isdir='true': la selección sólo pude contener carpetas\n"
 "isfile='true' e isdir='true': la selección contiene tanto archivos como "
 "carpetas\n"
-"isfile='false' e isdir='false': combinación inválida (su configuración nunca "
+"isfile='false' e isdir='false': combinación no válida (su configuración nunca "
 "aparecerá).\n"
 "Esto obviamente sólo se aplica cuando existe una selección.\n"
 "Lo predeterminado es falso."
@@ -1231,45 +1227,45 @@ msgstr "R_ecordar mi elección para futuras operaciones"
 
 #: ../src/core/na-io-provider.c:69
 msgid ""
-"Please, be kind enough to fill out a bug report on https://bugzilla.mate."
+"Please, be kind enough to fill out a bug report on https://bugzilla.gnome."
 "org/enter_bug.cgi?product=caja-actions."
 msgstr ""
 "Por favor, rellene un informe de error https://bugzilla.gnome.org/enter_bug."
 "cgi?product=caja-actions."
 
-#: ../src/core/na-io-provider.c:1356
+#: ../src/core/na-io-provider.c:1372
 msgid "Unavailable I/O provider."
 msgstr "Proveedor de E/S no disponible"
 
-#: ../src/core/na-io-provider.c:1360
+#: ../src/core/na-io-provider.c:1376
 msgid "I/O provider implementation lacks of required API."
 msgstr "La implementación del proveedor de E/S carece de la API requerida."
 
-#: ../src/core/na-io-provider.c:1364
+#: ../src/core/na-io-provider.c:1380
 msgid "I/O provider is not willing to write."
 msgstr "El proveedor de E/S no quiere escribir."
 
-#: ../src/core/na-io-provider.c:1368
+#: ../src/core/na-io-provider.c:1384
 msgid "I/O provider announces itself as unable to write."
 msgstr "El proveedor de E/S notifica que no puede escribir."
 
-#: ../src/core/na-io-provider.c:1372
+#: ../src/core/na-io-provider.c:1388
 msgid "I/O provider has been locked down by an administrator."
 msgstr "Un administrador ha bloqueado el proveedor de E/S."
 
-#: ../src/core/na-io-provider.c:1376
+#: ../src/core/na-io-provider.c:1392
 msgid "I/O provider has been locked down by the user."
 msgstr "El usuario ha bloqueado el proveedor de E/S."
 
-#: ../src/core/na-io-provider.c:1380
+#: ../src/core/na-io-provider.c:1396
 msgid "Item is read-only."
 msgstr "El elemento es de sólo lectura."
 
-#: ../src/core/na-io-provider.c:1384
+#: ../src/core/na-io-provider.c:1400
 msgid "No writable I/O provider found."
 msgstr "No se encontró un proveedor de E/S escribible."
 
-#: ../src/core/na-io-provider.c:1389
+#: ../src/core/na-io-provider.c:1405
 #, c-format
 msgid ""
 "Item is not writable for an unknown reason (%d).\n"
@@ -1278,11 +1274,11 @@ msgstr ""
 "Por alguna razón desconocida (%d) no se puede escribir el elemento.\n"
 "%s"
 
-#: ../src/core/na-io-provider.c:1412
+#: ../src/core/na-io-provider.c:1428
 msgid "OK."
 msgstr "Aceptar."
 
-#: ../src/core/na-io-provider.c:1416
+#: ../src/core/na-io-provider.c:1432
 #, c-format
 msgid ""
 "Program flow error.\n"
@@ -1291,23 +1287,23 @@ msgstr ""
 "Error en el flujo del programa.\n"
 "%s"
 
-#: ../src/core/na-io-provider.c:1420
+#: ../src/core/na-io-provider.c:1436
 msgid "The I/O provider is not willing to do that."
 msgstr "El proveedor de E/S no hacer eso."
 
-#: ../src/core/na-io-provider.c:1424
+#: ../src/core/na-io-provider.c:1440
 msgid "Write error in I/O provider."
 msgstr "Error de escritura en el proveedor de E/S."
 
-#: ../src/core/na-io-provider.c:1428
+#: ../src/core/na-io-provider.c:1444
 msgid "Unable to delete MateConf schemas."
 msgstr "No se pudieron borrar los esquemas de MateConf."
 
-#: ../src/core/na-io-provider.c:1432
+#: ../src/core/na-io-provider.c:1448
 msgid "Unable to delete configuration."
 msgstr "No se pudo eliminar la configuración."
 
-#: ../src/core/na-io-provider.c:1436
+#: ../src/core/na-io-provider.c:1452
 #, c-format
 msgid ""
 "Unknown return code (%d).\n"
@@ -1797,7 +1793,7 @@ msgstr ""
 "Lo predeterminado es estar vacío: el comando se ejecutará como el usuario "
 "actual."
 
-#: ../src/core/na-selected-info.c:847
+#: ../src/core/na-selected-info.c:869
 #, c-format
 msgid "Error when querying informations for %s URI: %s"
 msgstr "Error al preguntar información para el URI %s: %s"
@@ -1843,15 +1839,15 @@ msgstr "Salida estándar:"
 msgid "Standard error:"
 msgstr "Error estándar:"
 
-#: ../src/io-desktop/cadp-desktop-provider.c:259
+#: ../src/io-desktop/nadp-desktop-provider.c:259
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Proveedor de E/S para el escritorio de las Acciones de Caja"
 
-#: ../src/io-desktop/cadp-formats.c:56
+#: ../src/io-desktop/nadp-formats.c:56
 msgid "Export as a ._desktop file"
 msgstr "Exportar como un archivo ._desktop"
 
-#: ../src/io-desktop/cadp-formats.c:57
+#: ../src/io-desktop/nadp-formats.c:57
 msgid ""
 "This format has been introduced with v 3.0 serie, and should be your newly "
 "preferred format when exporting items.\n"
@@ -1875,41 +1871,41 @@ msgstr ""
 "Acciones de Caja\n"
 "- copiándolo a la carpeta XDG_DATA_DIRS/file-manager/actions."
 
-#: ../src/io-desktop/cadp-reader.c:64
+#: ../src/io-desktop/nadp-reader.c:64
 msgid "The Desktop I/O Provider is not able to handle the URI"
 msgstr "El proveedor de E/S del escritorio no puede manejar el URI"
 
 #. i18n: 'type' is the nature of the item: Action or Menu
-#: ../src/io-desktop/cadp-reader.c:292
+#: ../src/io-desktop/nadp-reader.c:292
 #, c-format
 msgid "unknown type: %s"
 msgstr "tipo desconocido: %s"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:247
+#: ../src/io-gconf/nagp-gconf-provider.c:247
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Proveedor de E/S para MateConf de las Acciones de Caja"
 
-#: ../src/io-xml/caxml-reader.c:147
+#: ../src/io-xml/naxml-reader.c:147
 msgid "Item ID not found."
 msgstr "No se encontró el ID del elemento."
 
-#: ../src/io-xml/caxml-reader.c:148
+#: ../src/io-xml/naxml-reader.c:148
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr "Ruta de clave %s no esperada al importar un menú."
 
-#: ../src/io-xml/caxml-reader.c:149
+#: ../src/io-xml/naxml-reader.c:149
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr "Ya se encontró el elemento %s en la línea %d, ignorado."
 
-#: ../src/io-xml/caxml-reader.c:150
+#: ../src/io-xml/naxml-reader.c:150
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr ""
 "ID de elemento no válido: se esperaba %s, se encontró %s en la línea %d."
 
-#: ../src/io-xml/caxml-reader.c:151
+#: ../src/io-xml/naxml-reader.c:151
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr ""
@@ -1917,22 +1913,22 @@ msgstr ""
 "por %s."
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/caxml-reader.c:153
+#: ../src/io-xml/naxml-reader.c:153
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr ""
 "Se encontró un tipo desconocido (%s) en la línea %d mientras se esperaba a "
 "la acción o al menú."
 
-#: ../src/io-xml/caxml-reader.c:154
+#: ../src/io-xml/naxml-reader.c:154
 msgid "The XML I/O Provider is not able to handle the URI"
 msgstr "El proveedor de E/S de XML no puede manejar el URI"
 
-#: ../src/io-xml/caxml-formats.c:55
+#: ../src/io-xml/naxml-formats.c:55
 msgid "Export as a _full MateConf schema file"
 msgstr "Exportar como un archivo de esquema MateConf co_mpleto"
 
-#: ../src/io-xml/caxml-formats.c:56
+#: ../src/io-xml/naxml-formats.c:56
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1948,11 +1944,11 @@ msgstr ""
 "Acciones de Caja,\n"
 "- con la herramienta de línea de comandos mateconftool-2 --import-schema-file"
 
-#: ../src/io-xml/caxml-formats.c:67
+#: ../src/io-xml/naxml-formats.c:67
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr "Exportar como un archivo de esquema _ligero de MateConf (v2)"
 
-#: ../src/io-xml/caxml-formats.c:68
+#: ../src/io-xml/naxml-formats.c:68
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools, "
@@ -1977,11 +1973,11 @@ msgstr ""
 "- con la herramienta de la línea de comandos mateconftool-2 --import-schema-"
 "file."
 
-#: ../src/io-xml/caxml-formats.c:82
+#: ../src/io-xml/naxml-formats.c:82
 msgid "Export as a MateConf _dump file"
 msgstr "Exportar como un _volcado de archivo de MateConf"
 
-#: ../src/io-xml/caxml-formats.c:83
+#: ../src/io-xml/naxml-formats.c:83
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "Tough not backward compatible with Caja-Actions Configuration Tool "
@@ -2655,7 +2651,7 @@ msgid "Must match all of"
 msgstr "Debe coincidir con todas"
 
 #. i18n: label of the header of a column which let the user select a negative filter
-#: ../src/cact/cact-match-list.c:252
+#: ../src/cact/cact-match-list.c:245
 msgid "Must not match any of"
 msgstr "No debe coincidir con ninguna de"
 
@@ -2946,7 +2942,7 @@ msgstr "_abajo"
 msgid "Display the notebook tabs on the bottom side"
 msgstr "Mostrar las pestañas del cuaderno de notas en la parte de abajo"
 
-#: ../src/cact/cact-menubar.c:713
+#: ../src/cact/cact-menubar.c:718
 #, c-format
 msgid " %d menu(s), %d action(s), %d profile(s) are currently loaded"
 msgstr "actualmente hay %d menú(s), %d acción(es), %d perfil(es) cargados"
@@ -2980,11 +2976,11 @@ msgstr "No se pudo escribir la lista de elementos de nivel cero"
 msgid "Some items have not been deleted"
 msgstr "Algunos elementos no se han eliminado"
 
-#: ../src/cact/cact-menubar-file.c:195
+#: ../src/cact/cact-menubar-file.c:201
 msgid "New profile"
 msgstr "Perfil nuevo"
 
-#: ../src/cact/cact-menubar-file.c:483
+#: ../src/cact/cact-menubar-file.c:489
 msgid "Automatically saving pending modifications..."
 msgstr "Guardado automático de modificaciones pendientes…"
 
@@ -4179,7 +4175,7 @@ msgstr ""
 msgid ""
 "This list lets you determine for which mimetypes the currently selected item "
 "will be displayed in the Caja context menu.\n"
-"Mimetypes may be specified as '*', '/*', 'group/*' or 'group/subgroup'.\n"
+"Mimetypes may be specified as '*', '*/*', 'group/*' or 'group/subgroup'.\n"
 "Mimetypes may be negated to specify for which type of objects your item must "
 "not appear."
 msgstr ""
@@ -4615,12 +4611,12 @@ msgid "P_roperties"
 msgstr "_Propiedades"
 
 #. i18n: label of an automagic root submenu
-#: ../src/plugin-menu/caja-actions.c:915
+#: ../src/plugin-menu/caja-actions.c:933
 msgid "Caja-Actions actions"
 msgstr "Acciones de las Acciones de Caja"
 
 #. i18n: tooltip of an automagic root submenu
-#: ../src/plugin-menu/caja-actions.c:917
+#: ../src/plugin-menu/caja-actions.c:935
 msgid ""
 "A submenu which embeds the currently available Caja-Actions actions and "
 "menus"
@@ -4628,11 +4624,11 @@ msgstr ""
 "Un submenú que contiene las acciones y los menús disponibles actualmente de "
 "Acciones de Caja"
 
-#: ../src/plugin-menu/caja-actions.c:961
+#: ../src/plugin-menu/caja-actions.c:979
 msgid "About Caja-Actions"
 msgstr "Acerca de las Acciones de Caja"
 
-#: ../src/plugin-menu/caja-actions.c:962
+#: ../src/plugin-menu/caja-actions.c:980
 msgid "Display some informations about Caja-Actions"
 msgstr "Mostrar información acerca de Acciones de Caja"
 
@@ -5086,7 +5082,7 @@ msgstr "Error en la llamada a GetSelectedPaths: %s"
 
 #~ msgid ""
 #~ "Item is not writable for an unknown reason (%d).\n"
-#~ "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#~ "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #~ "org."
 #~ msgstr ""
 #~ "Por alguna razón desconocida no se puede escribir el elemento (%d).\n"
@@ -5094,7 +5090,7 @@ msgstr "Error en la llamada a GetSelectedPaths: %s"
 
 #~ msgid ""
 #~ "Unknown return code (%d).\n"
-#~ "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#~ "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #~ "org."
 #~ msgstr ""
 #~ "Código devuelto desconocido (%d).\n"
@@ -5743,8 +5739,8 @@ msgstr "Error en la llamada a GetSelectedPaths: %s"
 #~ msgid "Frederic Ruaudel <grumz@grumz.net>"
 #~ msgstr "Frederic Ruaudel <grumz@grumz.net>"
 
-#~ msgid "Rodrigo Moya <rodrigo@mate-db.org>"
-#~ msgstr "Rodrigo Moya <rodrigo@mate-db.org>"
+#~ msgid "Rodrigo Moya <rodrigo@gnome-db.org>"
+#~ msgstr "Rodrigo Moya <rodrigo@gnome-db.org>"
 
 #~ msgid "Pierre Wieser <pwieser@trychlos.org>"
 #~ msgstr "Pierre Wieser <pwieser@trychlos.org>"

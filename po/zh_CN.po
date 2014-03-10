@@ -519,8 +519,8 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr "创建和编辑 Caja 动作的可视化工具"
 
 #: ../src/core/na-about.c:108
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "MATE 翻译项目 <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "GNOME 翻译项目 <gnome-i18n@gnome.org>"
 
 #. i18n: title of the About dialog box, when seen from Caja file manager
 #: ../src/core/na-about.c:130
@@ -532,15 +532,15 @@ msgstr "Caja 动作"
 #: ../src/core/na-about.c:161
 #, fuzzy, c-format
 #| msgid ""
-#| "Copyright %s 2005 The MATE Foundation\n"
+#| "Copyright %s 2005 The GNOME Foundation\n"
 #| "Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 #| "Copyright %s 2009, 2010 Pierre Wieser <pwieser@trychlos.org>"
 msgid ""
-"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2005 The GNOME Foundation\n"
 "Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Copyright %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
-"版权所有 %s 2005 MATE 基金会\n"
+"版权所有 %s 2005 GNOME 基金会\n"
 "版权所有 %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "版权所有 %s 2009, 2010 Pierre Wieser <pwieser@trychlos.org>"
 
@@ -1102,10 +1102,10 @@ msgstr "覆盖现有的动作(_O)"
 #, fuzzy
 #| msgid ""
 #| "Program flow error.\n"
-#| "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#| "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #| "org."
 msgid ""
-"Please, be kind enough to fill out a bug report on https://bugzilla.mate."
+"Please, be kind enough to fill out a bug report on https://bugzilla.gnome."
 "org/enter_bug.cgi?product=caja-actions."
 msgstr ""
 "程序流程错误。\n"
@@ -1742,18 +1742,18 @@ msgstr ""
 msgid "Standard error:"
 msgstr "语法错误：%s\n"
 
-#: ../src/io-desktop/cadp-desktop-provider.c:260
+#: ../src/io-desktop/nadp-desktop-provider.c:260
 #, fuzzy
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "Caja 动作桌面 I/O 提供者"
 
-#: ../src/io-desktop/cadp-formats.c:47
+#: ../src/io-desktop/nadp-formats.c:47
 #, fuzzy
 #| msgid "Export as a MateConf _dump file"
 msgid "Export as a ._desktop file"
 msgstr "导出为 MateConf 转储文件(_D)"
 
-#: ../src/io-desktop/cadp-formats.c:48
+#: ../src/io-desktop/nadp-formats.c:48
 #, fuzzy
 #| msgid ""
 #| "This used to be the historical export format.\n"
@@ -1774,61 +1774,61 @@ msgstr ""
 "- 拖放到 Caja 动作配置工具，\n"
 "- 或 mateconftool-2 --import-schema-file 命令行工具导入。"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:248
+#: ../src/io-gconf/nagp-gconf-provider.c:248
 #, fuzzy
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "Caja 动作 MateConf I/O 提供者"
 
-#: ../src/io-xml/caxml-reader.c:148
+#: ../src/io-xml/naxml-reader.c:148
 msgid "Item ID not found."
 msgstr "没有找到项目 ID。"
 
-#: ../src/io-xml/caxml-reader.c:149
+#: ../src/io-xml/naxml-reader.c:149
 #, fuzzy, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr "导入菜单时遇到非等待的键路径 %s。"
 
-#: ../src/io-xml/caxml-reader.c:150
+#: ../src/io-xml/naxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr "已经发现了第 %2$d 行的 %1$s 元素，忽略。"
 
-#: ../src/io-xml/caxml-reader.c:151
+#: ../src/io-xml/naxml-reader.c:151
 #, fuzzy, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr "无效的项目 ID：在等待 %1$s 时却发现第 %3$d 行的 %3$s。"
 
-#: ../src/io-xml/caxml-reader.c:152
+#: ../src/io-xml/naxml-reader.c:152
 #, fuzzy, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr "在等待 %3$s 时却在第 %2$d 发现了未知的 %1$s 元素。"
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/caxml-reader.c:154
+#: ../src/io-xml/naxml-reader.c:154
 #, fuzzy, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr "在等待动作或菜单时，在第 %2$d 行发现了未知的 %1$s 类型。"
 
-#: ../src/io-xml/caxml-reader.c:155
+#: ../src/io-xml/naxml-reader.c:155
 #, fuzzy, c-format
 msgid "Invalid XML root element %s found at line %d while waiting for %s."
 msgstr "在等等 %3$s 时却在第 %2$d 行发现了无效的 XML 根元素 %1$s。"
 
-#: ../src/io-xml/caxml-reader.c:156
+#: ../src/io-xml/naxml-reader.c:156
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr "无法解析 XML 文件：%s。"
 
-#: ../src/io-xml/caxml-reader.c:157
+#: ../src/io-xml/naxml-reader.c:157
 #, c-format
 msgid "Node %s at line %d has not been dealt with."
 msgstr "第 %2$d 行的 %1$s 节点未处理。"
 
-#: ../src/io-xml/caxml-formats.c:48
+#: ../src/io-xml/naxml-formats.c:48
 msgid "Export as a _full MateConf schema file"
 msgstr "导出为完整的 MateConf 方案文件(_F)"
 
-#: ../src/io-xml/caxml-formats.c:49
+#: ../src/io-xml/naxml-formats.c:49
 #, fuzzy
 #| msgid ""
 #| "This used to be the historical export format.\n"
@@ -1848,11 +1848,11 @@ msgstr ""
 "- 拖放到 Caja 动作配置工具，\n"
 "- 或 mateconftool-2 --import-schema-file 命令行工具导入。"
 
-#: ../src/io-xml/caxml-formats.c:59
+#: ../src/io-xml/naxml-formats.c:59
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr "导出为轻便的 MateConf 方案(v2)文件(_L)"
 
-#: ../src/io-xml/caxml-formats.c:60
+#: ../src/io-xml/naxml-formats.c:60
 #, fuzzy
 #| msgid ""
 #| "This format has been introduced in v 1.11 serie.\n"
@@ -1882,11 +1882,11 @@ msgstr ""
 "- 拖放到 Caja 动作配置工具，\n"
 "- 或 mateconftool-2 --import-schema-file 命令行工具导入。"
 
-#: ../src/io-xml/caxml-formats.c:73
+#: ../src/io-xml/naxml-formats.c:73
 msgid "Export as a MateConf _dump file"
 msgstr "导出为 MateConf 转储文件(_D)"
 
-#: ../src/io-xml/caxml-formats.c:74
+#: ../src/io-xml/naxml-formats.c:74
 #, fuzzy
 #| msgid ""
 #| "This format has been introduced in v 1.11 serie, and should be the "
@@ -4795,7 +4795,7 @@ msgstr ""
 
 #~ msgid ""
 #~ "Item is not writable for an unknown reason (%d).\n"
-#~ "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#~ "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #~ "org."
 #~ msgstr ""
 #~ "项目不可写，原因不明(%d)。\n"
@@ -4803,7 +4803,7 @@ msgstr ""
 
 #~ msgid ""
 #~ "Unknow return code (%d).\n"
-#~ "Please, be kind enough to fill out a bug report on http://bugzilla.mate."
+#~ "Please, be kind enough to fill out a bug report on http://bugzilla.gnome."
 #~ "org."
 #~ msgstr ""
 #~ "未知的返回代码(%d)。\n"

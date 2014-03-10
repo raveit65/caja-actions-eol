@@ -372,8 +372,8 @@ msgid "Frederic Ruaudel <grumz@grumz.net>"
 msgstr "Frederic Ruaudel <grumz@grumz.net>"
 
 #: ../src/common/na-about.c:62
-msgid "Rodrigo Moya <rodrigo@mate-db.org>"
-msgstr "Rodrigo Moya <rodrigo@mate-db.org>"
+msgid "Rodrigo Moya <rodrigo@gnome-db.org>"
+msgstr "Rodrigo Moya <rodrigo@gnome-db.org>"
 
 #: ../src/common/na-about.c:63
 msgid "Pierre Wieser <pwieser@trychlos.org>"
@@ -419,8 +419,8 @@ msgstr ""
 "(C) ੨੦੦੯ Pierre Wieser <pwieser@trychlos.org>"
 
 #: ../src/common/na-about.c:106
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "ਗਨੋਮ ਅਨੁਵਾਦ ਪਰੋਜੈਕਟ <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "ਗਨੋਮ ਅਨੁਵਾਦ ਪਰੋਜੈਕਟ <gnome-i18n@gnome.org>"
 
 #. i18n: default label for a newly created action
 #: ../src/common/na-action.h:52
@@ -1271,7 +1271,7 @@ msgstr "ਚੁਣੋ ਕਿ ਕਿੱਥੇ ਪਰੋਗਰਾਮ ਐਕਸ਼�
 msgid "Try %s --help for usage.\n"
 msgstr "%s --help ਨਾਲ ਕੋਸ਼ਿਸ਼ ਕਰੋ\n"
 
-#. { "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_mateconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
+#. { "output-gconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_gconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
 #. { "output-filename"      , 'o', 0, G_OPTION_ARG_FILENAME, &output_fname   , N_("The file where to write the MateConf schema ('-' for stdout)"), N_("FILENAME") },
 #: ../src/utils/caja-actions-schemas.c:53
 msgid "Output the schema on stdout"

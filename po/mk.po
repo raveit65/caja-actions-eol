@@ -364,7 +364,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr ""
 
 #: ../cact/caja-actions-config.glade.h:80
@@ -571,7 +571,7 @@ msgstr "Уреди дејство \"%s\""
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "Ознака на предметот од менито"
 
@@ -580,7 +580,7 @@ msgid "LABEL"
 msgstr "ОЗНАКА"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "Советот за предметот од менито"
 
@@ -598,7 +598,7 @@ msgstr "ИКОНА"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "Патеката за командата"
 
@@ -609,7 +609,7 @@ msgid "PATH"
 msgstr "ПАТЕКА"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "Параметрите на командата"
 
@@ -713,7 +713,7 @@ msgstr "Не можам да запишам во датотеката %s\n"
 msgid "Can't open file %s for writing\n"
 msgstr "Не можам да ја отворам датотеката %s за запишување\n"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -721,7 +721,7 @@ msgstr ""
 "Натпис на предметот од менито кој ќе се покаже во попап менито на Caja "
 "кога изборот се совпаѓа со поставувањата за услови на изгледот."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -730,11 +730,11 @@ msgstr ""
 "Caja кога корисникот покажува на попап менито на Caja со неговото/"
 "нејзиното глувче"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "Иконата на предметот од менито"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -743,18 +743,18 @@ msgstr ""
 "мени на Наутилус кога изборот ќе се совпаѓа со поставувањата на условите за "
 "изгледот"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
 "set by default"
 msgstr ""
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
@@ -762,7 +762,7 @@ msgstr ""
 "Патеката за командата која што ќе се изврши кога корисникот ќе го избере "
 "предметот од менито на скокачкиот прозорец на Наутилус"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 #, fuzzy
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
@@ -800,11 +800,11 @@ msgstr ""
 "%U: корисничко име на :%s/MateVFS URI\n"
 "%%: знак за процент"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "Листата на шаблони кои што се совпаѓаат со избраните датотеки/папки"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -814,14 +814,14 @@ msgstr ""
 "типовите на избраните датотеки/папки. Секој избран предмет мора да се "
 "совпаѓа барем со еден од шаблоните за миме-типови за дејството да се покаже"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr ""
 "„точно“ шаблоните на имињата на датотеки разликуваат големи-мали букви, "
 "„неточно“ доколку не може"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -831,13 +831,13 @@ msgstr ""
 "поставете го овој клуч на „true“. Ако сакате, на пример „*.jpg“ да се "
 "совпадне со „слика.jpg“ поставете го на „false“"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr ""
 "Листата на шаблони кои што се совпаѓаат со миме-типовите на избраните "
 "датотеки/папки"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -847,7 +847,7 @@ msgstr ""
 "типовите на избраните датотеки. Секој избран предмет мора да се совпаѓа "
 "барем со еден од шаблоните за миме-типови за дејството да се покаже"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -866,33 +866,33 @@ msgstr ""
 "isfile=FALSE и isdir=FALSE: ова е невалидна комбинација (Вашата комбинација "
 "никогаш нема да се појави)"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr ""
 "'вклучено' ако избраното може да содржи датотеки, 'исклучено' ако не содржи"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "Тоа поставување е врзано со 'isdir' поставувањето. "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr ""
 "'вклучено' 'ако избраното може да содржи папки, 'исклучено' ако не содржи"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "Ова поставување е врзано со 'isfile' поставувањето. "
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr ""
 "„точно“ ако избраното може да содржи неколку предмет, „неточно“ доколку не "
 "може"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -900,12 +900,12 @@ msgstr ""
 "Ако ви требаат избрани повеќе од една датотека или папка вклучете го овој "
 "клуч. Ако сакате само една датотека или папка поставете го на „false“"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr ""
 "Листата на MateVFS шеми каде што треба да бидат лоцирани избраните датотеки"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -944,11 +944,11 @@ msgstr ""
 "\n"
 "Сите MateVFS користени од Caja можат да се употребат овде."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "Верзијата на форматот за конфигурација"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -1048,7 +1048,7 @@ msgstr[1] ""
 "Оваа XML датотека не е валидна Caja-actions конфигурациска датотека "
 "(недостасува клучот : %s)"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, fuzzy, c-format

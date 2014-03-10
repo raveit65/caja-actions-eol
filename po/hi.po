@@ -751,8 +751,8 @@ msgid "Frederic Ruaudel <grumz@grumz.net>"
 msgstr "Frederic Ruaudel <grumz@grumz.net>"
 
 #: ../src/cact/cact-imenubar.c:830
-msgid "Rodrigo Moya <rodrigo@mate-db.org>"
-msgstr "Rodrigo Moya <rodrigo@mate-db.org>"
+msgid "Rodrigo Moya <rodrigo@gnome-db.org>"
+msgstr "Rodrigo Moya <rodrigo@gnome-db.org>"
 
 #: ../src/cact/cact-imenubar.c:831
 msgid "Pierre Wieser <pwieser@trychlos.org>"
@@ -807,8 +807,8 @@ msgstr ""
 "Copyright © 2009 Pierre Wieser <pwieser@trychlos.org>"
 
 #: ../src/cact/cact-imenubar.c:864
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
-msgstr "MATE अनुवाद प्रोजेक्ट <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
+msgstr "GNOME अनुवाद प्रोजेक्ट <gnome-i18n@gnome.org>"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
 #: ../src/cact/cact-imenubar.c:882
@@ -1089,7 +1089,7 @@ msgstr "चुनें कि कहाँ प्रोग्राम क्�
 msgid "Try %s --help for usage.\n"
 msgstr "%s आजमाएँ --प्रयोग के लिए मदद.\n"
 
-#. { "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_mateconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
+#. { "output-gconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_gconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
 #. { "output-filename"      , 'o', 0, G_OPTION_ARG_FILENAME, &output_fname   , N_("The file where to write the MateConf schema ('-' for stdout)"), N_("FILENAME") },
 #: ../src/utils/caja-actions-schemas.c:53
 msgid "Output the schema on stdout"

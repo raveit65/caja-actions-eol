@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2009-05-16 17:18+0200\n"
 "PO-Revision-Date: 2006-08-17 07:31+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
-"Language-Team: Finnish <mate-fi-laatu@lists.sourceforge.net>\n"
+"Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -353,7 +353,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../cact/caja-actions-config.glade.h:79
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr "Ilkka Tuohela, 2007.Maten suomentajaryhmä"
 
 #: ../cact/caja-actions-config.glade.h:80
@@ -554,7 +554,7 @@ msgstr "Muokkaa profiilia \"%s\""
 
 #. MateConf description strings :
 #: ../utils/caja-actions-new-config.c:49
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:72
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:72
 msgid "The label of the menu item"
 msgstr "Valikon kohdan nimi"
 
@@ -563,7 +563,7 @@ msgid "LABEL"
 msgstr "OTSIKKO"
 
 #: ../utils/caja-actions-new-config.c:50
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:74
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:74
 msgid "The tooltip of the menu item"
 msgstr "Valikon kohdan vinkki"
 
@@ -581,7 +581,7 @@ msgstr "KUVAKE"
 
 #: ../utils/caja-actions-new-config.c:52
 #: ../utils/caja-actions-new-config.c:55
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:80
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:80
 msgid "The path of the command"
 msgstr "Polku komentoon"
 
@@ -592,7 +592,7 @@ msgid "PATH"
 msgstr "POLKU"
 
 #: ../utils/caja-actions-new-config.c:53
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:82
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:82
 msgid "The parameters of the command"
 msgstr "Komennon parametrit"
 
@@ -694,7 +694,7 @@ msgstr "Tietoja ei voida kirjoittaa tiedostoon %s\n"
 msgid "Can't open file %s for writing\n"
 msgstr "Tiedostoa %s ei voida avata kirjoitettavaksi\n"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:73
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:73
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -702,7 +702,7 @@ msgstr ""
 "Valikon kohdan nimi, joka näytetään Nautiluksen ponnahdusvalikossa, kun "
 "valinta vastaa näyttämisen ehtoja"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:75
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:75
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -710,11 +710,11 @@ msgstr ""
 "Valikon kohdan vinkki, joka näytetään Nautiluksen tilarivillä, kun käyttäjä "
 "siirtää osoittimen Nautiluksen ponnahdusvalikossa tämän kohdan päälle"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:76
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:76
 msgid "The icon of the menu item"
 msgstr "Valikon kohdan kuvake"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:77
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:77
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -722,11 +722,11 @@ msgstr ""
 "Valikon kohdan kanssa käytettävä kuvake, joka näytetään Nautiluksen "
 "ponnahdusvalikossa nimen vieressä, kun valinta vastaa näyttämisen ehtoja"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:78
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:78
 msgid "A description name of the profile"
 msgstr "Profiilin kuvaava nimi"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:79
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:79
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
@@ -736,7 +736,7 @@ msgstr ""
 "nimen. Jos arvoa ei ole asetettu, käytetään automaattisesti luotua "
 "merkkijonoa"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:81
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:81
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
@@ -744,7 +744,7 @@ msgstr ""
 "Polku komentoon, joka käynnistetään kun käyttäjä valitsee valikon kohdan "
 "Nautiluksen ponnahdusvalikosta."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:83
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:83
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
 "in the Caja popup menu.\n"
@@ -778,11 +778,11 @@ msgstr ""
 "%U: MateVFS-URIn käyttäjätunnus\n"
 "%%: prosenttimerkki"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:84
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:84
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "Luettelo malleista, joihin valittuja tiedostoja ja kansioita verrataan"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:85
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:85
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -792,13 +792,13 @@ msgstr ""
 "valitaan tiedostot tai kansiot. Jokaisen valitun kohdan tulee vastata "
 "vähintään yhtä nimimallia, jotta toiminto näytetään"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:86
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:86
 msgid ""
 "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr ""
 "'true', jos tiedostonimimalleissa kirjainkoko on merkitsevä, 'false' muuten"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:87
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:87
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -809,12 +809,12 @@ msgstr ""
 "kirjainkoko merkitse, esimerkiksi että malli '*.jpg' täsmää nimeen 'photo."
 "JPG', aseta arvoksi 'false'"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:88
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:88
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr ""
 "Luettelo malleista, joihin valittejen tiedostojen MIME-tyyppiä verrataan"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:89
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:89
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -824,7 +824,7 @@ msgstr ""
 "valittujen tiedostojen MIME-tyyppiä verrataan. Valittujen tiedostojen tulee "
 "vastata vähintään yhtä mallia, jotta toiminto näytetään"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:90
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:90
 #, fuzzy
 msgid ""
 "The valid combinations are:\n"
@@ -845,29 +845,29 @@ msgstr ""
 "Yhdistelmä, jossa sekä \"isfile\" että \"isdir\" ovat epätosia, ei ole "
 "kelvollinen"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:91
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:91
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr "'true', jos valinnassa voi olla tiedostoja, 'false' muuten"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:93
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:93
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "Tämä valinta liittyy asetukseen 'isdir'."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:94
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:94
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "'tosi' jos valinta voi sisältää kansioita, 'false' muuten"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:96
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:96
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "Tämä valinta liittyy asetukseen 'isfile'."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:97
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:97
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr "'true', jos valinta voi sisältää useita kohtia, 'false' muuten"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:98
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:98
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -876,11 +876,11 @@ msgstr ""
 "avaimen arvoksi \"true\". Jos haluat vain yhden tiedoston tai kansion, aseta "
 "arvoksi \"false\"."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:99
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:99
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr "Luettelo MateVFS-malleista, joissa valitut tiedostot voivat olla"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:100
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:100
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -919,11 +919,11 @@ msgstr ""
 "\n"
 "Kaikkia Nautiluksen tukemia MateVFS-malleja voidaan käyttää."
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:101
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:101
 msgid "The version of the configuration format"
 msgstr "Asetustiedoston kaavan versio"
 
-#: ../libcaja-actions/caja-actions-config-mateconf-private.h:102
+#: ../libcaja-actions/caja-actions-config-gconf-private.h:102
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -1026,7 +1026,7 @@ msgstr[1] ""
 "XML-tiedosto ei ole kelvollinen caja-actions-asetustiedosto (puuttuvat "
 "avaimet: %s)%s"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../libcaja-actions/caja-actions-config-schema-reader.c:753
 #, c-format

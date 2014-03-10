@@ -44,12 +44,12 @@ msgstr ""
 "अस्तित्वातील कृती काढूण टाका"
 
 #. MateConf description strings :
-#: ../src/common/caja-actions-config-mateconf-private.h:80
+#: ../src/common/caja-actions-config-gconf-private.h:80
 #: ../src/utils/caja-actions-new-config.c:57
 msgid "The label of the menu item"
 msgstr "मेन्यू घटकाचे लेबल"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:81
+#: ../src/common/caja-actions-config-gconf-private.h:81
 msgid ""
 "The label of the menu item that will appear in the Caja popup menu when "
 "the selection matches the appearance condition settings"
@@ -57,12 +57,12 @@ msgstr ""
 "प्रदर्शन अटी संयोजना नुरूप निवड जुळत असल्यास Caja पॉपअप मेन्यू अंतर्गत प्रदर्शित होणारे "
 "मेन्यू घटकाचे लेबल"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:82
+#: ../src/common/caja-actions-config-gconf-private.h:82
 #: ../src/utils/caja-actions-new-config.c:58
 msgid "The tooltip of the menu item"
 msgstr "मेन्यू घटाचे टूलटिप"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:83
+#: ../src/common/caja-actions-config-gconf-private.h:83
 msgid ""
 "The tooltip of the menu item that will appear in the Caja statusbar when "
 "the user points to the Caja popup menu item with his/her mouse"
@@ -70,11 +70,11 @@ msgstr ""
 "वापरकर्ता माउसशी Caja पॉपअप मेन्यू घटक निर्देशीत करत असल्यास Caja स्थितीपट्टी "
 "अंतर्गत प्रदर्शीत होणारे मेन्यू घटकाचे टूलटिप"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:84
+#: ../src/common/caja-actions-config-gconf-private.h:84
 msgid "The icon of the menu item"
 msgstr "मेन्यू घटाचे चिन्ह"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:85
+#: ../src/common/caja-actions-config-gconf-private.h:85
 msgid ""
 "The icon of the menu item that will appear next to the label in the Caja "
 "popup menu when the selection matches the appearance conditions settings"
@@ -82,11 +82,11 @@ msgstr ""
 "निवड प्रदर्शन अटी संयोजना सह जुळत असल्यास Caja पॉपअप मेन्यू अंतर्गत प्रदर्शित होणारे "
 "लेबेलच्या बाजूस मेन्यू घटकाचे चिन्ह"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:86
+#: ../src/common/caja-actions-config-gconf-private.h:86
 msgid "A description name of the profile"
 msgstr "संक्षिप्त माहितीचे वर्णन नाव"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:87
+#: ../src/common/caja-actions-config-gconf-private.h:87
 msgid ""
 "The field is here to give the user a human readable name for a profile in "
 "the Cact interface. If not set there will be a default auto generated string "
@@ -95,24 +95,24 @@ msgstr ""
 "Cact संवाद अंतर्गत संक्षिप्त माहिती करीता वापरकर्त्याला वाचनजोगी नाव देण्याकरीता हे "
 "क्षेत्र वापरा. निश्चित केले नसल्यास मुलभूत स्व निर्मीत अक्षमाळा निश्चित केले जाते"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:88
+#: ../src/common/caja-actions-config-gconf-private.h:88
 #: ../src/utils/caja-actions-new-config.c:60
 #: ../src/utils/caja-actions-new-config.c:63
 msgid "The path of the command"
 msgstr "आदेशचा मार्ग"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:89
+#: ../src/common/caja-actions-config-gconf-private.h:89
 msgid ""
 "The path of the command to start when the user select the menu item in the "
 "Caja popup menu"
 msgstr "Caja पॉपअप मेन्यू अंतर्गत वापरकर्ता मेन्यू घटक स्वीकारतो तेव्हा आदेशचा मार्ग"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:90
+#: ../src/common/caja-actions-config-gconf-private.h:90
 #: ../src/utils/caja-actions-new-config.c:61
 msgid "The parameters of the command"
 msgstr "आदेशचे बाब"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:91
+#: ../src/common/caja-actions-config-gconf-private.h:91
 msgid ""
 "The parameters of the command to start when the user selects the menu item "
 "in the Caja popup menu.\n"
@@ -146,11 +146,11 @@ msgstr ""
 "%U: MateVFS URI चे वापरकर्तानाव\n"
 "%%: टक्केवारी चिन्ह"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:92
+#: ../src/common/caja-actions-config-gconf-private.h:92
 msgid "The list of pattern to match the selected file(s)/folder(s)"
 msgstr "निवडलेले फाइल/फोल्डर शी जुळवणी स्थापीत करण्याकरीता रचनाची यादी"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:93
+#: ../src/common/caja-actions-config-gconf-private.h:93
 msgid ""
 "A list of strings with joker '*' or '?' to match the name of the selected "
 "file(s)/folder(s). Each selected items must match at least one of the "
@@ -159,11 +159,11 @@ msgstr ""
 "निवडलेले फाइल/फोल्डरचे नाव जुळविण्याकरीता '*' किंवा '?' सह अक्षरमाळा यादी. प्रत्येक "
 "निवडलेले घटकाची कृती प्रदर्शित करण्याकरीता किमान एक फाइलनाव रचनाशी जुळले पाहिजे"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:94
+#: ../src/common/caja-actions-config-gconf-private.h:94
 msgid "'true' if the filename patterns have to be case sensitive, 'false' otherwise"
 msgstr "फाइलनाव रचना केस संवेदनशील असल्यास 'true', नाहीतर 'false'"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:95
+#: ../src/common/caja-actions-config-gconf-private.h:95
 msgid ""
 "If you need to match a filename in a case-sensitive manner, set this key to "
 "'true'. If you also want, for example '*.jpg' to match 'photo.JPG', set "
@@ -173,11 +173,11 @@ msgstr ""
 "तुम्हाला, उदाहरणार्थ '*.jpg' यांस 'photo.JPG' सह जुळवायचे असल्यास, 'false' असे "
 "निश्चित करा"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:96
+#: ../src/common/caja-actions-config-gconf-private.h:96
 msgid "The list of patterns to match the mimetypes of the selected file(s)"
 msgstr "निवडलेले फाइलचे माइम प्रकार जुळविण्याकरीत रचनाची यादी"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:97
+#: ../src/common/caja-actions-config-gconf-private.h:97
 msgid ""
 "A list of strings with joker '*' or '?' to match the mimetypes of the "
 "selected file(s). Each selected items must match at least one of the "
@@ -186,7 +186,7 @@ msgstr ""
 "निवडलेले फाइलचे नाव जुळविण्याकरीता '*' किंवा '?' सह अक्षरमाळा यादी. प्रत्येक निवडलेले "
 "घटकाची कृती प्रदर्शित करण्याकरीता किमान एक फाइलनाव रचनाशी जुळले पाहिजे"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:98
+#: ../src/common/caja-actions-config-gconf-private.h:98
 msgid ""
 "The valid combinations are:\n"
 "\n"
@@ -203,29 +203,29 @@ msgstr ""
 "isfile=TRUE व isdir=TRUE': नीवड मध्ये दोन्ही फाइल व फोल्डर आढळतील\n"
 "isfile=FALSE व isdir=FALSE: ही अवैध जोडणी आहे (तुमची संयोजना प्रदर्शित करणे अशक्य)"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:99
+#: ../src/common/caja-actions-config-gconf-private.h:99
 msgid "'true' if the selection can have files, 'false' otherwise"
 msgstr "निवड अंतर्गत फाइलस् आढळल्यास 'true', नाहीतर 'false'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../src/common/caja-actions-config-mateconf-private.h:101
+#: ../src/common/caja-actions-config-gconf-private.h:101
 msgid "This setting is tied in with the 'isdir' setting. "
 msgstr "हा संयोजना 'isdir' संयोजनासह संलग्न आहे. "
 
-#: ../src/common/caja-actions-config-mateconf-private.h:102
+#: ../src/common/caja-actions-config-gconf-private.h:102
 msgid "'true' if the selection can have folders, 'false' otherwise"
 msgstr "निवड अंतर्गत फोल्डर्स् आढळल्यास 'true', नाहीतर 'false'"
 
 #. i18n notes: The last space is important if your language add a space after a period sign "." because a string is concatenated after this string
-#: ../src/common/caja-actions-config-mateconf-private.h:104
+#: ../src/common/caja-actions-config-gconf-private.h:104
 msgid "This setting is tied in with the 'isfile' setting. "
 msgstr "हा संयोजना 'isfile' संयोजनासह संलग्न आहे. "
 
-#: ../src/common/caja-actions-config-mateconf-private.h:105
+#: ../src/common/caja-actions-config-gconf-private.h:105
 msgid "'true' if the selection can have several items, 'false' otherwise"
 msgstr "निवड अंतर्गत अनेक घटक आढळल्यास 'true', नाहीतर 'false'"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:106
+#: ../src/common/caja-actions-config-gconf-private.h:106
 msgid ""
 "If you need one or more files or folders to be selected, set this key to "
 "'true'. If you want just one file or folder, set 'false'"
@@ -233,11 +233,11 @@ msgstr ""
 "एक किंवा त्यापेक्षा जास्त फाइलस् किंवा फोल्डर्स् निवडायचे असल्यास, या कि ला 'true' असे "
 "निश्चित करा. एक फाइल किंवा फोल्डर निश्चित करायचे असल्यास, 'false' निश्चित करा"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:107
+#: ../src/common/caja-actions-config-gconf-private.h:107
 msgid "The list of MateVFS schemes where the selected files should be located"
 msgstr "निवडलेली फाइल स्थापीत करण्याकरीता MateVFS योजनाची यादी"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:108
+#: ../src/common/caja-actions-config-gconf-private.h:108
 msgid ""
 "Defines the list of valid MateVFS schemes to be matched against the "
 "selected items. The MateVFS scheme is the protocol used to access the "
@@ -275,11 +275,11 @@ msgstr ""
 "\n"
 "Caja द्वारे वापरले गेलेले सर्व MateVFS योजना येथे वापरले जातिल."
 
-#: ../src/common/caja-actions-config-mateconf-private.h:109
+#: ../src/common/caja-actions-config-gconf-private.h:109
 msgid "The version of the configuration format"
 msgstr "संयोजना स्वरूपची आवृत्ती"
 
-#: ../src/common/caja-actions-config-mateconf-private.h:110
+#: ../src/common/caja-actions-config-gconf-private.h:110
 msgid ""
 "The version of the configuration format that will be used to manage backward "
 "compatibility"
@@ -344,7 +344,7 @@ msgid_plural ""
 msgstr[0] "ही XML फाइल वैध Caja-कृती संयोजना फाइल (कि आढळली नाही: %s)%s नाही"
 msgstr[1] "ही XML फाइल वैध Caja-कृती संयोजना फाइल (किज् आढळले नाही: %s)%s नाही"
 
-#. No error occured but we have not found the "version" mateconf key
+#. No error occured but we have not found the "version" gconf key
 #. i18n notes: will be displayed in an error dialog
 #: ../src/common/caja-actions-config-schema-reader.c:772
 #, c-format
@@ -902,7 +902,7 @@ msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
 #: ../src/cact/caja-actions-config.glade.h:80
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr "Sandeep Shedmake"
 
 #: ../src/cact/caja-actions-config.glade.h:81

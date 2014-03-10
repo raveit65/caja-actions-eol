@@ -527,17 +527,17 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr "Interfaze grafiko bat Caja-eko ekintzak sortzeko eta editateko."
 
 #: ../src/core/na-iabout.c:212
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>"
 
 #: ../src/core/na-iabout.c:253
 #, c-format
 msgid ""
-"Copyright %s 2005 The MATE Foundation\n"
+"Copyright %s 2005 The GNOME Foundation\n"
 "Copyright %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Copyright %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 msgstr ""
-"Copyright-a %s 2005 The MATE Foundation\n"
+"Copyright-a %s 2005 The GNOME Foundation\n"
 "Copyright-a %s 2006, 2007, 2008 Frederic Ruaudel <grumz@grumz.net>\n"
 "Copyright-a %s 2009, 2010, 2011 Pierre Wieser <pwieser@trychlos.org>"
 
@@ -1595,72 +1595,72 @@ msgstr "proba.adibidea.net"
 msgid "user"
 msgstr "erabiltzailea"
 
-#: ../src/io-desktop/cadp-desktop-provider.c:249
+#: ../src/io-desktop/nadp-desktop-provider.c:249
 msgid "Caja-Actions Desktop I/O Provider"
 msgstr "'Caja-eko ekintzak'-en mahaigaineko S/Iren hornitzailea"
 
-#: ../src/io-mateconf/nagp-mateconf-provider.c:225
+#: ../src/io-gconf/nagp-gconf-provider.c:225
 msgid "Caja-Actions MateConf I/O Provider"
 msgstr "'Caja-eko ekintzak'-en MateConf-eko S/Iren hornitzailea"
 
-#: ../src/io-xml/caxml-reader.c:148
+#: ../src/io-xml/naxml-reader.c:148
 msgid "Item ID not found."
 msgstr "Ez da elementuaren IDa aurkitu."
 
-#: ../src/io-xml/caxml-reader.c:149
+#: ../src/io-xml/naxml-reader.c:149
 #, c-format
 msgid "Unwaited key path %s while importing a menu."
 msgstr "Espero ez zen %s gakoaren bide-izena menu bat inportatzean."
 
-#: ../src/io-xml/caxml-reader.c:150
+#: ../src/io-xml/naxml-reader.c:150
 #, c-format
 msgid "Element %s at line %d already found, ignored."
 msgstr ""
 "%2$d. lerroko %1$s elementua lehendik ere aurkituta dago. Ezikusi egingo "
 "zaio."
 
-#: ../src/io-xml/caxml-reader.c:151
+#: ../src/io-xml/naxml-reader.c:151
 #, c-format
 msgid "Invalid item ID: waited for %s, found %s at line %d."
 msgstr ""
 "Elementuaren IDa baliogabea: '%s' espero zen, '%s' aurkituta %d. lerroan."
 
-#: ../src/io-xml/caxml-reader.c:152
+#: ../src/io-xml/naxml-reader.c:152
 #, c-format
 msgid "Unknown element %s found at line %d while waiting for %s."
 msgstr ""
 "'%s' elementu ezezaguna aurkitu da %d. lerroan '%s' espero zen bitartean."
 
 #. i18n: do not translate keywords 'Action' nor 'Menu'
-#: ../src/io-xml/caxml-reader.c:154
+#: ../src/io-xml/naxml-reader.c:154
 #, c-format
 msgid "Unknown type %s found at line %d, while waiting for Action or Menu."
 msgstr ""
 "'%s' mota ezezaguna aurkitu da %d. lerroan Ekintza edo Menua espero zen "
 "bitartean."
 
-#: ../src/io-xml/caxml-reader.c:155
+#: ../src/io-xml/naxml-reader.c:155
 #, c-format
 msgid "Invalid XML root element %s found at line %d while waiting for %s."
 msgstr ""
 "Baliogabeko XMLren erroko elementua: '%3$s' espero zen, baina '%1$s' "
 "aurkituta %2$d. lerroan."
 
-#: ../src/io-xml/caxml-reader.c:156
+#: ../src/io-xml/naxml-reader.c:156
 #, c-format
 msgid "Unable to parse XML file: %s."
 msgstr "Ezin da XML fitxategia analizatu: %s."
 
-#: ../src/io-xml/caxml-reader.c:157
+#: ../src/io-xml/naxml-reader.c:157
 #, c-format
 msgid "Node %s at line %d has not been dealt with."
 msgstr "%2$d. lerroko %1$s nodoa ez dago zerrekin kudeatu."
 
-#: ../src/io-xml/caxml-formats.c:48
+#: ../src/io-xml/naxml-formats.c:48
 msgid "Export as a _full MateConf schema file"
 msgstr "Esportatu MateConf-eko eskema-fitxategi _oso gisa"
 
-#: ../src/io-xml/caxml-formats.c:49
+#: ../src/io-xml/naxml-formats.c:49
 msgid ""
 "This used to be the historical export format.\n"
 "The exported schema file may later be imported via :\n"
@@ -1675,11 +1675,11 @@ msgstr ""
 "- arrastatu eta jaregin 'Caja-eko ekintzak'-en konfigurazioko tresnara,\n"
 "- edo 'mateconftool-2 --import-schema-file' komando-lerroa erabiliz."
 
-#: ../src/io-xml/caxml-formats.c:59
+#: ../src/io-xml/naxml-formats.c:59
 msgid "Export as a _light MateConf schema (v2) file"
 msgstr "Esportatu MateConf eskema-fitxategi _arina (2 bertsioa) bezala"
 
-#: ../src/io-xml/caxml-formats.c:60
+#: ../src/io-xml/naxml-formats.c:60
 msgid ""
 "This format has been introduced in v 1.11 serie.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
@@ -1700,11 +1700,11 @@ msgstr ""
 "- arrastatu eta jaregin 'Caja-eko ekintzak'-en konfigurazioko tresnara,\n"
 "- edo 'mateconftool-2 --import-schema-file' komando-lerroa erabiliz."
 
-#: ../src/io-xml/caxml-formats.c:73
+#: ../src/io-xml/naxml-formats.c:73
 msgid "Export as a MateConf _dump file"
 msgstr "Esportatu MateConf-en _iraulitako fitxategi gisa"
 
-#: ../src/io-xml/caxml-formats.c:74
+#: ../src/io-xml/naxml-formats.c:74
 msgid ""
 "This format has been introduced in v 1.11 serie, and should be the preferred "
 "format for newly exported items.\n"
@@ -4263,8 +4263,8 @@ msgstr ""
 "'%s' ekintza ongi idatzi da %s(e)n, eta prest dago CACTen inportatzeko.\n"
 
 #: ../src/utils/caja-actions-new.c:517
-msgid "Error: unable to find 'na-mateconf' provider."
-msgstr "Errorea: ezin da 'na-mateconf' hornitzailea aurkitu."
+msgid "Error: unable to find 'na-gconf' provider."
+msgstr "Errorea: ezin da 'na-gconf' hornitzailea aurkitu."
 
 #: ../src/utils/caja-actions-run.c:61
 msgid "The internal identifiant of the action to be launched"

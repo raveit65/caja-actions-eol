@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2009-12-13 12:15+0000\n"
 "PO-Revision-Date: 2009-12-08 23:48-0100\n"
 "Last-Translator: António Lima <amrlima@gmail.com>\n"
-"Language-Team: Portuguese <mate_pt@yahoogroups.com>\n"
+"Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1546,7 +1546,7 @@ msgid "A graphical interface to create and edit your Caja actions."
 msgstr "Uma interface gráfica para criar e editar as suas Acções do Caja."
 
 #: ../caja-actions/runtime/na-iabout.c:213
-msgid "The MATE Translation Project <mate-i18n@gnome.org>"
+msgid "The GNOME Translation Project <gnome-i18n@gnome.org>"
 msgstr "António Lima <amrlima@gmail.com>"
 
 #: ../caja-actions/runtime/na-iabout.c:254
@@ -1964,7 +1964,7 @@ msgstr "Opções várias"
 msgid "Try %s --help for usage.\n"
 msgstr "Tente %s --help para utilização.\n"
 
-#. { "output-mateconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_mateconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
+#. { "output-gconf"         , 'g', 0, G_OPTION_ARG_NONE    , &output_gconf   , N_("Writes the Caja Actions schema in MateConf"), NULL },
 #. { "output-filename"      , 'o', 0, G_OPTION_ARG_FILENAME, &output_fname   , N_("The file where to write the MateConf schema ('-' for stdout)"), N_("FILENAME") },
 #: ../caja-actions/utils/caja-actions-schemas.c:57
 msgid "Output the schema on stdout"
@@ -1983,8 +1983,8 @@ msgstr "Saída do esquema MateConf do Caja Actions para stdout."
 #~ msgid "Frederic Ruaudel <grumz@grumz.net>"
 #~ msgstr "Frederic Ruaudel <grumz@grumz.net>"
 
-#~ msgid "Rodrigo Moya <rodrigo@mate-db.org>"
-#~ msgstr "Rodrigo Moya <rodrigo@mate-db.org>"
+#~ msgid "Rodrigo Moya <rodrigo@gnome-db.org>"
+#~ msgstr "Rodrigo Moya <rodrigo@gnome-db.org>"
 
 #~ msgid "Pierre Wieser <pwieser@trychlos.org>"
 #~ msgstr "Pierre Wieser <pwieser@trychlos.org>"
