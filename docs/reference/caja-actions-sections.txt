@@ -671,12 +671,6 @@ na_object_set_capabilities
 
 <SECTION>
 <FILE>mateconf-monitor</FILE>
-NA_MATECONF_MONITOR_TYPE
-NA_MATECONF_MONITOR
-NA_IS_MATECONF_MONITOR
-NAMateConfMonitor
-na_mateconf_monitor_new
-na_mateconf_monitor_release_monitors
 
 <SUBSECTION Standard>
 na_mateconf_monitor_get_type
