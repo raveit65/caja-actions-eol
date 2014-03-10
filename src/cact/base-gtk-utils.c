@@ -587,9 +587,7 @@ table_to_grid_foreach_cb( GtkWidget *widget, TableToGridData *ttg )
 
 	gtk_container_child_get( GTK_CONTAINER( ttg->table ), widget,
 			"left-attach", &left, "top-attach", &top, "x-options", &x_options, NULL );
-
 	gtk_widget_unparent( widget );
-
 	gtk_grid_attach( GTK_GRID( ttg->grid ), widget, left, top, 1, 1 );
 	gtk_widget_set_hexpand( widget, x_options & GTK_EXPAND );
 }
