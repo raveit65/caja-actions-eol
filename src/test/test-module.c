@@ -22,7 +22,7 @@
  *
  * Authors:
  *   Frederic Ruaudel <grumz@grumz.net>
- *   Rodrigo Moya <rodrigo@mate-db.org>
+ *   Rodrigo Moya <rodrigo@gnome-db.org>
  *   Pierre Wieser <pwieser@trychlos.org>
  *   ... and many others (see AUTHORS)
  */
@@ -57,7 +57,9 @@ main( int argc, char **argv )
 {
 	GModule *module;
 
+#if !GLIB_CHECK_VERSION( 2,36, 0 )
 	g_type_init();
+#endif
 
 	/* dynamically load the module */
 	module = load_plugin();
@@ -346,7 +348,9 @@ main( int argc, char **argv )
 {
 	NAModule *module;
 
+#if !GLIB_CHECK_VERSION( 2,36, 0 )
 	g_type_init();
+#endif
 
 	/* dynamically load the module */
 	module = load_plugin();

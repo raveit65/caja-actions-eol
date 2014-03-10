@@ -67,7 +67,9 @@ main( int argc, char **argv )
 	GList *import_results;
 	NAImporterResult *result;
 
+#if !GLIB_CHECK_VERSION( 2,36, 0 )
 	g_type_init();
+#endif
 
 	GOptionContext *context = init_options();
 	check_options( argc, argv, context );

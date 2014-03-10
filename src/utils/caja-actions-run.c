@@ -91,7 +91,9 @@ main( int argc, char** argv )
 	NAObjectProfile *profile;
 	GList *targets;
 
+#if !GLIB_CHECK_VERSION( 2,36, 0 )
 	g_type_init();
+#endif
 	setlocale( LC_ALL, "" );
 	console_init_log_handler();
 
