@@ -552,9 +552,14 @@ base_gtk_utils_table_to_grid( BaseWindow *window, const gchar *table_name )
 	na_gtk_utils_dump_children( GTK_CONTAINER( parent ));
 #endif
 
+#if !GTK_CHECK_VERSION( 3,4,0 )
 	gtk_table_get_size( GTK_TABLE( ttg.table ), &ttg.rows, &ttg.columns );
 	col_spacing = gtk_table_get_default_col_spacing( GTK_TABLE( ttg.table ));
 	row_spacing = gtk_table_get_default_row_spacing( GTK_TABLE( ttg.table ));
+#else
+	col_spacing = 6;
+	row_spacing = 6;
+#endif
 
 	ttg.grid = gtk_grid_new();
 	gtk_grid_set_column_spacing( GTK_GRID( ttg.grid ), col_spacing );
