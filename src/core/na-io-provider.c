@@ -370,8 +370,8 @@ na_io_provider_find_io_provider_by_id( const NAPivot *pivot, const gchar *id )
  * na_io_provider_get_io_providers_list:
  * @pivot: the current #NAPivot instance.
  *
- * Build (if not already done) the ordered list of currently avialable
- * NAIOProvider objects.
+ * Build (if not already done) the write-ordered list of currently
+ * available NAIOProvider objects.
  *
  * A NAIOProvider object may be created:
  * - either because we have loaded a plugin which claims to implement the
@@ -400,6 +400,227 @@ na_io_provider_get_io_providers_list( const NAPivot *pivot )
 	}
 
 	return( st_io_providers );
+}
+
+/*
+ * adding from write-order means we only create NAIOProvider objects
+ * without having any pointer to the underlying NAIIOProvider (if it exists)
+ */
+static GList *
+io_providers_list_add_from_write_order( const NAPivot *pivot, GList *objects_list )
+{
+	GList *merged;
+	GSList *io_providers, *it;
+	const gchar *id;
+
+	merged = objects_list;
+	io_providers = na_settings_get_string_list( NA_IPREFS_IO_PROVIDERS_WRITE_ORDER, NULL, NULL );
+
+	for( it = io_providers ; it ; it = it->next ){
+		id = ( const gchar * ) it->data;
+		merged = io_providers_list_append_object( pivot, merged, NULL, id );
+	}
+
+	na_core_utils_slist_free( io_providers );
+
+	return( merged );
+}
+
+/*
+ * add to the list a NAIOProvider object for each loaded plugin which claim
+ * to implement the NAIIOProvider interface
+ */
+static GList *
+io_providers_list_add_from_plugins( const NAPivot *pivot, GList *objects_list )
+{
+	static const gchar *thisfn = "na_io_provider_io_providers_list_add_from_plugins";
+	GList *merged;
+	GList *modules_list, *im;
+	gchar *id;
+	NAIIOProvider *provider_module;
+
+	merged = objects_list;
+	modules_list = na_pivot_get_providers( pivot, NA_TYPE_IIO_PROVIDER );
+
+	for( im = modules_list ; im ; im = im->next ){
+
+		id = NULL;
+		provider_module = NA_IIO_PROVIDER( im->data );
+
+		if( NA_IIO_PROVIDER_GET_INTERFACE( provider_module )->get_id ){
+			id = NA_IIO_PROVIDER_GET_INTERFACE( provider_module )->get_id( provider_module );
+			if( !id || !strlen( id )){
+				g_warning( "%s: NAIIOProvider %p get_id() interface returns null or empty id", thisfn, ( void * ) im->data );
+				g_free( id );
+				id = NULL;
+			}
+		} else {
+			g_warning( "%s: NAIIOProvider %p doesn't support get_id() interface", thisfn, ( void * ) im->data );
+		}
+
+		if( id ){
+			merged = io_providers_list_append_object( pivot, merged, provider_module, id );
+			g_free( id );
+		}
+	}
+
+	na_pivot_free_providers( modules_list );
+
+	return( merged );
+}
+
+/*
+ * add to the list NAIOProvider objects for the identifiers we may find
+ * in preferences without having found the plugin itself
+ *
+ * preferences come from the io-providers status.
+ */
+static GList *
+io_providers_list_add_from_prefs( const NAPivot *pivot, GList *objects_list )
+{
+	GList *merged;
+	const gchar *id;
+	GSList *io_providers, *it;
+
+	merged = objects_list;
+	io_providers = io_providers_get_from_prefs();
+
+	for( it = io_providers ; it ; it = it->next ){
+		id = ( const gchar * ) it->data;
+		merged = io_providers_list_append_object( pivot, merged, NULL, id );
+	}
+
+	na_core_utils_slist_free( io_providers );
+
+	return( merged );
+}
+
+/*
+ * io_providers_get_from_prefs:
+ *
+ * Searches in preferences system for all mentions of an i/o provider.
+ * This does not mean in any way that the i/o provider is active,
+ * available or so, but just that is mentioned here.
+ *
+ * I/o provider identifiers returned in the list are not supposed
+ * to be unique, nor sorted.
+ *
+ * Returns: a list of i/o provider identifiers found in preferences
+ * system; this list should be na_core_utils_slist_free() by the caller.
+ *
+ * Since: 3.1
+ */
+static GSList *
+io_providers_get_from_prefs( void )
+{
+	GSList *providers;
+	GSList *groups;
+	GSList *it;
+	const gchar *name;
+	gchar *group_prefix;
+	guint prefix_len;
+
+	providers = NULL;
+	groups = na_settings_get_groups();
+	group_prefix = g_strdup_printf( "%s ", NA_IPREFS_IO_PROVIDER_GROUP );
+	prefix_len = strlen( group_prefix );
+
+	for( it = groups ; it ; it = it->next ){
+		name = ( const gchar * ) it->data;
+		if( g_str_has_prefix( name, group_prefix )){
+			providers = g_slist_prepend( providers, g_strdup( name+prefix_len ));
+		}
+	}
+
+	g_free( group_prefix );
+	na_core_utils_slist_free( groups );
+
+	return( providers );
+}
+
+/*
+ * add to the list a NAIOProvider object for the specified module and id
+ * if it does not have been already registered
+ */
+static GList *
+io_providers_list_append_object( const NAPivot *pivot, GList *list, NAIIOProvider *module, const gchar *id )
+{
+	GList *merged;
+	NAIOProvider *object;
+
+	merged = list;
+	object = peek_provider_by_id( list, id );
+
+	if( !object ){
+		object = io_provider_new( pivot, module, id );
+		merged = g_list_append( merged, object );
+
+	} else if( module && !object->private->provider ){
+		io_providers_list_set_module( pivot, object, module );
+	}
+
+	return( merged );
+}
+
+static NAIOProvider *
+peek_provider_by_id( const GList *providers, const gchar *id )
+{
+	NAIOProvider *provider = NULL;
+	const GList *ip;
+
+	for( ip = providers ; ip && !provider ; ip = ip->next ){
+		if( !strcmp( NA_IO_PROVIDER( ip->data )->private->id, id )){
+			provider = NA_IO_PROVIDER( ip->data );
+		}
+	}
+
+	return( provider );
+}
+
+/*
+ * allocate a new NAIOProvider object for the specified module and id
+ *
+ * id is mandatory here
+ * module may be NULL
+ */
+static NAIOProvider *
+io_provider_new( const NAPivot *pivot, NAIIOProvider *module, const gchar *id )
+{
+	NAIOProvider *object;
+
+	g_return_val_if_fail( id && strlen( id ), NULL );
+
+	object = g_object_new( NA_IO_PROVIDER_TYPE, IO_PROVIDER_PROP_ID, id, NULL );
+
+	if( module ){
+		io_providers_list_set_module( pivot, object, module );
+	}
+
+	return( object );
+}
+
+/*
+ * when a IIOProvider plugin is associated with the NAIOProvider object,
+ * we connect the NAPivot callback to the 'item-changed' signal
+ */
+static void
+io_providers_list_set_module( const NAPivot *pivot, NAIOProvider *provider_object, NAIIOProvider *provider_module )
+{
+	provider_object->private->provider = g_object_ref( provider_module );
+
+	provider_object->private->item_changed_handler =
+			g_signal_connect(
+					provider_module, IO_PROVIDER_SIGNAL_ITEM_CHANGED,
+					( GCallback ) na_pivot_on_item_changed_handler, ( gpointer ) pivot );
+
+	provider_object->private->writable =
+			is_finally_writable( provider_object, pivot, &provider_object->private->reason );
+
+	g_debug( "na_io_provider_list_set_module: provider_module=%p (%s), writable=%s, reason=%d",
+			( void * ) provider_module,
+			provider_object->private->id,
+			provider_object->private->writable ? "True":"False",
+			provider_object->private->reason );
 }
 
 /*
@@ -720,220 +941,6 @@ dump_providers_list( GList *providers )
 }
 #endif
 
-/*
- * allocate a new NAIOProvider object for the specified module and id
- *
- * id is mandatory here
- * module may be NULL
- */
-static NAIOProvider *
-io_provider_new( const NAPivot *pivot, NAIIOProvider *module, const gchar *id )
-{
-	NAIOProvider *object;
-
-	g_return_val_if_fail( id && strlen( id ), NULL );
-
-	object = g_object_new( NA_IO_PROVIDER_TYPE, IO_PROVIDER_PROP_ID, id, NULL );
-
-	if( module ){
-		io_providers_list_set_module( pivot, object, module );
-	}
-
-	return( object );
-}
-
-/*
- * add to the list a NAIOProvider object for each loaded plugin which claim
- * to implement the NAIIOProvider interface
- */
-static GList *
-io_providers_list_add_from_plugins( const NAPivot *pivot, GList *objects_list )
-{
-	static const gchar *thisfn = "na_io_provider_io_providers_list_add_from_plugins";
-	GList *merged;
-	GList *modules_list, *im;
-	gchar *id;
-	NAIIOProvider *provider_module;
-
-	merged = objects_list;
-	modules_list = na_pivot_get_providers( pivot, NA_TYPE_IIO_PROVIDER );
-
-	for( im = modules_list ; im ; im = im->next ){
-
-		id = NULL;
-		provider_module = NA_IIO_PROVIDER( im->data );
-
-		if( NA_IIO_PROVIDER_GET_INTERFACE( provider_module )->get_id ){
-			id = NA_IIO_PROVIDER_GET_INTERFACE( provider_module )->get_id( provider_module );
-			if( !id || !strlen( id )){
-				g_warning( "%s: NAIIOProvider %p get_id() interface returns null or empty id", thisfn, ( void * ) im->data );
-				g_free( id );
-				id = NULL;
-			}
-		} else {
-			g_warning( "%s: NAIIOProvider %p doesn't support get_id() interface", thisfn, ( void * ) im->data );
-		}
-
-		if( id ){
-			merged = io_providers_list_append_object( pivot, merged, provider_module, id );
-			g_free( id );
-		}
-	}
-
-	na_pivot_free_providers( modules_list );
-
-	return( merged );
-}
-
-/*
- * add to the list NAIOProvider objects for the identifiers we may find
- * in preferences without having found the plugin itself
- *
- * preferences may come from the 'write-order' list, or from the io-providers
- * status.
- */
-static GList *
-io_providers_list_add_from_prefs( const NAPivot *pivot, GList *objects_list )
-{
-	GList *merged;
-	const gchar *id;
-	GSList *io_providers, *it;
-
-	merged = objects_list;
-	io_providers = io_providers_get_from_prefs();
-
-	for( it = io_providers ; it ; it = it->next ){
-		id = ( const gchar * ) it->data;
-		merged = io_providers_list_append_object( pivot, merged, NULL, id );
-	}
-
-	na_core_utils_slist_free( io_providers );
-
-	return( merged );
-}
-
-/*
- * io_providers_get_from_prefs:
- *
- * Searches in preferences system for all mentions of an i/o provider.
- * This does not mean in any way that the i/o provider is active,
- * available or so, but just that is mentioned here.
- *
- * I/o provider identifiers returned in the list are not supposed
- * to be unique, nor sorted.
- *
- * Returns: a list of i/o provider identifiers found in preferences
- * system; this list should be na_core_utils_slist_free() by the caller.
- *
- * Since: 3.1
- */
-static GSList *
-io_providers_get_from_prefs( void )
-{
-	GSList *providers;
-	GSList *write_order, *groups;
-	GSList *it;
-	const gchar *name;
-	gchar *group_prefix;
-	guint prefix_len;
-
-	providers = NULL;
-
-	write_order = na_settings_get_string_list( NA_IPREFS_IO_PROVIDERS_WRITE_ORDER, NULL, NULL );
-	for( it = write_order ; it ; it = it->next ){
-		name = ( const gchar * ) it->data;
-		providers = g_slist_prepend( providers, g_strdup( name ));
-	}
-	na_core_utils_slist_free( write_order );
-
-	groups = na_settings_get_groups();
-
-	group_prefix = g_strdup_printf( "%s ", NA_IPREFS_IO_PROVIDER_GROUP );
-	prefix_len = strlen( group_prefix );
-	for( it = groups ; it ; it = it->next ){
-		name = ( const gchar * ) it->data;
-		if( g_str_has_prefix( name, group_prefix )){
-			providers = g_slist_prepend( providers, g_strdup( name+prefix_len ));
-		}
-	}
-	g_free( group_prefix );
-	na_core_utils_slist_free( groups );
-
-	return( providers );
-}
-
-/*
- * adding from write-order means we only create NAIOProvider objects
- * without having any pointer to the underlying NAIIOProvider (if it exists)
- */
-static GList *
-io_providers_list_add_from_write_order( const NAPivot *pivot, GList *objects_list )
-{
-	GList *merged;
-	GSList *io_providers, *it;
-	const gchar *id;
-
-	merged = objects_list;
-	io_providers = na_settings_get_string_list( NA_IPREFS_IO_PROVIDERS_WRITE_ORDER, NULL, NULL );
-
-	for( it = io_providers ; it ; it = it->next ){
-		id = ( const gchar * ) it->data;
-		merged = io_providers_list_append_object( pivot, merged, NULL, id );
-	}
-
-	na_core_utils_slist_free( io_providers );
-
-	return( merged );
-}
-
-/*
- * add to the list a NAIOProvider object for the specified module and id
- * if it does not have been already registered
- */
-static GList *
-io_providers_list_append_object( const NAPivot *pivot, GList *list, NAIIOProvider *module, const gchar *id )
-{
-	GList *merged;
-	NAIOProvider *object;
-
-	merged = list;
-	object = peek_provider_by_id( list, id );
-
-	if( !object ){
-		object = io_provider_new( pivot, module, id );
-		merged = g_list_append( merged, object );
-
-	} else if( module && !object->private->provider ){
-		io_providers_list_set_module( pivot, object, module );
-	}
-
-	return( merged );
-}
-
-/*
- * when a IIOProvider plugin is associated with the NAIOProvider object,
- * we connect the NAPivot callback to the 'item-changed' signal
- */
-static void
-io_providers_list_set_module( const NAPivot *pivot, NAIOProvider *provider_object, NAIIOProvider *provider_module )
-{
-	provider_object->private->provider = g_object_ref( provider_module );
-
-	provider_object->private->item_changed_handler =
-			g_signal_connect(
-					provider_module, IO_PROVIDER_SIGNAL_ITEM_CHANGED,
-					( GCallback ) na_pivot_on_item_changed_handler, ( gpointer ) pivot );
-
-	provider_object->private->writable =
-			is_finally_writable( provider_object, pivot, &provider_object->private->reason );
-
-	g_debug( "na_io_provider_list_set_module: provider_module=%p (%s), writable=%s, reason=%d",
-			( void * ) provider_module,
-			provider_object->private->id,
-			provider_object->private->writable ? "True":"False",
-			provider_object->private->reason );
-}
-
 static gboolean
 is_conf_writable( const NAIOProvider *provider, const NAPivot *pivot, gboolean *mandatory )
 {
@@ -1214,21 +1221,6 @@ peek_item_by_id_compare( const NAObject *obj, const gchar *id )
 	}
 
 	return( ret );
-}
-
-static NAIOProvider *
-peek_provider_by_id( const GList *providers, const gchar *id )
-{
-	NAIOProvider *provider = NULL;
-	const GList *ip;
-
-	for( ip = providers ; ip && !provider ; ip = ip->next ){
-		if( !strcmp( NA_IO_PROVIDER( ip->data )->private->id, id )){
-			provider = NA_IO_PROVIDER( ip->data );
-		}
-	}
-
-	return( provider );
 }
 
 /*
