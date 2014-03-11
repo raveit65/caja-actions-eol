@@ -557,7 +557,7 @@ build_caja_menu_rec( GList *tree, guint target, GList *selection, NATokens *toke
 		 * dynamically empty - thus the NAObjectItem invalid :(
 		 */
 		if( !na_object_is_valid( item )){
-			g_debug( "%s: item %s becomes invalid after expand_tokens_item", thisfn, label );
+			g_debug( "%s: item %s becomes invalid after tokens expansion", thisfn, label );
 			g_object_unref( item );
 			g_free( label );
 			continue;
