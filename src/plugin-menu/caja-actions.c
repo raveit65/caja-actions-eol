@@ -508,7 +508,7 @@ build_caja_menu( CajaActions *plugin, guint target, GList *selection )
 	 */
 	g_object_unref( tokens );
 
-	if( target != ITEM_TARGET_TOOLBAR ){
+	if( target != ITEM_TARGET_TOOLBAR && caja_menu && g_list_length( caja_menu )){
 
 		items_create_root_menu = na_settings_get_boolean( NA_IPREFS_ITEMS_CREATE_ROOT_MENU, NULL, NULL );
 		if( items_create_root_menu ){
