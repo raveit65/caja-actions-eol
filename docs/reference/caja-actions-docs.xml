@@ -87,7 +87,6 @@
   <chapter>
     <title>Miscellaneous API</title>
     <xi:include href="xml/mateconf-monitor.xml"/>
-    <xi:include href="xml/mateconf-utils.xml"/>
     <xi:include href="xml/core-utils.xml"/>
     <xi:include href="xml/timeout.xml"/>
   </chapter>
