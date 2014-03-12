@@ -1,5 +1,13 @@
 caja-actions
 
+2014-03-12 Wolfgang Ulbrich <chat-to-me@raveit.de>
+
+   * release 1.6.3
+
+   * update to follow nautilus-action-3.2.3
+
+   * for details see git commits
+
 2013-08-15 Wolfgang Ulbrich <chat-to-me@raveit.de>
 
    * release 1.6.2

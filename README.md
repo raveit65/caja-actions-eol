@@ -1,12 +1,29 @@
-18.08.2013 update to 1.6.1
+18.08.2013 update to 1.6.3
 
 changelog:
+
+- update to follow nautilus-action-3.2.3
+
+- for details see git commits
+
+18.08.2013 update to 1.6.2
+
+changelog:
+
+- fix Copying-DOCS issue,  wrong-file-end-of-line-encoding
+
+2013-08-15 update to 1.6.1
+
+changelog:
+
 - improve debug usage
 
 29.11.2012 update to 1.6.0
 
 changelog:
+
 - complete removal of mateconf usage, needed for distros with MATE 1.6
+
   without mateconf.
   
 Mate Installation
