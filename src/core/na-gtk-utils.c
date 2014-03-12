@@ -31,6 +31,7 @@
 #include <config.h>
 #endif
 
+#include <glib.h>
 #include <string.h>
 
 #include "na-gtk-utils.h"
@@ -158,25 +159,32 @@ na_gtk_utils_restore_window_position( GtkWindow *toplevel, const gchar *wsp_name
 	width = MAX( 1, width );
 	height = MAX( 1, height );
 
-	display = gdk_display_get_default();
-	screen = gdk_display_get_screen( display, 0 );
-	screen_width = gdk_screen_get_width( screen );
-	screen_height = gdk_screen_get_height( screen );
-
-	/* very dirty hack based on the assumption that Mate 2.x has a bottom
-	 * and a top panel bars, while Mate 3.x only has one.
-	 * Don't know how to get usable height of screen, and don't bother today.
+	/* bad hack for the first time we open the main window
+	 * try to target an ideal size and position
 	 */
-	screen_height -= DEFAULT_HEIGHT;
-#if ! GTK_CHECK_VERSION( 3, 0, 0 )
-	screen_height -= DEFAULT_HEIGHT;
-#endif
+	if( !strcmp( wsp_name, NA_IPREFS_MAIN_WINDOW_WSP )){
+		if( x == 1 && y == 1 && width == 1 && height == 1 ){
+			x = 50;
+			y = 70;
+			width = 1030;
+			height = 560;
 
-	width = MIN( width, screen_width-x );
-	height = MIN( height, screen_height-y );
+		} else {
+			display = gdk_display_get_default();
+			screen = gdk_display_get_screen( display, 0 );
+			screen_width = gdk_screen_get_width( screen );
+			screen_height = gdk_screen_get_height( screen );
+			g_debug( "%s: screen=(%d,%d), DEFAULT_HEIGHT=%d",
+					thisfn, screen_width, screen_height, DEFAULT_HEIGHT );
 
-	g_debug( "%s: wsp_name=%s, screen=(%d,%d), x=%d, y=%d, width=%d, height=%d",
-			thisfn, wsp_name, screen_width, screen_height, x, y, width, height );
+			screen_height -= 2*DEFAULT_HEIGHT;
+			width = MIN( width, screen_width-x );
+			height = MIN( height, screen_height-y );
+		}
+	}
+
+	g_debug( "%s: wsp_name=%s, x=%d, y=%d, width=%d, height=%d",
+			thisfn, wsp_name, x, y, width, height );
 
 	gtk_window_move( toplevel, x, y );
 	gtk_window_resize( toplevel, width, height );
