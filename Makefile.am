@@ -46,7 +46,7 @@ SUBDIRS = \
 # - MATE_DOC_DEFINES tries to disable scrollkeeper, but the set is
 #   overriden but this one
 
-DISTCHECK_CONFIGURE_FLAGS = \
+DISTCHECK_CONFIGURE_FLAGS =	\
 	--with-caja-extdir='$${libdir}/caja/extensions-2.0-distcheck' \
 	--enable-silent-rules				\
 	--enable-as-needed					\
@@ -57,13 +57,13 @@ DISTCHECK_CONFIGURE_FLAGS = \
 	--disable-pdf-manuals				\
 	$(NULL)
 
-EXTRA_DIST = \
+EXTRA_DIST =	\
 	intltool-extract.in					\
 	intltool-merge.in					\
 	intltool-update.in					\
 	$(NULL)
 
-DISTCLEANFILES = \
+DISTCLEANFILES =	\
 	intltool-extract					\
 	intltool-merge						\
 	intltool-update						\
@@ -71,13 +71,14 @@ DISTCLEANFILES = \
 
 pkgdocdir = $(datarootdir)/doc/@PACKAGE@-@VERSION@
 
-dist_pkgdoc_DATA = \
+dist_pkgdoc_DATA =	\
 	AUTHORS								\
 	ChangeLog							\
 	ChangeLog-2008						\
 	ChangeLog-2009						\
 	ChangeLog-2010						\
 	ChangeLog-2011						\
+	ChangeLog-2012						\
 	COPYING								\
 	COPYING-DOCS						\
 	INSTALL								\
