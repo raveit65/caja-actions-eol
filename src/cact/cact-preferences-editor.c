@@ -146,6 +146,7 @@ static void       order_mode_on_toggled( CactPreferencesEditor *editor, GtkToggl
 static void       root_menu_setup( CactPreferencesEditor *editor );
 static void       root_menu_on_toggled( GtkToggleButton *button, CactPreferencesEditor *editor );
 static void       about_item_setup( CactPreferencesEditor *editor );
+static void       about_item_set_sensitive( CactPreferencesEditor *editor );
 static void       about_item_on_toggled( GtkToggleButton *button, CactPreferencesEditor *editor );
 static void       terminal_pattern_setup( CactPreferencesEditor *editor );
 static void       terminal_pattern_on_changed( GtkEntry *entry, CactPreferencesEditor *editor );
@@ -720,6 +721,7 @@ root_menu_on_toggled( GtkToggleButton *button, CactPreferencesEditor *editor )
 
 	if( editable ){
 		editor->private->root_menu = gtk_toggle_button_get_active( button );
+		about_item_set_sensitive( editor );
 
 	} else {
 		base_gtk_utils_toggle_reset_initial_state( button );
@@ -728,6 +730,8 @@ root_menu_on_toggled( GtkToggleButton *button, CactPreferencesEditor *editor )
 
 /*
  * add an about item
+ *
+ * The About item is only added if the Caja-Actions root menu exists
  */
 static void
 about_item_setup( CactPreferencesEditor *editor )
@@ -740,6 +744,17 @@ about_item_setup( CactPreferencesEditor *editor )
 	base_gtk_utils_toggle_set_initial_state( BASE_WINDOW( editor ),
 			"AddAboutButton", G_CALLBACK( about_item_on_toggled ),
 			editor->private->about_item, editable, !editor->private->preferences_locked );
+
+	about_item_set_sensitive( editor );
+}
+
+static void
+about_item_set_sensitive( CactPreferencesEditor *editor )
+{
+	GtkWidget *add_about;
+
+	add_about = base_window_get_widget( BASE_WINDOW( editor ), "AddAboutButton" );
+	gtk_widget_set_sensitive( add_about, editor->private->root_menu );
 }
 
 static void
