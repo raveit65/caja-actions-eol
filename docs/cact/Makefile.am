@@ -55,16 +55,91 @@ include $(srcdir)/mate-doc-utils-ca.make
 
 DOC_MODULE = caja-actions-config-tool
 
-DOC_ENTITIES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/*.xml | $(GREP) -v $(DOC_MODULE)))
-#DOC_ENTITIES = "appendix-gnu-fdl-1.3.xml articleinfo.xml ... cact-where.xml"
+#DOC_ENTITIES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/*.xml | $(GREP) -v $(DOC_MODULE)))
+DOC_ENTITIES = \
+	appendix-gnu-fdl-1.3.xml \
+	articleinfo.xml \
+	legalnotice.xml \
+	cact-bugs.xml \
+	cact-conditions.xml \
+	cact-edit.xml \
+	cact-execution.xml \
+	cact-export.xml \
+	cact-import.xml \
+	cact-menus.xml \
+	cact-misc.xml \
+	cact-prefs.xml \
+	cact-profiles.xml \
+	cact-properties.xml \
+	cact-save.xml \
+	cact-sorting.xml \
+	cact-starting.xml \
+	cact-where.xml \
+	caja-actions-config-tool.xml
 
-DOC_INCLUDES =
+#DOC_INCLUDES =
 
-DOC_FIGURES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/figures/*.png))
-#DOC_FIGURES = "figures/add.png figures/cact-action-tab.png ... figures/stock-icon-about.png"
+#DOC_FIGURES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/figures/*.png))
+DOC_FIGURES = \
+	add.png \
+	cact-action-tab.png \
+	cact-basenames-tab.png \
+	cact-capabilities-tab.png \
+	cact-command-tab.png \
+	cact-desktop-environment-frame.png \
+	cact-environment-tab.png \
+	cact-exec-mode-frame.png \
+	cact-execute-as-frame.png \
+	cact-execution-environment-frame.png \
+	cact-execution-tab.png \
+	cact-export-done.png \
+	cact-export-format.png \
+	cact-export-home.png \
+	cact-export-items.png \
+	cact-export-summary.png \
+	cact-export-target.png \
+	cact-folders-tab.png \
+	cact-import-done.png \
+	cact-import-files.png \
+	cact-import-home.png \
+	cact-import-mode.png \
+	cact-import-resultat.png \
+	cact-import-summary.png \
+	cact-legend.png \
+	cact-main-empty.png \
+	cact-mimetypes-tab.png \
+	cact-new-capability.png \
+	cact-new-scheme.png \
+	cact-preferences-desktop.png \
+	cact-preferences-execution.png \
+	cact-preferences-export.png \
+	cact-preferences-import.png \
+	cact-preferences-io-providers.png \
+	cact-preferences-runtime.png \
+	cact-preferences-schemes.png \
+	cact-preferences-ui.png \
+	cact-properties-tab.png \
+	cact-schemes-tab.png \
+	cact-selection-count-frame.png \
+	cact-startup-mode-frame.png \
+	cact-target-location.png \
+	cact-working-directory-frame.png \
+	read-only.png \
+	remove.png \
+	sort-asc.png \
+	sort-buttons-frame.png \
+	sort-desc.png \
+	sort-manual.png \
+	start-context-menu-caja.png \
+	start-matedialog-result.png \
+	stock-icon-about.png
 
-DOC_LINGUAS = $(patsubst $(srcdir)/%,%,$(shell find $(srcdir) -mindepth 1 -maxdepth 1 -type d | $(GREP) -v $(srcdir)/C))
-#DOC_LINGUAS = "de es fr sl"
+#DOC_LINGUAS = $(patsubst $(srcdir)/%,%,$(shell find $(srcdir) -mindepth 1 -maxdepth 1 -type d | $(GREP) -v $(srcdir)/C))
+DOC_LINGUAS = \
+	de \
+	es \
+	fr \
+	sl
 
 if ENABLE_MANUALS
 # _DOC_LC_DOCS is the list of the translated (not C) DOC_MODULE.xml files
