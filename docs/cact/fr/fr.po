@@ -4506,7 +4506,7 @@ msgid ""
 msgstr ""
 "Pour obtenir plus d'informations à propos de <productname>Caja-Actions</"
 "productname>, veuillez visiter le <ulink url=\"http://www.caja-actions."
-"org/\" type=\"http\">site Web de <productname>Caja-Actions</productname>."
+"org/\" type=\"http\"/>site Web de <productname>Caja-Actions</productname>."
 
 #: C/caja-actions-config-tool.xml:215(para)
 msgid ""
