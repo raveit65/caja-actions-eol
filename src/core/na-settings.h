@@ -42,8 +42,8 @@
  * - a per-user configuration.
  *
  * The configuration is implemented as keyed files:
- * - global configuration is sysconfdir/xdg/caja-actions.conf
- * - per-user configuration is HOME/.config/caja-actions.conf
+ * - global configuration is sysconfdir/xdg/caja-actions/caja-actions.conf
+ * - per-user configuration is HOME/.config/caja-actions/caja-actions.conf
  *
  * Each setting may so have its own read-only attribute, whether it
  * has been read from the global configuration or from the
