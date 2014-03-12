@@ -137,6 +137,7 @@ DOC_FIGURES = \
 #DOC_LINGUAS = $(patsubst $(srcdir)/%,%,$(shell find $(srcdir) -mindepth 1 -maxdepth 1 -type d | $(GREP) -v $(srcdir)/C))
 DOC_LINGUAS = \
 	de \
+	el \
 	es \
 	fr \
 	sl
