@@ -51,24 +51,15 @@
 # to correctly generate POT files (cf. mail of Claude Paroz 2010-08-29
 # http://mail.gnome.org/archives/mate-i18n/2010-August/msg00229.html).
 
-include $(top_srcdir)/mate-doc-utils.make
+@YELP_HELP_RULES@
 
-DOC_MODULE = caja-actions-config-tool
+HELP_ID = caja-actions-config-tool
 
-DOC_ENTITIES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/*.xml | $(GREP) -v $(DOC_MODULE)))
-#DOC_ENTITIES = "appendix-gnu-fdl-1.3.xml articleinfo.xml ... cact-where.xml"
+HELP_FILES = index.docbook
 
-DOC_INCLUDES =
+HELP_MEDIA = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/figures/*.png))
 
-DOC_FIGURES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/figures/*.png))
-#DOC_FIGURES = "figures/add.png figures/cact-action-tab.png ... figures/stock-icon-about.png"
-
-DOC_LINGUAS = de el es fr sl
-
-# _DOC_LC_DOCS is the list of the translated (not C) DOC_MODULE.xml files
-# we so are sure that they exist and are up to date
-# (path is .po ->[msgfmt]-> .mo ->[xml2po]-> .xml)
-MANUALS_XML = C/$(DOC_MODULE).xml $(_DOC_LC_DOCS)
+HELP_LINGUAS = de el es fr sl
 
 # just an empty value to be able to add something for html and pdf manuals
 MAINTAINERCLEANFILES =
@@ -90,11 +81,7 @@ uninstall-local: uninstall-manuals
 
 uninstall-manuals: uninstall-html-manuals uninstall-pdf-manuals
 
-# doc-dist-hook is the dist hook from mate-doc-utils.make
-# it distributes both C (original) and generated (translated) .xml files,
-# but not generated .omf files which so will have to be re-generated from
-# the distributed .omf.in file
-dist-hook: doc-dist-hook dist-manuals-hook
+dist-hook: dist-manuals-hook
 
 dist-manuals-hook: dist-html-manuals-hook dist-pdf-manuals-hook
 
@@ -179,12 +166,12 @@ $(MANUALS_HTML): %.html: %.xml
 # 3. "yes" if build in source
 exec_g_d_t = \
 	$(call install_xml,$(2),$(3)); \
-	fxml=$(DOC_MODULE).xml; \
+	fxml=$(HELP_ID).xml; \
 	(cd $(2); \
 	 cmd="mate-doc-tool html -o . -d0 $$fxml"; \
 	 if test "$(opt_verbose)" != ""; then echo "$$cmd"; fi; \
 	 eval $$cmd >/dev/null; \
-	 fhtml=$(DOC_MODULE).html; \
+	 fhtml=$(HELP_ID).html; \
 	 if test -f $$fhtml; then \
 		sed -i -e 's?url("admon?url("admon/admon?' $$fhtml; \
 		admon_dir=/usr/share/mate-doc-utils/icons/hicolor/48x48/status; \
@@ -203,7 +190,7 @@ exec_g_d_t = \
 exec_db2html = \
 	cddir="$(2)"; \
 	output="."; \
-	fxml=$(DOC_MODULE).xml; \
+	fxml=$(HELP_ID).xml; \
 	if test "$(2)" = "C" -a "$(3)" = "no"; then \
 		cddir="."; \
 		output="C"; \
@@ -241,14 +228,14 @@ install-html-manuals:
 		_instd="$(DESTDIR)$(htmldir)"; \
 	fi; \
 	echo "  Installing in $$_instd ..."; \
-	for lc in C $(_DOC_REAL_LINGUAS); do \
+	for lc in C $(_HELP_REAL_LINGUAS); do \
 		_instdir="$$_instd/$$lc/cact"; \
-		if test -f "$(builddir)/$$lc/$(DOC_MODULE).html"; then \
+		if test -f "$(builddir)/$$lc/$(HELP_ID).html"; then \
 			d="$(builddir)"; \
-		elif test -f "$(srcdir)/$$lc/$(DOC_MODULE).html"; then \
+		elif test -f "$(srcdir)/$$lc/$(HELP_ID).html"; then \
 			d="$(srcdir)"; \
 		fi; \
-		if test -f "$$d/$$lc/$(DOC_MODULE).html"; then \
+		if test -f "$$d/$$lc/$(HELP_ID).html"; then \
 			$(call install_html_doc,$$d,$$lc,$$_instdir); \
 			$(call install_html_images,$$d,$$lc,$$_instdir,"stylesheet-images"); \
 			$(call install_html_images,$$d,$$lc,$$_instdir,"admon"); \
@@ -261,9 +248,9 @@ install-html-manuals:
 # 2: locale
 # 3: target dir
 install_html_doc = \
-	if test "$(opt_verbose)" = ""; then echo "    $(2)/cact/$(DOC_MODULE).html"; fi; \
+	if test "$(opt_verbose)" = ""; then echo "    $(2)/cact/$(HELP_ID).html"; fi; \
 	$(MKDIR_P) $(3); \
-	cp -p $(opt_verbose) "$(1)/$(2)/$(DOC_MODULE).html" $(3)/
+	cp -p $(opt_verbose) "$(1)/$(2)/$(HELP_ID).html" $(3)/
 
 # installing html images
 # 1: source dir
@@ -271,7 +258,7 @@ install_html_doc = \
 # 3: target dir
 # 4: stylesheet-images or admon
 install_html_images = \
-	if grep -lq $(4) "$(1)/$(2)/$(DOC_MODULE).html"; then \
+	if grep -lq $(4) "$(1)/$(2)/$(HELP_ID).html"; then \
 		if test -d "$(1)/$(2)/$(4)"; then \
 			if test "$(opt_verbose)" = ""; then echo "    $(2)/cact/$(4)"; fi; \
 			cmd="cp -rp $(opt_verbose) \"$(1)/$(2)/$(4)\" $(3)/"; eval $$cmd; \
@@ -321,12 +308,12 @@ uninstall-html-manuals:
 # - distribute *.html manuals
 
 dist-html-manuals-hook:
-	@for lc in C $(_DOC_REAL_LINGUAS); do \
-		if test -f "$(builddir)/$$lc/$(DOC_MODULE).html"; then d=$(builddir); \
-		elif test -f "$(srcdir)/$$lc/$(DOC_MODULE).html"; then d=$(srcdir); fi; \
-		if test -f "$$d/$$lc/$(DOC_MODULE).html"; then \
-			if test "$(opt_verbose)" = ""; then echo "  Distributing $$lc/$(DOC_MODULE).html"; fi; \
-			cmd="cp $(opt_verbose) $$d/$$lc/$(DOC_MODULE).html $(distdir)/$$lc/"; eval $$cmd; \
+	@for lc in C $(_HELP_REAL_LINGUAS); do \
+		if test -f "$(builddir)/$$lc/$(HELP_ID).html"; then d=$(builddir); \
+		elif test -f "$(srcdir)/$$lc/$(HELP_ID).html"; then d=$(srcdir); fi; \
+		if test -f "$$d/$$lc/$(HELP_ID).html"; then \
+			if test "$(opt_verbose)" = ""; then echo "  Distributing $$lc/$(HELP_ID).html"; fi; \
+			cmd="cp $(opt_verbose) $$d/$$lc/$(HELP_ID).html $(distdir)/$$lc/"; eval $$cmd; \
 			$(call dist_html_images,$$d,$$lc,"stylesheet-images"); \
 			$(call dist_html_images,$$d,$$lc,"admon"); \
 		fi; \
@@ -337,7 +324,7 @@ dist-html-manuals-hook:
 # 2. locale
 # 3. image type (stylesheet-images or admon)
 dist_html_images = \
-	if grep -lq $(3) "$(1)/$(2)/$(DOC_MODULE).html"; then \
+	if grep -lq $(3) "$(1)/$(2)/$(HELP_ID).html"; then \
 		if test -d "$(1)/$(2)/$(3)"; then \
 			if test "$(opt_verbose)" = ""; then echo "  Distributing $(2)/$(3)"; fi; \
 			cmd="cp -rp $(opt_verbose) \"$(1)/$(2)/$(3)\" $(distdir)/$(2)/"; eval $$cmd; \
@@ -362,7 +349,7 @@ else
 all-pdf-manuals:
 endif
 
-# _DOC_LC_DOCS is the list of the translated (not C) DOC_MODULE.xml files
+# _HELP_LC_FILES is the list of the translated (not C) HELP_ID.xml files
 # we so are sure that they exist and are up to date
 # (path is .po ->[msgfmt]-> .mo ->[xml2po]-> .xml)
 #
@@ -391,11 +378,11 @@ $(MANUALS_PDF): %.pdf: %.xml
 			cmd="(cd figures && $(LN_S) -f $(srcdir)/$$d/$$fig)"; eval $$cmd; \
 		fi; \
 	 done; \
-	 cmd="dblatex $(DOC_MODULE).xml"; eval $$cmd >/dev/null; \
-	 if ! test -f $(DOC_MODULE).pdf; then \
+	 cmd="dblatex $(HELP_ID).xml"; eval $$cmd >/dev/null; \
+	 if ! test -f $(HELP_ID).pdf; then \
 		echo "  PDF    $$ftarget recovering from dblatex error..."; \
-		tmpdir=`dblatex -d $(DOC_MODULE).xml 2>&1 | grep 'not removed' | awk '{ print $$1 }'`; \
-		cp $$tmpdir/$(DOC_MODULE).pdf . || :; \
+		tmpdir=`dblatex -d $(HELP_ID).xml 2>&1 | grep 'not removed' | awk '{ print $$1 }'`; \
+		cp $$tmpdir/$(HELP_ID).pdf . || :; \
 		rm -fr $$tmpdir; \
 	 fi; \
 	 find figures -type l | xargs rm -f; \
@@ -416,13 +403,13 @@ install-pdf-manuals:
 		_instdir=$(DESTDIR)$(pdfdir); \
 	fi; \
 	echo "  Installing in $$_instdir ... "; \
-	for lc in C $(_DOC_REAL_LINGUAS); do \
-		if test -f $(srcdir)/$$lc/$(DOC_MODULE).pdf; then d=$(srcdir); fi; \
-		if test -f $(builddir)/$$lc/$(DOC_MODULE).pdf; then d=$(builddir); fi; \
-		if test -f $$d/$$lc/$(DOC_MODULE).pdf; then \
-			if test "$(opt_verbose)" = ""; then echo "    $$lc/$(DOC_MODULE).pdf"; fi; \
+	for lc in C $(_HELP_REAL_LINGUAS); do \
+		if test -f $(srcdir)/$$lc/$(HELP_ID).pdf; then d=$(srcdir); fi; \
+		if test -f $(builddir)/$$lc/$(HELP_ID).pdf; then d=$(builddir); fi; \
+		if test -f $$d/$$lc/$(HELP_ID).pdf; then \
+			if test "$(opt_verbose)" = ""; then echo "    $$lc/$(HELP_ID).pdf"; fi; \
 			if ! test -d $$_instdir/$$lc; then cmd="$(MKDIR_P) $$_instdir/$$lc"; eval $$cmd; fi; \
-			cmd="$(INSTALL_DATA) \"$$d/$$lc/$(DOC_MODULE).pdf\" \"$$_instdir/$$lc/\""; eval $$cmd; \
+			cmd="$(INSTALL_DATA) \"$$d/$$lc/$(HELP_ID).pdf\" \"$$_instdir/$$lc/\""; eval $$cmd; \
 			if test "$(opt_verbose)" != ""; then echo $$cmd; fi; \
 		fi; \
 	done
@@ -440,12 +427,12 @@ uninstall-pdf-manuals:
 	fi
 
 dist-pdf-manuals-hook:
-	@for lc in C $(DOC_LINGUAS); do \
-		if test -f $(builddir)/$$lc/$(DOC_MODULE).pdf; then d=$(builddir); \
-		elif test -f $(srcdir)/$$lc/$(DOC_MODULE).pdf; then d=$(srcdir); fi; \
-		if test -f "$$d/$$lc/$(DOC_MODULE).pdf"; then \
-			if test "$(opt_verbose)" = ""; then echo "  Distributing $$lc/$(DOC_MODULE).pdf"; fi; \
-			cmd="cp $$d/$$lc/$(DOC_MODULE).pdf $(distdir)/$$lc/"; eval $$cmd; \
+	@for lc in C $(HELP_LINGUAS); do \
+		if test -f $(builddir)/$$lc/$(HELP_ID).pdf; then d=$(builddir); \
+		elif test -f $(srcdir)/$$lc/$(HELP_ID).pdf; then d=$(srcdir); fi; \
+		if test -f "$$d/$$lc/$(HELP_ID).pdf"; then \
+			if test "$(opt_verbose)" = ""; then echo "  Distributing $$lc/$(HELP_ID).pdf"; fi; \
+			cmd="cp $$d/$$lc/$(HELP_ID).pdf $(distdir)/$$lc/"; eval $$cmd; \
 			if test "$(opt_verbose)" != ""; then echo $$cmd; fi; \
 		fi; \
 	done

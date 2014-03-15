@@ -134,7 +134,7 @@
     License (GFDL), Version 1.3 or any later version published
     by the Free Software Foundation with no Invariant Sections,
     no Front-Cover Texts, and no Back-Cover Texts.  You can find
-    a copy of the GFDL at this <ulink type="help" url="ghelp:fdl">link</ulink> or in the file COPYING-DOCS
+    a copy of the GFDL at this <ulink type="help" url="help:fdl">link</ulink> or in the file COPYING-DOCS
     distributed with this manual.
   </para>
   <para>Das vorliegende Handbuch ist Teil einer Reihe von MATE-Handbüchern, die unter der GFDL verteilt werden. Wenn Sie dieses Handbuch separat verteilen möchten, können Sie dies tun, indem Sie dem Handbuch eine Kopie der Lizenz, wie in Abschnitt 6 der Lizenz beschrieben, hinzufügen.</para>
@@ -2207,7 +2207,7 @@
     <para>Die erste Version von <productname>Caja-Aktionen</productname> wurde von Frederic Ruaudel (<email>grumz@grumz.net</email>) und Rodrigo Moya (<email>rodrigo@mate-db.org</email>) geschrieben. Sie wurde wesentlich verbessert und wird nun von Pierre Wieser (<email>pwieser@trychlos.org</email>) betreut.</para>
     <para>Die Grafiken verdanken wir Ulisse Perusin (<email>uli.peru@gmail.com</email>) und DragonArtz (<ulink url="http://www.dragonartz.net/" type="http">http://www.dragonartz.net</ulink>).</para>
     <para>Weitere Informationen über <productname>Caja-Actions</productname> finden Sie auf der <ulink url="http://www.caja-actions.org/" type="http">Webseite von <productname>Caja-Actions</productname></ulink>.</para>
-    <para>Um Fehler zu melden oder Vorschläge für <productname>Caja-Actions</productname>, das <application>Konfigurationswerkzeug für Caja-Actions</application> oder dieses Handbuch einzureichen, folgen Sie bitte den Anweisungen auf der <ulink url="ghelp:user-guide#feedback" type="help">MATE-Seite für Rückmeldungen</ulink>. Auf Wunsch können Sie auch direkt Fehlermeldungen oder Verbesserungswünsche auf der <ulink url="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" type="http">Bugzilla-Webseite</ulink> melden.</para>
+    <para>Um Fehler zu melden oder Vorschläge für <productname>Caja-Actions</productname>, das <application>Konfigurationswerkzeug für Caja-Actions</application> oder dieses Handbuch einzureichen, folgen Sie bitte den Anweisungen auf der <ulink url="help:mate-user-guide#feedback" type="help">MATE-Seite für Rückmeldungen</ulink>. Auf Wunsch können Sie auch direkt Fehlermeldungen oder Verbesserungswünsche auf der <ulink url="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" type="http">Bugzilla-Webseite</ulink> melden.</para>
   </sect1>
 
   <appendix id="appendix-gnu-fdl">

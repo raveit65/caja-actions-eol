@@ -28,7 +28,7 @@
 
 AC_PREREQ([2.53])
 
-AC_INIT([Caja-Actions],[1.6.3],[maintainer@caja-actions.org],,[http://www.caja-actions.org])
+AC_INIT([Caja-Actions],[1.6.3],[chat-to-me@raveit.de],,[https://github.com/NiceandGently/caja-actions])
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CANONICAL_TARGET
@@ -112,7 +112,7 @@ NA_CHECK_FOR_DEPRECATED
 
 # note that requiring through pkg-config the version number of the
 # caja-extension library actually returns the version number of
-# caja itself (e.g. 2.24.2) instead of the library version info
+# caja itself (e.g. 1.6.0) instead of the library version info
 # (1.1.0) ; for the usual final user, this is very analog to requiring
 # a whole mate version
 AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
@@ -152,10 +152,9 @@ if test "${enable_gtk_doc}" = "yes" -a "${enable_deprecated}" = "no"; then
 	AC_MSG_WARN([API documentation will be incomplete as deprecated symbols are disabled])
 fi
 
-# check for mate-doc-utils
-# - starting with C-A 1.5.0, mate-doc-utils is no more required when one want
-#   compile the tarball distribution (i.e. without regenerating users's manuals)
-MATE_DOC_INIT(,,[gdu_cv_have_gdu=no])
+# User documentation
+YELP_HELP_INIT
+
 
 # defines log domains when in maintainer mode
 NA_LOG_DOMAINS
@@ -177,7 +176,6 @@ AC_DEFINE([CAJA_ACTIONS_DEBUG],["CAJA_ACTIONS_DEBUG"],[Debug environment variabl
 # Check for menu update function
 AC_CHECK_LIB([caja-extension],[caja_menu_item_new])
 AC_CHECK_FUNCS([caja_menu_provider_emit_items_updated_signal])
-# starting with 2.91.90, Caja no more allows extensions to add toolbar items
 AC_CHECK_FUNCS([caja_menu_provider_get_toolbar_items])
 
 # display and keep configuration informations

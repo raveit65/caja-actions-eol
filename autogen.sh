@@ -14,7 +14,12 @@ REQUIRED_INTLTOOL_VERSION=0.35.5
 }
 
 which mate-autogen || {
-    echo "You need to install mate-common from the MATE Git"
+    echo "You need to install mate-common from the MATE desktop"
+    exit 1
+}
+
+which yelp-build || {
+    echo "You need to install yelp-tools" 
     exit 1
 }
 

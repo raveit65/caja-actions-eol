@@ -253,7 +253,7 @@ msgid "Pierre Wieser <email>pwieser@trychlos.org</email>"
 msgstr ""
 
 #: C/caja-actions-config-tool.xml:7(para)
-msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any later version published by the Free Software Foundation with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy of the GFDL at this <ulink type=\"help\" url=\"ghelp:fdl\">link</ulink> or in the file COPYING-DOCS distributed with this manual."
+msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any later version published by the Free Software Foundation with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy of the GFDL at this <ulink type=\"help\" url=\"help:fdl\">link</ulink> or in the file COPYING-DOCS distributed with this manual."
 msgstr ""
 
 #: C/caja-actions-config-tool.xml:17(para)
@@ -2627,7 +2627,7 @@ msgid "To find more information about <productname>Caja-Actions</productname>, p
 msgstr ""
 
 #: C/caja-actions-config-tool.xml:214(para)
-msgid "To report a bug or make a suggestion regarding the <productname>Caja-Actions</productname>, the <application>Caja-Actions Configuration Tool</application> or this manual, follow the directions in the <ulink url=\"ghelp:user-guide#feedback\" type=\"help\">MATE Feedback Page</ulink>, or you may prefer, at your convenience, directly open a bug or a request for enhancement to <ulink url=\"https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions\" type=\"http\">Bugzilla website</ulink>."
+msgid "To report a bug or make a suggestion regarding the <productname>Caja-Actions</productname>, the <application>Caja-Actions Configuration Tool</application> or this manual, follow the directions in the <ulink url=\"help:mate-user-guide#feedback\" type=\"help\">MATE Feedback Page</ulink>, or you may prefer, at your convenience, directly open a bug or a request for enhancement to <ulink url=\"https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions\" type=\"http\">Bugzilla website</ulink>."
 msgstr ""
 
 #: C/caja-actions-config-tool.xml:2(title)

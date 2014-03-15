@@ -603,7 +603,7 @@ set_uri_element (NAMateVFSURI *vfs,
 	        || strcmp (vfs->scheme, "https") == 0
 		|| strcmp (vfs->scheme, "dav") == 0
 		|| strcmp (vfs->scheme, "davs") == 0
-	        || strcmp (vfs->scheme, "ghelp") == 0
+	        || strcmp (vfs->scheme, "help") == 0
 	        || strcmp (vfs->scheme, "mate-help") == 0
 	        || strcmp (vfs->scheme, "help") == 0
 		)) {
