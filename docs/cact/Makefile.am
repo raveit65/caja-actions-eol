@@ -25,27 +25,10 @@
 #   Pierre Wieser <pwieser@trychlos.org>
 #   ... and many others (see AUTHORS)
 #
-# from Migrating your documentation to mate-doc-utils
-# http://live.gnome.org/GnomeDocUtilsMigrationHowTo
-#
-# The mate-doc-utils packages produces the Caja-Actions Configuration
-# Tool (CACT) Users's Manual as DocBook XML documents, suitable for Yelp,
-# the Mate help system.
-#
 # --enable-html-manuals (resp. --enable-pdf-manuals) are configure options
 # which produce HTML (resp. PDF) formats. These options are always enabled
 # when making distcheck, so that all output formats for all known locales
 # are always included in the distributed tarball.
-#
-# At install time, mate-doc-utils installs these help files
-# in <datadir>/mate/help/caja-actions-config-tool/<lang>.
-# Missing tranlated images are replaced with symlinks to
-# ../../C/figures/<image.png>.
-#
-# Do not confuse mate-doc-utils which targets the help documentation
-# of the Mate (i.e. gui) applications, and that we are using here to
-# generate html and pdf CACT user's manuals, with gtk-doc which rather
-# targets the developer documentation (see docs/reference).
 #
 # Do not use the $(NULL) syntax here as this may prevent Damned-Lies
 # to correctly generate POT files (cf. mail of Claude Paroz 2010-08-29
@@ -55,7 +38,7 @@
 
 HELP_ID = caja-actions-config-tool
 
-HELP_FILES = index.docbook
+HELP_FILES = index.docbook legalnotice.xml
 
 HELP_MEDIA = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/figures/*.png))
 
@@ -87,49 +70,11 @@ dist-manuals-hook: dist-html-manuals-hook dist-pdf-manuals-hook
 
 # Build HTML manuals as $(builddir)/<lang>/<module>.html
 #
-# We have two alternative for generating HTML manual:
-# - mate-doc-tool (from mate-doc-utils package)
-# - db2html (from docbook-utils package)
-# The actual tool to be used may be specified as an argument of
-# --enable-html-manuals configure option. It defaults to mate-doc-tool.
-#
-# mate-doc-tool <format> -o <dir> -d0 caja-actions-config-tool.xml
-# - format: output format (html)
-# - dir: output directory
-# -d0: nochunks
+# For generating generating HTML manual, we use
+# db2html (from docbook-utils package)
 #
 # The produced output is very close of what Yelp gives, with in particular
 # a summary in each chapter while db2html does not produce it.
-#
-# As of v 0.20.1:
-# - does not produce the legal and abstract sections in top of the document
-# - does not honor external links: they are converted to simple links
-#   which target the same frame window.
-# - embeds references to 'admon-xxx' images (which are the equivalent
-#   of db2html's 'stylesheet-images' ones), but does not provide them
-#   (see https://bugzilla.gnome.org/show_bug.cgi?id=636175)
-#   and so we 'manually' copy them as a "admon/" subdirectory
-#   the same way db2html does
-# - does not honor the base directory of the source document, only
-#   searching for extern entities in the current working directory
-#   (see https://bugzilla.gnome.org/show_bug.cgi?id=664784)
-#
-# mate-doc-tool is so our preferred tool for its proximity with Yelp
-# and the summary in top of the chapters.
-#
-# db2html --nochunks caja-actions-config-tool.xml
-# Generate the html document(s).
-#
-# As of 0.6.14.29:
-# - does produce the legal and abstract sections in top of the document
-# - creates a stylesheet-images/ subdirectory
-# - does not honor external links: they are converted to simple links
-#   which target the same frame window
-# - may create docbook2html-dir(.junk) subdirectories when it is run
-#   without argument
-#   (see https://bugzilla.redhat.com/show_bug.cgi?id=756930)
-# - begins by emptying the target directory, even if it also contains
-#   the source file
 #
 # When building HTML and PDF formats from XML sources, note that the
 # .xml documents default to be read from <srcdir> for the C version,
@@ -157,31 +102,7 @@ $(MANUALS_HTML): %.html: %.xml
 	if test "$(abs_srcdir)" = "$(abs_builddir)"; then bis="yes"; else bis="no"; fi; \
 	lc=$${ftarget%/*}; \
 	if test "x$(WITH_DB2HTML)" = "xyes"; then $(call exec_db2html,$$ftarget,$$lc,$$bis); fi; \
-	if test "x$(WITH_GDT)" = "xyes"; then $(call exec_g_d_t,$$ftarget,$$lc,$$bis); fi; \
 	if test "$(opt_verbose)" = ""; then echo "  HTML   $$ftarget done"; fi
-
-# execute mate-doc-tool
-# 1. make target
-# 2. locale
-# 3. "yes" if build in source
-exec_g_d_t = \
-	$(call install_xml,$(2),$(3)); \
-	fxml=$(HELP_ID).xml; \
-	(cd $(2); \
-	 cmd="mate-doc-tool html -o . -d0 $$fxml"; \
-	 if test "$(opt_verbose)" != ""; then echo "$$cmd"; fi; \
-	 eval $$cmd >/dev/null; \
-	 fhtml=$(HELP_ID).html; \
-	 if test -f $$fhtml; then \
-		sed -i -e 's?url("admon?url("admon/admon?' $$fhtml; \
-		admon_dir=/usr/share/mate-doc-utils/icons/hicolor/48x48/status; \
-		if test -d $$admon_dir; then \
-			$(MKDIR_P) admon; \
-			cmd="cp $(opt_verbose) $$admon_dir/*.png admon/"; eval $$cmd; \
-		fi; \
-	 fi; \
-	); \
-	$(call remove_xml,$(2),$(3))
 
 # execute db2html
 # 1. make target
@@ -276,7 +197,7 @@ install_html_figs = \
 	if test "$(opt_verbose)" = ""; then echo "    $(2)/cact/figures"; fi; \
 	figdir="$(3)/figures"; \
 	if ! test -d "$$figdir"; then $(MKDIR_P) "$$figdir"; fi; \
-	for fig in $(patsubst C/%,%,$(_DOC_C_FIGURES)); do \
+	for fig in $(patsubst C/%,%,$(_HELP_C_MEDIA)); do \
 		figsrc=$(srcdir)/$(2)/$$fig; \
 		if test -f $${figsrc} -a ! -h $${figsrc}; then \
 			cmd="$(INSTALL_DATA) $${figsrc} $${figdir}/"; \
@@ -302,7 +223,7 @@ uninstall-html-manuals:
 		find $$_instdir -type d | sort -r | xargs rmdir $(opt_verbose); \
 	fi
 
-# locale figures (_DOC_LC_FIGURES) are distributed by mate-doc-utils
+# locale figures (_HELP_LC_FILES) are distributed by mate-doc-utils
 # when they exist
 # - distribute admon/ or stylesheet-images/ icons
 # - distribute *.html manuals
@@ -369,7 +290,7 @@ $(MANUALS_PDF): %.pdf: %.xml
 	if test "$(abs_srcdir)" = "$(abs_builddir)"; then bis="yes"; else bis="no"; fi; \
 	lc=$${ftarget%/*}; \
 	$(call install_xml,$$lc,$$bis); \
-	list='$(patsubst C/%,%,$(_DOC_C_FIGURES))'; \
+	list='$(patsubst C/%,%,$(_HELP_C_MEDIA))'; \
 	(cd $$lc; \
 	 $(MKDIR_P) figures; \
 	 for fig in $$list; do \
@@ -465,12 +386,6 @@ maintainer-clean-html:
 	find $(builddir) -type d -name 'stylesheet-images' | xargs rm -fr
 
 maintainer-clean-pdf:
-
-# we have to override mate-doc-utils.make:clean-doc-dir recipe
-# as it tries to remove directories which are not empty as we have
-# not yet deleted the files we putted on
-clean-doc-dir:
-	@:
 
 .PHONY: \
 	all-manuals install-manuals uninstall-manuals dist-manuals-hook \

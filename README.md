@@ -1,4 +1,4 @@
-18.08.2013 update to 1.6.3
+2014-03-14 update to 1.6.3
 
 changelog:
 
@@ -6,7 +6,7 @@ changelog:
 
 - for details see git commits
 
-18.08.2013 update to 1.6.2
+2013-08-18 update to 1.6.2
 
 changelog:
 
@@ -36,7 +36,7 @@ NOCONFIGURE=1 ./autogen.sh
 
     --disable-scrollkeeper \
 
-    --enable-html-manuals=gdt
+    --enable-html-manuals
 
 make
 
@@ -57,7 +57,7 @@ NOCONFIGURE=1 ./autogen.sh
 
     --disable-scrollkeeper \
 
-    --enable-html-manuals=gdt \
+    --enable-html-manuals \
 
     --with-default-io-provider=na-desktop
 

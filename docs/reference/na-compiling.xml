@@ -168,7 +168,7 @@
           <arg>--with-default-io-provider=na-mateconf|na-desktop</arg>
         </group>
         <group>
-          <arg>--enable-html-manuals[=gdt|db2html]</arg>
+          <arg>--enable-html-manuals[=db2html]</arg>
         </group>
         <group>
           <arg>--enable-pdf-manuals[=dblatex]</arg>
@@ -229,7 +229,7 @@
     </formalpara>
 
     <formalpara>
-      <title><systemitem>--enable-html-manuals[=gdt|db2html]</systemitem></title>
+      <title><systemitem>--enable-html-manuals[=db2html]</systemitem></title>
       <para>
         This option lets the packager regenerate user's manuals
         from the DocBook sources as HTML documents.

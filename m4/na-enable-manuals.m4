@@ -27,13 +27,8 @@
 
 # serial 3 add 'msg_' prefixed messages
 
-dnl --enable-html-manuals[=gdt|db2html]
+dnl --enable-html-manuals[=db2html]
 dnl   generates HTML manuals for all locales
-dnl   if no option is given, first try mate-doc-tool (from mate-doc-utils)
-dnl   then fallback to db2html (from docbook-utils).
-dnl   else one may specify
-dnl   --enable-html-manuals=gdt
-dnl   or
 dnl   --enable-html-manuals=db2html
 dnl   in this case, fail if the specified tool is not found
 dnl
@@ -56,8 +51,8 @@ AC_DEFUN([_AC_ARG_NA_ENABLE_HTML_MANUALS],[
 	AC_ARG_ENABLE(
 		[html-manuals],
 		AC_HELP_STRING(
-			[--enable-html-manuals@<:@=gdt|db2html@:>@],
-			[build HTML user's manuals @<:@gdt@:>@]),
+			[--enable-html-manuals@<:@=db2html@:>@],
+			[build HTML user's manuals @<:@db2html@:>@]),
 			[enable_html_manuals=$enableval],
 			[enable_html_manuals="no"])
 ])
@@ -70,32 +65,18 @@ AC_DEFUN([_CHECK_FOR_HTML_MANUALS],[
 	else
 		AC_MSG_RESULT([yes])
 		if test "x${enable_html_manuals}" = "xyes"; then
-			AC_CHECK_PROG([with_gdt],[mate-doc-tool],[yes],[no])
-			if test "x${with_gdt}" = "xno"; then
-				AC_CHECK_PROG([with_db2html],[db2html],[yes],[no])
-			fi
-		elif test "x${enable_html_manuals}" = "xgdt"; then
-			AC_CHECK_PROG([with_gdt],[mate-doc-tool],[yes],[no])
-			with_db2html="no"
-		elif test "x${enable_html_manuals}" = "xdb2html"; then
 			AC_CHECK_PROG([with_db2html],[db2html],[yes],[no])
-			with_gdt="no"
 		else
-			AC_MSG_ERROR([${enable_html_manuals} is not a known tool, must be 'gdt' or 'db2html'])
+			AC_MSG_ERROR([${enable_html_manuals} is not a known tool, must be 'db2html'])
 		fi
-		if test "x${with_gdt}" = "xno" -a "x${with_db2html}" = "xno"; then
-			AC_MSG_ERROR([neither mate-doc-tool not db2html have been found, unable to generate HTML manuals])
+		if test "x${with_db2html}" = "xno"; then
+			AC_MSG_ERROR([db2html have not been found, unable to generate HTML manuals])
 		fi
 		msg_html_manuals="enabled with"
-		if test "x${with_gdt}" = "xno"; then
-			msg_html_manuals="${msg_html_manuals} db2html"
-		else
-			msg_html_manuals="${msg_html_manuals} mate-doc-tool"
-		fi
+		msg_html_manuals="${msg_html_manuals} db2html"
 	fi
 
 	AC_SUBST([WITH_DB2HTML],[${with_db2html}])
-	AC_SUBST([WITH_GDT],[${with_gdt}])
 	AM_CONDITIONAL([ENABLE_HTML_MANUALS], [test "x${enable_html_manuals}" != "xno"])
 ])
 
