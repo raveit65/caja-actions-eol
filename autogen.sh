@@ -13,8 +13,6 @@ REQUIRED_INTLTOOL_VERSION=0.35.5
     exit 1
 }
 
-gtkdocize || exit 1
-
 which mate-autogen || {
     echo "You need to install mate-common from the MATE Git"
     exit 1
@@ -25,11 +23,4 @@ USE_MATE2_MACROS=1
 USE_COMMON_DOC_BUILD=yes
 
 . mate-autogen
-
-# pwi 2012-10-12
-# starting with NA 3.2.3, we let the MATE-DOC-PREPARE do its stuff, but
-# get rid of the mate-doc-utils.make standard file, as we are using our
-# own hacked version
-# (see full rationale in docs/cact/mate-doc-utils-na.make)
-rm -f mate-doc-utils.make
 

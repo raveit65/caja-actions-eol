@@ -51,120 +51,36 @@
 # to correctly generate POT files (cf. mail of Claude Paroz 2010-08-29
 # http://mail.gnome.org/archives/mate-i18n/2010-August/msg00229.html).
 
-include $(srcdir)/mate-doc-utils-ca.make
+include $(top_srcdir)/mate-doc-utils.make
 
 DOC_MODULE = caja-actions-config-tool
 
-#DOC_ENTITIES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/*.xml | $(GREP) -v $(DOC_MODULE)))
-DOC_ENTITIES = \
-	appendix-gnu-fdl-1.3.xml \
-	articleinfo.xml \
-	legalnotice.xml \
-	cact-bugs.xml \
-	cact-conditions.xml \
-	cact-edit.xml \
-	cact-execution.xml \
-	cact-export.xml \
-	cact-import.xml \
-	cact-menus.xml \
-	cact-misc.xml \
-	cact-prefs.xml \
-	cact-profiles.xml \
-	cact-properties.xml \
-	cact-save.xml \
-	cact-sorting.xml \
-	cact-starting.xml \
-	cact-where.xml \
-	caja-actions-config-tool.xml
+DOC_ENTITIES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/*.xml | $(GREP) -v $(DOC_MODULE)))
+#DOC_ENTITIES = "appendix-gnu-fdl-1.3.xml articleinfo.xml ... cact-where.xml"
 
-#DOC_INCLUDES =
+DOC_INCLUDES =
 
-#DOC_FIGURES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/figures/*.png))
-DOC_FIGURES = \
-	add.png \
-	cact-action-tab.png \
-	cact-basenames-tab.png \
-	cact-capabilities-tab.png \
-	cact-command-tab.png \
-	cact-desktop-environment-frame.png \
-	cact-environment-tab.png \
-	cact-exec-mode-frame.png \
-	cact-execute-as-frame.png \
-	cact-execution-environment-frame.png \
-	cact-execution-tab.png \
-	cact-export-done.png \
-	cact-export-format.png \
-	cact-export-home.png \
-	cact-export-items.png \
-	cact-export-summary.png \
-	cact-export-target.png \
-	cact-folders-tab.png \
-	cact-import-done.png \
-	cact-import-files.png \
-	cact-import-home.png \
-	cact-import-mode.png \
-	cact-import-resultat.png \
-	cact-import-summary.png \
-	cact-legend.png \
-	cact-main-empty.png \
-	cact-mimetypes-tab.png \
-	cact-new-capability.png \
-	cact-new-scheme.png \
-	cact-preferences-desktop.png \
-	cact-preferences-execution.png \
-	cact-preferences-export.png \
-	cact-preferences-import.png \
-	cact-preferences-io-providers.png \
-	cact-preferences-runtime.png \
-	cact-preferences-schemes.png \
-	cact-preferences-ui.png \
-	cact-properties-tab.png \
-	cact-schemes-tab.png \
-	cact-selection-count-frame.png \
-	cact-startup-mode-frame.png \
-	cact-target-location.png \
-	cact-working-directory-frame.png \
-	read-only.png \
-	remove.png \
-	sort-asc.png \
-	sort-buttons-frame.png \
-	sort-desc.png \
-	sort-manual.png \
-	start-context-menu-caja.png \
-	start-matedialog-result.png \
-	stock-icon-about.png
+DOC_FIGURES = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/figures/*.png))
+#DOC_FIGURES = "figures/add.png figures/cact-action-tab.png ... figures/stock-icon-about.png"
 
-#DOC_LINGUAS = $(patsubst $(srcdir)/%,%,$(shell find $(srcdir) -mindepth 1 -maxdepth 1 -type d | $(GREP) -v $(srcdir)/C))
-DOC_LINGUAS = \
-	de \
-	el \
-	es \
-	fr \
-	sl
+DOC_LINGUAS = de el es fr sl
 
-if ENABLE_MANUALS
 # _DOC_LC_DOCS is the list of the translated (not C) DOC_MODULE.xml files
 # we so are sure that they exist and are up to date
 # (path is .po ->[msgfmt]-> .mo ->[xml2po]-> .xml)
 MANUALS_XML = C/$(DOC_MODULE).xml $(_DOC_LC_DOCS)
-endif
 
-EXTRA_DIST = \
-	mate-doc-utils-ca.make				\
-	$(NULL)
-
-MAINTAINERCLEANFILES = \
-	mate-doc-utils-ca.make				\
-	$(NULL)
+# just an empty value to be able to add something for html and pdf manuals
+MAINTAINERCLEANFILES =
 
 pkgdocdir = $(datarootdir)/doc/@PACKAGE@-@VERSION@
 
 # set to '-v' to be verbose (much verbose!)
 opt_verbose =
 
-all-local: all-manuals
+all-local: all-manuals all-html-manuals all-pdf-manuals
 
-all-manuals: install-C-xml all-html-manuals all-pdf-manuals
+all-manuals: all-html-manuals all-pdf-manuals
 
 install-data-local: install-manuals
 
@@ -178,28 +94,9 @@ uninstall-manuals: uninstall-html-manuals uninstall-pdf-manuals
 # it distributes both C (original) and generated (translated) .xml files,
 # but not generated .omf files which so will have to be re-generated from
 # the distributed .omf.in file
-dist-hook: doc-dist-hook dist-manuals-hook dist-omf-hook
+dist-hook: doc-dist-hook dist-manuals-hook
 
 dist-manuals-hook: dist-html-manuals-hook dist-pdf-manuals-hook
-
-# when building the manuals, C source files are in srcdir, while all
-# other xml files are in builddir - installing C xml sources in builddir
-# so that all rules apply
-install-C-xml:
-if ENABLE_MANUALS
-	@if test ! -f C/$(DOC_MODULE).xml; then \
-		echo "Installing C xml source files in $(abs_builddir)"; \
-		$(MKDIR_P) C; cp -v $(srcdir)/C/*.xml C/; \
-	fi
-endif
-
-remove-C-xml:
-if ENABLE_MANUALS
-	@echo "Removing C xml source files from $(abs_builddir)"
-	@if test "$(abs_srcdir)" != "$(abs_builddir)"; then \
-		rm -vf C/*.xml; \
-	fi
-endif
 
 # Build HTML manuals as $(builddir)/<lang>/<module>.html
 #
@@ -251,33 +148,39 @@ endif
 # .xml documents default to be read from <srcdir> for the C version,
 # and from <builddir> for translated ones.
 
-if ENABLE_HTML_MANUALS
 MANUALS_HTML = $(MANUALS_XML:%.xml=%.html)
 
 MAINTAINERCLEANFILES += $(MANUALS_HTML)
 
+if ENABLE_HTML_MANUALS
 all-html-manuals: $(MANUALS_HTML)
 else
 all-html-manuals:
 endif
 
 # The rule here is: only rebuild html/ files if corresponding xml has changed
-# .xml themselves are distributed, so are not modified when building from a
-# distributed package.
+# .xml themselves are distributed, so are not modified when building a
+# distribution.
+#
+# 'bis' (Build In Source) variable is set to 'yes' if builddir = srcdir.
 
 $(MANUALS_HTML): %.html: %.xml
 	@ftarget=$@; \
 	if test "$(opt_verbose)" = ""; then echo "  HTML   $$ftarget"; fi; \
+	if test "$(abs_srcdir)" = "$(abs_builddir)"; then bis="yes"; else bis="no"; fi; \
 	lc=$${ftarget%/*}; \
-	if test "x$(WITH_DB2HTML)" = "xyes"; then $(call exec_db2html,$$lc); fi; \
-	if test "x$(WITH_GDT)" = "xyes"; then $(call exec_g_d_t,$$lc); fi; \
+	if test "x$(WITH_DB2HTML)" = "xyes"; then $(call exec_db2html,$$ftarget,$$lc,$$bis); fi; \
+	if test "x$(WITH_GDT)" = "xyes"; then $(call exec_g_d_t,$$ftarget,$$lc,$$bis); fi; \
 	if test "$(opt_verbose)" = ""; then echo "  HTML   $$ftarget done"; fi
 
 # execute mate-doc-tool
-# 1. locale
+# 1. make target
+# 2. locale
+# 3. "yes" if build in source
 exec_g_d_t = \
+	$(call install_xml,$(2),$(3)); \
 	fxml=$(DOC_MODULE).xml; \
-	(cd $(1); \
+	(cd $(2); \
 	 cmd="mate-doc-tool html -o . -d0 $$fxml"; \
 	 if test "$(opt_verbose)" != ""; then echo "$$cmd"; fi; \
 	 eval $$cmd >/dev/null; \
@@ -290,14 +193,22 @@ exec_g_d_t = \
 			cmd="cp $(opt_verbose) $$admon_dir/*.png admon/"; eval $$cmd; \
 		fi; \
 	 fi; \
-	)
+	); \
+	$(call remove_xml,$(2),$(3))
 
 # execute db2html
-# 1. locale
+# 1. make target
+# 2. locale
+# 3. "yes" if build in source
 exec_db2html = \
-	cddir="$(1)"; \
+	cddir="$(2)"; \
 	output="."; \
 	fxml=$(DOC_MODULE).xml; \
+	if test "$(2)" = "C" -a "$(3)" = "no"; then \
+		cddir="."; \
+		output="C"; \
+		fxml=$(srcdir)/C/$$fxml; \
+	fi; \
 	cmd="(cd $$cddir && db2html --output $$output --nochunks $$fxml)"; \
 	if test "$(opt_verbose)" != ""; then echo "$$cmd"; fi; \
 	eval $$cmd >/dev/null; \
@@ -306,14 +217,14 @@ exec_db2html = \
 # install source .xml docs in builddir to be able to build C locale
 # 1. locale
 # 2. "yes" if build in source
-#install_xml = \
-#	if test "$(1)" = "C" -a "$(2)" = "no"; then $(MKDIR_P) C; cp $(srcdir)/C/*.xml C/; fi
+install_xml = \
+	if test "$(1)" = "C" -a "$(2)" = "no"; then $(MKDIR_P) C; cp $(srcdir)/C/*.xml C/; fi
 
 # remove .xml docs from builddir after having built C locale
 # 1. locale
 # 2. "yes" if build in source
-#remove_xml = \
-#	if test "$(1)" = "C" -a "$(2)" = "no"; then rm -f C/*.xml; fi
+remove_xml = \
+	if test "$(1)" = "C" -a "$(2)" = "no"; then rm -f C/*.xml; fi
 
 # Install HTML manuals in <htmldir>/<lang>/cact/ subdirectory;
 # where <htmldir> defaults to <pkgdocdir>/html
@@ -330,7 +241,7 @@ install-html-manuals:
 		_instd="$(DESTDIR)$(htmldir)"; \
 	fi; \
 	echo "  Installing in $$_instd ..."; \
-	for lc in C $(DOC_LINGUAS); do \
+	for lc in C $(_DOC_REAL_LINGUAS); do \
 		_instdir="$$_instd/$$lc/cact"; \
 		if test -f "$(builddir)/$$lc/$(DOC_MODULE).html"; then \
 			d="$(builddir)"; \
@@ -410,7 +321,7 @@ uninstall-html-manuals:
 # - distribute *.html manuals
 
 dist-html-manuals-hook:
-	@for lc in C $(DOC_LINGUAS); do \
+	@for lc in C $(_DOC_REAL_LINGUAS); do \
 		if test -f "$(builddir)/$$lc/$(DOC_MODULE).html"; then d=$(builddir); \
 		elif test -f "$(srcdir)/$$lc/$(DOC_MODULE).html"; then d=$(srcdir); fi; \
 		if test -f "$$d/$$lc/$(DOC_MODULE).html"; then \
@@ -451,6 +362,10 @@ else
 all-pdf-manuals:
 endif
 
+# _DOC_LC_DOCS is the list of the translated (not C) DOC_MODULE.xml files
+# we so are sure that they exist and are up to date
+# (path is .po ->[msgfmt]-> .mo ->[xml2po]-> .xml)
+#
 # workaround against l10n bug #664768
 # pdflatex cannot generate some localized pdf
 #
@@ -458,11 +373,15 @@ endif
 # - always create the output pdf in the same directory that the
 #   source xml
 #   (but we need to cd $$lc to mkdir figures)
+#
+# 'bis' (Build In Source) variable is set to 'yes' if builddir = srcdir.
 
 $(MANUALS_PDF): %.pdf: %.xml
 	@ftarget=$@; \
 	if test "$(opt_verbose)" = ""; then echo "  PDF    $$ftarget"; fi; \
+	if test "$(abs_srcdir)" = "$(abs_builddir)"; then bis="yes"; else bis="no"; fi; \
 	lc=$${ftarget%/*}; \
+	$(call install_xml,$$lc,$$bis); \
 	list='$(patsubst C/%,%,$(_DOC_C_FIGURES))'; \
 	(cd $$lc; \
 	 $(MKDIR_P) figures; \
@@ -482,6 +401,7 @@ $(MANUALS_PDF): %.pdf: %.xml
 	 find figures -type l | xargs rm -f; \
 	 rmdir figures 2>/dev/null || :; \
 	); \
+	$(call remove_xml,$$lc,$$bis); \
 	if test "$(opt_verbose)" = ""; then echo "  PDF    $$ftarget done"; fi
 
 # if --pdfdir has not been specified, then we default to PKGDOCDIR/pdf
@@ -496,7 +416,7 @@ install-pdf-manuals:
 		_instdir=$(DESTDIR)$(pdfdir); \
 	fi; \
 	echo "  Installing in $$_instdir ... "; \
-	for lc in C $(DOC_LINGUAS); do \
+	for lc in C $(_DOC_REAL_LINGUAS); do \
 		if test -f $(srcdir)/$$lc/$(DOC_MODULE).pdf; then d=$(srcdir); fi; \
 		if test -f $(builddir)/$$lc/$(DOC_MODULE).pdf; then d=$(builddir); fi; \
 		if test -f $$d/$$lc/$(DOC_MODULE).pdf; then \
@@ -530,20 +450,6 @@ dist-pdf-manuals-hook:
 		fi; \
 	done
 
-# Distributing .omf files is required if we want the user be able to
-# get rid of mate-doc-utils
-dist-omf-hook:
-	@for lc in C $(DOC_LINGUAS); do \
-		omf="$(DOC_MODULE)-$$lc.omf"; \
-		if test -f $(builddir)/$$omf; then d=$(builddir); \
-		elif test -f $(srcdir)/$$lc/$$omf; then d=$(srcdir)/$$lc; fi; \
-		if test -f "$$d/$$omf"; then \
-			if test "$(opt_verbose)" = ""; then echo "  Distributing $$omf"; fi; \
-			cmd="cp $$d/$$omf $(distdir)/$$lc/"; eval $$cmd; \
-			if test "$(opt_verbose)" != ""; then echo $$cmd; fi; \
-		fi; \
-	done
-
 # According to GNU Make manual (§ 13 What Gets Cleaned):
 #
 # - mostlyclean deletes files we typically want to rebuild
@@ -553,7 +459,7 @@ dist-omf-hook:
 ##  None of these target should delete any distributed file
 ##
 # - maintainer-clean should delete other files
-clean-local: remove-C-xml
+clean-local:
 	rm -f *~
 	rm -f *.stamp
 
