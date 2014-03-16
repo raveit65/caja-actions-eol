@@ -5,5 +5,5 @@ _Name=Caja-Actions Configuration Tool
 _Comment=Configure items to be added to the Caja context menus
 Exec=caja-actions-config-tool
 Icon=caja-actions
-Categories=System;FileTools;FileManager;
+Categories=Settings;DesktopSettings;
 StartupNotify=true
