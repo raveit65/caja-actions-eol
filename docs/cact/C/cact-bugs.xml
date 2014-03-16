@@ -2,23 +2,13 @@
   <title>Known bugs</title>
   <para>
     Known bugs are available on
-    <ulink url="https://bugzilla.gnome.org/buglist.cgi?product=caja-actions&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED" type="http">Bugzilla summary page</ulink>.
+    <ulink url="https://github.com/NiceandGently/caja-actions/issues" type="http">Bugzilla summary page</ulink>.
   </para>
   <para>
     If you find some new bug in &prodname;, you are welcome to open it by pointing
     your favorite browser to
-    <ulink url="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions" type="http">Bugzilla web site</ulink>.
+    <ulink url="https://github.com/NiceandGently/caja-actions/issues" type="http">Bugzilla web site</ulink>.
   </para>
-  
-  <formalpara>
-    <title><ulink url="https://bugzilla.gnome.org/show_bug.cgi?id=616532" type="http">#616532</ulink> Directory selection</title>
-    <para>
-      When you're browsing the folder you want to export to in the &appname;'s
-      export assistant you can't select it as the directory to export to.
-      Instead you have to go to the directory a level up and select the directory
-      you want to export to there.
-    </para>
-  </formalpara>
 </sect2>
 
 <sect2 id="bugs-limits">
@@ -39,7 +29,7 @@
   <formalpara>
     <title>Suggested shortcut</title>
     <para>
-      As of version 3.0, suggested shortcut, as described in &desema; cannot be
+      As of version 3.0, suggested shortcut, as described in DES-EMA specification, cannot be
       configured in &appname;, and is not honored by &caja; plugin.
     </para>
   </formalpara>

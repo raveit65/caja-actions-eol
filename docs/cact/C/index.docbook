@@ -23,7 +23,6 @@
   <!ENTITY spraquo "&#160;&#187;">
 
   <!-- other entities -->
-  <!ENTITY desema "<ulink url='http://www.caja-actions.org/?q=node/377' type='http'>DES-EMA specification</ulink>">
   <!ENTITY asterisk       "&laquosp;<literal>*</literal>&spraquo;">
   <!ENTITY question_mark  "&laquosp;<literal>?</literal>&spraquo;">
   <!ENTITY must_match     "&laquosp;must match one of&spraquo;">
@@ -209,7 +208,7 @@
     </para>
     <para>
       To find more information about &prodname;, please visit the
-      <ulink url="http://www.caja-actions.org/" type="http"></ulink>
+      <ulink url="https://github.com/NiceandGently/caja-actions" type="http"></ulink>
       &prodname; website.
     </para>
     <para>
@@ -219,7 +218,7 @@
       or you may prefer, at your convenience, directly open a bug
       or a request for enhancement in
       <ulink
-       url="https://bugzilla.gnome.org/enter_bug.cgi?product=caja-actions"
+       url="https://github.com/NiceandGently/caja-actions/issues"
        type="http">Bugzilla website</ulink>.
     </para>
   </sect1>

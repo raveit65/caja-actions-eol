@@ -5,9 +5,15 @@
     <year>2010</year>
     <year>2011</year>
     <year>2012</year>
+    <year>2013</year>
+    <year>2014</year>
     <holder>Pierre Wieser</holder>
   </copyright>
-
+  <copyright>
+    <year>2013</year>
+    <year>2014</year>
+    <holder>Wolfgang Ulbrich</holder>
+  </copyright>
   <abstract role="description">
     <para>
       &prodname; is a &caja; extension whose principal function
@@ -27,6 +33,10 @@
   </releaseinfo>
 
   <publisher>
+    <publishername>GNOME Documentation Project</publishername>
+  </publisher>
+
+  <publisher>
     <publishername>MATE Documentation Project</publishername>
   </publisher>
 
@@ -35,6 +45,12 @@
       <firstname>Pierre</firstname>
       <surname>Wieser</surname>
       <email>pwieser@trychlos.org</email>
+    </author>
+
+    <author role="maintainer">
+      <firstname>Wolfgang</firstname>
+      <surname>Ulbrich</surname>
+      <email>chat-to-me@raveit.de</email>
     </author>
 
 <!-- This is appropriate place for other contributors: translators, maintainers, etc.
