@@ -248,12 +248,7 @@
         <!-- i18n: "Startup notify" is a UI label -->
         then check the <guilabel>Startup notify</guilabel> checkbox.
       </para>
-      <para>
-        See the
-        <ulink url="http://www.freedesktop.org/Standards/startup-notification-spec" type="http">
-        <citetitle>Startup Notification Protocol Specification</citetitle></ulink>
-        for more details.
-      </para>
+      <para>See the <ulink url="http://www.freedesktop.org/Standards/startup-notification-spec" type="http"><citetitle>Startup Notification Protocol Specification</citetitle></ulink>for more details.</para>
     </sect4>
 
     <sect4 id="usage-execution-how-class">
@@ -266,12 +261,7 @@
          <guilabel>Startup Window Manager class</guilabel>
         entry box.
       </para>
-      <para>
-        See the
-        <ulink url="http://www.freedesktop.org/Standards/startup-notification-spec" type="http">
-        <citetitle>Startup Notification Protocol Specification</citetitle></ulink>
-        for more details.
-      </para>
+      <para>See the <ulink url="http://www.freedesktop.org/Standards/startup-notification-spec" type="http"><citetitle>Startup Notification Protocol Specification</citetitle></ulink>for more details.</para>
     </sect4>
 
     <sect4 id="usage-execution-how-user">

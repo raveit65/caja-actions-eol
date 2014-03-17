@@ -1,15 +1,6 @@
 <sect2 id="usage-prefs">
   <title>Setting your own preferences</title>
-    <para>
-      Choose
-      <menuchoice>
-        <!-- i18n: "Edit" is a menu item -->
-        <guimenu>Edit</guimenu>
-        <!-- i18n: "Preferences" is a menu item -->
-        <guimenuitem>Preferences</guimenuitem>
-      </menuchoice>
-      to access to the configuration of your preferences.
-    </para>
+    <para>Choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice>to access to the configuration of your preferences.</para>
 
   <sect3 id="usage-prefs-runtime">
     <title>Runtime preferences</title>

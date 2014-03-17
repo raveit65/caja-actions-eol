@@ -552,18 +552,7 @@
             </tip>
           </listitem>
           <listitem>
-            <para>
-              Or click on
-              <!-- i18n: "Common" is a UI (button) label -->
-              <guibutton>Common</guibutton> to select a scheme among those
-              predefined in 
-              <menuchoice>
-                <!-- i18n: "Edit" is a menu item -->
-                <guimenu>Edit</guimenu>
-                <!-- i18n: "Preferences" is a menu item -->
-                <guimenuitem>Preferences</guimenuitem>
-              </menuchoice>.
-            </para>
+            <para>Or click on <!-- i18n: "Common" is a UI (button) label --><guibutton>Common</guibutton> to select a scheme among those predefined in <menuchoice><!-- i18n: "Edit" is a menu item --><guimenu>Edit</guimenu><!-- i18n: "Preferences" is a menu item --><guimenuitem>Preferences</guimenuitem></menuchoice>.</para>
             <figure id="cact-FIG-add-scheme">
               <title>Selecting a scheme among predefined defaults</title>
               <screenshot>
@@ -808,7 +797,6 @@
     </figure>
     <para>
       The selection count condition is defined in the
-      <!-- i18n: "Appears if selection contains" is a UI label -->
       <guilabel>Appears if selection contains</guilabel> frame.
     </para>
     <figure id="cact-FIG-frame-count">

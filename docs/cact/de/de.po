@@ -593,8 +593,8 @@ msgid ""
 "guimenuitem></menuchoice>."
 msgstr ""
 "Wählen Sie <menuchoice><guisubmenu>Einstellungen</guisubmenu>"
-"<guisubmenu>Darstellung</guisubmenu><guimenuitem>Caja-Aktionen</"
-"guimenuitem></menuchoice>."
+"<guisubmenu>Darstellung</guisubmenu><guimenuitem>Einstellungen für "
+"Caja-Aktionen</guimenuitem></menuchoice>."
 
 #: C/index.docbook:21(term)
 msgid "Command line"
@@ -4428,7 +4428,7 @@ msgid ""
 msgstr ""
 "Weitere Informationen über <productname>Caja-Actions</productname> "
 "finden Sie auf der <ulink url=\"https://github.com/NiceandGently/caja-actions\" type="
-"\"http\">Webseite von <productname>Caja-Actions</productname></ulink>."
+"\"http\"/>Webseite von <productname>Caja-Actions</productname></ulink>."
 
 #: C/index.docbook:215(para)
 msgid ""

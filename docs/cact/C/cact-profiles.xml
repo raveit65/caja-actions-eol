@@ -33,16 +33,7 @@
       try with your second profile.
     </para>
   </example>
-  <para>
-    To create a new profile, first select the action in the items list,
-    then choose
-    <menuchoice>
-      <!-- i18n: "File" is a menu item -->
-      <guisubmenu>File</guisubmenu>
-      <!-- i18n: "New profile" is a menu item -->
-      <guimenuitem>New profile</guimenuitem>
-    </menuchoice>.
-  </para>
+  <para>To create a new profile, first select the action in the items list, then choose <menuchoice><!-- i18n: "File" is a menu item --><guisubmenu>File</guisubmenu><!-- i18n: "New profile" is a menu item --><guimenuitem>New profile</guimenuitem></menuchoice>.</para>
   <para>
     A new profile is created in your action.
   </para>

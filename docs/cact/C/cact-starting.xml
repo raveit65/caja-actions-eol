@@ -7,14 +7,7 @@
         <varlistentry>
           <term><guimenu>System</guimenu> menu</term>
           <listitem>
-            <para>
-              Choose
-              <menuchoice>
-                <guisubmenu>Preferences</guisubmenu>
-                <guisubmenu>Look and Feel</guisubmenu>
-                <guimenuitem>Caja-Actions Configuration Tool</guimenuitem>
-              </menuchoice>.
-            </para>
+            <para>Choose <menuchoice><guisubmenu>Preferences</guisubmenu><guisubmenu>Look and Feel</guisubmenu><guimenuitem>Caja-Actions Configuration Tool</guimenuitem></menuchoice>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -230,14 +223,7 @@
         <varlistentry>
           <term>Toolbar.</term>
           <listitem>
-            <para>
-              Several toolbars may be displayed below the menubar,
-              depending of your choices in the
-              <menuchoice>
-                <guimenu>View</guimenu>
-                <guimenuitem>Toolbars</guimenuitem>
-              </menuchoice> submenu.
-            </para>
+            <para>Several toolbars may be displayed below the menubar, depending of your choices in the <menuchoice><guimenu>View</guimenu><guimenuitem>Toolbars</guimenuitem></menuchoice> submenu.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -450,19 +436,7 @@
       </para>
       <formalpara>
         <title>Creating the action</title>
-        <para>
-          To create a new action, choose
-          <menuchoice>
-            <shortcut>
-              <keycombo>
-                <keycap>Ctrl</keycap>
-                <keycap>N</keycap>
-              </keycombo>
-            </shortcut>
-            <guimenu>File</guimenu>
-            <guisubmenu>New action</guisubmenu>
-          </menuchoice>.
-        </para>
+        <para>To create a new action, choose <menuchoice><shortcut><keycombo><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></shortcut><guimenu>File</guimenu><guisubmenu>New action</guisubmenu></menuchoice>.</para>
       </formalpara>
       <para>
         A new action is inserted in the items list,
@@ -677,19 +651,7 @@
       </itemizedlist>
       <formalpara>
         <title>Saving</title>
-        <para>
-          To save all pending modifications, choose
-          <menuchoice>
-            <shortcut>
-              <keycombo>
-                <keycap>Ctrl</keycap>
-                <keycap>S</keycap>
-              </keycombo>
-            </shortcut>
-            <guimenu>File</guimenu>
-            <guisubmenu>Save</guisubmenu>
-          </menuchoice>.
-        </para>
+        <para>To save all pending modifications, choose <menuchoice><shortcut><keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></shortcut><guimenu>File</guimenu><guisubmenu>Save</guisubmenu></menuchoice>.</para>
       </formalpara>
       <para>
         &caja; automatically takes into account your new action,
