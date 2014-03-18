@@ -10,9 +10,6 @@
           <textobject>
             <phrase>Shows the three fields which let you configure the target of your action.</phrase>
           </textobject>
-          <caption>
-            <para>Target configuration</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>

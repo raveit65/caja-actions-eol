@@ -39,9 +39,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define basename-based conditions.</phrase>
           </textobject>
-          <caption>
-            <para>The basename-based conditions tab</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -183,9 +180,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define mimetype-based conditions.</phrase>
           </textobject>
-          <caption>
-            <para>The mimetype-based conditions tab</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -371,9 +365,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define folder-based conditions.</phrase>
           </textobject>
-          <caption>
-            <para>The folder-based conditions tab</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -496,9 +487,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define scheme-based conditions.</phrase>
           </textobject>
-          <caption>
-            <para>The scheme-based conditions tab</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -563,9 +551,6 @@
                   <textobject>
                     <phrase>Show the list of predefined schemes.</phrase>
                   </textobject>
-                  <caption>
-                    <para>Selecting a scheme among predefined defaults</para>
-                  </caption>
                 </mediaobject>
               </screenshot>
             </figure>
@@ -641,9 +626,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define capability-based conditions.</phrase>
           </textobject>
-          <caption>
-            <para>The capability-based conditions tab</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -708,9 +690,6 @@
                   <textobject>
                     <phrase>Shows the list of managed capabilities.</phrase>
                   </textobject>
-                  <caption>
-                    <para>The list of managed capabilities</para>
-                  </caption>
                 </mediaobject>
               </screenshot>
             </figure>
@@ -789,9 +768,6 @@
               selection, along with the runtime filters.
             </phrase>
           </textobject>
-          <caption>
-            <para>The environment-based conditions tab</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -811,9 +787,6 @@
               Focus on the <guilabel>Appears if selection contains</guilabel> frame.
             </phrase>
           </textobject>
-          <caption>
-            <para>Selection count condition frame</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -905,9 +878,6 @@
               Focus on the <guilabel>Desktop environment</guilabel> frame.
             </phrase>
           </textobject>
-          <caption>
-            <para>Desktop selection frame</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -976,9 +946,6 @@
               Focus on the <guilabel>Execution environment</guilabel> frame.
             </phrase>
           </textobject>
-          <caption>
-            <para>Execution environment frame</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>

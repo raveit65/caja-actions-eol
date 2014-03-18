@@ -63,9 +63,6 @@
                 properties tabs, and statusbar.
               </phrase>
             </textobject>
-            <caption>
-              <para>The empty &appname; main window</para>
-            </caption>
           </mediaobject>
         </screenshot>
       </figure>
@@ -458,9 +455,6 @@
                 Shows the default properties of a newly created action.
               </phrase>
             </textobject>
-            <caption>
-              <para>Default properties of a new action</para>
-            </caption>
           </mediaobject>
         </screenshot>
       </figure>
@@ -581,9 +575,6 @@
                 of the starting working directory.
               </phrase>
             </textobject>
-            <caption>
-              <para>Command page</para>
-            </caption>
           </mediaobject>
         </screenshot>
       </figure>
@@ -668,9 +659,6 @@
               <phrase>Shows the first action in the &caja; context menu.
               </phrase>
             </textobject>
-            <caption>
-              <para>Your first action in the &caja; context menu</para>
-            </caption>
           </mediaobject>
         </screenshot>
       </figure>
@@ -691,9 +679,6 @@
                 This is &matedialog; dialog box, displaying the URI of the selected item.
               </phrase>
             </textobject>
-            <caption>
-              <para>The result of the execution of your first action</para>
-            </caption>
           </mediaobject>
         </screenshot>
       </figure>

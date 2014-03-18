@@ -36,9 +36,6 @@
           <textobject>
             <phrase>Shows the list of available parameters.</phrase>
           </textobject>
-          <caption>
-            <para>The available parameters</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -93,9 +90,6 @@
           <textobject>
             <phrase>Focus on the working directory selection frame.</phrase>
           </textobject>
-          <caption>
-            <para>Working directory frame</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -136,9 +130,6 @@
           <textobject>
             <phrase>Shows how to configure the execution modes of a command.</phrase>
           </textobject>
-          <caption>
-            <para>Configuration of the execution modes</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -155,9 +146,6 @@
             <textobject>
               <phrase>Focus on the execution mode frame.</phrase>
             </textobject>
-            <caption>
-              <para>Configuration of the execution mode</para>
-            </caption>
           </mediaobject>
         </screenshot>
       </figure>
@@ -234,9 +222,6 @@
             <textobject>
               <phrase>Focus on the Startup mode frame.</phrase>
             </textobject>
-            <caption>
-              <para>Configuration of the startup modes</para>
-            </caption>
           </mediaobject>
         </screenshot>
       </figure>
@@ -276,9 +261,6 @@
             <textobject>
               <phrase>Focus on the <guilabel>Execute as</guilabel> frame.</phrase>
             </textobject>
-            <caption>
-              <para>Configuration of the owner of the run</para>
-            </caption>
           </mediaobject>
         </screenshot>
       </figure>

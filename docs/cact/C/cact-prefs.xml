@@ -14,9 +14,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define runtime preferences.</phrase>
           </textobject>
-          <caption>
-            <para>Runtime preferences</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -34,9 +31,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define runtime execution preferences.</phrase>
           </textobject>
-          <caption>
-            <para>Runtime execution preferences</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -51,9 +45,6 @@
           <textobject>
             <phrase>Let the user explicitely configure the current desktop.</phrase>
           </textobject>
-          <caption>
-            <para>Desktop selection</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -71,9 +62,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define UI preferences.</phrase>
           </textobject>
-          <caption>
-            <para>UI preferences</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -91,9 +79,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define import preferences.</phrase>
           </textobject>
-          <caption>
-            <para>Import preferences</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -113,9 +98,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define export preferences.</phrase>
           </textobject>
-          <caption>
-            <para>Export preferences</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -135,9 +117,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define schemes preferences.</phrase>
           </textobject>
-          <caption>
-            <para>Schemes preferences</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
@@ -157,9 +136,6 @@
           <textobject>
             <phrase>Shows the tab which lets you define I/O providers preferences.</phrase>
           </textobject>
-          <caption>
-            <para>I/O providers preferences</para>
-          </caption>
         </mediaobject>
       </screenshot>
     </figure>
