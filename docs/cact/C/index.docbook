@@ -207,11 +207,6 @@
       (<ulink url="http://www.dragonartz.net/" type="http">http://www.dragonartz.net</ulink>).
     </para>
     <para>
-      To find more information about &prodname;, please visit the
-      <ulink url="https://github.com/NiceandGently/caja-actions" type="http"></ulink>
-      &prodname; website.
-    </para>
-    <para>
       To report a bug or make a suggestion regarding &prodname;,
       the &appname; or this manual, follow the directions in the
       <ulink url="help:mate-user-guide#feedback" type="help">MATE Feedback Page</ulink>,

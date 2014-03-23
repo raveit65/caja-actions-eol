@@ -2625,13 +2625,6 @@ msgstr ""
 msgid "Artwork is due to courtesy of Ulisse Perusin (<email>uli.peru@gmail.com</email>) and DragonArtz (<ulink url=\"http://www.dragonartz.net/\" type=\"http\">http://www.dragonartz.net</ulink>)."
 msgstr ""
 
-#: C/index.docbook:209(para)
-msgid ""
-"To find more information about <productname>Caja-Actions</productname>, "
-"please visit the <ulink url=\"https://github.com/NiceandGently/caja-actions\" type=\"http"
-"\"/><productname>Caja-Actions</productname> website."
-msgstr ""
-
 #: C/index.docbook:214(para)
 msgid ""
 "To report a bug or make a suggestion regarding <productname>Caja-"

@@ -4469,16 +4469,6 @@ msgstr ""
 "(<email>uli.peru@gmail.com</email>) et DragonArtz (<ulink url=\"http://www."
 "dragonartz.net/\" type=\"http\">http://www.dragonartz.net</ulink>)."
 
-#: C/index.docbook:210(para)
-msgid ""
-"To find more information about <productname>Caja-Actions</productname>, "
-"please visit the <ulink url=\"https://github.com/NiceandGently/caja-actions\" type=\"http"
-"\"/><productname>Caja-Actions</productname> website."
-msgstr ""
-"Pour obtenir plus d'informations à propos de <productname>Caja-Actions</"
-"productname>, veuillez visiter le <ulink url=\"https://github.com/NiceandGently/"
-"caja-actions\" type=\"http\"/>site Web de <productname>Caja-Actions</productname>."
-
 #: C/index.docbook:215(para)
 msgid ""
 "To report a bug or make a suggestion regarding <productname>Caja-"
