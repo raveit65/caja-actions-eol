@@ -2276,7 +2276,7 @@ msgid ""
 "may define here « <literal>Count = (equal to) 2</literal> »."
 msgstr ""
 "Falls Ihre Aktion aus der Anzeige der Unterschiede zwischen zwei Dateien "
-"besteht, können Sie hier beispielsweise <literal>Count = (equal to) 2</"
+"besteht, können Sie hier beispielsweise <literal>Anzahl = (entspricht) 2</"
 "literal> angeben."
 
 #: C/index.docbook:783(para)
@@ -3292,18 +3292,25 @@ msgid ""
 "(<abbrev>e.g.</abbrev> « <literal>%c</literal> », the selection count "
 "itself), most have two declensions:"
 msgstr ""
+"Obwohl einige Parameter nicht abhängig von der Anzahl der Auswahl sind, "
+"(<abbrev>z.B.</abbrev> « <literal>%c</literal> », die auswählte Anzahl "
+"selber), haben die meisten zwei Deklinationen:"
 
 #: C/index.docbook:328(para)
 msgid ""
 "a « singular » one, <abbrev>e.g.</abbrev> « <literal>%b</literal> », the "
 "basename of the selected item;"
 msgstr ""
+"ein « Einzelnes », <abbrev>z.B.</abbrev> « <literal>%b</literal> », der "
+"Basisname des ausgewählten Elements;"
 
 #: C/index.docbook:335(para)
 msgid ""
 "a « plural » one, <abbrev>e.g.</abbrev> « <literal>%B</literal> », the space-"
 "separated list of the basenames of selected items."
 msgstr ""
+"ein « Mehrfaches », <abbrev>z.B.</abbrev> « <literal>%B</literal> », die durch"
+"Leerzeichen getrennte Liste der Basisnamen der ausgewählten Elemente."
 
 #: C/index.docbook:342(para)
 msgid ""
@@ -3324,6 +3331,10 @@ msgid ""
 "is only able to deal with one item at a time, and thus that it has to be ran "
 "one time for each selected item;"
 msgstr ""
+"wenn der erste relevante Parameter die Form Einzelnes hat wird "
+"<productname>Caja-Actions</productname> berücksichtigen, das der Befehl nur in "
+"der Lage ist ein Element zu einem Zeitpunkt zu behandeln, und dadurch einmal "
+"für jeden ausgewähltem Eintrag laufen muss;"
 
 #: C/index.docbook:360(para)
 msgid ""
@@ -3332,6 +3343,10 @@ msgid ""
 "command is able to deal with a list of items, and thus the command will be "
 "executed only once;"
 msgstr ""
+"Im Gegensatz dazu, wenn der erste relevante Parameter die Form eines Mehrfachen "
+"hat, wird <productname>Caja-Actions</productname> berüpcksichtigen, das der "
+"Befehl in der Lage ist mehrere Elemente zu behandeln und dadurch nur "
+"einmal ausgeführt wird;"
 
 #: C/index.docbook:368(para)
 msgid ""
@@ -3829,6 +3844,9 @@ msgid ""
 "runtime. The first profile whose conditions are met will be validated, and "
 "made selectable in the <productname>Caja</productname> context menu."
 msgstr ""
+"Profile einer Aktion sind sortiert, und werden in dieser Reihenfolge zur "
+"Laufzeit ausgeführt. Das erste Profil dessen Bedingungen erfüllt sind, wird "
+"validiert werden und ist im <productname>Caja</productname> Kontextmenü auswählbar."
 
 #: C/index.docbook:78(para)
 msgid ""
@@ -4041,6 +4059,9 @@ msgid ""
 "(or has currently only one profile). Inserting a new profile will not insert "
 "it before the action, but inside of the action."
 msgstr ""
+"Das ist gleichwohl der Fall, wenn eine Aktion ausgewählt ist, und nicht erweitert "
+"worden ist, oder derzeit nur ein Profil hat. Mit dem Einfügen eines neuen Profil "
+"legten Sie es nicht vor der Aktion an, aber in der Aktion."
 
 #: C/index.docbook:84(para)
 msgid "To choose this mode:"
@@ -4424,11 +4445,11 @@ msgstr ""
 msgid ""
 "To find more information about <productname>Caja-Actions</productname>, "
 "please visit the <ulink url=\"https://github.com/NiceandGently/caja-actions\" type=\"http"
-"\"/><productname>Caja-Actions</productname> website."
+"\"><productname>Caja-Actions</productname> website."
 msgstr ""
 "Weitere Informationen über <productname>Caja-Actions</productname> "
 "finden Sie auf der <ulink url=\"https://github.com/NiceandGently/caja-actions\" type="
-"\"http\"/>Webseite von <productname>Caja-Actions</productname></ulink>."
+"\"http\">Webseite von <productname>Caja-Actions</productname>."
 
 #: C/index.docbook:215(para)
 msgid ""

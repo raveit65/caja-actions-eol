@@ -49,7 +49,7 @@
     </para>
     <itemizedlist>
       <listitem>
-        <para>Click on <guibutton><inlinegraphic fileref="figures/sort-asc.png" /></guibutton>(<abbrev>resp.</abbrev><guibutton><inlinegraphic fileref="figures/sort-desc.png" /></guibutton>)button to sort your actions in ascending (<abbrev>resp.</abbrev> descending)order.</para>
+        <para>Click on <guibutton><inlinegraphic fileref="figures/sort-asc.png" /></guibutton>(<abbrev>resp.)</abbrev><guibutton><inlinegraphic fileref="figures/sort-desc.png" /></guibutton>button to sort your actions in ascending (<abbrev>resp.</abbrev> descending) order.</para>
       </listitem>
       <listitem>
         <para>

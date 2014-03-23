@@ -4,15 +4,7 @@
     As your list of actions will grow, you most probably will want to
     organize them into menus, submenus, and so on.
   </para>
-  <para>
-    In order to create a new menu, choose
-    <menuchoice>
-      <!-- i18n: "File" is a menu item -->
-      <guimenu>File</guimenu>
-      <!-- i18n: "New menu" is a menu item -->
-      <guimenuitem>New menu</guimenuitem>
-    </menuchoice>.
-  </para>
+  <para>In order to create a new menu, choose <menuchoice><guimenu>File</guimenu><guimenuitem>New menu</guimenuitem></menuchoice>.</para>
   <para>
     A menu may be created anywhere in the list of your actions, but
     inside of an action (<abbrev>i.e.</abbrev> not between two profiles

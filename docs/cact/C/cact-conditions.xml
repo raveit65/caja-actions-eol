@@ -773,7 +773,7 @@
     </figure>
     <para>
       The selection count condition is defined in the
-      <guilabel>Appears if selection contains</guilabel> frame.
+      <guilabel>'Appears if selection contains'</guilabel> frame.
     </para>
     <figure id="cact-FIG-frame-count">
       <title>Selection count condition frame</title>
@@ -808,11 +808,8 @@
           the operator you want apply to the selection count:
         </para>
         <simplelist type="vert">
-          <!-- i18n: "strictly less than" is a UI label -->
           <member><literal>&lt;</literal> <termdef>(strictly less than)</termdef></member>
-          <!-- i18n: "equal to" is a UI label -->
           <member><literal>=</literal> <termdef>(equal to)</termdef></member>
-          <!-- i18n: "strictly greater than" is a UI label -->
           <member><literal>&gt;</literal> <termdef>(strictly greater than)</termdef></member>
         </simplelist>
       </listitem>
