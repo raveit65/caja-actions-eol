@@ -76,6 +76,13 @@ NOCONFIGURE=1 ./autogen.sh
 make
 
 sudo make install
+
+
+
+debian installer package from community member:
+
+http://static.dbedia.org/files/deb/caja-actions_1.7.1-1_amd64.deb
+
   
 
 Description
