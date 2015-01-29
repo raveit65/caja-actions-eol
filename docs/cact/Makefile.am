@@ -38,7 +38,26 @@
 
 HELP_ID = caja-actions-config-tool
 
-HELP_FILES = index.docbook legalnotice.xml
+HELP_FILES = \
+	appendix-gnu-fdl-1.3.xml \
+	articleinfo.xml \
+	cact-bugs.xml \
+	cact-conditions.xml \
+	cact-edit.xml \
+	cact-execution.xml \
+	cact-export.xml \
+	cact-import.xml \
+	cact-menus.xml \
+	cact-misc.xml \
+	cact-prefs.xml \
+	cact-profiles.xml \
+	cact-properties.xml \
+	cact-save.xml \
+	cact-sorting.xml \
+	cact-starting.xml \
+	cact-where.xml \
+	index.docbook \
+    legalnotice.xml
 
 HELP_MEDIA = $(patsubst $(srcdir)/C/%,%,$(shell \ls -1 $(srcdir)/C/figures/*.png))
 
@@ -131,8 +150,8 @@ install_xml = \
 # remove .xml docs from builddir after having built C locale
 # 1. locale
 # 2. "yes" if build in source
-remove_xml = \
-	if test "$(1)" = "C" -a "$(2)" = "no"; then rm -f C/*.xml; fi
+#remove_xml = \
+#	if test "$(1)" = "C" -a "$(2)" = "no"; then rm -f C/*.xml; fi
 
 # Install HTML manuals in <htmldir>/<lang>/cact/ subdirectory;
 # where <htmldir> defaults to <pkgdocdir>/html

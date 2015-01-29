@@ -1,0 +1,24 @@
+<sect2 id="usage-properties">
+  <title>Accessing and editing item properties</title>
+  <para>
+    An item has both editable and read-only properties.
+  </para>
+    
+  <figure id="cact-FIG-prefs-runtime">
+    <title>Item properties</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/cact-properties-tab.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>Shows the tab which lets you access both editable and read-only item properties.</phrase>
+        </textobject>
+        <caption>
+          <para>Item properties</para>
+        </caption>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+</sect2>
