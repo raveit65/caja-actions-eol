@@ -58,7 +58,6 @@ DISTCHECK_CONFIGURE_FLAGS =	\
 	$(NULL)
 
 EXTRA_DIST =	\
-	mate-doc-utils.make					\
 	gtk-doc.make						\
 	intltool-extract.in					\
 	intltool-merge.in					\
@@ -75,8 +74,7 @@ DISTCLEANFILES =	\
 # Automake manual states that distclean target should not remove any
 # distributed files (but leave a clean distribution)  
 MAINTAINERCLEANFILES =	\
-	mate-doc-utils.make					\
-	gtk-doc.make						\
+	gtk-doc.make		\
 	$(NULL)
 
 pkgdocdir = $(datarootdir)/doc/@PACKAGE@-@VERSION@
