@@ -1,5 +1,25 @@
 caja-actions
 
+2015-01-30 Wolfgang Ulbrich <chat-to-me@raveit.de>
+
+   * release 1.8.0
+
+   * fix english and non translated help
+
+2014-03-23 Wolfgang Ulbrich <chat-to-me@raveit.de>
+
+   * release 1.7.1
+
+   * enable help
+
+   * for details see git commits
+
+2014-03-16 Wolfgang Ulbrich <chat-to-me@raveit.de>
+
+   * release 1.7.0
+
+   * for details see git commits
+
 2014-03-12 Wolfgang Ulbrich <chat-to-me@raveit.de>
 
    * release 1.6.3

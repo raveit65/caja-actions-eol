@@ -32,7 +32,7 @@ AC_INIT([Caja-Actions],[1.8.0],[chat-to-me@raveit.de],,[https://github.com/Nicea
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz])
+AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz check-news])
 
 AC_CONFIG_SRCDIR([src/plugin-menu/caja-module.c])
 AC_CONFIG_HEADERS([src/config.h])
