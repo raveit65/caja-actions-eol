@@ -61,8 +61,8 @@ static int toolbar_pos[] = {
 };
 
 static void          init_toolbar( BaseWindow *window, GtkActionGroup *group, int toolbar_id );
-#if !GTK_CHECK_VERSION( 3,4,0 )
 static void          reorder_toolbars( GtkWidget *hbox, int toolbar_id, GtkWidget *handle );
+#if !GTK_CHECK_VERSION( 3,4,0 )
 static void          on_handle_finalize( gpointer data, GObject *handle );
 static void          on_attach_toolbar( GtkHandleBox *handle, GtkToolbar *toolbar, CactMainWindow *window );
 static void          on_detach_toolbar( GtkHandleBox *handle, GtkToolbar *toolbar, CactMainWindow *window );
