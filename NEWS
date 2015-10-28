@@ -1,4 +1,9 @@
 1.8.1
+  * some UI fixes for gtk3
+  * fix make distcheck
+  * remove mate-doc-utils remants
+  * Gtk3: fix deprecated gdk_threads_enter/leave
+  * fix GTK3 build
 
 1.8.0
 
