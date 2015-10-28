@@ -74,7 +74,8 @@ AC_CONFIG_MACRO_DIR([m4])
 # don't agree with maintainer mode use
 # see http://www.gnu.org/software/automake/manual/automake.html#index-AM_005fMAINTAINER_005fMODE-1001
 # but mate-autogen.sh forces its usage and mate_common_init requires it
-AM_MAINTAINER_MODE
+# disable, causes an issue with libuuid includes and breaks build!
+#AM_MAINTAINER_MODE
 
 # check for compiler characteristics and options
 AC_PROG_CC

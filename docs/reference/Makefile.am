@@ -140,10 +140,6 @@ xml_in_files = \
 
 xml_files = $(xml_in_files:.xml.in=.xml)
 
-version_dir.xml: version.xml
-	rm -f $@
-	cat $< | $(SED) 's?^\([[:alnum:]]\.[[:alnum:]]\).*?\1?' > $@
-
 install-data-local: install-data-local-hook
 
 install-data-local-hook:

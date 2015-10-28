@@ -43,14 +43,11 @@ SUBDIRS = \
 # - do not try to install schemas when making distcheck
 # - do not rebuild CACT manuals
 # - gtk-doc requires to be enabled when making dist
-# - MATE_DOC_DEFINES tries to disable scrollkeeper, but the set is
-#   overriden but this one
 
 DISTCHECK_CONFIGURE_FLAGS =	\
 	--with-caja-extdir='$${libdir}/caja/extensions-2.0-distcheck' \
 	--enable-silent-rules				\
 	--enable-as-needed					\
-	--disable-scrollkeeper				\
 	--enable-deprecated					\
 	--enable-gtk-doc					\
 	--disable-html-manuals				\
