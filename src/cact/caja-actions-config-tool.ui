@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.20"/>
+  <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkMessageDialog" id="ConfirmLogoutDialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -16,77 +17,20 @@
     <property name="secondary_text">&lt;b&gt;You want to save your modifications now, don't you ?&lt;/b&gt;</property>
     <property name="secondary_use_markup">True</property>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox3">
-        <property name="visible">True</property>
+      <object class="GtkVBox" id="dialog-vbox2">
         <property name="can_focus">False</property>
-        <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area3">
-            <property name="visible">True</property>
+          <object class="GtkHButtonBox" id="dialog-action_area2">
             <property name="can_focus">False</property>
-            <property name="layout_style">center</property>
-            <child>
-              <object class="GtkButton" id="SaveQuitButton">
-                <property name="label" translatable="yes">_Save and quit</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
-                <property name="image">ImageLogoutSave</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="QuitNoSaveButton">
-                <property name="label" translatable="yes">_Quit without saving</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
-                <property name="image">ImageLogoutQuit</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="CancelQuitButton">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
       </object>
     </child>
-    <action-widgets>
-      <action-widget response="3">SaveQuitButton</action-widget>
-      <action-widget response="1">QuitNoSaveButton</action-widget>
-      <action-widget response="2">CancelQuitButton</action-widget>
-    </action-widgets>
   </object>
   <object class="GtkImage" id="FolderBrowseImage">
     <property name="visible">True</property>
@@ -848,7 +792,14 @@
       </object>
     </child>
   </object>
+  <object class="GtkImage" id="SchemeBrowseImage">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-find</property>
+  </object>
   <object class="GtkWindow" id="MainWindow">
+    <property name="width_request">933</property>
+    <property name="height_request">490</property>
     <property name="can_focus">False</property>
     <child>
       <object class="GtkVBox" id="vbox1">
@@ -920,7 +871,6 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="tooltip_text" translatable="yes">Sort the list in descending alphabetical order.</property>
-                            <property name="use_action_appearance">False</property>
                             <child>
                               <object class="GtkImage" id="image3">
                                 <property name="visible">True</property>
@@ -943,7 +893,6 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="tooltip_text" translatable="yes">Do not sort the list, letting you manually reorder the items.</property>
-                            <property name="use_action_appearance">False</property>
                             <child>
                               <object class="GtkImage" id="image2">
                                 <property name="visible">True</property>
@@ -966,7 +915,6 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="tooltip_text" translatable="yes">Sort the list in ascending alphabetical order.</property>
-                            <property name="use_action_appearance">False</property>
                             <child>
                               <object class="GtkImage" id="image1">
                                 <property name="visible">True</property>
@@ -1062,13 +1010,15 @@
                                             <property name="n_columns">2</property>
                                             <property name="column_spacing">6</property>
                                             <child>
+                                              <placeholder/>
+                                            </child>
+                                            <child>
                                               <object class="GtkCheckButton" id="ActionTargetSelectionButton">
                                                 <property name="label" translatable="yes">Display item in _selection context menu</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">False</property>
                                                 <property name="tooltip_text" translatable="yes">When checked, the item will be candidate to be displayed in the file manager context menu, with a non-empty selection.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="draw_indicator">True</property>
                                               </object>
@@ -1083,6 +1033,10 @@
                                                 <property name="can_focus">True</property>
                                                 <property name="tooltip_text" translatable="yes">The label of the item in the file manager context menus.</property>
                                                 <property name="invisible_char">●</property>
+                                                <property name="primary_icon_activatable">False</property>
+                                                <property name="secondary_icon_activatable">False</property>
+                                                <property name="primary_icon_sensitive">True</property>
+                                                <property name="secondary_icon_sensitive">True</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
@@ -1114,7 +1068,6 @@
                                                 <property name="receives_default">False</property>
                                                 <property name="tooltip_text" translatable="yes">When checked, the item will be candidate to be displayed in the file manager context menu when the selection is empty.
 In this case, the defined conditions will be applied to the current displayed folder.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="draw_indicator">True</property>
                                               </object>
@@ -1124,6 +1077,9 @@ In this case, the defined conditions will be applied to the current displayed fo
                                                 <property name="top_attach">1</property>
                                                 <property name="bottom_attach">2</property>
                                               </packing>
+                                            </child>
+                                            <child>
+                                              <placeholder/>
                                             </child>
                                             <child>
                                               <placeholder/>
@@ -1149,6 +1105,9 @@ In this case, the defined conditions will be applied to the current displayed fo
                                             <property name="n_columns">2</property>
                                             <property name="column_spacing">6</property>
                                             <child>
+                                              <placeholder/>
+                                            </child>
+                                            <child>
                                               <object class="GtkCheckButton" id="ActionTargetToolbarButton">
                                                 <property name="label" translatable="yes">Display item in the _toolbar</property>
                                                 <property name="visible">True</property>
@@ -1156,7 +1115,6 @@ In this case, the defined conditions will be applied to the current displayed fo
                                                 <property name="receives_default">False</property>
                                                 <property name="tooltip_text" translatable="yes">When checked, the item will be candidate to be displayed in the file manager toolbar.
 In this case, the defined conditions will be applied to the current folder, and do not depend of the possible current selection.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="draw_indicator">True</property>
                                               </object>
@@ -1172,7 +1130,6 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">False</property>
                                                 <property name="tooltip_text" translatable="yes">When checked, the label displayed in the toolbar will be the same that the one displayed in the context menus.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="draw_indicator">True</property>
                                               </object>
@@ -1189,6 +1146,10 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                 <property name="can_focus">True</property>
                                                 <property name="tooltip_text" translatable="yes">The label displayed in the file manager toolbar.</property>
                                                 <property name="invisible_char">●</property>
+                                                <property name="primary_icon_activatable">False</property>
+                                                <property name="secondary_icon_activatable">False</property>
+                                                <property name="primary_icon_sensitive">True</property>
+                                                <property name="secondary_icon_sensitive">True</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
@@ -1211,6 +1172,9 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                 <property name="bottom_attach">3</property>
                                                 <property name="x_options">GTK_FILL</property>
                                               </packing>
+                                            </child>
+                                            <child>
+                                              <placeholder/>
                                             </child>
                                             <child>
                                               <placeholder/>
@@ -1266,6 +1230,10 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                 <property name="can_focus">True</property>
                                                 <property name="tooltip_text" translatable="yes">The tooltip displayed in the file manager user interface.</property>
                                                 <property name="invisible_char">●</property>
+                                                <property name="primary_icon_activatable">False</property>
+                                                <property name="secondary_icon_activatable">False</property>
+                                                <property name="primary_icon_sensitive">True</property>
+                                                <property name="secondary_icon_sensitive">True</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
@@ -1308,6 +1276,10 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                     <property name="can_focus">True</property>
                                                     <property name="tooltip_text" translatable="yes">The name of a themed icon or the filename of an image.</property>
                                                     <property name="invisible_char">●</property>
+                                                    <property name="primary_icon_activatable">False</property>
+                                                    <property name="secondary_icon_activatable">False</property>
+                                                    <property name="primary_icon_sensitive">True</property>
+                                                    <property name="secondary_icon_sensitive">True</property>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">True</property>
@@ -1321,7 +1293,6 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
-                                                    <property name="use_action_appearance">False</property>
                                                     <property name="image">ImageIconBrowse</property>
                                                     <property name="use_underline">True</property>
                                                   </object>
@@ -1439,6 +1410,10 @@ In this case, the defined conditions will be applied to the current folder, and 
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="expand">True</property>
@@ -1491,6 +1466,12 @@ In this case, the defined conditions will be applied to the current folder, and 
                                         <property name="column_spacing">6</property>
                                         <property name="row_spacing">3</property>
                                         <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
                                           <object class="GtkLabel" id="CommandPathLabel">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
@@ -1501,7 +1482,7 @@ In this case, the defined conditions will be applied to the current folder, and 
                                           </object>
                                           <packing>
                                             <property name="x_options">GTK_FILL</property>
-                                            <property name="y_options"></property>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1517,7 +1498,7 @@ In this case, the defined conditions will be applied to the current folder, and 
                                             <property name="top_attach">1</property>
                                             <property name="bottom_attach">2</property>
                                             <property name="x_options">GTK_FILL</property>
-                                            <property name="y_options"></property>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1527,12 +1508,16 @@ In this case, the defined conditions will be applied to the current folder, and 
                                             <property name="tooltip_text" translatable="yes">The path of the command.
 If this is not an absolute path, then the PATH environment variable at execution time will be considered.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
                                             <property name="right_attach">2</property>
                                             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-                                            <property name="y_options"></property>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1541,15 +1526,14 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">ImagePathBrowse</property>
                                             <property name="use_underline">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">2</property>
                                             <property name="right_attach">3</property>
-                                            <property name="x_options"></property>
-                                            <property name="y_options"></property>
+                                            <property name="x_options"/>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1558,6 +1542,10 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="can_focus">True</property>
                                             <property name="tooltip_text" translatable="yes">The parameters of the command.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
@@ -1565,7 +1553,7 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="top_attach">1</property>
                                             <property name="bottom_attach">2</property>
                                             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-                                            <property name="y_options"></property>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1574,7 +1562,6 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">ImageParametersLegend</property>
                                             <property name="use_underline">True</property>
                                           </object>
@@ -1583,8 +1570,8 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="right_attach">3</property>
                                             <property name="top_attach">1</property>
                                             <property name="bottom_attach">2</property>
-                                            <property name="x_options"></property>
-                                            <property name="y_options"></property>
+                                            <property name="x_options"/>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1608,6 +1595,10 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="can_focus">True</property>
                                             <property name="tooltip_text" translatable="yes">The default working directory the command should be started in.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
@@ -1615,7 +1606,7 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="top_attach">3</property>
                                             <property name="bottom_attach">4</property>
                                             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-                                            <property name="y_options"></property>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1624,7 +1615,6 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">ImageWorkingDirectoryBrowse</property>
                                             <property name="use_underline">True</property>
                                           </object>
@@ -1633,8 +1623,8 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="right_attach">3</property>
                                             <property name="top_attach">3</property>
                                             <property name="bottom_attach">4</property>
-                                            <property name="x_options"></property>
-                                            <property name="y_options"></property>
+                                            <property name="x_options"/>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1666,8 +1656,8 @@ If this is not an absolute path, then the PATH environment variable at execution
                                                 <property name="can_focus">False</property>
                                                 <property name="label" translatable="yes">Example</property>
                                                 <attributes>
-                                                  <attribute name="style" value="PANGO_STYLE_ITALIC"/>
-                                                  <attribute name="scale" value="0.8"/>
+                                                  <attribute name="style" value="italic"/>
+                                                  <attribute name="scale" value="0.80000000000000004"/>
                                                 </attributes>
                                               </object>
                                             </child>
@@ -1680,12 +1670,6 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
                                             <property name="y_options">GTK_SHRINK</property>
                                           </packing>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
                                         </child>
                                       </object>
                                     </child>
@@ -1764,13 +1748,21 @@ Defining several profiles lets you have several commands, each applying with a d
                                         <property name="n_columns">2</property>
                                         <property name="column_spacing">6</property>
                                         <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
                                           <object class="GtkRadioButton" id="ExecutionModeNormal">
                                             <property name="label" translatable="yes">_Normal</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">The command will be started as a standard graphical user interface.</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="use_underline">True</property>
                                             <property name="active">True</property>
                                             <property name="draw_indicator">True</property>
@@ -1788,7 +1780,6 @@ Defining several profiles lets you have several commands, each applying with a d
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">The command will be started in the preferred terminal of the graphical environment.</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">ExecutionModeNormal</property>
@@ -1809,7 +1800,6 @@ Defining several profiles lets you have several commands, each applying with a d
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">This option makes use of a special feature of the file manager, which would allow a terminal to be ran inside of it.
 An acceptable fallback is running in the standard terminal.</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">ExecutionModeNormal</property>
@@ -1831,7 +1821,6 @@ An acceptable fallback is running in the standard terminal.</property>
                                             <property name="tooltip_text" translatable="yes">The command will be run in a terminal.
 The terminal will be closed at the end of the execution; standard error and output streams will be displayed.
 An acceptable fallback is running in the standard terminal.</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">ExecutionModeNormal</property>
@@ -1852,15 +1841,6 @@ An acceptable fallback is running in the standard terminal.</property>
                                           <packing>
                                             <property name="x_options">GTK_FILL</property>
                                           </packing>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
                                         </child>
                                       </object>
                                     </child>
@@ -1917,7 +1897,6 @@ An acceptable fallback is running in the standard terminal.</property>
                                             <property name="tooltip_text" translatable="yes">When checked, it is known that the run command will send a "remove" message to the desktop environment.
 See the Startup Notification Protocol Specification for more details.
 Only relevant when chosen execution mode is Normal.</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                           </object>
@@ -1948,6 +1927,10 @@ Only relevant when chosen execution mode is Normal.</property>
 See the Startup Notification Protocol Specification for more details.
 Only relevant when chosen execution mode is Normal.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
@@ -1955,6 +1938,9 @@ Only relevant when chosen execution mode is Normal.</property>
                                             <property name="top_attach">1</property>
                                             <property name="bottom_attach">2</property>
                                           </packing>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
                                         </child>
                                         <child>
                                           <placeholder/>
@@ -2023,6 +2009,10 @@ Only relevant when chosen execution mode is Normal.</property>
 The user may be defined by his numeric UID or his login name.
 Leave the field empty to run the command as the current user.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="expand">True</property>
@@ -2149,7 +2139,6 @@ Basenames may be negated to specify for which basenames your item must not appea
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Click to add a new basename filter.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <child>
                                                   <object class="GtkImage" id="image4">
                                                     <property name="visible">True</property>
@@ -2170,7 +2159,6 @@ Basenames may be negated to specify for which basenames your item must not appea
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Click to remove the current basename filter.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <child>
                                                   <object class="GtkImage" id="image20">
                                                     <property name="visible">True</property>
@@ -2206,7 +2194,6 @@ Basenames may be negated to specify for which basenames your item must not appea
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
                                         <property name="tooltip_text" translatable="yes">Click to define the above basename filters as case sensitive.</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="use_underline">True</property>
                                         <property name="xalign">0</property>
                                         <property name="active">True</property>
@@ -2334,7 +2321,6 @@ Mimetypes may be negated to specify for which type of objects your item must not
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Click to add a new mimetype filter.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <child>
                                                   <object class="GtkImage" id="image14">
                                                     <property name="visible">True</property>
@@ -2355,7 +2341,6 @@ Mimetypes may be negated to specify for which type of objects your item must not
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Click to remove the current mimetype filter.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <child>
                                                   <object class="GtkImage" id="image15">
                                                     <property name="visible">True</property>
@@ -2506,7 +2491,6 @@ Folder filters may be negated to specify for which folders your item must not ap
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
                                                     <property name="tooltip_text" translatable="yes">Click to add a new folder filter.</property>
-                                                    <property name="use_action_appearance">False</property>
                                                     <child>
                                                       <object class="GtkImage" id="image10">
                                                         <property name="visible">True</property>
@@ -2528,7 +2512,6 @@ Folder filters may be negated to specify for which folders your item must not ap
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
                                                     <property name="tooltip_text" translatable="yes">Click to browse the filesystem in order to select a new folder filter.</property>
-                                                    <property name="use_action_appearance">False</property>
                                                     <property name="image">FolderBrowseImage</property>
                                                     <property name="use_underline">True</property>
                                                   </object>
@@ -2551,7 +2534,6 @@ Folder filters may be negated to specify for which folders your item must not ap
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Click to remove the current folder filter.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <child>
                                                   <object class="GtkImage" id="image11">
                                                     <property name="visible">True</property>
@@ -2703,7 +2685,6 @@ Filters may be negated to specify for which schemes your item must not appear.</
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
                                                     <property name="tooltip_text" translatable="yes">Click to add a new scheme filter.</property>
-                                                    <property name="use_action_appearance">False</property>
                                                     <child>
                                                       <object class="GtkImage" id="image16">
                                                         <property name="visible">True</property>
@@ -2725,7 +2706,6 @@ Filters may be negated to specify for which schemes your item must not appear.</
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
                                                     <property name="tooltip_text" translatable="yes">Click to select a new scheme filter among default schemes.</property>
-                                                    <property name="use_action_appearance">False</property>
                                                     <property name="image">SchemeBrowseImage</property>
                                                     <property name="use_underline">True</property>
                                                   </object>
@@ -2748,7 +2728,6 @@ Filters may be negated to specify for which schemes your item must not appear.</
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Click to remove the current scheme filter.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <child>
                                                   <object class="GtkImage" id="image17">
                                                     <property name="visible">True</property>
@@ -2895,7 +2874,6 @@ Capabilities may be negated to specify for which capabilities your item must not
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Click to add a new capability filter.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <child>
                                                   <object class="GtkImage" id="image5">
                                                     <property name="visible">True</property>
@@ -2916,7 +2894,6 @@ Capabilities may be negated to specify for which capabilities your item must not
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Click to remove the current capability.</property>
-                                                <property name="use_action_appearance">False</property>
                                                 <child>
                                                   <object class="GtkImage" id="image6">
                                                     <property name="visible">True</property>
@@ -3052,6 +3029,10 @@ If the current selection does not match this condition, then the item will not b
                                             <property name="can_focus">True</property>
                                             <property name="invisible_char">●</property>
                                             <property name="width_chars">5</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -3142,7 +3123,6 @@ First choose on the left if the item depends of a particular desktop environment
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">False</property>
-                                                    <property name="use_action_appearance">False</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="active">True</property>
                                                     <property name="draw_indicator">True</property>
@@ -3159,7 +3139,6 @@ First choose on the left if the item depends of a particular desktop environment
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">False</property>
-                                                    <property name="use_action_appearance">False</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="draw_indicator">True</property>
                                                     <property name="group">ShowAlwaysButton</property>
@@ -3176,7 +3155,6 @@ First choose on the left if the item depends of a particular desktop environment
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">False</property>
-                                                    <property name="use_action_appearance">False</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="draw_indicator">True</property>
                                                     <property name="group">ShowAlwaysButton</property>
@@ -3268,6 +3246,12 @@ First choose on the left if the item depends of a particular desktop environment
                                         <property name="column_spacing">6</property>
                                         <property name="row_spacing">3</property>
                                         <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
                                           <object class="GtkLabel" id="label55">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
@@ -3283,6 +3267,10 @@ First choose on the left if the item depends of a particular desktop environment
                                             <property name="tooltip_text" translatable="yes">This is an advanced condition based on the presence of an executable file on the file system.
 This may be used for example to test for a prerequisite package.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
@@ -3295,15 +3283,14 @@ This may be used for example to test for a prerequisite package.</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">ImageTryExecBrowse</property>
                                             <property name="use_underline">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">2</property>
                                             <property name="right_attach">3</property>
-                                            <property name="x_options"></property>
-                                            <property name="y_options"></property>
+                                            <property name="x_options"/>
+                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -3326,6 +3313,10 @@ This may be used for example to test for a prerequisite package.</property>
                                             <property name="tooltip_text" translatable="yes">This is an advanced condition based on the presence of a particular service on the D-Bus system.
 This may be used for example for testing that a prerequisite service is currently available.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
@@ -3355,6 +3346,10 @@ This may be used for example for testing that a prerequisite service is currentl
 Enter here a command which is able to display the exact "true" string on its standard output.
 This may be used for example for testing a complex condition.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
@@ -3384,6 +3379,10 @@ This may be used for example for testing a complex condition.</property>
 Note that only the basename of the binary is checked, not its dirname nor its parameters.
 This may be used for example for testing the presence of a prerequisite daemon.</property>
                                             <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                            <property name="primary_icon_sensitive">True</property>
+                                            <property name="secondary_icon_sensitive">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
@@ -3398,7 +3397,6 @@ This may be used for example for testing the presence of a prerequisite daemon.<
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">ImageRunningBrowse</property>
                                             <property name="use_underline">True</property>
                                           </object>
@@ -3407,15 +3405,9 @@ This may be used for example for testing the presence of a prerequisite daemon.<
                                             <property name="right_attach">3</property>
                                             <property name="top_attach">3</property>
                                             <property name="bottom_attach">4</property>
-                                            <property name="x_options"></property>
-                                            <property name="y_options"></property>
+                                            <property name="x_options"/>
+                                            <property name="y_options"/>
                                           </packing>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
                                         </child>
                                       </object>
                                     </child>
@@ -3535,7 +3527,6 @@ This may be used for example for testing the presence of a prerequisite daemon.<
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">Check the box to enable this item.
 If unchecked, then the item will never appear in the file manager context menus or toolbar.</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                           </object>
@@ -3570,7 +3561,6 @@ If unchecked, then the item will never appear in the file manager context menus 
                                                 <property name="receives_default">True</property>
                                                 <property name="tooltip_text" translatable="yes">Enter here the keyboard touch combination you suggest as a shortcut to your action.
 Note: this is not yet implemented in Caja-Actions.</property>
-                                                <property name="use_action_appearance">False</property>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -3588,6 +3578,9 @@ Note: this is not yet implemented in Caja-Actions.</property>
                                             <property name="top_attach">2</property>
                                             <property name="bottom_attach">3</property>
                                           </packing>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
                                         </child>
                                         <child>
                                           <placeholder/>
@@ -3697,7 +3690,6 @@ Note: this is not yet implemented in Caja-Actions.</property>
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">This box is checked if the item cannot be edited.
 There may be multiple reasons for why an item cannot be edited. See your User's Manual.</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="focus_on_click">False</property>
                                             <property name="draw_indicator">True</property>
                                           </object>
@@ -3705,6 +3697,9 @@ There may be multiple reasons for why an item cannot be edited. See your User's 
                                             <property name="left_attach">1</property>
                                             <property name="right_attach">2</property>
                                           </packing>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
                                         </child>
                                         <child>
                                           <placeholder/>
@@ -3809,11 +3804,6 @@ There may be multiple reasons for why an item cannot be edited. See your User's 
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkImage" id="SchemeBrowseImage">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-find</property>
   </object>
   <object class="GtkSizeGroup" id="ActionLabelSizeGroup">
     <widgets>
