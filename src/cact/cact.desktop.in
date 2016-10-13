@@ -7,3 +7,4 @@ Exec=caja-actions-config-tool
 Icon=caja-actions
 Categories=Settings;DesktopSettings;
 StartupNotify=true
+Keywords=caja,actions,configuration,tool,settings,MATE,filebrowser
