@@ -649,7 +649,7 @@ msgid ""
 "Capabilities may be negated.\n"
 "Capabilities have to be choosen between following predefined ones:\n"
 "- 'Owner': current user is the owner of selected items\n"
-"- 'Readable': selected items are readable by user (probably more usefull when negated)\n"
+"- 'Readable': selected items are readable by user (probably more useful when negated)\n"
 "- 'Writable': selected items are writable by user\n"
 "- 'Executable': selected items are executable by user\n"
 "- 'Local': selected items are local.\n"
@@ -669,7 +669,7 @@ msgid "Item was renumbered due to user request."
 msgstr ""
 
 #: ../src/core/na-iimporter.c:270
-msgid "Existing item was overriden due to user request."
+msgid "Existing item was overridden due to user request."
 msgstr ""
 
 #: ../src/core/na-iimporter.c:277
@@ -991,7 +991,7 @@ msgstr "Parametrar till kommandot"
 #: ../src/core/na-object-profile-factory.c:130
 msgid ""
 "The parameters of the command to be executed when the user selects the menu item in the file manager context menu or in the toolbar.\n"
-"The parameters may contain some special tokens which are replaced by the informations provided by the file manager before starting the command:\n"
+"The parameters may contain some special tokens which are replaced by the information provided by the file manager before starting the command:\n"
 "- up to version \"2.0\":\n"
 "  %d: base folder of the selected file(s)\n"
 "  %f: the name of the selected file or the first one if several are selected\n"
@@ -1088,7 +1088,7 @@ msgstr ""
 
 #: ../src/core/na-selected-info.c:763
 #, c-format
-msgid "Error when querying informations for %s URI: %s"
+msgid "Error when querying information for %s URI: %s"
 msgstr ""
 
 #: ../src/core/na-tokens.c:254
@@ -1190,7 +1190,7 @@ msgstr ""
 
 #: ../src/io-xml/naxml-formats.c:60
 msgid ""
-"This format has been introduced in v 1.11 serie.\n"
+"This format has been introduced in v 1.11 series.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
 "while keeping backward compatibility with older Caja-Actions Configuration Tool versions.\n"
 "The exported schema file may later be imported via :\n"
@@ -1205,7 +1205,7 @@ msgstr ""
 
 #: ../src/io-xml/naxml-formats.c:74
 msgid ""
-"This format has been introduced in v 1.11 serie, and should be the preferred format for newly exported items.\n"
+"This format has been introduced in v 1.11 series. and should be the preferred format for newly exported items.\n"
 "It is not backward compatible with previous Caja-Actions Configuration Tool versions,\n"
 "though it may still be imported via standard MateConf command-line tools.\n"
 "The exported dump file may later be imported via :\n"
@@ -1847,7 +1847,7 @@ msgstr "Visa hjälp om detta program"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
 #: ../src/cact/cact-main-menubar.c:208
-msgid "Display informations about this program"
+msgid "Display information about this program"
 msgstr "Visa information om detta program"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
@@ -2987,7 +2987,7 @@ msgid ""
 msgstr ""
 
 #: ../src/cact/caja-actions-config-tool.ui.h:226
-msgid "This tab lets you edit some miscellaneous properties, and access to some non-modifiable informations.\n"
+msgid "This tab lets you edit some miscellaneous properties, and access to some non-modifiable information.\n"
 msgstr ""
 
 #: ../src/cact/caja-actions-config-tool.ui.h:228
@@ -3241,7 +3241,7 @@ msgid "About Caja-Actions"
 msgstr "Om Caja-åtgärder"
 
 #: ../src/plugin-menu/caja-actions.c:1025
-msgid "Display some informations about Caja-Actions"
+msgid "Display some information about Caja-Actions"
 msgstr "Visa information om Caja-åtgärder"
 
 #: ../src/test/test-reader.c:49

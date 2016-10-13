@@ -496,7 +496,7 @@ is_candidate_for_target( const NAIContext *object, guint target, GList *files )
 				break;
 
 			default:
-				g_warning( "%s: unknonw target=%d", thisfn, target );
+				g_warning( "%s: unknown target=%d", thisfn, target );
 				ok = FALSE;
 		}
 	}

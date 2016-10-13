@@ -230,7 +230,7 @@ cact_application_new( void )
 }
 
 /*
- * overriden to manage command-line options
+ * overridden to manage command-line options
  */
 static gboolean
 appli_manage_options( BaseApplication *application )

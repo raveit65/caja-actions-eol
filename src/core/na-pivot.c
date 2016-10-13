@@ -618,7 +618,7 @@ na_pivot_set_new_items( NAPivot *pivot, GList *items )
  *
  * We don't care of updating our internal list with each and every
  * atomic modification; instead we wait for the end of notifications
- * serie, and then signal our consumers.
+ * series. and then signal our consumers.
  */
 void
 na_pivot_on_item_changed_handler( NAIIOProvider *provider, NAPivot *pivot  )

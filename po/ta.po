@@ -1285,7 +1285,7 @@ msgstr "இந்த நிரலைப் பற்றிய உதவியை
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
 #: ../src/cact/cact-main-menubar.c:244
-msgid "Display informations about this program"
+msgid "Display information about this program"
 msgstr "இந்த நிரலைப் பற்றிய தகவலைக் காட்டு"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
@@ -1459,8 +1459,8 @@ msgid "Action was renumbered due to user request."
 msgstr "Action was renumbered due to user request."
 
 #: ../src/cact/cact-xml-reader.c:1349
-msgid "Existing action was overriden due to user request."
-msgstr "Existing action was overriden due to user request."
+msgid "Existing action was overridden due to user request."
+msgstr "Existing action was overridden due to user request."
 
 #: ../src/cact/cact-xml-reader.c:1358
 msgid "Import was canceled due to user request."

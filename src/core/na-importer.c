@@ -332,7 +332,7 @@ manage_import_mode( NAImporterParms *parms, GList *results, NAImporterAskUserPar
 					na_core_utils_slist_add_message(
 							&result->messages,
 							"%s",
-							_( "Existing item was overriden due to user request." ));
+							_( "Existing item was overridden due to user request." ));
 				}
 				break;
 
