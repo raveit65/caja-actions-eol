@@ -812,7 +812,7 @@ msgstr "GNOME अनुवाद प्रोजेक्ट <gnome-i18n@gnome.o
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
 #: ../src/cact/cact-imenubar.c:882
-msgid "Display informations about this program."
+msgid "Display information about this program."
 msgstr ""
 
 #: ../src/cact/cact-main-window.c:1130

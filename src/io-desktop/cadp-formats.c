@@ -54,7 +54,7 @@ static CappExportFormat cadp_formats[] = {
 	 */
 	{ CADP_FORMAT_DESKTOP_V1,
 			N_( "Export as a ._desktop file" ),
-			N_( "This format has been introduced with v 3.0 serie, " \
+			N_( "This format has been introduced with v 3.0 series. " \
 				"and should be your newly preferred format when exporting items.\n" \
 				"It let you easily share your actions with the whole world, " \
 				"including with users of other desktop environments, " \

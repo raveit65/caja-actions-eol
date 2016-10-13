@@ -48,7 +48,7 @@
  *   the two columns 'scheme' and 'description' are editable inline
  *   adding/removing a scheme is possible
  *
- * Starting with 2.31.x serie (future 3.0), the scheme conditions of a
+ * Starting with 2.31.x series.(future 3.0), the scheme conditions of a
  * #NAIContext are handled by cact-match-list.{c,h} set of function.
  * This set of functions is only used:
  *  a) to edit the preferences

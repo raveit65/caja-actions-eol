@@ -860,7 +860,7 @@ drop_uri_list( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selec
 	GList *import_results, *it;
 	guint count;
 	GSList *im;
-	GList *imported, *overriden;
+	GList *imported, *overridden;
 	const gchar *selection_data_data;
 	CactTreeView *view;
 	GSList *messages;
@@ -901,7 +901,7 @@ drop_uri_list( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selec
 	 * of all lines of messages, and the list of imported items
 	 */
 	imported = NULL;
-	overriden = NULL;
+	overridden = NULL;
 	messages = NULL;
 
 	for( it = import_results ; it ; it = it->next ){
@@ -916,7 +916,7 @@ drop_uri_list( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selec
 				na_updater_check_item_writability_status( updater, result->imported );
 
 			} else if( result->mode == IMPORTER_MODE_OVERRIDE ){
-				overriden = g_list_prepend( overriden, result->imported );
+				overridden = g_list_prepend( overridden, result->imported );
 			}
 		}
 	}
@@ -955,16 +955,16 @@ drop_uri_list( CactTreeModel *model, GtkTreePath *dest, GtkSelectionData  *selec
 	/* override items if needed
 	 * they may safely be released after having updated the store
 	 */
-	if( overriden ){
-		na_object_dump_tree( overriden );
+	if( overridden ){
+		na_object_dump_tree( overridden );
 		view = cact_main_window_get_items_view( main_window );
-		cact_tree_ieditable_set_items( CACT_TREE_IEDITABLE( view ), overriden );
-		na_object_free_items( overriden );
+		cact_tree_ieditable_set_items( CACT_TREE_IEDITABLE( view ), overridden );
+		na_object_free_items( overridden );
 	}
 
 	drop_done = TRUE;
 	na_object_free_items( imported );
-	na_object_free_items( overriden );
+	na_object_free_items( overridden );
 	na_core_utils_slist_free( parms.uris );
 
 	for( it = import_results ; it ; it = it->next ){

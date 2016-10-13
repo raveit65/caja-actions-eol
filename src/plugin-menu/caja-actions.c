@@ -977,7 +977,7 @@ add_about_item( CajaActions *plugin, GList *menu )
 		about_item = caja_menu_item_new(
 				"AboutCajaActions",
 				_( "About Caja-Actions" ),
-				_( "Display some informations about Caja-Actions" ),
+				_( "Display some information about Caja-Actions" ),
 				na_about_get_icon_name());
 
 		g_signal_connect_data(
@@ -1006,7 +1006,7 @@ execute_about( CajaMenuItem *item, CajaActions *plugin )
  * Not only the items list itself, but also several runtime preferences have
  * an effect on the display of items in file manager context menu.
  *
- * We of course monitor here all these informations; only asking NAPivot
+ * We of course monitor here all these information; only asking NAPivot
  * for reloading its items when we detect the end of a burst of changes.
  *
  * Only when NAPivot has finished with reloading its items list, then we

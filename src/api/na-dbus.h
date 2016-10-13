@@ -38,7 +38,7 @@
  *
  * &prodname;, through its <emphasis>tracker</emphasis> plugin, exposes
  * several D-Bus interfaces. These interfaces may be queried in order to get
- * informations about current selection, &prodname; status, and so on.
+ * information about current selection, &prodname; status, and so on.
  *
  * <note>
  *   <para>
@@ -73,7 +73,7 @@ G_BEGIN_DECLS
  *
  * When requested through the <methodname>Introspect</methodname> of the
  * <interfacename>Introspectable</interfacename> D-Bus interface, the
- * <emphasis>tracker</emphasis> object returns following informations:
+ * <emphasis>tracker</emphasis> object returns following information:
  *
  * <programlisting>
  *   <command>

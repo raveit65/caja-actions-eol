@@ -276,7 +276,7 @@ na_iimporter_manage_import_mode( NAIImporterManageImportModeParms *parms )
 
 			case IMPORTER_MODE_OVERRIDE:
 				if( parms->asked_mode == IMPORTER_MODE_ASK ){
-					na_core_utils_slist_add_message( &parms->messages, "%s", _( "Existing item was overriden due to user request." ));
+					na_core_utils_slist_add_message( &parms->messages, "%s", _( "Existing item was overridden due to user request." ));
 				}
 				break;
 

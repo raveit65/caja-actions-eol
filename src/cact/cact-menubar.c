@@ -161,7 +161,7 @@ static const GtkActionEntry entries[] = {
 				G_CALLBACK( cact_menubar_help_on_help ) },
 		{ "AboutItem", GTK_STOCK_ABOUT, NULL, NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the About item */
-				N_( "Display informations about this program" ),
+				N_( "Display information about this program" ),
 				G_CALLBACK( cact_menubar_help_on_about ) },
 };
 

@@ -1077,7 +1077,7 @@ msgid ""
 "Capabilities may be negated.\n"
 "Capabilities have to be chosen between following predefined ones:\n"
 "- 'Owner': current user is the owner of selected items\n"
-"- 'Readable': selected items are readable by user (probably more usefull "
+"- 'Readable': selected items are readable by user (probably more useful "
 "when negated)\n"
 "- 'Writable': selected items are writable by user\n"
 "- 'Executable': selected items are executable by user\n"
@@ -1122,7 +1122,7 @@ msgid "Item was renumbered due to user request."
 msgstr "L'oggetto è stato rinumerato su richiesta dell'utente."
 
 #: ../src/core/na-iimporter.c:270
-msgid "Existing item was overriden due to user request."
+msgid "Existing item was overridden due to user request."
 msgstr "L'oggetto esistente è stato sovrascritto su richiesta dell'utente."
 
 #: ../src/core/na-iimporter.c:277
@@ -1576,7 +1576,7 @@ msgid ""
 "The parameters of the command to be executed when the user selects the menu "
 "item in the file manager context menu or in the toolbar.\n"
 "The parameters may contain some special tokens which are replaced by the "
-"informations provided by the file manager before starting the command:\n"
+"information provided by the file manager before starting the command:\n"
 "- up to version 2.0:\n"
 "  %d: base folder of the selected file(s)\n"
 "  %f: the name of the selected file or the first one if several are "
@@ -1761,7 +1761,7 @@ msgstr ""
 
 #: ../src/core/na-selected-info.c:846
 #, c-format
-msgid "Error when querying informations for %s URI: %s"
+msgid "Error when querying information for %s URI: %s"
 msgstr "Errore durante l'interrogazione delle informazioni per l'URI %s: %s"
 
 #: ../src/core/na-tokens.c:251
@@ -1913,7 +1913,7 @@ msgstr "Esportare come schema parzia_le di MateConf (v2)"
 
 #: ../src/io-xml/naxml-formats.c:60
 msgid ""
-"This format has been introduced in v 1.11 serie.\n"
+"This format has been introduced in v 1.11 series.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
 "while keeping backward compatibility with older Caja-Actions "
 "Configuration Tool versions.\n"
@@ -1940,7 +1940,7 @@ msgstr "Esportare come file _dump di MateConf"
 
 #: ../src/io-xml/naxml-formats.c:74
 msgid ""
-"This format has been introduced in v 1.11 serie, and should be the preferred "
+"This format has been introduced in v 1.11 series. and should be the preferred "
 "format for newly exported items.\n"
 "It is not backward compatible with previous Caja-Actions Configuration "
 "Tool versions,\n"
@@ -2774,7 +2774,7 @@ msgstr "Mostra la documentazione del programma"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
 #: ../src/cact/cact-menubar.c:163
-msgid "Display informations about this program"
+msgid "Display information about this program"
 msgstr "Mostra le informazioni sul programma"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
@@ -4581,7 +4581,7 @@ msgid "About Caja-Actions"
 msgstr "Informazioni su azioni di Caja"
 
 #: ../src/plugin-menu/caja-actions.c:936
-msgid "Display some informations about Caja-Actions"
+msgid "Display some information about Caja-Actions"
 msgstr "Mostra alcune informazioni su azioni di Caja"
 
 #: ../src/test/test-reader.c:49

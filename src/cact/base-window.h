@@ -206,7 +206,7 @@ typedef struct {
  * as a signal handler or as a virtual method if it is a class derived from
  * BaseWindow.
  *
- * See each signal description for detailed informations on exactly
+ * See each signal description for detailed information on exactly
  * when the signal is emitted.
  */
 #define BASE_SIGNAL_INITIALIZE_GTK				"base-signal-window-initialize-gtk"

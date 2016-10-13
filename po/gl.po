@@ -968,7 +968,7 @@ msgid ""
 "The parameters of the command to be executed when the user selects the menu "
 "item in the file manager context menu or in the toolbar.\n"
 "The parameters may contain some special tokens which are replaced by the "
-"informations provided by the file manager before starting the command:\n"
+"information provided by the file manager before starting the command:\n"
 "%d: base folder of the selected file(s)\n"
 "%f: the name of the selected file or the first one if several are selected\n"
 "%h: hostname of the URI\n"
@@ -1066,7 +1066,7 @@ msgid "Item was renumbered due to user request."
 msgstr ""
 
 #: ../src/io-xml/naxml-reader.c:1328
-msgid "Existing item was overriden due to user request."
+msgid "Existing item was overridden due to user request."
 msgstr ""
 
 #: ../src/io-xml/naxml-reader.c:1337
@@ -1096,7 +1096,7 @@ msgstr ""
 
 #: ../src/io-xml/naxml-formats.c:59
 msgid ""
-"This format has been introduced in v 1.11 serie.\n"
+"This format has been introduced in v 1.11 series.\n"
 "This is the lightest schema still compatible with MateConf command-line tools,\n"
 "while keeping backward compatibility with older Caja Actions "
 "Configuration Tool versions.\n"
@@ -1111,7 +1111,7 @@ msgstr ""
 
 #: ../src/io-xml/naxml-formats.c:72
 msgid ""
-"This format has been introduced in v 1.11 serie, and should be the preferred "
+"This format has been introduced in v 1.11 series. and should be the preferred "
 "format for newly exported items.\n"
 "It is not backward compatible with previous Caja Actions Configuration "
 "Tool versions,\n"
@@ -1652,7 +1652,7 @@ msgstr "Mostrar a axuda sobre este programa"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
 #: ../src/cact/cact-main-menubar.c:207
-msgid "Display informations about this program"
+msgid "Display information about this program"
 msgstr "Mostrar información sobre este programa"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
