@@ -75,7 +75,7 @@ MAINTAINERCLEANFILES =	\
 	gtk-doc.make		\
 	$(NULL)
 
-pkgdocdir = $(datarootdir)/doc/@PACKAGE@-@VERSION@
+pkgdocdir = $(datarootdir)/doc/@PACKAGE@
 
 dist_pkgdoc_DATA =	\
 	AUTHORS								\
