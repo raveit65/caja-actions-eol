@@ -33,7 +33,7 @@
 
 #include <glib/gi18n.h>
 #include <string.h>
-#include <unique/unique.h>
+#include <gio/gio.h>
 
 #include "base-iunique.h"
 #include "base-window.h"
@@ -48,7 +48,7 @@ struct _BaseIUniqueInterfacePrivate {
  */
 typedef struct {
 	gchar     *unique_app_name;
-	UniqueApp *handle;
+	GApplication *handle;
 }
 	IUniqueData;
 
@@ -165,7 +165,6 @@ on_instance_finalized( gpointer user_data, BaseIUnique *instance )
 	data = get_iunique_data( instance );
 
 	if( data->handle ){
-		g_return_if_fail( UNIQUE_IS_APP( data->handle ));
 		g_object_unref( data->handle );
 	}
 
@@ -187,6 +186,7 @@ base_iunique_init_with_name( BaseIUnique *instance, const gchar *unique_app_name
 	gboolean ret;
 	gboolean is_first;
 	gchar *msg;
+	GError *error = NULL;
 
 	g_return_val_if_fail( BASE_IS_IUNIQUE( instance ), FALSE );
 
@@ -197,11 +197,18 @@ base_iunique_init_with_name( BaseIUnique *instance, const gchar *unique_app_name
 
 	if( unique_app_name && strlen( unique_app_name )){
 
-			data->handle = unique_app_new( unique_app_name, NULL );
-			is_first = !unique_app_is_running( data->handle );
+			data->handle = g_application_new( unique_app_name, G_APPLICATION_FLAGS_NONE );
+
+			if (!g_application_register (data->handle, NULL, &error))
+			{
+				g_warning ("%s", error->message);
+				g_error_free (error);
+				return 1;
+			}
+
+			is_first = !g_application_get_is_remote( data->handle );
 
 			if( !is_first ){
-				unique_app_send_message( data->handle, UNIQUE_ACTIVATE, NULL );
 				/* i18n: application name */
 				msg = g_strdup_printf(
 						_( "Another instance of %s is already running.\n"
