@@ -85,13 +85,8 @@ AC_DEFUN([_AC_NA_CHECK_FOR_GTK3],[
 	PKG_CHECK_MODULES([GTK3],[gtk+-3.0 >= ${gtk_required}],[have_gtk3=yes],[have_gtk3=no])
 
 	if test "${have_gtk3}" = "yes"; then
-		NA_CHECK_MODULE([UNIQUE],[unique-3.0],[no])
-		if test "${have_UNIQUE}" != "yes"; then
-			have_gtk3="no"
-		else 
-			CAJA_ACTIONS_CFLAGS="${CAJA_ACTIONS_CFLAGS} ${GTK3_CFLAGS}"
-			CAJA_ACTIONS_LIBS="${CAJA_ACTIONS_LIBS} ${GTK3_LIBS}"
-		fi
+		CAJA_ACTIONS_CFLAGS="${CAJA_ACTIONS_CFLAGS} ${GTK3_CFLAGS}"
+		CAJA_ACTIONS_LIBS="${CAJA_ACTIONS_LIBS} ${GTK3_LIBS}"
 	fi
 ])
 
@@ -102,12 +97,7 @@ AC_DEFUN([_AC_NA_CHECK_FOR_GTK2],[
 	PKG_CHECK_MODULES([GTK2],[gtk+-2.0 >= ${gtk_required}],[have_gtk2=yes],[have_gtk2=no])
 
 	if test "${have_gtk2}" = "yes"; then
-		NA_CHECK_MODULE([UNIQUE],[unique-1.0],[no])
-		if test "${have_UNIQUE}" != "yes"; then
-			have_gtk2="no"
-		else 
-			CAJA_ACTIONS_CFLAGS="${CAJA_ACTIONS_CFLAGS} ${GTK2_CFLAGS}"
-			CAJA_ACTIONS_LIBS="${CAJA_ACTIONS_LIBS} ${GTK2_LIBS}"
-		fi
+		CAJA_ACTIONS_CFLAGS="${CAJA_ACTIONS_CFLAGS} ${GTK2_CFLAGS}"
+		CAJA_ACTIONS_LIBS="${CAJA_ACTIONS_LIBS} ${GTK2_LIBS}"
 	fi
 ])
