@@ -63,10 +63,6 @@ static void         interface_base_finalize( BaseIUniqueInterface *klass );
 static IUniqueData *get_iunique_data( BaseIUnique *instance );
 static void         on_instance_finalized( gpointer user_data, BaseIUnique *instance );
 
-#if 0
-static UniqueResponse on_unique_message_received( UniqueApp *app, UniqueCommand command, UniqueMessageData *message, guint time, gpointer user_data );
-#endif
-
 static const gchar *m_get_application_name( const BaseIUnique *instance );
 
 GType
@@ -172,12 +168,6 @@ on_instance_finalized( gpointer user_data, BaseIUnique *instance )
 	g_free( data );
 }
 
-/*
- * Relying on libunique to detect if another instance is already running.
- *
- * A replacement is available with GLib 2.28 in GApplication, but only
- * GLib 2.30 (Fedora 16) provides a "non-unique" capability.
- */
 gboolean
 base_iunique_init_with_name( BaseIUnique *instance, const gchar *unique_app_name )
 {
@@ -217,17 +207,6 @@ base_iunique_init_with_name( BaseIUnique *instance, const gchar *unique_app_name
 				base_window_display_error_dlg( NULL, _( "The application is not unique" ), msg );
 				g_free( msg );
 				ret = FALSE;
-#if 0
-			/* default from libunique is actually to activate the first window
-			 * so we rely on the default..
-			 */
-			} else {
-				g_signal_connect(
-						data->handle,
-						"message-received",
-						G_CALLBACK( on_unique_message_received ),
-						instance );
-#endif
 			} else {
 				data->unique_app_name = g_strdup( unique_app_name );
 			}
@@ -235,27 +214,6 @@ base_iunique_init_with_name( BaseIUnique *instance, const gchar *unique_app_name
 
 	return( ret );
 }
-
-#if 0
-static UniqueResponse
-on_unique_message_received(
-		UniqueApp *app, UniqueCommand command, UniqueMessageData *message, guint time, BaseIUnique *instance )
-{
-	static const gchar *thisfn = "base_iunique_on_unique_message_received";
-	UniqueResponse resp = UNIQUE_RESPONSE_OK;
-
-	switch( command ){
-		case UNIQUE_ACTIVATE:
-			g_debug( "%s: received message UNIQUE_ACTIVATE", thisfn );
-			break;
-		default:
-			resp = UNIQUE_RESPONSE_PASSTHROUGH;
-			break;
-	}
-
-	return( resp );
-}
-#endif
 
 static const gchar *
 m_get_application_name( const BaseIUnique *instance )
