@@ -1,80 +1,17 @@
-2014-03-23 update to 1.7.1
-
-changelog:
-
-- improve help documents
-
-2014-03-15 update to 1.7.0
-
-changelog:
-
-- port to yelp-tools
-
-2014-03-14 update to 1.6.3
-
-changelog:
-
-- update to follow nautilus-action-3.2.3
-
-- for details see git commits
-
-2013-08-18 update to 1.6.2
-
-changelog:
-
-- fix Copying-DOCS issue,  wrong-file-end-of-line-encoding
-
-2013-08-15 update to 1.6.1
-
-changelog:
-
-- improve debug usage
-
-29.11.2012 update to 1.6.0
-
-changelog:
-
-- complete removal of mateconf usage, needed for distros with MATE 1.6
-
-  without mateconf.
-  
+ 
 Mate Installation
 ==================
 NOCONFIGURE=1 ./autogen.sh
 
 ./configure  \
 
-    --with-gtk=2
+    --with-gtk=2/3
 
     --enable-html-manuals
 
 make
 
 sudo make install
-
-
-for Mate-1.4, you need 1.4.0 source
-
-NOCONFIGURE=1 ./autogen.sh
-
-./configure  \
-
-	--disable-schemas-install \
-
-	--with-gtk=2 \
-
-    --enable-mateconf=yes \
-
-    --disable-scrollkeeper \
-
-    --enable-html-manuals \
-
-    --with-default-io-provider=na-desktop
-
-make
-
-sudo make install
-
 
 
 debian installer package from community member:
@@ -118,8 +55,6 @@ Caja-Actions components.
     b) installed in PKGLIBEXECDIR:
        . na-print-schemas prints the full MateConf schemas on stdout;
        . na-delete-xmltree deletes a tree from a XML file;
-       . na-mateconf2keys.sh migrates menus, actions and user preferences from
-         MateConf to files.
 
 Caja-Actions plugins.
 
@@ -138,8 +73,6 @@ Caja-Actions plugins.
     Caja-Actions also relies on plugins to import actions and menus,
     and to export them, in several formats.
     For now, Caja-Actions is able to import/export its items as:
-    . MateConf schemas;
-    . MateConf dump;
     . XML;
     . .desktop files.
 
