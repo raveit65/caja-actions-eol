@@ -1,9 +1,10 @@
 # Caja-Actions
 # A Caja extension which offers configurable context menu actions.
 #
-# Copyright (C) 2005 The MATE Foundation
+# Copyright (C) 2005 The GNOME Foundation
 # Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
 # Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
+# Copyright (C) 2012-2017 Wolfgang Ulbrich and others (see AUTHORS))
 #
 # Caja-Actions is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General  Public  License  as

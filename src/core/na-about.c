@@ -2,7 +2,7 @@
  * Caja-Actions
  * A Caja extension which offers configurable context menu actions.
  *
- * Copyright (C) 2005 The MATE Foundation
+ * Copyright (C) 2005 The GNOME Foundation
  * Copyright (C) 2006-2008 Frederic Ruaudel and others (see AUTHORS)
  * Copyright (C) 2009-2012 Pierre Wieser and others (see AUTHORS)
  *
@@ -158,7 +158,7 @@ na_about_get_copyright( gboolean console )
 	symbol = g_strdup( console ? "(C)" : "\xc2\xa9");
 
 	copyright = g_strdup_printf(
-			_( "Copyright %s 2005 The MATE Foundation\n"
+			_( "Copyright %s 2005 The GNOME Foundation\n"
 				"Copyright %s 2006-2008 Frederic Ruaudel <grumz@grumz.net>\n"
 				"Copyright %s 2009-2012 Pierre Wieser <pwieser@trychlos.org>" ), symbol, symbol, symbol );
 
