@@ -55,6 +55,7 @@ DISTCHECK_CONFIGURE_FLAGS =	\
 	$(NULL)
 
 EXTRA_DIST =	\
+	autogen.sh                          \
 	gtk-doc.make						\
 	intltool-extract.in					\
 	intltool-merge.in					\
