@@ -28,7 +28,7 @@
 
 AC_PREREQ([2.53])
 
-AC_INIT([Caja-Actions],[1.8.1],[chat-to-me@raveit.de],,[https://github.com/NiceandGently/caja-actions])
+AC_INIT([Caja-Actions],[1.8.2],[chat-to-me@raveit.de],,[https://github.com/NiceandGently/caja-actions])
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CANONICAL_TARGET
