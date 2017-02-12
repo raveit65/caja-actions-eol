@@ -283,7 +283,7 @@ instance_finalize( GObject *dialog )
  * cact_export_ask_user:
  * @parent: the CactAssistant parent of this dialog.
  * @item: the NAObjectItem to be exported.
- * @first: whether this is the first call of a serie.
+ * @first: whether this is the first call of a series.
  *  On a first call, the user is really asked for his choice.
  *  The next times, the 'keep-last-choice' flag will be considered.
  *

@@ -459,7 +459,7 @@ instance_finalize( GObject *application )
  * Takes care of creating, initializing, and running the main window.
  *
  * All steps are implemented as virtual functions which provide some
- * suitable defaults, and may be overriden by a derived class.
+ * suitable defaults, and may be overridden by a derived class.
  *
  * Returns: an %int code suitable as an exit code for the program.
  *

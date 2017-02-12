@@ -926,7 +926,7 @@ msgstr "ଏହି ପ୍ରଗ୍ରାମ ବିଷୟରେ ସହାୟତା
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
 #: ../src/cact/cact-imenubar.c:151
-msgid "Display informations about this program."
+msgid "Display information about this program."
 msgstr "ଏହି ପ୍ରଗ୍ରାମ ବିଷୟରେ ସୂଚନା ଦର୍ଶାନ୍ତୁ।"
 
 #. i18n: label of a duplicated action

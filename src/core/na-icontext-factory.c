@@ -169,7 +169,7 @@ NADataDef data_def_conditions [] = {
 				NULL,
 				NULL },
 
-	/* this is obsoleted starting with 2.30-newdata (released as 2.31.x serie)
+	/* this is obsoleted starting with 2.30-newdata (released as 2.31.x series.
 	 * and replaced by mimetypes
 	 */
 	{ NAFO_DATA_ISFILE,
@@ -234,7 +234,7 @@ NADataDef data_def_conditions [] = {
 				NULL,
 				NULL },
 
-	/* this is obsoleted starting with 2.30-newdata (released as 2.31.x serie)
+	/* this is obsoleted starting with 2.30-newdata (released as 2.31.x series.
 	 * and replaced by selection-count
 	 */
 	{ NAFO_DATA_MULTIPLE,
@@ -522,7 +522,7 @@ NADataDef data_def_conditions [] = {
 					"Capabilities may be negated.\n" \
 					"Capabilities have to be chosen between following predefined ones:\n" \
 					"- 'Owner': current user is the owner of selected items\n" \
-					"- 'Readable': selected items are readable by user (probably more usefull when negated)\n" \
+					"- 'Readable': selected items are readable by user (probably more useful when negated)\n" \
 					"- 'Writable': selected items are writable by user\n" \
 					"- 'Executable': selected items are executable by user\n" \
 					"- 'Local': selected items are local.\n" \

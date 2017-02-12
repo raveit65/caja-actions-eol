@@ -58,7 +58,7 @@
  * - keep the compatibility with previous mode
  *
  * which means exporting the minimal schema file which can be imported
- * with v1.10 and previous series, and via mateconftool-2 --install-schema-file.
+ * with v1.10 and previous series., and via mateconftool-2 --install-schema-file.
  */
 
 #include "base-assistant.h"

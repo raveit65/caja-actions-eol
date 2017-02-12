@@ -679,7 +679,7 @@ split_path_parameters( NAObjectProfile *profile )
 
 /*
  * historical behavior was to not check path nor parameters at all
- * 2.29.x serie, and up to 2.30.0, have tried to check an actual executable path
+ * 2.29.x series. and up to 2.30.0, have tried to check an actual executable path
  * but most of already actions only used a command, relying on the PATH env variable
  * so, starting with 2.30.1, we only check for non empty path+parameters
  */

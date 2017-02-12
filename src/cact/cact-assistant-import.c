@@ -92,7 +92,7 @@ struct _CactAssistantImportPrivate {
 	GtkTreeView *duplicates_listview;
 	NAIOption   *mode;
 	GList       *results;
-	GList       *overriden;
+	GList       *overridden;
 };
 
 static const gchar        *st_xmlui_filename = PKGUIDIR "/cact-assistant-import.ui";
@@ -654,7 +654,7 @@ assistant_apply( BaseAssistant *wnd, GtkAssistant *assistant )
 	NAImporterParms importer_parms;
 	BaseWindow *main_window;
 	GList *import_results, *it;
-	GList *insertable_items, *overriden_items;
+	GList *insertable_items, *overridden_items;
 	NAImporterResult *result;
 	CactApplication *application;
 	NAUpdater *updater;
@@ -678,7 +678,7 @@ assistant_apply( BaseAssistant *wnd, GtkAssistant *assistant )
 	import_results = na_importer_import_from_uris( NA_PIVOT( updater ), &importer_parms );
 
 	insertable_items = NULL;
-	overriden_items = NULL;
+	overridden_items = NULL;
 
 	for( it = import_results ; it ; it = it->next ){
 		result = ( NAImporterResult * ) it->data;
@@ -688,7 +688,7 @@ assistant_apply( BaseAssistant *wnd, GtkAssistant *assistant )
 				insertable_items = g_list_prepend( insertable_items, result->imported );
 
 			} else if( result->mode == IMPORTER_MODE_OVERRIDE ){
-				overriden_items = g_list_prepend( overriden_items, result->imported );
+				overridden_items = g_list_prepend( overridden_items, result->imported );
 			}
 		}
 	}
@@ -713,10 +713,10 @@ assistant_apply( BaseAssistant *wnd, GtkAssistant *assistant )
 	/* contrarily, the tree store may or not take a new reference on overriding
 	 * items, so do not release it here
 	 */
-	if( overriden_items ){
+	if( overridden_items ){
 		items_view = cact_main_window_get_items_view( CACT_MAIN_WINDOW( main_window ));
-		cact_tree_ieditable_set_items( CACT_TREE_IEDITABLE( items_view ), overriden_items );
-		window->private->overriden = overriden_items;
+		cact_tree_ieditable_set_items( CACT_TREE_IEDITABLE( items_view ), overridden_items );
+		window->private->overridden = overridden_items;
 	}
 }
 
@@ -845,8 +845,8 @@ prepare_importdone( CactAssistantImport *window, GtkAssistant *assistant, GtkWid
 
 	/* release here our reference on overriding items
 	 */
-	if( window->private->overriden ){
-		na_object_free_items( window->private->overriden );
+	if( window->private->overridden ){
+		na_object_free_items( window->private->overridden );
 	}
 
 	g_object_set( G_OBJECT( window ), BASE_PROP_WARN_ON_ESCAPE, FALSE, NULL );

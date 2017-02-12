@@ -1015,7 +1015,7 @@ cact_tree_ieditable_set_items( CactTreeIEditable *instance, GList *items )
  * cact_tree_ieditable_dump_modified:
  * @instance: this #CactTreeIEditable *instance.
  *
- * Dump informations about modified items.
+ * Dump information about modified items.
  */
 void
 cact_tree_ieditable_dump_modified( const CactTreeIEditable *instance )

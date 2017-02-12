@@ -866,7 +866,7 @@ query_file_attributes( NASelectedInfo *nsi, GFile *location, gchar **errmsg )
 
 	if( error ){
 		if( errmsg ){
-			*errmsg = g_strdup_printf( _( "Error when querying informations for %s URI: %s" ), nsi->private->uri, error->message );
+			*errmsg = g_strdup_printf( _( "Error when querying information for %s URI: %s" ), nsi->private->uri, error->message );
 		} else {
 			g_warning( "%s: uri=%s, g_file_query_info: %s", thisfn, nsi->private->uri, error->message );
 		}

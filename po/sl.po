@@ -763,7 +763,7 @@ msgid ""
 "Capabilities may be negated.\n"
 "Capabilities have to be chosen between following predefined ones:\n"
 "- 'Owner': current user is the owner of selected items\n"
-"- 'Readable': selected items are readable by user (probably more usefull when negated)\n"
+"- 'Readable': selected items are readable by user (probably more useful when negated)\n"
 "- 'Writable': selected items are writable by user\n"
 "- 'Executable': selected items are executable by user\n"
 "- 'Local': selected items are local.\n"
@@ -799,7 +799,7 @@ msgstr "Predmet je bil preštevilčen zaradi uporabniške zahteve."
 
 #: ../src/core/na-iimporter.c:279
 #: ../src/core/na-importer.c:335
-msgid "Existing item was overriden due to user request."
+msgid "Existing item was overridden due to user request."
 msgstr "Obstoječi predmet je bil prepisan zaradi uporabniške zahteve."
 
 #: ../src/core/na-iimporter.c:286
@@ -1223,7 +1223,7 @@ msgstr "Parametri ukaza"
 #: ../src/core/na-object-profile-factory.c:129
 msgid ""
 "The parameters of the command to be executed when the user selects the menu item in the file manager context menu or in the toolbar.\n"
-"The parameters may contain some special tokens which are replaced by the informations provided by the file manager before starting the command:\n"
+"The parameters may contain some special tokens which are replaced by the information provided by the file manager before starting the command:\n"
 "- up to version 2.0:\n"
 "  %d: base folder of the selected file(s)\n"
 "  %f: the name of the selected file or the first one if several are selected\n"
@@ -1373,7 +1373,7 @@ msgstr ""
 
 #: ../src/core/na-selected-info.c:869
 #, c-format
-msgid "Error when querying informations for %s URI: %s"
+msgid "Error when querying information for %s URI: %s"
 msgstr "Napaka med poizvedbo podatkov za URI %s: %s"
 
 #: ../src/core/na-tokens.c:250
@@ -1426,7 +1426,7 @@ msgstr "Izvozi kot datoteko ._desktop"
 
 #: ../src/io-desktop/nadp-formats.c:57
 msgid ""
-"This format has been introduced with v 3.0 serie, and should be your newly preferred format when exporting items.\n"
+"This format has been introduced with v 3.0 series. and should be your newly preferred format when exporting items.\n"
 "It let you easily share your actions with the whole world, including with users of other desktop environments, as long as their own application implements the DES-EMA specification which describes this format.\n"
 "The exported .desktop file may later be imported via :\n"
 "- Import assistant of the Caja-Actions Configuration Tool,\n"
@@ -1512,7 +1512,7 @@ msgstr "Izvozi kot _lahko datoteko sheme MateConf (r2)"
 
 #: ../src/io-xml/naxml-formats.c:68
 msgid ""
-"This format has been introduced in v 1.11 serie.\n"
+"This format has been introduced in v 1.11 series.\n"
 "This is the lightest schema still compatible with MateConf command-line tools, while keeping backward compatibility with the Caja-Actions Configuration Tool oldest versions.\n"
 "The exported schema file may later be imported via :\n"
 "- Import assistant of the Caja-Actions Configuration Tool,\n"
@@ -1533,7 +1533,7 @@ msgstr "Izvozi kot datoteko _izpisa MateConf"
 
 #: ../src/io-xml/naxml-formats.c:83
 msgid ""
-"This format has been introduced in v 1.11 serie.\n"
+"This format has been introduced in v 1.11 series.\n"
 "Tough not backward compatible with Caja-Actions Configuration Tool versions previous to 1.11, it may still be imported via standard MateConf command-line tools.\n"
 "The exported dump file may later be imported via :\n"
 "- Import assistant of the Caja-Actions Configuration Tool (1.11 and above),\n"
@@ -2392,7 +2392,7 @@ msgstr "Prikaže pomoč o tem programu"
 
 #. i18n: tooltip displayed in the status bar when selecting the About item
 #: ../src/cact/cact-menubar.c:164
-msgid "Display informations about this program"
+msgid "Display information about this program"
 msgstr "Prikaže podrobnosti o tem programu"
 
 #. i18n: tooltip displayed in the status bar when selecting the 'View File toolbar' item
@@ -3819,7 +3819,7 @@ msgid "About Caja-Actions"
 msgstr "O programu"
 
 #: ../src/plugin-menu/caja-actions.c:980
-msgid "Display some informations about Caja-Actions"
+msgid "Display some information about Caja-Actions"
 msgstr "Prikaže podrobnosti o programu"
 
 #: ../src/test/test-reader.c:48
