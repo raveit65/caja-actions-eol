@@ -236,7 +236,7 @@ base_gtk_utils_toggle_reset_initial_state( GtkToggleButton *button )
 
 /**
  * base_gtk_utils_get_pixbuf:
- * @name: the name of the file or an icon.
+ * @name: either the name of a themed icon, or a filename.
  * @widget: the widget on which the image should be rendered.
  * @size: the desired size.
  *
@@ -272,15 +272,9 @@ base_gtk_utils_get_pixbuf( const gchar *name, GtkWidget *widget, GtkIconSize siz
 			}
 
 		} else {
-/* gtk_widget_render_icon() is deprecated since Gtk+ 3.0
- * see http://library.gnome.org/devel/gtk/unstable/GtkWidget.html#gtk-widget-render-icon
- * and http://git.gnome.org/browse/gtk+/commit/?id=07eeae15825403037b7df139acf9bfa104d5559d
- */
-			pixbuf = gtk_widget_render_icon_pixbuf( widget, name, size );
-			if( !pixbuf ){
 				icon_theme = gtk_icon_theme_get_default();
 				pixbuf = gtk_icon_theme_load_icon(
-								icon_theme, name, width, GTK_ICON_LOOKUP_GENERIC_FALLBACK, &error );
+												  icon_theme, name, width, GTK_ICON_LOOKUP_GENERIC_FALLBACK, &error );
 				if( error ){
 					/* it happens that the message "Icon 'xxxx' not present in theme"
 					 * is generated with a domain of 'gtk-icon-theme-error-quark' and
@@ -290,7 +284,6 @@ base_gtk_utils_get_pixbuf( const gchar *name, GtkWidget *widget, GtkIconSize siz
 					g_debug( "%s: %s (%s:%d)",
 							thisfn, error->message, g_quark_to_string( error->domain ), error->code );
 					g_error_free( error );
-				}
 			}
 		}
 	}
