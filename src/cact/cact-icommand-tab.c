@@ -214,9 +214,7 @@ cact_icommand_tab_init( CactICommandTab *instance )
 static void
 on_base_initialize_gtk( CactICommandTab *instance, GtkWindow *toplevel, gpointer user_data )
 {
-#if GTK_CHECK_VERSION( 3,0,0 )
 	base_gtk_utils_table_to_grid( BASE_WINDOW( instance ), "table220" );
-#endif
 }
 
 /*

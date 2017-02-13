@@ -50,9 +50,7 @@ typedef struct {
 }
 	TableToGridData;
 
-#if GTK_CHECK_VERSION( 3,0,0 )
 static void table_to_grid_foreach_cb( GtkWidget *widget, TableToGridData *ttg );
-#endif
 
 /**
  * base_gtk_utils_position_window:
@@ -278,11 +276,7 @@ base_gtk_utils_get_pixbuf( const gchar *name, GtkWidget *widget, GtkIconSize siz
  * see http://library.gnome.org/devel/gtk/unstable/GtkWidget.html#gtk-widget-render-icon
  * and http://git.gnome.org/browse/gtk+/commit/?id=07eeae15825403037b7df139acf9bfa104d5559d
  */
-#if GTK_CHECK_VERSION( 2, 91, 7 )
 			pixbuf = gtk_widget_render_icon_pixbuf( widget, name, size );
-#else
-			pixbuf = gtk_widget_render_icon( widget, name, size, NULL );
-#endif
 			if( !pixbuf ){
 				icon_theme = gtk_icon_theme_get_default();
 				pixbuf = gtk_icon_theme_load_icon(
@@ -533,7 +527,6 @@ base_gtk_utils_select_dir( BaseWindow *window,
 void
 base_gtk_utils_table_to_grid( BaseWindow *window, const gchar *table_name )
 {
-#if GTK_CHECK_VERSION( 3,0,0 )
 	static const gchar *thisfn = "base_gtk_utils_table_to_grid";
 	TableToGridData ttg;
 	GtkWidget *parent;
@@ -552,14 +545,8 @@ base_gtk_utils_table_to_grid( BaseWindow *window, const gchar *table_name )
 	na_gtk_utils_dump_children( GTK_CONTAINER( parent ));
 #endif
 
-#if !GTK_CHECK_VERSION( 3,4,0 )
-	gtk_table_get_size( GTK_TABLE( ttg.table ), &ttg.rows, &ttg.columns );
-	col_spacing = gtk_table_get_default_col_spacing( GTK_TABLE( ttg.table ));
-	row_spacing = gtk_table_get_default_row_spacing( GTK_TABLE( ttg.table ));
-#else
 	col_spacing = 6;
 	row_spacing = 6;
-#endif
 
 	ttg.grid = gtk_grid_new();
 	gtk_grid_set_column_spacing( GTK_GRID( ttg.grid ), col_spacing );
@@ -578,10 +565,8 @@ base_gtk_utils_table_to_grid( BaseWindow *window, const gchar *table_name )
 #ifdef NA_MAINTAINER_MODE
 	na_gtk_utils_dump_children( GTK_CONTAINER( parent ));
 #endif
-#endif
 }
 
-#if GTK_CHECK_VERSION( 3,0,0 )
 static void
 table_to_grid_foreach_cb( GtkWidget *widget, TableToGridData *ttg )
 {
@@ -596,4 +581,3 @@ table_to_grid_foreach_cb( GtkWidget *widget, TableToGridData *ttg )
 	gtk_grid_attach( GTK_GRID( ttg->grid ), widget, left, top, 1, 1 );
 	gtk_widget_set_hexpand( widget, x_options & GTK_EXPAND );
 }
-#endif

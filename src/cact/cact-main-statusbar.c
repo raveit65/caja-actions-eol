@@ -62,15 +62,7 @@ cact_main_statusbar_initialize_gtk_toplevel( CactMainWindow *window )
 	gint width, height;
 	GtkStatusbar *bar;
 	GtkFrame *frame;
-/* gtk_widget_size_request() is deprecated since Gtk+ 3.0
- * see http://library.gnome.org/devel/gtk/unstable/GtkWidget.html#gtk-widget-render-icon
- * and http://git.gnome.org/browse/gtk+/commit/?id=07eeae15825403037b7df139acf9bfa104d5559d
- */
-#if GTK_CHECK_VERSION( 2, 91, 7 )
 	GtkRequisition minimal_size, natural_size;
-#else
-	GtkRequisition requisition;
-#endif
 
 	g_debug( "%s: window=%p", thisfn, ( void * ) window );
 
@@ -79,13 +71,8 @@ cact_main_statusbar_initialize_gtk_toplevel( CactMainWindow *window )
 	bar = get_statusbar( window );
 	frame = GTK_FRAME( base_window_get_widget( BASE_WINDOW( window ), "ActionLockedFrame" ));
 
-#if GTK_CHECK_VERSION( 2, 91, 7 )
 	gtk_widget_get_preferred_size( GTK_WIDGET( bar ), &minimal_size, &natural_size );
 	gtk_widget_set_size_request( GTK_WIDGET( bar ), natural_size.width, height+8 );
-#else
-	gtk_widget_size_request( GTK_WIDGET( bar ), &requisition );
-	gtk_widget_set_size_request( GTK_WIDGET( bar ), requisition.width, height+8 );
-#endif
 
 	gtk_widget_set_size_request( GTK_WIDGET( frame ), width+4, height+4 );
 	gtk_frame_set_shadow_type( frame, GTK_SHADOW_IN );

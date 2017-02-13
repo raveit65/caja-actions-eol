@@ -40,9 +40,7 @@
 /* patch provided by Mathias Clasen
  * see http://git.gnome.org/browse/libegg/commit/?id=0be81fa47fb5dabba2be40888ed5d4b16f0ae6a3
  */
-#if GTK_CHECK_VERSION( 2, 91, 7 )
 #include <gdk/gdkx.h>
-#endif
 
 #define EGG_TYPE_SM_CLIENT_XSMP            (egg_sm_client_xsmp_get_type ())
 #define EGG_SM_CLIENT_XSMP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), EGG_TYPE_SM_CLIENT_XSMP, EggSMClientXSMP))
@@ -379,17 +377,7 @@ sm_client_xsmp_startup (EggSMClient *client,
       xsmp->client_id = g_strdup (ret_client_id);
       free (ret_client_id);
 
-#if !GTK_CHECK_VERSION( 3, 6, 0 )
-      gdk_threads_enter ();
-#endif
-#if GTK_CHECK_VERSION( 3, 0, 0 )
       gdk_x11_set_sm_client_id (xsmp->client_id);
-#else
-      gdk_set_sm_client_id (xsmp->client_id);
-#endif
-#if !GTK_CHECK_VERSION( 3, 6, 0 )
-      gdk_threads_leave ();
-#endif
 
       g_debug ("Got client ID \"%s\"", xsmp->client_id);
     }
@@ -561,10 +549,6 @@ idle_do_pending_events (gpointer data)
   EggSMClientXSMP *xsmp = data;
   EggSMClient *client = data;
 
-#if !GTK_CHECK_VERSION( 3, 6, 0 )
-  gdk_threads_enter ();
-#endif
-
   xsmp->idle = 0;
 
   if (xsmp->waiting_to_emit_quit)
@@ -588,9 +572,6 @@ idle_do_pending_events (gpointer data)
     }
 
  out:
-#if !GTK_CHECK_VERSION( 3, 6, 0 )
-  gdk_threads_leave ();
-#endif
   return FALSE;
 }
 
@@ -1313,13 +1294,7 @@ process_ice_messages (IceConn ice_conn)
 {
   IceProcessMessagesStatus status;
 
-#if !GTK_CHECK_VERSION( 3, 6, 0 )
-  gdk_threads_enter ();
-#endif
   status = IceProcessMessages (ice_conn, NULL, NULL);
-#if !GTK_CHECK_VERSION( 3, 6, 0 )
-  gdk_threads_leave ();
-#endif
 
   switch (status)
     {

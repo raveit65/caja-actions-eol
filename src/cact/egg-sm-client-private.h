@@ -22,14 +22,6 @@
 
 #include <gtk/gtk.h>
 
-/* patch provided by Mathias Clasen
- * see http://git.gnome.org/browse/libegg/commit/?id=0be81fa47fb5dabba2be40888ed5d4b16f0ae6a3
- */
-#if !GTK_CHECK_VERSION( 2, 91, 7 )
-/* GTK+ 3 includes this automatically */
-#include <gdkconfig.h>
-#endif
-
 #include "egg-sm-client.h"
 
 G_BEGIN_DECLS

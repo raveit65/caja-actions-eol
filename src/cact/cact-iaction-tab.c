@@ -230,11 +230,7 @@ on_base_initialize_gtk( CactIActionTab *instance, GtkWindow *toplevel, void *use
  * see http://library.gnome.org/devel/gtk/unstable/GtkWidget.html#gtk-widget-render-icon
  * and http://git.gnome.org/browse/gtk+/commit/?id=07eeae15825403037b7df139acf9bfa104d5559d
  */
-#if GTK_CHECK_VERSION( 2, 91, 7 )
 	GtkRequisition minimal_size, natural_size;
-#else
-	GtkRequisition requisition;
-#endif
 
 	g_return_if_fail( CACT_IS_IACTION_TAB( instance ));
 
@@ -247,13 +243,8 @@ on_base_initialize_gtk( CactIActionTab *instance, GtkWindow *toplevel, void *use
 	button = GTK_BUTTON( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconBrowseButton" ));
 	frame = GTK_FRAME( base_window_get_widget( BASE_WINDOW( instance ), "ActionIconFrame" ));
 
-#if GTK_CHECK_VERSION( 2, 91, 7 )
 	gtk_widget_get_preferred_size( GTK_WIDGET( button ), &minimal_size, &natural_size );
 	size = MAX( minimal_size.height, natural_size.height );
-#else
-	gtk_widget_size_request( GTK_WIDGET( button ), &requisition );
-	size = requisition.height;
-#endif
 
 	gtk_widget_set_size_request( GTK_WIDGET( frame ), size, size );
 	gtk_frame_set_shadow_type( frame, GTK_SHADOW_IN );
@@ -673,17 +664,9 @@ set_label_label( CactIActionTab *instance, const gchar *color_str )
 
 	label = base_window_get_widget( BASE_WINDOW( instance ), "ActionMenuLabelLabel" );
 
-/* gtk_widget_modify_fg() is deprecated as of Gtk+ 3.0
- */
-#if GTK_CHECK_VERSION( 2, 91, 7 )
 	GdkRGBA color;
 	gdk_rgba_parse( &color, color_str );
 	gtk_widget_override_color( label, GTK_STATE_FLAG_ACTIVE, &color );
-#else
-	GdkColor color;
-	gdk_color_parse( color_str, &color );
-	gtk_widget_modify_fg( label, GTK_STATE_NORMAL, &color );
-#endif
 }
 
 static void

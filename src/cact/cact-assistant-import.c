@@ -350,27 +350,6 @@ on_base_initialize_gtk( CactAssistantImport *dialog )
 	if( !dialog->private->dispose_has_run ){
 		g_debug( "%s: dialog=%p", thisfn, ( void * ) dialog );
 
-#if !GTK_CHECK_VERSION( 3,0,0 )
-		guint padder = 8;
-		GtkAssistant *assistant = GTK_ASSISTANT( base_window_get_gtk_toplevel( BASE_WINDOW( dialog )));
-		/* selecting files */
-		GtkWidget *page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_FILES_SELECTION );
-		GtkWidget *container = find_widget_from_page( page, "p1-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "top_padding", padder, NULL );
-		/* managing duplicates */
-		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_DUPLICATES );
-		container = find_widget_from_page( page, "p2-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
-		/* summary */
-		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_CONFIRM );
-		container = find_widget_from_page( page, "p3-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
-		/* import is done */
-		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_DONE );
-		container = find_widget_from_page( page, "p4-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
-#endif
-
 		create_duplicates_treeview_model( dialog );
 	}
 }
@@ -592,16 +571,6 @@ prepare_confirm( CactAssistantImport *window, GtkAssistant *assistant, GtkWidget
 	g_debug( "%s: window=%p, assistant=%p, page=%p",
 			thisfn, ( void * ) window, ( void * ) assistant, ( void * ) page );
 
-#if !GTK_CHECK_VERSION( 3,0,0 )
-	/* Note that, at least, in Gtk 2.20 (Ubuntu 10) and 2.22 (Fedora 14), GtkLabel
-	 * queues its resize (when the text is being set), but the actual resize does
-	 * not happen immediately - We have to wait until Gtk 3.0, most probably due
-	 * to the new width-for-height and height-for-width features...
-	 */
-	GtkWidget *vbox = find_widget_from_page( page, "p3-ConfirmVBox" );
-	gtk_container_set_resize_mode( GTK_CONTAINER( vbox ), GTK_RESIZE_IMMEDIATE );
-#endif
-
 	/* adding list of uris to import
 	 */
 	text = NULL;
@@ -767,15 +736,6 @@ prepare_importdone( CactAssistantImport *window, GtkAssistant *assistant, GtkWid
 	vbox = find_widget_from_page( page, "p4-SummaryVBox" );
 	g_return_if_fail( GTK_IS_BOX( vbox ));
 
-#if !GTK_CHECK_VERSION( 3,0,0 )
-	/* Note that, at least, in Gtk 2.20 (Ubuntu 10) and 2.22 (Fedora 14), GtkLabel
-	 * queues its resize (when the text is being set), but the actual resize does
-	 * not happen immediately - We have to wait until Gtk 3.0, most probably due
-	 * to the new width-for-height and height-for-width features...
-	 */
-	gtk_container_set_resize_mode( GTK_CONTAINER( vbox ), GTK_RESIZE_IMMEDIATE );
-#endif
-
 	/* for each uri
 	 * 	- display the uri
 	 *  - display a brief import log
@@ -786,11 +746,7 @@ prepare_importdone( CactAssistantImport *window, GtkAssistant *assistant, GtkWid
 
 		/* display the uri
 		 */
-#if GTK_CHECK_VERSION( 3,0,0 )
 		file_vbox = gtk_box_new( GTK_ORIENTATION_VERTICAL, 4 );
-#else
-		file_vbox = gtk_vbox_new( FALSE, 4 );
-#endif
 		gtk_box_pack_start( GTK_BOX( vbox ), file_vbox, FALSE, FALSE, 0 );
 
 		color = result->imported ? "blue" : "red";

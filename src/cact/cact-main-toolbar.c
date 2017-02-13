@@ -62,11 +62,6 @@ static int toolbar_pos[] = {
 
 static void          init_toolbar( BaseWindow *window, GtkActionGroup *group, int toolbar_id );
 static void          reorder_toolbars( GtkWidget *hbox, int toolbar_id, GtkWidget *handle );
-#if !GTK_CHECK_VERSION( 3,4,0 )
-static void          on_handle_finalize( gpointer data, GObject *handle );
-static void          on_attach_toolbar( GtkHandleBox *handle, GtkToolbar *toolbar, CactMainWindow *window );
-static void          on_detach_toolbar( GtkHandleBox *handle, GtkToolbar *toolbar, CactMainWindow *window );
-#endif
 static ToolbarProps *get_toolbar_properties( int toolbar_id );
 
 /**
@@ -140,7 +135,6 @@ cact_main_toolbar_activate( CactMainWindow *window, int toolbar_id, GtkUIManager
 	g_debug( "%s: toolbar=%p, path=%s, ref_count=%d", thisfn, ( void * ) toolbar, props->ui_path, G_OBJECT( toolbar )->ref_count );
 	hbox = base_window_get_widget( BASE_WINDOW( window ), "ToolbarHBox" );
 
-#if GTK_CHECK_VERSION( 3,4,0 )
 	if( is_active ){
 		gtk_container_add( GTK_CONTAINER( hbox ), toolbar );
 		reorder_toolbars( hbox, toolbar_id, toolbar );
@@ -149,34 +143,6 @@ cact_main_toolbar_activate( CactMainWindow *window, int toolbar_id, GtkUIManager
 	} else {
 		gtk_container_remove( GTK_CONTAINER( hbox ), toolbar );
 	}
-#else
-	GtkWidget *handle;
-	gulong attach_id, detach_id;
-
-	if( is_active ){
-		handle = gtk_handle_box_new();
-		gtk_handle_box_set_snap_edge( GTK_HANDLE_BOX( handle ), GTK_POS_LEFT );
-		g_object_set_data( G_OBJECT( toolbar ), "cact-main-toolbar-handle", handle );
-		attach_id = g_signal_connect( handle, "child-attached", (GCallback ) on_attach_toolbar, window );
-		g_object_set_data( G_OBJECT( handle ), "cact-handle-attach-id", ( gpointer ) attach_id );
-		detach_id = g_signal_connect( handle, "child-detached", (GCallback ) on_detach_toolbar, window );
-		g_object_set_data( G_OBJECT( handle ), "cact-handle-detach-id", ( gpointer ) detach_id );
-		g_object_weak_ref( G_OBJECT( handle ), ( GWeakNotify ) on_handle_finalize, NULL );
-		gtk_container_add( GTK_CONTAINER( handle ), toolbar );
-		gtk_container_add( GTK_CONTAINER( hbox ), handle );
-		reorder_toolbars( hbox, toolbar_id, handle );
-		gtk_widget_show_all( handle );
-
-	} else {
-		handle = ( GtkWidget * ) g_object_get_data( G_OBJECT( toolbar ), "cact-main-toolbar-handle" );
-		detach_id = ( gulong ) g_object_get_data( G_OBJECT( handle ), "cact-handle-detach-id" );
-		g_signal_handler_disconnect( handle, detach_id );
-		attach_id = ( gulong ) g_object_get_data( G_OBJECT( handle ), "cact-handle-attach-id" );
-		g_signal_handler_disconnect( handle, attach_id );
-		gtk_container_remove( GTK_CONTAINER( handle ), toolbar );
-		gtk_container_remove( GTK_CONTAINER( hbox ), handle );
-	}
-#endif
 	na_settings_set_boolean( props->prefs_key, is_active );
 }
 
@@ -219,34 +185,6 @@ reorder_toolbars( GtkWidget *hbox, int toolbar_id, GtkWidget *handle )
 
 	gtk_box_reorder_child( GTK_BOX( hbox ), handle, pos );
 }
-
-#if !GTK_CHECK_VERSION( 3,4,0 )
-static void
-on_handle_finalize( gpointer data, GObject *handle )
-{
-	g_debug( "cact_main_toolbar_on_handle_finalize: handle=%p", ( void * ) handle );
-}
-
-static void
-on_attach_toolbar( GtkHandleBox *handle, GtkToolbar *toolbar, CactMainWindow *window )
-{
-	static const gchar *thisfn = "cact_main_toolbar_on_attach_toolbar";
-
-	g_debug( "%s: handle=%p, toolbar=%p, window=%p", thisfn, ( void * ) handle, ( void * ) toolbar, ( void * ) window );
-
-	gtk_toolbar_set_show_arrow( toolbar, TRUE );
-}
-
-static void
-on_detach_toolbar( GtkHandleBox *handle, GtkToolbar *toolbar, CactMainWindow *window )
-{
-	static const gchar *thisfn = "cact_main_toolbar_on_detach_toolbar";
-
-	g_debug( "%s: handle=%p, toolbar=%p, window=%p", thisfn, ( void * ) handle, ( void * ) toolbar, ( void * ) window );
-
-	gtk_toolbar_set_show_arrow( toolbar, FALSE );
-}
-#endif
 
 static ToolbarProps *
 get_toolbar_properties( int toolbar_id )
