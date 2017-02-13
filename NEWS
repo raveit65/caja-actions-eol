@@ -1,13 +1,24 @@
 1.8.2
+    update COPYRIGHT
+    edit README.md
+    edit README
+    No version in documentation install path.
+    Add missing keywords entry to cact.desktop.
+    Fix various spelling issues in code and printed text (and translation files).
+    generate changelog from git history
+    include autogen in tarball
+    configure: change repo name
+    drop libunique comments
+    drop references to libunique on the check for gtk
+    Port from libunique to GApplication
 
 1.8.1
-  * some UI fixes for gtk3
-  * fix make distcheck
-  * remove mate-doc-utils remants
-  * Gtk3: fix deprecated gdk_threads_enter/leave
-  * fix GTK3 build
+    some UI fixes for gtk3
+    fix make distcheck
+    remove mate-doc-utils remants
+    Gtk3: fix deprecated gdk_threads_enter/leave
+    fix GTK3 build
 
 1.8.0
-
-  * help is working
+    help is working
 
