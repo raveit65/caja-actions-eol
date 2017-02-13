@@ -122,25 +122,30 @@ if test "${PKG_CONFIG}" = "no"; then
 	AC_MSG_ERROR([You need to install pkg-config])
 fi
 
-# Oldest supported distribution: Ubuntu 10 LTS (Mate 2.30): april 2013
-glib_required=2.24.0
-gtk_required=2.20.0
-NA_CHECK_FOR_GTK
+glib_required=2.32.1
+gtk_required=3.10
+gtop_required=2.23.1
+xml_required=2.6
+sm_required=1.0
+caja_required=1.17.1
 
 # GDBus comes in GIO with 2.26
 # so uses GDBus if present, or fallback into dbus-glib-1
-NA_CHECK_MODULE([GLIB],   [glib-2.0 >= ${glib_required}])
-NA_CHECK_MODULE([GMODULE],[gmodule-2.0 >= ${glib_required}])
+NA_CHECK_MODULE([GLIB],   [glib-2.0],    [${glib_required}])
+NA_CHECK_MODULE([GMODULE],[gmodule-2.0], [${glib_required}])
 NA_CHECK_FOR_GDBUS
 
 dnl aclocal complains if the comma is not just after the square bracket
+# As of 1.18.0 release, remove Gtk+2 support, only allowing for Gtk+3
+dnl aclocal complains if the comma is not just after the square bracket
+NA_CHECK_MODULE([GTK3],              [gtk+-3.0],           [${gtk_required}])
 NA_CHECK_MODULE([GIO_UNIX],          [gio-unix-2.0])
-NA_CHECK_MODULE([GTOP],              [libgtop-2.0 >= 2.23.1])
-NA_CHECK_MODULE([LIBXML],            [libxml-2.0 >= 2.6])
-NA_CHECK_MODULE([SM],                [sm >= 1.0])
+NA_CHECK_MODULE([GTOP],              [libgtop-2.0],        [${gtop_required}])
+NA_CHECK_MODULE([LIBXML],            [libxml-2.0],         [${xml_required}])
+NA_CHECK_MODULE([SM],                [sm],                 [${sm_required}])
 NA_CHECK_MODULE([ICE],               [ice])
 NA_CHECK_MODULE([UUID],              [uuid])
-NA_CHECK_MODULE([CAJA_EXTENSION],[libcaja-extension >= 1.4.0])
+NA_CHECK_MODULE([CAJA_EXTENSION],    [libcaja-extension],  [${caja_required}])
 
 AC_SUBST([CAJA_ACTIONS_CFLAGS])
 AC_SUBST([CAJA_ACTIONS_LIBS])
@@ -196,7 +201,8 @@ $as_echo "
 	Installation prefix             ${prefix}
 	Build system type               ${ac_cv_build}
 	Caja extensions directory       ${with_caja_extdir}
-	Gtk+ version                    ${msg_gtk_version}
+	Gtk+ version                    ${GTK3_msg_version}
+	GLib version                    ${GLIB_msg_version}
 	Default I/O provider            ${with_default_io_provider}
 	Enable deprecated functions     ${enable_deprecated}
 	Maintainer mode                 ${msg_maintainer_mode}
