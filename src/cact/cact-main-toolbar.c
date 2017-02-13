@@ -137,6 +137,7 @@ cact_main_toolbar_activate( CactMainWindow *window, int toolbar_id, GtkUIManager
 
 	if( is_active ){
 		gtk_container_add( GTK_CONTAINER( hbox ), toolbar );
+		gtk_widget_set_hexpand (toolbar, TRUE);
 		reorder_toolbars( hbox, toolbar_id, toolbar );
 		gtk_widget_show_all( toolbar );
 
