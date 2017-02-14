@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
 <interface>
-  <requires lib="gtk+" version="3.10"/>
+  <requires lib="gtk+" version="3.14"/>
+  <!-- interface-license-type gplv2 -->
+  <!-- interface-name caja-actions-config-tool -->
+  <!-- interface-description main window -->
+  <!-- interface-copyright Wolfgang Ulbrich -->
+  <!-- interface-authors Wolfgang Ulbrich -->
+  <object class="GtkSizeGroup" id="ActionLabelSizeGroup"/>
+  <object class="GtkSizeGroup" id="CommandButtonSizeGroup"/>
+  <object class="GtkSizeGroup" id="CommandLabelSizeGroup"/>
   <object class="GtkMessageDialog" id="ConfirmLogoutDialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -33,6 +41,7 @@
       </object>
     </child>
   </object>
+  <object class="GtkSizeGroup" id="ExecutionModeSizeGroup"/>
   <object class="GtkImage" id="FolderBrowseImage">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -109,9 +118,9 @@
               <object class="GtkLabel" id="label25">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">start</property>
                 <property name="label" translatable="yes">&lt;span size="larger"&gt;&lt;b&gt;Parameter Legend&lt;/b&gt;&lt;/span&gt;</property>
                 <property name="use_markup">True</property>
-                <property name="xalign">0</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -682,6 +691,7 @@
       </object>
     </child>
   </object>
+  <object class="GtkSizeGroup" id="PropertiesLabelSizeGroup"/>
   <object class="GtkImage" id="SchemeBrowseImage">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -900,15 +910,10 @@
                                         <property name="orientation">vertical</property>
                                         <property name="spacing">10</property>
                                         <child>
-                                          <object class="GtkTable" id="table115">
+                                          <object class="GtkGrid" id="table115">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="n_rows">3</property>
-                                            <property name="n_columns">2</property>
                                             <property name="column_spacing">6</property>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
                                             <child>
                                               <object class="GtkCheckButton" id="ActionTargetSelectionButton">
                                                 <property name="label" translatable="yes">Display item in _selection context menu</property>
@@ -916,12 +921,13 @@
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">False</property>
                                                 <property name="tooltip_text" translatable="yes">When checked, the item will be candidate to be displayed in the file manager context menu, with a non-empty selection.</property>
+                                                <property name="halign">start</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="draw_indicator">True</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
-                                                <property name="right_attach">2</property>
+                                                <property name="top_attach">0</property>
                                               </packing>
                                             </child>
                                             <child>
@@ -929,30 +935,14 @@
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="tooltip_text" translatable="yes">The label of the item in the file manager context menus.</property>
+                                                <property name="hexpand">True</property>
                                                 <property name="invisible_char">●</property>
                                                 <property name="primary_icon_activatable">False</property>
                                                 <property name="secondary_icon_activatable">False</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
-                                                <property name="right_attach">2</property>
                                                 <property name="top_attach">2</property>
-                                                <property name="bottom_attach">3</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkLabel" id="ActionMenuLabelLabel">
-                                                <property name="visible">True</property>
-                                                <property name="can_focus">False</property>
-                                                <property name="label" translatable="yes">_Context label :</property>
-                                                <property name="use_underline">True</property>
-                                                <property name="mnemonic_widget">ActionMenuLabelEntry</property>
-                                                <property name="xalign">1</property>
-                                              </object>
-                                              <packing>
-                                                <property name="top_attach">2</property>
-                                                <property name="bottom_attach">3</property>
-                                                <property name="x_options">GTK_FILL</property>
                                               </packing>
                                             </child>
                                             <child>
@@ -963,53 +953,28 @@
                                                 <property name="receives_default">False</property>
                                                 <property name="tooltip_text" translatable="yes">When checked, the item will be candidate to be displayed in the file manager context menu when the selection is empty.
 In this case, the defined conditions will be applied to the current displayed folder.</property>
+                                                <property name="halign">start</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="draw_indicator">True</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
-                                                <property name="right_attach">2</property>
                                                 <property name="top_attach">1</property>
-                                                <property name="bottom_attach">2</property>
                                               </packing>
                                             </child>
                                             <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">True</property>
-                                            <property name="fill">True</property>
-                                            <property name="position">0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <object class="GtkTable" id="table116">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="n_rows">3</property>
-                                            <property name="n_columns">2</property>
-                                            <property name="column_spacing">6</property>
-                                            <child>
-                                              <placeholder/>
+                                              <object class="GtkLabel" id="ActionMenuLabelLabel">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="halign">end</property>
+                                                <property name="label" translatable="yes">_Context label :</property>
+                                                <property name="use_underline">True</property>
+                                                <property name="mnemonic_widget">ActionMenuLabelEntry</property>
+                                              </object>
+                                              <packing>
+                                                <property name="left_attach">0</property>
+                                                <property name="top_attach">2</property>
+                                              </packing>
                                             </child>
                                             <child>
                                               <object class="GtkCheckButton" id="ActionTargetToolbarButton">
@@ -1019,12 +984,13 @@ In this case, the defined conditions will be applied to the current displayed fo
                                                 <property name="receives_default">False</property>
                                                 <property name="tooltip_text" translatable="yes">When checked, the item will be candidate to be displayed in the file manager toolbar.
 In this case, the defined conditions will be applied to the current folder, and do not depend of the possible current selection.</property>
+                                                <property name="halign">start</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="draw_indicator">True</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
-                                                <property name="right_attach">2</property>
+                                                <property name="top_attach">3</property>
                                               </packing>
                                             </child>
                                             <child>
@@ -1034,14 +1000,26 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">False</property>
                                                 <property name="tooltip_text" translatable="yes">When checked, the label displayed in the toolbar will be the same that the one displayed in the context menus.</property>
+                                                <property name="halign">start</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="draw_indicator">True</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
-                                                <property name="right_attach">2</property>
-                                                <property name="top_attach">1</property>
-                                                <property name="bottom_attach">2</property>
+                                                <property name="top_attach">4</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkLabel" id="ActionToolbarLabelLabel">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="halign">end</property>
+                                                <property name="label" translatable="yes">T_oolbar label :</property>
+                                                <property name="use_underline">True</property>
+                                              </object>
+                                              <packing>
+                                                <property name="left_attach">0</property>
+                                                <property name="top_attach">5</property>
                                               </packing>
                                             </child>
                                             <child>
@@ -1049,96 +1027,40 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="tooltip_text" translatable="yes">The label displayed in the file manager toolbar.</property>
+                                                <property name="hexpand">True</property>
                                                 <property name="invisible_char">●</property>
                                                 <property name="primary_icon_activatable">False</property>
                                                 <property name="secondary_icon_activatable">False</property>
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
-                                                <property name="right_attach">2</property>
-                                                <property name="top_attach">2</property>
-                                                <property name="bottom_attach">3</property>
+                                                <property name="top_attach">5</property>
                                               </packing>
                                             </child>
-                                            <child>
-                                              <object class="GtkLabel" id="ActionToolbarLabelLabel">
-                                                <property name="visible">True</property>
-                                                <property name="can_focus">False</property>
-                                                <property name="label" translatable="yes">T_oolbar label :</property>
-                                                <property name="use_underline">True</property>
-                                                <property name="mnemonic_widget">ActionToolbarLabelEntry</property>
-                                                <property name="xalign">1</property>
-                                              </object>
-                                              <packing>
-                                                <property name="top_attach">2</property>
-                                                <property name="bottom_attach">3</property>
-                                                <property name="x_options">GTK_FILL</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">True</property>
-                                            <property name="fill">True</property>
-                                            <property name="position">2</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkTable" id="table117">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="n_rows">2</property>
-                                            <property name="n_columns">2</property>
-                                            <property name="column_spacing">6</property>
-                                            <property name="row_spacing">3</property>
                                             <child>
                                               <object class="GtkLabel" id="ActionTooltipLabel">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
+                                                <property name="halign">end</property>
                                                 <property name="label" translatable="yes">Toolti_p :</property>
                                                 <property name="use_underline">True</property>
-                                                <property name="mnemonic_widget">ActionTooltipEntry</property>
-                                                <property name="xalign">1</property>
                                               </object>
                                               <packing>
-                                                <property name="x_options">GTK_FILL</property>
+                                                <property name="left_attach">0</property>
+                                                <property name="top_attach">6</property>
                                               </packing>
                                             </child>
                                             <child>
                                               <object class="GtkLabel" id="ActionIconLabel">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
+                                                <property name="halign">end</property>
                                                 <property name="label" translatable="yes">_Icon :</property>
                                                 <property name="use_underline">True</property>
-                                                <property name="xalign">1</property>
                                               </object>
                                               <packing>
-                                                <property name="top_attach">1</property>
-                                                <property name="bottom_attach">2</property>
-                                                <property name="x_options">GTK_FILL</property>
+                                                <property name="left_attach">0</property>
+                                                <property name="top_attach">7</property>
                                               </packing>
                                             </child>
                                             <child>
@@ -1152,7 +1074,7 @@ In this case, the defined conditions will be applied to the current folder, and 
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
-                                                <property name="right_attach">2</property>
+                                                <property name="top_attach">6</property>
                                               </packing>
                                             </child>
                                             <child>
@@ -1172,8 +1094,10 @@ In this case, the defined conditions will be applied to the current folder, and 
                                                       <object class="GtkImage" id="ActionIconImage">
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
-                                                        <property name="xpad">2</property>
-                                                        <property name="ypad">2</property>
+                                                        <property name="margin_left">1</property>
+                                                        <property name="margin_right">1</property>
+                                                        <property name="margin_top">1</property>
+                                                        <property name="margin_bottom">1</property>
                                                         <property name="stock">gtk-stock-blank</property>
                                                         <property name="icon_size">2</property>
                                                       </object>
@@ -1218,16 +1142,26 @@ In this case, the defined conditions will be applied to the current folder, and 
                                               </object>
                                               <packing>
                                                 <property name="left_attach">1</property>
-                                                <property name="right_attach">2</property>
-                                                <property name="top_attach">1</property>
-                                                <property name="bottom_attach">2</property>
+                                                <property name="top_attach">7</property>
                                               </packing>
+                                            </child>
+                                            <child>
+                                              <placeholder/>
+                                            </child>
+                                            <child>
+                                              <placeholder/>
+                                            </child>
+                                            <child>
+                                              <placeholder/>
+                                            </child>
+                                            <child>
+                                              <placeholder/>
                                             </child>
                                           </object>
                                           <packing>
                                             <property name="expand">True</property>
                                             <property name="fill">True</property>
-                                            <property name="position">3</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                       </object>
@@ -1250,9 +1184,6 @@ In this case, the defined conditions will be applied to the current folder, and 
                                 <property name="fill">False</property>
                                 <property name="position">0</property>
                               </packing>
-                            </child>
-                            <child>
-                              <placeholder/>
                             </child>
                           </object>
                         </child>
@@ -1309,10 +1240,10 @@ In this case, the defined conditions will be applied to the current folder, and 
                                           <object class="GtkLabel" id="ProfileLabelLabel">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
                                             <property name="label" translatable="yes">_Label :</property>
                                             <property name="use_underline">True</property>
                                             <property name="mnemonic_widget">ProfileLabelEntry</property>
-                                            <property name="xalign">1</property>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -1372,80 +1303,25 @@ In this case, the defined conditions will be applied to the current folder, and 
                                     <property name="left_padding">12</property>
                                     <property name="right_padding">6</property>
                                     <child>
-                                      <object class="GtkTable" id="table220">
+                                      <object class="GtkGrid" id="table220">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="n_rows">4</property>
-                                        <property name="n_columns">3</property>
-                                        <property name="column_spacing">6</property>
                                         <property name="row_spacing">3</property>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="CommandPathLabel">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">_Path :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="mnemonic_widget">CommandPathEntry</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="x_options">GTK_FILL</property>
-                                            <property name="y_options"/>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="CommandParametersLabel">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">P_arameters :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="mnemonic_widget">CommandParametersEntry</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                            <property name="x_options">GTK_FILL</property>
-                                            <property name="y_options"/>
-                                          </packing>
-                                        </child>
+                                        <property name="column_spacing">6</property>
                                         <child>
                                           <object class="GtkEntry" id="CommandPathEntry">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="tooltip_text" translatable="yes">The path of the command.
 If this is not an absolute path, then the PATH environment variable at execution time will be considered.</property>
+                                            <property name="hexpand">True</property>
                                             <property name="invisible_char">●</property>
                                             <property name="primary_icon_activatable">False</property>
                                             <property name="secondary_icon_activatable">False</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
-                                            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-                                            <property name="y_options"/>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkButton" id="CommandPathButton">
-                                            <property name="label" translatable="yes">_Browse...</property>
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="receives_default">True</property>
-                                            <property name="image">ImagePathBrowse</property>
-                                            <property name="use_underline">True</property>
-                                          </object>
-                                          <packing>
-                                            <property name="left_attach">2</property>
-                                            <property name="right_attach">3</property>
-                                            <property name="x_options"/>
-                                            <property name="y_options"/>
+                                            <property name="top_attach">0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1453,17 +1329,14 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="tooltip_text" translatable="yes">The parameters of the command.</property>
+                                            <property name="hexpand">True</property>
                                             <property name="invisible_char">●</property>
                                             <property name="primary_icon_activatable">False</property>
                                             <property name="secondary_icon_activatable">False</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1477,26 +1350,7 @@ If this is not an absolute path, then the PATH environment variable at execution
                                           </object>
                                           <packing>
                                             <property name="left_attach">2</property>
-                                            <property name="right_attach">3</property>
                                             <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                            <property name="x_options"/>
-                                            <property name="y_options"/>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label4">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">_Working directory :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">3</property>
-                                            <property name="bottom_attach">4</property>
-                                            <property name="x_options">GTK_FILL</property>
-                                            <property name="y_options">GTK_FILL</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1504,17 +1358,14 @@ If this is not an absolute path, then the PATH environment variable at execution
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="tooltip_text" translatable="yes">The default working directory the command should be started in.</property>
+                                            <property name="hexpand">True</property>
                                             <property name="invisible_char">●</property>
                                             <property name="primary_icon_activatable">False</property>
                                             <property name="secondary_icon_activatable">False</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">3</property>
-                                            <property name="bottom_attach">4</property>
-                                            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1528,11 +1379,7 @@ If this is not an absolute path, then the PATH environment variable at execution
                                           </object>
                                           <packing>
                                             <property name="left_attach">2</property>
-                                            <property name="right_attach">3</property>
                                             <property name="top_attach">3</property>
-                                            <property name="bottom_attach">4</property>
-                                            <property name="x_options"/>
-                                            <property name="y_options"/>
                                           </packing>
                                         </child>
                                         <child>
@@ -1550,9 +1397,10 @@ If this is not an absolute path, then the PATH environment variable at execution
                                                   <object class="GtkLabel" id="CommandExampleLabel">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
+                                                    <property name="halign">start</property>
+                                                    <property name="margin_left">20</property>
                                                     <property name="use_markup">True</property>
                                                     <property name="wrap">True</property>
-                                                    <property name="xalign">0</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -1571,12 +1419,69 @@ If this is not an absolute path, then the PATH environment variable at execution
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">2</property>
-                                            <property name="bottom_attach">3</property>
-                                            <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
-                                            <property name="y_options">GTK_SHRINK</property>
                                           </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="CommandPathLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">_Path :</property>
+                                            <property name="use_underline">True</property>
+                                            <property name="mnemonic_widget">CommandPathEntry</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkButton" id="CommandPathButton">
+                                            <property name="label" translatable="yes">_Browse...</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">True</property>
+                                            <property name="image">ImagePathBrowse</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">2</property>
+                                            <property name="top_attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="CommandParametersLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">P_arameters :</property>
+                                            <property name="use_underline">True</property>
+                                            <property name="mnemonic_widget">CommandParametersEntry</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="label4">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">_Working directory :</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">3</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
                                         </child>
                                       </object>
                                     </child>
@@ -1650,21 +1555,10 @@ Defining several profiles lets you have several commands, each applying with a d
                                     <property name="left_padding">12</property>
                                     <property name="right_padding">6</property>
                                     <child>
-                                      <object class="GtkTable" id="table310">
+                                      <object class="GtkGrid" id="table310">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="n_rows">4</property>
-                                        <property name="n_columns">2</property>
                                         <property name="column_spacing">6</property>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
                                         <child>
                                           <object class="GtkRadioButton" id="ExecutionModeNormal">
                                             <property name="label" translatable="yes">_Normal</property>
@@ -1672,14 +1566,14 @@ Defining several profiles lets you have several commands, each applying with a d
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">The command will be started as a standard graphical user interface.</property>
+                                            <property name="halign">start</property>
                                             <property name="use_underline">True</property>
                                             <property name="active">True</property>
                                             <property name="draw_indicator">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
-                                            <property name="x_options">GTK_FILL</property>
+                                            <property name="top_attach">0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1689,16 +1583,14 @@ Defining several profiles lets you have several commands, each applying with a d
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">The command will be started in the preferred terminal of the graphical environment.</property>
+                                            <property name="halign">start</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">ExecutionModeNormal</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                            <property name="x_options">GTK_FILL</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1709,16 +1601,14 @@ Defining several profiles lets you have several commands, each applying with a d
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">This option makes use of a special feature of the file manager, which would allow a terminal to be ran inside of it.
 An acceptable fallback is running in the standard terminal.</property>
+                                            <property name="halign">start</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">ExecutionModeNormal</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">2</property>
-                                            <property name="bottom_attach">3</property>
-                                            <property name="x_options">GTK_FILL</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1730,16 +1620,14 @@ An acceptable fallback is running in the standard terminal.</property>
                                             <property name="tooltip_text" translatable="yes">The command will be run in a terminal.
 The terminal will be closed at the end of the execution; standard error and output streams will be displayed.
 An acceptable fallback is running in the standard terminal.</property>
+                                            <property name="halign">start</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">ExecutionModeNormal</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">3</property>
-                                            <property name="bottom_attach">4</property>
-                                            <property name="x_options">GTK_FILL</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1748,8 +1636,18 @@ An acceptable fallback is running in the standard terminal.</property>
                                             <property name="can_focus">False</property>
                                           </object>
                                           <packing>
-                                            <property name="x_options">GTK_FILL</property>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">0</property>
                                           </packing>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
                                         </child>
                                       </object>
                                     </child>
@@ -1791,13 +1689,11 @@ An acceptable fallback is running in the standard terminal.</property>
                                     <property name="left_padding">12</property>
                                     <property name="right_padding">6</property>
                                     <child>
-                                      <object class="GtkTable" id="table320">
+                                      <object class="GtkGrid" id="table320">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="n_rows">2</property>
-                                        <property name="n_columns">2</property>
-                                        <property name="column_spacing">6</property>
                                         <property name="row_spacing">3</property>
+                                        <property name="column_spacing">6</property>
                                         <child>
                                           <object class="GtkCheckButton" id="StartupNotifyButton">
                                             <property name="label" translatable="yes">_Startup notify</property>
@@ -1812,21 +1708,7 @@ Only relevant when chosen execution mode is Normal.</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label43">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Startup Window Manager _class :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                            <property name="x_options">GTK_FILL</property>
+                                            <property name="top_attach">0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1842,28 +1724,21 @@ Only relevant when chosen execution mode is Normal.</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
                                           </packing>
                                         </child>
                                         <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
+                                          <object class="GtkLabel" id="label43">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">Startup Window Manager _class :</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">1</property>
+                                          </packing>
                                         </child>
                                         <child>
                                           <placeholder/>
@@ -3085,6 +2960,7 @@ First choose on the left if the item depends of a particular desktop environment
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">False</property>
+                                                    <property name="halign">start</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="active">True</property>
                                                     <property name="draw_indicator">True</property>
@@ -3101,6 +2977,7 @@ First choose on the left if the item depends of a particular desktop environment
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">False</property>
+                                                    <property name="halign">start</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="draw_indicator">True</property>
                                                     <property name="group">ShowAlwaysButton</property>
@@ -3117,6 +2994,7 @@ First choose on the left if the item depends of a particular desktop environment
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">False</property>
+                                                    <property name="halign">start</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="draw_indicator">True</property>
                                                     <property name="group">ShowAlwaysButton</property>
@@ -3204,100 +3082,25 @@ First choose on the left if the item depends of a particular desktop environment
                                     <property name="left_padding">12</property>
                                     <property name="right_padding">6</property>
                                     <child>
-                                      <object class="GtkTable" id="table930">
+                                      <object class="GtkGrid" id="table930">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="n_rows">4</property>
-                                        <property name="n_columns">3</property>
-                                        <property name="column_spacing">6</property>
                                         <property name="row_spacing">3</property>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label55">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Appears if the file is e_xecutable :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                        </child>
-                                        <child>
-                                          <object class="GtkEntry" id="TryExecEntry">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="tooltip_text" translatable="yes">This is an advanced condition based on the presence of an executable file on the file system.
-This may be used for example to test for a prerequisite package.</property>
-                                            <property name="invisible_char">●</property>
-                                            <property name="primary_icon_activatable">False</property>
-                                            <property name="secondary_icon_activatable">False</property>
-                                          </object>
-                                          <packing>
-                                            <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkButton" id="TryExecButton">
-                                            <property name="label" translatable="yes">Bro_wse...</property>
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="receives_default">True</property>
-                                            <property name="image">ImageTryExecBrowse</property>
-                                            <property name="use_underline">True</property>
-                                          </object>
-                                          <packing>
-                                            <property name="left_attach">2</property>
-                                            <property name="right_attach">3</property>
-                                            <property name="x_options"/>
-                                            <property name="y_options"/>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label56">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Appears if the name is _registered on D-Bus :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                          </packing>
-                                        </child>
+                                        <property name="column_spacing">6</property>
                                         <child>
                                           <object class="GtkEntry" id="ShowIfRegisteredEntry">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="tooltip_text" translatable="yes">This is an advanced condition based on the presence of a particular service on the D-Bus system.
 This may be used for example for testing that a prerequisite service is currently available.</property>
+                                            <property name="hexpand">True</property>
                                             <property name="invisible_char">●</property>
                                             <property name="primary_icon_activatable">False</property>
                                             <property name="secondary_icon_activatable">False</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label57">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Appears if the command outputs "_true" :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">2</property>
-                                            <property name="bottom_attach">3</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -3307,28 +3110,14 @@ This may be used for example for testing that a prerequisite service is currentl
                                             <property name="tooltip_text" translatable="yes">This is an advanced condition based on a runtime result.
 Enter here a command which is able to display the exact "true" string on its standard output.
 This may be used for example for testing a complex condition.</property>
+                                            <property name="hexpand">True</property>
                                             <property name="invisible_char">●</property>
                                             <property name="primary_icon_activatable">False</property>
                                             <property name="secondary_icon_activatable">False</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">2</property>
-                                            <property name="bottom_attach">3</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label6">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Appears if the _binary is running :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">3</property>
-                                            <property name="bottom_attach">4</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -3338,15 +3127,14 @@ This may be used for example for testing a complex condition.</property>
                                             <property name="tooltip_text" translatable="yes">This is an advanced condition based on the presence of a running binary.
 Note that only the basename of the binary is checked, not its dirname nor its parameters.
 This may be used for example for testing the presence of a prerequisite daemon.</property>
+                                            <property name="hexpand">True</property>
                                             <property name="invisible_char">●</property>
                                             <property name="primary_icon_activatable">False</property>
                                             <property name="secondary_icon_activatable">False</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">3</property>
-                                            <property name="bottom_attach">4</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -3360,12 +3148,96 @@ This may be used for example for testing the presence of a prerequisite daemon.<
                                           </object>
                                           <packing>
                                             <property name="left_attach">2</property>
-                                            <property name="right_attach">3</property>
                                             <property name="top_attach">3</property>
-                                            <property name="bottom_attach">4</property>
-                                            <property name="x_options"/>
-                                            <property name="y_options"/>
                                           </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="label55">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">Appears if the file is e_xecutable :</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="TryExecEntry">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="tooltip_text" translatable="yes">This is an advanced condition based on the presence of an executable file on the file system.
+This may be used for example to test for a prerequisite package.</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="invisible_char">●</property>
+                                            <property name="primary_icon_activatable">False</property>
+                                            <property name="secondary_icon_activatable">False</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">1</property>
+                                            <property name="top_attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkButton" id="TryExecButton">
+                                            <property name="label" translatable="yes">Bro_wse...</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">True</property>
+                                            <property name="image">ImageTryExecBrowse</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">2</property>
+                                            <property name="top_attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="label56">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">Appears if the name is _registered on D-Bus :</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="label57">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">Appears if the command outputs "_true" :</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">2</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="label6">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">Appears if the _binary is running :</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">3</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
                                         </child>
                                       </object>
                                     </child>
@@ -3437,26 +3309,23 @@ This may be used for example for testing the presence of a prerequisite daemon.<
                                     <property name="left_padding">12</property>
                                     <property name="right_padding">6</property>
                                     <child>
-                                      <object class="GtkTable" id="tableA10">
+                                      <object class="GtkGrid" id="tableA10">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="n_rows">3</property>
-                                        <property name="n_columns">2</property>
-                                        <property name="column_spacing">6</property>
                                         <property name="row_spacing">3</property>
+                                        <property name="column_spacing">6</property>
                                         <child>
                                           <object class="GtkLabel" id="label18">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">start</property>
                                             <property name="label" translatable="yes">_Description :</property>
                                             <property name="use_underline">True</property>
-                                            <property name="xalign">1</property>
-                                            <property name="yalign">0</property>
                                           </object>
                                           <packing>
+                                            <property name="left_attach">0</property>
                                             <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                            <property name="x_options">GTK_FILL</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -3469,14 +3338,13 @@ This may be used for example for testing the presence of a prerequisite daemon.<
                                               <object class="GtkTextView" id="ActionDescriptionText">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
+                                                <property name="hexpand">True</property>
                                               </object>
                                             </child>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -3487,32 +3355,21 @@ This may be used for example for testing the presence of a prerequisite daemon.<
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">Check the box to enable this item.
 If unchecked, then the item will never appear in the file manager context menus or toolbar.</property>
+                                            <property name="halign">start</property>
+                                            <property name="hexpand">True</property>
                                             <property name="use_underline">True</property>
                                             <property name="draw_indicator">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label39">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Suggested _shortcut :</property>
-                                            <property name="use_underline">True</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">2</property>
-                                            <property name="bottom_attach">3</property>
-                                            <property name="x_options">GTK_FILL</property>
+                                            <property name="top_attach">0</property>
                                           </packing>
                                         </child>
                                         <child>
                                           <object class="GtkBox" id="hbox15">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
+                                            <property name="hexpand">True</property>
                                             <child>
                                               <object class="GtkButton" id="SuggestedShortcutButton">
                                                 <property name="label" translatable="yes">None</property>
@@ -3534,28 +3391,21 @@ Note: this is not yet implemented in Caja-Actions.</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">2</property>
-                                            <property name="bottom_attach">3</property>
                                           </packing>
                                         </child>
                                         <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
+                                          <object class="GtkLabel" id="label39">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">Suggested _shortcut :</property>
+                                            <property name="use_underline">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">2</property>
+                                          </packing>
                                         </child>
                                         <child>
                                           <placeholder/>
@@ -3598,64 +3448,31 @@ Note: this is not yet implemented in Caja-Actions.</property>
                                     <property name="left_padding">12</property>
                                     <property name="right_padding">6</property>
                                     <child>
-                                      <object class="GtkTable" id="tableA20">
+                                      <object class="GtkGrid" id="tableA20">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="n_rows">3</property>
-                                        <property name="n_columns">2</property>
-                                        <property name="column_spacing">6</property>
                                         <property name="row_spacing">6</property>
+                                        <property name="column_spacing">6</property>
                                         <child>
                                           <object class="GtkLabel" id="ActionItemID">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="xalign">0</property>
+                                            <property name="halign">start</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                            <property name="y_options">GTK_FILL</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label49">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Id. :</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">1</property>
-                                            <property name="bottom_attach">2</property>
-                                            <property name="x_options">GTK_FILL</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label19">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">I/O provider :</property>
-                                            <property name="xalign">1</property>
-                                          </object>
-                                          <packing>
-                                            <property name="top_attach">2</property>
-                                            <property name="bottom_attach">3</property>
-                                            <property name="x_options">GTK_FILL</property>
                                           </packing>
                                         </child>
                                         <child>
                                           <object class="GtkLabel" id="ActionItemProvider">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="xalign">0</property>
+                                            <property name="halign">start</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
                                             <property name="top_attach">2</property>
-                                            <property name="bottom_attach">3</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -3667,30 +3484,38 @@ Note: this is not yet implemented in Caja-Actions.</property>
                                             <property name="receives_default">False</property>
                                             <property name="tooltip_text" translatable="yes">This box is checked if the item cannot be edited.
 There may be multiple reasons for why an item cannot be edited. See your User's Manual.</property>
+                                            <property name="halign">start</property>
+                                            <property name="hexpand">True</property>
                                             <property name="draw_indicator">True</property>
                                           </object>
                                           <packing>
                                             <property name="left_attach">1</property>
-                                            <property name="right_attach">2</property>
+                                            <property name="top_attach">0</property>
                                           </packing>
                                         </child>
                                         <child>
-                                          <placeholder/>
+                                          <object class="GtkLabel" id="label49">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">Id. :</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">1</property>
+                                          </packing>
                                         </child>
                                         <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
+                                          <object class="GtkLabel" id="label19">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="label" translatable="yes">I/O provider :</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">2</property>
+                                          </packing>
                                         </child>
                                         <child>
                                           <placeholder/>
@@ -3715,9 +3540,6 @@ There may be multiple reasons for why an item cannot be edited. See your User's 
                                 <property name="fill">False</property>
                                 <property name="position">1</property>
                               </packing>
-                            </child>
-                            <child>
-                              <placeholder/>
                             </child>
                           </object>
                         </child>
@@ -3796,42 +3618,5 @@ There may be multiple reasons for why an item cannot be edited. See your User's 
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkSizeGroup" id="ActionLabelSizeGroup">
-    <widgets>
-      <widget name="ActionMenuLabelLabel"/>
-      <widget name="ActionToolbarLabelLabel"/>
-      <widget name="ActionTooltipLabel"/>
-      <widget name="ActionIconLabel"/>
-    </widgets>
-  </object>
-  <object class="GtkSizeGroup" id="CommandButtonSizeGroup">
-    <widgets>
-      <widget name="CommandLegendButton"/>
-      <widget name="CommandPathButton"/>
-    </widgets>
-  </object>
-  <object class="GtkSizeGroup" id="CommandLabelSizeGroup">
-    <widgets>
-      <widget name="label4"/>
-      <widget name="CommandParametersLabel"/>
-      <widget name="CommandPathLabel"/>
-      <widget name="ProfileLabelLabel"/>
-    </widgets>
-  </object>
-  <object class="GtkSizeGroup" id="ExecutionModeSizeGroup">
-    <widgets>
-      <widget name="label43"/>
-      <widget name="label44"/>
-      <widget name="label45"/>
-    </widgets>
-  </object>
-  <object class="GtkSizeGroup" id="PropertiesLabelSizeGroup">
-    <widgets>
-      <widget name="label18"/>
-      <widget name="label39"/>
-      <widget name="label49"/>
-      <widget name="label19"/>
-    </widgets>
   </object>
 </interface>
