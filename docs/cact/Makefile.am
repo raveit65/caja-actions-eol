@@ -67,7 +67,7 @@ HELP_LINGUAS = de el es fr sl
 # just an empty value to be able to add something for html and pdf manuals
 MAINTAINERCLEANFILES =
 
-pkgdocdir = $(datarootdir)/doc/@PACKAGE@
+pkgdocdir = $(datarootdir)/doc/@PACKAGE@-@VERSION@
 
 # set to '-v' to be verbose (much verbose!)
 opt_verbose =
