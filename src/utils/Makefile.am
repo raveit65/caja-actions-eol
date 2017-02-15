@@ -72,7 +72,6 @@ caja_actions_print_LDADD = \
 
 BUILT_SOURCES =
 
-if HAVE_GDBUS
 BUILT_SOURCES += \
 	caja-actions-run-bindings.c								\
 	caja-actions-run-bindings.h								\
@@ -85,16 +84,6 @@ caja-actions-run-bindings.c caja-actions-run-bindings.h: $(top_srcdir)/src/plugi
 		--c-namespace NA_Tracker								\
 		--c-generate-object-manager								\
 		$<
-endif
-
-if HAVE_DBUS_GLIB
-BUILT_SOURCES += \
-	caja-actions-run-bindings.h								\
-	$(NULL)
-
-caja-actions-run-bindings.h: $(top_srcdir)/src/plugin-tracker/na-tracker-dbus-glib.xml
-	dbus-binding-tool --mode=glib-client $< > $@
-endif
 
 nodist_caja_actions_run_SOURCES = \
 	$(BUILT_SOURCES)											\
