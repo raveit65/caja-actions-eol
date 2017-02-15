@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<node name="/org/caja_actions/DBus/Tracker">
-  <interface name="org.caja_actions.DBus.Tracker.Properties1">
-    <method name="GetSelectedPaths">
-      <arg type="as" name="paths" direction="out" />
-      <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="na_tracker_get_selected_paths" />
-    </method>
-  </interface>
-</node>

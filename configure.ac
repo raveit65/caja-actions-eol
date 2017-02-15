@@ -129,16 +129,12 @@ xml_required=2.6
 sm_required=1.0
 caja_required=1.17.1
 
-# GDBus comes in GIO with 2.26
-# so uses GDBus if present, or fallback into dbus-glib-1
-NA_CHECK_MODULE([GLIB],   [glib-2.0],    [${glib_required}])
-NA_CHECK_MODULE([GMODULE],[gmodule-2.0], [${glib_required}])
-NA_CHECK_FOR_GDBUS
-
 dnl aclocal complains if the comma is not just after the square bracket
 # As of 1.18.0 release, remove Gtk+2 support, only allowing for Gtk+3
 dnl aclocal complains if the comma is not just after the square bracket
 NA_CHECK_MODULE([GTK3],              [gtk+-3.0],           [${gtk_required}])
+NA_CHECK_MODULE([GLIB],              [glib-2.0],           [${glib_required}])
+NA_CHECK_MODULE([GMODULE],           [gmodule-2.0],        [${glib_required}])
 NA_CHECK_MODULE([GIO_UNIX],          [gio-unix-2.0])
 NA_CHECK_MODULE([GTOP],              [libgtop-2.0],        [${gtop_required}])
 NA_CHECK_MODULE([LIBXML],            [libxml-2.0],         [${xml_required}])
@@ -192,9 +188,7 @@ AC_DEFINE_UNQUOTED([NA_CONFIG_OPTIONS],["$0 ${config_options}"],["Configure opti
 AC_OUTPUT
 
 msg_gtk_doc=`if test "x${enable_gtk_doc}" = "xno"; then echo "disabled"; else echo "enabled"; fi`
-msg_gtk_version=""
-if test "${have_gtk3}" = "yes"; then msg_gtk_version="Gtk+ 3.0"; 
-	elif  test "${have_gtk2}" = "yes"; then msg_gtk_version="Gtk+ 2.0"; fi
+
 $as_echo "
 	${PACKAGE_STRING} configuration summary:
 

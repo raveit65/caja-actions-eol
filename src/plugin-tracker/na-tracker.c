@@ -31,14 +31,8 @@
 #include <config.h>
 #endif
 
-#ifdef HAVE_GDBUS
 #include <gio/gio.h>
 #include "na-tracker-gdbus.h"
-#else
-# ifdef HAVE_DBUS_GLIB
-#include <dbus/dbus-glib-bindings.h>
-# endif
-#endif
 
 #include <libcaja-extension/caja-extension-types.h>
 #include <libcaja-extension/caja-file-info.h>
@@ -47,10 +41,6 @@
 #include <api/na-dbus.h>
 
 #include "na-tracker.h"
-
-#ifdef HAVE_DBUS_GLIB
-#include "na-tracker-dbus-glib.h"
-#endif
 
 /* private class data
  */
@@ -62,10 +52,8 @@ struct _NATrackerClassPrivate {
  */
 struct _NATrackerPrivate {
 	gboolean                  dispose_has_run;
-#ifdef HAVE_GDBUS
 	guint                     owner_id;	/* the identifier returns by g_bus_own_name */
 	GDBusObjectManagerServer *manager;
-#endif
 	GList                    *selected;
 };
 
@@ -75,12 +63,10 @@ static GType         st_module_type = 0;
 static void    class_init( NATrackerClass *klass );
 static void    instance_init( GTypeInstance *instance, gpointer klass );
 static void    initialize_dbus_connection( NATracker *tracker );
-#ifdef HAVE_GDBUS
 static void    on_bus_acquired( GDBusConnection *connection, const gchar *name, NATracker *tracker );
 static void    on_name_acquired( GDBusConnection *connection, const gchar *name, NATracker *tracker );
 static void    on_name_lost( GDBusConnection *connection, const gchar *name, NATracker *tracker );
 static gboolean on_properties1_get_selected_paths( NATrackerProperties1 *tracker_properties, GDBusMethodInvocation *invocation, NATracker *tracker );
-#endif
 static void    instance_dispose( GObject *object );
 static void    instance_finalize( GObject *object );
 
@@ -171,7 +157,6 @@ instance_init( GTypeInstance *instance, gpointer klass )
 static void
 initialize_dbus_connection( NATracker *tracker )
 {
-#ifdef HAVE_GDBUS
 	NATrackerPrivate *priv = tracker->private;
 
 	priv->owner_id = g_bus_own_name(
@@ -183,70 +168,8 @@ initialize_dbus_connection( NATracker *tracker )
 			( GBusNameLostCallback ) on_name_lost,
 			tracker,
 			NULL );
-
-#else /* HAVE_GDBUS */
-
-# ifdef HAVE_DBUS_GLIB
-	static const gchar *thisfn = "na_tracker_initialize_dbus_connection";
-	DBusGConnection *connection;
-	GError *error;
-	DBusGProxy *proxy;
-	guint32 request_name_ret;
-
-	/* get a connection on session DBus
-	 */
-	error = NULL;
-	connection = dbus_g_bus_get( DBUS_BUS_SESSION, &error );
-	if( !connection ){
-		g_warning( "%s: unable to get a connection on session DBus: %s", thisfn, error->message );
-		g_error_free( error );
-		return;
-	}
-	g_debug( "%s: connection is ok", thisfn );
-
-	/* get a proxy for this connection
-	 * this proxy let us request some standard DBus services
-	 */
-	proxy = dbus_g_proxy_new_for_name( connection, DBUS_SERVICE_DBUS, DBUS_PATH_DBUS, DBUS_INTERFACE_DBUS );
-	if( !proxy ){
-		g_warning( "%s: unable to get a proxy for the connection", thisfn );
-		dbus_g_connection_unref( connection );
-		return;
-	}
-	g_debug( "%s: proxy is ok", thisfn );
-
-	/* try to register our service name as a unique 'well known' name
-	 */
-	if( !org_freedesktop_DBus_request_name(
-			proxy, CAJA_ACTIONS_DBUS_SERVICE, 0, &request_name_ret, &error )){
-
-		g_warning( "%s: unable to register %s as a 'well known' name on the bus: %s",
-				thisfn, CAJA_ACTIONS_DBUS_SERVICE, error->message );
-		g_error_free( error );
-		dbus_g_connection_unref( connection );
-		return;
-	}
-	g_debug( "%s: well known name registration is ok", thisfn );
-
-	if( request_name_ret != DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER ){
-		g_warning("%s: got result code %u from requesting name (not the primary owner of the name)", thisfn, request_name_ret );
-		dbus_g_connection_unref( connection );
-		return;
-	}
-	g_debug( "%s: primary owner check is ok", thisfn );
-
-	/* allocate the tracking object and register it
-	 * instantiation takes care of installing introspection infos
-	 */
-	dbus_g_object_type_install_info( NA_TYPE_TRACKER, &dbus_glib_na_tracker_dbus_object_info );
-	dbus_g_connection_register_g_object( connection, CAJA_ACTIONS_DBUS_TRACKER_PATH "/0", G_OBJECT( tracker ));
-
-	g_debug( "%s: registering tracker path is ok", thisfn );
-# endif /* HAVE_DBUS_GLIB */
-#endif
 }
 
-#ifdef HAVE_GDBUS
 static void
 on_bus_acquired( GDBusConnection *connection, const gchar *name, NATracker *tracker )
 {
@@ -324,7 +247,6 @@ on_name_lost( GDBusConnection *connection, const gchar *name, NATracker *tracker
 			name,
 			( void * ) tracker );
 }
-#endif /* HAVE_GDBUS */
 
 static void
 instance_dispose( GObject *object )
@@ -341,14 +263,12 @@ instance_dispose( GObject *object )
 
 		priv->dispose_has_run = TRUE;
 
-#ifdef HAVE_GDBUS
 		if( priv->owner_id ){
 			g_bus_unown_name( priv->owner_id );
 		}
 		if( priv->manager ){
 			g_object_unref( priv->manager );
 		}
-#endif
 
 		priv->selected = free_selected( priv->selected );
 
@@ -466,7 +386,6 @@ set_uris( NATracker *tracker, GList *files )
 	priv->selected = caja_file_info_list_copy( files );
 }
 
-#ifdef HAVE_GDBUS
 /*
  * Returns: %TRUE if the method has been handled.
  */
@@ -486,39 +405,6 @@ on_properties1_get_selected_paths( NATrackerProperties1 *tracker_properties, GDB
 
 	return( TRUE );
 }
-#endif
-
-#ifdef HAVE_DBUS_GLIB
-/**
- * na_tracker_get_selected_paths:
- * @tracker: this #NATracker object.
- * @paths: the location in which copy the strings to be sent.
- * @error: the location of a GError.
- *
- * Sends on session D-Bus the list of currently selected items, as two
- * strings for each item :
- * - the uri
- * - the mimetype as returned by CajaFileInfo.
- *
- * This is required as some particular items are only known by Caja
- * (e.g. computer), and standard GLib functions are not able to retrieve
- * their mimetype.
- *
- * Exported as GetSelectedPaths method on Tracker.Properties1 interface.
- *
- * Returns: %TRUE if the method has been handled.
- */
-gboolean
-na_tracker_get_selected_paths( NATracker *tracker, char ***paths, GError **error )
-{
-	g_return_val_if_fail( NA_IS_TRACKER( tracker ), FALSE );
-
-	*error = NULL;
-	*paths = get_selected_paths( tracker );
-
-	return( TRUE );
-}
-#endif
 
 /*
  * get_selected_paths:

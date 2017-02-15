@@ -31,13 +31,7 @@
 #include <config.h>
 #endif
 
-#ifdef HAVE_GDBUS
 #include <gio/gio.h>
-#else
-# ifdef HAVE_DBUS_GLIB
-#include <dbus/dbus-glib.h>
-# endif
-#endif
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
@@ -602,25 +596,6 @@ is_candidate_for_show_if_registered( const NAIContext *object, guint target, GLi
 
 	if( name && strlen( name )){
 		ok = FALSE;
-#ifdef HAVE_GDBUS
-#else
-# ifdef HAVE_DBUS_GLIB
-		GError *error = NULL;
-		DBusGConnection *connection = dbus_g_bus_get( DBUS_BUS_SESSION, &error );
-
-		if( !connection ){
-			if( error ){
-				g_warning( "%s: %s", thisfn, error->message );
-				g_error_free( error );
-			}
-
-		} else {
-			DBusGProxy *proxy = dbus_g_proxy_new_for_name( connection, name, NULL, NULL );
-			ok = ( proxy != NULL );
-			dbus_g_connection_unref( connection );
-		}
-# endif
-#endif
 	}
 
 	if( !ok ){
