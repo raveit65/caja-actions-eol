@@ -107,7 +107,9 @@ NA_CHECK_MODULE([LIBXML],            [libxml-2.0],         [${xml_required}])
 NA_CHECK_MODULE([SM],                [sm],                 [${sm_required}])
 NA_CHECK_MODULE([ICE],               [ice])
 NA_CHECK_MODULE([UUID],              [uuid])
-NA_CHECK_MODULE([CAJA_EXTENSION],    [libcaja-extension],  [${caja_required}])
+
+# target a file manager (caja, nemo, ...)
+NA_TARGET_FILE_MANAGER
 
 AC_SUBST([CAJA_ACTIONS_CFLAGS])
 AC_SUBST([CAJA_ACTIONS_LIBS])
@@ -167,15 +169,6 @@ fi
 # User documentation
 YELP_HELP_INIT
 
-# when working in a test environment, caja extensions are typically
-# installed in a non-standard location ; lets specify this location here
-NA_CAJA_EXTDIR
-
-# Check for menu update function
-AC_CHECK_LIB([caja-extension],[caja_menu_item_new])
-AC_CHECK_FUNCS([caja_menu_provider_emit_items_updated_signal])
-AC_CHECK_FUNCS([caja_menu_provider_get_toolbar_items])
-
 # add --enable-html-manuals and --enable-pdf-manuals configure options
 NA_ENABLE_MANUALS
 
@@ -192,12 +185,15 @@ $as_echo "
 
 	Installation prefix             ${prefix}
 	Build system type               ${ac_cv_build}
-	Caja extensions directory       ${with_caja_extdir}
 	Gtk+ version                    ${GTK3_msg_version}
 	GLib version                    ${GLIB_msg_version}
 	Default I/O provider            ${with_default_io_provider}
+	Targeted file-manager           ${enable_file_manager}"
+if test "${enable_file_manager}" = "caja"; then
+	$as_echo "	Caja extensions directory       ${with_caja_extdir}"
+fi
+$as_echo "	Maintainer mode                 ${msg_maintainer_mode}
 	Enable deprecated functions     ${enable_deprecated}
-	Maintainer mode                 ${msg_maintainer_mode}
 	API Reference generation        ${msg_gtk_doc}
 	HTML User's Manuals generation  ${msg_html_manuals}
 	PDF User's Manuals generation   ${msg_pdf_manuals}
