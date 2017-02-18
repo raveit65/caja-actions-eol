@@ -171,9 +171,6 @@ YELP_HELP_INIT
 # installed in a non-standard location ; lets specify this location here
 NA_CAJA_EXTDIR
 
-# define NA_MAINTAINER_MODE variable
-NA_MAINTAINER_CHECK_MODE
-
 # Check for menu update function
 AC_CHECK_LIB([caja-extension],[caja_menu_item_new])
 AC_CHECK_FUNCS([caja_menu_provider_emit_items_updated_signal])
