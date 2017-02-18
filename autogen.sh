@@ -5,7 +5,7 @@ srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
 
 PKG_NAME="caja-actions"
-REQUIRED_INTLTOOL_VERSION=0.35.5
+REQUIRED_INTLTOOL_VERSION=0.50.2
 
 (test -f $srcdir/configure.ac) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"

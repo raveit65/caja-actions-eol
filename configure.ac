@@ -62,16 +62,64 @@ NA_MAINTAINER_CHECK_MODE
 # libtool
 AM_PROG_LIBTOOL
 
+# we are using pkgconfig for all development libraries we need
+AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+if test "${PKG_CONFIG}" = "no"; then
+	AC_MSG_ERROR([You need to install pkg-config])
+fi
+
+glib_required=2.32.1
+gtk_required=3.10
+gtop_required=2.23.1
+xml_required=2.6
+sm_required=1.0
+intltool_required=0.50.2
+caja_required=1.17.1
+
 # localization
 # note that this same version is also required by autogen.sh
-IT_PROG_INTLTOOL([0.35.5])
+IT_PROG_INTLTOOL([${intltool_required}])
 GETTEXT_PACKAGE=${PACKAGE}
 AC_SUBST([GETTEXT_PACKAGE])
 AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["${GETTEXT_PACKAGE}"],[gettext package])
 AM_GLIB_GNU_GETTEXT
 
 # a counter of fatal warnings emitted
-let fma_fatal_count=0
+let na_fatal_count=0
+na_fatal_list=""
+
+# GLib marshaling
+AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal, no)
+if test "${GLIB_GENMARSHAL}" = "no"; then
+	AC_MSG_WARN([glib2-devel installed, but glib-genmarshal not found])
+	let na_fatal_count+=1
+fi
+
+dnl aclocal complains if the comma is not just after the square bracket
+# As of 1.18.0 release, remove Gtk+2 support, only allowing for Gtk+3
+dnl aclocal complains if the comma is not just after the square bracket
+NA_CHECK_MODULE([GTK3],              [gtk+-3.0],           [${gtk_required}])
+NA_CHECK_MODULE([GLIB],              [glib-2.0],           [${glib_required}])
+NA_CHECK_MODULE([GMODULE],           [gmodule-2.0],        [${glib_required}])
+NA_CHECK_MODULE([GIO_UNIX],          [gio-unix-2.0])
+NA_CHECK_MODULE([GTOP],              [libgtop-2.0],        [${gtop_required}])
+NA_CHECK_MODULE([LIBXML],            [libxml-2.0],         [${xml_required}])
+NA_CHECK_MODULE([SM],                [sm],                 [${sm_required}])
+NA_CHECK_MODULE([ICE],               [ice])
+NA_CHECK_MODULE([UUID],              [uuid])
+NA_CHECK_MODULE([CAJA_EXTENSION],    [libcaja-extension],  [${caja_required}])
+
+AC_SUBST([CAJA_ACTIONS_CFLAGS])
+AC_SUBST([CAJA_ACTIONS_LIBS])
+
+# defines log domains when in maintainer mode
+NA_LOG_DOMAINS
+
+# print the debug output be printed to the console
+AC_DEFINE([CAJA_ACTIONS_DEBUG],["CAJA_ACTIONS_DEBUG"],[Debug environment variable])
+
+# add --with-default-io-provider option
+NA_SET_DEFAULT_IO_PROVIDER([na-desktop])
 
 ###
 
@@ -104,45 +152,8 @@ AC_CONFIG_FILES([
 	po/Makefile.in
 ])
 
-# GLib marshaling
-AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
-
 # Enable deprecated functions ?
 NA_MAINTAINER_CHECK_FOR_DEPRECATED
-
-# note that requiring through pkg-config the version number of the
-# caja-extension library actually returns the version number of
-# caja itself (e.g. 1.6.0) instead of the library version info
-# (1.1.0) ; for the usual final user, this is very analog to requiring
-# a whole mate version
-AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
-if test "${PKG_CONFIG}" = "no"; then
-	AC_MSG_ERROR([You need to install pkg-config])
-fi
-
-glib_required=2.32.1
-gtk_required=3.10
-gtop_required=2.23.1
-xml_required=2.6
-sm_required=1.0
-caja_required=1.17.1
-
-dnl aclocal complains if the comma is not just after the square bracket
-# As of 1.18.0 release, remove Gtk+2 support, only allowing for Gtk+3
-dnl aclocal complains if the comma is not just after the square bracket
-NA_CHECK_MODULE([GTK3],              [gtk+-3.0],           [${gtk_required}])
-NA_CHECK_MODULE([GLIB],              [glib-2.0],           [${glib_required}])
-NA_CHECK_MODULE([GMODULE],           [gmodule-2.0],        [${glib_required}])
-NA_CHECK_MODULE([GIO_UNIX],          [gio-unix-2.0])
-NA_CHECK_MODULE([GTOP],              [libgtop-2.0],        [${gtop_required}])
-NA_CHECK_MODULE([LIBXML],            [libxml-2.0],         [${xml_required}])
-NA_CHECK_MODULE([SM],                [sm],                 [${sm_required}])
-NA_CHECK_MODULE([ICE],               [ice])
-NA_CHECK_MODULE([UUID],              [uuid])
-NA_CHECK_MODULE([CAJA_EXTENSION],    [libcaja-extension],  [${caja_required}])
-
-AC_SUBST([CAJA_ACTIONS_CFLAGS])
-AC_SUBST([CAJA_ACTIONS_LIBS])
 
 # check for gtk-doc
 # - starting with gtk-doc 1.16, is able to handle srcdir != builddir
@@ -156,28 +167,17 @@ fi
 # User documentation
 YELP_HELP_INIT
 
-
-# defines log domains when in maintainer mode
-NA_LOG_DOMAINS
-
-# add --enable-html-manuals and --enable-pdf-manuals configure options
-NA_ENABLE_MANUALS
-
-# add --with-default-io-provider option
-NA_SET_DEFAULT_IO_PROVIDER([na-desktop])
-
 # when working in a test environment, caja extensions are typically
 # installed in a non-standard location ; lets specify this location here
 NA_CAJA_EXTDIR
-
-# define NA_MAINTAINER_MODE variable
-NA_MAINTAINER_CHECK_MODE
-AC_DEFINE([CAJA_ACTIONS_DEBUG],["CAJA_ACTIONS_DEBUG"],[Debug environment variable])
 
 # Check for menu update function
 AC_CHECK_LIB([caja-extension],[caja_menu_item_new])
 AC_CHECK_FUNCS([caja_menu_provider_emit_items_updated_signal])
 AC_CHECK_FUNCS([caja_menu_provider_get_toolbar_items])
+
+# add --enable-html-manuals and --enable-pdf-manuals configure options
+NA_ENABLE_MANUALS
 
 # display and keep configuration informations
 config_options="`$as_echo "$ac_configure_args" | sed 's/^ //; s/[\\""\`\$]/\\\\&/g'`" 
@@ -202,6 +202,12 @@ $as_echo "
 	HTML User's Manuals generation  ${msg_html_manuals}
 	PDF User's Manuals generation   ${msg_pdf_manuals}
 "
+if test ${na_fatal_count} -gt 0; then
+	$as_echo "${na_fatal_list}
+"
+	exit 1
+fi
+
 #	Preprocessor flags              ${AM_CPPFLAGS}
 #	Compiler flags                  ${AM_CFLAGS} ${CAJA_ACTIONS_CFLAGS}
 #	Linker flags                    ${CAJA_ACTIONS_LIBS}
