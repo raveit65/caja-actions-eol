@@ -26,13 +26,21 @@
 #   Pierre Wieser <pwieser@trychlos.org>
 #   ... and many others (see AUTHORS)
 
-# serial 3 prefix message with 'msg_'
+# serial 4 rename macro to NA_MAINTAINER_CHECK_MODE
+#                          NA_MAINTAINER_CHECK_FOR_DEPRECATED
 
-dnl define NA_MAINTAINER_MODE
+dnl define NA_MAINTAINER_CHECK_MODE
+dnl
+dnl Don''t agree with maintainer mode use
+dnl See http://www.gnu.org/software/automake/manual/automake.html#maintainer_002dmode
+dnl but mate-autogen.sh forces its usage and mate_common_init requires it
+dnl is nonetheless explicitely required by mate_maintainer_mode_defines macro
 
-AC_DEFUN([NA_IS_MAINTAINER_MODE],[
+AC_DEFUN([NA_MAINTAINER_CHECK_MODE],[
+	AC_REQUIRE([MATE_MAINTAINER_MODE_DEFINES])
+
 	msg_maintainer_mode="disabled"
-	AC_MSG_CHECKING([whether enabling maintainer mode])
+	AC_MSG_CHECKING([whether to enable maintainer mode])
 	AC_MSG_RESULT([${USE_MAINTAINER_MODE}])
 
 	if test "${USE_MAINTAINER_MODE}" = "yes"; then
@@ -45,22 +53,25 @@ AC_DEFUN([NA_IS_MAINTAINER_MODE],[
 	AM_CONDITIONAL([NA_MAINTAINER_MODE], [test "${USE_MAINTAINER_MODE}" = "yes"])
 ])
 
-AC_DEFUN([NA_CHECK_FOR_DEPRECATED],[
+AC_DEFUN([NA_MAINTAINER_CHECK_FOR_DEPRECATED],[
 	AC_ARG_ENABLE(
 		[deprecated],
 		AC_HELP_STRING(
 			[--enable-deprecated],
-			[whether to enable deprecated functions @<:@no@:>@]
-		),
-	[enable_deprecated=$enableval],
-	[enable_deprecated="no"]
-	)
+			[whether to enable deprecated symbols]),
+		[enable_deprecated=$enableval],
+		[enable_deprecated="no"])
 
 	AC_MSG_CHECKING([whether deprecated symbols should be enabled])
 	AC_MSG_RESULT([${enable_deprecated}])
 
 	if test "${enable_deprecated}" = "yes"; then
-		AC_DEFINE([NA_ENABLE_DEPRECATED],[1],[Define to 1 if deprecated functions should be enabled])
+		AC_DEFINE([NA_ENABLE_DEPRECATED],[1],[Define to 1 if deprecated symbols should be enabled])
+	else
+		if test "${na_request_for_deprecated}" = "yes"; then
+			AC_MSG_WARN([API documentation will be incomplete as deprecated symbols are disabled])
+			let na_fatal_count+=1
+		fi
 	fi
 
 	AM_CONDITIONAL([ENABLE_DEPRECATED], [test "${enable_deprecated}" = "yes"])

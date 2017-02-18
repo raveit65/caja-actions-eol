@@ -35,8 +35,45 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz check-news])
 
-AC_CONFIG_SRCDIR([src/plugin-menu/caja-module.c])
+AC_CONFIG_SRCDIR([src/cact/main.c])
 AC_CONFIG_HEADERS([src/config.h])
+
+AC_CONFIG_MACRO_DIR([m4])
+
+# check for compiler characteristics and options
+AC_PROG_CC
+AC_PROG_GCC_TRADITIONAL
+AC_STDC_HEADERS
+AM_DISABLE_STATIC
+
+# define specific compilation options
+NA_COMPILER_WARNINGS([],[-ansi -Wno-overlength-strings -Wformat=2])
+NA_COMPILER_LINK_AS_NEEDED
+AC_SUBST([AM_CFLAGS],["${AM_CFLAGS} ${WARN_CFLAGS}"])
+
+# other traditional tools
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+# Mate stuff
+MATE_COMMON_INIT
+NA_MAINTAINER_CHECK_MODE
+
+# libtool
+AM_PROG_LIBTOOL
+
+# localization
+# note that this same version is also required by autogen.sh
+IT_PROG_INTLTOOL([0.35.5])
+GETTEXT_PACKAGE=${PACKAGE}
+AC_SUBST([GETTEXT_PACKAGE])
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["${GETTEXT_PACKAGE}"],[gettext package])
+AM_GLIB_GNU_GETTEXT
+
+# a counter of fatal warnings emitted
+let fma_fatal_count=0
+
+###
 
 AC_CONFIG_FILES([
 	Makefile
@@ -67,50 +104,11 @@ AC_CONFIG_FILES([
 	po/Makefile.in
 ])
 
-AC_CONFIG_MACRO_DIR([m4])
-
-# pwi 2009-05-15 disabled as MATE_COMMON_INIT takes care of that
-#AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS")
-
-# don't agree with maintainer mode use
-# see http://www.gnu.org/software/automake/manual/automake.html#index-AM_005fMAINTAINER_005fMODE-1001
-# but mate-autogen.sh forces its usage and mate_common_init requires it
-# disable, causes an issue with libuuid includes and breaks build!
-#AM_MAINTAINER_MODE
-
-# check for compiler characteristics and options
-AC_PROG_CC
-AC_PROG_GCC_TRADITIONAL
-AC_STDC_HEADERS
-AM_DISABLE_STATIC
-
-# other traditional tools
-AC_PROG_INSTALL
-AC_PROG_MAKE_SET
-
-# Mate stuff
-MATE_COMMON_INIT
-MATE_MAINTAINER_MODE_DEFINES
-NA_LINK_AS_NEEDED
-NA_MATE_COMPILE_WARNINGS([],[-ansi -Wno-overlength-strings -Wformat=2])
-AC_SUBST([AM_CFLAGS],["${AM_CFLAGS} ${WARN_CFLAGS}"])
-
 # GLib marshaling
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
 
-# libtool
-AM_PROG_LIBTOOL
-
-# localization
-# note that this same version is also required by autogen.sh
-IT_PROG_INTLTOOL([0.35.5])
-GETTEXT_PACKAGE=${PACKAGE}
-AC_SUBST([GETTEXT_PACKAGE])
-AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["${GETTEXT_PACKAGE}"],[gettext package])
-AM_GLIB_GNU_GETTEXT
-
 # Enable deprecated functions ?
-NA_CHECK_FOR_DEPRECATED
+NA_MAINTAINER_CHECK_FOR_DEPRECATED
 
 # note that requiring through pkg-config the version number of the
 # caja-extension library actually returns the version number of
@@ -173,7 +171,7 @@ NA_SET_DEFAULT_IO_PROVIDER([na-desktop])
 NA_CAJA_EXTDIR
 
 # define NA_MAINTAINER_MODE variable
-NA_IS_MAINTAINER_MODE
+NA_MAINTAINER_CHECK_MODE
 AC_DEFINE([CAJA_ACTIONS_DEBUG],["CAJA_ACTIONS_DEBUG"],[Debug environment variable])
 
 # Check for menu update function

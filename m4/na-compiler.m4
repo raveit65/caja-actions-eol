@@ -30,14 +30,14 @@ dnl MATE_COMPILE_WARNINGS
 dnl Turn on many useful compiler warnings
 dnl For now, only works on GCC
 
-# serial 3 Fix to correctly handle provided default values
+# serial 4 rename macro to NA_COMPILER_WARNINGS
 
 #
-# pwi 2009-05-15 shamelessly copied from mate-compiler-flags.m4
-# two patch have been submitted (see mate-common #582860)
+# pwi 2009-05-15 shamelessly copied from gnome-compiler-flags.m4
+# two patch have been submitted (see gnome-common #582860)
 #
 
-AC_DEFUN([NA_MATE_COMPILE_WARNINGS],[
+AC_DEFUN([NA_COMPILER_WARNINGS],[
 
 	_ac_warning_def=m4_default([$1],[yes])
 	_ac_compliant_def=m4_default(["$2"],[no])
@@ -188,20 +188,19 @@ dnl Bug #637797
 dnl see also http://www.gentoo.org/proj/en/qa/asneeded.xml
 dnl the '-Wl,--as-needed' link option is forced in make distcheck
 
-AC_DEFUN([NA_LINK_AS_NEEDED],[
+AC_DEFUN([NA_COMPILER_LINK_AS_NEEDED],[
 	AC_ARG_ENABLE(
 		[as-needed],
 		AC_HELP_STRING(
-			[--enable-as-needed],
-			[Enable '-Wl,--as-needed' link option @<:@no@:>@]
-		),
+			[--disable-as-needed],
+			[Whether to only link against needed libraries]),
 		[enable_as_needed=$enableval],
-		[enable_as_needed=no])
+		[enable_as_needed=yes])
 
 	AC_MSG_CHECKING([whether to only link with needed libraries])
 	AC_MSG_RESULT([$enable_as_needed])
 
-	if test "x${enable_as_needed}" = "xyes"; then
+	if test "${enable_as_needed}" = "yes"; then
 		AC_SUBST([AM_LDFLAGS],["${AM_LDFLAGS} -Wl,--as-needed"])
 	fi
 ])
