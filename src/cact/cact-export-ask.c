@@ -376,9 +376,6 @@ on_base_initialize_gtk( CactExportAsk *editor, GtkDialog *toplevel, gpointer use
 		container = base_window_get_widget( BASE_WINDOW( editor ), "ExportFormatAskVBox" );
 		na_ioptions_list_gtk_init( NA_IOPTIONS_LIST( editor ), container, FALSE );
 
-#if !GTK_CHECK_VERSION( 2,22,0 )
-		gtk_dialog_set_has_separator( toplevel, FALSE );
-#endif
 	}
 }
 

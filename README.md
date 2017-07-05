@@ -5,8 +5,6 @@ NOCONFIGURE=1 ./autogen.sh
 
 ./configure  \
 
-    --with-gtk=2/3
-
     --enable-html-manuals
 
 make

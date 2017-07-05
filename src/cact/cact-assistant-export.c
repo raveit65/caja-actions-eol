@@ -398,30 +398,6 @@ on_base_initialize_gtk_toplevel( CactAssistantExport *window, GtkAssistant *assi
 
 		are_locked = na_settings_get_boolean( NA_IPREFS_ADMIN_PREFERENCES_LOCKED, NULL, &mandatory );
 		window->private->preferences_locked = are_locked && mandatory;
-
-#if !GTK_CHECK_VERSION( 3,0,0 )
-		guint padder = 8;
-		/* selecting items */
-		GtkWidget *page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_ACTIONS_SELECTION );
-		GtkWidget *container = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), "p1-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
-		/* selecting target folder */
-		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_FOLDER_SELECTION );
-		container = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), "p2-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "top_padding", padder, NULL );
-		/* choosing export format */
-		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_FORMAT_SELECTION );
-		container = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), "p3-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
-		/* summary */
-		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_CONFIRM );
-		container = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), "p4-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
-		/* import is done */
-		page = gtk_assistant_get_nth_page( assistant, ASSIST_PAGE_DONE );
-		container = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), "p5-l2-alignment1" );
-		g_object_set( G_OBJECT( container ), "border_width", padder, NULL );
-#endif
 	}
 }
 
@@ -700,16 +676,6 @@ assist_prepare_confirm( CactAssistantExport *window, GtkAssistant *assistant, Gt
 	g_debug( "%s: window=%p, assistant=%p, page=%p",
 			thisfn, ( void * ) window, ( void * ) assistant, ( void * ) page );
 
-#if !GTK_CHECK_VERSION( 3,0,0 )
-	/* Note that, at least, in Gtk 2.20 (Ubuntu 10) and 2.22 (Fedora 14), GtkLabel
-	 * queues its resize (when the text is being set), but the actual resize does
-	 * not happen immediately - We have to wait until Gtk 3.0, most probably due
-	 * to the new width-for-height and height-for-width features...
-	 */
-	GtkWidget *vbox = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), "p4-ConfirmVBox" );
-	gtk_container_set_resize_mode( GTK_CONTAINER( vbox ), GTK_RESIZE_IMMEDIATE );
-#endif
-
 	/* display the items to be exported
 	 */
 	text = NULL;
@@ -848,26 +814,14 @@ assist_prepare_exportdone( CactAssistantExport *window, GtkAssistant *assistant,
 	vbox = na_gtk_utils_find_widget_by_name( GTK_CONTAINER( page ), "p5-SummaryVBox" );
 	g_return_if_fail( GTK_IS_BOX( vbox ));
 
-#if !GTK_CHECK_VERSION( 3,0,0 )
-	/* Note that, at least, in Gtk 2.20 (Ubuntu 10) and 2.22 (Fedora 14), GtkLabel
-	 * queues its resize (when the text is being set), but the actual resize does
-	 * not happen immediately - We have to wait until Gtk 3.0, most probably due
-	 * to the new width-for-height and height-for-width features...
-	 */
-	gtk_container_set_resize_mode( GTK_CONTAINER( vbox ), GTK_RESIZE_IMMEDIATE );
-#endif
-
 	/* for each item:
 	 * - display the item label
 	 * - display the export filename
 	 */
 	for( ir = window->private->results ; ir ; ir = ir->next ){
 
-#if GTK_CHECK_VERSION( 3,0,0 )
 		item_vbox = gtk_box_new( GTK_ORIENTATION_VERTICAL, 4 );
-#else
-		item_vbox = gtk_vbox_new( FALSE, 4 );
-#endif
+
 		gtk_box_pack_start( GTK_BOX( vbox ), item_vbox, FALSE, FALSE, 0 );
 
 		/* display the item label
