@@ -45,11 +45,6 @@
 
 G_BEGIN_DECLS
 
-/* GDK_KEY_ defines have been defined since Gtk+ 2.21.8 released on 2010-09-14
- * see http://git.gnome.org/browse/gtk+/commit/?id=750c81f43dda6c783372b983e630ecd30b776d7e
- */
-#if GTK_CHECK_VERSION( 2, 21, 8 )
-
 #define CACT_KEY_Escape    (GDK_KEY_Escape)
 #define CACT_KEY_Insert    (GDK_KEY_Insert)
 #define CACT_KEY_Delete    (GDK_KEY_Delete)
@@ -60,21 +55,6 @@ G_BEGIN_DECLS
 #define CACT_KEY_Left      (GDK_KEY_Left)
 #define CACT_KEY_Right     (GDK_KEY_Right)
 #define CACT_KEY_F2        (GDK_KEY_F2)
-
-#else
-
-#define CACT_KEY_Escape    (GDK_Escape)
-#define CACT_KEY_Insert    (GDK_Insert)
-#define CACT_KEY_Delete    (GDK_Delete)
-#define CACT_KEY_Return    (GDK_Return)
-#define CACT_KEY_KP_Delete (GDK_KP_Delete)
-#define CACT_KEY_KP_Enter  (GDK_KP_Enter)
-#define CACT_KEY_KP_Insert (GDK_KP_Insert)
-#define CACT_KEY_Left      (GDK_Left)
-#define CACT_KEY_Right     (GDK_Right)
-#define CACT_KEY_F2        (GDK_F2)
-
-#endif
 
 G_END_DECLS
 

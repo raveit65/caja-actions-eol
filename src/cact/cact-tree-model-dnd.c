@@ -304,13 +304,8 @@ cact_tree_model_dnd_imulti_drag_source_drag_data_get( EggTreeMultiDragSource *dr
 
 	selection_data_target = gtk_selection_data_get_target( selection_data );
 
-#if GTK_CHECK_VERSION( 2, 22, 0 )
 	context_suggested_action = gdk_drag_context_get_suggested_action( context );
 	context_selected_action = gdk_drag_context_get_selected_action( context );
-#else
-	context_suggested_action = context->suggested_action;
-	context_selected_action = context->action;
-#endif
 
 	atom_name = gdk_atom_name( selection_data_target );
 	g_debug( "%s: drag_source=%p (ref_count=%d), context=%p, suggested action=%d, selection_data=%p, rows=%p (count=%d), atom=%s",
@@ -501,11 +496,7 @@ cact_tree_model_dnd_on_drag_begin( GtkWidget *widget, GdkDragContext *context, B
 
 		cact_clipboard_dnd_clear( model->private->clipboard );
 
-#if GTK_CHECK_VERSION( 2, 22, 0 )
 		context_source_window = gdk_drag_context_get_source_window( context );
-#else
-		context_source_window = context->source_window;
-#endif
 
 		gdk_property_change(
 				context_source_window,
@@ -542,11 +533,7 @@ cact_tree_model_dnd_on_drag_end( GtkWidget *widget, GdkDragContext *context, Bas
 		cact_clipboard_dnd_drag_end( model->private->clipboard );
 		cact_clipboard_dnd_clear( model->private->clipboard );
 
-#if GTK_CHECK_VERSION( 2, 22, 0 )
 		context_source_window = gdk_drag_context_get_source_window( context );
-#else
-		context_source_window = context->source_window;
-#endif
 
 		gdk_property_delete( context_source_window, XDS_ATOM );
 	}
@@ -1105,11 +1092,7 @@ get_xds_atom_value( GdkDragContext *context )
 	gint actual_length;
 	GdkWindow *context_source_window;
 
-#if GTK_CHECK_VERSION( 2, 22, 0 )
-		context_source_window = gdk_drag_context_get_source_window( context );
-#else
-		context_source_window = context->source_window;
-#endif
+	context_source_window = gdk_drag_context_get_source_window( context );
 
 	g_return_val_if_fail( context != NULL, NULL );
 	g_return_val_if_fail( context_source_window != NULL, NULL );

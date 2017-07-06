@@ -124,8 +124,16 @@ fi
 
 # Oldest supported distribution: Ubuntu 10 LTS (Mate 2.30): april 2013
 glib_required=2.24.0
-gtk_required=2.20.0
-NA_CHECK_FOR_GTK
+gtk_required=3.14.0
+
+PKG_CHECK_MODULES([GTK3],[gtk+-3.0 >= ${gtk_required}],[have_gtk3=yes],[have_gtk3=no])
+
+if test "${have_gtk3}" = "yes"; then
+	CAJA_ACTIONS_CFLAGS="${CAJA_ACTIONS_CFLAGS} ${GTK3_CFLAGS}"
+	CAJA_ACTIONS_LIBS="${CAJA_ACTIONS_LIBS} ${GTK3_LIBS}" 
+else
+	AC_MSG_ERROR([unable to build against Gtk+-3.0 library])
+fi
 
 # GDBus comes in GIO with 2.26
 # so uses GDBus if present, or fallback into dbus-glib-1
@@ -188,8 +196,8 @@ AC_OUTPUT
 
 msg_gtk_doc=`if test "x${enable_gtk_doc}" = "xno"; then echo "disabled"; else echo "enabled"; fi`
 msg_gtk_version=""
-if test "${have_gtk3}" = "yes"; then msg_gtk_version="Gtk+ 3.0"; 
-	elif  test "${have_gtk2}" = "yes"; then msg_gtk_version="Gtk+ 2.0"; fi
+if test "${have_gtk3}" = "yes"; then msg_gtk_version="Gtk+ 3.0"; fi
+
 $as_echo "
 	${PACKAGE_STRING} configuration summary:
 

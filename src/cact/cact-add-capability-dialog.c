@@ -367,9 +367,6 @@ on_base_initialize_gtk( CactAddCapabilityDialog *dialog, GtkDialog *toplevel, gp
 		selection = gtk_tree_view_get_selection( listview );
 		gtk_tree_selection_set_mode( selection, GTK_SELECTION_BROWSE );
 
-#if !GTK_CHECK_VERSION( 2,22,0 )
-		gtk_dialog_set_has_separator( toplevel, FALSE );
-#endif
 	}
 }
 
