@@ -1,4 +1,21 @@
-1.18.0
+1.8.3
+
+    update configure.ac
+    drop dbus-glib-1 support
+    na-importer-ask-ui: avoid deprecations
+    preferences-ui: avoid deprecations
+    icon-chooser-dialog-ui: avoid deprecations
+    assistant-import-ui: avoid deprecations
+    assistant-export-ui: avoid deprecations
+    add-sheme-UI: avoid deprecations
+    capability-dialog-UI: remove deprecations
+    base-gtk-utils: drop usage of GtkTable
+    config-tool-UI: clean up deprecations
+    expand toolbars
+    egg-tree-multi-dnd: don't use deprecated gtk_drag_begin
+    base-gtk-utils: don't use deprecated gtk_widget_render_icon_pixbuf
+    drop gtk+-2 bits
+    configure: remove gtk+-2 support and bump required versions
 
 1.8.2
     update COPYRIGHT
