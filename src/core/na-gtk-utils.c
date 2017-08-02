@@ -171,7 +171,7 @@ na_gtk_utils_restore_window_position( GtkWindow *toplevel, const gchar *wsp_name
 
 		} else {
 			display = gdk_display_get_default();
-			screen = gdk_display_get_screen( display, 0 );
+			screen = gdk_display_get_default_screen( display );
 			screen_width = gdk_screen_get_width( screen );
 			screen_height = gdk_screen_get_height( screen );
 			g_debug( "%s: screen=(%d,%d), DEFAULT_HEIGHT=%d",
