@@ -62,7 +62,11 @@ cact_menubar_help_on_help( GtkAction *action, BaseWindow *window )
 	GError *error;
 
 	error = NULL;
+#if GTK_CHECK_VERSION (3, 22, 0)
+	gtk_show_uri_on_window( NULL, "help:caja-actions-config-tool", GDK_CURRENT_TIME, &error );
+#else
 	gtk_show_uri( NULL, "help:caja-actions-config-tool", GDK_CURRENT_TIME, &error );
+#endif
 	if( error ){
 		g_warning( "%s: %s", thisfn, error->message );
 		g_error_free( error );
