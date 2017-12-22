@@ -31,6 +31,7 @@
 #include <config.h>
 #endif
 
+#include <gdk/gdkx.h>
 #include <glib.h>
 #include <string.h>
 
@@ -172,10 +173,8 @@ na_gtk_utils_restore_window_position( GtkWindow *toplevel, const gchar *wsp_name
 		} else {
 			display = gdk_display_get_default();
 			screen = gdk_display_get_default_screen( display );
-
-			gdk_window_get_geometry (gdk_screen_get_root_window( screen ), NULL, NULL,
-			                         &screen_width, &screen_height);
-
+			screen_width = WidthOfScreen (gdk_x11_screen_get_xscreen (screen));
+			screen_height = HeightOfScreen (gdk_x11_screen_get_xscreen (screen));
 			g_debug( "%s: screen=(%d,%d), DEFAULT_HEIGHT=%d",
 					thisfn, screen_width, screen_height, DEFAULT_HEIGHT );
 
