@@ -63,8 +63,8 @@ NA_MAINTAINER_CHECK_MODE
 AM_PROG_LIBTOOL
 
 # we are using pkgconfig for all development libraries we need
-AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
-if test "${PKG_CONFIG}" = "no"; then
+PKG_PROG_PKG_CONFIG
+if test "x$PKG_CONFIG" = x; then
 	AC_MSG_ERROR([You need to install pkg-config])
 fi
 
