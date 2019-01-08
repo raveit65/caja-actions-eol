@@ -32,6 +32,7 @@
 #endif
 
 #include <string.h>
+#include <glib/gi18n.h>
 
 #include <core/na-gtk-utils.h>
 #include <core/na-updater.h>
@@ -344,6 +345,81 @@ base_gtk_utils_select_file( BaseWindow *window,
 			window, title, wsp_name, entry, entry_name, NULL );
 }
 
+static GtkWidget*
+base_gtk_utils_dialog_add_button (GtkDialog   *dialog,
+				  const gchar *button_text,
+				  const gchar *icon_name,
+				  gint   response_id)
+{
+	GtkWidget *button;
+
+	button = gtk_button_new_with_mnemonic (button_text);
+	gtk_button_set_image (GTK_BUTTON (button), gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_BUTTON));
+
+	gtk_button_set_use_underline (GTK_BUTTON (button), TRUE);
+	gtk_style_context_add_class (gtk_widget_get_style_context (button), "text-button");
+	gtk_widget_set_can_default (button, TRUE);
+	gtk_widget_show (button);
+	gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, response_id);
+
+	return button;
+}
+
+static GtkWidget *
+base_gtk_utils_file_chooser_dialog_new_valist (const gchar          *title,
+					       GtkWindow            *parent,
+					       GtkFileChooserAction  action,
+					       const gchar          *first_button_text,
+					       va_list               varargs)
+{
+	GtkWidget *result;
+	const char *button_text = first_button_text;
+	gint response_id;
+
+	result = g_object_new (GTK_TYPE_FILE_CHOOSER_DIALOG,
+			       "title", title,
+			       "action", action,
+			       NULL);
+
+	if (parent)
+		gtk_window_set_transient_for (GTK_WINDOW (result), parent);
+
+	while (button_text)
+		{
+			response_id = va_arg (varargs, gint);
+
+			if (g_strcmp0 (button_text, "process-stop") == 0)
+				base_gtk_utils_dialog_add_button (GTK_DIALOG (result), _("_Cancel"), button_text, response_id);
+			else if (g_strcmp0 (button_text, "document-open") == 0)
+				base_gtk_utils_dialog_add_button (GTK_DIALOG (result), _("_Open"), button_text, response_id);
+			else
+				gtk_dialog_add_button (GTK_DIALOG (result), button_text, response_id);
+
+			button_text = va_arg (varargs, const gchar *);
+		}
+
+	return result;
+}
+
+GtkWidget *
+base_gtk_utils_file_chooser_dialog_new (const gchar          *title,
+					GtkWindow            *parent,
+					GtkFileChooserAction  action,
+					const gchar          *first_button_text,
+					...)
+{
+	GtkWidget *result;
+	va_list varargs;
+
+	va_start (varargs, first_button_text);
+	result = base_gtk_utils_file_chooser_dialog_new_valist (title, parent, action,
+								first_button_text,
+								varargs);
+	va_end (varargs);
+
+	return result;
+}
+
 /**
  * base_gtk_utils_select_file_with_preview:
  * @window: the #BaseWindow which will be the parent of the dialog box.
@@ -377,12 +453,12 @@ base_gtk_utils_select_file_with_preview( BaseWindow *window,
 
 	toplevel = base_window_get_gtk_toplevel( window );
 
-	dialog = gtk_file_chooser_dialog_new(
+	dialog = base_gtk_utils_file_chooser_dialog_new(
 			title,
 			toplevel,
 			GTK_FILE_CHOOSER_ACTION_OPEN,
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-			GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+			"process-stop", GTK_RESPONSE_CANCEL,
+			"document-open", GTK_RESPONSE_ACCEPT,
 			NULL
 			);
 
@@ -453,12 +529,12 @@ base_gtk_utils_select_dir( BaseWindow *window,
 
 	toplevel = base_window_get_gtk_toplevel( window );
 
-	dialog = gtk_file_chooser_dialog_new(
+	dialog = base_gtk_utils_file_chooser_dialog_new(
 			title,
 			toplevel,
 			GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-			GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+			"process-stop", GTK_RESPONSE_CANCEL,
+			"document-open", GTK_RESPONSE_ACCEPT,
 			NULL
 			);
 

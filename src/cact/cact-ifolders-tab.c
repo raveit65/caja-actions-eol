@@ -288,11 +288,11 @@ on_browse_folder_clicked( GtkButton *button, BaseWindow *window )
 	/* i18n: title of the FileChoose dialog when selecting an URI which
 	 * will be compare to Caja 'current_folder'
 	 */
-	dialog = gtk_file_chooser_dialog_new( _( "Select a folder" ),
+	dialog = base_gtk_utils_file_chooser_dialog_new( _( "Select a folder" ),
 			toplevel,
 			GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-			GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+			"process-stop", GTK_RESPONSE_CANCEL,
+			"document-open", GTK_RESPONSE_ACCEPT,
 			NULL );
 
 	base_gtk_utils_restore_window_position( window, NA_IPREFS_FOLDER_CHOOSER_WSP );

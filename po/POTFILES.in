@@ -21,6 +21,7 @@ src/io-desktop/cadp-formats.c
 src/io-desktop/cadp-reader.c
 src/cact/base-application.c
 src/cact/base-assistant.c
+src/cact/base-gtk-utils.c
 src/cact/base-iunique.c
 src/cact/base-window.c
 src/cact/egg-desktop-file.c
