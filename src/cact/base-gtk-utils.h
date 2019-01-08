@@ -73,6 +73,12 @@ void       base_gtk_utils_select_file( BaseWindow *window,
 				const gchar *title, const gchar *wsp_name,
 				GtkWidget *entry, const gchar *entry_name );
 
+GtkWidget* base_gtk_utils_file_chooser_dialog_new (const gchar          *title,
+						   GtkWindow            *parent,
+						   GtkFileChooserAction  action,
+						   const gchar          *first_button_text,
+						   ...);
+
 void       base_gtk_utils_select_file_with_preview( BaseWindow *window,
 				const gchar *title, const gchar *wsp_name,
 				GtkWidget *entry, const gchar *entry_name,
