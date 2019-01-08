@@ -130,8 +130,6 @@ AC_CONFIG_FILES([
 	data/exports/Makefile
 	docs/Makefile
 	docs/cact/Makefile
-	docs/reference/Makefile
-	docs/reference/version.xml
 	m4/Makefile
 	icons/Makefile
 	icons/16x16/Makefile
@@ -155,15 +153,6 @@ AC_CONFIG_FILES([
 # Enable deprecated functions ?
 NA_MAINTAINER_CHECK_FOR_DEPRECATED
 
-# check for gtk-doc
-# - starting with gtk-doc 1.16, is able to handle srcdir != builddir
-# - API documentation should not be built (would be incomplete) when deprecated
-#   symbols are not enabled
-GTK_DOC_CHECK([1.16],[--flavour no-tmpl])
-if test "${enable_gtk_doc}" = "yes" -a "${enable_deprecated}" = "no"; then
-	AC_MSG_WARN([API documentation will be incomplete as deprecated symbols are disabled])
-fi
-
 # User documentation
 YELP_HELP_INIT
 
@@ -185,8 +174,6 @@ AC_DEFINE_UNQUOTED([NA_CONFIG_OPTIONS],["$0 ${config_options}"],["Configure opti
 
 AC_OUTPUT
 
-msg_gtk_doc=`if test "x${enable_gtk_doc}" = "xno"; then echo "disabled"; else echo "enabled"; fi`
-
 $as_echo "
 	${PACKAGE_STRING} configuration summary:
 
@@ -198,7 +185,6 @@ $as_echo "
 	Default I/O provider            ${with_default_io_provider}
 	Enable deprecated functions     ${enable_deprecated}
 	Maintainer mode                 ${msg_maintainer_mode}
-	API Reference generation        ${msg_gtk_doc}
 	HTML User's Manuals generation  ${msg_html_manuals}
 	PDF User's Manuals generation   ${msg_pdf_manuals}
 "

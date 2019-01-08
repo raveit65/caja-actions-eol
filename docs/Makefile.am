@@ -28,7 +28,6 @@
 
 SUBDIRS = \
 	cact								\
-	reference							\
 	$(NULL)
 
 pkgdocdir = $(datarootdir)/doc/@PACKAGE@

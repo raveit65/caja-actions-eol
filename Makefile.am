@@ -45,14 +45,13 @@ SUBDIRS = \
 # - do not rebuild CACT manuals
 # - gtk-doc requires to be enabled when making dist
 
-DISTCHECK_CONFIGURE_FLAGS =	\
+DISTCHECK_CONFIGURE_FLAGS = \
 	--with-caja-extdir='$${libdir}/caja/extensions-2.0-distcheck' \
-	--enable-silent-rules				\
-	--enable-as-needed					\
-	--enable-deprecated					\
-	--enable-gtk-doc					\
-	--disable-html-manuals				\
-	--disable-pdf-manuals				\
+	--enable-silent-rules \
+	--enable-as-needed \
+	--enable-deprecated \
+	--disable-html-manuals \
+	--disable-pdf-manuals \
 	$(NULL)
 
 EXTRA_DIST =	\
