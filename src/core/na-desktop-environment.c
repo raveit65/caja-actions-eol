@@ -175,7 +175,7 @@ na_desktop_environment_get_label( const gchar *id )
 		}
 	}
 
-	g_warning( "%s: unknwon desktop identifier: %s", thisfn, id );
+	g_warning( "%s: unknown desktop identifier: %s", thisfn, id );
 
 	return( id );
 }
