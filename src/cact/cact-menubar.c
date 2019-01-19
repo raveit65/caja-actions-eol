@@ -69,7 +69,7 @@ static const GtkActionEntry entries[] = {
 				/* i18n: tooltip displayed in the status bar when selecting the 'New menu' item */
 				N_( "Insert a new menu at the current position" ),
 				G_CALLBACK( cact_menubar_file_on_new_menu ) },
-		{ "NewActionItem", GTK_STOCK_NEW, N_( "_New action" ), NULL,
+		{ "NewActionItem", "document-new", N_( "_New action" ), NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the 'New action' item */
 				N_( "Define a new action" ),
 				G_CALLBACK( cact_menubar_file_on_new_action ) },
@@ -77,23 +77,23 @@ static const GtkActionEntry entries[] = {
 				/* i18n: tooltip displayed in the status bar when selecting the 'New profile' item */
 				N_( "Define a new profile attached to the current action" ),
 				G_CALLBACK( cact_menubar_file_on_new_profile ) },
-		{ "SaveItem", GTK_STOCK_SAVE, NULL, NULL,
+		{ "SaveItem", "document-save", NULL, NULL,
 				/* i18n: tooltip displayed in the status bar when selecting 'Save' item */
 				N_( "Record all the modified actions. Invalid actions will be silently ignored" ),
 				G_CALLBACK( cact_menubar_file_on_save ) },
-		{ "QuitItem", GTK_STOCK_QUIT, NULL, NULL,
+		{ "QuitItem", "application-exit", NULL, NULL,
 				/* i18n: tooltip displayed in the status bar when selecting 'Quit' item */
 				N_( "Quit the application" ),
 				G_CALLBACK( cact_menubar_file_on_quit ) },
-		{ "CutItem" , GTK_STOCK_CUT, NULL, NULL,
+		{ "CutItem" , "edit-cut", NULL, NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the Cut item */
 				N_( "Cut the selected item(s) to the clipboard" ),
 				G_CALLBACK( cact_menubar_edit_on_cut ) },
-		{ "CopyItem" , GTK_STOCK_COPY, NULL, NULL,
+		{ "CopyItem" , "edit-copy", NULL, NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the Copy item */
 				N_( "Copy the selected item(s) to the clipboard" ),
 				G_CALLBACK( cact_menubar_edit_on_copy ) },
-		{ "PasteItem" , GTK_STOCK_PASTE, NULL, NULL,
+		{ "PasteItem" , "edit-paste", NULL, NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the Paste item */
 				N_( "Insert the content of the clipboard just before the current position" ),
 				G_CALLBACK( cact_menubar_edit_on_paste ) },
@@ -105,15 +105,15 @@ static const GtkActionEntry entries[] = {
 				/* i18n: tooltip displayed in the status bar when selecting the Duplicate item */
 				N_( "Duplicate the selected item(s)" ),
 				G_CALLBACK( cact_menubar_edit_on_duplicate ) },
-		{ "DeleteItem", GTK_STOCK_DELETE, NULL, "Delete",
+		{ "DeleteItem", "edit-delete", NULL, "Delete",
 				/* i18n: tooltip displayed in the status bar when selecting the Delete item */
 				N_( "Delete the selected item(s)" ),
 				G_CALLBACK( cact_menubar_edit_on_delete ) },
-		{ "ReloadActionsItem", GTK_STOCK_REFRESH, N_( "_Reload the items" ), "F5",
+		{ "ReloadActionsItem", "view-refresh", N_( "_Reload the items" ), "F5",
 				/* i18n: tooltip displayed in the status bar when selecting the 'Reload' item */
 				N_( "Cancel your current modifications and reload the initial list of menus and actions" ),
 				G_CALLBACK( cact_menubar_edit_on_reload ) },
-		{ "PreferencesItem", GTK_STOCK_PREFERENCES, NULL, NULL,
+		{ "PreferencesItem", "preferences-system", NULL, NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the 'Preferences' item */
 				N_( "Edit your preferences" ),
 				G_CALLBACK( cact_menubar_edit_on_prefererences ) },
@@ -126,7 +126,7 @@ static const GtkActionEntry entries[] = {
 				N_( "Entirely collapse the items hierarchy" ),
 				G_CALLBACK( cact_menubar_view_on_collapse_all ) },
 
-		{ "ImportItem" , GTK_STOCK_CONVERT, N_( "_Import assistant..." ), "",
+		{ "ImportItem" , "emblem-downloads", N_( "_Import assistant..." ), "",
 				/* i18n: tooltip displayed in the status bar when selecting the Import item */
 				N_( "Import one or more actions from external files into your configuration" ),
 				G_CALLBACK( cact_menubar_tools_on_import ) },
@@ -155,11 +155,11 @@ static const GtkActionEntry entries[] = {
 				"Test a function (see cact-menubar-maintainer.c",
 				G_CALLBACK( cact_menubar_maintainer_on_test_function ) },
 
-		{ "HelpItem" , GTK_STOCK_HELP, N_( "Contents" ), "F1",
+		{ "HelpItem" , "help-browser", N_( "Contents" ), "F1",
 				/* i18n: tooltip displayed in the status bar when selecting the Help item */
 				N_( "Display help about this program" ),
 				G_CALLBACK( cact_menubar_help_on_help ) },
-		{ "AboutItem", GTK_STOCK_ABOUT, NULL, NULL,
+		{ "AboutItem", "help-about", NULL, NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the About item */
 				N_( "Display information about this program" ),
 				G_CALLBACK( cact_menubar_help_on_about ) },
