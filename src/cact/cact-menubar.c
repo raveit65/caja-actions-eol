@@ -77,23 +77,23 @@ static const GtkActionEntry entries[] = {
 				/* i18n: tooltip displayed in the status bar when selecting the 'New profile' item */
 				N_( "Define a new profile attached to the current action" ),
 				G_CALLBACK( cact_menubar_file_on_new_profile ) },
-		{ "SaveItem", "document-save", NULL, NULL,
+		{ "SaveItem", "document-save", N_( "_Save" ), NULL,
 				/* i18n: tooltip displayed in the status bar when selecting 'Save' item */
 				N_( "Record all the modified actions. Invalid actions will be silently ignored" ),
 				G_CALLBACK( cact_menubar_file_on_save ) },
-		{ "QuitItem", "application-exit", NULL, NULL,
+		{ "QuitItem", "application-exit", N_( "_Quit" ), NULL,
 				/* i18n: tooltip displayed in the status bar when selecting 'Quit' item */
 				N_( "Quit the application" ),
 				G_CALLBACK( cact_menubar_file_on_quit ) },
-		{ "CutItem" , "edit-cut", NULL, NULL,
+		{ "CutItem" , "edit-cut", N_( "Cu_t" ), NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the Cut item */
 				N_( "Cut the selected item(s) to the clipboard" ),
 				G_CALLBACK( cact_menubar_edit_on_cut ) },
-		{ "CopyItem" , "edit-copy", NULL, NULL,
+		{ "CopyItem" , "edit-copy", N_( "_Copy" ), NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the Copy item */
 				N_( "Copy the selected item(s) to the clipboard" ),
 				G_CALLBACK( cact_menubar_edit_on_copy ) },
-		{ "PasteItem" , "edit-paste", NULL, NULL,
+		{ "PasteItem" , "edit-paste", N_( "_Paste" ), NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the Paste item */
 				N_( "Insert the content of the clipboard just before the current position" ),
 				G_CALLBACK( cact_menubar_edit_on_paste ) },
@@ -105,7 +105,7 @@ static const GtkActionEntry entries[] = {
 				/* i18n: tooltip displayed in the status bar when selecting the Duplicate item */
 				N_( "Duplicate the selected item(s)" ),
 				G_CALLBACK( cact_menubar_edit_on_duplicate ) },
-		{ "DeleteItem", "edit-delete", NULL, "Delete",
+		{ "DeleteItem", "edit-delete", N_( "_Delete" ), "Delete",
 				/* i18n: tooltip displayed in the status bar when selecting the Delete item */
 				N_( "Delete the selected item(s)" ),
 				G_CALLBACK( cact_menubar_edit_on_delete ) },
@@ -113,7 +113,7 @@ static const GtkActionEntry entries[] = {
 				/* i18n: tooltip displayed in the status bar when selecting the 'Reload' item */
 				N_( "Cancel your current modifications and reload the initial list of menus and actions" ),
 				G_CALLBACK( cact_menubar_edit_on_reload ) },
-		{ "PreferencesItem", "preferences-system", NULL, NULL,
+		{ "PreferencesItem", "preferences-desktop", N_( "_Preferences" ), NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the 'Preferences' item */
 				N_( "Edit your preferences" ),
 				G_CALLBACK( cact_menubar_edit_on_prefererences ) },
@@ -159,7 +159,7 @@ static const GtkActionEntry entries[] = {
 				/* i18n: tooltip displayed in the status bar when selecting the Help item */
 				N_( "Display help about this program" ),
 				G_CALLBACK( cact_menubar_help_on_help ) },
-		{ "AboutItem", "help-about", NULL, NULL,
+		{ "AboutItem", "help-about", N_( "_About" ), NULL,
 				/* i18n: tooltip displayed in the status bar when selecting the About item */
 				N_( "Display information about this program" ),
 				G_CALLBACK( cact_menubar_help_on_about ) },
