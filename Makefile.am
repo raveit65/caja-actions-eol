@@ -52,7 +52,7 @@ DISTCHECK_CONFIGURE_FLAGS = \
 	--enable-deprecated \
 	--disable-html-manuals \
 	--disable-pdf-manuals \
-	CFLAGS='-Wno-deprecated-declarations' \ \
+	CFLAGS='-Wno-deprecated-declarations' \
 	$(NULL)
 
 EXTRA_DIST =	\
